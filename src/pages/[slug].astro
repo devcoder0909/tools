@@ -1,0 +1,145 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ToolShell from '../components/ToolShell';
+import AdSlot from '../components/AdSlot.astro';
+import PromoSlot from '../components/PromoSlot.astro';
+import FAQ from '../components/FAQ.astro';
+import RelatedTools from '../components/RelatedTools.astro';
+import { getAllTools, getRelatedTools, type ToolDefinition } from '../registry';
+import fs from 'node:fs';
+import path from 'node:path';
+
+export async function getStaticPaths() {
+  const tools = getAllTools();
+  return tools.map((tool) => ({
+    params: { slug: tool.slug },
+    props: { tool },
+  }));
+}
+
+export interface Props {
+  tool: ToolDefinition;
+}
+
+const { tool } = Astro.props;
+const related = getRelatedTools(tool);
+
+// Check if content file exists
+let contentHtml = '';
+let hasCustomContent = false;
+const contentPath = path.resolve(process.cwd(), tool.content);
+
+if (fs.existsSync(contentPath)) {
+  const raw = fs.readFileSync(contentPath, 'utf-8');
+  // Simple markdown-to-html conversion for headings, lists, paragraphs
+  // Strip frontmatter
+  const body = raw.replace(/^---[\s\S]*?---/, '').trim();
+  contentHtml = body;
+  hasCustomContent = true;
+}
+
+const isIndexable = tool.indexable && tool.reviewed && !!tool.last_reviewed;
+
+const breadcrumbs = [
+  { name: 'Home', href: '/' },
+  { name: tool.kind === 'calculator' ? 'Calculators' : 'Tools', href: tool.kind === 'calculator' ? '/calculators/' : '/tools/' },
+  { name: tool.name, href: `/${tool.slug}/` },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: tool.title,
+  url: `https://app.gudmud.in/${tool.slug}/`,
+  applicationCategory: 'UtilitiesApplication',
+  operatingSystem: 'All',
+  browserRequirements: 'Requires JavaScript and HTML5 Canvas support',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+  description: tool.description,
+};
+---
+
+<Layout
+  title={tool.title}
+  description={tool.description}
+  canonical={`https://app.gudmud.in/${tool.slug}/`}
+  jsonLd={jsonLd}
+  noindex={!isIndexable}
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+    <!-- 1. Breadcrumbs -->
+    <Breadcrumbs items={breadcrumbs} />
+
+    <!-- 1. H1 & One-line promise -->
+    <div class="mb-6">
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-2">
+        {tool.name} Converter
+      </h1>
+      <p class="text-sm sm:text-base text-gray-600">
+        Convert your files directly inside your browser. 100% private with no server uploads.
+      </p>
+    </div>
+
+    <!-- 2 & 3. The working tool above the fold -->
+    <ToolShell
+      client:load
+      toolId={tool.id}
+      toolName={tool.name}
+      fromFormat={tool.from}
+      toFormat={tool.to}
+      kind={tool.kind}
+    />
+
+    <!-- 4. Ad slot A (below the result area, spaced away from download) -->
+    <AdSlot slotPosition="belowResult" />
+
+    <!-- 5 & 6. How-to steps & Pair-specific notes -->
+    {hasCustomContent ? (
+      <article class="prose prose-gray max-w-none my-8 leading-relaxed">
+        <div class="space-y-6 text-gray-700 leading-relaxed [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-gray-900 [&>h2]:mt-8 [&>h2]:mb-4 [&>h3]:text-lg [&>h3]:font-semibold [&>h3]:text-gray-900 [&>h3]:mt-6 [&>h3]:mb-2 [&>ul]:list-disc [&>ul]:pl-5 [&>ol]:list-decimal [&>ol]:pl-5 [&>p]:mb-4" set:html={contentHtml.replace(/### (.*)/g, '<h3>$1</h3>').replace(/## (.*)/g, '<h2>$1</h2>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n\n/g, '<p></p>')} />
+      </article>
+    ) : (
+      <article class="my-8 text-gray-700 space-y-6">
+        <h2 class="text-2xl font-bold text-gray-900">How to Use the {tool.name}</h2>
+        <ol class="list-decimal pl-5 space-y-2">
+          <li>Select or drag your files into the designated drop area above.</li>
+          <li>Choose your preferred conversion parameters or quality options.</li>
+          <li>Click convert to execute hardware-accelerated processing inside your browser.</li>
+          <li>Save the resulting files to your device with zero upload latency.</li>
+        </ol>
+        <p class="text-sm text-gray-500 italic">
+          Draft content pending human review. Marked noindex until full editorial approval.
+        </p>
+      </article>
+    )}
+
+    <!-- House promo slot after how-to block -->
+    <PromoSlot slotPosition="postHowTo" />
+
+    <!-- 7. Pair-specific FAQ -->
+    {tool.faq && tool.faq.length > 0 && (
+      <FAQ items={tool.faq} title={`${tool.name} Frequently Asked Questions`} />
+    )}
+
+    <!-- 8. Ad slot B (mid-content) -->
+    <AdSlot slotPosition="midContent" />
+
+    <!-- Related tools & format hub links -->
+    <RelatedTools currentTool={tool} relatedTools={related} />
+
+    <!-- 9. Last-reviewed date -->
+    <div class="mt-12 pt-6 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
+      <span>
+        Last reviewed: <time datetime={tool.last_reviewed}>{tool.last_reviewed}</time>
+      </span>
+      <span>
+        Status: {isIndexable ? 'Reviewed & Verified' : 'Draft / Under Review'}
+      </span>
+    </div>
+  </div>
+</Layout>

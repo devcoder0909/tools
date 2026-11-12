@@ -1,0 +1,32 @@
+---
+import { ads } from '../config/ads';
+
+export interface Props {
+  slotPosition: 'belowResult' | 'midContent' | 'footer';
+  className?: string;
+}
+
+const { slotPosition, className = '' } = Astro.props;
+const isEnabled = ads.enabled && !!ads.publisherId && !!ads.slots[slotPosition];
+---
+
+{isEnabled ? (
+  <div
+    class={`ad-slot-wrapper my-8 flex flex-col items-center justify-center ${className}`}
+    data-ad-position={slotPosition}
+    aria-label="Advertisement"
+  >
+    <span class="text-[10px] uppercase tracking-wider text-gray-400 mb-1 select-none">
+      Advertisement
+    </span>
+    <div
+      class="ad-container w-full max-w-[728px] min-h-[90px] md:min-h-[250px] bg-gray-50 border border-gray-100 rounded flex items-center justify-center text-xs text-gray-400"
+      data-ad-client={ads.publisherId}
+      data-ad-slot={ads.slots[slotPosition]}
+    >
+      <!-- AdSense manual unit loaded post-idle -->
+    </div>
+  </div>
+) : (
+  <div class="ad-slot-disabled hidden" aria-hidden="true" />
+)}

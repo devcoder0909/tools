@@ -1,0 +1,75 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { getAllTools } from '../../registry';
+
+const tools = getAllTools();
+const converters = tools.filter((t) => t.kind === 'converter');
+const calculators = tools.filter((t) => t.kind === 'calculator' || t.kind === 'text');
+
+const breadcrumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'All Tools', href: '/tools/' },
+];
+---
+
+<Layout
+  title="All Free Online Tools & Converters - Best Converter"
+  description="Browse our complete directory of 100% private in-browser converters, image compressors, calculators, and text transformers."
+  canonical="https://app.gudmud.in/tools/"
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <div class="mb-10">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-2">
+        All Online File Converters & Utilities
+      </h1>
+      <p class="text-gray-600">
+        Every tool processes your data locally on your device without server uploads.
+      </p>
+    </div>
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4 border-b border-gray-200 pb-2">
+        Image Converters & Size Reducers
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {converters.map((tool) => (
+          <a
+            href={`/${tool.slug}/`}
+            class="p-4 rounded-lg border border-gray-200 bg-white hover:border-green-500 hover:shadow-xs transition group"
+          >
+            <h3 class="font-semibold text-gray-900 group-hover:text-green-600 mb-1">
+              {tool.name}
+            </h3>
+            <p class="text-xs text-gray-500 line-clamp-2">
+              {tool.description}
+            </p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-2xl font-bold text-gray-900 mb-4 border-b border-gray-200 pb-2">
+        Calculators & Text Tools
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {calculators.map((calc) => (
+          <a
+            href={`/${calc.slug}/`}
+            class="p-4 rounded-lg border border-gray-200 bg-white hover:border-green-500 hover:shadow-xs transition group"
+          >
+            <h3 class="font-semibold text-gray-900 group-hover:text-green-600 mb-1">
+              {calc.name}
+            </h3>
+            <p class="text-xs text-gray-500 line-clamp-2">
+              {calc.description}
+            </p>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+</Layout>

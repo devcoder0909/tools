@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { siteConfig } from '../config/site';
+
+const breadcrumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'About Us', href: '/about/' },
+];
+---
+
+<Layout
+  title={`About Us - Why We Built ${siteConfig.brand}`}
+  description={`Learn the story behind ${siteConfig.brand}: building fast, free, privacy-first image and file conversion tools that never upload your data.`}
+  canonical="https://app.gudmud.in/about/"
+>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-8">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
+      About {siteConfig.brand}
+    </h1>
+    <p class="text-base text-gray-600 mb-8 leading-relaxed">
+      A digital utilities initiative by {siteConfig.company} dedicated to bringing uncompromising privacy, lightning speed, and universal accessibility to everyday file conversions.
+    </p>
+
+    <div class="prose max-w-none text-gray-700 space-y-6 text-sm sm:text-base leading-relaxed">
+      <h2 class="text-xl font-bold text-gray-900">Why Most Online Converters Are Flawed</h2>
+      <p>
+        The internet is crowded with file conversion websites, yet almost all of them follow an outdated and risky model: you upload your file to their remote cloud server, wait in an artificial server queue, let their backend run a conversion command, and download the resulting file back across the web.
+      </p>
+      <p>
+        This traditional approach creates three serious problems for modern internet users:
+      </p>
+      <ul class="list-disc pl-5 space-y-2">
+        <li>
+          <strong>Severe Privacy Risks:</strong> Your personal photographs, sensitive government identification documents, tax receipts, and financial records sit on third-party cloud disks where they may be logged, stored, or exposed to breaches.
+        </li>
+        <li>
+          <strong>Bandwidth Waste & High Latency:</strong> Uploading heavy camera files over mobile connections wastes mobile data limits and takes minutes, only to download nearly the exact same bytes again.
+        </li>
+        <li>
+          <strong>Aggressive Paywalls & Timers:</strong> Server-heavy conversion platforms frequently impose strict hourly limits, force artificial 30-second countdowns, or demand recurring monthly subscriptions just to process simple image conversions.
+        </li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-gray-900">Our Solution: 100% In-Browser Execution</h2>
+      <p>
+        Modern web browsers are remarkably capable application runtime environments equipped with hardware-accelerated HTML5 Canvas, Web Workers, and WebAssembly (WASM). We engineered {siteConfig.brand} to do all computing directly on your physical hardware.
+      </p>
+      <p>
+        When you drop an image onto our tools, client-side JavaScript reads the file buffer directly into your local device memory. Whether converting complex Apple HEIC photos or compressing JPG files to strict government portal byte targets, every byte is decoded, transformed, and packaged on your CPU and GPU.
+      </p>
+      <p>
+        Because our hosting infrastructure only delivers static JavaScript, CSS, and HTML files with zero backend processing servers, our operational costs remain exceptionally low. This allows us to offer completely free, unmetered tools with zero upload delays and absolute data confidentiality.
+      </p>
+
+      <h2 class="text-xl font-bold text-gray-900">Engineering Principles</h2>
+      <p>
+        Every utility developed under {siteConfig.brand} follows four strict engineering rules:
+      </p>
+      <ol class="list-decimal pl-5 space-y-2">
+        <li><strong>Zero Remote File Transfer:</strong> User files never leave the browser sandbox under any circumstance.</li>
+        <li><strong>No Artificial Queues:</strong> Downloads are ready the instant device memory finishes encoding.</li>
+        <li><strong>Transparent Performance:</strong> Exact byte counts and percentage savings are visible prior to download.</li>
+        <li><strong>Verifiable Operations:</strong> Anyone can audit our network behavior using standard browser developer tools.</li>
+      </ol>
+
+      <div class="mt-8 p-6 bg-gray-50 border border-gray-200 rounded-xl">
+        <h3 class="text-base font-bold text-gray-900 mb-2">Need to reach our engineering team?</h3>
+        <p class="text-sm text-gray-600 mb-3">
+          We welcome bug reports, format suggestions, and developer feedback from the community.
+        </p>
+        <a
+          href={`mailto:${siteConfig.contactEmail}`}
+          class="inline-block px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold rounded-lg transition"
+        >
+          Email {siteConfig.contactEmail}
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>

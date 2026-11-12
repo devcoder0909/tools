@@ -1,0 +1,600 @@
+# 18 Image Converters
+- id: heic-to-jpg
+  kind: converter
+  slug: heic-to-jpg
+  name: HEIC to JPG
+  title: HEIC to JPG Converter - Free, Private, No Upload | Best Converter
+  description: Convert Apple HEIC photos to universal JPG format directly in your browser. Fast, 100% private, batch conversion without server uploads.
+  from: heic
+  to: jpg
+  engine: heic-decode+canvas
+  options: [quality, strip-metadata, batch]
+  presets: []
+  content: src/content/tools/heic-to-jpg.mdx
+  faq:
+    - q: Why won't my iPhone HEIC photos open on Windows?
+      a: Windows does not include a native HEIC codec by default. Converting HEIC to universal JPG makes your photos instantly readable across all devices.
+    - q: Does converting HEIC to JPG reduce image quality?
+      a: Our client-side converter uses high-precision canvas rendering with configurable quality up to 95% to preserve maximum visual fidelity.
+    - q: Are my photos uploaded to any external server?
+      a: No. Every byte is decoded and encoded locally inside your browser memory. You can verify this in your browser Network tab.
+  related: [heic-to-png, heic-to-pdf, jpg-to-png, compress-image-to-200kb]
+  indexable: true
+  reviewed: true
+  last_reviewed: 2026-11-12
+  lang: en
+
+- id: heic-to-png
+  kind: converter
+  slug: heic-to-png
+  name: HEIC to PNG
+  title: HEIC to PNG Converter - Free, Lossless Alpha | Best Converter
+  description: Convert iPhone HEIC photos to lossless PNG format with transparency retention. Runs entirely in your browser without file uploads.
+  from: heic
+  to: png
+  engine: heic-decode+canvas
+  options: [batch]
+  presets: []
+  content: src/content/tools/heic-to-png.mdx
+  faq: []
+  related: [heic-to-jpg, png-to-jpg, png-to-webp]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+- id: heic-to-pdf
+  kind: converter
+  slug: heic-to-pdf
+  name: HEIC to PDF
+  title: HEIC to PDF Converter - Secure Document Creator | Best Converter
+  description: Combine and convert HEIC camera photos into standard PDF documents in your browser. 100% private, zero file uploads.
+  from: heic
+  to: pdf
+  engine: heic-decode+pdf
+  options: [batch, page-size]
+  presets: []
+  content: src/content/tools/heic-to-pdf.mdx
+  faq: []
+  related: [heic-to-jpg, jpg-to-pdf, png-to-pdf]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+- id: webp-to-jpg
+  kind: converter
+  slug: webp-to-jpg
+  name: WebP to JPG
+  title: WebP to JPG Converter - Fast, Private Online Tool | Best Converter
+  description: Convert modern WebP images to standard JPG format in seconds. Free browser-based conversion with zero server uploads.
+  from: webp
+  to: jpg
+  engine: canvas
+  options: [quality, batch]
+  presets: []
+  content: src/content/tools/webp-to-jpg.mdx
+  faq: []
+  related: [webp-to-png, jpg-to-webp, png-to-jpg]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+- id: webp-to-png
+  kind: converter
+  slug: webp-to-png
+  name: WebP to PNG
+  title: WebP to PNG Converter - Keep Alpha Transparency | Best Converter
+  description: Convert WebP images to uncompressed PNG while retaining full alpha transparency. Runs client-side for absolute privacy.
+  from: webp
+  to: png
+  engine: canvas
+  options: [batch]
+  presets: []
+  content: src/content/tools/webp-to-png.mdx
+  faq: []
+  related: [webp-to-jpg, png-to-webp, png-to-jpg]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+- id: png-to-webp
+  kind: converter
+  slug: png-to-webp
+  name: PNG to WebP
+  title: PNG to WebP Converter - Shrink Size by Up to 35% | Best Converter
+  description: Convert PNG images to modern WebP format for faster web page load speeds. Client-side, free, and batch-enabled.
+  from: png
+  to: webp
+  engine: canvas
+  options: [quality, batch]
+  presets: []
+  content: src/content/tools/png-to-webp.mdx
+  faq: []
+  related: [jpg-to-webp, webp-to-png, compress-image-to-200kb]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+- id: jpg-to-webp
+  kind: converter
+  slug: jpg-to-webp
+  name: JPG to WebP
+  title: JPG to WebP Converter - Optimize Image Storage | Best Converter
+  description: Convert JPG photos to lightweight WebP files. Cut file sizes while maintaining sharp visual quality directly on your device.
+  from: jpg
+  to: webp
+  engine: canvas
+  options: [quality, batch]
+  presets: []
+  content: src/content/tools/jpg-to-webp.mdx
+  faq: []
+  related: [webp-to-jpg, png-to-webp, compress-image-to-100kb]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+- id: avif-to-jpg
+  kind: converter
+  slug: avif-to-jpg
+  name: AVIF to JPG
+  title: AVIF to JPG Converter - Universal Compatibility | Best Converter
+  description: Convert next-gen AVIF images to universally supported JPG format. Quick, private, client-side browser conversion.
+  from: avif
+  to: jpg
+  engine: canvas
+  options: [quality, batch]
+  presets: []
+  content: src/content/tools/avif-to-jpg.mdx
+  faq: []
+  related: [avif-to-png, webp-to-jpg, jpg-to-webp]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+- id: avif-to-png
+  kind: converter
+  slug: avif-to-png
+  name: AVIF to PNG
+  title: AVIF to PNG Converter - Transparent & Lossless | Best Converter
+  description: Convert AVIF pictures to crisp PNG images with transparent backgrounds. Completely offline and private in your browser.
+  from: avif
+  to: png
+  engine: canvas
+  options: [batch]
+  presets: []
+  content: src/content/tools/avif-to-png.mdx
+  faq: []
+  related: [avif-to-jpg, webp-to-png, png-to-webp]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+- id: png-to-jpg
+  kind: converter
+  slug: png-to-jpg
+  name: PNG to JPG
+  title: PNG to JPG Converter - Fast Image Conversion | Best Converter
+  description: Convert PNG images to standard JPEG format. Set custom quality and batch convert multiple photos right in your browser.
+  from: png
+  to: jpg
+  engine: canvas
+  options: [quality, batch]
+  presets: []
+  content: src/content/tools/png-to-jpg.mdx
+  faq: []
+  related: [jpg-to-png, png-to-webp, compress-image-to-200kb]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+- id: jpg-to-png
+  kind: converter
+  slug: jpg-to-png
+  name: JPG to PNG
+  title: JPG to PNG Converter - Lossless Pixel Output | Best Converter
+  description: Convert JPG photos to lossless PNG format. Works offline inside your browser without uploading your sensitive data.
+  from: jpg
+  to: png
+  engine: canvas
+  options: [batch]
+  presets: []
+  content: src/content/tools/jpg-to-png.mdx
+  faq: []
+  related: [png-to-jpg, jpg-to-webp, jpg-to-pdf]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+- id: jfif-to-jpg
+  kind: converter
+  slug: jfif-to-jpg
+  name: JFIF to JPG
+  title: JFIF to JPG Converter - Fix Download Format | Best Converter
+  description: Convert and rename stubborn JFIF image downloads to standard JPG files. Instant in-browser conversion with zero quality loss.
+  from: jfif
+  to: jpg
+  engine: canvas
+  options: [batch]
+  presets: []
+  content: src/content/tools/jfif-to-jpg.mdx
+  faq: []
+  related: [jpg-to-png, webp-to-jpg, png-to-jpg]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+- id: svg-to-png
+  kind: converter
+  slug: svg-to-png
+  name: SVG to PNG
+  title: SVG to PNG Converter - High Resolution Raster | Best Converter
+  description: Render and convert vector SVG graphics into transparent PNG raster images at any resolution directly in your browser.
+  from: svg
+  to: png
+  engine: canvas
+  options: [scale, batch]
+  presets: []
+  content: src/content/tools/svg-to-png.mdx
+  faq: []
+  related: [png-to-webp, png-to-jpg, jpg-to-png]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+- id: bmp-to-jpg
+  kind: converter
+  slug: bmp-to-jpg
+  name: BMP to JPG
+  title: BMP to JPG Converter - Drastically Compress Size | Best Converter
+  description: Convert bulky Windows BMP files to highly compressed JPG photos. Fast, client-side batch processing without data leaks.
+  from: bmp
+  to: jpg
+  engine: canvas
+  options: [quality, batch]
+  presets: []
+  content: src/content/tools/bmp-to-jpg.mdx
+  faq: []
+  related: [jpg-to-png, png-to-jpg, tiff-to-jpg]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+- id: tiff-to-jpg
+  kind: converter
+  slug: tiff-to-jpg
+  name: TIFF to JPG
+  title: TIFF to JPG Converter - Fast Browser Conversion | Best Converter
+  description: Convert print-ready TIFF images to web-ready JPG pictures. No server uploads, keeping your private scans confidential.
+  from: tiff
+  to: jpg
+  engine: canvas
+  options: [quality, batch]
+  presets: []
+  content: src/content/tools/tiff-to-jpg.mdx
+  faq: []
+  related: [bmp-to-jpg, jpg-to-png, jpg-to-pdf]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+- id: gif-to-png
+  kind: converter
+  slug: gif-to-png
+  name: GIF to PNG
+  title: GIF to PNG Converter - Extract Sharp Still Frames | Best Converter
+  description: Convert GIF images and animations to clean still PNG graphics. Safe, private, and instantaneous in your web browser.
+  from: gif
+  to: png
+  engine: canvas
+  options: [batch]
+  presets: []
+  content: src/content/tools/gif-to-png.mdx
+  faq: []
+  related: [png-to-webp, png-to-jpg, jpg-to-png]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+- id: jpg-to-pdf
+  kind: converter
+  slug: jpg-to-pdf
+  name: JPG to PDF
+  title: JPG to PDF Converter - Combine Photos to Document | Best Converter
+  description: Turn single or multiple JPG photos into a clean PDF document. Reorder pages and save instantly on your device.
+  from: jpg
+  to: pdf
+  engine: pdf
+  options: [page-size, margin, batch]
+  presets: []
+  content: src/content/tools/jpg-to-pdf.mdx
+  faq: []
+  related: [png-to-pdf, heic-to-pdf, jpg-to-png]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+- id: png-to-pdf
+  kind: converter
+  slug: png-to-pdf
+  name: PNG to PDF
+  title: PNG to PDF Converter - High Quality PDF Export | Best Converter
+  description: Combine transparent PNG graphics and document scans into a multi-page PDF. 100% private client-side processing.
+  from: png
+  to: pdf
+  engine: pdf
+  options: [page-size, margin, batch]
+  presets: []
+  content: src/content/tools/png-to-pdf.mdx
+  faq: []
+  related: [jpg-to-pdf, heic-to-pdf, png-to-jpg]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+# 6 Target-size and resize tools
+- id: compress-image-to-50kb
+  kind: converter
+  slug: compress-image-to-50kb
+  name: Compress Image to 50KB
+  title: Compress Image to 50KB - Target Size Optimizer | Best Converter
+  description: Compress JPG and WebP photos to exactly 50KB or less for application portals, resumes, and strict upload requirements.
+  from: image
+  to: jpg
+  engine: target-size
+  options: [target-bytes: 51200]
+  presets: [50kb]
+  content: src/content/tools/compress-image-to-50kb.mdx
+  faq: []
+  related: [compress-image-to-100kb, compress-image-to-200kb, resize-image]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+- id: compress-image-to-100kb
+  kind: converter
+  slug: compress-image-to-100kb
+  name: Compress Image to 100KB
+  title: Compress Image to 100KB - Exact File Size Tool | Best Converter
+  description: Compress images down to 100KB without visible quality artifacts. Optimized for student portals and government exam forms.
+  from: image
+  to: jpg
+  engine: target-size
+  options: [target-bytes: 102400]
+  presets: [100kb]
+  content: src/content/tools/compress-image-to-100kb.mdx
+  faq: []
+  related: [compress-image-to-50kb, compress-image-to-200kb, resize-image]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+- id: compress-image-to-200kb
+  kind: converter
+  slug: compress-image-to-200kb
+  name: Compress Image to 200KB
+  title: Compress Image to 200KB - Quick Photo Reducer | Best Converter
+  description: Reduce photo size to under 200KB instantly in your browser. Perfect balance between crisp resolution and compact file size.
+  from: image
+  to: jpg
+  engine: target-size
+  options: [target-bytes: 204800]
+  presets: [200kb]
+  content: src/content/tools/compress-image-to-200kb.mdx
+  faq: []
+  related: [compress-image-to-100kb, compress-image-to-500kb, resize-image]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+- id: compress-image-to-500kb
+  kind: converter
+  slug: compress-image-to-500kb
+  name: Compress Image to 500KB
+  title: Compress Image to 500KB - Email & Web Ready | Best Converter
+  description: Compress camera photos and high-res scans to 500KB or less for email attachments and web upload speed.
+  from: image
+  to: jpg
+  engine: target-size
+  options: [target-bytes: 512000]
+  presets: [500kb]
+  content: src/content/tools/compress-image-to-500kb.mdx
+  faq: []
+  related: [compress-image-to-200kb, compress-image-to-1mb, resize-image]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+- id: compress-image-to-1mb
+  kind: converter
+  slug: compress-image-to-1mb
+  name: Compress Image to 1MB
+  title: Compress Image to 1MB - High Resolution Shrink | Best Converter
+  description: Shrink large multi-megabyte DSLR images down to 1MB while preserving rich details. Free and private in your web browser.
+  from: image
+  to: jpg
+  engine: target-size
+  options: [target-bytes: 1048576]
+  presets: [1mb]
+  content: src/content/tools/compress-image-to-1mb.mdx
+  faq: []
+  related: [compress-image-to-500kb, compress-image-to-200kb, resize-image]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+- id: resize-image
+  kind: converter
+  slug: resize-image
+  name: Resize Image
+  title: Resize Image Online - Pixel & Percentage Scaling | Best Converter
+  description: Resize image dimensions by exact pixels or percentage scale. Maintain aspect ratio and download optimized images instantly.
+  from: image
+  to: image
+  engine: canvas-resize
+  options: [width, height, percentage, keep-aspect]
+  presets: []
+  content: src/content/tools/resize-image.mdx
+  faq: []
+  related: [compress-image-to-200kb, jpg-to-webp, png-to-webp]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+# 8 Calculators and Text Tools
+- id: percentage-calculator
+  kind: calculator
+  slug: percentage-calculator
+  name: Percentage Calculator
+  title: Percentage Calculator - Quick & Accurate Formulas | Best Converter
+  description: Calculate percentage increases, decreases, fractions, and percentage of values with step-by-step formula explanations.
+  engine: calc-percentage
+  options: []
+  presets: []
+  content: src/content/tools/percentage-calculator.mdx
+  faq: []
+  related: [discount-calculator, tip-calculator, date-difference-calculator]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+- id: age-calculator
+  kind: calculator
+  slug: age-calculator
+  name: Age Calculator
+  title: Age Calculator - Exact Years, Months & Days | Best Converter
+  description: Calculate your exact age in years, months, weeks, days, and hours from your birthdate. Fast, responsive, and private.
+  engine: calc-age
+  options: []
+  presets: []
+  content: src/content/tools/age-calculator.mdx
+  faq: []
+  related: [date-difference-calculator, percentage-calculator, discount-calculator]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+- id: date-difference-calculator
+  kind: calculator
+  slug: date-difference-calculator
+  name: Date Difference Calculator
+  title: Date Difference Calculator - Days Between Dates | Best Converter
+  description: Calculate total days, weekdays, and elapsed time between two calendar dates. Works offline in your browser.
+  engine: calc-date
+  options: []
+  presets: []
+  content: src/content/tools/date-difference-calculator.mdx
+  faq: []
+  related: [age-calculator, percentage-calculator, discount-calculator]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+- id: discount-calculator
+  kind: calculator
+  slug: discount-calculator
+  name: Discount Calculator
+  title: Discount Calculator - Final Price & Money Saved | Best Converter
+  description: Find the final sale price and total savings from percentage or fixed discounts and sales tax. Quick retail calculator.
+  engine: calc-discount
+  options: []
+  presets: []
+  content: src/content/tools/discount-calculator.mdx
+  faq: []
+  related: [percentage-calculator, tip-calculator, age-calculator]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+- id: tip-calculator
+  kind: calculator
+  slug: tip-calculator
+  name: Tip Calculator
+  title: Tip Calculator - Bill Split & Per-Person Total | Best Converter
+  description: Calculate restaurant tips and split total bills easily among dining guests with custom tip percentages.
+  engine: calc-tip
+  options: []
+  presets: []
+  content: src/content/tools/tip-calculator.mdx
+  faq: []
+  related: [discount-calculator, percentage-calculator, word-counter]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+- id: word-counter
+  kind: text
+  slug: word-counter
+  name: Word Counter
+  title: Word Counter - Words, Characters & Reading Time | Best Converter
+  description: Real-time word, character, sentence, and paragraph counter with estimated reading time. 100% private in-browser analysis.
+  engine: text-word-count
+  options: []
+  presets: []
+  content: src/content/tools/word-counter.mdx
+  faq: []
+  related: [case-converter, json-formatter, percentage-calculator]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+- id: case-converter
+  kind: text
+  slug: case-converter
+  name: Case Converter
+  title: Case Converter - Uppercase, Lowercase & Title | Best Converter
+  description: Convert text instantly to UPPERCASE, lowercase, Title Case, camelCase, snake_case, and kebab-case in your browser.
+  engine: text-case
+  options: []
+  presets: []
+  content: src/content/tools/case-converter.mdx
+  faq: []
+  related: [word-counter, json-formatter, percentage-calculator]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en
+
+- id: json-formatter
+  kind: text
+  slug: json-formatter
+  name: JSON Formatter & Validator
+  title: JSON Formatter & Validator - Clean & Validate | Best Converter
+  description: Format, prettify, minify, and validate JSON data with clear syntax error highlights. Runs locally without sending data to servers.
+  engine: text-json
+  options: []
+  presets: []
+  content: src/content/tools/json-formatter.mdx
+  faq: []
+  related: [word-counter, case-converter, percentage-calculator]
+  indexable: true
+  reviewed: false
+  last_reviewed: 2026-11-12
+  lang: en

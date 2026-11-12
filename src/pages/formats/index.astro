@@ -1,0 +1,60 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { getAllFormats } from '../../registry';
+
+const formats = getAllFormats();
+
+const breadcrumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Formats', href: '/formats/' },
+];
+---
+
+<Layout
+  title="Image & File Formats Guide - Specs & Comparison - Best Converter"
+  description="Comprehensive guide to image formats: JPG, PNG, WebP, HEIC, AVIF, TIFF, BMP, and SVG with technical specs, pros, cons, and conversion tools."
+  canonical="https://app.gudmud.in/formats/"
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <div class="mb-10">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-2">
+        Image & Document Format Guides
+      </h1>
+      <p class="text-gray-600">
+        In-depth technical specifications, compression comparisons, and browser compatibility facts.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      {formats.map((fmt) => (
+        <a
+          href={`/formats/${fmt.id}/`}
+          class="p-6 rounded-xl border border-gray-200 bg-white hover:border-green-500 hover:shadow-xs transition group"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <span class="font-mono font-bold text-xl text-green-700">
+              {fmt.extension.toUpperCase()}
+            </span>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-gray-100 text-gray-700 uppercase">
+              {fmt.category}
+            </span>
+          </div>
+          <h2 class="font-bold text-gray-900 group-hover:text-green-600 text-lg mb-2">
+            {fmt.name}
+          </h2>
+          <p class="text-xs text-gray-500 leading-relaxed mb-4">
+            {fmt.description}
+          </p>
+          <div class="text-xs text-gray-400 space-x-2">
+            <span>{fmt.lossy ? 'Lossy' : 'Lossless'}</span>
+            <span>•</span>
+            <span>{fmt.transparency ? 'Alpha Transparency' : 'No Transparency'}</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</Layout>

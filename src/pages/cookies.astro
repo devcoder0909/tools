@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { siteConfig } from '../config/site';
+
+const breadcrumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Cookie Policy', href: '/cookies/' },
+];
+---
+
+<Layout
+  title={`Cookie Policy - ${siteConfig.brand}`}
+  description="Learn how Best Converter uses cookies for essential site functions, Google consent preferences, and third-party advertising."
+  canonical="https://app.gudmud.in/cookies/"
+>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-8">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
+      Cookie Policy
+    </h1>
+    <p class="text-xs text-gray-500 mb-8">
+      Last modified: November 12, 2026 • Editorial Draft (Requires Legal Review)
+    </p>
+
+    <div class="prose max-w-none text-gray-700 space-y-6 text-sm leading-relaxed">
+      <p>
+        This Cookie Policy explains what cookies and similar local storage technologies are, how {siteConfig.brand} uses them to keep our tools free and reliable, and your choices regarding cookies when accessing our web application.
+      </p>
+
+      <h2 class="text-xl font-bold text-gray-900">What Are Cookies?</h2>
+      <p>
+        Cookies are small text files placed on your computer, tablet, or smartphone by your web browser when you visit websites. They allow websites to recognize your device, maintain essential user preferences across navigation, and facilitate secure operations. In addition to cookies, modern browsers support local storage mechanisms that help client-side utilities preserve session state without sending data to servers.
+      </p>
+
+      <h2 class="text-xl font-bold text-gray-900">How We Use Cookies and Local Storage</h2>
+      <p>
+        We believe in maintaining minimal data footprints. Our tools are architected to operate with the absolute fewest cookies possible:
+      </p>
+      <ul class="list-disc pl-5 space-y-2">
+        <li>
+          <strong>Strictly Essential State:</strong> We use local session storage strictly to remember UI preferences, such as selected conversion quality values or memory protection toggles. These values remain on your device and are never transmitted to our servers.
+        </li>
+        <li>
+          <strong>Consent Management Cookies:</strong> If you visit our website from jurisdictions requiring explicit consent (such as the European Union, European Economic Area, UK, or Switzerland), a cookie records your privacy choices to prevent repeated popup dialogs.
+        </li>
+        <li>
+          <strong>Advertising Cookies:</strong> When enabled, Google AdSense uses cookies to serve contextual advertisements that cover our hosting infrastructure costs. Google's advertising network may use cookies to personalize ad content or limit the number of times you see a particular advertisement.
+        </li>
+        <li>
+          <strong>Cookieless Diagnostic Metrics:</strong> Our core traffic analysis infrastructure operates without persistent tracking cookies, ensuring your browsing patterns are never linked to personal identities.
+        </li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-gray-900">Managing and Disabling Cookies</h2>
+      <p>
+        You have the complete right to decide whether to accept or reject cookies. You can exercise your cookie preferences through your web browser settings. Most browsers (Google Chrome, Mozilla Firefox, Apple Safari, and Microsoft Edge) allow you to block all third-party cookies or wipe stored cookies whenever you close the application.
+      </p>
+      <p>
+        Please note that disabling cookies will not impair the core functionality of {siteConfig.brand}: all file conversions, compressors, and calculators will continue to function fully in offline or incognito modes.
+      </p>
+
+      <h2 class="text-xl font-bold text-gray-900">Updates to this Policy</h2>
+      <p>
+        We may update this Cookie Policy periodically to reflect changes in legal requirements or updates to our advertising configurations. If you have questions about our cookie usage, please email <a href={`mailto:${siteConfig.contactEmail}`} class="text-green-600 underline font-medium">{siteConfig.contactEmail}</a>.
+      </p>
+    </div>
+  </div>
+</Layout>

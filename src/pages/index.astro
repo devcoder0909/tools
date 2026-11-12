@@ -1,0 +1,164 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../config/site';
+import { getAllTools, getFormatHubs } from '../registry';
+
+const allTools = getAllTools();
+const converters = allTools.filter((t) => t.kind === 'converter');
+const calculators = allTools.filter((t) => t.kind === 'calculator' || t.kind === 'text');
+const formatHubs = getFormatHubs();
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: siteConfig.brand,
+  url: siteConfig.url,
+  logo: `${siteConfig.url}/icons/icon-512.png`,
+  contactPoint: {
+    '@type': 'ContactPoint',
+    email: siteConfig.contactEmail,
+    contactType: 'customer support',
+  },
+};
+---
+
+<Layout
+  title={`${siteConfig.brand} - Free Private Online File Converters`}
+  description="Fast, private client-side file converters and calculators. Convert HEIC, WebP, JPG, PNG and PDF directly in your browser without uploads."
+  canonical="https://app.gudmud.in/"
+  jsonLd={organizationJsonLd}
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+    <!-- Hero Section -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800 mb-4">
+        100% Client-Side Privacy
+      </span>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
+        Free In-Browser Converters & Calculators
+      </h1>
+      <p class="text-base sm:text-lg text-gray-600 leading-relaxed">
+        Convert images, compress files to target sizes, and run calculators directly inside your device memory. Your sensitive files are never uploaded to any remote server.
+      </p>
+    </div>
+
+    <!-- Image Converters Grid -->
+    <section class="mb-16" aria-labelledby="converters-heading">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <h2 id="converters-heading" class="text-2xl font-bold text-gray-900">
+            Image Converters & Compression
+          </h2>
+          <p class="text-sm text-gray-500">Universal formats, target-size optimization, and batch processing.</p>
+        </div>
+        <a href="/tools/" class="text-sm font-semibold text-green-600 hover:underline">
+          View all converters &rarr;
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {converters.slice(0, 9).map((tool) => (
+          <a
+            href={`/${tool.slug}/`}
+            class="p-5 rounded-xl border border-gray-200 bg-white hover:border-green-500 hover:shadow-sm transition group"
+          >
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-gray-100 text-gray-700 uppercase">
+                {tool.slug.includes('compress') ? 'Compress' : 'Convert'}
+              </span>
+              <span class="text-green-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                &rarr;
+              </span>
+            </div>
+            <h3 class="font-bold text-gray-900 group-hover:text-green-600 text-base mb-1">
+              {tool.name}
+            </h3>
+            <p class="text-xs text-gray-500 line-clamp-2">
+              {tool.description}
+            </p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Calculators & Text Utilities Grid -->
+    <section class="mb-16" aria-labelledby="calculators-heading">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <h2 id="calculators-heading" class="text-2xl font-bold text-gray-900">
+            Calculators & Text Tools
+          </h2>
+          <p class="text-sm text-gray-500">Instant calculations and text transformers that run offline.</p>
+        </div>
+        <a href="/calculators/" class="text-sm font-semibold text-green-600 hover:underline">
+          View all calculators &rarr;
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        {calculators.map((calc) => (
+          <a
+            href={`/${calc.slug}/`}
+            class="p-5 rounded-xl border border-gray-200 bg-white hover:border-green-500 hover:shadow-sm transition group"
+          >
+            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-blue-50 text-blue-700 uppercase mb-2 inline-block">
+              {calc.kind}
+            </span>
+            <h3 class="font-bold text-gray-900 group-hover:text-green-600 text-base mb-1">
+              {calc.name}
+            </h3>
+            <p class="text-xs text-gray-500 line-clamp-2">
+              {calc.description}
+            </p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Format Guides Hub -->
+    <section class="mb-16" aria-labelledby="formats-heading">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <h2 id="formats-heading" class="text-2xl font-bold text-gray-900">
+            Image Format Guides & Specs
+          </h2>
+          <p class="text-sm text-gray-500">Honest compression benchmarks, browser support tables, and format trade-offs.</p>
+        </div>
+        <a href="/formats/" class="text-sm font-semibold text-green-600 hover:underline">
+          All formats &rarr;
+        </a>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+        {formatHubs.map((fmt) => (
+          <a
+            href={`/formats/${fmt.id}/`}
+            class="p-4 rounded-lg border border-gray-200 bg-gray-50 hover:bg-white hover:border-green-500 transition text-center group"
+          >
+            <span class="block font-mono font-bold text-lg text-gray-900 group-hover:text-green-600">
+              {fmt.extension.toUpperCase()}
+            </span>
+            <span class="text-xs text-gray-500">
+              {fmt.name}
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Privacy & Verification Explainer -->
+    <section class="bg-gray-50 border border-gray-200 rounded-2xl p-6 sm:p-10">
+      <div class="max-w-3xl">
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">
+          Why Client-Side Privacy Matters
+        </h2>
+        <p class="text-sm sm:text-base text-gray-600 leading-relaxed mb-4">
+          Most free online file converters transmit your private files to cloud servers where they are queued, processed, and stored on remote hard drives. This introduces serious privacy risks for business receipts, ID documents, medical paperwork, and family photos.
+        </p>
+        <p class="text-sm sm:text-base text-gray-600 leading-relaxed mb-4">
+          <strong>Best Converter never uploads your files.</strong> All file parsing, Canvas decoding, and compression runs exclusively on your CPU using HTML5 standards. You can verify this in real time by opening your browser Developer Tools (F12) and checking the Network tab: zero file payload requests are ever transmitted.
+        </p>
+      </div>
+    </section>
+  </div>
+</Layout>

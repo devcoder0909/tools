@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /embed/
+Disallow: /_internal/
+
+Sitemap: https://app.gudmud.in/sitemap-index.xml

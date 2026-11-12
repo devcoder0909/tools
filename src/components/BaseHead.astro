@@ -1,0 +1,75 @@
+---
+import { siteConfig } from '../config/site';
+
+export interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  type?: 'website' | 'article';
+  jsonLd?: Record<string, any> | Record<string, any>[];
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonical = Astro.url.href,
+  type = 'website',
+  jsonLd,
+  noindex = false,
+} = Astro.props;
+
+// Format title with brand if not already present
+const fullTitle = title.includes(siteConfig.brand)
+  ? title
+  : `${title} | ${siteConfig.brand}`;
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="manifest" href="/manifest.webmanifest" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonical} />
+
+<!-- Primary Meta Tags -->
+<title>{fullTitle}</title>
+<meta name="title" content={fullTitle} />
+<meta name="description" content={description} />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+{!noindex && <meta name="robots" content="index, follow" />}
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonical} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:site_name" content={siteConfig.brand} />
+<meta property="og:image" content={`${siteConfig.url}/icons/icon-512.png`} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary" />
+<meta property="twitter:url" content={canonical} />
+<meta property="twitter:title" content={fullTitle} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={`${siteConfig.url}/icons/icon-512.png`} />
+
+<!-- Verification -->
+{siteConfig.searchConsoleMeta && (
+  <meta name="google-site-verification" content={siteConfig.searchConsoleMeta} />
+)}
+{siteConfig.bingMeta && (
+  <meta name="msvalidate.01" content={siteConfig.bingMeta} />
+)}
+
+<!-- Structured Data (JSON-LD) -->
+{jsonLd && (
+  <script
+    type="application/ld+json"
+    is:inline
+    set:html={JSON.stringify(Array.isArray(jsonLd) ? jsonLd : [jsonLd])}
+  />
+)}

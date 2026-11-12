@@ -1,0 +1,48 @@
+---
+export interface BreadcrumbItem {
+  name: string;
+  href: string;
+}
+
+export interface Props {
+  items: BreadcrumbItem[];
+}
+
+const { items } = Astro.props;
+
+const breadcrumbListJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.name,
+    item: `https://app.gudmud.in${item.href}`,
+  })),
+};
+---
+
+<nav aria-label="Breadcrumb" class="mb-4 text-xs sm:text-sm text-gray-500">
+  <ol class="flex items-center space-x-2 flex-wrap">
+    {items.map((item, idx) => (
+      <li class="flex items-center">
+        {idx > 0 && <span class="mx-2 text-gray-400">/</span>}
+        {idx === items.length - 1 ? (
+          <span class="font-medium text-gray-800" aria-current="page">
+            {item.name}
+          </span>
+        ) : (
+          <a href={item.href} class="hover:text-green-600 transition-colors">
+            {item.name}
+          </a>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<script
+  type="application/ld+json"
+  is:inline
+  set:html={JSON.stringify(breadcrumbListJsonLd)}
+/>

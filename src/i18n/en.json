@@ -1,0 +1,31 @@
+{
+  "site": {
+    "name": "Best Converter",
+    "tagline": "Free, Private In-Browser Converters & Calculators",
+    "privacyBadge": "100% Client-Side • Files Never Leave Your Device"
+  },
+  "tool": {
+    "dropzone": "Drag & drop your files here, or browse",
+    "browse": "Choose Files",
+    "pasteNote": "or paste from clipboard (Ctrl+V)",
+    "processing": "Processing on your device...",
+    "download": "Download File",
+    "downloadZip": "Download All (.zip)",
+    "cancel": "Cancel",
+    "reset": "Start Over",
+    "originalSize": "Original Size",
+    "newSize": "New Size",
+    "saved": "Saved",
+    "advertisement": "Advertisement",
+    "housePromo": "Recommended Tools",
+    "deviceMemoryWarning": "Large files may impact device memory. Low-memory fallback is active."
+  },
+  "nav": {
+    "tools": "All Tools",
+    "calculators": "Calculators",
+    "formats": "Formats Guide",
+    "privacy": "Privacy Policy",
+    "about": "About Us",
+    "contact": "Contact"
+  }
+}

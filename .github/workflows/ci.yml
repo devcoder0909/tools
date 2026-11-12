@@ -1,0 +1,50 @@
+name: CI Quality Gates
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  verify:
+    name: Build, Lint & Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 12
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm exec astro check
+
+      - name: Run Unit Tests
+        run: pnpm test
+
+      - name: Build Static Site & Sitemaps
+        run: pnpm run build
+
+      - name: Run SEO Lint Gates
+        run: pnpm run seo:lint
+
+      - name: Run Playwright E2E Tests
+        run: |
+          pnpm exec playwright install --with-deps chromium
+          pnpm run test:e2e
+
+      - name: Run Lighthouse CI
+        run: |
+          npm install -g @lhci/cli@0.14.x
+          lhci autorun

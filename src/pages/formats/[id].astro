@@ -1,0 +1,115 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { getAllFormats, getToolsForFormat, type FormatDefinition } from '../../registry';
+
+export async function getStaticPaths() {
+  const formats = getAllFormats();
+  return formats.map((format) => ({
+    params: { id: format.id },
+    props: { format },
+  }));
+}
+
+export interface Props {
+  format: FormatDefinition;
+}
+
+const { format } = Astro.props;
+const tools = getToolsForFormat(format.id);
+
+const breadcrumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Formats', href: '/formats/' },
+  { name: format.name, href: `/formats/${format.id}/` },
+];
+---
+
+<Layout
+  title={`${format.name} (${format.extension.toUpperCase()}) Format Guide - Best Converter`}
+  description={format.description}
+  canonical={`https://app.gudmud.in/formats/${format.id}/`}
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <div class="mb-8">
+      <div class="flex items-center space-x-3 mb-2">
+        <span class="font-mono text-2xl font-extrabold text-green-700">
+          {format.extension.toUpperCase()}
+        </span>
+        <span class="text-xs font-semibold px-2 py-0.5 rounded bg-gray-100 text-gray-700 uppercase">
+          {format.category}
+        </span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3">
+        {format.name} Format Overview & Technical Specs
+      </h1>
+      <p class="text-base text-gray-600 leading-relaxed">
+        {format.description}
+      </p>
+    </div>
+
+    <!-- Technical Specs Table -->
+    <div class="my-8 bg-gray-50 border border-gray-200 rounded-xl p-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-4">Format Characteristics</h2>
+      <dl class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
+        <div>
+          <dt class="text-xs text-gray-500 uppercase">MIME Type</dt>
+          <dd class="font-mono font-semibold text-gray-800 mt-1">{format.mime}</dd>
+        </div>
+        <div>
+          <dt class="text-xs text-gray-500 uppercase">Compression</dt>
+          <dd class="font-semibold text-gray-800 mt-1">{format.lossy ? 'Lossy' : 'Lossless'}</dd>
+        </div>
+        <div>
+          <dt class="text-xs text-gray-500 uppercase">Transparency</dt>
+          <dd class="font-semibold text-gray-800 mt-1">{format.transparency ? 'Supported' : 'No'}</dd>
+        </div>
+        <div>
+          <dt class="text-xs text-gray-500 uppercase">Animation</dt>
+          <dd class="font-semibold text-gray-800 mt-1">{format.animation ? 'Supported' : 'No'}</dd>
+        </div>
+      </dl>
+    </div>
+
+    <!-- Converters Involving this Format -->
+    <section class="my-10" aria-labelledby="tools-heading">
+      <h2 id="tools-heading" class="text-2xl font-bold text-gray-900 mb-6">
+        Online Converters for {format.name}
+      </h2>
+      {tools.length > 0 ? (
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {tools.map((t) => (
+            <a
+              href={`/${t.slug}/`}
+              class="p-4 rounded-lg border border-gray-200 bg-white hover:border-green-500 hover:shadow-xs transition group"
+            >
+              <h3 class="font-semibold text-gray-900 group-hover:text-green-600 mb-1">
+                {t.name}
+              </h3>
+              <p class="text-xs text-gray-500">
+                {t.description}
+              </p>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <p class="text-sm text-gray-500">
+          More converters for {format.name} are added weekly.
+        </p>
+      )}
+    </section>
+
+    <!-- Detailed Guide Text -->
+    <section class="prose max-w-none text-gray-700 space-y-4 my-8">
+      <h2 class="text-2xl font-bold text-gray-900">When Should You Use {format.name}?</h2>
+      <p>
+        Choosing the right file format directly affects website performance, storage overhead, and cross-platform compatibility. While {format.name} provides tailored strengths in its category, converting between formats is often required when submitting documents or uploading web graphics.
+      </p>
+      <p>
+        All conversion tools hosted on Best Converter execute purely on your local machine. No file bits are transferred to remote servers, giving you total confidentiality when converting sensitive personal or corporate files.
+      </p>
+    </section>
+  </div>
+</Layout>

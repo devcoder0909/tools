@@ -1,0 +1,44 @@
+---
+import { siteConfig } from '../config/site';
+import { footerNav } from '../config/nav';
+import PromoSlot from './PromoSlot.astro';
+---
+
+<footer class="bg-gray-50 border-t border-gray-200 mt-20 pt-12 pb-16">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="mb-12">
+      <PromoSlot slotPosition="footer" />
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+      {footerNav.map((column) => (
+        <div>
+          <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-4">
+            {column.title}
+          </h3>
+          <ul class="space-y-2.5 text-sm text-gray-600">
+            {column.items.map((item) => (
+              <li>
+                <a href={item.href} class="hover:text-green-600 transition-colors">
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div class="border-t border-gray-200 pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-gray-500 space-y-4 md:space-y-0">
+      <p>
+        &copy; {new Date().getFullYear()} {siteConfig.company}. All tools operate entirely on your client device. No files are uploaded to any server.
+      </p>
+      <div class="flex items-center space-x-6">
+        <a href="/privacy/" class="hover:underline">Privacy Policy</a>
+        <a href="/cookies/" class="hover:underline">Cookie Policy</a>
+        <a href="/terms/" class="hover:underline">Terms of Use</a>
+        <a href="/contact/" class="hover:underline">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>

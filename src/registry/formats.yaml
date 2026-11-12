@@ -1,0 +1,131 @@
+- id: jpg
+  name: "JPEG / JPG"
+  extension: ".jpg"
+  mime: "image/jpeg"
+  category: "raster"
+  lossy: true
+  transparency: false
+  animation: false
+  hub: true
+  title: "JPG Format Guide - Compression, Compatibility & Best Uses"
+  description: "Complete guide to JPG/JPEG: compression trade-offs, universal browser compatibility, best practices, and conversion tools."
+
+- id: png
+  name: "PNG"
+  extension: ".png"
+  mime: "image/png"
+  category: "raster"
+  lossy: false
+  transparency: true
+  animation: false
+  hub: true
+  title: "PNG Format Guide - Lossless Quality & Transparency"
+  description: "Comprehensive PNG guide: lossless compression, alpha transparency, screenshot clarity, and when to convert to WebP or JPG."
+
+- id: webp
+  name: "WebP"
+  extension: ".webp"
+  mime: "image/webp"
+  category: "raster"
+  lossy: true
+  transparency: true
+  animation: true
+  hub: true
+  title: "WebP Format Guide - Modern Web Image Optimization"
+  description: "Modern WebP format facts: 25-34% smaller file sizes than JPG, full transparency support, and cross-browser performance."
+
+- id: heic
+  name: "HEIC / HEIF"
+  extension: ".heic"
+  mime: "image/heic"
+  category: "raster"
+  lossy: true
+  transparency: true
+  animation: false
+  hub: true
+  title: "HEIC Format Guide - Apple High Efficiency Image Format"
+  description: "Learn about Apple HEIC/HEIF photos, why Windows and Android struggle with it, and how to convert HEIC to JPG securely."
+
+- id: avif
+  name: "AVIF"
+  extension: ".avif"
+  mime: "image/avif"
+  category: "raster"
+  lossy: true
+  transparency: true
+  animation: true
+  hub: true
+  title: "AVIF Format Guide - Next-Gen AV1 Image Compression"
+  description: "Deep dive into AVIF: next-generation AV1 image compression delivering smaller sizes than WebP and JPG at superior fidelity."
+
+- id: gif
+  name: "GIF"
+  extension: ".gif"
+  mime: "image/gif"
+  category: "raster"
+  lossy: false
+  transparency: true
+  animation: true
+  hub: true
+  title: "GIF Format Guide - 8-Bit Color & Animation Limitations"
+  description: "The history and specs of GIF: 256-color palette limits, frame-based animations, and why modern web prefers video or WebP."
+
+- id: bmp
+  name: "BMP"
+  extension: ".bmp"
+  mime: "image/bmp"
+  category: "raster"
+  lossy: false
+  transparency: false
+  animation: false
+  hub: true
+  title: "BMP Format Guide - Raw Bitmap Graphics & Storage Overhead"
+  description: "Technical specs of Windows Bitmap (BMP): uncompressed pixel arrays, legacy compatibility, and modern web conversion choices."
+
+- id: tiff
+  name: "TIFF"
+  extension: ".tiff"
+  mime: "image/tiff"
+  category: "raster"
+  lossy: false
+  transparency: true
+  animation: false
+  hub: true
+  title: "TIFF Format Guide - High-Fidelity Print & Archival Standard"
+  description: "Detailed guide to TIFF images: print prepress workflows, CMYK/archival fidelity, and why TIFF must be converted for the web."
+
+- id: svg
+  name: "SVG"
+  extension: ".svg"
+  mime: "image/svg+xml"
+  category: "vector"
+  lossy: false
+  transparency: true
+  animation: true
+  hub: true
+  title: "SVG Format Guide - Scalable Vector Graphics for the Web"
+  description: "Guide to Scalable Vector Graphics (SVG): infinite resolution XML vectors, interactive DOM styling, responsive web icons, and rasterization to PNG."
+
+- id: jfif
+  name: "JFIF"
+  extension: ".jfif"
+  mime: "image/jpeg"
+  category: "raster"
+  lossy: true
+  transparency: false
+  animation: false
+  hub: false
+  title: "JFIF Format Guide - JPEG File Interchange Format"
+  description: "Learn what JFIF files are, why modern browsers download them instead of JPG, and how to safely rename or convert them."
+
+- id: pdf
+  name: "PDF"
+  extension: ".pdf"
+  mime: "application/pdf"
+  category: "document"
+  lossy: false
+  transparency: false
+  animation: false
+  hub: false
+  title: "PDF Document Format"
+  description: "Complete guide to the Portable Document Format (PDF): universal multi-page document architecture, print fidelity, and image compilation facts."

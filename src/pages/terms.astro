@@ -1,0 +1,64 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { siteConfig } from '../config/site';
+
+const breadcrumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Terms of Service', href: '/terms/' },
+];
+---
+
+<Layout
+  title={`Terms of Service - ${siteConfig.brand}`}
+  description="Read the official Terms of Service for Best Converter, covering client-side usage rules, warranties, limitations of liability, and privacy guarantees."
+  canonical="https://app.gudmud.in/terms/"
+>
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-8">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
+      Terms of Service
+    </h1>
+    <p class="text-xs text-gray-500 mb-8">
+      Last modified: November 12, 2026 • Editorial Draft (Requires Legal Review)
+    </p>
+
+    <div class="prose max-w-none text-gray-700 space-y-6 text-sm leading-relaxed">
+      <h2 class="text-xl font-bold text-gray-900">1. Acceptance of Terms</h2>
+      <p>
+        By accessing, browsing, or utilizing {siteConfig.brand} ({siteConfig.domain}), you acknowledge that you have read, understood, and agree to be bound by these Terms of Service. If you do not accept these terms in full, you must immediately discontinue using our tools and web application.
+      </p>
+
+      <h2 class="text-xl font-bold text-gray-900">2. Description of Client-Side Service</h2>
+      <p>
+        {siteConfig.brand} provides free browser-based file conversion, compression, and calculation utilities. Unlike conventional cloud converters, our application runs client-side code directly inside your local web browser. You acknowledge that conversion performance, execution speed, output memory constraints, and format compatibility are dependent entirely upon your local hardware capabilities, available system RAM, and browser software standards.
+      </p>
+
+      <h2 class="text-xl font-bold text-gray-900">3. User Responsibility & File Ownership</h2>
+      <p>
+        Because your files are processed solely within your browser sandbox and are never uploaded to our servers, you retain full ownership and copyright of all source materials and converted outputs. You are exclusively responsible for ensuring that you have the legal right, licensing, or authorization to convert, format, or manipulate any proprietary, copyrighted, or sensitive documents.
+      </p>
+
+      <h2 class="text-xl font-bold text-gray-900">4. Disclaimer of Warranties</h2>
+      <p>
+        The tools, software scripts, and informational content on this website are provided strictly on an "as is" and "as available" basis without warranties of any kind, whether express, statutory, or implied. While {siteConfig.company} strives to ensure maximum mathematical precision in calculators and high optical fidelity in image conversions, we do not guarantee that the services will be uninterrupted, error-free, or compatible with corrupt or non-standard file encodings.
+      </p>
+
+      <h2 class="text-xl font-bold text-gray-900">5. Limitation of Liability</h2>
+      <p>
+        To the maximum extent permitted by applicable law, in no event shall {siteConfig.company}, its developers, or affiliates be liable for any direct, indirect, incidental, special, or consequential damages resulting from browser crashes, memory overflow exceptions, data corruption, or the inability to use our tools.
+      </p>
+
+      <h2 class="text-xl font-bold text-gray-900">6. Permitted and Prohibited Uses</h2>
+      <p>
+        You are permitted to use our free utilities for personal, educational, commercial, and enterprise workflows. You agree not to attempt automated denial-of-service attacks, reverse-engineer proprietary delivery scripts, or interfere with other users' access to the static hosting infrastructure.
+      </p>
+
+      <h2 class="text-xl font-bold text-gray-900">7. Changes to Terms & Contact</h2>
+      <p>
+        We reserve the right to amend these Terms of Service at any time. Continued use of the website following published modifications constitutes acceptance of the revised terms. For legal notices, please contact us at <a href={`mailto:${siteConfig.contactEmail}`} class="text-green-600 underline font-medium">{siteConfig.contactEmail}</a>.
+      </p>
+    </div>
+  </div>
+</Layout>

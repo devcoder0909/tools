@@ -1,0 +1,91 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { getAllTools } from '../../registry';
+
+const tools = getAllTools();
+const calculators = tools.filter((t) => t.kind === 'calculator');
+const textTools = tools.filter((t) => t.kind === 'text');
+
+const breadcrumbs = [
+  { name: 'Home', href: '/' },
+  { name: 'Calculators', href: '/calculators/' },
+];
+---
+
+<Layout
+  title="Free Online Calculators & Text Utilities - Best Converter"
+  description="Accurate, free browser-based calculators and text transformers: percentage, age, discount, tip, word counter, and case converters."
+  canonical="https://app.gudmud.in/calculators/"
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+    <Breadcrumbs items={breadcrumbs} />
+
+    <div class="mb-10">
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-2">
+        Online Calculators & Developer Utilities
+      </h1>
+      <p class="text-gray-600">
+        Perform instant calculations with formulas, zero ads in critical spots, and no tracking.
+      </p>
+    </div>
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4 border-b border-gray-200 pb-2">
+        Daily Life & Financial Calculators
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {calculators.map((calc) => (
+          <a
+            href={`/${calc.slug}/`}
+            class="p-4 rounded-lg border border-gray-200 bg-white hover:border-green-500 hover:shadow-xs transition group"
+          >
+            <h3 class="font-semibold text-gray-900 group-hover:text-green-600 mb-1">
+              {calc.name}
+            </h3>
+            <p class="text-xs text-gray-500 line-clamp-2">
+              {calc.description}
+            </p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4 border-b border-gray-200 pb-2">
+        Text & Developer Utilities
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {textTools.map((tool) => (
+          <a
+            href={`/${tool.slug}/`}
+            class="p-4 rounded-lg border border-gray-200 bg-white hover:border-green-500 hover:shadow-xs transition group"
+          >
+            <h3 class="font-semibold text-gray-900 group-hover:text-green-600 mb-1">
+              {tool.name}
+            </h3>
+            <p class="text-xs text-gray-500 line-clamp-2">
+              {tool.description}
+            </p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="prose max-w-none text-gray-700 space-y-4 my-8 text-sm sm:text-base leading-relaxed bg-gray-50 border border-gray-200 rounded-xl p-6">
+      <h2 class="text-xl font-bold text-gray-900">Why Use Our In-Browser Calculators?</h2>
+      <p>
+        Daily math calculations—such as computing sales tax discounts, figuring out percentage changes on investments, calculating accurate chronological age, or splitting restaurant tips—should never be complicated by aggressive pop-ups, clunky user interfaces, or intrusive data tracking scripts.
+      </p>
+      <p>
+        Every calculation engine built into Best Converter runs deterministic JavaScript functions directly inside your client browser. This provides instantaneous real-time responsiveness as you type, eliminates network round-trip delays, and ensures that sensitive financial numbers or personal birthdates remain completely confidential.
+      </p>
+      <p>
+        Furthermore, our text utilities—such as word counters, case converters, and JSON formatters—enable developers and writers to inspect character limits, sanitize code syntax, and format data structures entirely offline without sending confidential text to third-party cloud servers.
+      </p>
+      <p>
+        All numeric algorithms adhere to IEEE 754 floating-point standards with automated rounding safeguards to prevent floating-point precision anomalies. Whether you are working on a high-end desktop workstation or a mobile smartphone on metered cellular data, our calculation suite provides instant, accurate, and completely private results.
+      </p>
+    </section>
+  </div>
+</Layout>
