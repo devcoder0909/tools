@@ -44,11 +44,61 @@ const organizationJsonLd = {
   name: siteConfig.brand,
   url: siteConfig.url,
   logo: `${siteConfig.url}/og-image.png`,
+  sameAs: [
+    'https://github.com/devcoder0909/tools',
+  ],
   contactPoint: {
     '@type': 'ContactPoint',
     email: siteConfig.contactEmail,
     contactType: 'customer support',
   },
+};
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Are my files uploaded to any server when using Best Converter?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No. Best Converter operates 100% client-side inside your browser memory (RAM). Files are decoded and processed locally using HTML5 File API, WebAssembly, and Canvas. No files or personal data are ever uploaded or transmitted across the network.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is there a file size limit for converting images and PDFs?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Because processing happens entirely on your local CPU and RAM rather than remote cloud servers, there are no artificial file size paywalls or queue restrictions. You can process large files as long as your device has available RAM.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I use Best Converter tools offline without an active internet connection?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Best Converter includes an integrated Progressive Web App (PWA) Service Worker. Once loaded in your browser, the utility algorithms are cached locally, allowing you to convert files, calculate financial models, and format data completely offline.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How does client-side PDF merging and splitting work securely?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'We utilize WebAssembly and client-side JavaScript PDF parsing engines to assemble binary PDF streams directly in your browser. Pages are extracted and merged without third-party server involvement, ensuring total privacy for sensitive documents.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is Best Converter free for commercial and personal use?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. All 50+ file converters, financial calculators, and media utilities are 100% free with no registration, no subscription paywalls, and no hidden usage tiers.',
+      },
+    },
+  ],
 };
 ---
 
@@ -56,11 +106,11 @@ const organizationJsonLd = {
   title={`${siteConfig.brand} - Free Private Online File Converters`}
   description="Fast, private client-side file converters, PDF tools, and calculators. Convert images, merge PDFs, and calculate EMIs offline without uploads."
   canonical={`${siteConfig.url}/`}
-  jsonLd={[websiteJsonLd, organizationJsonLd]}
+  jsonLd={[websiteJsonLd, organizationJsonLd, faqJsonLd]}
 >
   <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
     <!-- Hero Section -->
-    <div class="text-center max-w-3xl mx-auto mb-8">
+    <header class="text-center max-w-3xl mx-auto mb-8">
       <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800 mb-4">
         100% Client-Side Privacy • Zero Server Uploads
       </span>
@@ -70,7 +120,7 @@ const organizationJsonLd = {
       <p class="text-base sm:text-lg text-gray-600 leading-relaxed">
         Convert images, merge PDFs, generate QR codes, and calculate loan EMIs directly inside your device memory. Your files and private data never leave your browser.
       </p>
-    </div>
+    </header>
 
     <!-- Working Universal Tool Above the Fold -->
     <HomeConverterShell client:load />
@@ -267,7 +317,7 @@ const organizationJsonLd = {
       <div class="flex items-center justify-between mb-6">
         <div>
           <h2 id="formats-heading" class="text-2xl font-bold text-gray-900">
-            Image Format Guides & Specs
+            Image Format Guides & Specifications
           </h2>
           <p class="text-sm text-gray-500">Honest compression benchmarks, browser support tables, and format trade-offs.</p>
         </div>
@@ -293,18 +343,164 @@ const organizationJsonLd = {
       </div>
     </section>
 
-    <!-- Privacy & Verification Explainer -->
-    <section class="bg-gray-50 border border-gray-200 rounded-2xl p-6 sm:p-10">
-      <div class="max-w-3xl">
-        <h2 class="text-2xl font-bold text-gray-900 mb-3">
-          Why Client-Side Privacy Matters
+    <!-- Privacy & Verification Explainer with Architectural Diagram -->
+    <section class="bg-gray-50 border border-gray-200 rounded-2xl p-6 sm:p-10 mb-16" aria-labelledby="architecture-heading">
+      <div class="max-w-4xl mx-auto">
+        <h2 id="architecture-heading" class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 text-center sm:text-left">
+          The Zero-Upload Security Architecture
         </h2>
-        <p class="text-sm sm:text-base text-gray-600 leading-relaxed mb-4">
-          Most free online file converters transmit your private files to cloud servers where they are queued, processed, and stored on remote hard drives. This introduces serious privacy risks for business receipts, ID documents, medical paperwork, and family photos.
+        <p class="text-sm sm:text-base text-gray-600 leading-relaxed mb-6">
+          Traditional online file converters transmit your sensitive documents, bank statements, personal photos, and corporate contracts to remote third-party cloud servers. Once uploaded, those files sit on unknown hard drives, subject to data mining, security breaches, and retention policies.
         </p>
-        <p class="text-sm sm:text-base text-gray-600 leading-relaxed mb-4">
-          <strong>Best Converter never uploads your files.</strong> All file parsing, Canvas decoding, PDF generation, and mathematical calculations run exclusively on your CPU using HTML5 standards. You can verify this in real time by opening your browser Developer Tools (F12) and checking the Network tab: zero file payload requests are ever transmitted.
+
+        <!-- Informative Vector Architecture Diagram -->
+        <div class="my-8">
+          <img
+            src="/client-architecture.svg"
+            alt="Best Converter client-side in-browser file processing and security architecture diagram"
+            width="800"
+            height="400"
+            loading="eager"
+            decoding="async"
+            class="w-full max-w-3xl mx-auto rounded-xl border border-gray-200 shadow-xs"
+          />
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+          <div class="bg-white p-5 rounded-xl border border-gray-200">
+            <h3 class="font-bold text-gray-900 text-base mb-2">1. Memory-Only Processing</h3>
+            <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+              Files are streamed into isolated browser memory using the <a href="https://developer.mozilla.org/en-US/docs/Web/API/File_API" target="_blank" rel="noopener noreferrer" class="text-green-600 underline font-medium">MDN File API</a>. No temporary files are created on disk.
+            </p>
+          </div>
+          <div class="bg-white p-5 rounded-xl border border-gray-200">
+            <h3 class="font-bold text-gray-900 text-base mb-2">2. Hardware Acceleration</h3>
+            <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+              Image re-encoding leverages the <a href="https://html.spec.whatwg.org/multipage/canvas.html" target="_blank" rel="noopener noreferrer" class="text-green-600 underline font-medium">HTML5 Canvas Specification</a> and GPU pipelines, converting images in milliseconds.
+            </p>
+          </div>
+          <div class="bg-white p-5 rounded-xl border border-gray-200">
+            <h3 class="font-bold text-gray-900 text-base mb-2">3. Cryptographic Privacy</h3>
+            <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+              All entropy and hashing operations utilize the native <a href="https://www.w3.org/TR/WebCryptoAPI/" target="_blank" rel="noopener noreferrer" class="text-green-600 underline font-medium">W3C Web Cryptography API</a> for enterprise-grade cryptographic random values.
+            </p>
+          </div>
+        </div>
+
+        <p class="text-sm text-gray-600 leading-relaxed">
+          <strong>Verify yourself:</strong> Open your browser Developer Tools (<kbd class="px-1.5 py-0.5 bg-gray-200 rounded text-xs font-mono">F12</kbd>), navigate to the <strong>Network</strong> tab, and convert any file. You will observe exactly zero file payload requests sent to external servers.
         </p>
+      </div>
+    </section>
+
+    <!-- Comparison Table: Best Converter vs Cloud Converters -->
+    <section class="mb-16" aria-labelledby="comparison-heading">
+      <div class="max-w-4xl mx-auto">
+        <h2 id="comparison-heading" class="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 text-center sm:text-left">
+          In-Browser Processing vs Traditional Cloud Converters
+        </h2>
+        <p class="text-sm sm:text-base text-gray-600 leading-relaxed mb-6">
+          Compare how our client-side zero-upload engine outperforms conventional server-based conversion tools in speed, privacy, and reliability:
+        </p>
+
+        <div class="overflow-x-auto rounded-xl border border-gray-200 bg-white">
+          <table class="w-full text-left text-sm text-gray-600">
+            <thead class="bg-gray-50 text-xs uppercase font-semibold text-gray-900 border-b border-gray-200">
+              <tr>
+                <th scope="col" class="px-6 py-4">Capability & Security Metric</th>
+                <th scope="col" class="px-6 py-4 text-green-700 bg-green-50/50">Best Converter</th>
+                <th scope="col" class="px-6 py-4 text-gray-500">Cloud-Based Tools (iLovePDF, etc.)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200">
+              <tr>
+                <th scope="row" class="px-6 py-4 font-semibold text-gray-900">File Transmission</th>
+                <td class="px-6 py-4 font-medium text-green-700 bg-green-50/30">Zero (100% In-Browser RAM)</td>
+                <td class="px-6 py-4 text-gray-500">Uploaded over network to cloud</td>
+              </tr>
+              <tr>
+                <th scope="row" class="px-6 py-4 font-semibold text-gray-900">Conversion Latency</th>
+                <td class="px-6 py-4 font-medium text-green-700 bg-green-50/30">Instantaneous (CPU/GPU local)</td>
+                <td class="px-6 py-4 text-gray-500">Queued in server processing batch</td>
+              </tr>
+              <tr>
+                <th scope="row" class="px-6 py-4 font-semibold text-gray-900">Data Breach Risk</th>
+                <td class="px-6 py-4 font-medium text-green-700 bg-green-50/30">Impossible (No server copies)</td>
+                <td class="px-6 py-4 text-gray-500">High (Stored on third-party disks)</td>
+              </tr>
+              <tr>
+                <th scope="row" class="px-6 py-4 font-semibold text-gray-900">File Size Paywalls</th>
+                <td class="px-6 py-4 font-medium text-green-700 bg-green-50/30">Unlimited (Bound only by RAM)</td>
+                <td class="px-6 py-4 text-gray-500">Restricted (15MB - 50MB limits)</td>
+              </tr>
+              <tr>
+                <th scope="row" class="px-6 py-4 font-semibold text-gray-900">Offline Operation</th>
+                <td class="px-6 py-4 font-medium text-green-700 bg-green-50/30">Yes (PWA Service Worker)</td>
+                <td class="px-6 py-4 text-gray-500">No (Requires constant internet)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Frequently Asked Questions (FAQ) -->
+    <section class="mb-16" aria-labelledby="faq-heading">
+      <div class="max-w-4xl mx-auto">
+        <h2 id="faq-heading" class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 text-center sm:text-left">
+          Frequently Asked Questions
+        </h2>
+        <div class="space-y-4">
+          <details class="group bg-white p-5 rounded-xl border border-gray-200 [&_summary::-webkit-details-marker]:hidden" open>
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-gray-900 text-base sm:text-lg">
+              <span>Are my files uploaded to any server when using Best Converter?</span>
+              <span class="ml-4 flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <p class="mt-3 text-sm text-gray-600 leading-relaxed">
+              No. Best Converter operates entirely inside your local web browser using client-side JavaScript, WebAssembly, and the HTML5 Canvas API. Files are decoded in your computer's RAM and never transmitted to our servers or any third-party infrastructure.
+            </p>
+          </details>
+
+          <details class="group bg-white p-5 rounded-xl border border-gray-200 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-gray-900 text-base sm:text-lg">
+              <span>Is there a file size limit for converting images and PDFs?</span>
+              <span class="ml-4 flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <p class="mt-3 text-sm text-gray-600 leading-relaxed">
+              There are no artificial file size limits or subscription paywalls. Because processing occurs on your local hardware rather than a shared server cluster, you can process large image batches and multi-page PDFs as long as your device has sufficient RAM.
+            </p>
+          </details>
+
+          <details class="group bg-white p-5 rounded-xl border border-gray-200 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-gray-900 text-base sm:text-lg">
+              <span>Can I use Best Converter tools offline without an active internet connection?</span>
+              <span class="ml-4 flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <p class="mt-3 text-sm text-gray-600 leading-relaxed">
+              Yes. Best Converter is engineered as a Progressive Web App (PWA) with offline Service Worker support. Once you open the application, all necessary conversion libraries and UI components are cached in your browser storage, enabling full offline functionality on flights, trains, or low-connectivity zones.
+            </p>
+          </details>
+
+          <details class="group bg-white p-5 rounded-xl border border-gray-200 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-gray-900 text-base sm:text-lg">
+              <span>How does client-side PDF merging and splitting work securely?</span>
+              <span class="ml-4 flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <p class="mt-3 text-sm text-gray-600 leading-relaxed">
+              We compile high-performance PDF manipulation libraries into client-side WebAssembly and modern JavaScript. When you select multiple documents, the binary PDF byte structures are unpacked and recombined into a new Blob URL entirely in your browser memory, avoiding cloud intermediaries completely.
+            </p>
+          </details>
+
+          <details class="group bg-white p-5 rounded-xl border border-gray-200 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-gray-900 text-base sm:text-lg">
+              <span>Is Best Converter free for commercial and personal use?</span>
+              <span class="ml-4 flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <p class="mt-3 text-sm text-gray-600 leading-relaxed">
+              Yes. All 50+ utilities across image conversion, PDF editing, financial calculations, and text generation are 100% free with no account creation, no email requirements, and no watermarks.
+            </p>
+          </details>
+        </div>
       </div>
     </section>
   </div>

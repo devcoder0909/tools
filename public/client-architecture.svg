@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#f1f5f9" />
+    </linearGradient>
+    <linearGradient id="box-green" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ecfdf5" />
+      <stop offset="100%" stop-color="#d1fae5" />
+    </linearGradient>
+    <linearGradient id="box-red" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef2f2" />
+      <stop offset="100%" stop-color="#fee2e2" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="400" rx="16" fill="url(#bg)" stroke="#e2e8f0" stroke-width="2" />
+
+  <!-- Title -->
+  <text x="400" y="38" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="#0f172a">
+    Best Converter: 100% Client-Side In-Browser Architecture
+  </text>
+  <text x="400" y="60" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#64748b">
+    Your private files never leave your device RAM • Zero network payloads transmitted
+  </text>
+
+  <!-- Left: Client Device Boundary (Safe) -->
+  <rect x="40" y="85" width="450" height="280" rx="12" fill="#ffffff" stroke="#10b981" stroke-width="2" stroke-dasharray="0" />
+  <rect x="52" y="97" width="230" height="26" rx="6" fill="#10b981" />
+  <text x="167" y="115" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#ffffff">
+    USER'S LOCAL BROWSER (RAM)
+  </text>
+
+  <!-- Step 1: Input File -->
+  <rect x="60" y="145" width="105" height="180" rx="8" fill="url(#box-green)" stroke="#a7f3d0" stroke-width="1.5" />
+  <text x="112" y="180" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="28">📄</text>
+  <text x="112" y="220" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#065f46">Source File</text>
+  <text x="112" y="240" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#047857">HEIC, PDF, JPG</text>
+  <text x="112" y="270" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#059669">Loaded via</text>
+  <text x="112" y="285" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#065f46">HTML5 File API</text>
+
+  <!-- Arrow 1 -->
+  <path d="M175 235 L200 235" stroke="#10b981" stroke-width="3" stroke-linecap="round" />
+  <polygon points="205,235 197,230 197,240" fill="#10b981" />
+
+  <!-- Step 2: In-Memory Engine -->
+  <rect x="215" y="145" width="125" height="180" rx="8" fill="url(#box-green)" stroke="#a7f3d0" stroke-width="1.5" />
+  <text x="277" y="180" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="28">⚡</text>
+  <text x="277" y="220" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#065f46">Engine &amp; WASM</text>
+  <text x="277" y="240" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#047857">Canvas 2D / WebGL</text>
+  <text x="277" y="260" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#047857">pdf-lib / heic2any</text>
+  <text x="277" y="285" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#065f46">Zero Latency</text>
+
+  <!-- Arrow 2 -->
+  <path d="M350 235 L375 235" stroke="#10b981" stroke-width="3" stroke-linecap="round" />
+  <polygon points="380,235 372,230 372,240" fill="#10b981" />
+
+  <!-- Step 3: Converted Output -->
+  <rect x="390" y="145" width="85" height="180" rx="8" fill="url(#box-green)" stroke="#a7f3d0" stroke-width="1.5" />
+  <text x="432" y="180" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="28">💾</text>
+  <text x="432" y="220" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#065f46">Result</text>
+  <text x="432" y="240" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#047857">Blob URL</text>
+  <text x="432" y="270" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" fill="#059669">Direct Local</text>
+  <text x="432" y="285" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" fill="#065f46">Download</text>
+
+  <!-- Big Red X / Firewall against Server Upload -->
+  <line x1="510" y1="110" x2="510" y2="350" stroke="#ef4444" stroke-width="3" stroke-dasharray="6,4" />
+  <circle cx="510" cy="235" r="18" fill="#ef4444" />
+  <text x="510" y="241" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="900" fill="#ffffff">✕</text>
+
+  <!-- Right: Remote Cloud Servers (Blocked) -->
+  <rect x="540" y="85" width="220" height="280" rx="12" fill="url(#box-red)" stroke="#fca5a5" stroke-width="1.5" />
+  <rect x="555" y="97" width="190" height="26" rx="6" fill="#ef4444" />
+  <text x="650" y="115" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#ffffff">
+    REMOTE SERVERS (BLOCKED)
+  </text>
+  
+  <text x="650" y="165" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="28">☁️</text>
+  <text x="650" y="200" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#991b1b">
+    NO SERVER UPLOADS
+  </text>
+  <text x="650" y="225" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#7f1d1d">
+    • Zero file storage
+  </text>
+  <text x="650" y="245" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#7f1d1d">
+    • Zero data collection
+  </text>
+  <text x="650" y="265" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#7f1d1d">
+    • Zero cloud leaks
+  </text>
+  <text x="650" y="295" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#991b1b">
+    Guaranteed Private &amp; Secure
+  </text>
+</svg>
+
