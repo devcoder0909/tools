@@ -5,51 +5,64 @@ export interface NavItem {
 
 export const mainNav: NavItem[] = [
   { label: 'All Tools', href: '/tools/' },
+  { label: 'PDF Tools', href: '/tools/#pdf' },
   { label: 'Calculators', href: '/calculators/' },
+  { label: 'Generators', href: '/tools/#generators' },
   { label: 'Formats', href: '/formats/' },
   { label: 'About', href: '/about/' },
 ];
 
 export const footerNav: { title: string; items: NavItem[] }[] = [
   {
-    title: 'Popular Converters',
+    title: 'PDF Tools',
+    items: [
+      { label: 'Merge PDF', href: '/merge-pdf/' },
+      { label: 'Split PDF', href: '/split-pdf/' },
+      { label: 'Compress PDF', href: '/compress-pdf/' },
+      { label: 'JPG to PDF', href: '/jpg-to-pdf/' },
+      { label: 'PNG to PDF', href: '/png-to-pdf/' },
+    ],
+  },
+  {
+    title: 'Image Tools',
     items: [
       { label: 'HEIC to JPG', href: '/heic-to-jpg/' },
       { label: 'WebP to JPG', href: '/webp-to-jpg/' },
       { label: 'PNG to WebP', href: '/png-to-webp/' },
-      { label: 'JPG to PDF', href: '/jpg-to-pdf/' },
-      { label: 'Compress Image to 200KB', href: '/compress-image-to-200kb/' },
+      { label: 'Resize Image', href: '/resize-image/' },
+      { label: 'Compress to 200KB', href: '/compress-image-to-200kb/' },
     ],
   },
   {
-    title: 'Calculators',
+    title: 'Calculators & Finance',
     items: [
+      { label: 'EMI Calculator', href: '/emi-calculator/' },
+      { label: 'SIP Calculator', href: '/sip-calculator/' },
+      { label: 'Currency Converter', href: '/currency-converter/' },
       { label: 'Percentage Calculator', href: '/percentage-calculator/' },
-      { label: 'Age Calculator', href: '/age-calculator/' },
-      { label: 'Date Difference', href: '/date-difference-calculator/' },
-      { label: 'Discount Calculator', href: '/discount-calculator/' },
-      { label: 'Word Counter', href: '/word-counter/' },
+      { label: 'Scientific Calculator', href: '/scientific-calculator/' },
+      { label: 'BMI Calculator', href: '/bmi-calculator/' },
     ],
   },
   {
-    title: 'Formats Hub',
+    title: 'Generators & Media',
     items: [
-      { label: 'JPG Guide', href: '/formats/jpg/' },
-      { label: 'PNG Guide', href: '/formats/png/' },
-      { label: 'WebP Guide', href: '/formats/webp/' },
-      { label: 'HEIC Guide', href: '/formats/heic/' },
-      { label: 'JFIF Guide', href: '/formats/jfif/' },
-      { label: 'PDF Guide', href: '/formats/pdf/' },
-      { label: 'All Formats', href: '/formats/' },
+      { label: 'QR Code Generator', href: '/qr-code-generator/' },
+      { label: 'Password Generator', href: '/password-generator/' },
+      { label: 'Text to Speech', href: '/text-to-speech/' },
+      { label: 'Screen Recorder', href: '/screen-recorder/' },
+      { label: 'JWT Decoder', href: '/jwt-decoder/' },
+      { label: 'Online Timer', href: '/online-timer/' },
     ],
   },
   {
-    title: 'Trust & Legal',
+    title: 'Formats & Trust',
     items: [
+      { label: 'HEIC Format Guide', href: '/formats/heic/' },
+      { label: 'WebP Format Guide', href: '/formats/webp/' },
+      { label: 'Privacy Explained', href: '/privacy-explained/' },
       { label: 'Privacy Policy', href: '/privacy/' },
-      { label: 'Cookie Policy', href: '/cookies/' },
       { label: 'Terms of Service', href: '/terms/' },
-      { label: 'About Us', href: '/about/' },
       { label: 'Contact', href: '/contact/' },
     ],
   },

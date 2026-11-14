@@ -1,0 +1,15 @@
+element,competitors,we_have_it,action,priority
+Above-the-fold functional tool,"TinyPNG, ImageCompressor, FreeConvert, CloudConvert",Yes,"Universal tool on homepage + dedicated tool on all tool pages",P0
+Client-side Zero-Upload privacy,ImageCompressor,Yes,"Created /privacy-explained/ with network verification proof",P0
+Dedicated calculator UI without drop zone,UnitConverters,Yes,"Created CalculatorShell with live math & formula breakdowns",P0
+Clean title formula (<= 60 chars),"TinyPNG, CloudConvert",Yes,"Enforce formula and lint ceiling of 60 characters",P0
+Clean meta descriptions (120-158 chars),"TinyPNG, FreeConvert",Yes,"Ensure outcome + differentiator + action in all descriptions",P1
+HEIC vs JPG Comparison Table,TinyPNG,Yes,"Comprehensive 6-row technical comparison table deployed",P1
+Target-Size dedicated landing pages,None (only settings or blog posts),Yes,"Dedicated cluster for 50KB, 100KB, 200KB, 500KB, 1MB",P0
+Measured before/after file byte numbers,TinyPNG,Yes,"Publish actual measured data from our own engine fixtures",P1
+OpenGraph 1200x630 social preview image,"CloudConvert, TinyPNG",Yes,"Generate 1200x630 og-image.png and enable summary_large_image",P1
+Edge 301 redirect for duplicate workers.dev hosts,All standard incumbents,Yes,"Deploy Cloudflare Worker fetch redirect to convert.gudmud.site",P0
+Curated related tool links without 70-link spam mesh,TinyPNG,Yes,"Limit to 4-6 high-relevance sibling and format hub links",P1
+JSON-LD WebApplication and BreadcrumbList,"CloudConvert, TinyPNG",Yes,"Valid structured data on every indexable page",P1
+Offline Airplane Mode execution capability,ImageCompressor,Yes,"Service worker / client execution without cloud dependency",P2
+

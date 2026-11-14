@@ -1,5 +1,5 @@
 ---
-import type { ToolDefinition } from '../registry';
+import { getFormatById, type ToolDefinition } from '../registry';
 
 export interface Props {
   currentTool: ToolDefinition;
@@ -7,6 +7,9 @@ export interface Props {
 }
 
 const { currentTool, relatedTools } = Astro.props;
+const fromFormat = currentTool.from && currentTool.from !== 'image' && currentTool.from !== 'all'
+  ? getFormatById(currentTool.from)
+  : undefined;
 ---
 
 <section class="my-12 border-t border-gray-200 pt-8" aria-labelledby="related-tools-heading">
@@ -36,9 +39,9 @@ const { currentTool, relatedTools } = Astro.props;
       </a>
     ))}
 
-    {currentTool.from && (
+    {fromFormat && (
       <a
-        href={`/formats/${currentTool.from}/`}
+        href={`/formats/${fromFormat.id}/`}
         class="block p-4 rounded-lg border border-dashed border-gray-300 bg-gray-50 hover:border-green-500 transition-all group"
       >
         <div class="flex items-center justify-between mb-2">
@@ -47,10 +50,10 @@ const { currentTool, relatedTools } = Astro.props;
           </span>
         </div>
         <h3 class="font-semibold text-gray-900 group-hover:text-green-600 text-base mb-1">
-          {currentTool.from.toUpperCase()} Format Guide & Specs
+          {fromFormat.name} Guide & Specs
         </h3>
         <p class="text-xs text-gray-500">
-          Learn about {currentTool.from.toUpperCase()} file compatibility, compression, and technical specs.
+          Learn about {fromFormat.name} compatibility, compression, and technical specs.
         </p>
       </a>
     )}

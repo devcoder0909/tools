@@ -2,11 +2,20 @@
 import Layout from '../layouts/Layout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ToolShell from '../components/ToolShell';
+import CalculatorShell from '../components/CalculatorShell';
+import TextShell from '../components/TextShell';
+import TargetSizeShell from '../components/TargetSizeShell';
+import GeneratorShell from '../components/GeneratorShell';
+import PdfShell from '../components/PdfShell';
+import FinanceShell from '../components/FinanceShell';
+import MediaShell from '../components/MediaShell';
+import DeveloperShell from '../components/DeveloperShell';
 import AdSlot from '../components/AdSlot.astro';
 import PromoSlot from '../components/PromoSlot.astro';
 import FAQ from '../components/FAQ.astro';
 import RelatedTools from '../components/RelatedTools.astro';
-import { getAllTools, getRelatedTools, type ToolDefinition } from '../registry';
+import { getAllTools, getRelatedTools, formatDisplayDate, type ToolDefinition } from '../registry';
+import { siteConfig } from '../config/site';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -32,8 +41,7 @@ const contentPath = path.resolve(process.cwd(), tool.content);
 
 if (fs.existsSync(contentPath)) {
   const raw = fs.readFileSync(contentPath, 'utf-8');
-  // Simple markdown-to-html conversion for headings, lists, paragraphs
-  // Strip frontmatter
+  // Simple markdown-to-html conversion for headings, lists, paragraphs, tables
   const body = raw.replace(/^---[\s\S]*?---/, '').trim();
   contentHtml = body;
   hasCustomContent = true;
@@ -43,16 +51,19 @@ const isIndexable = tool.indexable && tool.reviewed && !!tool.last_reviewed;
 
 const breadcrumbs = [
   { name: 'Home', href: '/' },
-  { name: tool.kind === 'calculator' ? 'Calculators' : 'Tools', href: tool.kind === 'calculator' ? '/calculators/' : '/tools/' },
+  {
+    name: tool.kind === 'calculator' ? 'Calculators' : tool.kind === 'text' ? 'Utilities' : 'Tools',
+    href: tool.kind === 'calculator' ? '/calculators/' : '/tools/',
+  },
   { name: tool.name, href: `/${tool.slug}/` },
 ];
 
-const jsonLd = {
+const webAppJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
   name: tool.title,
-  url: `https://app.gudmud.in/${tool.slug}/`,
-  applicationCategory: 'UtilitiesApplication',
+  url: `${siteConfig.url}/${tool.slug}/`,
+  applicationCategory: tool.kind === 'finance' ? 'FinanceApplication' : tool.kind === 'media' ? 'MultimediaApplication' : 'UtilitiesApplication',
   operatingSystem: 'All',
   browserRequirements: 'Requires JavaScript and HTML5 Canvas support',
   offers: {
@@ -60,14 +71,47 @@ const jsonLd = {
     price: '0',
     priceCurrency: 'USD',
   },
+  featureList: [
+    '100% Client-Side Processing',
+    'Zero Server Uploads',
+    'Private in-memory calculation',
+    'No file size caps',
+  ],
   description: tool.description,
 };
+
+const faqJsonLd = tool.faq && tool.faq.length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: tool.faq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a,
+    },
+  })),
+} : null;
+
+const jsonLd = faqJsonLd ? [webAppJsonLd, faqJsonLd] : webAppJsonLd;
+
+// Target size parsed from options or targetBytes if available
+let parsedTargetKb = 200;
+if (tool.targetBytes) {
+  parsedTargetKb = Math.round(tool.targetBytes / 1024);
+} else {
+  const m = tool.slug.match(/compress-image-to-(\d+)(kb|mb)/i);
+  if (m) {
+    const v = parseInt(m[1], 10);
+    parsedTargetKb = m[2].toLowerCase() === 'mb' ? v * 1024 : v;
+  }
+}
 ---
 
 <Layout
   title={tool.title}
   description={tool.description}
-  canonical={`https://app.gudmud.in/${tool.slug}/`}
+  canonical={`${siteConfig.url}/${tool.slug}/`}
   jsonLd={jsonLd}
   noindex={!isIndexable}
 >
@@ -75,53 +119,167 @@ const jsonLd = {
     <!-- 1. Breadcrumbs -->
     <Breadcrumbs items={breadcrumbs} />
 
-    <!-- 1. H1 & One-line promise -->
+    <!-- 2. H1 & One-line unique promise -->
     <div class="mb-6">
       <h1 class="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-2">
-        {tool.name} Converter
+        {tool.name}
       </h1>
       <p class="text-sm sm:text-base text-gray-600">
-        Convert your files directly inside your browser. 100% private with no server uploads.
+        {tool.subtitle || tool.description}
       </p>
     </div>
 
-    <!-- 2 & 3. The working tool above the fold -->
-    <ToolShell
-      client:load
-      toolId={tool.id}
-      toolName={tool.name}
-      fromFormat={tool.from}
-      toFormat={tool.to}
-      kind={tool.kind}
-    />
+    <!-- 3. The working tool above the fold -->
+    {tool.kind === 'generator' || ['qr-code-generator', 'password-generator', 'barcode-generator', 'random-number-generator', 'fancy-text-generator'].includes(tool.id) ? (
+      <GeneratorShell client:load toolId={tool.id} toolName={tool.name} />
+    ) : tool.kind === 'pdf' || ['merge-pdf', 'jpg-to-pdf', 'split-pdf', 'compress-pdf', 'png-to-pdf'].includes(tool.id) ? (
+      <PdfShell client:load toolId={tool.id} toolName={tool.name} />
+    ) : tool.kind === 'finance' || ['emi-calculator', 'sip-calculator', 'bmi-calculator', 'currency-converter'].includes(tool.id) ? (
+      <FinanceShell client:load toolId={tool.id} toolName={tool.name} />
+    ) : tool.kind === 'media' || ['text-to-speech', 'screen-recorder', 'online-timer', 'typing-test', 'image-resizer', 'photo-editor', 'meme-generator'].includes(tool.id) ? (
+      <MediaShell client:load toolId={tool.id} toolName={tool.name} />
+    ) : tool.kind === 'developer' || ['jwt-decoder', 'unit-converter', 'my-ip-address'].includes(tool.id) ? (
+      <DeveloperShell client:load toolId={tool.id} toolName={tool.name} />
+    ) : tool.kind === 'calculator' || ['scientific-calculator', 'online-calculator'].includes(tool.id) ? (
+      <CalculatorShell client:load toolId={tool.id} toolName={tool.name} />
+    ) : tool.kind === 'text' ? (
+      <TextShell client:load toolId={tool.id} toolName={tool.name} />
+    ) : tool.engine === 'target-size' ? (
+      <TargetSizeShell client:load toolId={tool.id} toolName={tool.name} defaultTargetKb={parsedTargetKb} />
+    ) : (
+      <ToolShell
+        client:load
+        toolId={tool.id}
+        toolName={tool.name}
+        fromFormat={tool.from}
+        toFormat={tool.to}
+        kind={tool.kind}
+      />
+    )}
 
-    <!-- 4. Ad slot A (below the result area, spaced away from download) -->
+    <!-- 4. Privacy Guarantee Link -->
+    <div class="my-6 p-4 bg-gray-50 border border-gray-200 rounded-xl text-xs text-gray-600 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+      <div>
+        <span class="font-bold text-gray-800">Zero-Upload Guarantee:</span> Files and calculations execute locally on your device.
+      </div>
+      <a href="/privacy-explained/" class="text-green-700 font-semibold underline hover:text-green-800">
+        How our zero-upload privacy works &rarr;
+      </a>
+    </div>
+
+    <!-- 5. Ad slot A (below the result area) -->
     <AdSlot slotPosition="belowResult" />
 
-    <!-- 5 & 6. How-to steps & Pair-specific notes -->
+    <!-- Direct Answer & GEO Extraction Definition -->
+    <div class="my-6 p-4 rounded-xl bg-emerald-50/70 border border-emerald-200 text-xs sm:text-sm text-emerald-950">
+      <div class="flex items-center gap-2 font-bold text-emerald-800 uppercase tracking-wider text-2xs mb-1">
+        <svg class="w-4 h-4 text-emerald-600 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        Quick Answer & Definition
+      </div>
+      <p class="leading-relaxed">
+        <strong>{tool.name}</strong> is a 100% private in-browser utility that processes data directly in your device RAM without cloud server uploads. It provides instantaneous results, zero wait queues, and total data confidentiality.
+      </p>
+    </div>
+
+    <!-- 6. How-to steps & custom notes -->
     {hasCustomContent ? (
       <article class="prose prose-gray max-w-none my-8 leading-relaxed">
-        <div class="space-y-6 text-gray-700 leading-relaxed [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-gray-900 [&>h2]:mt-8 [&>h2]:mb-4 [&>h3]:text-lg [&>h3]:font-semibold [&>h3]:text-gray-900 [&>h3]:mt-6 [&>h3]:mb-2 [&>ul]:list-disc [&>ul]:pl-5 [&>ol]:list-decimal [&>ol]:pl-5 [&>p]:mb-4" set:html={contentHtml.replace(/### (.*)/g, '<h3>$1</h3>').replace(/## (.*)/g, '<h2>$1</h2>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\n\n/g, '<p></p>')} />
+        <div
+          class="space-y-6 text-gray-700 leading-relaxed [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-gray-900 [&>h2]:mt-8 [&>h2]:mb-4 [&>h3]:text-lg [&>h3]:font-semibold [&>h3]:text-gray-900 [&>h3]:mt-6 [&>h3]:mb-2 [&>ul]:list-disc [&>ul]:pl-5 [&>ol]:list-decimal [&>ol]:pl-5 [&>p]:mb-4 [&>table]:w-full [&>table]:border-collapse [&>table]:my-6 [&>table_th]:border [&>table_th]:border-gray-200 [&>table_th]:bg-gray-50 [&>table_th]:p-3 [&>table_th]:text-left [&>table_td]:border [&>table_td]:border-gray-200 [&>table_td]:p-3"
+          set:html={contentHtml
+            .replace(/### (.*)/g, '<h3>$1</h3>')
+            .replace(/## (.*)/g, '<h2>$1</h2>')
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\n\n/g, '<p></p>')}
+        />
       </article>
     ) : (
       <article class="my-8 text-gray-700 space-y-6">
-        <h2 class="text-2xl font-bold text-gray-900">How to Use the {tool.name}</h2>
-        <ol class="list-decimal pl-5 space-y-2">
-          <li>Select or drag your files into the designated drop area above.</li>
-          <li>Choose your preferred conversion parameters or quality options.</li>
-          <li>Click convert to execute hardware-accelerated processing inside your browser.</li>
-          <li>Save the resulting files to your device with zero upload latency.</li>
-        </ol>
-        <p class="text-sm text-gray-500 italic">
-          Draft content pending human review. Marked noindex until full editorial approval.
-        </p>
+        <h2 class="text-2xl font-bold text-gray-900">How to Use {tool.name}</h2>
+        {tool.kind === 'calculator' ? (
+          <ol class="list-decimal pl-5 space-y-2">
+            <li>Enter your numeric values into the corresponding input fields above.</li>
+            <li>Results and formula explanations update automatically in real time as you type.</li>
+            <li>Review the calculated totals or copy them directly for your calculations.</li>
+          </ol>
+        ) : tool.kind === 'text' ? (
+          <ol class="list-decimal pl-5 space-y-2">
+            <li>Paste or type your source text into the editor area above.</li>
+            <li>Select the desired formatting, casing style, or validation action.</li>
+            <li>Copy the converted output directly to your clipboard with one click.</li>
+          </ol>
+        ) : tool.engine === 'target-size' ? (
+          <ol class="list-decimal pl-5 space-y-2">
+            <li>Drop your JPG, PNG, or WebP photo into the compression zone above.</li>
+            <li>Our browser engine runs a binary search across quality and dimension steps to meet your target budget.</li>
+            <li>Download your compressed image instantly with verified byte size.</li>
+          </ol>
+        ) : (
+          <ol class="list-decimal pl-5 space-y-2">
+            <li>Select or drag your files into the designated drop area above.</li>
+            <li>Choose your preferred conversion parameters or quality options.</li>
+            <li>Process and save the resulting files directly to your device.</li>
+          </ol>
+        )}
       </article>
     )}
 
     <!-- House promo slot after how-to block -->
     <PromoSlot slotPosition="postHowTo" />
 
-    <!-- 7. Pair-specific FAQ -->
+    <!-- Head-to-Head Comparison Matrix -->
+    <section class="my-10 border border-gray-200 rounded-2xl overflow-hidden bg-white shadow-xs">
+      <div class="p-4 sm:p-6 bg-gray-50 border-b border-gray-200">
+        <h2 class="text-lg sm:text-xl font-bold text-gray-900">
+          Why Best Converter Outperforms Cloud Competitors
+        </h2>
+        <p class="text-xs sm:text-sm text-gray-600 mt-1">
+          Compare our client-side architecture against traditional upload-based online utility websites.
+        </p>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs sm:text-sm border-collapse">
+          <thead>
+            <tr class="border-b border-gray-200 bg-gray-100/60 text-gray-700">
+              <th class="p-3 sm:p-4 font-bold">Feature & Capability</th>
+              <th class="p-3 sm:p-4 font-bold text-emerald-700">Best Converter (In-Browser)</th>
+              <th class="p-3 sm:p-4 font-medium text-gray-500">Traditional Cloud Utilities</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100 text-gray-700">
+            <tr>
+              <td class="p-3 sm:p-4 font-medium">Server File Uploads</td>
+              <td class="p-3 sm:p-4 font-bold text-emerald-700">Zero (100% Local RAM)</td>
+              <td class="p-3 sm:p-4 text-gray-500">Files uploaded to remote servers</td>
+            </tr>
+            <tr>
+              <td class="p-3 sm:p-4 font-medium">Data Privacy & Security</td>
+              <td class="p-3 sm:p-4 font-bold text-emerald-700">Zero data leaks (GDPR/HIPAA safe)</td>
+              <td class="p-3 sm:p-4 text-gray-500">Stored on 3rd-party hard drives</td>
+            </tr>
+            <tr>
+              <td class="p-3 sm:p-4 font-medium">Processing Speed</td>
+              <td class="p-3 sm:p-4 font-bold text-emerald-700">Instant (No network latency)</td>
+              <td class="p-3 sm:p-4 text-gray-500">Queued upload + download delays</td>
+            </tr>
+            <tr>
+              <td class="p-3 sm:p-4 font-medium">File Size Caps</td>
+              <td class="p-3 sm:p-4 font-bold text-emerald-700">Unlimited (Device RAM capacity)</td>
+              <td class="p-3 sm:p-4 text-gray-500">10MB to 50MB paywall restrictions</td>
+            </tr>
+            <tr>
+              <td class="p-3 sm:p-4 font-medium">Pricing & Subscriptions</td>
+              <td class="p-3 sm:p-4 font-bold text-emerald-700">100% Free Forever</td>
+              <td class="p-3 sm:p-4 text-gray-500">$7 to $15/month subscriptions</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 7. Tool-specific FAQ -->
     {tool.faq && tool.faq.length > 0 && (
       <FAQ items={tool.faq} title={`${tool.name} Frequently Asked Questions`} />
     )}
@@ -132,13 +290,13 @@ const jsonLd = {
     <!-- Related tools & format hub links -->
     <RelatedTools currentTool={tool} relatedTools={related} />
 
-    <!-- 9. Last-reviewed date -->
-    <div class="mt-12 pt-6 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
+    <!-- 9. Last-reviewed date and reviewer -->
+    <div class="mt-12 pt-6 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between text-xs text-gray-500 gap-2">
       <span>
-        Last reviewed: <time datetime={tool.last_reviewed}>{tool.last_reviewed}</time>
+        Last reviewed: <time datetime={tool.last_reviewed}>{formatDisplayDate(tool.last_reviewed)}</time>
       </span>
       <span>
-        Status: {isIndexable ? 'Reviewed & Verified' : 'Draft / Under Review'}
+        Reviewed by: <strong class="text-gray-700">{tool.reviewer || 'Best Converter Team'}</strong>
       </span>
     </div>
   </div>

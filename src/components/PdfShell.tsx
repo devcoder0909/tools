@@ -1,0 +1,412 @@
+import { useState, useRef } from 'preact/hooks';
+import { PDFDocument } from 'pdf-lib';
+
+interface PdfShellProps {
+  toolId: string;
+  toolName: string;
+}
+
+interface PdfItem {
+  id: string;
+  file: File;
+  name: string;
+  size: number;
+}
+
+export default function PdfShell({ toolId }: PdfShellProps) {
+  const [files, setFiles] = useState<PdfItem[]>([]);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
+  const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
+  const [downloadFilename, setDownloadFilename] = useState('document.pdf');
+  const [splitRange, setSplitRange] = useState('1');
+  const [pageSize, setPageSize] = useState<'fit' | 'a4' | 'letter'>('a4');
+  const [orientation, setOrientation] = useState<'portrait' | 'landscape'>('portrait');
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFiles = (incoming: FileList | File[]) => {
+    const list = Array.from(incoming).map((file, idx) => ({
+      id: `${Date.now()}-${idx}-${file.name}`,
+      file,
+      name: file.name,
+      size: file.size,
+    }));
+    setFiles((prev) => [...prev, ...list]);
+    setDownloadUrl(null);
+    setStatusMessage(null);
+  };
+
+  const removeFile = (id: string) => {
+    setFiles((prev) => prev.filter((f) => f.id !== id));
+  };
+
+  const formatSize = (bytes: number): string => {
+    if (bytes === 0) return '0 B';
+    const k = 1024;
+    const sizes = ['B', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return `${(bytes / Math.pow(k, i)).toFixed(1)} ${sizes[i]}`;
+  };
+
+  // --- 1. Merge PDF ---
+  const mergePdfs = async () => {
+    if (files.length < 2) {
+      alert('Please select at least 2 PDF files to merge.');
+      return;
+    }
+    setIsProcessing(true);
+    setStatusMessage('Merging PDF documents client-side...');
+
+    try {
+      const mergedPdf = await PDFDocument.create();
+
+      for (const item of files) {
+        const arrayBuffer = await item.file.arrayBuffer();
+        const pdf = await PDFDocument.load(arrayBuffer);
+        const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+        copiedPages.forEach((page) => mergedPdf.addPage(page));
+      }
+
+      const mergedPdfBytes = await mergedPdf.save();
+      const blob = new Blob([mergedPdfBytes as unknown as BlobPart], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+      setDownloadUrl(url);
+      setDownloadFilename('merged-document.pdf');
+      setStatusMessage(`Successfully merged ${files.length} PDF files (${formatSize(blob.size)})!`);
+    } catch (err: any) {
+      console.error('PDF Merge Error:', err);
+      setStatusMessage(`Merge failed: ${err.message || 'Invalid PDF format'}`);
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  // --- 2. JPG / Image to PDF ---
+  const imagesToPdf = async () => {
+    if (files.length === 0) {
+      alert('Please add at least one image file.');
+      return;
+    }
+    setIsProcessing(true);
+    setStatusMessage('Converting images to PDF in browser...');
+
+    try {
+      const pdfDoc = await PDFDocument.create();
+
+      for (const item of files) {
+        const arrayBuffer = await item.file.arrayBuffer();
+        let image;
+        if (item.file.type === 'image/png' || item.name.toLowerCase().endsWith('.png')) {
+          image = await pdfDoc.embedPng(arrayBuffer);
+        } else {
+          image = await pdfDoc.embedJpg(arrayBuffer);
+        }
+
+        const dims = image.scale(1);
+        let pageW = dims.width;
+        let pageH = dims.height;
+
+        if (pageSize === 'a4') {
+          pageW = orientation === 'portrait' ? 595.28 : 841.89;
+          pageH = orientation === 'portrait' ? 841.89 : 595.28;
+        } else if (pageSize === 'letter') {
+          pageW = orientation === 'portrait' ? 612 : 792;
+          pageH = orientation === 'portrait' ? 792 : 612;
+        }
+
+        const page = pdfDoc.addPage([pageW, pageH]);
+        const scaleFactor = Math.min((pageW - 40) / dims.width, (pageH - 40) / dims.height, 1);
+        const drawW = dims.width * scaleFactor;
+        const drawH = dims.height * scaleFactor;
+        const drawX = (pageW - drawW) / 2;
+        const drawY = (pageH - drawH) / 2;
+
+        page.drawImage(image, {
+          x: drawX,
+          y: drawY,
+          width: drawW,
+          height: drawH,
+        });
+      }
+
+      const pdfBytes = await pdfDoc.save();
+      const blob = new Blob([pdfBytes as unknown as BlobPart], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+      setDownloadUrl(url);
+      setDownloadFilename('converted-images.pdf');
+      setStatusMessage(`Converted ${files.length} images into a PDF document (${formatSize(blob.size)})!`);
+    } catch (err: any) {
+      console.error('Image to PDF error:', err);
+      setStatusMessage(`Conversion failed: ${err.message || 'Image decode error'}`);
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  // --- 3. Split PDF ---
+  const splitPdf = async () => {
+    if (files.length === 0) {
+      alert('Please upload a PDF file to split.');
+      return;
+    }
+    setIsProcessing(true);
+    setStatusMessage('Extracting pages from PDF...');
+
+    try {
+      const sourceFile = files[0];
+      const arrayBuffer = await sourceFile.file.arrayBuffer();
+      const srcPdf = await PDFDocument.load(arrayBuffer);
+      const totalPages = srcPdf.getPageCount();
+
+      const newPdf = await PDFDocument.create();
+
+      // Parse range: e.g. "1-3, 5" or "2"
+      const indicesToCopy: number[] = [];
+      const parts = splitRange.split(',');
+      for (const part of parts) {
+        const trimmed = part.trim();
+        if (trimmed.includes('-')) {
+          const [startStr, endStr] = trimmed.split('-');
+          const start = Math.max(1, parseInt(startStr, 10));
+          const end = Math.min(totalPages, parseInt(endStr, 10));
+          for (let p = start; p <= end; p++) {
+            indicesToCopy.push(p - 1);
+          }
+        } else {
+          const p = parseInt(trimmed, 10);
+          if (!isNaN(p) && p >= 1 && p <= totalPages) {
+            indicesToCopy.push(p - 1);
+          }
+        }
+      }
+
+      if (indicesToCopy.length === 0) {
+        throw new Error(`Invalid page range. This PDF has ${totalPages} total pages.`);
+      }
+
+      const pages = await newPdf.copyPages(srcPdf, indicesToCopy);
+      pages.forEach((p) => newPdf.addPage(p));
+
+      const pdfBytes = await newPdf.save();
+      const blob = new Blob([pdfBytes as unknown as BlobPart], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+      setDownloadUrl(url);
+      setDownloadFilename(`split-pages-${splitRange.replace(/\s+/g, '')}.pdf`);
+      setStatusMessage(`Extracted ${indicesToCopy.length} pages (${formatSize(blob.size)})!`);
+    } catch (err: any) {
+      console.error('PDF Split error:', err);
+      setStatusMessage(`Split failed: ${err.message}`);
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  // --- 4. Compress PDF ---
+  const compressPdf = async () => {
+    if (files.length === 0) {
+      alert('Please upload a PDF file to compress.');
+      return;
+    }
+    setIsProcessing(true);
+    setStatusMessage('Compressing and optimizing PDF streams...');
+
+    try {
+      const sourceFile = files[0];
+      const arrayBuffer = await sourceFile.file.arrayBuffer();
+      const srcPdf = await PDFDocument.load(arrayBuffer);
+
+      // Re-encode and save without unused objects
+      const pdfBytes = await srcPdf.save({ useObjectStreams: true });
+      const blob = new Blob([pdfBytes as unknown as BlobPart], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+      setDownloadUrl(url);
+      setDownloadFilename(`compressed-${sourceFile.name}`);
+      const savedBytes = sourceFile.size - blob.size;
+      const pct = Math.max(0, Math.round((savedBytes / sourceFile.size) * 100));
+      setStatusMessage(`Optimized PDF: ${formatSize(sourceFile.size)} → ${formatSize(blob.size)} (${pct}% reduction)!`);
+    } catch (err: any) {
+      console.error('PDF Compress error:', err);
+      setStatusMessage(`Compression failed: ${err.message}`);
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  const isMerge = toolId === 'merge-pdf';
+  const isJpgToPdf = toolId === 'jpg-to-pdf' || toolId === 'png-to-pdf';
+  const isSplit = toolId === 'split-pdf';
+  const isCompress = toolId === 'compress-pdf';
+
+  return (
+    <div class="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-xs mb-10">
+      {/* Upload Zone */}
+      <div
+        onClick={() => fileInputRef.current?.click()}
+        class="border-2 border-dashed border-gray-300 hover:border-green-500 rounded-xl p-8 sm:p-12 text-center bg-gray-50 hover:bg-green-50/20 transition cursor-pointer mb-6"
+      >
+        <input
+          ref={fileInputRef}
+          type="file"
+          multiple={isMerge || isJpgToPdf}
+          accept={isJpgToPdf ? 'image/jpeg,image/png,image/webp' : 'application/pdf'}
+          onChange={(e) => {
+            if (e.currentTarget.files) handleFiles(e.currentTarget.files);
+          }}
+          class="hidden"
+        />
+        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-xs border border-gray-200 text-green-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+          </svg>
+        </div>
+        <p class="text-sm font-bold text-gray-900 mb-1">
+          {isJpgToPdf ? 'Click to select JPG / PNG images' : 'Click to select PDF document(s)'}
+        </p>
+        <p class="text-xs text-gray-500">
+          Or drag and drop files here. 100% private client-side processing.
+        </p>
+      </div>
+
+      {/* Options for JPG to PDF */}
+      {isJpgToPdf && files.length > 0 && (
+        <div class="grid grid-cols-2 gap-4 bg-gray-50 p-4 rounded-xl border border-gray-200 mb-6">
+          <div>
+            <label class="block text-xs font-medium text-gray-700 mb-1">Page Size</label>
+            <select
+              value={pageSize}
+              onChange={(e) => setPageSize((e.target as HTMLSelectElement).value as any)}
+              class="w-full px-3 py-1.5 text-xs border border-gray-300 rounded-lg bg-white"
+            >
+              <option value="a4">Standard A4</option>
+              <option value="letter">US Letter</option>
+              <option value="fit">Fit to Image Size</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-gray-700 mb-1">Orientation</label>
+            <select
+              value={orientation}
+              onChange={(e) => setOrientation((e.target as HTMLSelectElement).value as any)}
+              class="w-full px-3 py-1.5 text-xs border border-gray-300 rounded-lg bg-white"
+            >
+              <option value="portrait">Portrait</option>
+              <option value="landscape">Landscape</option>
+            </select>
+          </div>
+        </div>
+      )}
+
+      {/* Options for Split PDF */}
+      {isSplit && files.length > 0 && (
+        <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 mb-6">
+          <label class="block text-xs font-medium text-gray-700 mb-1">Page Range to Extract (e.g. 1-3, 5)</label>
+          <input
+            type="text"
+            value={splitRange}
+            onInput={(e) => setSplitRange((e.target as HTMLInputElement).value)}
+            placeholder="1-2"
+            class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg bg-white"
+          />
+        </div>
+      )}
+
+      {/* Selected Files List */}
+      {files.length > 0 && (
+        <div class="mb-6 space-y-2">
+          <div class="flex items-center justify-between text-xs font-semibold text-gray-600 mb-2">
+            <span>Selected Files ({files.length})</span>
+            <button
+              type="button"
+              onClick={() => setFiles([])}
+              class="text-red-600 hover:underline cursor-pointer"
+            >
+              Clear All
+            </button>
+          </div>
+
+          <div class="max-h-56 overflow-y-auto space-y-2 pr-1">
+            {files.map((item) => (
+              <div class="flex items-center justify-between p-3 bg-gray-50 border border-gray-200 rounded-xl text-xs">
+                <div class="truncate mr-3">
+                  <p class="font-medium text-gray-900 truncate">{item.name}</p>
+                  <p class="text-gray-500">{formatSize(item.size)}</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => removeFile(item.id)}
+                  class="text-gray-400 hover:text-red-600 font-bold px-2 py-1 cursor-pointer"
+                >
+                  ✕
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Status Message */}
+      {statusMessage && (
+        <div class={`p-3.5 rounded-xl text-xs font-semibold mb-6 ${downloadUrl ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-blue-50 text-blue-800'}`}>
+          {statusMessage}
+        </div>
+      )}
+
+      {/* Action Buttons */}
+      <div class="flex flex-wrap gap-3 items-center">
+        {isMerge && (
+          <button
+            type="button"
+            disabled={files.length < 2 || isProcessing}
+            onClick={mergePdfs}
+            class="px-6 py-2.5 text-xs font-bold rounded-xl bg-green-600 text-white hover:bg-green-700 transition disabled:opacity-50 cursor-pointer"
+          >
+            {isProcessing ? 'Merging...' : 'Merge PDFs Now'}
+          </button>
+        )}
+
+        {isJpgToPdf && (
+          <button
+            type="button"
+            disabled={files.length === 0 || isProcessing}
+            onClick={imagesToPdf}
+            class="px-6 py-2.5 text-xs font-bold rounded-xl bg-green-600 text-white hover:bg-green-700 transition disabled:opacity-50 cursor-pointer"
+          >
+            {isProcessing ? 'Converting...' : 'Convert to PDF Now'}
+          </button>
+        )}
+
+        {isSplit && (
+          <button
+            type="button"
+            disabled={files.length === 0 || isProcessing}
+            onClick={splitPdf}
+            class="px-6 py-2.5 text-xs font-bold rounded-xl bg-green-600 text-white hover:bg-green-700 transition disabled:opacity-50 cursor-pointer"
+          >
+            {isProcessing ? 'Extracting...' : 'Extract & Download Pages'}
+          </button>
+        )}
+
+        {isCompress && (
+          <button
+            type="button"
+            disabled={files.length === 0 || isProcessing}
+            onClick={compressPdf}
+            class="px-6 py-2.5 text-xs font-bold rounded-xl bg-green-600 text-white hover:bg-green-700 transition disabled:opacity-50 cursor-pointer"
+          >
+            {isProcessing ? 'Compressing...' : 'Compress PDF Now'}
+          </button>
+        )}
+
+        {downloadUrl && (
+          <a
+            href={downloadUrl}
+            download={downloadFilename}
+            class="px-6 py-2.5 text-xs font-bold rounded-xl bg-gray-900 text-white hover:bg-black transition shadow-xs"
+          >
+            Download {downloadFilename}
+          </a>
+        )}
+      </div>
+    </div>
+  );
+}

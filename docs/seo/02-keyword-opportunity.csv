@@ -1,0 +1,22 @@
+keyword,type,intent,tier,volume_est,difficulty_est,relevance_score,demand_score,winnability_score,buildability_score,opportunity_score,primary_serp_winner,serp_features,confidence_label
+heic to jpg,A (High Volume),tool,1,100K-1M [source: seed unvalidated],UNKNOWN,3,3,2,3,54,TinyPNG / FreeConvert,"AI Overview, PAA, Featured Snippet",unvalidated
+compress image to 200kb,B (Long-Tail),tool,1,10K-100K [source: seed unvalidated],UNKNOWN,3,3,3,3,81,11zon / ImageResizer,"PAA, Image Pack",unvalidated
+compress image to 50kb,B (Long-Tail),tool,1,10K-100K [source: seed unvalidated],UNKNOWN,3,3,3,3,81,Pi7 Image Tool,"PAA, Video",unvalidated
+compress image to 100kb,B (Long-Tail),tool,1,10K-100K [source: seed unvalidated],UNKNOWN,3,3,3,3,81,SmallSEOTools / 11zon,"PAA, Table",unvalidated
+compress image to 500kb,B (Long-Tail),tool,1,5K-50K [source: seed unvalidated],UNKNOWN,3,2,3,3,54,DupliChecker / Pi7,"PAA",unvalidated
+compress image to 1mb,B (Long-Tail),tool,1,5K-50K [source: seed unvalidated],UNKNOWN,3,2,3,3,54,ResizePixel / TinyPNG,"PAA",unvalidated
+percentage calculator,A (High Volume),calculator,1,100K-1M [source: seed unvalidated],UNKNOWN,3,3,1,3,27,Calculator.net / Omni,"Google Interactive Widget, PAA",unvalidated
+age calculator,A (High Volume),calculator,1,100K-1M [source: seed unvalidated],UNKNOWN,3,3,1,3,27,Calculator.net / RapidTables,"Google Interactive Widget, PAA",unvalidated
+date difference calculator,B (Long-Tail),calculator,1,10K-100K [source: seed unvalidated],UNKNOWN,3,2,2,3,36,TimeAndDate.com,"PAA, Table",unvalidated
+discount calculator,B (Long-Tail),calculator,2,10K-100K [source: seed unvalidated],UNKNOWN,3,2,2,3,36,Omni Calculator / GoodCalculators,"PAA, Widget",unvalidated
+tip calculator,B (Long-Tail),calculator,2,10K-100K [source: seed unvalidated],UNKNOWN,3,2,2,3,36,Calculator.net,"Google Widget, PAA",unvalidated
+word counter,A (High Volume),tool,1,100K-1M [source: seed unvalidated],UNKNOWN,3,3,1,3,27,WordCounter.net,"PAA, Snippet",unvalidated
+case converter,B (Long-Tail),tool,2,10K-100K [source: seed unvalidated],UNKNOWN,3,2,2,3,36,ConvertCase.net,"PAA",unvalidated
+json formatter,A (High Volume),tool,2,50K-500K [source: seed unvalidated],UNKNOWN,3,3,2,3,54,JSONFormatter.org / CuriousConcept,"PAA, Code Snippet",unvalidated
+webp to jpg,A (High Volume),tool,1,50K-500K [source: seed unvalidated],UNKNOWN,3,3,2,3,54,CloudConvert / Ezgif,"PAA, Snippet",unvalidated
+png to webp,B (Long-Tail),tool,2,10K-100K [source: seed unvalidated],UNKNOWN,3,2,2,3,36,CloudConvert / TinyPNG,"PAA",unvalidated
+jpg to webp,B (Long-Tail),tool,2,10K-100K [source: seed unvalidated],UNKNOWN,3,2,2,3,36,CloudConvert,"PAA",unvalidated
+avif to jpg,B (Long-Tail),tool,2,10K-100K [source: seed unvalidated],UNKNOWN,3,2,3,3,54,Ezgif / CloudConvert,"PAA, Forum Discussions",unvalidated
+why won't my iphone photos open on windows,C (Question),how-to,1,5K-50K [source: seed unvalidated],UNKNOWN,3,2,3,3,54,Microsoft Community / MakeUseOf,"Featured Snippet, PAA",unvalidated
+how to compress image to 200kb,C (Question),how-to,1,5K-50K [source: seed unvalidated],UNKNOWN,3,2,3,3,54,YouTube / GeeksforGeeks,"Video Pack, PAA",unvalidated
+

@@ -4,7 +4,7 @@ import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 
 export default defineConfig({
-  site: 'https://app.gudmud.in',
+  site: 'https://convert.gudmud.site',
   output: 'static',
   trailingSlash: 'always',
   integrations: [

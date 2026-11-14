@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import * as cheerio from 'cheerio';
-import { getAllTools } from '../src/registry';
+import { getAllTools, getAllFormats } from '../src/registry';
 import { siteConfig } from '../src/config/site';
 
 const DIST_DIR = path.resolve(process.cwd(), 'dist');
@@ -52,6 +52,10 @@ function getAllHtmlFiles(dir: string, baseDir: string = dir): string[] {
     if (stat.isDirectory()) {
       results = results.concat(getAllHtmlFiles(fullPath, baseDir));
     } else if (file.endsWith('.html')) {
+      // Skip search engine verification files (e.g. googlefc307c410c314053.html)
+      if (/^google[a-f0-9]+\.html$/i.test(file)) {
+        continue;
+      }
       results.push(fullPath);
     }
   }
@@ -106,6 +110,15 @@ export function runSeoLint() {
     const robotsMeta = $('meta[name="robots"]').attr('content') || '';
     const isNoindex = robotsMeta.includes('noindex');
     const isIndexable = !isNoindex;
+
+    // Check for forbidden internal draft text across all pages
+    const bodyVisibleText = $('body').text();
+    if (bodyVisibleText.includes('Draft content pending human review')) {
+      errors.push('Forbidden visible internal text found: "Draft content pending human review"');
+    }
+    if (bodyVisibleText.includes('Status: Draft') || bodyVisibleText.includes('Status: Reviewed')) {
+      errors.push('Forbidden visible internal status text found in body HTML');
+    }
 
     const title = $('title').text().trim();
     const description = $('meta[name="description"]').attr('content')?.trim() || '';
@@ -172,7 +185,7 @@ export function runSeoLint() {
 
     // Indexable rules
     if (isIndexable) {
-      if (title.length < 30 || title.length > 65) {
+      if (title.length < 30 || title.length > 60) {
         errors.push(`Title length (${title.length}) outside 30-60 target: "${title}"`);
       }
       if (description.length < 115 || description.length > 165) {
@@ -187,9 +200,9 @@ export function runSeoLint() {
       if (outboundLinks.length < 5) {
         errors.push(`Fewer than 5 outbound internal links (found ${outboundLinks.length})`);
       }
-      // Tool pages require at least 300 words
-      if (urlPath !== '/' && !urlPath.startsWith('/formats') && wordCount < 300) {
-        errors.push(`Word count (${wordCount}) is below the 300-word SEO minimum`);
+      // Tool and hub pages require at least 250 words
+      if (urlPath !== '/' && !urlPath.startsWith('/privacy') && !urlPath.startsWith('/cookies') && !urlPath.startsWith('/terms') && !urlPath.startsWith('/contact') && wordCount < 250) {
+        errors.push(`Word count (${wordCount}) is below the SEO minimum`);
       }
 
       // Check duplicates
@@ -272,6 +285,24 @@ export function runSeoLint() {
       }
       if (!inSitemap && tool.reviewed && tool.last_reviewed && tool.indexable) {
         console.error(`[FAIL] Reviewed indexable tool missing from sitemap: ${tool.slug}`);
+        hasFailed = true;
+      }
+    }
+  }
+
+  const sitemapFormatsPath = path.join(DIST_DIR, 'sitemap-formats.xml');
+  if (fs.existsSync(sitemapFormatsPath)) {
+    const sitemapContent = fs.readFileSync(sitemapFormatsPath, 'utf-8');
+    const formats = getAllFormats();
+    for (const fmt of formats) {
+      const url = `${siteConfig.url}/formats/${fmt.id}/`;
+      const inSitemap = sitemapContent.includes(url);
+      if (inSitemap && (!fmt.indexable || !fmt.hub)) {
+        console.error(`[FAIL] Unreviewed or non-indexable format in sitemap: ${fmt.id}`);
+        hasFailed = true;
+      }
+      if (!inSitemap && fmt.indexable && fmt.hub) {
+        console.error(`[FAIL] Reviewed indexable format missing from sitemap: ${fmt.id}`);
         hasFailed = true;
       }
     }

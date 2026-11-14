@@ -1,0 +1,22 @@
+url_slug,primary_kw,secondary_kws,search_intent,tier,page_type,target_word_count,target_faq_count,confidence_label
+/heic-to-jpg/,heic to jpg,"convert heic to jpg, heic to jpeg, iphone photo to jpg, heic to jpg windows 11, heic to jpg no upload",tool,1,pair,900-1300,12,measured
+/compress-image-to-50kb/,compress image to 50kb,"reduce image size to 50kb, image under 50kb, compress photo to 50kb for form",tool,1,target-size,500-800,4,measured
+/compress-image-to-100kb/,compress image to 100kb,"reduce image size to 100kb, compress photo to 100kb online, image under 100kb",tool,1,target-size,500-800,4,measured
+/compress-image-to-200kb/,compress image to 200kb,"reduce photo to 200kb, compress photo to 200kb, image under 200kb online",tool,1,target-size,600-900,4,measured
+/compress-image-to-500kb/,compress image to 500kb,"reduce image size to 500kb, compress photo to 500kb for email, image under 500kb",tool,1,target-size,500-800,4,measured
+/compress-image-to-1mb/,compress image to 1mb,"reduce photo to 1mb, compress image to 1mb online, photo under 1mb",tool,1,target-size,500-800,4,measured
+/percentage-calculator/,percentage calculator,"percent of a number, percentage increase, percentage decrease, percent change",calculator,1,calculator,500-800,4,measured
+/age-calculator/,age calculator,"calculate age from date of birth, age on a date, chronological age calculator",calculator,1,calculator,500-800,4,measured
+/date-difference-calculator/,date difference calculator,"days between dates, how many days until, workday calculator",calculator,1,calculator,500-800,4,measured
+/discount-calculator/,discount calculator,"sale price calculator, percent off calculator, how to calculate discount",calculator,2,calculator,500-800,4,measured
+/tip-calculator/,tip calculator,"split bill calculator, restaurant tip calculator, gratuity calculator",calculator,2,calculator,500-800,4,measured
+/word-counter/,word counter,"character counter, word count online, character count with spaces",tool,1,text,500-800,4,measured
+/case-converter/,case converter,"uppercase to lowercase, title case converter, camelCase converter",tool,2,text,500-800,4,measured
+/json-formatter/,json formatter,"json validator, json beautifier, json minify",tool,2,text,500-800,4,measured
+/formats/heic/,heic file,"what is a heic file, open heic on windows, convert heic",definition,1,format-hub,700-1000,3,measured
+/formats/jpg/,jpg file,"what is a jpg, jpeg vs jpg, jpg compression",definition,1,format-hub,700-1000,3,measured
+/formats/png/,png file,"png transparency, lossless png, when to use png",definition,1,format-hub,700-1000,3,measured
+/formats/webp/,webp file,"webp format, webp vs jpg, webp transparency",definition,1,format-hub,700-1000,3,measured
+/formats/avif/,avif file,"avif format, avif vs webp, next gen image compression",definition,1,format-hub,700-1000,3,measured
+/privacy-explained/,zero upload privacy,"client side converter privacy, browser based file conversion proof, verify network tab",how-to,1,guide,800-1200,4,measured
+

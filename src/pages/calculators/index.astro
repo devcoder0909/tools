@@ -2,10 +2,12 @@
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { getAllTools } from '../../registry';
+import { siteConfig } from '../../config/site';
 
 const tools = getAllTools();
-const calculators = tools.filter((t) => t.kind === 'calculator');
-const textTools = tools.filter((t) => t.kind === 'text');
+const financeTools = tools.filter((t) => t.kind === 'finance');
+const mathCalculators = tools.filter((t) => t.kind === 'calculator');
+const textAndDevTools = tools.filter((t) => t.kind === 'text' || t.kind === 'developer');
 
 const breadcrumbs = [
   { name: 'Home', href: '/' },
@@ -14,77 +16,132 @@ const breadcrumbs = [
 ---
 
 <Layout
-  title="Free Online Calculators & Text Utilities - Best Converter"
-  description="Accurate, free browser-based calculators and text transformers: percentage, age, discount, tip, word counter, and case converters."
-  canonical="https://app.gudmud.in/calculators/"
+  title="Free Online Calculators & Financial Tools - Best Converter"
+  description="Instant, private online calculators for EMI loans, SIP returns, percentages, BMI, scientific math, currency conversion, and text analysis."
+  canonical={`${siteConfig.url}/calculators/`}
 >
   <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
     <Breadcrumbs items={breadcrumbs} />
 
-    <div class="mb-10">
-      <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-2">
-        Online Calculators & Developer Utilities
+    <div class="mb-10 text-center sm:text-left">
+      <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 mb-3">
+        Deterministic Precision • No Server Storage
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3">
+        Free Online Calculators & Financial Utilities
       </h1>
-      <p class="text-gray-600">
-        Perform instant calculations with formulas, zero ads in critical spots, and no tracking.
+      <p class="text-base text-gray-600 max-w-3xl">
+        Perform instant calculations with verified formulas, clear step-by-step mathematical breakdowns, zero annoying ads, and complete confidentiality.
       </p>
     </div>
 
-    <section class="mb-12">
-      <h2 class="text-2xl font-bold text-gray-900 mb-4 border-b border-gray-200 pb-2">
-        Daily Life & Financial Calculators
-      </h2>
+    <!-- Financial & Investment Calculators -->
+    <section class="mb-14">
+      <div class="flex items-center justify-between mb-4 border-b border-gray-200 pb-2">
+        <h2 class="text-2xl font-bold text-gray-900">
+          Financial & Investment Calculators
+        </h2>
+        <span class="text-xs font-semibold text-gray-500">Wealth, Loan & Exchange Calculations</span>
+      </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {calculators.map((calc) => (
+        {financeTools.map((calc) => (
           <a
             href={`/${calc.slug}/`}
-            class="p-4 rounded-lg border border-gray-200 bg-white hover:border-green-500 hover:shadow-xs transition group"
+            class="p-5 rounded-xl border border-gray-200 bg-white hover:border-emerald-500 hover:shadow-xs transition group flex flex-col justify-between"
           >
-            <h3 class="font-semibold text-gray-900 group-hover:text-green-600 mb-1">
-              {calc.name}
-            </h3>
-            <p class="text-xs text-gray-500 line-clamp-2">
-              {calc.description}
-            </p>
+            <div>
+              <span class="text-2xs font-semibold uppercase px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 mb-2 inline-block">Finance</span>
+              <h3 class="font-bold text-gray-900 group-hover:text-emerald-600 mb-1 text-base">
+                {calc.name}
+              </h3>
+              <p class="text-xs text-gray-500 line-clamp-2">
+                {calc.description}
+              </p>
+            </div>
+            <div class="mt-3 text-xs font-medium text-emerald-600 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              Calculate now &rarr;
+            </div>
           </a>
         ))}
       </div>
     </section>
 
-    <section class="mb-12">
-      <h2 class="text-2xl font-bold text-gray-900 mb-4 border-b border-gray-200 pb-2">
-        Text & Developer Utilities
-      </h2>
+    <!-- Everyday Math & Scientific Calculators -->
+    <section class="mb-14">
+      <div class="flex items-center justify-between mb-4 border-b border-gray-200 pb-2">
+        <h2 class="text-2xl font-bold text-gray-900">
+          Math, Science & Life Calculators
+        </h2>
+        <span class="text-xs font-semibold text-gray-500">Accurate Real-Time Math Engines</span>
+      </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {textTools.map((tool) => (
+        {mathCalculators.map((calc) => (
+          <a
+            href={`/${calc.slug}/`}
+            class="p-5 rounded-xl border border-gray-200 bg-white hover:border-emerald-500 hover:shadow-xs transition group flex flex-col justify-between"
+          >
+            <div>
+              <span class="text-2xs font-semibold uppercase px-2 py-0.5 rounded bg-blue-50 text-blue-700 mb-2 inline-block">Math</span>
+              <h3 class="font-bold text-gray-900 group-hover:text-emerald-600 mb-1 text-base">
+                {calc.name}
+              </h3>
+              <p class="text-xs text-gray-500 line-clamp-2">
+                {calc.description}
+              </p>
+            </div>
+            <div class="mt-3 text-xs font-medium text-emerald-600 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              Calculate now &rarr;
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Developer & Text Analysis Utilities -->
+    <section class="mb-14">
+      <div class="flex items-center justify-between mb-4 border-b border-gray-200 pb-2">
+        <h2 class="text-2xl font-bold text-gray-900">
+          Developer Utilities & Text Analysis
+        </h2>
+        <span class="text-xs font-semibold text-gray-500">Offline Formatting, Metrics & Diagnostics</span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {textAndDevTools.map((tool) => (
           <a
             href={`/${tool.slug}/`}
-            class="p-4 rounded-lg border border-gray-200 bg-white hover:border-green-500 hover:shadow-xs transition group"
+            class="p-5 rounded-xl border border-gray-200 bg-white hover:border-emerald-500 hover:shadow-xs transition group flex flex-col justify-between"
           >
-            <h3 class="font-semibold text-gray-900 group-hover:text-green-600 mb-1">
-              {tool.name}
-            </h3>
-            <p class="text-xs text-gray-500 line-clamp-2">
-              {tool.description}
-            </p>
+            <div>
+              <span class="text-2xs font-semibold uppercase px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 mb-2 inline-block">Developer</span>
+              <h3 class="font-bold text-gray-900 group-hover:text-emerald-600 mb-1 text-base">
+                {tool.name}
+              </h3>
+              <p class="text-xs text-gray-500 line-clamp-2">
+                {tool.description}
+              </p>
+            </div>
+            <div class="mt-3 text-xs font-medium text-emerald-600 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              Inspect utility &rarr;
+            </div>
           </a>
         ))}
       </div>
     </section>
 
-    <section class="prose max-w-none text-gray-700 space-y-4 my-8 text-sm sm:text-base leading-relaxed bg-gray-50 border border-gray-200 rounded-xl p-6">
-      <h2 class="text-xl font-bold text-gray-900">Why Use Our In-Browser Calculators?</h2>
+    <!-- In-depth Mathematical Architecture Article for SEO -->
+    <section class="prose max-w-none text-gray-700 space-y-4 my-8 text-sm sm:text-base leading-relaxed bg-gray-50 border border-gray-200 rounded-2xl p-6 sm:p-8">
+      <h2 class="text-xl font-bold text-gray-900">Why Use Our In-Browser Financial and Math Calculators?</h2>
       <p>
-        Daily math calculations—such as computing sales tax discounts, figuring out percentage changes on investments, calculating accurate chronological age, or splitting restaurant tips—should never be complicated by aggressive pop-ups, clunky user interfaces, or intrusive data tracking scripts.
+        Everyday mathematical and financial calculations—such as computing monthly Equated Monthly Installment (EMI) loan amortizations, forecasting Systematic Investment Plan (SIP) mutual fund compound returns, calculating accurate chronological age across leap years, or inspecting JSON and JWT token payloads—should never be bogged down by slow network latency, invasive advertisement tracking, or privacy risks.
       </p>
       <p>
-        Every calculation engine built into Best Converter runs deterministic JavaScript functions directly inside your client browser. This provides instantaneous real-time responsiveness as you type, eliminates network round-trip delays, and ensures that sensitive financial numbers or personal birthdates remain completely confidential.
+        Every calculator on Best Converter executes deterministic algorithms directly inside your client browser. This means calculations trigger on every keystroke with zero network round trips. Because no data leaves your browser RAM, your personal financial figures, salary numbers, and security credentials remain 100% confidential.
       </p>
       <p>
-        Furthermore, our text utilities—such as word counters, case converters, and JSON formatters—enable developers and writers to inspect character limits, sanitize code syntax, and format data structures entirely offline without sending confidential text to third-party cloud servers.
+        Our financial formulas strictly adhere to standard compound interest and reducing balance loan amortization principles (using standard annuity equations: E = P &times; r &times; (1+r)^n / ((1+r)^n - 1)). All numerical operations implement automated rounding safeguards to prevent IEEE 754 double-precision floating-point anomalies (such as 0.1 + 0.2 = 0.30000000000000004).
       </p>
       <p>
-        All numeric algorithms adhere to IEEE 754 floating-point standards with automated rounding safeguards to prevent floating-point precision anomalies. Whether you are working on a high-end desktop workstation or a mobile smartphone on metered cellular data, our calculation suite provides instant, accurate, and completely private results.
+        Whether you are balancing a household budget on your mobile smartphone, validating API security tokens in a corporate developer workflow, or planning long-term retirement wealth accumulation, our calculation engine provides instantaneous, transparent, and completely private results.
       </p>
     </section>
   </div>

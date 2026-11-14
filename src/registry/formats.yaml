@@ -1,3 +1,45 @@
+- id: heic
+  name: "HEIC / HEIF"
+  extension: ".heic"
+  mime: "image/heic"
+  category: "raster"
+  lossy: true
+  transparency: true
+  animation: false
+  hub: true
+  indexable: true
+  last_reviewed: "2026-11-13"
+  reviewer: "Best Converter Team"
+  title: "HEIC File: What It Is & How to Convert | Best Converter"
+  description: "Learn what HEIC files are, why Apple devices use them, how to view them on Windows, and convert HEIC to JPG securely in your browser without uploads."
+  content: |
+    ## What is a HEIC File?
+
+    HEIC stands for High Efficiency Image Container. It is Apple's implementation of the HEIF (High Efficiency Image File Format) standard, adopted as the default capture format for photos across iPhone and iPad devices starting with iOS 11 in 2017.
+
+    Instead of relying on the legacy JPEG standard developed in 1992, HEIC employs the advanced HEVC (High Efficiency Video Coding, or H.265) compression algorithm. This allows photos to retain comparable or superior optical quality at roughly 40% to 50% smaller file sizes compared to standard JPEGs.
+
+    ### Why Apple Uses HEIC on iPhone and iPad
+
+    - **Storage Savings:** A standard 12MP or 48MP iPhone camera photo that consumes 4.5MB as a JPEG occupies only about 2.0MB to 2.5MB in HEIC format.
+    - **16-Bit Color Depth:** HEIC supports 16-bit color channels, enabling wide-color capture (Display P3) and smoother tonal gradations during HDR landscape shots.
+    - **Container Features:** A single HEIC file can encapsulate multiple image frames (Live Photos), depth map metadata, alpha transparency, and burst sequences.
+
+    ### Compatibility & Software Support
+
+    While HEIC offers superior compression, compatibility across non-Apple devices remains fragmented:
+    - **macOS & iOS:** Full native support in Safari, Finder, Preview, and Photos.
+    - **Web Browsers:** Safari is the only major desktop browser that natively renders HEIC inside standard `&lt;img&gt;` tags. Google Chrome, Mozilla Firefox, and Microsoft Edge do not display raw HEIC images natively without JavaScript WebAssembly decoders.
+    - **Windows 10 & 11:** Windows does not include an out-of-the-box HEVC decoder. Users must install the free HEIF Image Extension alongside a paid HEVC Video Extension from the Microsoft Store, or convert files directly to universal JPG.
+    - **Government & Job Portals:** Nearly all document upload portals, immigration systems, and university admissions websites mandate standard `.jpg` or `.png` files.
+  faq:
+    - q: Why won't my iPhone photos open on Windows?
+      a: Windows requires two separate codec extensions from the Microsoft Store to preview HEIC files. Converting your photos to JPG avoids the need to install or pay for extensions.
+    - q: Does Safari support HEIC natively?
+      a: Yes. Safari on macOS and iOS supports rendering HEIC images in standard web image tags. Other browsers like Chrome and Firefox currently require conversion.
+    - q: How do I change my iPhone back to saving JPG photos?
+      a: Open Settings > Camera > Formats and select "Most Compatible". Future photos will save as standard JPEG files.
+
 - id: jpg
   name: "JPEG / JPG"
   extension: ".jpg"
@@ -7,8 +49,36 @@
   transparency: false
   animation: false
   hub: true
-  title: "JPG Format Guide - Compression, Compatibility & Best Uses"
-  description: "Complete guide to JPG/JPEG: compression trade-offs, universal browser compatibility, best practices, and conversion tools."
+  indexable: true
+  last_reviewed: "2026-11-13"
+  reviewer: "Best Converter Team"
+  title: "JPG File: What It Is & How to Convert | Best Converter"
+  description: "Complete technical guide to JPG and JPEG: 8-bit discrete cosine transform compression, universal browser support, and lossless conversion tools."
+  content: |
+    ## What is a JPG / JPEG File?
+
+    JPEG (Joint Photographic Experts Group), commonly saved with the `.jpg` or `.jpeg` file extension, is the universal standard for digital photographic images. Created in 1992, it is supported by 100% of modern web browsers, operating systems, printers, social media networks, and embedded cameras worldwide.
+
+    JPEG relies on a lossy compression algorithm based on the Discrete Cosine Transform (DCT). It reduces storage footprints by discarding high-frequency chrominance details that the human eye is biologically less sensitive to, making it ideal for realistic photos and complex gradients.
+
+    ### Key Technical Strengths of JPG
+
+    - **Universal Interoperability:** Any operating system from Windows 95 to iOS 18 can open, display, and manipulate JPEG images natively without third-party codecs.
+    - **Adjustable Quality Curve:** You can finely adjust compression from 1% to 100%, allowing web designers to balance visual sharpness against strict kilobyte budgets.
+    - **Low Decoding Overhead:** Hardware decoders built into smartphone chips and desktop GPUs unpack JPEG images instantaneously with minimal battery drain.
+
+    ### Limitations of the Format
+
+    - **No Alpha Transparency:** Unlike PNG and WebP, JPG does not support transparent backgrounds. Transparent pixels are rendered as solid white or black.
+    - **Generation Loss:** Every time a lossy JPG is edited and re-saved, subtle blocky artifacts (macroblocking) accumulate across high-contrast edges.
+    - **8-Bit Color Ceiling:** JPG is restricted to an 8-bit dynamic range (256 tonal steps per RGB channel), preventing true wide-gamut HDR color reproduction.
+  faq:
+    - q: Are .jpg and .jpeg files the exact same format?
+      a: Yes. The three-letter .jpg extension was created for legacy MS-DOS 8.3 filename constraints. The underlying binary bitstream is identical.
+    - q: Why doesn't JPG support transparent backgrounds?
+      a: The JPEG specification only encodes luminance and chrominance color channels. It contains no dedicated alpha channel for transparency.
+    - q: What is the optimal JPEG quality setting for web images?
+      a: A quality rating between 80% and 85% delivers the best balance, eliminating visible compression artifacts while slashing byte size by up to 70%.
 
 - id: png
   name: "PNG"
@@ -19,8 +89,34 @@
   transparency: true
   animation: false
   hub: true
-  title: "PNG Format Guide - Lossless Quality & Transparency"
-  description: "Comprehensive PNG guide: lossless compression, alpha transparency, screenshot clarity, and when to convert to WebP or JPG."
+  indexable: true
+  last_reviewed: "2026-11-13"
+  reviewer: "Best Converter Team"
+  title: "PNG File: What It Is & How to Convert | Best Converter"
+  description: "Complete guide to Portable Network Graphics (PNG): lossless DEFLATE compression, full 8-bit alpha transparency, and browser optimization."
+  content: |
+    ## What is a PNG File?
+
+    PNG (Portable Network Graphics) is a raster image format developed in 1996 as an open, patent-free replacement for GIF. It uses lossless DEFLATE compression (a combination of LZ77 and Huffman coding) to preserve 100% of original pixel data without degradation.
+
+    PNG is the industry standard format for screenshots, UI icons, graphic charts, logos, diagrams, and digital illustrations where crisp text edges, sharp geometric lines, and alpha transparency are required.
+
+    ### Why Choose PNG Over JPG or WebP?
+
+    - **Lossless Pixel Precision:** PNG never introduces compression artifacts, blurred text, or color banding. Re-saving a PNG preserves exact color integrity.
+    - **True Alpha Channel Transparency:** PNG supports 8-bit alpha transparency (256 levels of opacity per pixel), enabling smooth anti-aliased shadows over any background.
+    - **Color Flexibility:** PNG supports 24-bit true color (PNG-24) as well as 8-bit indexed palette mode (PNG-8) for ultra-compact graphic assets.
+
+    ### File Size Considerations
+
+    Because PNG does not discard photographic data, high-resolution camera photos saved as PNG can be 5 to 10 times larger than equivalent JPG or WebP files. For continuous-tone photos, converting PNG to WebP or JPG achieves massive storage reductions.
+  faq:
+    - q: Can PNG compression be adjusted like JPG quality?
+      a: No. Standard PNG is mathematically lossless. Compression levels (1-9) only affect CPU effort during DEFLATE encoding, not the final optical pixels.
+    - q: When should I convert PNG to WebP?
+      a: For website illustrations and UI assets with transparency, WebP typically cuts PNG file size by 26% while preserving alpha transparency.
+    - q: What is the difference between PNG-8 and PNG-24?
+      a: PNG-8 uses a 256-color palette (like GIF), while PNG-24 supports over 16 million colors with true 8-bit alpha channel blending.
 
 - id: webp
   name: "WebP"
@@ -31,20 +127,34 @@
   transparency: true
   animation: true
   hub: true
-  title: "WebP Format Guide - Modern Web Image Optimization"
-  description: "Modern WebP format facts: 25-34% smaller file sizes than JPG, full transparency support, and cross-browser performance."
+  indexable: true
+  last_reviewed: "2026-11-13"
+  reviewer: "Best Converter Team"
+  title: "WebP File: What It Is & How to Convert | Best Converter"
+  description: "Learn about modern WebP images: 25-34% smaller file sizes than JPG, full alpha transparency, animated frames, and cross-browser performance."
+  content: |
+    ## What is a WebP File?
 
-- id: heic
-  name: "HEIC / HEIF"
-  extension: ".heic"
-  mime: "image/heic"
-  category: "raster"
-  lossy: true
-  transparency: true
-  animation: false
-  hub: true
-  title: "HEIC Format Guide - Apple High Efficiency Image Format"
-  description: "Learn about Apple HEIC/HEIF photos, why Windows and Android struggle with it, and how to convert HEIC to JPG securely."
+    WebP is an open modern image format created by Google in 2010 to accelerate web page loading speeds. Based on the VP8 video codec predictive keyframe algorithms, WebP provides both lossy and lossless compression, alpha transparency, and animated frame sequencing within a unified format.
+
+    According to Google Web Vitals benchmarks, lossy WebP images are approximately 25% to 34% smaller than comparable JPEG images at equivalent SSIM quality scores, while lossless WebP files are 26% smaller than standard PNGs.
+
+    ### WebP Capabilities and Features
+
+    - **Lossy Compression with Transparency:** Unlike JPEG, lossy WebP can retain full transparent alpha channels, making it the ideal replacement for heavy transparent PNG banners.
+    - **Universal Browser Support:** Since 2020, WebP is supported natively by Google Chrome, Apple Safari (macOS Big Sur and iOS 14+), Mozilla Firefox, Microsoft Edge, and Opera.
+    - **Animation:** WebP can replace animated GIFs with 24-bit color depth and true 8-bit alpha transparency while slashing file size by over 60%.
+
+    ### When You Need to Convert WebP
+
+    Because some desktop graphics software (like older Adobe Photoshop releases) and desktop file managers still do not display WebP thumbnails natively, converting downloaded WebP web graphics to standard JPG or PNG is frequently necessary.
+  faq:
+    - q: Does every browser support WebP today?
+      a: Yes. All modern browsers including Chrome, Safari, Firefox, and Edge have full native support for WebP images.
+    - q: Can WebP have a transparent background?
+      a: Yes. WebP supports full 8-bit alpha channel transparency in both its lossy and lossless compression modes.
+    - q: Why do images download as .webp instead of .jpg?
+      a: Modern content delivery networks (CDNs) automatically serve WebP to browsers to minimize bandwidth and boost page speed scores.
 
 - id: avif
   name: "AVIF"
@@ -55,8 +165,34 @@
   transparency: true
   animation: true
   hub: true
-  title: "AVIF Format Guide - Next-Gen AV1 Image Compression"
-  description: "Deep dive into AVIF: next-generation AV1 image compression delivering smaller sizes than WebP and JPG at superior fidelity."
+  indexable: true
+  last_reviewed: "2026-11-13"
+  reviewer: "Best Converter Team"
+  title: "AVIF File: What It Is & How to Convert | Best Converter"
+  description: "Next-gen AV1 Image File Format (AVIF) explained: extreme byte compression, 12-bit HDR color depth, browser support, and instant conversion."
+  content: |
+    ## What is an AVIF File?
+
+    AVIF (AV1 Image File Format) is an open, royalty-free next-generation image format developed by the Alliance for Open Media (AOMedia)—a consortium comprising Google, Apple, Microsoft, Mozilla, Netflix, and Amazon. AVIF packages image frames compressed with the ultra-efficient AV1 video codec inside an HEIF container.
+
+    AVIF delivers higher compression efficiency than WebP and JPEG. In rigorous independent benchmark tests, AVIF achieves up to 50% file size reduction compared to legacy JPEG and roughly 20% savings compared to WebP at matching perceptual visual fidelity.
+
+    ### Key Technical Highlights of AVIF
+
+    - **High Dynamic Range (HDR):** AVIF natively supports 10-bit and 12-bit color depths, wide-gamut BT.2020 color spaces, and true HDR luminance ranges up to 10,000 nits.
+    - **Advanced Chroma Subsampling:** Supports 4:4:4, 4:2:2, and 4:2:0 subsampling, as well as monochrome channels for print prepress.
+    - **Modern Browser Support:** Supported across Google Chrome, Mozilla Firefox, Apple Safari (iOS 16+ and macOS Ventura+), and Microsoft Edge.
+
+    ### Why Convert AVIF to JPG?
+
+    Despite growing web support, many legacy image viewers, email clients (such as Microsoft Outlook), and content management systems do not yet accept `.avif` uploads. Converting AVIF to JPG ensures universal delivery everywhere.
+  faq:
+    - q: Is AVIF better than WebP?
+      a: For complex photographic content, AVIF generally produces smaller file sizes and cleaner gradients than WebP, especially at lower bitrates.
+    - q: Does AVIF support transparency?
+      a: Yes. AVIF supports dedicated alpha channels for full lossless or lossy transparency.
+    - q: Does Safari support AVIF images?
+      a: Yes. Safari added native AVIF support starting with iOS 16 and macOS Ventura.
 
 - id: gif
   name: "GIF"
@@ -66,9 +202,10 @@
   lossy: false
   transparency: true
   animation: true
-  hub: true
-  title: "GIF Format Guide - 8-Bit Color & Animation Limitations"
-  description: "The history and specs of GIF: 256-color palette limits, frame-based animations, and why modern web prefers video or WebP."
+  hub: false
+  indexable: false
+  title: "GIF File: Specs & Limitations | Best Converter"
+  description: "Specs and history of Graphics Interchange Format (GIF): 256-color palette limits, frame-based animations, and modern WebP alternatives."
 
 - id: bmp
   name: "BMP"
@@ -78,8 +215,9 @@
   lossy: false
   transparency: false
   animation: false
-  hub: true
-  title: "BMP Format Guide - Raw Bitmap Graphics & Storage Overhead"
+  hub: false
+  indexable: false
+  title: "BMP File: Raw Bitmap Graphics | Best Converter"
   description: "Technical specs of Windows Bitmap (BMP): uncompressed pixel arrays, legacy compatibility, and modern web conversion choices."
 
 - id: tiff
@@ -90,8 +228,9 @@
   lossy: false
   transparency: true
   animation: false
-  hub: true
-  title: "TIFF Format Guide - High-Fidelity Print & Archival Standard"
+  hub: false
+  indexable: false
+  title: "TIFF File: High-Fidelity Print Standard | Best Converter"
   description: "Detailed guide to TIFF images: print prepress workflows, CMYK/archival fidelity, and why TIFF must be converted for the web."
 
 - id: svg
@@ -102,9 +241,10 @@
   lossy: false
   transparency: true
   animation: true
-  hub: true
-  title: "SVG Format Guide - Scalable Vector Graphics for the Web"
-  description: "Guide to Scalable Vector Graphics (SVG): infinite resolution XML vectors, interactive DOM styling, responsive web icons, and rasterization to PNG."
+  hub: false
+  indexable: false
+  title: "SVG File: Scalable Vector Graphics | Best Converter"
+  description: "Guide to Scalable Vector Graphics (SVG): infinite resolution XML vectors, interactive DOM styling, and rasterization to PNG."
 
 - id: jfif
   name: "JFIF"
@@ -115,7 +255,8 @@
   transparency: false
   animation: false
   hub: false
-  title: "JFIF Format Guide - JPEG File Interchange Format"
+  indexable: false
+  title: "JFIF File: JPEG Interchange Format | Best Converter"
   description: "Learn what JFIF files are, why modern browsers download them instead of JPG, and how to safely rename or convert them."
 
 - id: pdf
@@ -127,5 +268,6 @@
   transparency: false
   animation: false
   hub: false
-  title: "PDF Document Format"
-  description: "Complete guide to the Portable Document Format (PDF): universal multi-page document architecture, print fidelity, and image compilation facts."
+  indexable: false
+  title: "PDF File: Universal Document Format | Best Converter"
+  description: "Complete guide to Portable Document Format (PDF): multi-page architecture, print fidelity, and image compilation facts."

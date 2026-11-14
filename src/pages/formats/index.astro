@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { getAllFormats } from '../../registry';
+import { siteConfig } from '../../config/site';
 
 const formats = getAllFormats();
 
@@ -12,9 +13,9 @@ const breadcrumbs = [
 ---
 
 <Layout
-  title="Image & File Formats Guide - Specs & Comparison - Best Converter"
+  title="File Formats Guide: Specs & Comparison | Best Converter"
   description="Comprehensive guide to image formats: JPG, PNG, WebP, HEIC, AVIF, TIFF, BMP, and SVG with technical specs, pros, cons, and conversion tools."
-  canonical="https://app.gudmud.in/formats/"
+  canonical={`${siteConfig.url}/formats/`}
 >
   <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
     <Breadcrumbs items={breadcrumbs} />

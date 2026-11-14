@@ -1,0 +1,356 @@
+Live Audit and Upgrade Plan: Best Converter (app.gudmud.in)
+Audited 13 Nov 2026 at tools.tushar-ikontel.workers.dev | Pages fetched: home, heic-to-jpg, compress-image-to-200kb, percentage-calculator, formats/heic
+1. Verdict
+The foundation is good. The site is not ready to rank yet. You have a clean Astro static build, per-page titles and descriptions, canonical tags, breadcrumbs, a sensible URL structure, legal pages, related-tool links and a noindex gate for drafts. Those are real strengths.
+But in my sample, only one of four content pages is launch-quality (HEIC to JPG). Your main differentiator, the target-size compressor, is still a noindex draft. Calculator pages show a file-drop UI. The format hubs are thin yet indexable. There is a factual error on the flagship page. None of this is hard to fix, but ranking before fixing it would waste your first crawl.
+I cannot edit your repo from here. This document gives the fix list, copy, keyword map and a prompt for your coding agent.
+2. What I could and could not check
+• I read the text of 5 live pages. I could not run JavaScript, see JSON-LD, view robots.txt or the sitemap, measure Core Web Vitals, or open app.gudmud.in directly (blocked for me).
+• So everything about the working tool, schema, speed and indexing needs a check in a real browser and in Search Console.
+• I have no keyword volumes or rankings. Every keyword below is an unvalidated seed.
+3. Findings, by priority
+P0: fix before submitting anything to Google
+1.  Calculator pages use the converter template. The percentage calculator page shows a file drop zone, files-never-leave-your-browser text, a heading reading Percentage Calculator Converter, and file-conversion how-to steps. Calculators need their own template with the actual calculator above the fold.
+2.  Draft notes are public. Pages show Draft content pending human review and Status: Draft / Under Review. Keep that in code comments, never in visible HTML.
+3.  Raw date string shown. Last reviewed prints a JavaScript date with the time zone name. Use a clean date such as 12 Nov 2026 inside a time element with a datetime attribute.
+4.  The differentiator is not live. compress-image-to-200kb is noindex, nofollow with placeholder steps, yet it is linked from the sitewide Popular Converters block on every page. Either finish it or remove the link until it is ready. Also avoid nofollow on your own draft pages.
+5.  Factual error on the flagship page. It says Chrome, Edge, Firefox and Safari do not support HEIC in image tags. Safari does show HEIC. A competitor's page notes Safari is the only browser that shows it. Wrong facts hurt trust and rankings.
+6.  Thin hubs are indexable. /formats/heic/ has a small spec table and one generic paragraph (tailored strengths in its category). The same template likely repeats across hubs. Set noindex until each hub has real content, or write it. Also remove /formats/image/, a generated page titled IMAGE Format Guide that is linked from the compress page.
+7.  Duplicate host. The workers.dev address serves index, follow pages with its own link host. Redirect it with a 301 to app.gudmud.in, or send noindex, so Google does not split signals.
+P1: ranking quality
+8.  Brand inconsistency. The header and titles say Best Converter. The footer says Gudmud. The domain is a subdomain of gudmud.in. Decide the brand and domain now. URL changes later cost rankings. Best Converter is generic and hard to own as a brand search. This is my judgment.
+9.  H1 and subtitle patterns are auto-generated. Compress Image to 200KB Converter and Percentage Calculator Converter read like bugs. Remove the automatic Converter suffix. Replace the identical subtitle on every page with one specific line per page.
+10.  Flagship page depth. HEIC to JPG has 3 FAQs. The page to beat has 16 real ones, a comparison table, measured before/after numbers and dated guides. Needs 8-12 FAQs, a real table and measurements from your own engine.
+11.  Boilerplate repeated everywhere. The Zero-Upload Privacy Guarantee block (and the hub's all conversion tools paragraph) repeats nearly word for word. Shorten it to one line linking to a single, richer privacy explainer page.
+12.  Questionable claims. hardware-accelerated Canvas decoding is stated for HEIC, but the page also says a Web Worker decodes the HEIC bitstream. State only what the engine does. Windows needs the free HEIF Image Extension and a paid HEVC extension (verify current pricing). Say that, not that Windows has no decoder.
+13.  Weak social previews. Open Graph image is a 512px icon and Twitter card type is summary. Use a 1200 x 630 default image and summary_large_image.
+14.  Reviewed claim without a reviewer. Status: Reviewed & Verified appears with no named person. Either show a real reviewer or drop the label.
+15.  Title length. HEIC to JPG Converter - Free, Private, No Upload | Best Converter is about 65 characters. Aim for 60 or fewer so it does not truncate.
+16.  Home page has no tool. The leaders put a working tool on the home page. Add a universal image converter above the fold (drop a file, pick the output format) to compete for image converter and compress image head terms. Keep the directory below it.
+P2: scale and polish
+17.  Add a /privacy-explained/ page and an /all-tools/ index if /tools/ is not one already.
+18.  Sitewide footer blocks list 21 links on every page. Fine for now. Prune or vary them when the site grows past 100 pages.
+19.  Verify JSON-LD (WebApplication, BreadcrumbList, Organization), sitemap contents, robots.txt and ads.txt in the real build.
+20.  Add changelog and open-source links for E-E-A-T.
+4. HEIC to JPG: upgraded page spec
+Title (60 or fewer): HEIC to JPG Converter - Free, No Upload | Best Converter
+Meta (120-158): Convert HEIC to JPG free in your browser. Photos never leave your device, no sign-up, no file limits, and you can batch convert and download as ZIP.
+Only claim no file limits if the engine really has none. State the measured device limits instead.
+H1: HEIC to JPG Converter
+Subtitle (page-specific): Open iPhone photos anywhere. Drop HEIC files, get JPGs, nothing uploaded.
+Sections: the tool; 3-step how-to as a real ordered list; iPhone and Android steps; why convert; HEIC vs JPG as a real table; measured before/after on labeled sample photos; FAQ (below); related links; reviewer and last-reviewed date.
+HEIC vs JPG table rows: compression, typical file size, transparency, color depth, browser support, best for.
+FAQ (12). Verify each answer before publishing:
+1.  Why won't my iPhone photos open on Windows? Windows needs codec extensions from the Microsoft Store. The HEIF Image Extension is free. The HEVC Video Extensions are paid (check current price). Converting to JPG avoids both.
+2.  Does converting reduce quality? HEIC is already lossy. JPG compresses again, so a little detail is lost. At 85-95% quality it is hard to see.
+3.  Are my photos uploaded? No. Files are decoded in your browser and you can check the Network tab.
+4.  Do Live Photos keep their motion? No. You get a still JPG. The motion is stored in a separate video file.
+5.  How do I stop my iPhone saving HEIC? Settings, Camera, Formats, Most Compatible. New photos are saved as JPG. Old ones stay HEIC.
+6.  Are JPG and JPEG the same? Yes. Only the extension differs.
+7.  Will metadata like location stay? State what your engine actually does, and offer a strip-metadata option.
+8.  Can I convert HEIF files? State exactly which extensions your engine accepts.
+9.  Will the JPG be smaller than my HEIC? Often larger, since HEIC is usually the more efficient format. Show a measured range from your own samples. Do not copy a competitor's claim.
+10.  Is there a file limit? State the measured device limits and the batch behavior.
+11.  Why does my iPhone use HEIC? To save space at similar quality. Apple adopted it with iOS 11 in 2017.
+12.  How do I open HEIC on Mac or Android? Apple software opens it natively. Check current Android support before stating details.
+Measurement rule: run your own engine on 5-10 fixture photos, record before and after sizes, and label them sample results. Never invent numbers.
+5. Keyword map (seeds, all volumes UNKNOWN until validated)
+Format: URL | primary keyword | secondary and long-tail | intent | tier
+Live or built now
+• /heic-to-jpg/ | heic to jpg | convert heic to jpg, heic to jpeg, iphone photo to jpg, heic to jpg windows 11, heic to jpg no upload | tool | 1
+• /heic-to-png/ | heic to png | convert heic to png, iphone photo to png | tool | 2
+• /heic-to-pdf/ | heic to pdf | convert heic to pdf, iphone photos to pdf | tool | 2
+• /webp-to-jpg/ | webp to jpg | convert webp to jpeg, save webp as jpg, webp to jpg without losing quality | tool | 1
+• /webp-to-png/ | webp to png | convert webp to png transparent | tool | 2
+• /png-to-webp/ | png to webp | convert png to webp for website | tool | 2
+• /jpg-to-webp/ | jpg to webp | convert jpg to webp smaller | tool | 2
+• /avif-to-jpg/ | avif to jpg | open avif file, convert avif to jpeg | tool | 2
+• /avif-to-png/ | avif to png | avif to png transparent | tool | 3
+• /jpg-to-pdf/ | jpg to pdf | convert jpg to pdf, photos to pdf | tool | 1
+• /png-to-pdf/ | png to pdf | convert png to pdf | tool | 2
+• /jfif-to-jpg/ | jfif to jpg | what is a jfif file, convert jfif to jpeg | tool | 2
+Target-size cluster (the differentiator, finish first)
+• /compress-image-to-20kb/, 30kb, 50kb, 100kb, 150kb, 200kb, 300kb, 500kb, 1mb, 2mb | compress image to {N}kb | reduce image size to {N}kb, compress photo to {N}kb for email or forms, image under {N}kb | tool | 1 for 50, 100, 200, 500kb and 1mb; 2 for the rest
+• /compress-jpg-to-100kb/ and similar | compress jpg to {N}kb | tool | 2
+• /resize-image/ | resize image | resize image in pixels, resize image online | tool | 1
+• /compress-image/ | compress image | compress image online free, reduce image size | tool | 1 (home page tool may carry this)
+Wave 2 pairs (about 25)
+• jpeg-to-jpg, jpg-to-jpeg (check whether one page serves both), png-to-jpg, jpg-to-png, png-to-jpeg, heif-to-jpg, heic-to-webp, webp-to-pdf, avif-to-pdf, tiff-to-jpg, tiff-to-png, tiff-to-pdf, bmp-to-jpg, bmp-to-png, gif-to-jpg, gif-to-png, svg-to-png, svg-to-jpg, ico-to-png, png-to-ico, jpg-to-avif, png-to-avif, avif-to-webp, webp-to-avif, jfif-to-png, jfif-to-pdf, image-to-pdf
+Calculators and text (launch set)
+• /percentage-calculator/ | percentage calculator | percent of a number, percentage increase, percentage decrease, percent change | tool | 1
+• /age-calculator/ | age calculator | calculate age from date of birth, age on a date | tool | 1
+• /date-difference-calculator/ | days between dates | date difference calculator, how many days until | tool | 1
+• /discount-calculator/ | discount calculator | sale price calculator, percent off | tool | 2
+• /tip-calculator/ | tip calculator | split bill calculator | tool | 2
+• /word-counter/ | word counter | character counter, word count online | tool | 1
+• /case-converter/ | case converter | uppercase to lowercase, title case converter, camelCase converter | tool | 2
+• /json-formatter/ | json formatter | json validator, json beautifier, json minify (keep one page, do not split into a separate validator page) | tool | 2
+Calculators and text (wave 2)
+• add-days-to-date, hours-calculator, fraction-calculator, average-calculator, ratio-calculator, percent-change-calculator, csv-to-json, json-to-csv, base64-encode-decode, url-encode-decode, remove-duplicate-lines, text-diff, lorem-ipsum-generator, character-counter (only if the SERP is distinct from the word counter)
+• Avoid at launch: sales tax, VAT, loans, health. They need verified rates and reviewers.
+Cannibalization watch: heic-to-jpg vs heic-to-jpeg, jpg-to-jpeg vs jpeg-to-jpg, word-counter vs character-counter, json-formatter vs json-validator. Check SERP overlap before creating separate pages.
+6. Target-size cluster spec
+This is where you can be better than the field, since the leaders offer size control only as a setting or blog post.
+• Engine: binary search on quality (0.05-0.95, up to 10 passes), then 10% dimension steps down to a 200px minimum edge. Return the best result at or under the target and say clearly when the target is impossible.
+• PNG: explain that quality cannot be tuned, then offer WebP or JPG output.
+• Result row: original size, final size, quality used, dimensions, download.
+• Page uniqueness per size: a short specific use-case paragraph (email limits, upload forms, messaging apps), a tested example with real before/after numbers from your fixtures, and 4-6 FAQs that differ per size. Do not publish claims about specific portals or limits you have not verified.
+• Mobile steps: how to do it on iPhone and Android.
+• Gate: each size page stays noindex until its engine test and content are reviewed.
+7. Template and technical fixes
+• Separate templates for converter, target-size, calculator, text tool, hub, guide.
+• H1 equals the keyword with no automatic suffix.
+• Visible Last reviewed in a time element. Remove internal status text.
+• JSON-LD: WebApplication (free, UtilitiesApplication), BreadcrumbList, Organization and WebSite on the home page, Article on guides. No AggregateRating. Validate in CI.
+• Social: 1200 x 630 default image plus per-page text, summary_large_image.
+• Index gate covers hubs, calculators and guides. Sitemap lists only indexable URLs. Draft pages must not be linked from sitewide blocks.
+• Canonical host fixed. 301 the workers.dev host to app.gudmud.in.
+• Replace repeated privacy block with one line plus link.
+• Add per-page unique subtitle, 3 or more unique FAQs, and a real table where it fits.
+8. Traffic domination architecture
+Honest framing: nobody can promise the world's best traffic. This is the structure that gives you the best odds against incumbents.
+1.  Breadth with quality gates. Roughly 70 feasible image pairs, about 10 to-PDF pages and 30 target-size and resize pages is an estimate of about 110 pages before languages. Publish in batches only while indexing stays above 90%.
+2.  Depth on Tier 1. Match the TinyPNG-level page (table, measured numbers, 8-12 FAQs) for roughly the top 15-20 targets.
+3.  Proof of privacy. Make the Network-tab check visible and simple. It is your real edge over server-based leaders.
+4.  No limits and no friction. The leading free tool caps conversions at 3 per session and 5MB. Say what you offer and make it true.
+5.  Home page tool. Capture the generic head terms with a working universal tool above the fold.
+6.  Freshness. Publish tested guides on newer formats and keep the review date honest.
+7.  Languages. Add 3-4 after English indexes cleanly, chosen by per-language keyword data.
+8.  Links. Open-source the engine, publish your benchmark data, launch on Product Hunt, Hacker News and relevant communities, embed widget with an attribution link.
+Benchmarks and kill rules stay as in the build prompt: month 3 under half indexed means fix quality before adding pages; month 6 under about 3K monthly organic visits with clean indexing means change the angle.
+9. Upgrade prompt for your coding agent
+Paste this into the agent that built the site, together with SEO Upgrade Prompt v2.
+You are upgrading the SEO of {{BRAND}} (app.gudmud.in), a static Astro site. Follow SEO Upgrade Prompt v2 for method and constraints. This task list comes from a live audit. Do not add features beyond it. Never invent metrics. Finish each priority tier and stop for review.
+Tier P0 (before any indexing request):
+1.  Create a separate calculator template with the working calculator above the fold, no file drop zone, and its own how-to copy. Add separate templates for target-size, text tool and hub pages.
+2.  Remove all visible internal text: Draft content pending human review, Status values, and anything similar. Keep status in frontmatter only.
+3.  Format Last reviewed as a readable date inside a time element with a datetime attribute.
+4.  Remove links to unfinished or noindex pages from sitewide blocks. Do not use nofollow on internal draft links.
+5.  Fix the HEIC page claims: Safari supports HEIC in image tags, Windows needs the free HEIF Image Extension and paid HEVC extension (verify), remove hardware-accelerated claims unless true for that code path.
+6.  Make hub pages noindex until they have real content. Delete /formats/image/. Add real content to the HEIC, JPG, PNG, WebP and AVIF hubs first.
+7.  301 the workers.dev host to app.gudmud.in and verify canonicals, sitemap and robots.txt on the final domain.
+8.  Extend seo-lint to run on hubs, calculators and guides.
+Tier P1:
+1.  Rebuild H1 and subtitle generation: H1 equals the keyword with no suffix, subtitle is a unique line per page.
+2.  Shorten titles to 60 characters or fewer using the formulas in v2.
+3.  Upgrade HEIC to JPG using section 4 of the audit: table, measured before/after, 8-12 FAQs, reviewer, last-reviewed date.
+4.  Finish the target-size cluster per section 6 for 50, 100, 200, 500KB and 1MB first, then the rest.
+5.  Replace the repeated privacy block with a short line plus a link to /privacy-explained/.
+6.  Add JSON-LD, 1200 x 630 social image, summary_large_image. Add a universal converter tool to the home page.
+7.  Decide brand and domain and make header, titles, footer and schema consistent.
+Tier P2: add Wave 2 pages from the keyword map in batches of 10, each passing lint with unique content, then measure indexing before the next batch.
+Acceptance: lint and Lighthouse gates pass, no placeholders or internal text visible, every indexable page has a keyword map row and unique FAQs, and the sitemap lists indexable pages only.
+10. What I could not verify
+• Rendering of the tools themselves, schema, robots.txt, sitemap, speed and Core Web Vitals.
+• Whether app.gudmud.in is live and serving the same pages as the workers.dev host.
+• Keyword volumes, difficulty and rankings. Everything in section 5 is a seed.
+• Whether text-extraction hid correct HTML lists. The flattened how-to steps on the HEIC page may be a rendering artifact of my fetch. Check it in the browser.
+• Windows HEIC extension pricing and Android HEIC support details.
+
+SEO Upgrade Prompt v2: Converter and Calculator Platform
+Prepared 12 Nov 2026 | For: the existing tool app (static Astro site, no backend, no admin) | Goal: more qualified Google traffic through better keywords, pages, links and measurement
+A. What I changed in your prompt, and why
+1.  Removed everything specific to ARDF (foundation, research, publications, governance, local SEO). It is the wrong site type for a tool app.
+2.  Removed PHP, MySQL and the admin SEO panel. They contradict the decisions you already made: static, no backend, no admin. SEO fields now live in registry files and config, edited in Git.
+3.  Replaced vague reverse engineering with a fixed teardown method, pre-filled with what I verified on the five sites today, plus a gap matrix.
+4.  Added a data honesty protocol. An AI agent cannot see search volume, keyword difficulty or rankings without paid tools. The old prompt said never invent numbers but gave no way to get real ones. Now the human supplies exports, the agent fills templates, and anything unknown is marked UNKNOWN.
+5.  Added tool-specific SEO: page types, intent classes, tiers, schema choices, ad-safe layout, comparison tables, measured before/after data.
+6.  Added UI simplicity rules and resolved the conflict between no unwanted text and SEO content: any block below the tool must map to a target query, otherwise it is deleted.
+7.  Added deliverable files, acceptance checks, phases and stop points.
+8.  Kept the good parts: audit first, long-tail focus, no cannibalization, no thin or doorway pages, no fake claims, no spam links.
+B. Competitor teardown (verified 12 Nov 2026)
+Baseline only. The agent must re-verify and extend it.
+FreeConvert
+• Flat pair URLs (/heic-to-jpg). Title: HEIC to JPG | FreeConvert.com. Meta description leads with Best HEIC to JPG converter and ends with Online & free.
+• Breadcrumb Home > pair. Tool above the fold with advanced options, including compress to a maximum file size, resize, auto-orient and strip metadata.
+• Below the tool: 3-step how-to, benefit blocks, What is HEIC, How to open HEIC, What is JPG, How to open JPG. Mostly generic boilerplate.
+• Internal link mesh: 70+ links to other-format-to-JPG pages, 12 links to HEIC-to-other pages, plus related tools. It also has per-pair API pages and 15 languages.
+• Limits: files are uploaded and deleted after 8 hours. 1GB cap, with an upsell to skip queues and ads.
+• Lesson: strong long-tail mesh and languages, but weak unique content per page.
+TinyPNG
+• URLs: /convert/heic-to-jpg, /compress/{format}, /convert/to-{format}. Title: Free HEIC to JPG Converter | TinyPNG. Meta description leads with the outcome (photos come out about half the size).
+• The deepest page: why convert, 3 steps, before/after slider with real numbers, HEIC vs JPG comparison table, 16 real FAQs (Live Photos, stopping iPhones saving HEIC, opening on Windows, JPG vs JPEG, metadata), related conversions, dated blog posts on AVIF, WebP and JPEG XL.
+• Free limit is the opening: 3 conversions per session, 5MB each, with ads. Its privacy FAQ describes server-side storage and deletion within 48 hours.
+• Lesson: this is the content standard to beat for flagship pairs. Freshness (new 2026 guides) is part of it.
+ImageCompressor.com
+• Very minimal UI: select files, compress, quality slider, before/after. Everything runs in the browser with WebAssembly, no limits, no signup.
+• Content: one section per format (JPEG, PNG, WebP, GIF), privacy and free sections, three blog posts including How to Compress an Image to an Exact File Size. Sister sites: an image converter and an EXIF viewer.
+• Lesson: the exact-file-size topic and the no-upload angle are already taken by a direct competitor. We must win with dedicated tool pages and better coverage, not by claiming the idea is new.
+CloudConvert
+• Title: File Converter | CloudConvert. Format catalog of 213 formats in 11 categories. Hub URLs /{format}-converter and category hubs, with pair pages like /pdf-to-docx and a Common conversion types block.
+• Minimal homepage, strong security and API credibility.
+• Lesson: a clean hub taxonomy (category, format, pair) is how big converter sites organize crawl paths.
+UnitConverters.net
+• URLs: /length/cm-to-inches.htm. Title and H1: Convert cm to inches. Breadcrumb Home / Length Conversion / page.
+• Content: definitions and history of both units, a static conversion table (11 rows), formula and a worked example, about 40 popular conversion links and about 100 convert-to-other-units links.
+• Lesson: static tables plus a formula and an example capture many numeric queries. The giant link mesh works for a 2008 domain. A new domain should use curated links instead.
+What this means
+• Title pattern across the field: short pair name plus brand. We have no brand authority yet, so add value words (Free, No Upload).
+• Free-tier limits are the opening: TinyPNG's 3 conversions and 5MB cap leaves room for an unlimited, unlimited-size tool.
+• Nobody except ImageCompressor.com processes locally. Make it the headline, and prove it.
+• I could not see their rankings or traffic. That needs paid tools or human-supplied exports.
+C. THE PROMPT
+Paste everything below into your coding agent, inside the existing repo.
+0. Role and objective
+You are the SEO lead and engineer for {{BRAND}} ({{DOMAIN}}), a static, backend-free site of browser-based image converters, target-size compressors, calculators and text tools. Your goal is to maximize relevant organic traffic from Google worldwide by improving keyword targeting, page content, internal linking, technical SEO and measurement. This is an SEO and tool-UX task only. Do not add unrelated features, animations or redesigns beyond the UI rules in section 2.
+1. Hard constraints
+• Static site, no backend, no admin panel, no database. SEO fields live in registry and config files in Git.
+• No audio or video tools, no PDF-to-anything, no OCR, no AI features.
+• All tools run client-side. Files never leave the device. Never claim uploads are technically impossible. Say files are never uploaded, and show how to verify it.
+• Monetization stays AdSense slots (config-driven) plus a labeled house promo. No pop-ups, no interstitials.
+• No keyword stuffing, doorway pages, hidden text, mass-generated near-duplicates, invented metrics, fake reviews or ratings, or spam links.
+• Do not change the URL of any page already indexed without a 301.
+2. UI simplicity rules (modeled on ImageCompressor.com, TinyPNG and CloudConvert)
+Above the fold on every tool page, and nothing else:
+• H1: the keyword, 2-6 words.
+• Optional one-line subtitle.
+• The tool: one drop zone, at most 3 controls (quality slider, output format, target size), result list.
+• Result row: file name, size before and after with percent saved, Download, Download all as ZIP.
+Never: hero art, testimonials, pricing, logo strips, marketing carousels, pop-ups, mega menus, cookie walls beyond the required consent message.
+Header: logo plus at most 3 links (Convert, Compress, Calculators). Footer: legal pages and hub links.
+Below the fold: collapsible sections are allowed (content stays in the DOM and crawlable). Every block must map to at least one target query in the keyword map. A block that maps to none is deleted. Mobile-first, accessible, fast.
+3. Data honesty protocol
+You can: read the repo and build output, fetch public competitor pages (obey robots.txt, 1 request per second, 200 requests in total, no bulk scraping, no login areas), run Lighthouse and PageSpeed Insights, parse public sitemaps.
+You cannot know: search volume, keyword difficulty, rankings, traffic or backlinks. Do not estimate them from memory.
+Rules:
+• Every metric in your documents carries a source, a date and a confidence label: measured, sourced, estimated or UNKNOWN.
+• Make one consolidated data request to the human, with ready templates in /docs/seo/templates:
+    ◦ Keyword Planner export for your seed list (volumes may be ranges)
+    ◦ Ahrefs Webmaster Tools or Search Console exports once the site has data
+    ◦ Google Trends comparisons for priority formats
+    ◦ SERP samples for each Tier 1 keyword: top 10 URLs and domains, whether an AI Overview, featured snippet or People Also Ask appears, recorded for the target country
+• Until data arrives, prioritize by evidence you can verify (what competitors feature in navigation, what they publish about) and mark the result as unvalidated.
+4. Phase A: audit the existing app
+Output /docs/seo/00-audit.md with a severity-ranked list and fixes. Check:
+• Indexable URLs, URL structure, redirects, canonicals, robots.txt, sitemaps, status codes
+• Titles, meta descriptions, H1 and heading structure, duplicate or missing elements
+• Content depth per page, thin or near-duplicate pages, orphan pages, internal link counts, broken links
+• Image alt text and sizes, structured data validity, hreflang readiness
+• Mobile layout, Core Web Vitals, JS and CSS budgets, ad-slot layout shift
+• Whether every tool page works with JS limited and is understandable to crawlers
+Do not assume current rankings or traffic. Use Search Console data if provided.
+5. Phase B: reverse engineer the competitors
+Sites: tinypng.com, imagecompressor.com, freeconvert.com, cloudconvert.com, unitconverters.net, plus up to 5 additional domains that rank on page one for our Tier 1 keywords. The baseline in section B above is a starting point. Verify it, then extend it.
+For each site and page type (home, pair page, compress page, hub, calculator or unit page), record:
+• URL pattern and taxonomy depth, title formula, meta description formula, H1, breadcrumbs
+• Above-the-fold UI, section order, word count, FAQ count and question types
+• Internal link blocks and counts, comparison tables, before/after elements, freshness signals
+• Structured data types found in raw HTML, page weight and Core Web Vitals from public tools
+• Free-tier limits, privacy claims, monetization, languages offered, blog topics and dates
+• Sitemap structure (counts per type, language folders, lastmod behavior)
+Outputs:
+• /docs/seo/01-teardown.md
+• /docs/seo/01-gap-matrix.csv with columns: element, competitors that have it, we have it, action, priority
+• A per-keyword record of who ranks in the top 10 and which page type wins each intent. Do not claim why a page ranks unless the evidence supports it.
+Never copy competitor text. Cite every source with URL and date.
+6. Phase C: keyword research and opportunity matrix
+Seeds: formats we can convert in the browser, modifiers, question forms, platforms, presets, calculators.
+• Modifiers: free, online, no upload, offline, bulk, without losing quality, under X KB, for email, for WhatsApp, for Instagram, on iPhone, Windows 11, Mac, Android.
+• Question forms: what is, how to open, why is my iPhone photo HEIC, X vs Y, is X lossy, how to change.
+Three keyword types: A high-volume, B long-tail, C question-based. Classify intent: transactional-tool, how-to, comparison, definition, troubleshooting.
+For every keyword record: volume (sourced), difficulty (sourced), intent, who ranks, SERP features, AI Overview present, best page type, estimated potential (labeled estimate), relevance.
+Opportunity score = relevance (0-3) x demand (0-3) x winnability (0-3) x buildability (0-3).
+• Winnability signals: weak or thin results in the top 5, forum or old pages ranking, no AI Overview, no giant owning the whole SERP, intent we can satisfy better.
+• Buildability: works client-side with good fidelity, license-safe, we can add unique value.
+Tiers: Tier 1 flagship (about 15-20 targets), Tier 2 (about 60), Tier 3 long tail. Focus on achievable opportunities before head terms.
+Output /docs/seo/02-keyword-opportunity.csv plus a one-page method note.
+7. Phase D: keyword map and page types
+• One primary keyword per URL, with secondary, long-tail and semantic keywords. Write the map to /docs/seo/03-keyword-map.csv.
+• Prevent cannibalization: unique primary keywords, and merge or differentiate pages whose SERPs overlap by 60% or more (using human-supplied SERP data).
+Page types:
+• A. Pair page (/heic-to-jpg/)
+• B. Target-size page (/compress-image-to-200kb/)
+• C. Format hub (/formats/heic/)
+• D. Guide (few, high-intent, with original testing)
+• E. Comparison (X vs Y)
+• F. Calculator
+• G. Unit or measure pair (only niche or complex pairs. Google answers common unit conversions in its own widget.)
+Content standards by tier (my judgment, not a ranking law):
+• Tier 1 pair page (TinyPNG standard): H1; tool; answer-first intro of 40-60 words; 3-step how-to including phone steps; why convert; X vs Y table; measured before/after numbers on labeled sample files; 8-12 real FAQs with short, direct answers; 8-12 curated related links; last-reviewed date. Roughly 900-1,300 words.
+• Tier 2: about 500-800 words, 5-6 FAQs.
+• Tier 3: at least 350 unique words, 3-4 FAQs.
+• Calculator and unit pages: formula, worked example, static lookup table of 8-12 rows, 4-6 FAQs, reverse link.
+• FAQ questions must be unique per page (at most 30% shared with any other page). Before/after numbers must be measured on our own fixtures by our own engine. Never invent them.
+8. On-page rules
+Title formulas (60 characters or fewer, unique):
+• Pair: {From} to {To} Converter - Free, No Upload | {{BRAND}}
+• Target size: Compress Image to {N}KB - Free Online | {{BRAND}}
+• Calculator: {Name} Calculator - Free and Accurate | {{BRAND}}
+• Hub: {FMT} File: What It Is, How to Open and Convert | {{BRAND}}
+Meta descriptions (120-158 characters, unique): outcome plus differentiator plus action. Example: Convert HEIC to JPG free in your browser. Photos never leave your device, no sign-up, no file limits, and you can batch convert and download as ZIP.
+Other rules:
+• One H1 matching the keyword. H2s phrased as the questions people search.
+• Answer first, then detail. Natural use of related entities and synonyms.
+• Descriptive file names and alt text. Width and height on every image.
+• Internal links: 10-20 purposeful links on Tier 1 pages: reverse pair, siblings with the same source, siblings with the same target, related size pages, the format hub, one guide. Descriptive, varied anchors. Add an /all-tools/ HTML index linking every tool. Do not add 70-link mesh blocks at launch.
+• Breadcrumbs on every page. Visible last-reviewed date, updated only on real changes.
+9. Technical SEO and structured data
+• Canonicals, sharded sitemaps with accurate lastmod, robots.txt, clean 404s, 301s, no parameter URLs, correct status codes.
+• Core Web Vitals pass on mobile with ad slots reserved. JS 90KB or less, HTML 60KB or less per page. Lazy-load engines after file selection.
+• i18n-ready URL structure and hreflang helper, disabled until a language launches.
+Schema (valid JSON-LD only):
+• WebApplication (free, UtilitiesApplication, any OS)
+• BreadcrumbList on every page, Organization and WebSite on the home page
+• Article on guides with author and dateModified
+• FAQPage only where the FAQ is visible and genuine, with no expectation of rich results
+• Never use HowTo, fake ratings or AggregateRating without real reviews
+• Validate with Google's Rich Results Test and the Schema Markup Validator
+10. Topical authority and content roadmap
+Clusters: HEIC/HEIF, WebP, AVIF and JPEG XL, JPG and PNG, image to PDF, target-size and resize, calculators, text tools.
+Guide candidates (maximum 12 in the first 90 days, each needing real testing or data):
+• HEIC vs JPG: measured size and quality on sample photos
+• How to compress an image to 200KB, with a tested workflow
+• WebP vs JPG vs AVIF vs JPEG XL: browser support and sizes in 2026
+• How to open HEIC on Windows 11
+• Why iPhone photos are HEIC and how to switch
+• JPG vs JPEG, PNG vs WebP for transparency
+Publish at most 2 per week and only while indexing stays healthy (90%+). Check coverage of newer formats, since TinyPNG is publishing on AVIF, WebP and JPEG XL now.
+11. SERP features and AI-search
+• For each Tier 1 keyword, record AI Overview, featured snippet, People Also Ask and video presence.
+• Do not chase purely definitional queries that AI answers absorb. Win with the tool, tables and measured data.
+• Write short, accurate, answer-first paragraphs. Use real tables. Source facts.
+12. E-E-A-T for a tool site
+• About page (who is behind it and why), a privacy explainer with verification steps, a methodology page (engines, limits, test fixtures), named author and reviewer on guides, changelog, contact, corrections path, open-source repo link.
+• Never invent credentials, partnerships or awards.
+13. Links and authority
+Do: open-source the engine, publish benchmark data, ship an embeddable widget with an attribution link, relevant directories (AlternativeTo, Product Hunt, GitHub awesome lists), developer and teacher communities, Hacker News and Reddit launches when genuinely useful.
+Avoid: paid links, PBNs, automated link building, irrelevant directories, fake guest posts.
+14. International SEO
+• Pick languages by per-language keyword data, not by translation convenience. FreeConvert ships 15 languages, while TinyPNG showed English only, so this is an opportunity (verify).
+• Do per-language keyword research. Human-reviewed content, localized slugs, correct hreflang.
+• Do not launch a language until at least 20 high-intent pages in it are reviewed.
+15. Measurement and improvement loop
+• Verify Search Console and Bing Webmaster Tools. Create /docs/seo/08-measurement.md with a weekly scorecard: indexed ratio, impressions, clicks, CTR, average position by cluster, non-branded share, tool success rate, Core Web Vitals, ad revenue per visit.
+• Weekly queue: pages at positions 5-20, high impressions with low CTR (change one title or meta at a time and wait 14 days), pages not indexed (fix quality), declining pages.
+• Benchmarks and kill rules stay as in the build prompt: month 3 under half indexed means fix quality; month 6 under about 3K organic visits a month with clean indexing means change the angle.
+• Do not report rankings or growth without evidence.
+16. Deliverables and acceptance
+Files in /docs/seo: 00-audit, 01-teardown, 01-gap-matrix, 02-keyword-opportunity, 03-keyword-map, 04-page-specs, 05-internal-linking, 06-schema, 07-content-roadmap, 08-measurement, plus templates.
+Code:
+• Registry gains a seo block: primary_kw, secondary_kws, intent, tier, sources, last_reviewed.
+• Template updates for the page types above.
+• seo-lint extended: title and meta formulas, cannibalization check, FAQ uniqueness ratio, tiered word counts, internal link counts, a rule that fails if any metric in the docs lacks a source tag.
+• Sitemap, schema generator, /all-tools/ page, format hubs, Tier 1 page content drafted with reviewed set to false.
+Acceptance: all lint and Lighthouse gates pass, every indexable page has a keyword-map row, no placeholders, no invented numbers, no UI beyond the section 2 rules.
+17. Working rules
+1.  SEO and the UI rules are the only priority.
+2.  First reply: your plan (under 400 words) and the one consolidated data request. Then start Phase A.
+3.  Finish each phase with a short summary and stop for review before the next.
+4.  Make small commits. Never remove or rename an indexed URL without a 301.
+5.  Respect robots.txt and site terms in competitor research. Never copy text. Cite everything.
+6.  If evidence conflicts or is missing, say so. Do not fill gaps with guesses.
+7.  Ask at most one clarifying question at a time and only when blocked.
+18. Phases
+• A (days 1-2): audit and teardown.
+• B (days 3-5): keyword research and data request. Wait for the human's exports.
+• C (days 6-7): keyword map and page specs.
+• D (weeks 2-3): implementation and content for Tier 1 pages.
+• E (ongoing): launch, measure weekly, expand in batches.
+Final goal
+Build a research-backed SEO system that wins long-tail converter and calculator queries worldwide with better, simpler, faster pages than the incumbents. Think like an experienced SEO strategist, technical SEO engineer and organic growth lead. Every decision must rest on evidence, search intent and realistic ranking opportunities, not assumptions.
+What I could not verify
+• Competitor rankings, keyword volumes and traffic. I saw only public pages today.
+• Whether competitors use structured data (the fetched text did not expose JSON-LD).
+• CloudConvert's language coverage and TinyPNG's non-English pages.
+• The current behavior of FAQ rich results. Treat them as unreliable.
+• Whether ImageCompressor.com's sister sites share ownership beyond the shared navigation.

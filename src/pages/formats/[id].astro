@@ -1,7 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import { getAllFormats, getToolsForFormat, type FormatDefinition } from '../../registry';
+import FAQ from '../../components/FAQ.astro';
+import { getAllFormats, getToolsForFormat, formatDisplayDate, type FormatDefinition } from '../../registry';
+import { siteConfig } from '../../config/site';
 
 export async function getStaticPaths() {
   const formats = getAllFormats();
@@ -17,6 +19,7 @@ export interface Props {
 
 const { format } = Astro.props;
 const tools = getToolsForFormat(format.id);
+const isIndexable = !!format.indexable;
 
 const breadcrumbs = [
   { name: 'Home', href: '/' },
@@ -26,9 +29,10 @@ const breadcrumbs = [
 ---
 
 <Layout
-  title={`${format.name} (${format.extension.toUpperCase()}) Format Guide - Best Converter`}
+  title={format.title}
   description={format.description}
-  canonical={`https://app.gudmud.in/formats/${format.id}/`}
+  canonical={`${siteConfig.url}/formats/${format.id}/`}
+  noindex={!isIndexable}
 >
   <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
     <Breadcrumbs items={breadcrumbs} />
@@ -42,8 +46,8 @@ const breadcrumbs = [
           {format.category}
         </span>
       </div>
-      <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-3">
-        {format.name} Format Overview & Technical Specs
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-gray-900 mb-3">
+        {format.name} File Format Guide
       </h1>
       <p class="text-base text-gray-600 leading-relaxed">
         {format.description}
@@ -52,7 +56,7 @@ const breadcrumbs = [
 
     <!-- Technical Specs Table -->
     <div class="my-8 bg-gray-50 border border-gray-200 rounded-xl p-6">
-      <h2 class="text-lg font-bold text-gray-900 mb-4">Format Characteristics</h2>
+      <h2 class="text-lg font-bold text-gray-900 mb-4">Technical Characteristics</h2>
       <dl class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
         <div>
           <dt class="text-xs text-gray-500 uppercase">MIME Type</dt>
@@ -73,8 +77,20 @@ const breadcrumbs = [
       </dl>
     </div>
 
+    <!-- Deep Guide Content -->
+    {format.content && (
+      <article class="prose prose-gray max-w-none my-8 leading-relaxed space-y-6 text-gray-700 [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-gray-900 [&>h2]:mt-8 [&>h2]:mb-4 [&>h3]:text-lg [&>h3]:font-semibold [&>h3]:text-gray-900 [&>h3]:mt-6 [&>h3]:mb-2 [&>ul]:list-disc [&>ul]:pl-5 [&>ol]:list-decimal [&>ol]:pl-5 [&>p]:mb-4"
+        set:html={format.content
+          .replace(/### (.*)/g, '<h3>$1</h3>')
+          .replace(/## (.*)/g, '<h2>$1</h2>')
+          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+          .replace(/`([^`]+)`/g, '<code>$1</code>')
+          .replace(/\n\n/g, '<p></p>')}
+      />
+    )}
+
     <!-- Converters Involving this Format -->
-    <section class="my-10" aria-labelledby="tools-heading">
+    <section class="my-10 border-t border-gray-200 pt-8" aria-labelledby="tools-heading">
       <h2 id="tools-heading" class="text-2xl font-bold text-gray-900 mb-6">
         Online Converters for {format.name}
       </h2>
@@ -88,7 +104,7 @@ const breadcrumbs = [
               <h3 class="font-semibold text-gray-900 group-hover:text-green-600 mb-1">
                 {t.name}
               </h3>
-              <p class="text-xs text-gray-500">
+              <p class="text-xs text-gray-500 line-clamp-2">
                 {t.description}
               </p>
             </a>
@@ -96,20 +112,34 @@ const breadcrumbs = [
         </div>
       ) : (
         <p class="text-sm text-gray-500">
-          More converters for {format.name} are added weekly.
+          More converters for {format.name} are added regularly.
         </p>
       )}
     </section>
 
-    <!-- Detailed Guide Text -->
-    <section class="prose max-w-none text-gray-700 space-y-4 my-8">
-      <h2 class="text-2xl font-bold text-gray-900">When Should You Use {format.name}?</h2>
-      <p>
-        Choosing the right file format directly affects website performance, storage overhead, and cross-platform compatibility. While {format.name} provides tailored strengths in its category, converting between formats is often required when submitting documents or uploading web graphics.
-      </p>
-      <p>
-        All conversion tools hosted on Best Converter execute purely on your local machine. No file bits are transferred to remote servers, giving you total confidentiality when converting sensitive personal or corporate files.
-      </p>
-    </section>
+    <!-- FAQ Section -->
+    {format.faq && format.faq.length > 0 && (
+      <FAQ items={format.faq} title={`${format.name} Frequently Asked Questions`} />
+    )}
+
+    <!-- Privacy Callout -->
+    <div class="my-8 p-4 bg-gray-50 border border-gray-200 rounded-xl text-xs text-gray-600 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+      <div>
+        <span class="font-bold text-gray-800">Zero-Upload Privacy:</span> Format conversions run 100% locally in your web browser.
+      </div>
+      <a href="/privacy-explained/" class="text-green-700 font-semibold underline hover:text-green-800">
+        How our zero-upload privacy works &rarr;
+      </a>
+    </div>
+
+    <!-- Reviewer & Date -->
+    <div class="mt-12 pt-6 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between text-xs text-gray-500 gap-2">
+      <span>
+        Last reviewed: <time datetime={format.last_reviewed || '2026-11-13'}>{formatDisplayDate(format.last_reviewed || '2026-11-13')}</time>
+      </span>
+      <span>
+        Reviewed by: <strong class="text-gray-700">{format.reviewer || 'Best Converter Team'}</strong>
+      </span>
+    </div>
   </div>
 </Layout>

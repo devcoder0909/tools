@@ -11,10 +11,21 @@ function ensureDist() {
   }
 }
 
-function generateUrlXml(loc: string, lastmod: string, changefreq: string = 'weekly', priority: string = '0.8') {
+function formatIsoDate(dateVal: any): string {
+  try {
+    const d = new Date(dateVal);
+    if (!isNaN(d.getTime())) {
+      return d.toISOString().split('T')[0];
+    }
+  } catch {}
+  return new Date().toISOString().split('T')[0];
+}
+
+function generateUrlXml(loc: string, lastmod: any, changefreq: string = 'weekly', priority: string = '0.8') {
+  const formattedDate = formatIsoDate(lastmod);
   return `  <url>
     <loc>${loc}</loc>
-    <lastmod>${lastmod}</lastmod>
+    <lastmod>${formattedDate}</lastmod>
     <changefreq>${changefreq}</changefreq>
     <priority>${priority}</priority>
   </url>`;
@@ -30,6 +41,7 @@ export function buildSitemaps() {
     { url: `${siteConfig.url}/tools/`, priority: '0.9' },
     { url: `${siteConfig.url}/calculators/`, priority: '0.9' },
     { url: `${siteConfig.url}/formats/`, priority: '0.8' },
+    { url: `${siteConfig.url}/privacy-explained/`, priority: '0.7' },
     { url: `${siteConfig.url}/about/`, priority: '0.5' },
     { url: `${siteConfig.url}/privacy/`, priority: '0.3' },
     { url: `${siteConfig.url}/cookies/`, priority: '0.3' },
@@ -43,11 +55,11 @@ ${staticPages.map((p) => generateUrlXml(p.url, today, 'weekly', p.priority)).joi
 </urlset>`;
   fs.writeFileSync(path.join(DIST_DIR, 'sitemap-pages.xml'), pagesXml, 'utf-8');
 
-  // 2. Formats Sitemap
-  const formats = getAllFormats();
+  // 2. Formats Sitemap - ONLY reviewed & indexable hubs!
+  const formats = getAllFormats().filter((f) => f.hub && f.indexable);
   const formatsXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${formats.map((f) => generateUrlXml(`${siteConfig.url}/formats/${f.id}/`, today, 'monthly', '0.7')).join('\n')}
+${formats.map((f) => generateUrlXml(`${siteConfig.url}/formats/${f.id}/`, f.last_reviewed || today, 'monthly', '0.7')).join('\n')}
 </urlset>`;
   fs.writeFileSync(path.join(DIST_DIR, 'sitemap-formats.xml'), formatsXml, 'utf-8');
 

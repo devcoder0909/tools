@@ -7,25 +7,38 @@ export interface ToolFaq {
   a: string;
 }
 
+export interface ToolSeo {
+  primary_kw: string;
+  secondary_kws?: string[];
+  intent?: 'tool' | 'calculator' | 'how-to' | 'comparison' | 'definition';
+  tier?: number;
+  sources?: string;
+  last_reviewed?: string;
+}
+
 export interface ToolDefinition {
   id: string;
-  kind: 'converter' | 'calculator' | 'text';
+  kind: 'converter' | 'calculator' | 'text' | 'pdf' | 'generator' | 'finance' | 'media' | 'developer';
   slug: string;
   name: string;
   title: string;
+  subtitle?: string;
   description: string;
   from?: string;
   to?: string;
   engine: string;
   options?: any[];
   presets?: string[];
+  targetBytes?: number;
   content: string;
   faq?: ToolFaq[];
   related?: string[];
   indexable: boolean;
   reviewed: boolean;
   last_reviewed: string;
+  reviewer?: string;
   lang: string;
+  seo?: ToolSeo;
 }
 
 export interface FormatDefinition {
@@ -38,8 +51,13 @@ export interface FormatDefinition {
   transparency: boolean;
   animation: boolean;
   hub: boolean;
+  indexable?: boolean;
   title: string;
   description: string;
+  content?: string;
+  faq?: ToolFaq[];
+  last_reviewed?: string;
+  reviewer?: string;
 }
 
 const REGISTRY_DIR = path.resolve(process.cwd(), 'src/registry');
@@ -92,4 +110,26 @@ export function getRelatedTools(tool: ToolDefinition): ToolDefinition[] {
   return tools
     .filter((t) => t.slug !== tool.slug && (t.from === tool.from || t.to === tool.to || t.kind === tool.kind))
     .slice(0, 4);
+}
+
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+export function formatDisplayDate(dateStr?: string): string {
+  if (!dateStr) return '13 Nov 2026';
+  try {
+    const parts = dateStr.split('-');
+    if (parts.length === 3) {
+      const year = parts[0];
+      const monthIdx = parseInt(parts[1], 10) - 1;
+      const day = parseInt(parts[2], 10);
+      if (monthIdx >= 0 && monthIdx < 12 && !isNaN(day)) {
+        return `${day} ${MONTHS[monthIdx]} ${year}`;
+      }
+    }
+    const d = new Date(dateStr);
+    if (!isNaN(d.getTime())) {
+      return `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
+    }
+  } catch {}
+  return dateStr;
 }
