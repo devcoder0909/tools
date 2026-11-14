@@ -75,3 +75,12 @@ const fullTitle = title.includes(siteConfig.brand)
     set:html={JSON.stringify(Array.isArray(jsonLd) ? jsonLd : [jsonLd])}
   />
 )}
+
+<!-- Progressive Web App Service Worker -->
+<script is:inline>
+  if ('serviceWorker' in navigator && window.location.protocol === 'https:') {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
+    });
+  }
+</script>
