@@ -1,0 +1,3708 @@
+[
+  {
+    "slug": "iit-madras",
+    "name": "Indian Institute of Technology Madras",
+    "short_name": "IIT Madras",
+    "city": "Chennai",
+    "state": "Tamil Nadu",
+    "type": "IIT",
+    "official_url": "https://www.iitm.ac.in",
+    "josaa_code": "101",
+    "established": 1959,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 1,
+        "score": 90.04
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 1,
+        "score": 89.79
+      },
+      {
+        "year": 2024,
+        "category": "Overall",
+        "rank": 1,
+        "score": 86.42
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iit-delhi",
+    "name": "Indian Institute of Technology Delhi",
+    "short_name": "IIT Delhi",
+    "city": "New Delhi",
+    "state": "Delhi",
+    "type": "IIT",
+    "official_url": "https://home.iitd.ac.in",
+    "josaa_code": "102",
+    "established": 1961,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 2,
+        "score": 88.12
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 2,
+        "score": 88.08
+      },
+      {
+        "year": 2024,
+        "category": "Overall",
+        "rank": 4,
+        "score": 82.16
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iit-bombay",
+    "name": "Indian Institute of Technology Bombay",
+    "short_name": "IIT Bombay",
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "type": "IIT",
+    "official_url": "https://www.iitb.ac.in",
+    "josaa_code": "103",
+    "established": 1958,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 3,
+        "score": 84.11
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 3,
+        "score": 83.94
+      },
+      {
+        "year": 2024,
+        "category": "Overall",
+        "rank": 3,
+        "score": 82.52
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iit-kanpur",
+    "name": "Indian Institute of Technology Kanpur",
+    "short_name": "IIT Kanpur",
+    "city": "Kanpur",
+    "state": "Uttar Pradesh",
+    "type": "IIT",
+    "official_url": "https://www.iitk.ac.in",
+    "josaa_code": "104",
+    "established": 1959,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 4,
+        "score": 83.92
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 4,
+        "score": 83.47
+      },
+      {
+        "year": 2024,
+        "category": "Overall",
+        "rank": 5,
+        "score": 80.65
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iit-roorkee",
+    "name": "Indian Institute of Technology Roorkee",
+    "short_name": "IIT Roorkee",
+    "city": "Roorkee",
+    "state": "Uttarakhand",
+    "type": "IIT",
+    "official_url": "https://www.iitr.ac.in",
+    "josaa_code": "105",
+    "established": 1847,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 5,
+        "score": 79.52
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 5,
+        "score": 78.43
+      },
+      {
+        "year": 2024,
+        "category": "Overall",
+        "rank": 8,
+        "score": 73.18
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iit-kharagpur",
+    "name": "Indian Institute of Technology Kharagpur",
+    "short_name": "IIT Kharagpur",
+    "city": "Kharagpur",
+    "state": "West Bengal",
+    "type": "IIT",
+    "official_url": "https://www.iitkgp.ac.in",
+    "josaa_code": "106",
+    "established": 1951,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 6,
+        "score": 79.01
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 6,
+        "score": 77.27
+      },
+      {
+        "year": 2024,
+        "category": "Overall",
+        "rank": 6,
+        "score": 75.87
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iit-guwahati",
+    "name": "Indian Institute of Technology Guwahati",
+    "short_name": "IIT Guwahati",
+    "city": "Guwahati",
+    "state": "Assam",
+    "type": "IIT",
+    "official_url": "https://www.iitg.ac.in",
+    "josaa_code": "107",
+    "established": 1994,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 7,
+        "score": 73.68
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 7,
+        "score": 72.98
+      },
+      {
+        "year": 2024,
+        "category": "Overall",
+        "rank": 9,
+        "score": 70.14
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iit-hyderabad",
+    "name": "Indian Institute of Technology Hyderabad",
+    "short_name": "IIT Hyderabad",
+    "city": "Sangareddy",
+    "state": "Telangana",
+    "type": "IIT",
+    "official_url": "https://www.iith.ac.in",
+    "josaa_code": "108",
+    "established": 2008,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 8,
+        "score": 71.3
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 8,
+        "score": 70.28
+      },
+      {
+        "year": 2024,
+        "category": "Overall",
+        "rank": 12,
+        "score": 66.85
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iit-bhu-varanasi",
+    "name": "Indian Institute of Technology (BHU) Varanasi",
+    "short_name": "IIT BHU",
+    "city": "Varanasi",
+    "state": "Uttar Pradesh",
+    "type": "IIT",
+    "official_url": "https://www.iitbhu.ac.in",
+    "josaa_code": "109",
+    "established": 1919,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 10,
+        "score": 65.73
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 15,
+        "score": 63.74
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iit-ism-dhanbad",
+    "name": "Indian Institute of Technology (ISM) Dhanbad",
+    "short_name": "IIT ISM Dhanbad",
+    "city": "Dhanbad",
+    "state": "Jharkhand",
+    "type": "IIT",
+    "official_url": "https://www.iitism.ac.in",
+    "josaa_code": "110",
+    "established": 1926,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 11,
+        "score": 65.26
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 17,
+        "score": 63.5
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iit-indore",
+    "name": "Indian Institute of Technology Indore",
+    "short_name": "IIT Indore",
+    "city": "Indore",
+    "state": "Madhya Pradesh",
+    "type": "IIT",
+    "official_url": "https://www.iiti.ac.in",
+    "josaa_code": "111",
+    "established": 2009,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 12,
+        "score": 64.91
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 14,
+        "score": 63.93
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iit-ropar",
+    "name": "Indian Institute of Technology Ropar",
+    "short_name": "IIT Ropar",
+    "city": "Rupnagar",
+    "state": "Punjab",
+    "type": "IIT",
+    "official_url": "https://www.iitrpr.ac.in",
+    "josaa_code": "112",
+    "established": 2008,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 14,
+        "score": 63.55
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 22,
+        "score": 61.4
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iit-mandi",
+    "name": "Indian Institute of Technology Mandi",
+    "short_name": "IIT Mandi",
+    "city": "Mandi",
+    "state": "Himachal Pradesh",
+    "type": "IIT",
+    "official_url": "https://www.iitmandi.ac.in",
+    "josaa_code": "113",
+    "established": 2009,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 15,
+        "score": 63.2
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 33,
+        "score": 56.64
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iit-gandhinagar",
+    "name": "Indian Institute of Technology Gandhinagar",
+    "short_name": "IIT Gandhinagar",
+    "city": "Gandhinagar",
+    "state": "Gujarat",
+    "type": "IIT",
+    "official_url": "https://www.iitgn.ac.in",
+    "josaa_code": "114",
+    "established": 2008,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 16,
+        "score": 62.9
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 18,
+        "score": 62.43
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iit-jodhpur",
+    "name": "Indian Institute of Technology Jodhpur",
+    "short_name": "IIT Jodhpur",
+    "city": "Jodhpur",
+    "state": "Rajasthan",
+    "type": "IIT",
+    "official_url": "https://www.iitj.ac.in",
+    "josaa_code": "115",
+    "established": 2008,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 18,
+        "score": 61.8
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 30,
+        "score": 58.12
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iit-patna",
+    "name": "Indian Institute of Technology Patna",
+    "short_name": "IIT Patna",
+    "city": "Patna",
+    "state": "Bihar",
+    "type": "IIT",
+    "official_url": "https://www.iitp.ac.in",
+    "josaa_code": "116",
+    "established": 2008,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 22,
+        "score": 59.85
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 41,
+        "score": 54.34
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iit-bhubaneswar",
+    "name": "Indian Institute of Technology Bhubaneswar",
+    "short_name": "IIT Bhubaneswar",
+    "city": "Bhubaneswar",
+    "state": "Odisha",
+    "type": "IIT",
+    "official_url": "https://www.iitbbs.ac.in",
+    "josaa_code": "117",
+    "established": 2008,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 23,
+        "score": 59.2
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 47,
+        "score": 52.68
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iit-tirupati",
+    "name": "Indian Institute of Technology Tirupati",
+    "short_name": "IIT Tirupati",
+    "city": "Tirupati",
+    "state": "Andhra Pradesh",
+    "type": "IIT",
+    "official_url": "https://www.iittp.ac.in",
+    "josaa_code": "118",
+    "established": 2015,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 28,
+        "score": 56.4
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 59,
+        "score": 48.9
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iit-palakkad",
+    "name": "Indian Institute of Technology Palakkad",
+    "short_name": "IIT Palakkad",
+    "city": "Palakkad",
+    "state": "Kerala",
+    "type": "IIT",
+    "official_url": "https://www.iitpkd.ac.in",
+    "josaa_code": "119",
+    "established": 2015,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 36,
+        "score": 53.8
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 69,
+        "score": 46.5
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iit-dharwad",
+    "name": "Indian Institute of Technology Dharwad",
+    "short_name": "IIT Dharwad",
+    "city": "Dharwad",
+    "state": "Karnataka",
+    "type": "IIT",
+    "official_url": "https://www.iitdh.ac.in",
+    "josaa_code": "120",
+    "established": 2016,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 59,
+        "score": 47.9
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 93,
+        "score": 41.2
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iit-bhilai",
+    "name": "Indian Institute of Technology Bhilai",
+    "short_name": "IIT Bhilai",
+    "city": "Durg",
+    "state": "Chhattisgarh",
+    "type": "IIT",
+    "official_url": "https://www.iitbhilai.ac.in",
+    "josaa_code": "121",
+    "established": 2016,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 60,
+        "score": 47.6
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 81,
+        "score": 43.1
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iit-goa",
+    "name": "Indian Institute of Technology Goa",
+    "short_name": "IIT Goa",
+    "city": "Ponda",
+    "state": "Goa",
+    "type": "IIT",
+    "official_url": "https://www.iitgoa.ac.in",
+    "josaa_code": "122",
+    "established": 2016,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 65,
+        "score": 46.8
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iit-jammu",
+    "name": "Indian Institute of Technology Jammu",
+    "short_name": "IIT Jammu",
+    "city": "Jammu",
+    "state": "Jammu and Kashmir",
+    "type": "IIT",
+    "official_url": "https://www.iitjammu.ac.in",
+    "josaa_code": "123",
+    "established": 2016,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 66,
+        "score": 46.5
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 67,
+        "score": 47.1
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "nit-trichy",
+    "name": "National Institute of Technology Tiruchirappalli",
+    "short_name": "NIT Trichy",
+    "city": "Tiruchirappalli",
+    "state": "Tamil Nadu",
+    "type": "NIT",
+    "official_url": "https://www.nitt.edu",
+    "josaa_code": "201",
+    "established": 1964,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 9,
+        "score": 66.85
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 9,
+        "score": 69.71
+      },
+      {
+        "year": 2024,
+        "category": "Overall",
+        "rank": 31,
+        "score": 58.4
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "nit-surathkal",
+    "name": "National Institute of Technology Karnataka Surathkal",
+    "short_name": "NITK Surathkal",
+    "city": "Mangalore",
+    "state": "Karnataka",
+    "type": "NIT",
+    "official_url": "https://www.nitk.ac.in",
+    "josaa_code": "202",
+    "established": 1960,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 17,
+        "score": 62.4
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 12,
+        "score": 65.26
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "nit-rourkela",
+    "name": "National Institute of Technology Rourkela",
+    "short_name": "NIT Rourkela",
+    "city": "Rourkela",
+    "state": "Odisha",
+    "type": "NIT",
+    "official_url": "https://www.nitrkl.ac.in",
+    "josaa_code": "203",
+    "established": 1961,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 21,
+        "score": 60.1
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 16,
+        "score": 63.6
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "nit-warangal",
+    "name": "National Institute of Technology Warangal",
+    "short_name": "NIT Warangal",
+    "city": "Warangal",
+    "state": "Telangana",
+    "type": "NIT",
+    "official_url": "https://www.nitw.ac.in",
+    "josaa_code": "204",
+    "established": 1959,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 25,
+        "score": 58.2
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 21,
+        "score": 61.9
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiest-shibpur",
+    "name": "Indian Institute of Engineering Science and Technology Shibpur",
+    "short_name": "IIEST Shibpur",
+    "city": "Howrah",
+    "state": "West Bengal",
+    "type": "NIT",
+    "official_url": "https://www.iiests.ac.in",
+    "josaa_code": "205",
+    "established": 1856,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 29,
+        "score": 55.8
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 35,
+        "score": 55.4
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "nit-calicut",
+    "name": "National Institute of Technology Calicut",
+    "short_name": "NIT Calicut",
+    "city": "Kozhikode",
+    "state": "Kerala",
+    "type": "NIT",
+    "official_url": "https://www.nitc.ac.in",
+    "josaa_code": "206",
+    "established": 1961,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 30,
+        "score": 55.4
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 23,
+        "score": 61.1
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "vnit-nagpur",
+    "name": "Visvesvaraya National Institute of Technology Nagpur",
+    "short_name": "VNIT Nagpur",
+    "city": "Nagpur",
+    "state": "Maharashtra",
+    "type": "NIT",
+    "official_url": "https://vnit.ac.in",
+    "josaa_code": "207",
+    "established": 1960,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 31,
+        "score": 55.1
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 41,
+        "score": 54.3
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "mnit-jaipur",
+    "name": "Malaviya National Institute of Technology Jaipur",
+    "short_name": "MNIT Jaipur",
+    "city": "Jaipur",
+    "state": "Rajasthan",
+    "type": "NIT",
+    "official_url": "https://www.mnit.ac.in",
+    "josaa_code": "208",
+    "established": 1963,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 37,
+        "score": 53.5
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 37,
+        "score": 54.8
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "mnnit-allahabad",
+    "name": "Motilal Nehru National Institute of Technology Allahabad",
+    "short_name": "MNNIT Allahabad",
+    "city": "Prayagraj",
+    "state": "Uttar Pradesh",
+    "type": "NIT",
+    "official_url": "https://www.mnnit.ac.in",
+    "josaa_code": "209",
+    "established": 1961,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 43,
+        "score": 52.1
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 49,
+        "score": 52.3
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "svnit-surat",
+    "name": "Sardar Vallabhbhai National Institute of Technology Surat",
+    "short_name": "SVNIT Surat",
+    "city": "Surat",
+    "state": "Gujarat",
+    "type": "NIT",
+    "official_url": "https://www.svnit.ac.in",
+    "josaa_code": "210",
+    "established": 1961,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 44,
+        "score": 51.9
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 65,
+        "score": 47.4
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "nit-silchar",
+    "name": "National Institute of Technology Silchar",
+    "short_name": "NIT Silchar",
+    "city": "Silchar",
+    "state": "Assam",
+    "type": "NIT",
+    "official_url": "https://www.nits.ac.in",
+    "josaa_code": "211",
+    "established": 1967,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 49,
+        "score": 50.8
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 40,
+        "score": 54.4
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "nit-durgapur",
+    "name": "National Institute of Technology Durgapur",
+    "short_name": "NIT Durgapur",
+    "city": "Durgapur",
+    "state": "West Bengal",
+    "type": "NIT",
+    "official_url": "https://nitdgp.ac.in",
+    "josaa_code": "212",
+    "established": 1960,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 51,
+        "score": 50.2
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 43,
+        "score": 53.8
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "nit-kurukshetra",
+    "name": "National Institute of Technology Kurukshetra",
+    "short_name": "NIT Kurukshetra",
+    "city": "Kurukshetra",
+    "state": "Haryana",
+    "type": "NIT",
+    "official_url": "https://www.nitkkr.ac.in",
+    "josaa_code": "213",
+    "established": 1963,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 58,
+        "score": 48.3
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 58,
+        "score": 49.2
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "nit-jalandhar",
+    "name": "Dr. B R Ambedkar National Institute of Technology Jalandhar",
+    "short_name": "NIT Jalandhar",
+    "city": "Jalandhar",
+    "state": "Punjab",
+    "type": "NIT",
+    "official_url": "https://www.nitj.ac.in",
+    "josaa_code": "214",
+    "established": 1989,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 62,
+        "score": 47.3
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 46,
+        "score": 52.8
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "nit-meghalaya",
+    "name": "National Institute of Technology Meghalaya",
+    "short_name": "NIT Meghalaya",
+    "city": "Shillong",
+    "state": "Meghalaya",
+    "type": "NIT",
+    "official_url": "https://www.nitm.ac.in",
+    "josaa_code": "215",
+    "established": 2010,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 64,
+        "score": 46.9
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 72,
+        "score": 45.9
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "nit-patna",
+    "name": "National Institute of Technology Patna",
+    "short_name": "NIT Patna",
+    "city": "Patna",
+    "state": "Bihar",
+    "type": "NIT",
+    "official_url": "https://www.nitp.ac.in",
+    "josaa_code": "216",
+    "established": 1886,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 71,
+        "score": 45.8
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 56,
+        "score": 49.5
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "nit-raipur",
+    "name": "National Institute of Technology Raipur",
+    "short_name": "NIT Raipur",
+    "city": "Raipur",
+    "state": "Chhattisgarh",
+    "type": "NIT",
+    "official_url": "https://www.nitrr.ac.in",
+    "josaa_code": "217",
+    "established": 1956,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 73,
+        "score": 45.4
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 70,
+        "score": 46.2
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "nit-srinagar",
+    "name": "National Institute of Technology Srinagar",
+    "short_name": "NIT Srinagar",
+    "city": "Srinagar",
+    "state": "Jammu and Kashmir",
+    "type": "NIT",
+    "official_url": "https://www.nitsri.ac.in",
+    "josaa_code": "218",
+    "established": 1960,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 79,
+        "score": 44.5
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 82,
+        "score": 43
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "manit-bhopal",
+    "name": "Maulana Azad National Institute of Technology Bhopal",
+    "short_name": "MANIT Bhopal",
+    "city": "Bhopal",
+    "state": "Madhya Pradesh",
+    "type": "NIT",
+    "official_url": "https://www.manit.ac.in",
+    "josaa_code": "219",
+    "established": 1960,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 80,
+        "score": 44.3
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 80,
+        "score": 43.4
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "nit-agartala",
+    "name": "National Institute of Technology Agartala",
+    "short_name": "NIT Agartala",
+    "city": "Agartala",
+    "state": "Tripura",
+    "type": "NIT",
+    "official_url": "https://www.nita.ac.in",
+    "josaa_code": "220",
+    "established": 1965,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 82,
+        "score": 43.9
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 91,
+        "score": 41.5
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "nit-goa",
+    "name": "National Institute of Technology Goa",
+    "short_name": "NIT Goa",
+    "city": "Cuncolim",
+    "state": "Goa",
+    "type": "NIT",
+    "official_url": "https://www.nitgoa.ac.in",
+    "josaa_code": "221",
+    "established": 2010,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 87,
+        "score": 43.2
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 90,
+        "score": 41.8
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "nit-jamshedpur",
+    "name": "National Institute of Technology Jamshedpur",
+    "short_name": "NIT Jamshedpur",
+    "city": "Jamshedpur",
+    "state": "Jharkhand",
+    "type": "NIT",
+    "official_url": "https://www.nitjsr.ac.in",
+    "josaa_code": "222",
+    "established": 1960,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 90,
+        "score": 42.8
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 101,
+        "score": 40.5
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "nit-manipur",
+    "name": "National Institute of Technology Manipur",
+    "short_name": "NIT Manipur",
+    "city": "Imphal",
+    "state": "Manipur",
+    "type": "NIT",
+    "official_url": "https://www.nitmanipur.ac.in",
+    "josaa_code": "223",
+    "established": 2010,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 95,
+        "score": 42.1
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "nit-hamirpur",
+    "name": "National Institute of Technology Hamirpur",
+    "short_name": "NIT Hamirpur",
+    "city": "Hamirpur",
+    "state": "Himachal Pradesh",
+    "type": "NIT",
+    "official_url": "https://nith.ac.in",
+    "josaa_code": "224",
+    "established": 1986,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 101,
+        "score": 41.2
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "nit-delhi",
+    "name": "National Institute of Technology Delhi",
+    "short_name": "NIT Delhi",
+    "city": "New Delhi",
+    "state": "Delhi",
+    "type": "NIT",
+    "official_url": "https://nitdelhi.ac.in",
+    "josaa_code": "225",
+    "established": 2010,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 45,
+        "score": 51.6
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 51,
+        "score": 51.2
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "nit-puducherry",
+    "name": "National Institute of Technology Puducherry",
+    "short_name": "NIT Puducherry",
+    "city": "Karaikal",
+    "state": "Puducherry",
+    "type": "NIT",
+    "official_url": "https://www.nitpy.ac.in",
+    "josaa_code": "226",
+    "established": 2010,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 97,
+        "score": 41.8
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "nit-uttarakhand",
+    "name": "National Institute of Technology Uttarakhand",
+    "short_name": "NIT Uttarakhand",
+    "city": "Srinagar Garhwal",
+    "state": "Uttarakhand",
+    "type": "NIT",
+    "official_url": "https://www.nituk.ac.in",
+    "josaa_code": "227",
+    "established": 2009,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 115,
+        "score": 39.5
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "nit-andhra-pradesh",
+    "name": "National Institute of Technology Andhra Pradesh",
+    "short_name": "NIT Andhra Pradesh",
+    "city": "Tadepalligudem",
+    "state": "Andhra Pradesh",
+    "type": "NIT",
+    "official_url": "https://www.nitandhra.ac.in",
+    "josaa_code": "228",
+    "established": 2015,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 125,
+        "score": 38.6
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "nit-arunachal-pradesh",
+    "name": "National Institute of Technology Arunachal Pradesh",
+    "short_name": "NIT Arunachal Pradesh",
+    "city": "Yupia",
+    "state": "Arunachal Pradesh",
+    "type": "NIT",
+    "official_url": "https://www.nitap.ac.in",
+    "josaa_code": "229",
+    "established": 2010,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 135,
+        "score": 37.8
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "nit-sikkim",
+    "name": "National Institute of Technology Sikkim",
+    "short_name": "NIT Sikkim",
+    "city": "Ravangla",
+    "state": "Sikkim",
+    "type": "NIT",
+    "official_url": "https://www.nitsikkim.ac.in",
+    "josaa_code": "230",
+    "established": 2010,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 145,
+        "score": 36.9
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "nit-mizoram",
+    "name": "National Institute of Technology Mizoram",
+    "short_name": "NIT Mizoram",
+    "city": "Aizawl",
+    "state": "Mizoram",
+    "type": "NIT",
+    "official_url": "https://www.nitmz.ac.in",
+    "josaa_code": "231",
+    "established": 2010,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 155,
+        "score": 35.8
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "nit-nagaland",
+    "name": "National Institute of Technology Nagaland",
+    "short_name": "NIT Nagaland",
+    "city": "Chumukedima",
+    "state": "Nagaland",
+    "type": "NIT",
+    "official_url": "https://www.nitnagaland.ac.in",
+    "josaa_code": "232",
+    "established": 2010,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 165,
+        "score": 34.9
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiit-allahabad",
+    "name": "Indian Institute of Information Technology Allahabad",
+    "short_name": "IIIT Allahabad",
+    "city": "Prayagraj",
+    "state": "Uttar Pradesh",
+    "type": "IIIT",
+    "official_url": "https://www.iiita.ac.in",
+    "josaa_code": "301",
+    "established": 1999,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 87,
+        "score": 43.1
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 89,
+        "score": 41.9
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiitm-gwalior",
+    "name": "Atal Bihari Vajpayee Indian Institute of Information Technology and Management Gwalior",
+    "short_name": "ABV-IIITM Gwalior",
+    "city": "Gwalior",
+    "state": "Madhya Pradesh",
+    "type": "IIIT",
+    "official_url": "https://www.iiitm.ac.in",
+    "josaa_code": "302",
+    "established": 1997,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 88,
+        "score": 43
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiitdm-jabalpur",
+    "name": "Indian Institute of Information Technology Design and Manufacturing Jabalpur",
+    "short_name": "IIITDM Jabalpur",
+    "city": "Jabalpur",
+    "state": "Madhya Pradesh",
+    "type": "IIIT",
+    "official_url": "https://www.iiitdmj.ac.in",
+    "josaa_code": "303",
+    "established": 2005,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 94,
+        "score": 42.2
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiitdm-kancheepuram",
+    "name": "Indian Institute of Information Technology Design and Manufacturing Kancheepuram",
+    "short_name": "IIITDM Kancheepuram",
+    "city": "Chennai",
+    "state": "Tamil Nadu",
+    "type": "IIIT",
+    "official_url": "https://www.iiitdm.ac.in",
+    "josaa_code": "304",
+    "established": 2007,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 110,
+        "score": 40.1
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiit-sri-city",
+    "name": "Indian Institute of Information Technology Sri City",
+    "short_name": "IIIT Sri City",
+    "city": "Chittoor",
+    "state": "Andhra Pradesh",
+    "type": "IIIT",
+    "official_url": "https://www.iiits.ac.in",
+    "josaa_code": "305",
+    "established": 2013,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 120,
+        "score": 39.1
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiit-guwahati",
+    "name": "Indian Institute of Information Technology Guwahati",
+    "short_name": "IIIT Guwahati",
+    "city": "Guwahati",
+    "state": "Assam",
+    "type": "IIIT",
+    "official_url": "https://www.iiitg.ac.in",
+    "josaa_code": "306",
+    "established": 2013,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 122,
+        "score": 38.9
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiit-vadodara",
+    "name": "Indian Institute of Information Technology Vadodara",
+    "short_name": "IIIT Vadodara",
+    "city": "Gandhinagar",
+    "state": "Gujarat",
+    "type": "IIIT",
+    "official_url": "https://www.iiitvadodara.ac.in",
+    "josaa_code": "307",
+    "established": 2013,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 130,
+        "score": 38.2
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiit-kota",
+    "name": "Indian Institute of Information Technology Kota",
+    "short_name": "IIIT Kota",
+    "city": "Kota",
+    "state": "Rajasthan",
+    "type": "IIIT",
+    "official_url": "https://www.iiitkota.ac.in",
+    "josaa_code": "308",
+    "established": 2013,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 140,
+        "score": 37.3
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiit-pune",
+    "name": "Indian Institute of Information Technology Pune",
+    "short_name": "IIIT Pune",
+    "city": "Pune",
+    "state": "Maharashtra",
+    "type": "IIIT",
+    "official_url": "https://www.iiitp.ac.in",
+    "josaa_code": "309",
+    "established": 2016,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 142,
+        "score": 37.1
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiit-lucknow",
+    "name": "Indian Institute of Information Technology Lucknow",
+    "short_name": "IIIT Lucknow",
+    "city": "Lucknow",
+    "state": "Uttar Pradesh",
+    "type": "IIIT",
+    "official_url": "https://iiitl.ac.in",
+    "josaa_code": "310",
+    "established": 2015,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 105,
+        "score": 40.8
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiit-nagpur",
+    "name": "Indian Institute of Information Technology Nagpur",
+    "short_name": "IIIT Nagpur",
+    "city": "Nagpur",
+    "state": "Maharashtra",
+    "type": "IIIT",
+    "official_url": "https://iiitn.ac.in",
+    "josaa_code": "311",
+    "established": 2016,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 150,
+        "score": 36.4
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiit-dharwad",
+    "name": "Indian Institute of Information Technology Dharwad",
+    "short_name": "IIIT Dharwad",
+    "city": "Dharwad",
+    "state": "Karnataka",
+    "type": "IIIT",
+    "official_url": "https://iiitdwd.ac.in",
+    "josaa_code": "312",
+    "established": 2015,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 160,
+        "score": 35.2
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiit-kottayam",
+    "name": "Indian Institute of Information Technology Kottayam",
+    "short_name": "IIIT Kottayam",
+    "city": "Kottayam",
+    "state": "Kerala",
+    "type": "IIIT",
+    "official_url": "https://www.iiitkottayam.ac.in",
+    "josaa_code": "313",
+    "established": 2015,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 162,
+        "score": 35
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiitdm-kurnool",
+    "name": "Indian Institute of Information Technology Design and Manufacturing Kurnool",
+    "short_name": "IIITDM Kurnool",
+    "city": "Kurnool",
+    "state": "Andhra Pradesh",
+    "type": "IIIT",
+    "official_url": "https://iiitk.ac.in",
+    "josaa_code": "314",
+    "established": 2015,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 170,
+        "score": 34.3
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "pec-chandigarh",
+    "name": "Punjab Engineering College Chandigarh",
+    "short_name": "PEC Chandigarh",
+    "city": "Chandigarh",
+    "state": "Chandigarh",
+    "type": "GFTI",
+    "official_url": "https://pec.ac.in",
+    "josaa_code": "401",
+    "established": 1921,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 102,
+        "score": 41.1
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "bit-mesra",
+    "name": "Birla Institute of Technology Mesra",
+    "short_name": "BIT Mesra",
+    "city": "Ranchi",
+    "state": "Jharkhand",
+    "type": "GFTI",
+    "official_url": "https://www.bitmesra.ac.in",
+    "josaa_code": "402",
+    "established": 1955,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 42,
+        "score": 52.3
+      },
+      {
+        "year": 2023,
+        "category": "Engineering",
+        "rank": 53,
+        "score": 50.8
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "spa-delhi",
+    "name": "School of Planning and Architecture Delhi",
+    "short_name": "SPA Delhi",
+    "city": "New Delhi",
+    "state": "Delhi",
+    "type": "GFTI",
+    "official_url": "http://spa.ac.in",
+    "josaa_code": "403",
+    "established": 1941,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Architecture",
+        "rank": 3,
+        "score": 78.4
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "jnu-delhi",
+    "name": "School of Engineering Jawaharlal Nehru University Delhi",
+    "short_name": "JNU Delhi",
+    "city": "New Delhi",
+    "state": "Delhi",
+    "type": "GFTI",
+    "official_url": "https://www.jnu.ac.in",
+    "josaa_code": "404",
+    "established": 1969,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "University",
+        "rank": 2,
+        "score": 68.9
+      },
+      {
+        "year": 2024,
+        "category": "Overall",
+        "rank": 10,
+        "score": 69.8
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "tezpur-university",
+    "name": "School of Engineering Tezpur University",
+    "short_name": "Tezpur University",
+    "city": "Tezpur",
+    "state": "Assam",
+    "type": "GFTI",
+    "official_url": "http://www.tezu.ernet.in",
+    "josaa_code": "405",
+    "established": 1994,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 118,
+        "score": 39.3
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiit-naya-raipur",
+    "name": "Dr. Shyama Prasad Mukherjee International Institute of Information Technology Naya Raipur",
+    "short_name": "IIIT Naya Raipur",
+    "city": "Raipur",
+    "state": "Chhattisgarh",
+    "type": "GFTI",
+    "official_url": "https://www.iiitnr.ac.in",
+    "josaa_code": "406",
+    "established": 2015,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 128,
+        "score": 38.4
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "smvdu-katra",
+    "name": "Shri Mata Vaishno Devi University",
+    "short_name": "SMVDU Katra",
+    "city": "Katra",
+    "state": "Jammu and Kashmir",
+    "type": "GFTI",
+    "official_url": "https://www.smvdu.ac.in",
+    "josaa_code": "407",
+    "established": 1999,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 138,
+        "score": 37.5
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "sliet-longowal",
+    "name": "Sant Longowal Institute of Engineering and Technology",
+    "short_name": "SLIET Longowal",
+    "city": "Longowal",
+    "state": "Punjab",
+    "type": "GFTI",
+    "official_url": "http://sliet.ac.in",
+    "josaa_code": "408",
+    "established": 1989,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 148,
+        "score": 36.6
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiit-sonepat",
+    "name": "Indian Institute of Information Technology Sonepat",
+    "short_name": "IIIT Sonepat",
+    "city": "Sonepat",
+    "state": "Haryana",
+    "type": "IIIT",
+    "official_url": "https://www.iiitsonepat.ac.in",
+    "josaa_code": "315",
+    "established": 2014,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 175,
+        "score": 33.9
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiit-kalyani",
+    "name": "Indian Institute of Information Technology Kalyani",
+    "short_name": "IIIT Kalyani",
+    "city": "Kalyani",
+    "state": "West Bengal",
+    "type": "IIIT",
+    "official_url": "https://iiitkalyani.ac.in",
+    "josaa_code": "316",
+    "established": 2014,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 178,
+        "score": 33.6
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiit-una",
+    "name": "Indian Institute of Information Technology Una",
+    "short_name": "IIIT Una",
+    "city": "Una",
+    "state": "Himachal Pradesh",
+    "type": "IIIT",
+    "official_url": "https://iiitu.ac.in",
+    "josaa_code": "317",
+    "established": 2014,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 182,
+        "score": 33.2
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiit-surat",
+    "name": "Indian Institute of Information Technology Surat",
+    "short_name": "IIIT Surat",
+    "city": "Surat",
+    "state": "Gujarat",
+    "type": "IIIT",
+    "official_url": "https://iiitsurat.ac.in",
+    "josaa_code": "318",
+    "established": 2017,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 185,
+        "score": 33
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiit-bhopal",
+    "name": "Indian Institute of Information Technology Bhopal",
+    "short_name": "IIIT Bhopal",
+    "city": "Bhopal",
+    "state": "Madhya Pradesh",
+    "type": "IIIT",
+    "official_url": "https://iiitbhopal.ac.in",
+    "josaa_code": "319",
+    "established": 2017,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 188,
+        "score": 32.7
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiit-bhagalpur",
+    "name": "Indian Institute of Information Technology Bhagalpur",
+    "short_name": "IIIT Bhagalpur",
+    "city": "Bhagalpur",
+    "state": "Bihar",
+    "type": "IIIT",
+    "official_url": "https://www.iiitbh.ac.in",
+    "josaa_code": "320",
+    "established": 2017,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 190,
+        "score": 32.5
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiit-ranchi",
+    "name": "Indian Institute of Information Technology Ranchi",
+    "short_name": "IIIT Ranchi",
+    "city": "Ranchi",
+    "state": "Jharkhand",
+    "type": "IIIT",
+    "official_url": "https://iiitranchi.ac.in",
+    "josaa_code": "321",
+    "established": 2016,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 192,
+        "score": 32.3
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiit-manipur",
+    "name": "Indian Institute of Information Technology Manipur",
+    "short_name": "IIIT Manipur",
+    "city": "Imphal",
+    "state": "Manipur",
+    "type": "IIIT",
+    "official_url": "https://www.iiitmanipur.ac.in",
+    "josaa_code": "322",
+    "established": 2015,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 195,
+        "score": 32
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiit-raichur",
+    "name": "Indian Institute of Information Technology Raichur",
+    "short_name": "IIIT Raichur",
+    "city": "Raichur",
+    "state": "Karnataka",
+    "type": "IIIT",
+    "official_url": "https://iiitr.ac.in",
+    "josaa_code": "323",
+    "established": 2019,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 198,
+        "score": 31.8
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiit-agartala",
+    "name": "Indian Institute of Information Technology Agartala",
+    "short_name": "IIIT Agartala",
+    "city": "Agartala",
+    "state": "Tripura",
+    "type": "IIIT",
+    "official_url": "https://iiitagartala.ac.in",
+    "josaa_code": "324",
+    "established": 2018,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 200,
+        "score": 31.5
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiit-trichy",
+    "name": "Indian Institute of Information Technology Tiruchirappalli",
+    "short_name": "IIIT Trichy",
+    "city": "Tiruchirappalli",
+    "state": "Tamil Nadu",
+    "type": "IIIT",
+    "official_url": "https://www.iiitt.ac.in",
+    "josaa_code": "325",
+    "established": 2013,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 172,
+        "score": 34.1
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "spa-bhopal",
+    "name": "School of Planning and Architecture Bhopal",
+    "short_name": "SPA Bhopal",
+    "city": "Bhopal",
+    "state": "Madhya Pradesh",
+    "type": "GFTI",
+    "official_url": "http://spabhopal.ac.in",
+    "josaa_code": "409",
+    "established": 2008,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Architecture",
+        "rank": 6,
+        "score": 72.8
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "spa-vijayawada",
+    "name": "School of Planning and Architecture Vijayawada",
+    "short_name": "SPA Vijayawada",
+    "city": "Vijayawada",
+    "state": "Andhra Pradesh",
+    "type": "GFTI",
+    "official_url": "https://www.spav.ac.in",
+    "josaa_code": "410",
+    "established": 2008,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Architecture",
+        "rank": 7,
+        "score": 71.4
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "assam-university",
+    "name": "Assam University Silchar",
+    "short_name": "Assam University",
+    "city": "Silchar",
+    "state": "Assam",
+    "type": "GFTI",
+    "official_url": "http://www.aus.ac.in",
+    "josaa_code": "411",
+    "established": 1994,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "University",
+        "rank": 102,
+        "score": 41.5
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "mizoram-university",
+    "name": "Mizoram University Aizawl",
+    "short_name": "Mizoram University",
+    "city": "Aizawl",
+    "state": "Mizoram",
+    "type": "GFTI",
+    "official_url": "https://mzu.edu.in",
+    "josaa_code": "412",
+    "established": 2001,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "University",
+        "rank": 85,
+        "score": 43.8
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "cit-kokrajhar",
+    "name": "Central Institute of Technology Kokrajhar",
+    "short_name": "CIT Kokrajhar",
+    "city": "Kokrajhar",
+    "state": "Assam",
+    "type": "GFTI",
+    "official_url": "https://www.cit.ac.in",
+    "josaa_code": "413",
+    "established": 2006,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 165,
+        "score": 35.1
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "gurukula-kangri",
+    "name": "Gurukula Kangri Vishwavidyalaya Haridwar",
+    "short_name": "GKV Haridwar",
+    "city": "Haridwar",
+    "state": "Uttarakhand",
+    "type": "GFTI",
+    "official_url": "https://www.gkv.ac.in",
+    "josaa_code": "414",
+    "established": 1902,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "University",
+        "rank": 110,
+        "score": 40.2
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "central-univ-rajasthan",
+    "name": "Central University of Rajasthan Ajmer",
+    "short_name": "CURAJ Ajmer",
+    "city": "Ajmer",
+    "state": "Rajasthan",
+    "type": "GFTI",
+    "official_url": "https://www.curaj.ac.in",
+    "josaa_code": "415",
+    "established": 2009,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "University",
+        "rank": 78,
+        "score": 44.9
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "central-univ-haryana",
+    "name": "Central University of Haryana Mahendergarh",
+    "short_name": "CUH Mahendergarh",
+    "city": "Mahendergarh",
+    "state": "Haryana",
+    "type": "GFTI",
+    "official_url": "https://www.cuh.ac.in",
+    "josaa_code": "416",
+    "established": 2009,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "University",
+        "rank": 92,
+        "score": 42.6
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "niamt-ranchi",
+    "name": "National Institute of Advanced Manufacturing Technology Ranchi",
+    "short_name": "NIAMT Ranchi",
+    "city": "Ranchi",
+    "state": "Jharkhand",
+    "type": "GFTI",
+    "official_url": "http://www.niamt.ac.in",
+    "josaa_code": "417",
+    "established": 1966,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 155,
+        "score": 36
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "niftem-kundli",
+    "name": "National Institute of Food Technology Entrepreneurship and Management Kundli",
+    "short_name": "NIFTEM Kundli",
+    "city": "Kundli",
+    "state": "Haryana",
+    "type": "GFTI",
+    "official_url": "https://niftem.ac.in",
+    "josaa_code": "418",
+    "established": 2012,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 70,
+        "score": 46.1
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "niftem-thanjavur",
+    "name": "Indian Institute of Food Processing Technology Thanjavur",
+    "short_name": "NIFTEM Thanjavur",
+    "city": "Thanjavur",
+    "state": "Tamil Nadu",
+    "type": "GFTI",
+    "official_url": "https://www.niftem-t.ac.in",
+    "josaa_code": "419",
+    "established": 1967,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 112,
+        "score": 39.8
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "ggv-bilaspur",
+    "name": "Institute of Technology Guru Ghasidas Vishwavidyalaya Bilaspur",
+    "short_name": "GGV Bilaspur",
+    "city": "Bilaspur",
+    "state": "Chhattisgarh",
+    "type": "GFTI",
+    "official_url": "https://www.ggu.ac.in",
+    "josaa_code": "420",
+    "established": 1997,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 168,
+        "score": 34.8
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iitram-ahmedabad",
+    "name": "Institute of Infrastructure Technology Research and Management Ahmedabad",
+    "short_name": "IITRAM Ahmedabad",
+    "city": "Ahmedabad",
+    "state": "Gujarat",
+    "type": "GFTI",
+    "official_url": "https://iitram.ac.in",
+    "josaa_code": "421",
+    "established": 2013,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 174,
+        "score": 34
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "jk-institute-allahabad",
+    "name": "J.K. Institute of Applied Physics & Technology Prayagraj",
+    "short_name": "JK Institute Allahabad",
+    "city": "Prayagraj",
+    "state": "Uttar Pradesh",
+    "type": "GFTI",
+    "official_url": "https://jkinstitute.ac.in",
+    "josaa_code": "422",
+    "established": 1956,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 180,
+        "score": 33.4
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "gkciet-malda",
+    "name": "Ghani Khan Choudhury Institute of Engineering and Technology Malda",
+    "short_name": "GKCIET Malda",
+    "city": "Malda",
+    "state": "West Bengal",
+    "type": "GFTI",
+    "official_url": "https://www.gkciet.ac.in",
+    "josaa_code": "423",
+    "established": 2010,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 184,
+        "score": 33.1
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iict-bhadohi",
+    "name": "Indian Institute of Carpet Technology Bhadohi",
+    "short_name": "IICT Bhadohi",
+    "city": "Bhadohi",
+    "state": "Uttar Pradesh",
+    "type": "GFTI",
+    "official_url": "http://www.iict.ac.in",
+    "josaa_code": "424",
+    "established": 1998,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 194,
+        "score": 32.1
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "csvtu-bhilai",
+    "name": "Chhattisgarh Swami Vivekanand Technical University Bhilai",
+    "short_name": "CSVTU Bhilai",
+    "city": "Bhilai",
+    "state": "Chhattisgarh",
+    "type": "GFTI",
+    "official_url": "https://csvtu.ac.in",
+    "josaa_code": "425",
+    "established": 2005,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 196,
+        "score": 31.9
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "ptu-puducherry",
+    "name": "Puducherry Technological University Puducherry",
+    "short_name": "PTU Puducherry",
+    "city": "Puducherry",
+    "state": "Puducherry",
+    "type": "GFTI",
+    "official_url": "https://ptuniv.edu.in",
+    "josaa_code": "426",
+    "established": 1984,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 124,
+        "score": 38.7
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "nehu-shillong",
+    "name": "North-Eastern Hill University Shillong",
+    "short_name": "NEHU Shillong",
+    "city": "Shillong",
+    "state": "Meghalaya",
+    "type": "GFTI",
+    "official_url": "https://www.nehu.ac.in",
+    "josaa_code": "427",
+    "established": 1973,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "University",
+        "rank": 80,
+        "score": 44.5
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "nielit-aurangabad",
+    "name": "National Institute of Electronics & Information Technology Aurangabad",
+    "short_name": "NIELIT Aurangabad",
+    "city": "Aurangabad",
+    "state": "Maharashtra",
+    "type": "GFTI",
+    "official_url": "https://nielit.gov.in/aurangabad",
+    "josaa_code": "428",
+    "established": 1987,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 199,
+        "score": 31.6
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "dtu-delhi",
+    "name": "Delhi Technological University",
+    "short_name": "DTU Delhi",
+    "city": "New Delhi",
+    "state": "Delhi",
+    "type": "University",
+    "official_url": "http://www.dtu.ac.in",
+    "josaa_code": "501",
+    "established": 1941,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 34,
+        "score": 54.8
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "nsut-delhi",
+    "name": "Netaji Subhas University of Technology",
+    "short_name": "NSUT Delhi",
+    "city": "New Delhi",
+    "state": "Delhi",
+    "type": "University",
+    "official_url": "http://www.nsut.ac.in",
+    "josaa_code": "502",
+    "established": 1983,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 63,
+        "score": 47.1
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "coep-pune",
+    "name": "COEP Technological University Pune",
+    "short_name": "COEP Pune",
+    "city": "Pune",
+    "state": "Maharashtra",
+    "type": "University",
+    "official_url": "https://www.coeptech.ac.in",
+    "josaa_code": "503",
+    "established": 1854,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 61,
+        "score": 47.5
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "thapar-patiala",
+    "name": "Thapar Institute of Engineering and Technology Patiala",
+    "short_name": "Thapar Patiala",
+    "city": "Patiala",
+    "state": "Punjab",
+    "type": "University",
+    "official_url": "https://www.thapar.edu",
+    "josaa_code": "504",
+    "established": 1956,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 24,
+        "score": 58.8
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "bits-pilani",
+    "name": "Birla Institute of Technology and Science Pilani",
+    "short_name": "BITS Pilani",
+    "city": "Pilani",
+    "state": "Rajasthan",
+    "type": "University",
+    "official_url": "https://www.bits-pilani.ac.in",
+    "josaa_code": "505",
+    "established": 1964,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 13,
+        "score": 64.2
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiit-hyderabad",
+    "name": "International Institute of Information Technology Hyderabad",
+    "short_name": "IIIT Hyderabad",
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "type": "University",
+    "official_url": "https://www.iiit.ac.in",
+    "josaa_code": "506",
+    "established": 1998,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 50,
+        "score": 50.5
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiit-bangalore",
+    "name": "International Institute of Information Technology Bangalore",
+    "short_name": "IIIT Bangalore",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "type": "University",
+    "official_url": "https://www.iiitb.ac.in",
+    "josaa_code": "507",
+    "established": 1999,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 74,
+        "score": 45.2
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "iiit-delhi",
+    "name": "Indraprastha Institute of Information Technology Delhi",
+    "short_name": "IIIT Delhi",
+    "city": "New Delhi",
+    "state": "Delhi",
+    "type": "University",
+    "official_url": "https://www.iiitd.ac.in",
+    "josaa_code": "508",
+    "established": 2008,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "Engineering",
+        "rank": 62,
+        "score": 47.2
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  }
+]

@@ -1,0 +1,33 @@
+{
+  "year": 2024,
+  "round": 5,
+  "total_rows": 217,
+  "institutes_covered": 116,
+  "chunks": [
+    {
+      "type": "IIT",
+      "file": "2024-iit.json",
+      "rows": 95
+    },
+    {
+      "type": "NIT",
+      "file": "2024-nit.json",
+      "rows": 59
+    },
+    {
+      "type": "IIIT",
+      "file": "2024-iiit.json",
+      "rows": 26
+    },
+    {
+      "type": "GFTI",
+      "file": "2024-gfti.json",
+      "rows": 29
+    },
+    {
+      "type": "University",
+      "file": "2024-university.json",
+      "rows": 8
+    }
+  ]
+}
