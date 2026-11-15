@@ -3704,5 +3704,110 @@
         "verified_at": "2026-11-15"
       }
     ]
+  },
+  {
+    "slug": "iisc-bangalore",
+    "name": "Indian Institute of Science Bangalore",
+    "short_name": "IISc Bangalore",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "type": "University",
+    "official_url": "https://iisc.ac.in",
+    "josaa_code": "509",
+    "established": 1909,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "University",
+        "rank": 1,
+        "score": 87.56
+      },
+      {
+        "year": 2024,
+        "category": "Overall",
+        "rank": 2,
+        "score": 83.28
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "banaras-hindu-university",
+    "name": "Banaras Hindu University",
+    "short_name": "BHU Varanasi",
+    "city": "Varanasi",
+    "state": "Uttar Pradesh",
+    "type": "University",
+    "official_url": "https://www.bhu.ac.in",
+    "josaa_code": "510",
+    "established": 1916,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "University",
+        "rank": 5,
+        "score": 65.85
+      },
+      {
+        "year": 2024,
+        "category": "Overall",
+        "rank": 11,
+        "score": 67.2
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "slug": "jamia-millia-islamia",
+    "name": "Jamia Millia Islamia",
+    "short_name": "JMI New Delhi",
+    "city": "New Delhi",
+    "state": "Delhi",
+    "type": "University",
+    "official_url": "https://www.jmi.ac.in",
+    "josaa_code": "511",
+    "established": 1920,
+    "nirf": [
+      {
+        "year": 2024,
+        "category": "University",
+        "rank": 3,
+        "score": 67.73
+      },
+      {
+        "year": 2024,
+        "category": "Overall",
+        "rank": 13,
+        "score": 65.4
+      }
+    ],
+    "sources": [
+      {
+        "source_name": "JoSAA / NIRF Official Portals",
+        "source_url": "https://josaa.nic.in",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
   }
 ]

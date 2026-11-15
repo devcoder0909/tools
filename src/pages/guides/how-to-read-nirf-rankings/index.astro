@@ -1,0 +1,170 @@
+---
+import CollegeLayout from '../../../layouts/CollegeLayout.astro';
+import SourceBox from '../../../components/colleges/SourceBox.astro';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://convert.gudmud.site/' },
+    { '@type': 'ListItem', position: 2, name: 'Guides', item: 'https://convert.gudmud.site/guides/' },
+    { '@type': 'ListItem', position: 3, name: 'How to Read NIRF Rankings', item: 'https://convert.gudmud.site/guides/how-to-read-nirf-rankings/' },
+  ],
+};
+
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'How to Read NIRF Rankings: Complete Guide to Parameters and Pitfalls',
+  datePublished: '2026-11-15T00:00:00+05:30',
+  dateModified: '2026-11-15T00:00:00+05:30',
+  author: {
+    '@type': 'Organization',
+    name: 'Gudmud Colleges Editorial Team',
+    url: 'https://convert.gudmud.site',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Gudmud Colleges',
+    url: 'https://convert.gudmud.site',
+  },
+  description: 'Understand the five parameters of the National Institutional Ranking Framework (NIRF) and avoid common ranking misconceptions.',
+};
+---
+
+<CollegeLayout
+  title="How to Read NIRF Rankings: Complete Guide | Gudmud"
+  description="Learn how to read and interpret NIRF rankings. Understand the 5 weighted parameters—TLR, RPC, GO, OI, and PR—and spot misleading ranking traps."
+  canonical="https://convert.gudmud.site/guides/how-to-read-nirf-rankings/"
+  jsonLd={[breadcrumbJsonLd, articleJsonLd]}
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <!-- Breadcrumb -->
+    <nav class="flex items-center gap-2 text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
+      <a href="/" class="hover:underline">Home</a>
+      <span>/</span>
+      <a href="/guides/" class="hover:underline">Guides</a>
+      <span>/</span>
+      <span class="text-gray-900 font-medium">How to Read NIRF Rankings</span>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="mb-8 border-b border-gray-200 pb-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200 mb-3">
+        <span>NIRF Ranking Analysis</span>
+        <span>•</span>
+        <span>Updated for 2024</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-3">
+        How to Read NIRF Rankings: Complete Guide
+      </h1>
+      <p class="text-sm sm:text-base text-gray-600 leading-relaxed">
+        The National Institutional Ranking Framework (NIRF) was launched by the Ministry of Education in 2015 to benchmark Indian colleges and universities. While NIRF is an authoritative government ranking, relying solely on an institution's single overall rank can lead to flawed college decisions.
+      </p>
+    </header>
+
+    <!-- Guide Content -->
+    <article class="prose prose-indigo max-w-none text-gray-700 space-y-6 text-sm sm:text-base leading-relaxed">
+      <h2 class="text-xl font-bold text-gray-900 mt-8 mb-3">The Five Core NIRF Parameters and Weightages</h2>
+      <p>
+        NIRF does not rely on subjective reputation alone. Every institute is scored out of a maximum of 100 points across five defined parameters, each carrying specific mathematical weightings:
+      </p>
+
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-left border-collapse border border-gray-200 rounded-lg text-xs sm:text-sm">
+          <thead>
+            <tr class="bg-gray-100 border-b border-gray-200 font-bold text-gray-800">
+              <th class="p-3">Parameter Code</th>
+              <th class="p-3">Parameter Name</th>
+              <th class="p-3 text-center">Engineering Weight</th>
+              <th class="p-3">Key Sub-Metrics</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr>
+              <td class="p-3 font-mono font-bold text-indigo-600">TLR</td>
+              <td class="p-3 font-semibold">Teaching, Learning & Resources</td>
+              <td class="p-3 text-center font-bold">30%</td>
+              <td class="p-3">Student strength, faculty-student ratio, faculty with PhD, financial resource utilization.</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-mono font-bold text-indigo-600">RPC</td>
+              <td class="p-3 font-semibold">Research and Professional Practice</td>
+              <td class="p-3 text-center font-bold">30%</td>
+              <td class="p-3">Combined metrics for publications (Scopus/Web of Science), quality citations, patents, sponsored research.</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-mono font-bold text-indigo-600">GO</td>
+              <td class="p-3 font-semibold">Graduation Outcomes</td>
+              <td class="p-3 text-center font-bold">20%</td>
+              <td class="p-3">Median salary of placed graduates, university examination passing rate, students proceeding to higher studies.</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-mono font-bold text-indigo-600">OI</td>
+              <td class="p-3 font-semibold">Outreach and Inclusivity</td>
+              <td class="p-3 text-center font-bold">10%</td>
+              <td class="p-3">Percentage of students from outside state/country, women diversity, economically and socially challenged students, facilities for physically challenged.</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-mono font-bold text-indigo-600">PR</td>
+              <td class="p-3 font-semibold">Perception</td>
+              <td class="p-3 text-center font-bold">10%</td>
+              <td class="p-3">Peer survey conducted among academic leaders, researchers, and employers across India.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-8 mb-3">Common Pitfalls When Comparing Colleges</h2>
+      <p>
+        Students often look only at the overall number. Here are the most critical factors that can distort what an overall rank means for an undergraduate student:
+      </p>
+
+      <ul class="list-disc pl-6 space-y-2">
+        <li>
+          <strong>Research (RPC) skew:</strong> Established universities with large PhD programs and post-doctoral medical faculties score heavily in RPC (30%). A pure research institution may rank higher than an undergraduate-focused NIT, even if the NIT offers superior campus placements for B.Tech graduates.
+        </li>
+        <li>
+          <strong>Financial utilization distortion:</strong> Capital expenditure on new buildings counts toward TLR. A newly established private university with massive infrastructure expenditure can temporarily outscore an older government college with modest facilities.
+        </li>
+        <li>
+          <strong>Median Salary vs Highest Package:</strong> NIRF uses <em>median salary</em> reported under Graduation Outcomes (GO). This is vastly more realistic than promotional billboards highlighting single international packages. Check the GO score specifically if placements are your priority.
+        </li>
+      </ul>
+
+      <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg my-6">
+        <h3 class="text-sm font-bold text-amber-900 mb-1">Practical Recommendation for Choice Filling</h3>
+        <p class="text-xs text-amber-800">
+          When finalizing JoSAA choices, check the institute's <strong>GO (Graduation Outcomes)</strong> score and verify past <strong>closing ranks</strong> in the <a href="/cutoff/" class="underline font-semibold">JoSAA Cutoff Explorer</a>. Closing ranks reflect peer decisions from hundreds of thousands of candidates each year.
+        </p>
+      </div>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-8 mb-3">Explore Official Rankings</h2>
+      <p>
+        View verified scores, rank histories, and YoY rank shifts on our dedicated ranking hubs:
+      </p>
+      <div class="flex flex-wrap gap-3 my-4">
+        <a href="/nirf-ranking/engineering/" class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-xs font-semibold hover:bg-indigo-700">
+          NIRF Engineering 2024 →
+        </a>
+        <a href="/nirf-ranking/overall/" class="px-4 py-2 bg-emerald-600 text-white rounded-lg text-xs font-semibold hover:bg-emerald-700">
+          NIRF Overall 2024 →
+        </a>
+        <a href="/nirf-ranking/university/" class="px-4 py-2 bg-amber-600 text-white rounded-lg text-xs font-semibold hover:bg-amber-700">
+          NIRF University 2024 →
+        </a>
+      </div>
+    </article>
+
+    <!-- Source Box -->
+    <div class="mt-12">
+      <SourceBox
+        sourceName="National Institutional Ranking Framework (NIRF)"
+        sourceUrl="https://www.nirfindia.org"
+        sourceYear={2024}
+        verifiedAt="2026-11-15"
+        methodologyNote="Parameter formulas and weights are defined by the Ministry of Education, Government of India. Review the full methodology report at nirfindia.org."
+      />
+    </div>
+  </div>
+</CollegeLayout>

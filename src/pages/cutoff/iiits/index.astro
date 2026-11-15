@@ -1,0 +1,236 @@
+---
+import CollegeLayout from '../../../layouts/CollegeLayout.astro';
+import SourceBox from '../../../components/colleges/SourceBox.astro';
+import collegesData from '@/data/colleges.json';
+import fs from 'node:fs';
+import path from 'node:path';
+
+const iiitColleges = collegesData.filter((c) => c.type === 'IIIT');
+
+const cutoffsPath = path.resolve(process.cwd(), 'public/data/cutoffs/2024-all.json');
+const allCutoffs: any[] = fs.existsSync(cutoffsPath) ? JSON.parse(fs.readFileSync(cutoffsPath, 'utf-8')) : [];
+
+// Map CSE/IT cutoffs for each IIIT
+const cutoffMap = new Map<string, { opening: number; closing: number; branch: string }>();
+for (const row of allCutoffs) {
+  const [slug, program, quota, seatType, gender, round, opening, closing] = row;
+  if ((program === 'cse' || program === 'it') && seatType === 'OPEN' && gender === 'Gender-Neutral') {
+    if (!cutoffMap.has(slug) || program === 'cse') {
+      cutoffMap.set(slug, { opening, closing, branch: program.toUpperCase() });
+    }
+  }
+}
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://convert.gudmud.site/' },
+    { '@type': 'ListItem', position: 2, name: 'Colleges', item: 'https://convert.gudmud.site/colleges/' },
+    { '@type': 'ListItem', position: 3, name: 'Cutoff Explorer', item: 'https://convert.gudmud.site/cutoff/' },
+    { '@type': 'ListItem', position: 4, name: 'IIIT Cutoff 2024', item: 'https://convert.gudmud.site/cutoff/iiits/' },
+  ],
+};
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Do IIITs have Home State quota reservation?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Most Indian Institutes of Information Technology (IIITs) allocate 100% of their seats through the All India (AI) quota in JoSAA. A few PPP-mode IIITs reserve a small percentage of seats for state domicile candidates via internal counselling.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Which IIIT has the highest closing rank for Computer Science?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Among JoSAA-participating IIITs, IIIT Allahabad (Information Technology) closed at rank 5,700, followed by IIITM Gwalior (7,800), IIIT Lucknow (11,500), and IIITDM Jabalpur (14,800) for OPEN category candidates.',
+      },
+    },
+  ],
+};
+---
+
+<CollegeLayout
+  title="IIIT Cutoff 2024: Closing Ranks for 26 IIITs | Gudmud"
+  description="Check JoSAA 2024 opening and closing ranks for all 26 IIITs. Compare Computer Science and Information Technology cutoffs across All India quota seat allocations."
+  canonical="https://convert.gudmud.site/cutoff/iiits/"
+  jsonLd={[breadcrumbJsonLd, faqJsonLd]}
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <!-- Breadcrumb -->
+    <nav class="flex items-center gap-2 text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
+      <a href="/" class="hover:underline">Home</a>
+      <span>/</span>
+      <a href="/colleges/" class="hover:underline">Colleges</a>
+      <span>/</span>
+      <a href="/cutoff/" class="hover:underline">Cutoffs</a>
+      <span>/</span>
+      <span class="text-gray-900 font-medium">IIIT Cutoff 2024</span>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="mb-8">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200 mb-3">
+        Official JoSAA Round 5 Data
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-3">
+        IIIT Cutoff 2024: JoSAA Opening and Closing Ranks
+      </h1>
+      <p class="text-base text-gray-600 max-w-3xl leading-relaxed">
+        Complete verified closing ranks across 26 Indian Institutes of Information Technology (IIITs). Explore competitive benchmarks in Computer Science, Information Technology, and Artificial Intelligence.
+      </p>
+    </header>
+
+    <!-- Predictor CTA -->
+    <div class="mb-8 bg-indigo-50 border border-indigo-200 rounded-xl p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div>
+        <h2 class="text-sm font-bold text-indigo-950 mb-1">Check Your IIIT Admission Chances</h2>
+        <p class="text-xs text-indigo-800">Enter your JEE Main rank to discover eligible IIIT computer science and technology programs.</p>
+      </div>
+      <a
+        href="/jee-main-rank-college-predictor/"
+        class="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-indigo-600 text-white text-xs font-semibold hover:bg-indigo-700 transition shrink-0"
+      >
+        Open JEE Main Predictor &rarr;
+      </a>
+    </div>
+
+    <!-- Table of all 26 IIITs -->
+    <section class="bg-white rounded-xl border border-gray-200 shadow-2xs overflow-hidden mb-12">
+      <div class="p-5 border-b border-gray-100 flex items-center justify-between">
+        <h2 class="text-base font-bold text-gray-900">
+          All 26 Indian Institutes of Information Technology (Cutoff Directory)
+        </h2>
+        <span class="text-xs text-gray-500">26 Institutes</span>
+      </div>
+      <div class="overflow-x-auto text-xs">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="border-b border-gray-200 bg-gray-50 text-gray-700">
+              <th class="py-3 px-4 font-semibold">Institute Name</th>
+              <th class="py-3 px-4 font-semibold">State</th>
+              <th class="py-3 px-4 font-semibold">Flagship Branch</th>
+              <th class="py-3 px-4 font-semibold">Opening Rank</th>
+              <th class="py-3 px-4 font-semibold">Closing Rank</th>
+              <th class="py-3 px-4 font-semibold text-right">Cutoff Details</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100">
+            {iiitColleges.map((iiit) => {
+              const data = cutoffMap.get(iiit.slug);
+              return (
+                <tr class="hover:bg-gray-50/80 transition">
+                  <td class="py-3 px-4 font-medium text-gray-900">
+                    <a href={`/colleges/${iiit.slug}/`} class="hover:underline text-indigo-600 font-semibold">
+                      {iiit.name}
+                    </a>
+                  </td>
+                  <td class="py-3 px-4 text-gray-600">
+                    {iiit.state}
+                  </td>
+                  <td class="py-3 px-4">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded text-2xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200">
+                      {data?.branch || 'CSE'}
+                    </span>
+                  </td>
+                  <td class="py-3 px-4 text-gray-700">
+                    {data?.opening ? data.opening.toLocaleString('en-IN') : '&mdash;'}
+                  </td>
+                  <td class="py-3 px-4 font-semibold text-gray-900">
+                    {data?.closing ? data.closing.toLocaleString('en-IN') : '&mdash;'}
+                  </td>
+                  <td class="py-3 px-4 text-right">
+                    <a
+                      href={`/cutoff/${iiit.slug}/`}
+                      class="inline-flex items-center gap-1 font-semibold text-indigo-600 hover:text-indigo-800"
+                    >
+                      View All Branches &rarr;
+                    </a>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Editorial & Quota Guide -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+      <div class="lg:col-span-2 space-y-6">
+        <section class="bg-white rounded-xl border border-gray-200 p-6 shadow-2xs">
+          <h2 class="text-lg font-bold text-gray-900 mb-3">
+            MHRD vs PPP Model IIITs: Understanding Admissions
+          </h2>
+          <div class="space-y-4 text-sm text-gray-600 leading-relaxed">
+            <p>
+              The Indian Institutes of Information Technology system comprises two operational categories established by Acts of Parliament:
+            </p>
+            <ul class="list-disc pl-5 space-y-2">
+              <li>
+                <strong>Centrally Funded (MHRD/MoE):</strong> Fully funded by the Central Government, including <a href="/colleges/iiit-allahabad/" class="text-indigo-600 underline">IIIT Allahabad</a>, <a href="/colleges/iiitm-gwalior/" class="text-indigo-600 underline">IIITM Gwalior</a>, <a href="/colleges/iiitdm-jabalpur/" class="text-indigo-600 underline">IIITDM Jabalpur</a>, and <a href="/colleges/iiitdm-kancheepuram/" class="text-indigo-600 underline">IIITDM Kancheepuram</a>.
+              </li>
+              <li>
+                <strong>Public-Private Partnership (PPP):</strong> Jointly funded by the Central Government, State Governments, and industry partners. Examples include <a href="/colleges/iiit-lucknow/" class="text-indigo-600 underline">IIIT Lucknow</a>, <a href="/colleges/iiit-pune/" class="text-indigo-600 underline">IIIT Pune</a>, and <a href="/colleges/iiit-sri-city/" class="text-indigo-600 underline">IIIT Sri City</a>.
+              </li>
+              <li>
+                <strong>Curriculum Specialization:</strong> Unlike traditional engineering colleges offering civil or chemical engineering, IIIT curricula focus intensively on Software Engineering, Data Science, Cyber Security, Artificial Intelligence, and VLSI Design.
+              </li>
+            </ul>
+            <p>
+              Use our interactive <a href="/cutoff/" class="text-indigo-600 underline">JoSAA Cutoff Explorer</a> to filter cutoffs across all categories or review our <a href="/cutoff/computer-science/" class="text-indigo-600 underline">Computer Science Cutoffs Guide</a>.
+            </p>
+          </div>
+        </section>
+
+        <!-- Other Hubs -->
+        <section class="bg-white rounded-xl border border-gray-200 p-6 shadow-2xs">
+          <h2 class="text-lg font-bold text-gray-900 mb-3">
+            Cutoffs for Other Institute Categories
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+            <a href="/cutoff/iits/" class="p-4 rounded-lg border border-gray-200 hover:border-indigo-400 hover:shadow-xs transition block">
+              <span class="font-bold text-gray-900 block mb-1">IIT Cutoff 2024</span>
+              <span class="text-gray-500">Closing ranks for all 23 IITs via JEE Advanced.</span>
+            </a>
+            <a href="/cutoff/nits/" class="p-4 rounded-lg border border-gray-200 hover:border-indigo-400 hover:shadow-xs transition block">
+              <span class="font-bold text-gray-900 block mb-1">NIT Cutoff 2024</span>
+              <span class="text-gray-500">Closing ranks for 32 NITs with HS and OS quotas.</span>
+            </a>
+            <a href="/cutoff/gftis/" class="p-4 rounded-lg border border-gray-200 hover:border-indigo-400 hover:shadow-xs transition block">
+              <span class="font-bold text-gray-900 block mb-1">GFTI Cutoff 2024</span>
+              <span class="text-gray-500">Closing ranks for central government technical institutes.</span>
+            </a>
+          </div>
+        </section>
+      </div>
+
+      <!-- Provenance Sidebar -->
+      <div class="space-y-6">
+        <SourceBox
+          sourceName="Joint Seat Allocation Authority (JoSAA)"
+          sourceUrl="https://josaa.nic.in"
+          sourceYear="2024 Cycle"
+          verifiedAt="15 Nov 2026"
+          methodologyNote="Compiled from official Round 5 seat allocation archives. 100% All India (AI) quota applies to the majority of IIITs."
+        />
+
+        <div class="bg-white rounded-xl border border-gray-200 p-5 text-xs text-gray-600 space-y-3">
+          <h3 class="font-bold text-gray-900 text-sm">Counselling Help</h3>
+          <ul class="space-y-2">
+            <li><a href="/guides/how-josaa-counselling-works/" class="text-indigo-600 hover:underline">How JoSAA Counselling Works &rarr;</a></li>
+            <li><a href="/guides/josaa-rounds-and-seat-types-explained/" class="text-indigo-600 hover:underline">Seat Types & Freeze/Float Guide &rarr;</a></li>
+            <li><a href="/nirf-ranking/engineering/" class="text-indigo-600 hover:underline">NIRF Engineering Rankings 2024 &rarr;</a></li>
+            <li><a href="/official-links/" class="text-indigo-600 hover:underline">Official JoSAA Portal &rarr;</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</CollegeLayout>

@@ -200,10 +200,15 @@ export function buildData(): boolean {
     return false;
   }
 
-  // 7. Write Compiled JSON Files
+  // 7. Write Compiled JSON Files (both src/data and public/data for client loading)
   fs.writeFileSync(path.join(SRC_DATA_DIR, 'colleges.json'), JSON.stringify(validatedInstitutes, null, 2), 'utf-8');
   fs.writeFileSync(path.join(SRC_DATA_DIR, 'nirf.json'), JSON.stringify(validatedNirf, null, 2), 'utf-8');
   fs.writeFileSync(path.join(SRC_DATA_DIR, 'programs.json'), JSON.stringify(validatedPrograms, null, 2), 'utf-8');
+
+  const publicDataDir = path.resolve(process.cwd(), 'public/data');
+  if (!fs.existsSync(publicDataDir)) fs.mkdirSync(publicDataDir, { recursive: true });
+  fs.writeFileSync(path.join(publicDataDir, 'colleges.json'), JSON.stringify(validatedInstitutes), 'utf-8');
+  fs.writeFileSync(path.join(publicDataDir, 'programs.json'), JSON.stringify(validatedPrograms), 'utf-8');
 
   // 8. Chunk Cutoff Data by Year & Institute Type for on-demand client loading
   const chunkFiles: string[] = [];

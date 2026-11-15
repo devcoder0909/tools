@@ -56,14 +56,15 @@ export const footerNav: { title: string; items: NavItem[] }[] = [
     ],
   },
   {
-    title: 'Formats & Trust',
+    title: 'Formats & Colleges',
     items: [
       { label: 'HEIC Format Guide', href: '/formats/heic/' },
       { label: 'WebP Format Guide', href: '/formats/webp/' },
-      { label: 'Privacy Explained', href: '/privacy-explained/' },
+      { label: 'Gudmud Colleges', href: '/colleges/' },
+      { label: 'JoSAA Cutoff Explorer', href: '/cutoff/' },
+      { label: 'JEE College Predictor', href: '/jee-main-rank-college-predictor/' },
       { label: 'Privacy Policy', href: '/privacy/' },
       { label: 'Terms of Service', href: '/terms/' },
-      { label: 'Contact', href: '/contact/' },
     ],
   },
 ];

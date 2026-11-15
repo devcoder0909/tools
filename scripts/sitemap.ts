@@ -72,7 +72,67 @@ ${indexableTools.map((t) => generateUrlXml(`${siteConfig.url}/${t.slug}/`, t.las
 </urlset>`;
   fs.writeFileSync(path.join(DIST_DIR, 'sitemap-tools.xml'), toolsXml, 'utf-8');
 
-  // 4. Sitemap Index
+  // 4. Colleges Sitemap
+  const collegesDataPath = path.resolve(process.cwd(), 'src/data/colleges.json');
+  let collegesUrls: { url: string; lastmod: string; priority: string }[] = [];
+  if (fs.existsSync(collegesDataPath)) {
+    const colleges = JSON.parse(fs.readFileSync(collegesDataPath, 'utf-8'));
+
+    collegesUrls.push({ url: `${siteConfig.url}/colleges/`, lastmod: today, priority: '0.9' });
+    collegesUrls.push({ url: `${siteConfig.url}/cutoff/`, lastmod: today, priority: '0.9' });
+    collegesUrls.push({ url: `${siteConfig.url}/cutoff/iits/`, lastmod: today, priority: '0.9' });
+    collegesUrls.push({ url: `${siteConfig.url}/cutoff/nits/`, lastmod: today, priority: '0.9' });
+    collegesUrls.push({ url: `${siteConfig.url}/cutoff/iiits/`, lastmod: today, priority: '0.9' });
+    collegesUrls.push({ url: `${siteConfig.url}/cutoff/gftis/`, lastmod: today, priority: '0.9' });
+    collegesUrls.push({ url: `${siteConfig.url}/cutoff/computer-science/`, lastmod: today, priority: '0.9' });
+    collegesUrls.push({ url: `${siteConfig.url}/jee-main-rank-college-predictor/`, lastmod: today, priority: '0.9' });
+    collegesUrls.push({ url: `${siteConfig.url}/jee-advanced-rank-college-predictor/`, lastmod: today, priority: '0.9' });
+    collegesUrls.push({ url: `${siteConfig.url}/nirf-ranking/`, lastmod: today, priority: '0.9' });
+    collegesUrls.push({ url: `${siteConfig.url}/nirf-ranking/engineering/`, lastmod: today, priority: '0.9' });
+    collegesUrls.push({ url: `${siteConfig.url}/nirf-ranking/engineering/2024/`, lastmod: today, priority: '0.8' });
+    collegesUrls.push({ url: `${siteConfig.url}/nirf-ranking/overall/`, lastmod: today, priority: '0.8' });
+    collegesUrls.push({ url: `${siteConfig.url}/nirf-ranking/university/`, lastmod: today, priority: '0.8' });
+
+    const states = [
+      'tamil-nadu',
+      'delhi',
+      'maharashtra',
+      'karnataka',
+      'uttar-pradesh',
+      'telangana',
+      'west-bengal',
+      'gujarat',
+      'kerala',
+      'rajasthan',
+      'punjab',
+      'odisha',
+    ];
+    for (const st of states) {
+      collegesUrls.push({ url: `${siteConfig.url}/nirf-ranking/engineering/${st}/`, lastmod: today, priority: '0.8' });
+    }
+
+    collegesUrls.push({ url: `${siteConfig.url}/guides/`, lastmod: today, priority: '0.8' });
+    collegesUrls.push({ url: `${siteConfig.url}/guides/how-to-read-nirf-rankings/`, lastmod: today, priority: '0.8' });
+    collegesUrls.push({ url: `${siteConfig.url}/guides/how-josaa-counselling-works/`, lastmod: today, priority: '0.8' });
+    collegesUrls.push({ url: `${siteConfig.url}/guides/josaa-rounds-and-seat-types-explained/`, lastmod: today, priority: '0.8' });
+    collegesUrls.push({ url: `${siteConfig.url}/guides/nirf-vs-naac-vs-nba/`, lastmod: today, priority: '0.8' });
+    collegesUrls.push({ url: `${siteConfig.url}/guides/how-to-check-if-university-is-ugc-recognised/`, lastmod: today, priority: '0.8' });
+
+    collegesUrls.push({ url: `${siteConfig.url}/official-links/`, lastmod: today, priority: '0.8' });
+
+    for (const c of colleges) {
+      collegesUrls.push({ url: `${siteConfig.url}/colleges/${c.slug}/`, lastmod: today, priority: '0.7' });
+      collegesUrls.push({ url: `${siteConfig.url}/cutoff/${c.slug}/`, lastmod: today, priority: '0.7' });
+    }
+  }
+
+  const collegesXml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${collegesUrls.map((p) => generateUrlXml(p.url, p.lastmod, 'weekly', p.priority)).join('\n')}
+</urlset>`;
+  fs.writeFileSync(path.join(DIST_DIR, 'sitemap-colleges.xml'), collegesXml, 'utf-8');
+
+  // 5. Sitemap Index
   const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
@@ -85,6 +145,10 @@ ${indexableTools.map((t) => generateUrlXml(`${siteConfig.url}/${t.slug}/`, t.las
   </sitemap>
   <sitemap>
     <loc>${siteConfig.url}/sitemap-tools.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>${siteConfig.url}/sitemap-colleges.xml</loc>
     <lastmod>${today}</lastmod>
   </sitemap>
 </sitemapindex>`;

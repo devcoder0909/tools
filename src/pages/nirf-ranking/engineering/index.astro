@@ -1,0 +1,265 @@
+---
+import CollegeLayout from '../../../layouts/CollegeLayout.astro';
+import SourceBox from '../../../components/colleges/SourceBox.astro';
+import nirfData from '@/data/nirf.json';
+import collegesData from '@/data/colleges.json';
+
+const year = 2024;
+const category = 'Engineering';
+
+// Filter 2024 and 2023 engineering rankings
+const currentRankings = nirfData.filter((r) => r.category === category && r.year === year);
+const prevRankings = nirfData.filter((r) => r.category === category && r.year === 2023);
+
+const prevRankMap = new Map<string, number>();
+for (const p of prevRankings) {
+  prevRankMap.set(p.slug, p.rank);
+}
+
+// Map college info
+const collegeMap = new Map<string, any>();
+for (const c of collegesData) {
+  collegeMap.set(c.slug, c);
+}
+
+// Compute YoY rank changes
+const enrichedRankings = currentRankings.map((item) => {
+  const prevRank = prevRankMap.get(item.slug);
+  let change = 0;
+  let changeText = 'New / Unranked in 2023';
+  if (prevRank) {
+    change = prevRank - item.rank; // Positive means rank improved (e.g. 22 -> 14 is +8)
+    if (change > 0) changeText = `▲ +${change} (Rank ${prevRank})`;
+    else if (change < 0) changeText = `▼ ${change} (Rank ${prevRank})`;
+    else changeText = `— Steady (#${prevRank})`;
+  }
+  return {
+    ...item,
+    prevRank,
+    change,
+    changeText,
+    college: collegeMap.get(item.slug),
+  };
+});
+
+// Top states
+const states = [
+  { name: 'All States', slug: '' },
+  { name: 'Tamil Nadu', slug: 'tamil-nadu' },
+  { name: 'Delhi', slug: 'delhi' },
+  { name: 'Maharashtra', slug: 'maharashtra' },
+  { name: 'Karnataka', slug: 'karnataka' },
+  { name: 'Uttar Pradesh', slug: 'uttar-pradesh' },
+  { name: 'Telangana', slug: 'telangana' },
+  { name: 'West Bengal', slug: 'west-bengal' },
+  { name: 'Gujarat', slug: 'gujarat' },
+  { name: 'Kerala', slug: 'kerala' },
+  { name: 'Rajasthan', slug: 'rajasthan' },
+  { name: 'Punjab', slug: 'punjab' },
+  { name: 'Odisha', slug: 'odisha' },
+];
+
+const itemListJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: `Best Engineering Colleges in India: NIRF ${year}`,
+  description: `Official National Institutional Ranking Framework (NIRF) ${year} Engineering rankings list with verified scores and year-over-year rank changes.`,
+  numberOfItems: enrichedRankings.length,
+  itemListElement: enrichedRankings.slice(0, 30).map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.name,
+    url: `https://convert.gudmud.site/colleges/${item.slug}/`,
+  })),
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://convert.gudmud.site/' },
+    { '@type': 'ListItem', position: 2, name: 'Colleges', item: 'https://convert.gudmud.site/colleges/' },
+    { '@type': 'ListItem', position: 3, name: 'NIRF Rankings', item: 'https://convert.gudmud.site/nirf-ranking/engineering/' },
+  ],
+};
+---
+
+<CollegeLayout
+  title={`Best Engineering Colleges: NIRF ${year} | Gudmud Colleges`}
+  description={`Official NIRF ${year} Engineering Rankings list. Review top engineering colleges in India with verified NIRF scores, YoY rank changes, and JoSAA cutoffs.`}
+  canonical="https://convert.gudmud.site/nirf-ranking/engineering/"
+  jsonLd={[itemListJsonLd, breadcrumbJsonLd]}
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <!-- Breadcrumb -->
+    <nav class="flex items-center gap-2 text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
+      <a href="/" class="hover:underline">Home</a>
+      <span>/</span>
+      <a href="/colleges/" class="hover:underline">Colleges</a>
+      <span>/</span>
+      <span class="text-gray-900 font-medium">NIRF Engineering {year}</span>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="mb-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200 mb-3">
+        <span>Ministry of Education Official Report</span>
+        <span>•</span>
+        <span>Year-over-Year Comparative Analysis</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-3">
+        Best Engineering Colleges in India: NIRF {year}
+      </h1>
+      <p class="text-sm sm:text-base text-gray-600 max-w-3xl leading-relaxed">
+        Official National Institutional Ranking Framework (NIRF) {year} rankings for engineering institutions released by the Ministry of Education, Government of India. This verified table features official institutional scores, year-over-year rank shifts against {year - 1}, and direct links to JoSAA cutoff explorer data. You can also view the dedicated <a href="/nirf-ranking/engineering/2024/" class="text-indigo-600 underline font-semibold">NIRF 2024 Engineering Edition</a>.
+      </p>
+    </header>
+
+    <!-- Methodology & Source Box -->
+    <SourceBox
+      sourceName="National Institutional Ranking Framework (NIRF), Ministry of Education"
+      sourceUrl="https://www.nirfindia.org"
+      sourceYear={year}
+      lastVerified="2026-11-15"
+      verifiedBy="Gudmud Data Engineering Team"
+    />
+
+    <!-- State Slices Quick Links -->
+    <section class="my-6 p-4 rounded-xl border border-gray-200 bg-gray-50" aria-label="Filter by State">
+      <span class="text-xs font-bold text-gray-700 uppercase tracking-wider block mb-2">
+        Browse by State:
+      </span>
+      <div class="flex flex-wrap gap-2">
+        {states.map((st) => (
+          <a
+            href={st.slug ? `/nirf-ranking/engineering/${st.slug}/` : '/nirf-ranking/engineering/'}
+            class={`px-3 py-1.5 rounded-lg text-xs font-medium transition ${
+              st.slug === '' ? 'bg-indigo-600 text-white font-semibold' : 'bg-white border border-gray-200 text-gray-700 hover:border-indigo-500 hover:text-indigo-600'
+            }`}
+          >
+            {st.name}
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Verified Rankings Table with Computed YoY Change -->
+    <section class="my-8" aria-labelledby="rankings-table-heading">
+      <div class="flex items-center justify-between mb-4">
+        <h2 id="rankings-table-heading" class="text-lg sm:text-xl font-bold text-gray-900">
+          Top Engineering Colleges ({year})
+        </h2>
+        <span class="text-xs text-gray-500">
+          Showing {enrichedRankings.length} institutes
+        </span>
+      </div>
+
+      <div class="overflow-x-auto rounded-2xl border border-gray-200 bg-white shadow-xs">
+        <table class="w-full text-left text-xs border-collapse">
+          <thead>
+            <tr class="bg-gray-100 text-gray-700 uppercase font-bold text-2xs border-b border-gray-200">
+              <th scope="col" class="py-3 px-4 text-center">Rank</th>
+              <th scope="col" class="py-3 px-4">Institute</th>
+              <th scope="col" class="py-3 px-3">City, State</th>
+              <th scope="col" class="py-3 px-3 text-right">NIRF Score</th>
+              <th scope="col" class="py-3 px-4 text-center">YoY Shift (vs 2023)</th>
+              <th scope="col" class="py-3 px-4 text-center">Cutoffs & Links</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100 text-gray-800">
+            {enrichedRankings.map((item) => (
+              <tr class="hover:bg-indigo-50/30 transition-colors">
+                <td class="py-3 px-4 text-center font-bold text-sm text-indigo-700 font-mono">
+                  #{item.rank}
+                </td>
+                <td class="py-3 px-4">
+                  <a href={`/colleges/${item.slug}/`} class="font-bold text-gray-900 hover:text-indigo-600 transition text-sm">
+                    {item.name}
+                  </a>
+                  {item.college?.type && (
+                    <span class="ml-2 inline-block px-1.5 py-0.5 rounded text-3xs font-extrabold uppercase bg-gray-100 text-gray-600">
+                      {item.college.type}
+                    </span>
+                  )}
+                </td>
+                <td class="py-3 px-3 text-gray-600">
+                  {item.city}, {item.state}
+                </td>
+                <td class="py-3 px-3 text-right font-mono font-semibold text-gray-900">
+                  {item.score.toFixed(2)}
+                </td>
+                <td class="py-3 px-4 text-center text-xs">
+                  <span class={`inline-block px-2 py-0.5 rounded text-2xs font-bold ${
+                    item.change > 0 ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : item.change < 0 ? 'bg-rose-50 text-rose-700 border border-rose-200' : 'bg-gray-50 text-gray-600'
+                  }`}>
+                    {item.changeText}
+                  </span>
+                </td>
+                <td class="py-3 px-4 text-center space-x-2">
+                  <a
+                    href={`/cutoff/${item.slug}/`}
+                    class="text-indigo-600 hover:text-indigo-800 font-medium underline text-2xs"
+                  >
+                    JoSAA Cutoff &rarr;
+                  </a>
+                  <span class="text-gray-300">|</span>
+                  <a
+                    href={item.official_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-gray-500 hover:text-gray-700 text-2xs"
+                  >
+                    Official Portal ↗
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Detailed Methodology & Parameter Breakdown -->
+    <section class="mt-12 space-y-6 text-sm text-gray-700 leading-relaxed border-t border-gray-200 pt-8">
+      <h2 class="text-xl font-bold text-gray-900">
+        How NIRF Evaluates and Ranks Engineering Colleges
+      </h2>
+      <p>
+        The National Institutional Ranking Framework evaluates technical institutions across five broad parameterized categories, each carrying weighted percent marks towards the final aggregate 100-point score:
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-6">
+        <div class="p-4 rounded-xl border border-gray-200 bg-white">
+          <h3 class="font-bold text-gray-900 mb-1">1. Teaching, Learning & Resources (TLR) - 30%</h3>
+          <p class="text-xs text-gray-600">
+            Measures student strength, faculty-student ratio, doctoral faculty proportion, and financial resource allocation per student.
+          </p>
+        </div>
+        <div class="p-4 rounded-xl border border-gray-200 bg-white">
+          <h3 class="font-bold text-gray-900 mb-1">2. Research and Professional Practice (RPC) - 30%</h3>
+          <p class="text-xs text-gray-600">
+            Evaluates published citations in Scopus and Web of Science, patent grants, and earnings from research consultancy projects.
+          </p>
+        </div>
+        <div class="p-4 rounded-xl border border-gray-200 bg-white">
+          <h3 class="font-bold text-gray-900 mb-1">3. Graduation Outcomes (GO) - 20%</h3>
+          <p class="text-xs text-gray-600">
+            Assesses median salary of placed engineering graduates, employment percentages, and PhD scholar graduation rates.
+          </p>
+        </div>
+        <div class="p-4 rounded-xl border border-gray-200 bg-white">
+          <h3 class="font-bold text-gray-900 mb-1">4. Outreach and Inclusivity (OI) - 10%</h3>
+          <p class="text-xs text-gray-600">
+            Tracks percentage of students from other states/countries, female student and faculty percentages, and facilities for physically challenged students.
+          </p>
+        </div>
+        <div class="p-4 rounded-xl border border-gray-200 bg-white">
+          <h3 class="font-bold text-gray-900 mb-1">5. Peer Perception (PR) - 10%</h3>
+          <p class="text-xs text-gray-600">
+            Assesses reputation among peer institutional leaders, academic employers, and industry recruiters via structured surveys.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</CollegeLayout>

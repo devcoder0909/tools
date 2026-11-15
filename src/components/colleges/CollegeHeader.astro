@@ -1,0 +1,68 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<header class="border-b border-gray-200 bg-white sticky top-0 z-40 shadow-2xs">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex items-center gap-3">
+        <a href="/colleges/" class="flex items-center gap-2 group">
+          <span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-indigo-600 text-white font-extrabold text-base group-hover:bg-indigo-700 transition">
+            G
+          </span>
+          <span class="font-extrabold text-gray-900 text-lg tracking-tight group-hover:text-indigo-600 transition">
+            Gudmud <span class="text-indigo-600">Colleges</span>
+          </span>
+        </a>
+        <span class="hidden sm:inline-block px-2 py-0.5 rounded text-2xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200">
+          Official JoSAA & NIRF Data
+        </span>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
+        <a
+          href="/cutoff/"
+          class={`transition hover:text-indigo-600 ${currentPath.startsWith('/cutoff') ? 'text-indigo-600 font-semibold' : ''}`}
+        >
+          Cutoff Explorer
+        </a>
+        <a
+          href="/jee-main-rank-college-predictor/"
+          class={`transition hover:text-indigo-600 ${currentPath.includes('predictor') ? 'text-indigo-600 font-semibold' : ''}`}
+        >
+          College Predictor
+        </a>
+        <a
+          href="/nirf-ranking/engineering/"
+          class={`transition hover:text-indigo-600 ${currentPath.startsWith('/nirf-ranking') ? 'text-indigo-600 font-semibold' : ''}`}
+        >
+          NIRF Rankings
+        </a>
+        <a
+          href="/colleges/"
+          class={`transition hover:text-indigo-600 ${currentPath === '/colleges/' ? 'text-indigo-600 font-semibold' : ''}`}
+        >
+          Institutes
+        </a>
+        <a
+          href="/guides/"
+          class={`transition hover:text-indigo-600 ${currentPath.startsWith('/guides') ? 'text-indigo-600 font-semibold' : ''}`}
+        >
+          Guides
+        </a>
+        <a
+          href="/official-links/"
+          class={`transition hover:text-indigo-600 ${currentPath.startsWith('/official-links') ? 'text-indigo-600 font-semibold' : ''}`}
+        >
+          Official Portals
+        </a>
+      </nav>
+
+      <!-- Mobile navigation links (minimal) -->
+      <div class="flex md:hidden items-center gap-2 text-xs font-semibold">
+        <a href="/cutoff/" class="px-2.5 py-1.5 rounded-md bg-gray-100 text-gray-800 hover:bg-gray-200">Cutoffs</a>
+        <a href="/jee-main-rank-college-predictor/" class="px-2.5 py-1.5 rounded-md bg-indigo-600 text-white hover:bg-indigo-700">Predictor</a>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,188 @@
+---
+import CollegeLayout from '../../layouts/CollegeLayout.astro';
+import SourceBox from '../../components/colleges/SourceBox.astro';
+
+const states = [
+  { name: 'Tamil Nadu', slug: 'tamil-nadu' },
+  { name: 'Delhi', slug: 'delhi' },
+  { name: 'Maharashtra', slug: 'maharashtra' },
+  { name: 'Karnataka', slug: 'karnataka' },
+  { name: 'Uttar Pradesh', slug: 'uttar-pradesh' },
+  { name: 'Telangana', slug: 'telangana' },
+  { name: 'West Bengal', slug: 'west-bengal' },
+  { name: 'Gujarat', slug: 'gujarat' },
+  { name: 'Kerala', slug: 'kerala' },
+  { name: 'Rajasthan', slug: 'rajasthan' },
+  { name: 'Punjab', slug: 'punjab' },
+  { name: 'Odisha', slug: 'odisha' },
+];
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://convert.gudmud.site/' },
+    { '@type': 'ListItem', position: 2, name: 'Colleges', item: 'https://convert.gudmud.site/colleges/' },
+    { '@type': 'ListItem', position: 3, name: 'NIRF Rankings', item: 'https://convert.gudmud.site/nirf-ranking/' },
+  ],
+};
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is the NIRF ranking methodology?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'The National Institutional Ranking Framework (NIRF) ranks Indian higher education institutions across five weighted parameters: Teaching, Learning & Resources (TLR: 30%), Research and Professional Practice (RPC: 30%), Graduation Outcomes (GO: 20%), Outreach and Inclusivity (OI: 10%), and Perception (PR: 10%).',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Which institute ranked #1 in NIRF 2024 Overall in India?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Indian Institute of Technology Madras (IIT Madras) secured the #1 rank in the NIRF 2024 Overall category for the sixth consecutive year, followed by IISc Bangalore (#2) and IIT Bombay (#3).',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How often are NIRF rankings updated?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'NIRF rankings are published annually by the Ministry of Education, Government of India, typically between June and August.',
+      },
+    },
+  ],
+};
+---
+
+<CollegeLayout
+  title="NIRF Ranking 2024: Top Colleges in India | Gudmud"
+  description="Explore official NIRF 2024 rankings by the Ministry of Education. Compare top engineering colleges, universities, and overall institutions across India."
+  canonical="https://convert.gudmud.site/nirf-ranking/"
+  jsonLd={[breadcrumbJsonLd, faqJsonLd]}
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <!-- Breadcrumb -->
+    <nav class="flex items-center gap-2 text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
+      <a href="/" class="hover:underline">Home</a>
+      <span>/</span>
+      <a href="/colleges/" class="hover:underline">Colleges</a>
+      <span>/</span>
+      <span class="text-gray-900 font-medium">NIRF Rankings</span>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="mb-8">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200 mb-3">
+        <span>Ministry of Education Official Data</span>
+        <span>•</span>
+        <span>NIRF 2024 Edition</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-3">
+        NIRF Rankings 2024: Top Colleges in India
+      </h1>
+      <p class="text-sm sm:text-base text-gray-600 max-w-3xl leading-relaxed">
+        Explore verified rankings from the National Institutional Ranking Framework (NIRF) 2024, published by the Ministry of Education, Government of India. Review scores across Engineering, Overall, and University categories with state-level breakdowns.
+      </p>
+    </header>
+
+    <!-- Categories Grid -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:border-indigo-400 transition-colors flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-lg mb-4">
+            01
+          </div>
+          <h2 class="text-xl font-bold text-gray-900 mb-2">NIRF Engineering 2024</h2>
+          <p class="text-sm text-gray-600 mb-4">
+            Top engineering institutions in India including IITs, NITs, and premier technical colleges with YoY rank shifts.
+          </p>
+          <ul class="text-xs text-gray-500 space-y-1 mb-4">
+            <li>• #1: IIT Madras (Score: 90.04)</li>
+            <li>• #2: IIT Delhi (Score: 88.12)</li>
+            <li>• #3: IIT Bombay (Score: 84.11)</li>
+          </ul>
+          <div class="mb-6">
+            <a href="/nirf-ranking/engineering/2024/" class="text-xs text-indigo-600 hover:underline font-semibold">
+              View Dedicated 2024 Release →
+            </a>
+          </div>
+        </div>
+        <a href="/nirf-ranking/engineering/" class="inline-flex items-center justify-center px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold rounded-lg shadow-sm">
+          Explore Engineering Rankings →
+        </a>
+      </div>
+
+      <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:border-indigo-400 transition-colors flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-lg mb-4">
+            02
+          </div>
+          <h2 class="text-xl font-bold text-gray-900 mb-2">NIRF Overall 2024</h2>
+          <p class="text-sm text-gray-600 mb-4">
+            Cross-discipline institutional ranking benchmarking research, multidisciplinary universities, and technical institutes.
+          </p>
+          <ul class="text-xs text-gray-500 space-y-1 mb-6">
+            <li>• #1: IIT Madras (Score: 86.42)</li>
+            <li>• #2: IISc Bangalore (Score: 83.28)</li>
+            <li>• #3: IIT Bombay (Score: 82.52)</li>
+          </ul>
+        </div>
+        <a href="/nirf-ranking/overall/" class="inline-flex items-center justify-center px-4 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-lg shadow-sm">
+          Explore Overall Rankings →
+        </a>
+      </div>
+
+      <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:border-indigo-400 transition-colors flex flex-col justify-between">
+        <div>
+          <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-lg mb-4">
+            03
+          </div>
+          <h2 class="text-xl font-bold text-gray-900 mb-2">NIRF University 2024</h2>
+          <p class="text-sm text-gray-600 mb-4">
+            Premier central, state, and deemed research universities evaluated for academic scholarship and graduation outcomes.
+          </p>
+          <ul class="text-xs text-gray-500 space-y-1 mb-6">
+            <li>• #1: IISc Bangalore (Score: 87.56)</li>
+            <li>• #2: JNU New Delhi (Score: 68.90)</li>
+            <li>• #3: Jamia Millia Islamia (Score: 67.73)</li>
+          </ul>
+        </div>
+        <a href="/nirf-ranking/university/" class="inline-flex items-center justify-center px-4 py-2.5 bg-amber-600 hover:bg-amber-700 text-white text-sm font-semibold rounded-lg shadow-sm">
+          Explore University Rankings →
+        </a>
+      </div>
+    </section>
+
+    <!-- State Slices Section -->
+    <section class="mb-12 bg-gray-50 border border-gray-200 rounded-xl p-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-3">State-Wise Engineering Rankings</h2>
+      <p class="text-sm text-gray-600 mb-4">
+        Browse top-ranking engineering institutes by home state to find the best college options near you:
+      </p>
+      <div class="flex flex-wrap gap-2">
+        {states.map((st) => (
+          <a
+            href={`/nirf-ranking/engineering/${st.slug}/`}
+            class="px-3 py-1.5 bg-white border border-gray-300 rounded-lg text-xs font-semibold text-gray-700 hover:border-indigo-500 hover:text-indigo-600 transition-colors"
+          >
+            Engineering Colleges in {st.name} →
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- Methodology & Official SourceBox -->
+    <SourceBox
+      sourceName="National Institutional Ranking Framework (NIRF)"
+      sourceUrl="https://www.nirfindia.org"
+      sourceYear={2024}
+      verifiedAt="2026-11-15"
+      methodologyNote="NIRF computes institutional scores across 5 core parameters: Teaching & Resources (30%), Research & Professional Practice (30%), Graduation Outcomes (20%), Outreach & Inclusivity (10%), and Perception (10%). All scores and ranks shown are verified from official MoE publications."
+    />
+  </div>
+</CollegeLayout>

@@ -1,0 +1,153 @@
+---
+import CollegeLayout from '../../../layouts/CollegeLayout.astro';
+import SourceBox from '../../../components/colleges/SourceBox.astro';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://convert.gudmud.site/' },
+    { '@type': 'ListItem', position: 2, name: 'Guides', item: 'https://convert.gudmud.site/guides/' },
+    { '@type': 'ListItem', position: 3, name: 'NIRF vs NAAC vs NBA', item: 'https://convert.gudmud.site/guides/nirf-vs-naac-vs-nba/' },
+  ],
+};
+
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'NIRF vs NAAC vs NBA: Understanding the Differences in Quality Benchmarks',
+  datePublished: '2026-11-15T00:00:00+05:30',
+  dateModified: '2026-11-15T00:00:00+05:30',
+  author: {
+    '@type': 'Organization',
+    name: 'Gudmud Colleges Editorial Team',
+    url: 'https://convert.gudmud.site',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Gudmud Colleges',
+    url: 'https://convert.gudmud.site',
+  },
+  description: 'Understand the distinct roles of NIRF ranking, NAAC institutional accreditation, and NBA program accreditation in India.',
+};
+---
+
+<CollegeLayout
+  title="NIRF vs NAAC vs NBA: Key Differences Explained"
+  description="Compare NIRF rankings, NAAC institutional accreditation, and NBA program accreditation. Learn what each score measures before choosing an engineering college."
+  canonical="https://convert.gudmud.site/guides/nirf-vs-naac-vs-nba/"
+  jsonLd={[breadcrumbJsonLd, articleJsonLd]}
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <!-- Breadcrumb -->
+    <nav class="flex items-center gap-2 text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
+      <a href="/" class="hover:underline">Home</a>
+      <span>/</span>
+      <a href="/guides/" class="hover:underline">Guides</a>
+      <span>/</span>
+      <span class="text-gray-900 font-medium">NIRF vs NAAC vs NBA</span>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="mb-8 border-b border-gray-200 pb-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200 mb-3">
+        <span>Higher Education Accreditation</span>
+        <span>•</span>
+        <span>Quality Frameworks</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-3">
+        NIRF vs NAAC vs NBA: Key Differences Explained
+      </h1>
+      <p class="text-sm sm:text-base text-gray-600 leading-relaxed">
+        Indian colleges frequently advertise "NIRF Ranked", "NAAC A++", and "NBA Accredited" on hoardings and brochures. While all three are government-recognized quality benchmarks, they serve fundamentally different evaluative purposes.
+      </p>
+    </header>
+
+    <!-- Content -->
+    <article class="prose prose-indigo max-w-none text-gray-700 space-y-6 text-sm sm:text-base leading-relaxed">
+      <h2 class="text-xl font-bold text-gray-900 mt-8 mb-3">Quick Comparison Matrix</h2>
+
+      <div class="overflow-x-auto my-6">
+        <table class="w-full text-left border-collapse border border-gray-200 rounded-lg text-xs sm:text-sm">
+          <thead>
+            <tr class="bg-gray-100 border-b border-gray-200 font-bold text-gray-800">
+              <th class="p-3">Framework</th>
+              <th class="p-3">Governing Body</th>
+              <th class="p-3">Scope of Evaluation</th>
+              <th class="p-3">Output Format</th>
+              <th class="p-3">Validity</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            <tr>
+              <td class="p-3 font-bold text-indigo-700">NIRF</td>
+              <td class="p-3">Ministry of Education (MoE)</td>
+              <td class="p-3">Relative comparative ranking across colleges and universities</td>
+              <td class="p-3 font-mono font-semibold">Numerical Rank (#1, #2, etc.)</td>
+              <td class="p-3">Annual (1 Year)</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-emerald-700">NAAC</td>
+              <td class="p-3">University Grants Commission (UGC)</td>
+              <td class="p-3">Overall institutional quality, governance, and infrastructure</td>
+              <td class="p-3 font-semibold text-emerald-700">Grades (A++, A+, A, B, C)</td>
+              <td class="p-3">5 Years</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-bold text-purple-700">NBA</td>
+              <td class="p-3">Autonomous (under AICTE / MoE)</td>
+              <td class="p-3">Specific technical degree program (e.g., B.Tech CSE or Mech)</td>
+              <td class="p-3 font-semibold text-purple-700">Tier-I or Tier-II Program Accreditation</td>
+              <td class="p-3">3 to 6 Years per program</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-8 mb-3">1. National Institutional Ranking Framework (NIRF)</h2>
+      <p>
+        NIRF is a <strong>ranking system</strong>, not an accreditation badge. It compares participating institutions against each other in the same year using normalized data. An institute with NIRF Rank 25 is quantitatively outperforming Rank 50 across that year's weighted formula.
+      </p>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-8 mb-3">2. National Assessment and Accreditation Council (NAAC)</h2>
+      <p>
+        NAAC evaluates the entire institution (university or affiliated college) on a cumulative grade point average (CGPA) from 0 to 4.0:
+      </p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>A++ Grade:</strong> CGPA between 3.51 and 4.00 (highest level of institutional governance and faculty quality).</li>
+        <li><strong>A+ Grade:</strong> CGPA between 3.26 and 3.50.</li>
+        <li><strong>A Grade:</strong> CGPA between 3.01 and 3.25.</li>
+      </ul>
+      <p>
+        Note: NAAC assesses the whole campus, but does not guarantee the strength of any individual engineering department.
+      </p>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-8 mb-3">3. National Board of Accreditation (NBA)</h2>
+      <p>
+        Unlike NAAC, the NBA accredits <strong>specific departments and academic programs</strong>. For instance, a college may have NBA accreditation for its B.Tech Mechanical Engineering, while its newly launched AI program may not be accredited yet.
+      </p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>Washington Accord (Tier-I):</strong> Degrees from NBA Tier-I accredited programs in autonomous institutions and universities are internationally recognized under the Washington Accord in the US, UK, Australia, Canada, and Japan.</li>
+        <li><strong>Tier-II:</strong> Evaluates affiliated, non-autonomous technical institutions.</li>
+      </ul>
+
+      <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-5 my-6">
+        <h3 class="text-base font-bold text-indigo-900 mb-2">Student Takeaway</h3>
+        <p class="text-xs sm:text-sm text-indigo-800 leading-relaxed">
+          If you plan to pursue MS abroad or international licensing (FE/PE exams), verify whether your specific B.Tech branch has <strong>NBA Tier-I accreditation</strong>. For overall campus life and research quality, inspect the institute's <a href="/nirf-ranking/engineering/" class="underline font-semibold">NIRF ranking</a> and NAAC score.
+        </p>
+      </div>
+    </article>
+
+    <!-- Source Box -->
+    <div class="mt-12">
+      <SourceBox
+        sourceName="MoE, NAAC & NBA Charters"
+        sourceUrl="https://www.nbaind.org"
+        sourceYear={2024}
+        verifiedAt="2026-11-15"
+        methodologyNote="Accreditation criteria derived from official manuals of the National Assessment and Accreditation Council (NAAC) and the National Board of Accreditation (NBA) Washington Accord signatory rules."
+      />
+    </div>
+  </div>
+</CollegeLayout>

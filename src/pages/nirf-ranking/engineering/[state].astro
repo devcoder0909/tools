@@ -1,0 +1,370 @@
+---
+import CollegeLayout from '../../../layouts/CollegeLayout.astro';
+import SourceBox from '../../../components/colleges/SourceBox.astro';
+import nirfData from '@/data/nirf.json';
+import collegesData from '@/data/colleges.json';
+
+export async function getStaticPaths() {
+  const stateList = [
+    { stateName: 'Tamil Nadu', stateSlug: 'tamil-nadu' },
+    { stateName: 'Delhi', stateSlug: 'delhi' },
+    { stateName: 'Maharashtra', stateSlug: 'maharashtra' },
+    { stateName: 'Karnataka', stateSlug: 'karnataka' },
+    { stateName: 'Uttar Pradesh', stateSlug: 'uttar-pradesh' },
+    { stateName: 'Telangana', stateSlug: 'telangana' },
+    { stateName: 'West Bengal', stateSlug: 'west-bengal' },
+    { stateName: 'Gujarat', stateSlug: 'gujarat' },
+    { stateName: 'Kerala', stateSlug: 'kerala' },
+    { stateName: 'Rajasthan', stateSlug: 'rajasthan' },
+    { stateName: 'Punjab', stateSlug: 'punjab' },
+    { stateName: 'Odisha', stateSlug: 'odisha' },
+  ];
+
+  return stateList.map(({ stateName, stateSlug }) => ({
+    params: { state: stateSlug },
+    props: { stateName, stateSlug },
+  }));
+}
+
+export interface Props {
+  stateName: string;
+  stateSlug: string;
+}
+
+const { stateName, stateSlug } = Astro.props;
+const year = 2024;
+const category = 'Engineering';
+
+// Filter rankings for this state
+const stateRankings = nirfData.filter(
+  (r) => r.category === category && r.year === year && r.state.toLowerCase() === stateName.toLowerCase()
+);
+
+// Map college info
+const collegeMap = new Map<string, any>();
+for (const c of collegesData) {
+  collegeMap.set(c.slug, c);
+}
+
+const otherStates = [
+  { name: 'All India', slug: '' },
+  { name: 'Tamil Nadu', slug: 'tamil-nadu' },
+  { name: 'Delhi', slug: 'delhi' },
+  { name: 'Maharashtra', slug: 'maharashtra' },
+  { name: 'Karnataka', slug: 'karnataka' },
+  { name: 'Uttar Pradesh', slug: 'uttar-pradesh' },
+  { name: 'Telangana', slug: 'telangana' },
+  { name: 'West Bengal', slug: 'west-bengal' },
+  { name: 'Gujarat', slug: 'gujarat' },
+  { name: 'Kerala', slug: 'kerala' },
+  { name: 'Rajasthan', slug: 'rajasthan' },
+  { name: 'Punjab', slug: 'punjab' },
+  { name: 'Odisha', slug: 'odisha' },
+].filter((s) => s.slug !== stateSlug);
+
+const stateInsights: Record<string, {
+  summary: string;
+  admissionsTitle: string;
+  p1Title: string;
+  p1Text: string;
+  p2Title: string;
+  p2Text: string;
+  concluding: string;
+}> = {
+  'delhi': {
+    summary: 'The National Capital Territory of Delhi represents India\'s premier academic hub, combining central institutions like IIT Delhi with state research universities like DTU and NSUT.',
+    admissionsTitle: 'Delhi Engineering Admissions: JoSAA & JAC Delhi Counselling',
+    p1Title: 'JAC Delhi 85% Region Quota vs JoSAA',
+    p1Text: 'While IIT Delhi admits 100% via JEE Advanced JoSAA and NIT Delhi reserves 50% Home State seats, Delhi Technology University (DTU) and Netaji Subhas University of Technology (NSUT) allocate 85% of their engineering seats to students completing class 12 from schools within the National Capital Territory via Joint Admission Counselling (JAC Delhi).',
+    p2Title: 'Research Cluster & Placement Density',
+    p2Text: 'Delhi institutions benefit from immediate proximity to central government scientific ministries, DRDO laboratories, and corporate headquarters across Gurgaon and Noida, resulting in stellar median B.Tech placement figures in NIRF Graduation Outcomes (GO).',
+    concluding: 'Candidates targeting engineering in Delhi should register separately on both the JoSAA portal for IIT/NIT and the JAC Delhi portal for DTU, NSUT, and IIIT Delhi.'
+  },
+  'tamil-nadu': {
+    summary: 'Tamil Nadu features India\'s highest concentration of top-100 NIRF engineering institutions, spearheaded by national leader IIT Madras (#1 for nine consecutive years) and NIT Trichy (#9).',
+    admissionsTitle: 'Tamil Nadu Engineering Admissions: TNEA vs JoSAA Routes',
+    p1Title: 'TNEA Single-Window System vs National JoSAA',
+    p1Text: 'Tamil Nadu Engineering Admissions (TNEA) conducted by Directorate of Technical Education coordinates admissions to over 450 state-affiliated engineering colleges based on class 12 normalized marks. In contrast, national institutes like IIT Madras and NIT Tiruchirappalli admit strictly via JEE ranks in JoSAA.',
+    p2Title: 'Manufacturing, Automotive & Software Corridor',
+    p2Text: 'With Chennai serving as the automotive capital of South Asia and Coimbatore known as a precision engineering hub, engineering graduates in Tamil Nadu enjoy exceptionally strong core engineering recruitment alongside IT services.',
+    concluding: 'For NIT Trichy, Tamil Nadu candidates should leverage the 50% Home State (HS) reservation quota where cutoff ranks are significantly more accessible than Other State (OS) ranks.'
+  },
+  'maharashtra': {
+    summary: 'Maharashtra bridges historic academic excellence with India\'s financial and industrial capital, featuring premier destinations like IIT Bombay, VNIT Nagpur, and COEP Technological University.',
+    admissionsTitle: 'Maharashtra Engineering Admissions: MHT-CET CAP Rounds vs JoSAA',
+    p1Title: 'State CET Cell CAP Rounds vs Central JoSAA',
+    p1Text: 'The State Common Entrance Test Cell, Maharashtra administers Centralized Admission Process (CAP) rounds for state colleges (COEP, VJTI, SPIT) based on MHT-CET percentiles. Meanwhile, central admissions for IIT Bombay and VNIT Nagpur take place exclusively through JoSAA based on JEE Advanced and JEE Main ranks.',
+    p2Title: 'Financial Technology & Industrial Hub Advantage',
+    p2Text: 'Proximity to Mumbai\'s financial district and Pune\'s automotive-software cluster provides engineering students across Maharashtra with unparalleled access to tech startups, investment banks, and multinational engineering R&D centers.',
+    concluding: 'Candidates possessing Maharashtra domicile should track both JoSAA rounds for VNIT Nagpur (50% HS quota) and MHT-CET CAP rounds for state autonomous colleges.'
+  },
+  'karnataka': {
+    summary: 'Home to Bangalore—the Silicon Valley of India—Karnataka is India\'s epicentre for technology startups, aerospace research, and semiconductor chip design, led by NIT Surathkal (#17) and IISc Bangalore.',
+    admissionsTitle: 'Karnataka Engineering Admissions: KCET, COMEDK & JoSAA Channels',
+    p1Title: 'Tri-Channel Admissions: KCET vs COMEDK vs JoSAA',
+    p1Text: 'Karnataka operates three distinct admission pathways: KEA (KCET) for state-domicile candidates at subsidized government fees, COMEDK UGET for private engineering colleges open to students across India, and JoSAA for national institutes like NIT Surathkal and IIIT Bangalore.',
+    p2Title: 'Global Tech Ecosystem & Software Placements',
+    p2Text: 'With over 400 Fortune 500 R&D centers in Bengaluru, engineering colleges in Karnataka maintain the highest proportion of campus recruitments by multinational tech giants, reflected in exceptionally high Graduation Outcome scores in NIRF.',
+    concluding: 'Karnataka candidates benefit from favorable Home State cutoffs at NIT Surathkal across all reservation categories in JoSAA Round 5.'
+  },
+  'uttar-pradesh': {
+    summary: 'Uttar Pradesh houses some of India\'s most revered engineering institutions, anchored by IIT Kanpur (#4), IIT (BHU) Varanasi (#10), and Motilal Nehru National Institute of Technology (MNNIT) Allahabad (#43).',
+    admissionsTitle: 'Uttar Pradesh Engineering Admissions: UPTAC vs Central JoSAA Framework',
+    p1Title: 'UPTAC / AKTU Counselling vs JoSAA Seat Allocation',
+    p1Text: 'Dr. A.P.J. Abdul Kalam Technical University coordinates Uttar Pradesh Technical Admission Counselling (UPTAC) based on JEE Main CRL ranks for state government and affiliated engineering colleges. Meanwhile, IIT Kanpur, IIT BHU, and MNNIT Allahabad participate exclusively in JoSAA.',
+    p2Title: 'Academic Rigor & Public Sector Recruitment',
+    p2Text: 'Engineering institutions in Uttar Pradesh are known for rigorous mathematical foundations, extensive alumni networks in civil services, and top-tier recruitment from public sector undertakings (PSUs), aerospace research, and core manufacturing.',
+    concluding: 'UP candidates should prioritize MNNIT Allahabad under the 50% Home State quota in JoSAA while filling IIT Kanpur and IIT BHU as top choices for JEE Advanced.'
+  },
+  'telangana': {
+    summary: 'Telangana is a major technological power center in southern India, spearheaded by IIT Hyderabad (#8 in NIRF), NIT Warangal (#21), and the research ecosystem of Hyderabad.',
+    admissionsTitle: 'Telangana Engineering Admissions: TS EAMCET vs JoSAA Systems',
+    p1Title: 'TS EAMCET / TG EAPCET vs JoSAA Central Counselling',
+    p1Text: 'The Telangana State Council of Higher Education (TSCHE) conducts TS EAMCET (TG EAPCET) for 100% of seats in state university colleges like JNTU Hyderabad and Osmania University. In contrast, national institutes IIT Hyderabad and NIT Warangal allocate 100% of seats through JoSAA.',
+    p2Title: 'Hyderabad Tech Cluster & AI Research Hub',
+    p2Text: 'Hyderabad hosts massive corporate technology campuses for Microsoft, Google, Amazon, and Qualcomm. Institutes like IIT Hyderabad and IIIT Hyderabad lead national research in Artificial Intelligence, Computer Vision, and 5G communications.',
+    concluding: 'Telangana candidates should utilize their 50% Home State quota at NIT Warangal, one of the original and most prestigious RECs in India.'
+  },
+  'west-bengal': {
+    summary: 'West Bengal has a historic engineering legacy led by India\'s first Indian Institute of Technology at Kharagpur (#6 in NIRF), IIEST Shibpur, and NIT Durgapur.',
+    admissionsTitle: 'West Bengal Engineering Admissions: WBJEE vs JoSAA System',
+    p1Title: 'WBJEE Centralized Counselling vs National JoSAA',
+    p1Text: 'The West Bengal Joint Entrance Examinations Board (WBJEEB) allocates seats for Jadavpur University, Calcutta University, and state private engineering colleges. Meanwhile, IIT Kharagpur (JEE Advanced) and NIT Durgapur / IIEST Shibpur (JEE Main) allocate seats through JoSAA.',
+    p2Title: 'Industrial Heritage & Heavy Engineering Excellence',
+    p2Text: 'Institutions in West Bengal have deep industry linkages in metallurgy, mining, power generation, and railway engineering, with IIT Kharagpur maintaining the largest campus and highest research patent filings among all IITs.',
+    concluding: 'Aspirants from West Bengal can leverage the 50% Home State quota at both NIT Durgapur and IIEST Shibpur to secure premier engineering branches.'
+  },
+  'gujarat': {
+    summary: 'Gujarat combines strong manufacturing, petrochemical, and renewable energy sectors with top-ranked technical institutes including IIT Gandhinagar (#18 in NIRF) and SVNIT Surat.',
+    admissionsTitle: 'Gujarat Engineering Admissions: ACPC & GUJCET vs JoSAA Channels',
+    p1Title: 'Admission Committee for Professional Courses (ACPC) vs JoSAA',
+    p1Text: 'The Admission Committee for Professional Courses (ACPC) in Gujarat conducts counselling based on GUJCET and JEE Main for state colleges like DA-IICT and Nirma University, whereas IIT Gandhinagar and SVNIT Surat admit strictly via JoSAA.',
+    p2Title: 'Petrochemical, Semiconductor & Industrial Belt',
+    p2Text: 'With the GIFT City financial hub and the Dholera semiconductor cluster, Gujarat engineering graduates enjoy immense local industry demand in core chemical, electrical, and computational fields.',
+    concluding: 'Gujarat domiciled students should actively track SVNIT Surat\'s 50% Home State quota where closing ranks for CSE and ECE are substantially relaxed.'
+  },
+  'kerala': {
+    summary: 'Kerala emphasizes high academic literacy and research foundations, represented in national rankings by NIT Calicut (#25 in NIRF) and third-generation premier institute IIT Palakkad.',
+    admissionsTitle: 'Kerala Engineering Admissions: KEAM vs JoSAA Allocation',
+    p1Title: 'Commissioner for Entrance Examinations (KEAM) vs JoSAA',
+    p1Text: 'The Commissioner for Entrance Examinations (CEE) Kerala conducts KEAM for state colleges (CET Trivandrum, GEC Thrissur). In contrast, NIT Calicut and IIT Palakkad admit solely through central JoSAA counselling.',
+    p2Title: 'Software Export & Marine-Civil Engineering Dominance',
+    p2Text: 'Engineering graduates in Kerala benefit from active recruitment across Kochi Infopark and Thiruvananthapuram Technopark, with NIT Calicut consistently posting exceptional median salaries in NIRF Graduation Outcomes.',
+    concluding: 'Kerala students can utilize the Home State reservation at NIT Calicut to access flagship Computer Science and Electronics programs.'
+  },
+  'rajasthan': {
+    summary: 'Rajasthan is known nationally as the cradle of competitive engineering coaching in Kota, anchored by premier institutions like BITS Pilani (#13 in NIRF), IIT Jodhpur (#30), and MNIT Jaipur (#43).',
+    admissionsTitle: 'Rajasthan Engineering Admissions: REAP vs JoSAA Framework',
+    p1Title: 'Rajasthan Engineering Admission Process (REAP) vs JoSAA',
+    p1Text: 'Rajasthan Technical University coordinates REAP based on JEE Main scores and 12th board marks for state colleges (MBM Jodhpur, CTAE Udaipur). Central institutes like IIT Jodhpur and MNIT Jaipur participate solely in JoSAA.',
+    p2Title: 'Solar Energy, Materials & Emerging Tech Corridor',
+    p2Text: 'Situated amidst India\'s largest solar energy installations, institutes like IIT Jodhpur lead national research in renewable energy, materials science, and IoT hardware development.',
+    concluding: 'Rajasthan candidates should leverage the 50% Home State quota at MNIT Jaipur to optimize their admission probability.'
+  },
+  'punjab': {
+    summary: 'Punjab features premier technical education hubs, spearheaded by IIT Ropar (#22 in NIRF), Thapar Institute of Engineering and Technology (#20), and Dr. B.R. Ambedkar NIT Jalandhar.',
+    admissionsTitle: 'Punjab Engineering Admissions: PTU & JAC vs JoSAA Channels',
+    p1Title: 'I.K. Gujral PTU Centralized Counselling vs JoSAA',
+    p1Text: 'Punjab Technical University (PTU) conducts centralized counselling for state colleges, while IIT Ropar admits via JEE Advanced and NIT Jalandhar allocates 50% Home State seats via JEE Main through JoSAA.',
+    p2Title: 'Manufacturing, Agricultural Technology & Software Hubs',
+    p2Text: 'Institutes across Punjab benefit from the Chandigarh-Mohali IT corridor and the manufacturing spine of Ludhiana and Jalandhar, delivering strong campus placement outcomes in core and IT sectors.',
+    concluding: 'Punjab candidates have favorable Home State cutoff thresholds at NIT Jalandhar across general and reserved categories.'
+  },
+  'odisha': {
+    summary: 'Odisha is a mineral and heavy industry heartland with renowned technical institutes, led by NIT Rourkela (#19 in NIRF) and second-generation leader IIT Bhubaneswar.',
+    admissionsTitle: 'Odisha Engineering Admissions: OJEE vs JoSAA Central Admissions',
+    p1Title: 'Odisha Joint Entrance Examination (OJEE) vs JoSAA',
+    p1Text: 'OJEE conducts state counselling for government engineering colleges (OUTR Bhubaneswar, VSSUT Burla), while NIT Rourkela and IIT Bhubaneswar allocate 100% of their seats through central JoSAA rounds.',
+    p2Title: 'Mining, Metallurgical & Industrial Core Cluster',
+    p2Text: 'With major steel and aluminum production centers, engineering colleges in Odisha offer unmatched practical exposure and recruitment in metallurgy, materials, and heavy mechanical systems.',
+    concluding: 'Odisha candidates should actively explore the 50% Home State quota at NIT Rourkela, one of the highest-ranked NITs in India.'
+  }
+};
+
+const insight = stateInsights[stateSlug] || {
+  summary: `Overview of top engineering institutes located in ${stateName} ranked by official NIRF scores.`,
+  admissionsTitle: `Engineering Admissions in ${stateName}`,
+  p1Title: 'Central & State Reservation Systems',
+  p1Text: `Admissions to engineering institutes in ${stateName} follow competitive entrance tests and state quota allocation.`,
+  p2Title: 'Campus Placement & Industry Interface',
+  p2Text: `Institutions in ${stateName} feature modern engineering curricula benchmarked against national standards.`,
+  concluding: 'Explore cutoffs and predictors to evaluate your admission possibilities.'
+};
+
+const itemListJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: `Best Engineering Colleges in ${stateName}: NIRF ${year}`,
+  description: `Official NIRF ${year} engineering ranking list for top institutes in ${stateName}.`,
+  numberOfItems: stateRankings.length,
+  itemListElement: stateRankings.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.name,
+    url: `https://convert.gudmud.site/colleges/${item.slug}/`,
+  })),
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://convert.gudmud.site/' },
+    { '@type': 'ListItem', position: 2, name: 'Colleges', item: 'https://convert.gudmud.site/colleges/' },
+    { '@type': 'ListItem', position: 3, name: 'NIRF Engineering', item: 'https://convert.gudmud.site/nirf-ranking/engineering/' },
+    { '@type': 'ListItem', position: 4, name: stateName, item: `https://convert.gudmud.site/nirf-ranking/engineering/${stateSlug}/` },
+  ],
+};
+---
+
+<CollegeLayout
+  title={`Best Engineering Colleges in ${stateName} (NIRF ${year})`}
+  description={`Official NIRF ${year} list of best engineering colleges in ${stateName}. Review verified government scores, ranks, and JoSAA cutoffs for top institutes.`}
+  canonical={`https://convert.gudmud.site/nirf-ranking/engineering/${stateSlug}/`}
+  jsonLd={[itemListJsonLd, breadcrumbJsonLd]}
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <!-- Breadcrumb -->
+    <nav class="flex items-center gap-2 text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
+      <a href="/" class="hover:underline">Home</a>
+      <span>/</span>
+      <a href="/colleges/" class="hover:underline">Colleges</a>
+      <span>/</span>
+      <a href="/nirf-ranking/engineering/" class="hover:underline">NIRF Engineering</a>
+      <span>/</span>
+      <span class="text-gray-900 font-medium">{stateName}</span>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="mb-6">
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-3">
+        Best Engineering Colleges in {stateName} (NIRF {year})
+      </h1>
+      <p class="text-sm sm:text-base text-gray-600 max-w-3xl leading-relaxed">
+        State-specific ranking slice for technical universities and engineering institutions situated in {stateName}, verified directly against official Ministry of Education NIRF {year} publications.
+      </p>
+    </header>
+
+    <!-- Methodology & Source Box -->
+    <SourceBox
+      sourceName="NIRF Official State Reports"
+      sourceUrl="https://www.nirfindia.org"
+      sourceYear={year}
+      lastVerified="2026-11-15"
+      verifiedBy="Gudmud Data Engineering Team"
+    />
+
+    <!-- Sibling State Links -->
+    <div class="my-6 p-4 rounded-xl border border-gray-200 bg-gray-50">
+      <span class="text-xs font-bold text-gray-700 uppercase tracking-wider block mb-2">
+        Explore Other States:
+      </span>
+      <div class="flex flex-wrap gap-2">
+        {otherStates.map((st) => (
+          <a
+            href={st.slug ? `/nirf-ranking/engineering/${st.slug}/` : '/nirf-ranking/engineering/'}
+            class="px-3 py-1.5 rounded-lg text-xs font-medium bg-white border border-gray-200 text-gray-700 hover:border-indigo-500 hover:text-indigo-600 transition"
+          >
+            {st.name}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- State Rankings Table -->
+    <section class="my-8" aria-labelledby="state-table-heading">
+      <h2 id="state-table-heading" class="text-lg font-bold text-gray-900 mb-4">
+        Ranked Engineering Institutes in {stateName}
+      </h2>
+
+      <div class="overflow-x-auto rounded-2xl border border-gray-200 bg-white shadow-xs">
+        <table class="w-full text-left text-xs border-collapse">
+          <thead>
+            <tr class="bg-gray-100 text-gray-700 uppercase font-bold text-2xs border-b border-gray-200">
+              <th scope="col" class="py-3 px-4 text-center">All-India Rank</th>
+              <th scope="col" class="py-3 px-4">Institute Name</th>
+              <th scope="col" class="py-3 px-3">City</th>
+              <th scope="col" class="py-3 px-3 text-right">NIRF Score</th>
+              <th scope="col" class="py-3 px-4 text-center">JoSAA Cutoff</th>
+              <th scope="col" class="py-3 px-4 text-center">Official Website</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100 text-gray-800">
+            {stateRankings.map((item) => (
+              <tr class="hover:bg-indigo-50/30 transition-colors">
+                <td class="py-3 px-4 text-center font-bold text-sm text-indigo-700 font-mono">
+                  #{item.rank}
+                </td>
+                <td class="py-3 px-4">
+                  <a href={`/colleges/${item.slug}/`} class="font-bold text-gray-900 hover:text-indigo-600 transition text-sm">
+                    {item.name}
+                  </a>
+                </td>
+                <td class="py-3 px-3 text-gray-600">
+                  {item.city}
+                </td>
+                <td class="py-3 px-3 text-right font-mono font-semibold text-gray-900">
+                  {item.score.toFixed(2)}
+                </td>
+                <td class="py-3 px-4 text-center">
+                  <a
+                    href={`/cutoff/${item.slug}/`}
+                    class="text-indigo-600 hover:text-indigo-800 font-semibold underline text-2xs"
+                  >
+                    View Cutoff &rarr;
+                  </a>
+                </td>
+                <td class="py-3 px-4 text-center">
+                  <a
+                    href={item.official_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-gray-500 hover:text-gray-700 text-2xs underline"
+                  >
+                    Visit Portal &rarr;
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- State Counseling & Quota Advice -->
+    <section class="my-10 bg-gray-50 border border-gray-200 rounded-xl p-6 space-y-4 text-xs sm:text-sm text-gray-700 leading-relaxed">
+      <h2 class="text-base sm:text-lg font-bold text-gray-900">
+        {insight.admissionsTitle}
+      </h2>
+      <p>
+        {insight.summary}
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+        <div class="p-4 bg-white border border-gray-200 rounded-lg">
+          <h3 class="font-bold text-gray-900 mb-1">{insight.p1Title}</h3>
+          <p class="text-xs text-gray-600">
+            {insight.p1Text}
+          </p>
+        </div>
+        <div class="p-4 bg-white border border-gray-200 rounded-lg">
+          <h3 class="font-bold text-gray-900 mb-1">{insight.p2Title}</h3>
+          <p class="text-xs text-gray-600">
+            {insight.p2Text}
+          </p>
+        </div>
+      </div>
+      <p>
+        {insight.concluding} To evaluate your specific admission probability based on past closing ranks, explore the official <a href="/cutoff/" class="text-indigo-600 underline font-semibold">JoSAA Cutoff Explorer</a> or test our client-side <a href="/jee-main-rank-college-predictor/" class="text-indigo-600 underline font-semibold">JEE Main College Predictor</a>.
+      </p>
+    </section>
+
+    <!-- Source Box -->
+    <SourceBox
+      sourceName="National Institutional Ranking Framework (NIRF)"
+      sourceUrl="https://www.nirfindia.org"
+      sourceYear={year}
+      lastVerified="2026-11-15"
+      methodologyNote={`State slices reflect official NIRF ${year} engineering scores normalized across all accredited institutions in ${stateName}. Scores are published directly by the Ministry of Education, Government of India.`}
+    />
+  </div>
+</CollegeLayout>

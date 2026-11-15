@@ -1,0 +1,37 @@
+Target Keyword,Search Intent,Target URL,Estimated Monthly Volume (India),Priority,Target Schema
+josaa cutoff 2024,Cutoff Search,/cutoff/,165000,P0,FAQPage + ItemList
+jee main rank predictor,Admissions Tool,/jee-main-rank-college-predictor/,240000,P0,WebApplication
+nirf ranking 2024,Rankings Benchmark,/nirf-ranking/,300000,P0,ItemList + FAQPage
+best engineering colleges in india,Head Ranking Query,/nirf-ranking/engineering/,450000,P0,ItemList
+best engineering colleges in tamil nadu,State Geo Query,/nirf-ranking/engineering/tamil-nadu/,60000,P1,ItemList
+best engineering colleges in delhi,State Geo Query,/nirf-ranking/engineering/delhi/,45000,P1,ItemList
+best engineering colleges in maharashtra,State Geo Query,/nirf-ranking/engineering/maharashtra/,75000,P1,ItemList
+best engineering colleges in karnataka,State Geo Query,/nirf-ranking/engineering/karnataka/,55000,P1,ItemList
+best engineering colleges in uttar pradesh,State Geo Query,/nirf-ranking/engineering/uttar-pradesh/,50000,P1,ItemList
+nirf overall ranking 2024,Institutional Benchmark,/nirf-ranking/overall/,90000,P1,ItemList
+nirf university ranking 2024,University Benchmark,/nirf-ranking/university/,70000,P1,ItemList
+iit bombay cutoff,Institute Cutoff,/cutoff/iit-bombay/,40000,P1,FAQPage
+iit delhi cutoff,Institute Cutoff,/cutoff/iit-delhi/,35000,P1,FAQPage
+iit madras cutoff,Institute Cutoff,/cutoff/iit-madras/,30000,P1,FAQPage
+nit trichy cutoff,Institute Cutoff,/cutoff/nit-trichy/,28000,P1,FAQPage
+nit surathkal cutoff,Institute Cutoff,/cutoff/nit-surathkal/,22000,P1,FAQPage
+all josaa institutes list,Directory Search,/colleges/,18000,P2,ItemList
+how josaa counselling works,Educational Guide,/guides/how-josaa-counselling-works/,35000,P1,Article
+how to read nirf rankings,Educational Guide,/guides/how-to-read-nirf-rankings/,12000,P2,Article
+josaa freeze float slide explained,Educational Guide,/guides/josaa-rounds-and-seat-types-explained/,20000,P1,Article
+nirf vs naac vs nba,Educational Guide,/guides/nirf-vs-naac-vs-nba/,15000,P2,Article
+how to check if university is ugc recognised,Regulatory Guide,/guides/how-to-check-if-university-is-ugc-recognised/,14000,P2,Article
+official josaa nta ugc portals,Directory Search,/official-links/,8000,P2,BreadcrumbList
+jee advanced college predictor,Admissions Tool,/jee-advanced-rank-college-predictor/,180000,P0,WebApplication + FAQPage
+iit cutoff 2024,Cutoff Search,/cutoff/iits/,210000,P0,FAQPage
+nit cutoff 2024,Cutoff Search,/cutoff/nits/,195000,P0,FAQPage
+iiit cutoff 2024,Cutoff Search,/cutoff/iiits/,110000,P1,FAQPage
+gfti cutoff 2024,Cutoff Search,/cutoff/gftis/,65000,P1,FAQPage
+cse cutoff 2024,Cutoff Search,/cutoff/computer-science/,280000,P0,FAQPage
+best engineering colleges in telangana,State Geo Query,/nirf-ranking/engineering/telangana/,65000,P1,ItemList
+best engineering colleges in west bengal,State Geo Query,/nirf-ranking/engineering/west-bengal/,50000,P1,ItemList
+best engineering colleges in gujarat,State Geo Query,/nirf-ranking/engineering/gujarat/,45000,P1,ItemList
+best engineering colleges in kerala,State Geo Query,/nirf-ranking/engineering/kerala/,40000,P1,ItemList
+best engineering colleges in rajasthan,State Geo Query,/nirf-ranking/engineering/rajasthan/,42000,P1,ItemList
+best engineering colleges in punjab,State Geo Query,/nirf-ranking/engineering/punjab/,38000,P1,ItemList
+best engineering colleges in odisha,State Geo Query,/nirf-ranking/engineering/odisha/,32000,P1,ItemList

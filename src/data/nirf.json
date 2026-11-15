@@ -861,6 +861,27 @@
     ]
   },
   {
+    "rank": 2,
+    "name": "Indian Institute of Science Bangalore",
+    "slug": "iisc-bangalore",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "score": 83.28,
+    "category": "Overall",
+    "year": 2024,
+    "official_url": "https://iisc.ac.in",
+    "sources": [
+      {
+        "source_name": "National Institutional Ranking Framework (NIRF)",
+        "source_url": "https://www.nirfindia.org",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
     "rank": 3,
     "name": "Indian Institute of Technology Bombay",
     "slug": "iit-bombay",
@@ -1008,6 +1029,27 @@
     ]
   },
   {
+    "rank": 11,
+    "name": "Banaras Hindu University",
+    "slug": "banaras-hindu-university",
+    "city": "Varanasi",
+    "state": "Uttar Pradesh",
+    "score": 67.2,
+    "category": "Overall",
+    "year": 2024,
+    "official_url": "https://www.bhu.ac.in",
+    "sources": [
+      {
+        "source_name": "National Institutional Ranking Framework (NIRF)",
+        "source_url": "https://www.nirfindia.org",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
     "rank": 12,
     "name": "Indian Institute of Technology Hyderabad",
     "slug": "iit-hyderabad",
@@ -1017,6 +1059,27 @@
     "category": "Overall",
     "year": 2024,
     "official_url": "https://www.iith.ac.in",
+    "sources": [
+      {
+        "source_name": "National Institutional Ranking Framework (NIRF)",
+        "source_url": "https://www.nirfindia.org",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "rank": 13,
+    "name": "Jamia Millia Islamia",
+    "slug": "jamia-millia-islamia",
+    "city": "New Delhi",
+    "state": "Delhi",
+    "score": 65.4,
+    "category": "Overall",
+    "year": 2024,
+    "official_url": "https://www.jmi.ac.in",
     "sources": [
       {
         "source_name": "National Institutional Ranking Framework (NIRF)",
@@ -1050,6 +1113,27 @@
     ]
   },
   {
+    "rank": 1,
+    "name": "Indian Institute of Science Bangalore",
+    "slug": "iisc-bangalore",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "score": 87.56,
+    "category": "University",
+    "year": 2024,
+    "official_url": "https://iisc.ac.in",
+    "sources": [
+      {
+        "source_name": "National Institutional Ranking Framework (NIRF)",
+        "source_url": "https://www.nirfindia.org",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
     "rank": 2,
     "name": "Jawaharlal Nehru University Delhi",
     "slug": "jnu-delhi",
@@ -1059,6 +1143,48 @@
     "category": "University",
     "year": 2024,
     "official_url": "https://www.jnu.ac.in",
+    "sources": [
+      {
+        "source_name": "National Institutional Ranking Framework (NIRF)",
+        "source_url": "https://www.nirfindia.org",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "rank": 3,
+    "name": "Jamia Millia Islamia",
+    "slug": "jamia-millia-islamia",
+    "city": "New Delhi",
+    "state": "Delhi",
+    "score": 67.73,
+    "category": "University",
+    "year": 2024,
+    "official_url": "https://www.jmi.ac.in",
+    "sources": [
+      {
+        "source_name": "National Institutional Ranking Framework (NIRF)",
+        "source_url": "https://www.nirfindia.org",
+        "source_year": 2024,
+        "retrieved_at": "2026-11-15",
+        "verified_by": "Gudmud Data Engineering Team",
+        "verified_at": "2026-11-15"
+      }
+    ]
+  },
+  {
+    "rank": 5,
+    "name": "Banaras Hindu University",
+    "slug": "banaras-hindu-university",
+    "city": "Varanasi",
+    "state": "Uttar Pradesh",
+    "score": 65.85,
+    "category": "University",
+    "year": 2024,
+    "official_url": "https://www.bhu.ac.in",
     "sources": [
       {
         "source_name": "National Institutional Ranking Framework (NIRF)",

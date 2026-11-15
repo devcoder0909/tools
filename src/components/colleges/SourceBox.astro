@@ -1,0 +1,40 @@
+---
+export interface Props {
+  sourceName?: string;
+  sourceUrl?: string;
+  sourceYear?: number | string;
+  lastVerified?: string;
+  verifiedAt?: string;
+  verifiedBy?: string;
+  methodologyNote?: string;
+}
+
+const {
+  sourceName = 'JoSAA / NIRF Official Portals',
+  sourceUrl = 'https://josaa.nic.in',
+  sourceYear = 2024,
+  lastVerified = '2026-11-15',
+  verifiedAt,
+  verifiedBy = 'Gudmud Data Engineering Team',
+  methodologyNote,
+} = Astro.props;
+
+const displayDate = verifiedAt || lastVerified;
+---
+
+<aside class="my-6 p-4 sm:p-5 rounded-xl border border-blue-200 bg-blue-50/60 text-xs sm:text-sm text-gray-700" aria-label="Methodology and Official Data Source">
+  <div class="flex items-center gap-2 mb-2 font-semibold text-blue-900">
+    <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-blue-600 text-white text-xs font-bold">i</span>
+    <span>Methodology & Official Data Provenance</span>
+  </div>
+  <p class="mb-2 leading-relaxed text-gray-600">
+    {methodologyNote || `This dataset reflects official public records published by ${sourceName} for academic year ${sourceYear}. No proprietary estimates or third-party scraping are used.`}
+  </p>
+  <div class="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-500 pt-2 border-t border-blue-200/70">
+    <span>Official Source: <a href={sourceUrl} target="_blank" rel="noopener noreferrer" class="text-blue-700 font-medium underline hover:text-blue-900">{sourceName} ({sourceUrl})</a></span>
+    <span>•</span>
+    <span>Verified: <time datetime={displayDate}>{displayDate}</time></span>
+    <span>•</span>
+    <span>Verified by: <strong class="text-gray-700 font-medium">{verifiedBy}</strong></span>
+  </div>
+</aside>

@@ -1,0 +1,303 @@
+---
+import CollegeLayout from '../../layouts/CollegeLayout.astro';
+import SourceBox from '../../components/colleges/SourceBox.astro';
+import collegesData from '@/data/colleges.json';
+
+const iits = collegesData.filter((c) => c.type === 'IIT');
+const nits = collegesData.filter((c) => c.type === 'NIT');
+const iiits = collegesData.filter((c) => c.type === 'IIIT');
+const gftis = collegesData.filter((c) => c.type === 'GFTI');
+const universities = collegesData.filter((c) => c.type === 'University');
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://convert.gudmud.site/' },
+    { '@type': 'ListItem', position: 2, name: 'Colleges', item: 'https://convert.gudmud.site/colleges/' },
+  ],
+};
+
+const itemListJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'All JoSAA Participating Institutes',
+  description: 'Complete directory of 119 IITs, NITs, IIITs, GFTIs, and premier universities in India.',
+  numberOfItems: collegesData.length,
+  itemListElement: collegesData.slice(0, 20).map((c, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: c.name,
+    url: `https://convert.gudmud.site/colleges/${c.slug}/`,
+  })),
+};
+---
+
+<CollegeLayout
+  title="All 119 JoSAA Institutes: IITs, NITs, IIITs & GFTIs"
+  description="Master directory of all 119 JoSAA engineering institutes in India. Search and browse official profiles, NIRF rankings, and cutoffs for IITs, NITs, and IIITs."
+  canonical="https://convert.gudmud.site/colleges/"
+  jsonLd={[breadcrumbJsonLd, itemListJsonLd]}
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <!-- Breadcrumb -->
+    <nav class="flex items-center gap-2 text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
+      <a href="/" class="hover:underline">Home</a>
+      <span>/</span>
+      <span class="text-gray-900 font-medium">Colleges Directory</span>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="mb-8">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200 mb-3">
+        <span>Verified National Directory</span>
+        <span>•</span>
+        <span>119 Participating Institutes</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-3">
+        All 119 JoSAA Institutes: IITs, NITs, IIITs & GFTIs
+      </h1>
+      <p class="text-sm sm:text-base text-gray-600 max-w-3xl leading-relaxed">
+        Browse the verified national directory of higher technical education institutions participating in the Joint Seat Allocation Authority (JoSAA) counselling. Access official institute profiles, NIRF ranking history, and branch cutoffs.
+      </p>
+    </header>
+
+    <!-- Quick Filter Jump Links -->
+    <div class="flex flex-wrap items-center justify-between gap-3 mb-8 text-xs bg-gray-50 border border-gray-200 p-3 rounded-xl">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="text-gray-500 font-semibold mr-1">Jump to:</span>
+        <a href="#iits" class="px-2.5 py-1 bg-indigo-50 text-indigo-700 border border-indigo-200 rounded font-semibold hover:bg-indigo-100">
+          IITs ({iits.length})
+        </a>
+        <a href="#nits" class="px-2.5 py-1 bg-blue-50 text-blue-700 border border-blue-200 rounded font-semibold hover:bg-blue-100">
+          NITs ({nits.length})
+        </a>
+        <a href="#iiits" class="px-2.5 py-1 bg-purple-50 text-purple-700 border border-purple-200 rounded font-semibold hover:bg-purple-100">
+          IIITs ({iiits.length})
+        </a>
+        <a href="#gftis" class="px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded font-semibold hover:bg-emerald-100">
+          GFTIs ({gftis.length})
+        </a>
+        <a href="#universities" class="px-2.5 py-1 bg-amber-50 text-amber-700 border border-amber-200 rounded font-semibold hover:bg-amber-100">
+          Universities ({universities.length})
+        </a>
+      </div>
+      <div class="flex items-center gap-2 text-2xs">
+        <a href="/cutoff/computer-science/" class="text-indigo-600 font-bold hover:underline">CSE Cutoffs &rarr;</a>
+        <span class="text-gray-300">|</span>
+        <a href="/jee-advanced-rank-college-predictor/" class="text-indigo-600 font-bold hover:underline">IIT Predictor &rarr;</a>
+      </div>
+    </div>
+
+    <!-- IITs Section -->
+    <section id="iits" class="mb-10 bg-white border border-gray-200 rounded-xl shadow-2xs overflow-hidden">
+      <div class="px-5 py-3.5 bg-gray-50 border-b border-gray-200 flex items-center justify-between">
+        <div>
+          <h2 class="text-base font-bold text-gray-900">Indian Institutes of Technology (IITs)</h2>
+          <p class="text-2xs text-gray-500">23 Autonomous Institutes of National Importance admitting via JEE Advanced</p>
+        </div>
+        <span class="px-2 py-0.5 bg-indigo-100 text-indigo-800 text-xs font-bold rounded-full">{iits.length}</span>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs border-collapse">
+          <thead>
+            <tr class="bg-gray-100 text-gray-600 uppercase font-bold text-2xs border-b border-gray-200">
+              <th class="py-2.5 px-3">Code</th>
+              <th class="py-2.5 px-3">Institute Name</th>
+              <th class="py-2.5 px-3">City & State</th>
+              <th class="py-2.5 px-2 text-center">Est.</th>
+              <th class="py-2.5 px-3 text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100">
+            {iits.map((c) => (
+              <tr class="hover:bg-gray-50">
+                <td class="py-2 px-3 font-mono text-indigo-700 font-bold">{c.josaa_code || 'IIT'}</td>
+                <td class="py-2 px-3 font-semibold text-gray-900">
+                  <a href={`/colleges/${c.slug}/`} class="hover:text-indigo-600 hover:underline">{c.short_name || c.name}</a>
+                </td>
+                <td class="py-2 px-3 text-gray-600">{c.city}, {c.state}</td>
+                <td class="py-2 px-2 text-center font-mono text-gray-500">{c.established}</td>
+                <td class="py-2 px-3 text-center whitespace-nowrap">
+                  <a href={`/colleges/${c.slug}/`} class="text-indigo-600 font-semibold hover:underline mr-2">Profile</a>
+                  <a href={`/cutoff/${c.slug}/`} class="text-gray-500 hover:text-gray-800">Cutoffs</a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- NITs Section -->
+    <section id="nits" class="mb-10 bg-white border border-gray-200 rounded-xl shadow-2xs overflow-hidden">
+      <div class="px-5 py-3.5 bg-gray-50 border-b border-gray-200 flex items-center justify-between">
+        <div>
+          <h2 class="text-base font-bold text-gray-900">National Institutes of Technology (NITs)</h2>
+          <p class="text-2xs text-gray-500">32 Premier engineering institutions with 50% Home State reservation admitting via JEE Main</p>
+        </div>
+        <span class="px-2 py-0.5 bg-blue-100 text-blue-800 text-xs font-bold rounded-full">{nits.length}</span>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs border-collapse">
+          <thead>
+            <tr class="bg-gray-100 text-gray-600 uppercase font-bold text-2xs border-b border-gray-200">
+              <th class="py-2.5 px-3">Code</th>
+              <th class="py-2.5 px-3">Institute Name</th>
+              <th class="py-2.5 px-3">City & State</th>
+              <th class="py-2.5 px-2 text-center">Est.</th>
+              <th class="py-2.5 px-3 text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100">
+            {nits.map((c) => (
+              <tr class="hover:bg-gray-50">
+                <td class="py-2 px-3 font-mono text-blue-700 font-bold">{c.josaa_code || 'NIT'}</td>
+                <td class="py-2 px-3 font-semibold text-gray-900">
+                  <a href={`/colleges/${c.slug}/`} class="hover:text-blue-600 hover:underline">{c.short_name || c.name}</a>
+                </td>
+                <td class="py-2 px-3 text-gray-600">{c.city}, {c.state}</td>
+                <td class="py-2 px-2 text-center font-mono text-gray-500">{c.established}</td>
+                <td class="py-2 px-3 text-center whitespace-nowrap">
+                  <a href={`/colleges/${c.slug}/`} class="text-blue-600 font-semibold hover:underline mr-2">Profile</a>
+                  <a href={`/cutoff/${c.slug}/`} class="text-gray-500 hover:text-gray-800">Cutoffs</a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- IIITs Section -->
+    <section id="iiits" class="mb-10 bg-white border border-gray-200 rounded-xl shadow-2xs overflow-hidden">
+      <div class="px-5 py-3.5 bg-gray-50 border-b border-gray-200 flex items-center justify-between">
+        <div>
+          <h2 class="text-base font-bold text-gray-900">Indian Institutes of Information Technology (IIITs)</h2>
+          <p class="text-2xs text-gray-500">26 Centrally Funded and Public-Private Partnership (PPP) Institutions focused on IT</p>
+        </div>
+        <span class="px-2 py-0.5 bg-purple-100 text-purple-800 text-xs font-bold rounded-full">{iiits.length}</span>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs border-collapse">
+          <thead>
+            <tr class="bg-gray-100 text-gray-600 uppercase font-bold text-2xs border-b border-gray-200">
+              <th class="py-2.5 px-3">Code</th>
+              <th class="py-2.5 px-3">Institute Name</th>
+              <th class="py-2.5 px-3">City & State</th>
+              <th class="py-2.5 px-2 text-center">Est.</th>
+              <th class="py-2.5 px-3 text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100">
+            {iiits.map((c) => (
+              <tr class="hover:bg-gray-50">
+                <td class="py-2 px-3 font-mono text-purple-700 font-bold">{c.josaa_code || 'IIIT'}</td>
+                <td class="py-2 px-3 font-semibold text-gray-900">
+                  <a href={`/colleges/${c.slug}/`} class="hover:text-purple-600 hover:underline">{c.short_name || c.name}</a>
+                </td>
+                <td class="py-2 px-3 text-gray-600">{c.city}, {c.state}</td>
+                <td class="py-2 px-2 text-center font-mono text-gray-500">{c.established}</td>
+                <td class="py-2 px-3 text-center whitespace-nowrap">
+                  <a href={`/colleges/${c.slug}/`} class="text-purple-600 font-semibold hover:underline mr-2">Profile</a>
+                  <a href={`/cutoff/${c.slug}/`} class="text-gray-500 hover:text-gray-800">Cutoffs</a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- GFTIs Section -->
+    <section id="gftis" class="mb-10 bg-white border border-gray-200 rounded-xl shadow-2xs overflow-hidden">
+      <div class="px-5 py-3.5 bg-gray-50 border-b border-gray-200 flex items-center justify-between">
+        <div>
+          <h2 class="text-base font-bold text-gray-900">Government Funded Technical Institutes (GFTIs)</h2>
+          <p class="text-2xs text-gray-500">Centrally and state-funded specialized universities, SPAs, and engineering colleges</p>
+        </div>
+        <span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full">{gftis.length}</span>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs border-collapse">
+          <thead>
+            <tr class="bg-gray-100 text-gray-600 uppercase font-bold text-2xs border-b border-gray-200">
+              <th class="py-2.5 px-3">Code</th>
+              <th class="py-2.5 px-3">Institute Name</th>
+              <th class="py-2.5 px-3">City & State</th>
+              <th class="py-2.5 px-2 text-center">Est.</th>
+              <th class="py-2.5 px-3 text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100">
+            {gftis.map((c) => (
+              <tr class="hover:bg-gray-50">
+                <td class="py-2 px-3 font-mono text-emerald-700 font-bold">{c.josaa_code || 'GFTI'}</td>
+                <td class="py-2 px-3 font-semibold text-gray-900">
+                  <a href={`/colleges/${c.slug}/`} class="hover:text-emerald-600 hover:underline">{c.short_name || c.name}</a>
+                </td>
+                <td class="py-2 px-3 text-gray-600">{c.city}, {c.state}</td>
+                <td class="py-2 px-2 text-center font-mono text-gray-500">{c.established}</td>
+                <td class="py-2 px-3 text-center whitespace-nowrap">
+                  <a href={`/colleges/${c.slug}/`} class="text-emerald-600 font-semibold hover:underline mr-2">Profile</a>
+                  <a href={`/cutoff/${c.slug}/`} class="text-gray-500 hover:text-gray-800">Cutoffs</a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Premier Universities Section -->
+    {universities.length > 0 && (
+      <section id="universities" class="mb-10 bg-white border border-gray-200 rounded-xl shadow-2xs overflow-hidden">
+        <div class="px-5 py-3.5 bg-gray-50 border-b border-gray-200 flex items-center justify-between">
+          <div>
+            <h2 class="text-base font-bold text-gray-900">Premier Universities & Research Centers</h2>
+            <p class="text-2xs text-gray-500">Autonomous research universities offering specialized engineering and science degrees</p>
+          </div>
+          <span class="px-2 py-0.5 bg-amber-100 text-amber-800 text-xs font-bold rounded-full">{universities.length}</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr class="bg-gray-100 text-gray-600 uppercase font-bold text-2xs border-b border-gray-200">
+                <th class="py-2.5 px-3">Code</th>
+                <th class="py-2.5 px-3">Institute Name</th>
+                <th class="py-2.5 px-3">City & State</th>
+                <th class="py-2.5 px-2 text-center">Est.</th>
+                <th class="py-2.5 px-3 text-center">Actions</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              {universities.map((c) => (
+                <tr class="hover:bg-gray-50">
+                  <td class="py-2 px-3 font-mono text-amber-700 font-bold">{c.josaa_code || 'UNIV'}</td>
+                  <td class="py-2 px-3 font-semibold text-gray-900">
+                    <a href={`/colleges/${c.slug}/`} class="hover:text-amber-600 hover:underline">{c.short_name || c.name}</a>
+                  </td>
+                  <td class="py-2 px-3 text-gray-600">{c.city}, {c.state}</td>
+                  <td class="py-2 px-2 text-center font-mono text-gray-500">{c.established}</td>
+                  <td class="py-2 px-3 text-center whitespace-nowrap">
+                    <a href={`/colleges/${c.slug}/`} class="text-amber-600 font-semibold hover:underline mr-2">Profile</a>
+                    <a href={`/cutoff/${c.slug}/`} class="text-gray-500 hover:text-gray-800">Cutoffs</a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )}
+
+    <!-- Source Box -->
+    <SourceBox
+      sourceName="Official Portals (JoSAA & NIRF)"
+      sourceUrl="https://josaa.nic.in"
+      sourceYear={2024}
+      verifiedAt="2026-11-15"
+      methodologyNote="All institutes listed are participating entities in the Joint Seat Allocation Authority (JoSAA) or recognized central research institutions. Contact and establishment records are checked against official government gazettes."
+    />
+  </div>
+</CollegeLayout>

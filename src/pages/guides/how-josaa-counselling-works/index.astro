@@ -1,0 +1,134 @@
+---
+import CollegeLayout from '../../../layouts/CollegeLayout.astro';
+import SourceBox from '../../../components/colleges/SourceBox.astro';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://convert.gudmud.site/' },
+    { '@type': 'ListItem', position: 2, name: 'Guides', item: 'https://convert.gudmud.site/guides/' },
+    { '@type': 'ListItem', position: 3, name: 'How JoSAA Counselling Works', item: 'https://convert.gudmud.site/guides/how-josaa-counselling-works/' },
+  ],
+};
+
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'How JoSAA Counselling Works: Complete Step-by-Step Guide',
+  datePublished: '2026-11-15T00:00:00+05:30',
+  dateModified: '2026-11-15T00:00:00+05:30',
+  author: {
+    '@type': 'Organization',
+    name: 'Gudmud Colleges Editorial Team',
+    url: 'https://convert.gudmud.site',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Gudmud Colleges',
+    url: 'https://convert.gudmud.site',
+  },
+  description: 'Understand each stage of the Joint Seat Allocation Authority counselling process from registration to physical reporting.',
+};
+---
+
+<CollegeLayout
+  title="How JoSAA Counselling Works: Step-by-Step Guide | Gudmud"
+  description="Complete step-by-step guide to JoSAA counselling. Learn about online registration, choice filling strategies, seat acceptance fees, and verification."
+  canonical="https://convert.gudmud.site/guides/how-josaa-counselling-works/"
+  jsonLd={[breadcrumbJsonLd, articleJsonLd]}
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <!-- Breadcrumb -->
+    <nav class="flex items-center gap-2 text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
+      <a href="/" class="hover:underline">Home</a>
+      <span>/</span>
+      <a href="/guides/" class="hover:underline">Guides</a>
+      <span>/</span>
+      <span class="text-gray-900 font-medium">How JoSAA Counselling Works</span>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="mb-8 border-b border-gray-200 pb-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200 mb-3">
+        <span>Admissions Roadmap</span>
+        <span>•</span>
+        <span>JoSAA Business Rules</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-3">
+        How JoSAA Counselling Works: Step-by-Step Guide
+      </h1>
+      <p class="text-sm sm:text-base text-gray-600 leading-relaxed">
+        The Joint Seat Allocation Authority (JoSAA) manages the centralized admission process for 23 IITs, 32 NITs, 26 IIITs, and 35+ GFTIs. Understanding each phase—from choice filling to seat acceptance fee (SAF)—ensures you do not lose an allotted seat due to administrative oversight.
+      </p>
+    </header>
+
+    <!-- Content -->
+    <article class="prose prose-indigo max-w-none text-gray-700 space-y-6 text-sm sm:text-base leading-relaxed">
+      <h2 class="text-xl font-bold text-gray-900 mt-8 mb-3">1. Registration and Choice Filling Window</h2>
+      <p>
+        JoSAA counselling begins shortly after JEE Advanced results are announced. Candidates log in to the official portal (<a href="https://josaa.nic.in" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:underline">josaa.nic.in</a>) using their JEE Main Application Number and password.
+      </p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>No registration fee:</strong> There is zero fee to register or fill choices during the initial JoSAA window.</li>
+        <li><strong>Fill unlimited choices:</strong> Candidates can select and arrange as many academic program choices as they qualify for across IITs, NITs, IIITs, and GFTIs.</li>
+        <li><strong>Mock Seat Allocation:</strong> JoSAA conducts two mock allocations based on preliminary choices to give students an idea of their tentative seat. Adjust your preference order based on mock feedback before the deadline.</li>
+        <li><strong>Choice Locking:</strong> You must explicitly lock your choices before the deadline. If not locked manually, your last saved choices lock automatically when the deadline expires.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-8 mb-3">2. The 5 Rounds of Seat Allocation</h2>
+      <p>
+        JoSAA runs five systematic seat allocation rounds. In each round, the computer algorithm evaluates choices strictly in your entered preference order against your category merit rank and quota eligibility:
+      </p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>If an eligible seat is found at your choice #12, that seat is provisionally allocated to you.</li>
+        <li>Choices numbered #13 and below are permanently eliminated for subsequent rounds. In later rounds, you can only move upward toward choices #1 through #11.</li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-8 mb-3">3. Mandatory Actions Upon Seat Allocation</h2>
+      <p>
+        If you are allocated a seat in any round, you <strong>must complete online reporting</strong> within the specified round window, or your allotted seat is cancelled and you are disqualified from all subsequent JoSAA rounds.
+      </p>
+      <div class="bg-gray-50 border border-gray-200 rounded-xl p-5 my-6 space-y-3">
+        <h3 class="text-base font-bold text-gray-900">Online Reporting Checklist:</h3>
+        <ol class="list-decimal pl-5 space-y-2 text-xs sm:text-sm">
+          <li><strong>Choose Willingness Option:</strong> Select either <em>Freeze</em> (accept seat and exit counselling), <em>Float</em> (accept seat but remain open to higher choices in any institute), or <em>Slide</em> (accept seat but remain open to a higher branch within the same institute).</li>
+          <li><strong>Upload Required Documents:</strong> Class 10 certificate (DoB proof), Class 12 marksheet, category certificate (OBC-NCL/EWS issued after April 1), medical certificate (Form VIII), and crossed bank cheque.</li>
+          <li><strong>Pay Seat Acceptance Fee (SAF):</strong> Currently ₹35,000 for General/OBC candidates and ₹17,500 for SC/ST/PwD candidates. This fee is adjusted against first-year institute tuition fees.</li>
+          <li><strong>Respond to Queries:</strong> Monitor your dashboard. If the reporting officer raises a discrepancy in your documents, you must respond online within the deadline.</li>
+        </ol>
+      </div>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-8 mb-3">4. Physical Reporting and CSAB Special Rounds</h2>
+      <p>
+        After Round 5 concludes, candidates allocated IIT seats must report physically to their designated IIT per their academic schedule. Candidates allocated NIT+ system seats can participate in the <strong>CSAB Special Rounds</strong> (<a href="/official-links/" class="text-indigo-600 hover:underline">CSAB portal</a>) for any remaining vacant seats without forfeiting their JoSAA-allotted seat.
+      </p>
+
+      <div class="bg-indigo-50 border border-indigo-200 rounded-xl p-5 my-6">
+        <h3 class="text-sm font-bold text-indigo-900 mb-2">Check Your Chances With Official Data</h3>
+        <p class="text-xs text-indigo-800 mb-3">
+          Plan your JoSAA choice order strategically using historical closing ranks from our interactive tools:
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a href="/cutoff/" class="px-3.5 py-1.5 bg-indigo-600 text-white rounded-lg text-xs font-semibold hover:bg-indigo-700">
+            JoSAA Cutoff Explorer →
+          </a>
+          <a href="/jee-main-rank-college-predictor/" class="px-3.5 py-1.5 bg-white text-indigo-700 border border-indigo-300 rounded-lg text-xs font-semibold hover:bg-gray-50">
+            JEE Main College Predictor →
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Source Box -->
+    <div class="mt-12">
+      <SourceBox
+        sourceName="Joint Seat Allocation Authority (JoSAA)"
+        sourceUrl="https://josaa.nic.in"
+        sourceYear={2024}
+        verifiedAt="2026-11-15"
+        methodologyNote="Guidelines compiled from the official JoSAA Business Rules published jointly by the Joint Admission Board (JAB) for IITs and the Central Seat Allocation Board (CSAB) for NITs."
+      />
+    </div>
+  </div>
+</CollegeLayout>

@@ -21,10 +21,14 @@ const {
   noindex = false,
 } = Astro.props;
 
-// Format title with brand if not already present
-const fullTitle = title.includes(siteConfig.brand)
-  ? title
-  : `${title} | ${siteConfig.brand}`;
+// Format title with brand if not already present and if within 60 chars limit
+let fullTitle = title;
+if (!title.includes(siteConfig.brand) && !title.includes('|')) {
+  const branded = `${title} | ${siteConfig.brand}`;
+  if (branded.length <= 60) {
+    fullTitle = branded;
+  }
+}
 ---
 
 <!-- Global Metadata -->

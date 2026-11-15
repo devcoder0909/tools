@@ -1,0 +1,157 @@
+---
+import CollegeLayout from '../../../layouts/CollegeLayout.astro';
+import SourceBox from '../../../components/colleges/SourceBox.astro';
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://convert.gudmud.site/' },
+    { '@type': 'ListItem', position: 2, name: 'Guides', item: 'https://convert.gudmud.site/guides/' },
+    { '@type': 'ListItem', position: 3, name: 'JoSAA Seat Types Explained', item: 'https://convert.gudmud.site/guides/josaa-rounds-and-seat-types-explained/' },
+  ],
+};
+
+const articleJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'JoSAA Seat Types, Quotas, and Willingness Options (Freeze, Float, Slide)',
+  datePublished: '2026-11-15T00:00:00+05:30',
+  dateModified: '2026-11-15T00:00:00+05:30',
+  author: {
+    '@type': 'Organization',
+    name: 'Gudmud Colleges Editorial Team',
+    url: 'https://convert.gudmud.site',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Gudmud Colleges',
+    url: 'https://convert.gudmud.site',
+  },
+  description: 'Detailed analysis of JoSAA willingness choices, reservation quotas, and seat allocation rules.',
+};
+---
+
+<CollegeLayout
+  title="JoSAA Seat Types & Freeze, Float, Slide Explained"
+  description="Understand Freeze, Float, and Slide options in JoSAA. Detailed breakdown of HS vs OS quota, category ranks vs CRL, and reporting rules."
+  canonical="https://convert.gudmud.site/guides/josaa-rounds-and-seat-types-explained/"
+  jsonLd={[breadcrumbJsonLd, articleJsonLd]}
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <!-- Breadcrumb -->
+    <nav class="flex items-center gap-2 text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
+      <a href="/" class="hover:underline">Home</a>
+      <span>/</span>
+      <a href="/guides/" class="hover:underline">Guides</a>
+      <span>/</span>
+      <span class="text-gray-900 font-medium">Seat Types & Willingness</span>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="mb-8 border-b border-gray-200 pb-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200 mb-3">
+        <span>Counselling Terminology</span>
+        <span>•</span>
+        <span>Decision Guide</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-3">
+        JoSAA Seat Types & Freeze, Float, Slide Explained
+      </h1>
+      <p class="text-sm sm:text-base text-gray-600 leading-relaxed">
+        Choosing the wrong willingness option after seat allocation is one of the most common errors in JoSAA counselling. Here is how Freeze, Float, and Slide work, along with an explanation of quota categories and merit rank rules.
+      </p>
+    </header>
+
+    <!-- Content -->
+    <article class="prose prose-indigo max-w-none text-gray-700 space-y-6 text-sm sm:text-base leading-relaxed">
+      <h2 class="text-xl font-bold text-gray-900 mt-8 mb-3">1. Freeze vs Float vs Slide: When to Use Each</h2>
+      <p>
+        When you are allocated a seat in Rounds 1 through 4, you must select one of three willingness options:
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
+        <div class="bg-blue-50 border border-blue-200 rounded-xl p-4">
+          <div class="font-bold text-blue-900 text-base mb-1">FREEZE</div>
+          <p class="text-xs text-blue-800 leading-relaxed mb-3">
+            You are fully satisfied with the allocated seat and branch. You accept the seat and exit all future rounds of JoSAA counselling.
+          </p>
+          <span class="text-[11px] font-semibold text-blue-700">Best if: You got your dream branch.</span>
+        </div>
+
+        <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
+          <div class="font-bold text-emerald-900 text-base mb-1">FLOAT</div>
+          <p class="text-xs text-emerald-800 leading-relaxed mb-3">
+            You accept the allocated seat, but wish to be considered for <strong>any higher preference choice</strong> across all institutes in subsequent rounds.
+          </p>
+          <span class="text-[11px] font-semibold text-emerald-700">Best if: Open to upgrading branch or college.</span>
+        </div>
+
+        <div class="bg-purple-50 border border-purple-200 rounded-xl p-4">
+          <div class="font-bold text-purple-900 text-base mb-1">SLIDE</div>
+          <p class="text-xs text-purple-800 leading-relaxed mb-3">
+            You accept the allocated institute, but wish to be considered for a <strong>higher branch within the same institute</strong> only.
+          </p>
+          <span class="text-[11px] font-semibold text-purple-700">Best if: You love the college campus.</span>
+        </div>
+      </div>
+
+      <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg my-6">
+        <h3 class="text-sm font-bold text-amber-900 mb-1">Crucial JoSAA Rule: No Reversion</h3>
+        <p class="text-xs text-amber-800">
+          If you select <em>Float</em> or <em>Slide</em> and are upgraded to a higher choice in a later round, your previous seat is immediately allocated to another candidate and cannot be reclaimed under any circumstances.
+        </p>
+      </div>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-8 mb-3">2. Quota Codes: All India (AI), Home State (HS), Other State (OS)</h2>
+      <p>
+        Quota rules depend on the type of participating institution:
+      </p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li>
+          <strong>IITs (All India / AI Quota):</strong> 100% of seats in Indian Institutes of Technology are All India Quota. Your state of residence or schooling makes no difference.
+        </li>
+        <li>
+          <strong>NITs (HS vs OS):</strong> In National Institutes of Technology, 50% of seats are reserved for students who completed their Class 12 exam in that state (Home State / HS), while 50% are open to students from across India (Other State / OS). HS cutoffs are frequently much lower than OS cutoffs.
+        </li>
+        <li>
+          <strong>IIITs:</strong> Most IIITs operate primarily on All India (AI) seats, with a few institutions offering a limited state quota.
+        </li>
+        <li>
+          <strong>GFTIs:</strong> Depending on the institute's funding, seats may be 100% AI or split between State and All India quota.
+        </li>
+      </ul>
+
+      <h2 class="text-xl font-bold text-gray-900 mt-8 mb-3">3. Category Ranks vs Common Rank List (CRL)</h2>
+      <p>
+        In JoSAA cutoffs, seat allocation follows strict reservation categories:
+      </p>
+      <ul class="list-disc pl-6 space-y-2">
+        <li><strong>OPEN Seats:</strong> Allocated strictly by Common Rank List (CRL) rank, regardless of the candidate's personal category.</li>
+        <li><strong>GEN-EWS, OBC-NCL, SC, ST Seats:</strong> Allocated based on the candidate's <em>Category Merit Rank</em>, not their CRL rank. When evaluating cutoffs for reserved categories in the <a href="/cutoff/" class="text-indigo-600 hover:underline">Cutoff Explorer</a>, compare your Category Rank against the published closing rank.</li>
+        <li><strong>Female Supernumerary Quota:</strong> Extra seats created in IITs and NITs to achieve at least 20% female enrollment. Female candidates are considered for both gender-neutral and female-only pools.</li>
+      </ul>
+
+      <div class="mt-8 pt-6 border-t border-gray-200">
+        <h3 class="text-base font-bold text-gray-900 mb-3">Verify Institute-Specific Cutoffs</h3>
+        <p class="text-sm text-gray-600 mb-4">
+          See the official opening and closing ranks for all categories and quotas across all 119 participating colleges:
+        </p>
+        <a href="/cutoff/" class="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-semibold shadow-sm">
+          Open JoSAA Cutoff Explorer →
+        </a>
+      </div>
+    </article>
+
+    <!-- Source Box -->
+    <div class="mt-12">
+      <SourceBox
+        sourceName="Joint Seat Allocation Authority (JoSAA)"
+        sourceUrl="https://josaa.nic.in"
+        sourceYear={2024}
+        verifiedAt="2026-11-15"
+        methodologyNote="Definitions and rules follow Section 4.3 (Seat Allocation Procedure) and Section 5 (Online Reporting) of the official JoSAA Business Rules."
+      />
+    </div>
+  </div>
+</CollegeLayout>

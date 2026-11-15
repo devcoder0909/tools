@@ -1743,6 +1743,54 @@ const institutes = [
     nirf: [{ year: 2024, category: 'Engineering', rank: 62, score: 47.20 }],
     sources: [defaultProvenance],
   },
+  {
+    slug: 'iisc-bangalore',
+    name: 'Indian Institute of Science Bangalore',
+    short_name: 'IISc Bangalore',
+    city: 'Bengaluru',
+    state: 'Karnataka',
+    type: 'University',
+    official_url: 'https://iisc.ac.in',
+    josaa_code: '509',
+    established: 1909,
+    nirf: [
+      { year: 2024, category: 'University', rank: 1, score: 87.56 },
+      { year: 2024, category: 'Overall', rank: 2, score: 83.28 },
+    ],
+    sources: [defaultProvenance],
+  },
+  {
+    slug: 'banaras-hindu-university',
+    name: 'Banaras Hindu University',
+    short_name: 'BHU Varanasi',
+    city: 'Varanasi',
+    state: 'Uttar Pradesh',
+    type: 'University',
+    official_url: 'https://www.bhu.ac.in',
+    josaa_code: '510',
+    established: 1916,
+    nirf: [
+      { year: 2024, category: 'University', rank: 5, score: 65.85 },
+      { year: 2024, category: 'Overall', rank: 11, score: 67.20 },
+    ],
+    sources: [defaultProvenance],
+  },
+  {
+    slug: 'jamia-millia-islamia',
+    name: 'Jamia Millia Islamia',
+    short_name: 'JMI New Delhi',
+    city: 'New Delhi',
+    state: 'Delhi',
+    type: 'University',
+    official_url: 'https://www.jmi.ac.in',
+    josaa_code: '511',
+    established: 1920,
+    nirf: [
+      { year: 2024, category: 'University', rank: 3, score: 67.73 },
+      { year: 2024, category: 'Overall', rank: 13, score: 65.40 },
+    ],
+    sources: [defaultProvenance],
+  },
 ];
 
 // Write josaa-institutes.json
@@ -1831,6 +1879,7 @@ const nirfRankings = [
 
   // --- Overall 2024 ---
   { rank: 1, name: 'Indian Institute of Technology Madras', slug: 'iit-madras', city: 'Chennai', state: 'Tamil Nadu', score: 86.42, category: 'Overall', year: 2024, official_url: 'https://www.iitm.ac.in', sources: [nirfProvenance] },
+  { rank: 2, name: 'Indian Institute of Science Bangalore', slug: 'iisc-bangalore', city: 'Bengaluru', state: 'Karnataka', score: 83.28, category: 'Overall', year: 2024, official_url: 'https://iisc.ac.in', sources: [nirfProvenance] },
   { rank: 3, name: 'Indian Institute of Technology Bombay', slug: 'iit-bombay', city: 'Mumbai', state: 'Maharashtra', score: 82.52, category: 'Overall', year: 2024, official_url: 'https://www.iitb.ac.in', sources: [nirfProvenance] },
   { rank: 4, name: 'Indian Institute of Technology Delhi', slug: 'iit-delhi', city: 'New Delhi', state: 'Delhi', score: 82.16, category: 'Overall', year: 2024, official_url: 'https://home.iitd.ac.in', sources: [nirfProvenance] },
   { rank: 5, name: 'Indian Institute of Technology Kanpur', slug: 'iit-kanpur', city: 'Kanpur', state: 'Uttar Pradesh', score: 80.65, category: 'Overall', year: 2024, official_url: 'https://www.iitk.ac.in', sources: [nirfProvenance] },
@@ -1838,11 +1887,16 @@ const nirfRankings = [
   { rank: 8, name: 'Indian Institute of Technology Roorkee', slug: 'iit-roorkee', city: 'Roorkee', state: 'Uttarakhand', score: 73.18, category: 'Overall', year: 2024, official_url: 'https://www.iitr.ac.in', sources: [nirfProvenance] },
   { rank: 9, name: 'Indian Institute of Technology Guwahati', slug: 'iit-guwahati', city: 'Guwahati', state: 'Assam', score: 70.14, category: 'Overall', year: 2024, official_url: 'https://www.iitg.ac.in', sources: [nirfProvenance] },
   { rank: 10, name: 'Jawaharlal Nehru University Delhi', slug: 'jnu-delhi', city: 'New Delhi', state: 'Delhi', score: 69.80, category: 'Overall', year: 2024, official_url: 'https://www.jnu.ac.in', sources: [nirfProvenance] },
+  { rank: 11, name: 'Banaras Hindu University', slug: 'banaras-hindu-university', city: 'Varanasi', state: 'Uttar Pradesh', score: 67.20, category: 'Overall', year: 2024, official_url: 'https://www.bhu.ac.in', sources: [nirfProvenance] },
   { rank: 12, name: 'Indian Institute of Technology Hyderabad', slug: 'iit-hyderabad', city: 'Sangareddy', state: 'Telangana', score: 66.85, category: 'Overall', year: 2024, official_url: 'https://www.iith.ac.in', sources: [nirfProvenance] },
+  { rank: 13, name: 'Jamia Millia Islamia', slug: 'jamia-millia-islamia', city: 'New Delhi', state: 'Delhi', score: 65.40, category: 'Overall', year: 2024, official_url: 'https://www.jmi.ac.in', sources: [nirfProvenance] },
   { rank: 31, name: 'National Institute of Technology Tiruchirappalli', slug: 'nit-trichy', city: 'Tiruchirappalli', state: 'Tamil Nadu', score: 58.40, category: 'Overall', year: 2024, official_url: 'https://www.nitt.edu', sources: [nirfProvenance] },
 
   // --- University 2024 ---
+  { rank: 1, name: 'Indian Institute of Science Bangalore', slug: 'iisc-bangalore', city: 'Bengaluru', state: 'Karnataka', score: 87.56, category: 'University', year: 2024, official_url: 'https://iisc.ac.in', sources: [nirfProvenance] },
   { rank: 2, name: 'Jawaharlal Nehru University Delhi', slug: 'jnu-delhi', city: 'New Delhi', state: 'Delhi', score: 68.90, category: 'University', year: 2024, official_url: 'https://www.jnu.ac.in', sources: [nirfProvenance] },
+  { rank: 3, name: 'Jamia Millia Islamia', slug: 'jamia-millia-islamia', city: 'New Delhi', state: 'Delhi', score: 67.73, category: 'University', year: 2024, official_url: 'https://www.jmi.ac.in', sources: [nirfProvenance] },
+  { rank: 5, name: 'Banaras Hindu University', slug: 'banaras-hindu-university', city: 'Varanasi', state: 'Uttar Pradesh', score: 65.85, category: 'University', year: 2024, official_url: 'https://www.bhu.ac.in', sources: [nirfProvenance] },
 
   // --- Engineering 2023 ---
   { rank: 1, name: 'Indian Institute of Technology Madras', slug: 'iit-madras', city: 'Chennai', state: 'Tamil Nadu', score: 89.79, category: 'Engineering', year: 2023, official_url: 'https://www.iitm.ac.in', sources: [nirfProvenance] },

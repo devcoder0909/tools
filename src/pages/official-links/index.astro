@@ -1,0 +1,151 @@
+---
+import CollegeLayout from '../../layouts/CollegeLayout.astro';
+import SourceBox from '../../components/colleges/SourceBox.astro';
+
+const portals = [
+  {
+    name: 'Joint Seat Allocation Authority (JoSAA)',
+    abbreviation: 'JoSAA',
+    officialUrl: 'https://josaa.nic.in',
+    purpose: 'Conducts joint online counselling and seat allocation for 119+ IITs, NITs, IIITs, and GFTIs based on JEE Main and JEE Advanced ranks.',
+    frequency: 'Annual (June – July)',
+    verifiedAt: '2026-11-15',
+    category: 'Counselling & Admissions',
+  },
+  {
+    name: 'Central Seat Allocation Board (CSAB)',
+    abbreviation: 'CSAB',
+    officialUrl: 'https://csab.nic.in',
+    purpose: 'Conducts special spot rounds and supernumerary seat allocation for vacant seats in NITs, IIITs, and GFTIs after JoSAA rounds conclude.',
+    frequency: 'Annual (July – August)',
+    verifiedAt: '2026-11-15',
+    category: 'Counselling & Admissions',
+  },
+  {
+    name: 'National Institutional Ranking Framework (NIRF)',
+    abbreviation: 'NIRF',
+    officialUrl: 'https://www.nirfindia.org',
+    purpose: 'Government framework by the Ministry of Education calculating annual institutional scores and ranks across 13 distinct academic disciplines.',
+    frequency: 'Annual release (June – August)',
+    verifiedAt: '2026-11-15',
+    category: 'Rankings & Benchmarking',
+  },
+  {
+    name: 'National Testing Agency (NTA)',
+    abbreviation: 'NTA',
+    officialUrl: 'https://nta.ac.in',
+    purpose: 'Autonomous testing organization conducting JEE Main, NEET UG, CUET, and UGC-NET national computer-based entrance examinations.',
+    frequency: 'Continuous / Multi-Session',
+    verifiedAt: '2026-11-15',
+    category: 'Examinations',
+  },
+  {
+    name: 'University Grants Commission (UGC)',
+    abbreviation: 'UGC',
+    officialUrl: 'https://www.ugc.gov.in',
+    purpose: 'Statutory body coordinating, determining, and maintaining standards of university education and official university recognition lists.',
+    frequency: 'Statutory Regulatory Authority',
+    verifiedAt: '2026-11-15',
+    category: 'Accreditation & Regulation',
+  },
+  {
+    name: 'All India Council for Technical Education (AICTE)',
+    abbreviation: 'AICTE',
+    officialUrl: 'https://www.aicte-india.org',
+    purpose: 'Statutory council regulating and approving technical education programs, engineering colleges, polytechnics, and management institutes.',
+    frequency: 'Statutory Regulatory Authority',
+    verifiedAt: '2026-11-15',
+    category: 'Accreditation & Regulation',
+  },
+];
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://convert.gudmud.site/' },
+    { '@type': 'ListItem', position: 2, name: 'Colleges', item: 'https://convert.gudmud.site/colleges/' },
+    { '@type': 'ListItem', position: 3, name: 'Official Portals', item: 'https://convert.gudmud.site/official-links/' },
+  ],
+};
+---
+
+<CollegeLayout
+  title="Official Portals: JoSAA, NIRF, NTA & UGC Directory"
+  description="Verified directory of official Indian education portals including JoSAA, CSAB, NIRF, NTA, UGC, and AICTE. Access genuine counselling and accreditation links."
+  canonical="https://convert.gudmud.site/official-links/"
+  jsonLd={[breadcrumbJsonLd]}
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <!-- Breadcrumb -->
+    <nav class="flex items-center gap-2 text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
+      <a href="/" class="hover:underline">Home</a>
+      <span>/</span>
+      <a href="/colleges/" class="hover:underline">Colleges</a>
+      <span>/</span>
+      <span class="text-gray-900 font-medium">Official Portals</span>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="mb-8">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200 mb-3">
+        <span>Verified Government & Regulatory Sources</span>
+        <span>•</span>
+        <span>Zero Third-Party Redirects</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-3">
+        Official Portals: JoSAA, NIRF, NTA & UGC Directory
+      </h1>
+      <p class="text-sm sm:text-base text-gray-600 max-w-3xl leading-relaxed">
+        Direct verified links to official government examination bodies, seat allocation authorities, and academic regulatory councils in India. Bookmark this directory to avoid scam portals and unofficial lead-capture websites.
+      </p>
+    </header>
+
+    <!-- Portals List -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+      {portals.map((portal) => (
+        <div class="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:border-indigo-400 hover:shadow-md transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-100">
+                {portal.category}
+              </span>
+              <span class="text-[11px] text-gray-400">Verified: {portal.verifiedAt}</span>
+            </div>
+            <h2 class="text-lg font-bold text-gray-900 mb-1">
+              {portal.name}
+            </h2>
+            <div class="text-xs font-mono text-gray-500 mb-3">
+              {portal.officialUrl}
+            </div>
+            <p class="text-sm text-gray-600 mb-4 leading-relaxed">
+              {portal.purpose}
+            </p>
+          </div>
+          <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
+            <span class="text-xs text-gray-500">
+              Update cycle: <strong class="text-gray-700">{portal.frequency}</strong>
+            </span>
+            <a
+              href={portal.officialUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-semibold shadow-sm"
+            >
+              Access Portal ↗
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Official Source Box -->
+    <SourceBox
+      sourceName="Ministry of Education & Statutory Bodies"
+      sourceUrl="https://www.education.gov.in"
+      sourceYear={2024}
+      verifiedAt="2026-11-15"
+      methodologyNote="All portals listed are operated directly by ministries or statutory councils of the Government of India. Domains ending in .gov.in or .nic.in represent authenticated government portals."
+    />
+  </div>
+</CollegeLayout>

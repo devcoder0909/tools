@@ -1,0 +1,151 @@
+---
+import CollegeLayout from '../../../../layouts/CollegeLayout.astro';
+import SourceBox from '../../../../components/colleges/SourceBox.astro';
+import nirfData from '@/data/nirf.json';
+import collegesData from '@/data/colleges.json';
+
+const year = 2024;
+const category = 'Engineering';
+
+const currentRankings = nirfData.filter((r) => r.category === category && r.year === year);
+const prevRankings = nirfData.filter((r) => r.category === category && r.year === 2023);
+
+const prevRankMap = new Map<string, number>();
+for (const p of prevRankings) {
+  prevRankMap.set(p.slug, p.rank);
+}
+
+const collegeMap = new Map<string, any>();
+for (const c of collegesData) {
+  collegeMap.set(c.slug, c);
+}
+
+const enrichedRankings = currentRankings.map((item) => {
+  const prevRank = prevRankMap.get(item.slug);
+  let change = 0;
+  let changeText = 'New / Unranked in 2023';
+  if (prevRank) {
+    change = prevRank - item.rank;
+    if (change > 0) changeText = `▲ +${change} (Rank ${prevRank})`;
+    else if (change < 0) changeText = `▼ ${change} (Rank ${prevRank})`;
+    else changeText = `— Steady (#${prevRank})`;
+  }
+  return {
+    ...item,
+    prevRank,
+    change,
+    changeText,
+    college: collegeMap.get(item.slug),
+  };
+});
+
+const itemListJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: `Best Engineering Colleges in India: NIRF ${year}`,
+  description: `Official National Institutional Ranking Framework (NIRF) ${year} Engineering rankings list with verified scores and year-over-year rank changes.`,
+  numberOfItems: enrichedRankings.length,
+  itemListElement: enrichedRankings.slice(0, 30).map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.name,
+    url: `https://convert.gudmud.site/colleges/${item.slug}/`,
+  })),
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://convert.gudmud.site/' },
+    { '@type': 'ListItem', position: 2, name: 'Colleges', item: 'https://convert.gudmud.site/colleges/' },
+    { '@type': 'ListItem', position: 3, name: 'NIRF Rankings', item: 'https://convert.gudmud.site/nirf-ranking/' },
+    { '@type': 'ListItem', position: 4, name: 'Engineering 2024', item: 'https://convert.gudmud.site/nirf-ranking/engineering/2024/' },
+  ],
+};
+---
+
+<CollegeLayout
+  title="NIRF Engineering Ranking 2024: Top Colleges | Gudmud"
+  description="Official 2024 NIRF Engineering rankings list with verified scores, YoY rank shift vs 2023, and JoSAA cutoffs for top engineering colleges in India."
+  canonical="https://convert.gudmud.site/nirf-ranking/engineering/"
+  jsonLd={[itemListJsonLd, breadcrumbJsonLd]}
+>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <!-- Breadcrumb -->
+    <nav class="flex items-center gap-2 text-xs text-gray-500 mb-6" aria-label="Breadcrumb">
+      <a href="/" class="hover:underline">Home</a>
+      <span>/</span>
+      <a href="/colleges/" class="hover:underline">Colleges</a>
+      <span>/</span>
+      <a href="/nirf-ranking/" class="hover:underline">NIRF Rankings</a>
+      <span>/</span>
+      <span class="text-gray-900 font-medium">Engineering {year}</span>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="mb-6">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200 mb-3">
+        <span>Ministry of Education Official Report</span>
+        <span>•</span>
+        <span>Year-over-Year Verified Dataset</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-3">
+        NIRF Engineering Ranking 2024: Top Engineering Colleges
+      </h1>
+      <p class="text-sm sm:text-base text-gray-600 max-w-3xl leading-relaxed">
+        Review the official NIRF 2024 Engineering rankings with year-over-year rank comparisons against the 2023 NIRF release.
+      </p>
+    </header>
+
+    <!-- Rankings Table -->
+    <div class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden mb-12">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse text-sm">
+          <thead>
+            <tr class="bg-gray-100 border-b border-gray-200 text-xs font-semibold text-gray-600 uppercase tracking-wider">
+              <th class="px-4 py-3 text-center w-16">Rank</th>
+              <th class="px-4 py-3">Institute Name</th>
+              <th class="px-4 py-3">State</th>
+              <th class="px-4 py-3 text-right">Score</th>
+              <th class="px-4 py-3 text-center">YoY Shift (vs 2023)</th>
+              <th class="px-4 py-3 text-center">Action</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-200">
+            {enrichedRankings.map((item) => (
+              <tr class="hover:bg-gray-50 transition-colors">
+                <td class="px-4 py-3.5 text-center font-bold text-gray-900">
+                  #{item.rank}
+                </td>
+                <td class="px-4 py-3.5">
+                  <div class="font-bold text-gray-900">
+                    <a href={`/colleges/${item.slug}/`} class="hover:text-indigo-600 hover:underline">
+                      {item.name}
+                    </a>
+                  </div>
+                </td>
+                <td class="px-4 py-3.5 text-xs text-gray-600">{item.state}</td>
+                <td class="px-4 py-3.5 text-right font-mono font-semibold text-gray-900">{item.score.toFixed(2)}</td>
+                <td class="px-4 py-3.5 text-center text-xs font-medium">{item.changeText}</td>
+                <td class="px-4 py-3.5 text-center">
+                  <a href={`/colleges/${item.slug}/`} class="inline-block px-3 py-1 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded text-xs font-semibold">
+                    Profile →
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <SourceBox
+      sourceName="National Institutional Ranking Framework (NIRF)"
+      sourceUrl="https://www.nirfindia.org"
+      sourceYear={2024}
+      verifiedAt="2026-11-15"
+      methodologyNote="NIRF Engineering Rankings benchmark institutions across five weighted categories: TLR (30%), RPC (30%), GO (20%), OI (10%), and PR (10%)."
+    />
+  </div>
+</CollegeLayout>
