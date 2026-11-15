@@ -2,7 +2,7 @@ import { getAllTools, getAllFormats } from '../src/registry';
 import { siteConfig } from '../src/config/site';
 
 async function pingIndexNow() {
-  const apiKey = process.env.INDEXNOW_KEY || 'c0nvert8892df91024gudmud';
+  const apiKey = process.env.INDEXNOW_KEY || 'fbfbc05b9070df2dcd6684c6d12c7a0b';
 
   const tools = getAllTools().filter((t) => t.indexable && t.reviewed && t.last_reviewed);
   const formats = getAllFormats().filter((f) => f.hub && f.indexable);
