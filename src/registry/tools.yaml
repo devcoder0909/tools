@@ -1,4 +1,3 @@
-# 18 Image Converters
 - id: heic-to-jpg
   kind: converter
   slug: heic-to-jpg
@@ -9,7 +8,10 @@
   from: heic
   to: jpg
   engine: heic-decode+canvas
-  options: [quality, strip-metadata, batch]
+  options:
+    - quality
+    - strip-metadata
+    - batch
   presets: []
   content: src/content/tools/heic-to-jpg.mdx
   faq:
@@ -37,20 +39,28 @@
       a: Apple introduced HEIC in iOS 11 (2017) to cut photo storage consumption in half while supporting 16-bit wide-gamut Display P3 colors.
     - q: How do I open HEIC on Mac or Android?
       a: Apple macOS opens HEIC natively in Preview and Finder. Recent Android versions (Android 9+) support HEIC viewing in Google Photos, though third-party messaging apps frequently require JPG.
-  related: [heic-to-png, heic-to-pdf, jpg-to-png, compress-image-to-200kb]
+  related:
+    - heic-to-png
+    - heic-to-pdf
+    - jpg-to-png
+    - compress-image-to-200kb
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   reviewer: Best Converter Image Engineering Team
   lang: en
   seo:
     primary_kw: heic to jpg
-    secondary_kws: [convert heic to jpg, heic to jpeg, iphone photo to jpg, heic to jpg windows 11, heic to jpg no upload]
+    secondary_kws:
+      - convert heic to jpg
+      - heic to jpeg
+      - iphone photo to jpg
+      - heic to jpg windows 11
+      - heic to jpg no upload
     intent: tool
     tier: 1
     sources: Competitor audit (TinyPNG, FreeConvert) & Google SERP seed analysis
-    last_reviewed: 2026-11-13
-
+    last_reviewed: 2026-11-13T00:00:00.000Z
 - id: heic-to-png
   kind: converter
   slug: heic-to-png
@@ -60,23 +70,38 @@
   from: heic
   to: png
   engine: heic-decode+canvas
-  options: [batch]
+  options:
+    - batch
   presets: []
   content: src/content/tools/heic-to-png.mdx
   faq:
     - q: Why convert iPhone HEIC photos to PNG instead of JPG?
-      a: "PNG uses lossless compression and preserves alpha transparency channels, making it ideal for cutouts, graphic design, and preserving maximum pixel detail."
+      a: PNG uses lossless compression and preserves alpha transparency channels, making it ideal for cutouts, graphic design, and preserving maximum pixel detail.
     - q: Are my iPhone photos uploaded to any remote server?
-      a: "No. All HEIC decoding and PNG encoding run 100% locally in your browser memory using WebAssembly. Your photos never leave your device."
+      a: No. All HEIC decoding and PNG encoding run 100% locally in your browser memory using WebAssembly. Your photos never leave your device.
     - q: Does Best Converter support burst and portrait photos?
-      a: "Yes. You can drop multi-image bursts and camera rolls into the converter for simultaneous batch processing."
-  related: [heic-to-jpg, png-to-jpg, png-to-webp]
+      a: Yes. You can drop multi-image bursts and camera rolls into the converter for simultaneous batch processing.
+  related:
+    - heic-to-jpg
+    - png-to-jpg
+    - png-to-webp
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-14
+  last_reviewed: 2026-11-14T00:00:00.000Z
   reviewer: Best Converter Image Engineering Team
   lang: en
-
+  seo:
+    primary_kw: heic to png
+    secondary_kws:
+      - convert heic to png
+      - heic to png transparent
+      - heic to png windows 11
+      - iphone photo to png
+      - heic to png no upload
+    intent: tool
+    tier: 1
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: heic-to-pdf
   kind: converter
   slug: heic-to-pdf
@@ -86,23 +111,39 @@
   from: heic
   to: pdf
   engine: heic-decode+pdf
-  options: [batch, page-size]
+  options:
+    - batch
+    - page-size
   presets: []
   content: src/content/tools/heic-to-pdf.mdx
   faq:
     - q: Can I combine multiple iPhone photos into one PDF document?
-      a: "Yes. Upload multiple HEIC receipts or document photos and Best Converter will compile them into successive pages of a single PDF file."
+      a: Yes. Upload multiple HEIC receipts or document photos and Best Converter will compile them into successive pages of a single PDF file.
     - q: Are my confidential receipts and contracts uploaded to the cloud?
-      a: "No. All PDF generation executes locally in your device RAM. Your private paperwork is never transmitted across the network."
+      a: No. All PDF generation executes locally in your device RAM. Your private paperwork is never transmitted across the network.
     - q: What page sizes are supported?
-      a: "You can format documents to standard international A4, US Letter, or original photo aspect fit dimensions."
-  related: [heic-to-jpg, jpg-to-pdf, png-to-pdf]
+      a: You can format documents to standard international A4, US Letter, or original photo aspect fit dimensions.
+  related:
+    - heic-to-jpg
+    - jpg-to-pdf
+    - png-to-pdf
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-14
+  last_reviewed: 2026-11-14T00:00:00.000Z
   reviewer: Best Converter Document Engineering Team
   lang: en
-
+  seo:
+    primary_kw: heic to pdf
+    secondary_kws:
+      - convert heic to pdf
+      - heic to pdf free online
+      - iphone photo to pdf
+      - multiple heic to pdf
+      - heic to pdf document converter
+    intent: tool
+    tier: 1
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: webp-to-jpg
   kind: converter
   slug: webp-to-jpg
@@ -112,22 +153,38 @@
   from: webp
   to: jpg
   engine: canvas
-  options: [quality, batch]
+  options:
+    - quality
+    - batch
   presets: []
   content: src/content/tools/webp-to-jpg.mdx
   faq:
     - q: Are my WebP files uploaded to a remote server?
-      a: "No. Your images are decoded and converted 100% locally on your computer or mobile device using HTML5 Canvas. No data ever leaves your device."
+      a: No. Your images are decoded and converted 100% locally on your computer or mobile device using HTML5 Canvas. No data ever leaves your device.
     - q: Can I convert multiple WebP files at once?
-      a: "Yes. Best Converter supports batch conversions. Add multiple files or drag a folder, adjust quality, and download all as a single ZIP archive."
+      a: Yes. Best Converter supports batch conversions. Add multiple files or drag a folder, adjust quality, and download all as a single ZIP archive.
     - q: Will converting WebP to JPG reduce image quality?
-      a: "By default, the converter uses an 85% JPEG quality level, which keeps your photos sharp and visually identical to the original WebP."
-  related: [webp-to-png, jpg-to-webp, png-to-jpg]
+      a: By default, the converter uses an 85% JPEG quality level, which keeps your photos sharp and visually identical to the original WebP.
+  related:
+    - webp-to-png
+    - jpg-to-webp
+    - png-to-jpg
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
-
+  seo:
+    primary_kw: webp to jpg
+    secondary_kws:
+      - convert webp to jpg
+      - webp to jpg converter free
+      - save webp as jpg
+      - change webp to jpg image
+      - batch webp to jpg
+    intent: tool
+    tier: 1
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: webp-to-png
   kind: converter
   slug: webp-to-png
@@ -137,23 +194,38 @@
   from: webp
   to: png
   engine: canvas
-  options: [batch]
+  options:
+    - batch
   presets: []
   content: src/content/tools/webp-to-png.mdx
   faq:
     - q: Does converting WebP to PNG preserve transparent backgrounds?
-      a: "Yes. Best Converter preserves full 8-bit alpha transparency channels, ensuring transparent cutouts and logos remain perfectly isolated."
+      a: Yes. Best Converter preserves full 8-bit alpha transparency channels, ensuring transparent cutouts and logos remain perfectly isolated.
     - q: Why convert WebP to PNG instead of JPG?
-      a: "PNG is a lossless format that prevents visual degradation, artifacts, and color banding during editing in Photoshop, Illustrator, and Figma."
+      a: PNG is a lossless format that prevents visual degradation, artifacts, and color banding during editing in Photoshop, Illustrator, and Figma.
     - q: Is there a file size limit for converting WebP to PNG?
-      a: "No arbitrary file limits exist. Processing is constrained only by your device's available browser memory (RAM)."
-  related: [webp-to-jpg, png-to-webp, png-to-jpg]
+      a: No arbitrary file limits exist. Processing is constrained only by your device's available browser memory (RAM).
+  related:
+    - webp-to-jpg
+    - png-to-webp
+    - png-to-jpg
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-14
+  last_reviewed: 2026-11-14T00:00:00.000Z
   reviewer: Best Converter Image Engineering Team
   lang: en
-
+  seo:
+    primary_kw: webp to png
+    secondary_kws:
+      - convert webp to png
+      - webp to png transparent
+      - webp to png converter free
+      - save webp as png
+      - batch webp to png
+    intent: tool
+    tier: 1
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: png-to-webp
   kind: converter
   slug: png-to-webp
@@ -163,23 +235,39 @@
   from: png
   to: webp
   engine: canvas
-  options: [quality, batch]
+  options:
+    - quality
+    - batch
   presets: []
   content: src/content/tools/png-to-webp.mdx
   faq:
     - q: How much storage space does converting PNG to WebP save?
-      a: "Converting PNG to WebP typically reduces byte footprint by 25% to 45% while preserving visual clarity and alpha transparency."
+      a: Converting PNG to WebP typically reduces byte footprint by 25% to 45% while preserving visual clarity and alpha transparency.
     - q: Will Google rank my website higher if I use WebP?
-      a: "Yes. WebP images significantly improve Google Core Web Vitals, specifically Largest Contentful Paint (LCP) and mobile PageSpeed scores."
+      a: Yes. WebP images significantly improve Google Core Web Vitals, specifically Largest Contentful Paint (LCP) and mobile PageSpeed scores.
     - q: Does WebP support transparent backgrounds?
-      a: "Yes. WebP natively supports 8-bit alpha transparency, making it a drop-in replacement for heavy PNG graphics."
-  related: [jpg-to-webp, webp-to-png, compress-image-to-200kb]
+      a: Yes. WebP natively supports 8-bit alpha transparency, making it a drop-in replacement for heavy PNG graphics.
+  related:
+    - jpg-to-webp
+    - webp-to-png
+    - compress-image-to-200kb
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-14
+  last_reviewed: 2026-11-14T00:00:00.000Z
   reviewer: Best Converter Performance Engineering Team
   lang: en
-
+  seo:
+    primary_kw: png to webp
+    secondary_kws:
+      - convert png to webp
+      - png to webp converter
+      - compress png to webp
+      - lossless png to webp
+      - png to webp for website speed
+    intent: tool
+    tier: 1
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: jpg-to-webp
   kind: converter
   slug: jpg-to-webp
@@ -189,23 +277,39 @@
   from: jpg
   to: webp
   engine: canvas
-  options: [quality, batch]
+  options:
+    - quality
+    - batch
   presets: []
   content: src/content/tools/jpg-to-webp.mdx
   faq:
     - q: Why convert JPEG photos to WebP?
-      a: "WebP files are approximately 25% to 35% smaller than comparable JPEGs at identical optical quality, speeding up websites and cutting hosting bandwidth."
+      a: WebP files are approximately 25% to 35% smaller than comparable JPEGs at identical optical quality, speeding up websites and cutting hosting bandwidth.
     - q: Are my photos uploaded to any server during conversion?
-      a: "No. Conversion executes strictly inside your browser memory using HTML5 Canvas APIs without transmitting data to remote servers."
+      a: No. Conversion executes strictly inside your browser memory using HTML5 Canvas APIs without transmitting data to remote servers.
     - q: What browsers support WebP?
-      a: "WebP is natively supported across more than 98% of global web browsers, including Chrome, Safari, Firefox, Edge, and mobile browsers."
-  related: [webp-to-jpg, png-to-webp, compress-image-to-100kb]
+      a: WebP is natively supported across more than 98% of global web browsers, including Chrome, Safari, Firefox, Edge, and mobile browsers.
+  related:
+    - webp-to-jpg
+    - png-to-webp
+    - compress-image-to-100kb
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-14
+  last_reviewed: 2026-11-14T00:00:00.000Z
   reviewer: Best Converter Performance Engineering Team
   lang: en
-
+  seo:
+    primary_kw: jpg to webp
+    secondary_kws:
+      - convert jpg to webp
+      - jpg to webp converter
+      - compress jpeg to webp
+      - jpg to webp batch
+      - convert image to webp format
+    intent: tool
+    tier: 1
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: avif-to-jpg
   kind: converter
   slug: avif-to-jpg
@@ -215,47 +319,77 @@
   from: avif
   to: jpg
   engine: canvas
-  options: [quality, batch]
+  options:
+    - quality
+    - batch
   presets: []
   content: src/content/tools/avif-to-jpg.mdx
   faq:
     - q: Why won't my computer open .avif images?
-      a: "Many desktop software suites (older Photoshop, Microsoft Office Word, and Windows Photo Viewer) lack AV1 image codecs. Converting to JPG restores universal compatibility."
+      a: Many desktop software suites (older Photoshop, Microsoft Office Word, and Windows Photo Viewer) lack AV1 image codecs. Converting to JPG restores universal compatibility.
     - q: Does converting AVIF to JPG degrade image quality?
-      a: "Best Converter uses an 88% to 90% JPEG quality setting that preserves fine textures and dynamic range without optical degradation."
+      a: Best Converter uses an 88% to 90% JPEG quality setting that preserves fine textures and dynamic range without optical degradation.
     - q: Can I batch convert multiple AVIF files at once?
-      a: "Yes. Drag and drop multiple AVIF images to convert them in parallel and download them individually or as a single ZIP archive."
-  related: [avif-to-png, webp-to-jpg, jpg-to-webp]
+      a: Yes. Drag and drop multiple AVIF images to convert them in parallel and download them individually or as a single ZIP archive.
+  related:
+    - avif-to-png
+    - webp-to-jpg
+    - jpg-to-webp
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-14
+  last_reviewed: 2026-11-14T00:00:00.000Z
   reviewer: Best Converter Image Engineering Team
   lang: en
-
+  seo:
+    primary_kw: avif to jpg
+    secondary_kws:
+      - convert avif to jpg
+      - avif to jpg converter free
+      - open avif on windows
+      - change avif to jpeg
+      - avif to jpg no upload
+    intent: tool
+    tier: 2
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: avif-to-png
   kind: converter
   slug: avif-to-png
   name: AVIF to PNG
   title: AVIF to PNG Converter - Lossless Alpha | Best Converter
-  description: Convert AVIF pictures to crisp PNG images with transparent backgrounds. Completely offline and private in your browser.
+  description: Convert AVIF pictures to crisp PNG images with full transparency retention. Completely offline and private in your browser.
   from: avif
   to: png
   engine: canvas
-  options: [batch]
+  options:
+    - batch
   presets: []
   content: src/content/tools/avif-to-png.mdx
   faq:
     - q: Does converting AVIF to PNG preserve alpha transparency?
-      a: "Yes. Transparent backgrounds in AVIF logos, cutouts, and icons are preserved bit-for-bit in the converted PNG."
+      a: Yes. Transparent backgrounds in AVIF logos, cutouts, and icons are preserved bit-for-bit in the converted PNG.
     - q: Can I import converted PNGs into Figma or Photoshop?
-      a: "Yes. Converted PNG files are universally compatible with Figma, Photoshop, Illustrator, Sketch, and video editing suites."
-  related: [avif-to-jpg, webp-to-png, png-to-webp]
+      a: Yes. Converted PNG files are universally compatible with Figma, Photoshop, Illustrator, Sketch, and video editing suites.
+  related:
+    - avif-to-jpg
+    - webp-to-png
+    - png-to-webp
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-14
+  last_reviewed: 2026-11-14T00:00:00.000Z
   reviewer: Best Converter Image Engineering Team
   lang: en
-
+  seo:
+    primary_kw: avif to png
+    secondary_kws:
+      - convert avif to png
+      - avif to png transparent
+      - avif to png converter free
+      - extract png from avif
+    intent: tool
+    tier: 2
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: png-to-jpg
   kind: converter
   slug: png-to-jpg
@@ -265,22 +399,38 @@
   from: png
   to: jpg
   engine: canvas
-  options: [quality, batch]
+  options:
+    - quality
+    - batch
   presets: []
   content: src/content/tools/png-to-jpg.mdx
   faq:
     - q: What happens to transparent backgrounds when converting PNG to JPG?
-      a: "Because the JPEG standard does not support alpha transparency, any transparent pixels are automatically filled with a clean solid white background."
+      a: Because the JPEG standard does not support alpha transparency, any transparent pixels are automatically filled with a clean solid white background.
     - q: How much smaller will my converted JPG files be?
-      a: "Converting heavy photographic PNGs or 4K screenshots typically reduces file size by 70% to 85% at the standard 85% JPEG quality setting."
+      a: Converting heavy photographic PNGs or 4K screenshots typically reduces file size by 70% to 85% at the standard 85% JPEG quality setting.
     - q: Can I convert PNG screenshots from Mac and Windows?
-      a: "Yes. Drop screenshots or paste them directly from your clipboard using Ctrl+V or Cmd+V to convert them instantly."
-  related: [jpg-to-png, png-to-webp, compress-image-to-200kb]
+      a: Yes. Drop screenshots or paste them directly from your clipboard using Ctrl+V or Cmd+V to convert them instantly.
+  related:
+    - jpg-to-png
+    - png-to-webp
+    - compress-image-to-200kb
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
-
+  seo:
+    primary_kw: png to jpg
+    secondary_kws:
+      - convert png to jpg
+      - png to jpg converter free
+      - change png to jpeg
+      - png to jpg high quality
+      - batch png to jpg
+    intent: tool
+    tier: 1
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: jpg-to-png
   kind: converter
   slug: jpg-to-png
@@ -290,22 +440,36 @@
   from: jpg
   to: png
   engine: canvas
-  options: [batch]
+  options:
+    - batch
   presets: []
   content: src/content/tools/jpg-to-png.mdx
   faq:
     - q: Why convert a lossy JPG photo into a lossless PNG?
-      a: "Converting to PNG stops further generational loss during editing. You can save, crop, and retouch the PNG repeatedly without compression artifacts."
+      a: Converting to PNG stops further generational loss during editing. You can save, crop, and retouch the PNG repeatedly without compression artifacts.
     - q: Will converting JPG to PNG increase the file size?
-      a: "Yes. Because PNG uses lossless compression, the pixel data is expanded, typically making the resulting PNG larger than the original compressed JPEG."
+      a: Yes. Because PNG uses lossless compression, the pixel data is expanded, typically making the resulting PNG larger than the original compressed JPEG.
     - q: Are my photos secure during conversion?
-      a: "Yes. All processing executes client-side inside your browser memory. We never store, transmit, or inspect your private photos."
-  related: [png-to-jpg, jpg-to-webp, jpg-to-pdf]
+      a: Yes. All processing executes client-side inside your browser memory. We never store, transmit, or inspect your private photos.
+  related:
+    - png-to-jpg
+    - jpg-to-webp
+    - jpg-to-pdf
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
-
+  seo:
+    primary_kw: jpg to png
+    secondary_kws:
+      - convert jpg to png
+      - jpg to png converter free
+      - jpeg to png transparent
+      - convert picture to png format
+    intent: tool
+    tier: 1
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: jfif-to-jpg
   kind: converter
   slug: jfif-to-jpg
@@ -315,23 +479,37 @@
   from: jfif
   to: jpg
   engine: canvas
-  options: [batch]
+  options:
+    - batch
   presets: []
   content: src/content/tools/jfif-to-jpg.mdx
   faq:
     - q: Why did Google Chrome or Edge save my image as a .jfif file?
-      a: "A known Windows 10/11 Registry glitch assigns .jfif as the default file extension for image/jpeg MIME types instead of .jpg."
+      a: A known Windows 10/11 Registry glitch assigns .jfif as the default file extension for image/jpeg MIME types instead of .jpg.
     - q: Can I upload converted JPG files to websites that reject JFIF?
-      a: "Yes. Converting to standard JPG completely resolves 'unsupported format' errors on government forms, university portals, and Discord."
+      a: Yes. Converting to standard JPG completely resolves 'unsupported format' errors on government forms, university portals, and Discord.
     - q: Is there any loss in visual quality when converting JFIF to JPG?
-      a: "No. JFIF and JPG use the identical internal JPEG compression algorithm. Best Converter normalizes the container headers with 100% optical fidelity."
-  related: [jpg-to-png, webp-to-jpg, png-to-jpg]
+      a: No. JFIF and JPG use the identical internal JPEG compression algorithm. Best Converter normalizes the container headers with 100% optical fidelity.
+  related:
+    - jpg-to-png
+    - webp-to-jpg
+    - png-to-jpg
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-14
+  last_reviewed: 2026-11-14T00:00:00.000Z
   reviewer: Best Converter Image Engineering Team
   lang: en
-
+  seo:
+    primary_kw: jfif to jpg
+    secondary_kws:
+      - convert jfif to jpg
+      - jfif to jpg converter free
+      - save jfif as jpg windows
+      - change jfif to jpeg
+    intent: tool
+    tier: 2
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: svg-to-png
   kind: converter
   slug: svg-to-png
@@ -341,49 +519,79 @@
   from: svg
   to: png
   engine: canvas
-  options: [scale, batch]
+  options:
+    - scale
+    - batch
   presets: []
   content: src/content/tools/svg-to-png.mdx
   faq:
     - q: Why convert vector SVG to raster PNG?
-      a: "Major social media platforms (Twitter, LinkedIn, Instagram) and document editors block SVG uploads due to XML script security risks. PNG is universally accepted."
+      a: Major social media platforms (Twitter, LinkedIn, Instagram) and document editors block SVG uploads due to XML script security risks. PNG is universally accepted.
     - q: Does Best Converter preserve transparent backgrounds in SVG?
-      a: "Yes. Transparent canvas layers in SVG graphics are preserved with 8-bit alpha transparency in the output PNG."
+      a: Yes. Transparent canvas layers in SVG graphics are preserved with 8-bit alpha transparency in the output PNG.
     - q: Can I convert multiple SVG icons at once?
-      a: "Yes. Drag and drop multiple vector icons to batch rasterize them in parallel and download as a ZIP archive."
-  related: [png-to-webp, png-to-jpg, jpg-to-png]
+      a: Yes. Drag and drop multiple vector icons to batch rasterize them in parallel and download as a ZIP archive.
+  related:
+    - png-to-webp
+    - png-to-jpg
+    - jpg-to-png
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-14
+  last_reviewed: 2026-11-14T00:00:00.000Z
   reviewer: Best Converter Graphic Engineering Team
   lang: en
-
+  seo:
+    primary_kw: svg to png
+    secondary_kws:
+      - convert svg to png
+      - svg to png high resolution
+      - svg to png converter free
+      - vector svg to transparent png
+    intent: tool
+    tier: 2
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: bmp-to-jpg
   kind: converter
   slug: bmp-to-jpg
   name: BMP to JPG
   title: BMP to JPG Converter - Compress Image Size | Best Converter
-  description: Convert bulky Windows BMP files to highly compressed JPG photos. Fast, client-side batch processing without data leaks.
+  description: Convert bulky Windows BMP files to highly compressed JPG photos. Fast, secure client-side batch processing without data leaks.
   from: bmp
   to: jpg
   engine: canvas
-  options: [quality, batch]
+  options:
+    - quality
+    - batch
   presets: []
   content: src/content/tools/bmp-to-jpg.mdx
   faq:
     - q: How much smaller will my BMP image be after converting to JPG?
-      a: "Converting uncompressed Windows Bitmap (BMP) photos to JPEG typically reduces file size by 85% to 95% while retaining crisp optical clarity."
+      a: Converting uncompressed Windows Bitmap (BMP) photos to JPEG typically reduces file size by 85% to 95% while retaining crisp optical clarity.
     - q: Why are BMP files so large?
-      a: "BMP files store uncompressed raw pixel arrays without applying compression algorithms, causing single photos to consume 10MB to 30MB each."
+      a: BMP files store uncompressed raw pixel arrays without applying compression algorithms, causing single photos to consume 10MB to 30MB each.
     - q: Are my sensitive bitmap scans uploaded to a server?
-      a: "No. Conversion runs 100% locally in your client device memory. Your files never touch external servers."
-  related: [jpg-to-png, png-to-jpg, tiff-to-jpg]
+      a: No. Conversion runs 100% locally in your client device memory. Your files never touch external servers.
+  related:
+    - jpg-to-png
+    - png-to-jpg
+    - tiff-to-jpg
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-14
+  last_reviewed: 2026-11-14T00:00:00.000Z
   reviewer: Best Converter Image Engineering Team
   lang: en
-
+  seo:
+    primary_kw: bmp to jpg
+    secondary_kws:
+      - convert bmp to jpg
+      - bmp to jpg converter free
+      - bitmap to jpeg converter
+      - compress bmp to jpg
+    intent: tool
+    tier: 2
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: tiff-to-jpg
   kind: converter
   slug: tiff-to-jpg
@@ -393,23 +601,38 @@
   from: tiff
   to: jpg
   engine: canvas
-  options: [quality, batch]
+  options:
+    - quality
+    - batch
   presets: []
   content: src/content/tools/tiff-to-jpg.mdx
   faq:
     - q: Why convert TIFF document scans to JPG?
-      a: "Standard web browsers and email clients cannot render .tiff files natively. Converting to JPG ensures 100% universal compatibility and slashes file size by up to 90%."
+      a: Standard web browsers and email clients cannot render .tiff files natively. Converting to JPG ensures 100% universal compatibility and slashes file size by up to 90%.
     - q: Does converting TIFF to JPG affect document readability?
-      a: "No. Our high-resolution JPEG encoder maintains crisp letterforms, fine signatures, and contrast without introducing blur."
+      a: No. Our high-resolution JPEG encoder maintains crisp letterforms, fine signatures, and contrast without introducing blur.
     - q: Can I convert multi-megabyte TIFF files?
-      a: "Yes. Best Converter processes multi-megabyte scanner TIFFs locally using device memory without artificial file limits."
-  related: [bmp-to-jpg, jpg-to-png, jpg-to-pdf]
+      a: Yes. Best Converter processes multi-megabyte scanner TIFFs locally using device memory without artificial file limits.
+  related:
+    - bmp-to-jpg
+    - jpg-to-png
+    - jpg-to-pdf
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-14
+  last_reviewed: 2026-11-14T00:00:00.000Z
   reviewer: Best Converter Document Engineering Team
   lang: en
-
+  seo:
+    primary_kw: tiff to jpg
+    secondary_kws:
+      - convert tiff to jpg
+      - tiff to jpg converter free
+      - tif to jpeg converter
+      - batch tiff to jpg
+    intent: tool
+    tier: 2
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: gif-to-png
   kind: converter
   slug: gif-to-png
@@ -419,23 +642,37 @@
   from: gif
   to: png
   engine: canvas
-  options: [batch]
+  options:
+    - batch
   presets: []
   content: src/content/tools/gif-to-png.mdx
   faq:
     - q: Why convert GIF to PNG?
-      a: "GIF is limited to an indexed 256-color palette with jagged 1-bit transparency. PNG upgrades images to 16.7 million colors with smooth 8-bit alpha transparency."
+      a: GIF is limited to an indexed 256-color palette with jagged 1-bit transparency. PNG upgrades images to 16.7 million colors with smooth 8-bit alpha transparency.
     - q: Does converting GIF to PNG reduce file size?
-      a: "For still graphics and logos, PNG's Deflate compression frequently produces smaller file sizes than GIF's legacy LZW algorithm."
+      a: For still graphics and logos, PNG's Deflate compression frequently produces smaller file sizes than GIF's legacy LZW algorithm.
     - q: Can I extract frames from animated GIFs?
-      a: "Yes. Our engine extracts the primary frame and renders it into a crystal-clear, high-resolution PNG image."
-  related: [png-to-webp, png-to-jpg, jpg-to-png]
+      a: Yes. Our engine extracts the primary frame and renders it into a crystal-clear, high-resolution PNG image.
+  related:
+    - png-to-webp
+    - png-to-jpg
+    - jpg-to-png
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-14
+  last_reviewed: 2026-11-14T00:00:00.000Z
   reviewer: Best Converter Image Engineering Team
   lang: en
-
+  seo:
+    primary_kw: gif to png
+    secondary_kws:
+      - convert gif to png
+      - extract frames from gif
+      - gif to png converter free
+      - still image from gif
+    intent: tool
+    tier: 2
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: jpg-to-pdf
   kind: pdf
   slug: jpg-to-pdf
@@ -445,20 +682,37 @@
   from: jpg
   to: pdf
   engine: pdf
-  options: [page-size, margin, batch]
+  options:
+    - page-size
+    - margin
+    - batch
   presets: []
   content: src/content/tools/jpg-to-pdf.mdx
   faq:
     - q: Can I arrange photos into a multi-page PDF?
-      a: "Yes. Upload multiple JPG images and Best Converter will compile each image into successive pages of a single PDF file."
+      a: Yes. Upload multiple JPG images and Best Converter will compile each image into successive pages of a single PDF file.
     - q: Does converting JPG to PDF reduce image resolution?
-      a: "No. Your original photo dimensions and JPEG encoding streams are embedded directly into the PDF structure without quality loss."
-  related: [png-to-pdf, merge-pdf, compress-pdf]
+      a: No. Your original photo dimensions and JPEG encoding streams are embedded directly into the PDF structure without quality loss.
+  related:
+    - png-to-pdf
+    - merge-pdf
+    - compress-pdf
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
-
+  seo:
+    primary_kw: jpg to pdf
+    secondary_kws:
+      - convert jpg to pdf
+      - jpg to pdf converter free
+      - combine jpg into pdf
+      - image to pdf converter
+      - jpg to pdf no upload
+    intent: tool
+    tier: 1
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: png-to-pdf
   kind: pdf
   slug: png-to-pdf
@@ -468,21 +722,37 @@
   from: png
   to: pdf
   engine: pdf
-  options: [page-size, margin, batch]
+  options:
+    - page-size
+    - margin
+    - batch
   presets: []
   content: src/content/tools/png-to-pdf.mdx
   faq:
     - q: Will transparent PNG graphics display properly in the PDF?
-      a: "Yes. Transparent backgrounds and alpha channels are rendered cleanly against standard white PDF page backgrounds."
+      a: Yes. Transparent backgrounds and alpha channels are rendered cleanly against standard white PDF page backgrounds.
     - q: Are my private screenshots uploaded to a server?
-      a: "No. All PDF generation executes locally in your browser using JavaScript and HTML5 Canvas."
-  related: [jpg-to-pdf, merge-pdf, compress-pdf]
+      a: No. All PDF generation executes locally in your browser using JavaScript and HTML5 Canvas.
+  related:
+    - jpg-to-pdf
+    - merge-pdf
+    - compress-pdf
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
-
-# 6 Target-size and resize tools
+  seo:
+    primary_kw: png to pdf
+    secondary_kws:
+      - convert png to pdf
+      - png to pdf converter free
+      - multiple png to pdf
+      - turn png into pdf document
+      - png to pdf high quality
+    intent: tool
+    tier: 1
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: compress-image-to-50kb
   kind: converter
   slug: compress-image-to-50kb
@@ -495,7 +765,8 @@
   engine: target-size
   targetBytes: 51200
   options: []
-  presets: [50kb]
+  presets:
+    - 50kb
   content: src/content/tools/compress-image-to-50kb.mdx
   faq:
     - q: Will compressing to 50KB make my photo blurry?
@@ -506,20 +777,25 @@
       a: Standard PNG is lossless and often cannot reach 50KB without heavy posterization. Our tool offers to convert PNG to WebP or JPG to satisfy the 50KB limit while preserving visual fidelity.
     - q: Is it safe to compress sensitive ID cards and passports here?
       a: Yes. Best Converter runs 100% inside your local browser memory using HTML5 Canvas. Your ID documents and personal photos are never uploaded to any remote server.
-  related: [compress-image-to-100kb, compress-image-to-200kb, resize-image]
+  related:
+    - compress-image-to-100kb
+    - compress-image-to-200kb
+    - resize-image
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   reviewer: Best Converter Image Engineering Team
   lang: en
   seo:
     primary_kw: compress image to 50kb
-    secondary_kws: [reduce image size to 50kb, image under 50kb, compress photo to 50kb for form]
+    secondary_kws:
+      - reduce image size to 50kb
+      - image under 50kb
+      - compress photo to 50kb for form
     intent: tool
     tier: 1
     sources: Competitor teardown (ImageCompressor, TinyPNG) & SERP keyword map
-    last_reviewed: 2026-11-13
-
+    last_reviewed: 2026-11-13T00:00:00.000Z
 - id: compress-image-to-100kb
   kind: converter
   slug: compress-image-to-100kb
@@ -532,7 +808,8 @@
   engine: target-size
   targetBytes: 102400
   options: []
-  presets: [100kb]
+  presets:
+    - 100kb
   content: src/content/tools/compress-image-to-100kb.mdx
   faq:
     - q: How does the 100KB compression algorithm work?
@@ -543,20 +820,25 @@
       a: Yes. 100KB is the standard recommendation across modern applicant tracking systems (like Workday and Taleo) for candidate resume headshots.
     - q: Are my photos uploaded to a cloud server?
       a: No. All compression logic runs in local JavaScript. You can verify this in your browser Developer Tools Network tab.
-  related: [compress-image-to-50kb, compress-image-to-200kb, resize-image]
+  related:
+    - compress-image-to-50kb
+    - compress-image-to-200kb
+    - resize-image
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   reviewer: Best Converter Image Engineering Team
   lang: en
   seo:
     primary_kw: compress image to 100kb
-    secondary_kws: [reduce image size to 100kb, compress photo to 100kb online, image under 100kb]
+    secondary_kws:
+      - reduce image size to 100kb
+      - compress photo to 100kb online
+      - image under 100kb
     intent: tool
     tier: 1
     sources: Competitor teardown (ImageCompressor, TinyPNG) & SERP keyword map
-    last_reviewed: 2026-11-13
-
+    last_reviewed: 2026-11-13T00:00:00.000Z
 - id: compress-image-to-200kb
   kind: converter
   slug: compress-image-to-200kb
@@ -569,7 +851,8 @@
   engine: target-size
   targetBytes: 204800
   options: []
-  presets: [200kb]
+  presets:
+    - 200kb
   content: src/content/tools/compress-image-to-200kb.mdx
   faq:
     - q: Why is 200KB the recommended target size for web images?
@@ -580,33 +863,39 @@
       a: If your input image is already under 200KB, the tool evaluates its quality and avoids unnecessary degradation, preserving original bytes whenever possible.
     - q: Can I compress iPhone HEIC photos to 200KB?
       a: Yes. Our engine accepts raw Apple HEIC photos, converts them, and optimizes them to under 200KB in standard JPG format.
-  related: [compress-image-to-100kb, compress-image-to-500kb, resize-image]
+  related:
+    - compress-image-to-100kb
+    - compress-image-to-500kb
+    - resize-image
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   reviewer: Best Converter Image Engineering Team
   lang: en
   seo:
     primary_kw: compress image to 200kb
-    secondary_kws: [reduce photo to 200kb, compress photo to 200kb, image under 200kb online]
+    secondary_kws:
+      - reduce photo to 200kb
+      - compress photo to 200kb
+      - image under 200kb online
     intent: tool
     tier: 1
     sources: Competitor teardown (ImageCompressor, TinyPNG) & SERP keyword map
-    last_reviewed: 2026-11-13
-
+    last_reviewed: 2026-11-13T00:00:00.000Z
 - id: compress-image-to-500kb
   kind: converter
   slug: compress-image-to-500kb
   name: Compress Image to 500KB
   title: Compress Image to 500KB - Free Online | Best Converter
   subtitle: Shrink multi-megabyte camera photos to under 500KB with crystal clarity.
-  description: Compress image to 500KB or less free in your browser. Shrink large camera photos and high-res scans for email attachments and messaging with zero server uploads.
+  description: Compress image to 500KB or less free in your browser. Shrink large camera photos and high-res scans for email and job applications with zero uploads.
   from: image
   to: jpg
   engine: target-size
   targetBytes: 512000
   options: []
-  presets: [500kb]
+  presets:
+    - 500kb
   content: src/content/tools/compress-image-to-500kb.mdx
   faq:
     - q: Does 500KB compression reduce photo dimensions?
@@ -615,20 +904,25 @@
       a: Yes. Standard email providers (like Gmail and Outlook) limit total email sizes to 20MB-25MB. At 500KB per image, you can attach up to 40 photos in a single message.
     - q: Can I batch download all compressed 500KB files?
       a: Yes. Once all files finish processing, click "Download All as ZIP" to archive every compressed photo with zero upload lag.
-  related: [compress-image-to-200kb, compress-image-to-1mb, resize-image]
+  related:
+    - compress-image-to-200kb
+    - compress-image-to-1mb
+    - resize-image
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   reviewer: Best Converter Image Engineering Team
   lang: en
   seo:
     primary_kw: compress image to 500kb
-    secondary_kws: [reduce image size to 500kb, compress photo to 500kb for email, image under 500kb]
+    secondary_kws:
+      - reduce image size to 500kb
+      - compress photo to 500kb for email
+      - image under 500kb
     intent: tool
     tier: 1
     sources: Competitor teardown (ImageCompressor, TinyPNG) & SERP keyword map
-    last_reviewed: 2026-11-13
-
+    last_reviewed: 2026-11-13T00:00:00.000Z
 - id: compress-image-to-1mb
   kind: converter
   slug: compress-image-to-1mb
@@ -641,7 +935,8 @@
   engine: target-size
   targetBytes: 1048576
   options: []
-  presets: [1mb]
+  presets:
+    - 1mb
   content: src/content/tools/compress-image-to-1mb.mdx
   faq:
     - q: When should I compress an image to 1MB?
@@ -650,20 +945,25 @@
       a: Basic photographic metadata is retained, and our client-side processing executes without watermarks or forced ads.
     - q: How fast does the 1MB compression run?
       a: Processing is powered by your local device hardware and HTML5 Canvas, completing in roughly 200 to 500 milliseconds per photo.
-  related: [compress-image-to-500kb, compress-image-to-200kb, resize-image]
+  related:
+    - compress-image-to-500kb
+    - compress-image-to-200kb
+    - resize-image
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   reviewer: Best Converter Image Engineering Team
   lang: en
   seo:
     primary_kw: compress image to 1mb
-    secondary_kws: [reduce photo to 1mb, compress image to 1mb online, photo under 1mb]
+    secondary_kws:
+      - reduce photo to 1mb
+      - compress image to 1mb online
+      - photo under 1mb
     intent: tool
     tier: 1
     sources: Competitor teardown (ImageCompressor, TinyPNG) & SERP keyword map
-    last_reviewed: 2026-11-13
-
+    last_reviewed: 2026-11-13T00:00:00.000Z
 - id: resize-image
   kind: media
   slug: resize-image
@@ -673,21 +973,38 @@
   from: image
   to: image
   engine: canvas-resize
-  options: [width, height, percentage, keep-aspect]
+  options:
+    - width
+    - height
+    - percentage
+    - keep-aspect
   presets: []
   content: src/content/tools/resize-image.mdx
   faq:
     - q: Will resizing my photo stretch or distort it?
-      a: "No. The aspect ratio lock ensures that modifying the width automatically calculates the matching height proportionally."
+      a: No. The aspect ratio lock ensures that modifying the width automatically calculates the matching height proportionally.
     - q: Are my photos uploaded to a remote server?
-      a: "No. All image scaling and canvas rendering executes directly inside your browser memory using HTML5 Canvas."
-  related: [compress-image-to-200kb, photo-editor, meme-generator]
+      a: No. All image scaling and canvas rendering executes directly inside your browser memory using HTML5 Canvas.
+  related:
+    - compress-image-to-200kb
+    - photo-editor
+    - meme-generator
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
-
-# 8 Calculators and Text Tools
+  seo:
+    primary_kw: resize image
+    secondary_kws:
+      - image resizer online
+      - resize image in pixels
+      - resize photo free
+      - crop and resize image
+      - resize image dimensions without losing quality
+    intent: tool
+    tier: 1
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: percentage-calculator
   kind: calculator
   slug: percentage-calculator
@@ -708,20 +1025,26 @@
       a: No. All calculations run strictly in client-side JavaScript. Your inputs remain private.
     - q: Can I calculate percentage decrease or discounts here?
       a: Yes. The percentage change mode identifies whether a value represents an increase or decrease automatically.
-  related: [discount-calculator, tip-calculator, date-difference-calculator]
+  related:
+    - discount-calculator
+    - tip-calculator
+    - date-difference-calculator
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   reviewer: Best Converter Mathematics Team
   lang: en
   seo:
     primary_kw: percentage calculator
-    secondary_kws: [percent of a number, percentage increase, percentage decrease, percent change]
+    secondary_kws:
+      - percent of a number
+      - percentage increase
+      - percentage decrease
+      - percent change
     intent: calculator
     tier: 1
     sources: Competitor teardown (UnitConverters) & SERP keyword map
-    last_reviewed: 2026-11-13
-
+    last_reviewed: 2026-11-13T00:00:00.000Z
 - id: age-calculator
   kind: calculator
   slug: age-calculator
@@ -742,20 +1065,25 @@
       a: The calculator computes your upcoming birthday and counts down exact remaining calendar days automatically.
     - q: Is my birthdate stored or tracked?
       a: No. Calculations are performed locally in browser memory without server tracking or cookies.
-  related: [date-difference-calculator, percentage-calculator, discount-calculator]
+  related:
+    - date-difference-calculator
+    - percentage-calculator
+    - discount-calculator
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   reviewer: Best Converter Team
   lang: en
   seo:
     primary_kw: age calculator
-    secondary_kws: [calculate age from date of birth, age on a date, chronological age calculator]
+    secondary_kws:
+      - calculate age from date of birth
+      - age on a date
+      - chronological age calculator
     intent: calculator
     tier: 1
     sources: Competitor teardown & SERP keyword map
-    last_reviewed: 2026-11-13
-
+    last_reviewed: 2026-11-13T00:00:00.000Z
 - id: date-difference-calculator
   kind: calculator
   slug: date-difference-calculator
@@ -776,20 +1104,25 @@
       a: Yes. It strictly follows standard Gregorian calendar rules, including February 29th during leap years.
     - q: Does it work offline?
       a: Yes. Once loaded, the date calculator functions in Airplane Mode without an internet connection.
-  related: [age-calculator, percentage-calculator, discount-calculator]
+  related:
+    - age-calculator
+    - percentage-calculator
+    - discount-calculator
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   reviewer: Best Converter Team
   lang: en
   seo:
     primary_kw: date difference calculator
-    secondary_kws: [days between dates, how many days until, workday calculator]
+    secondary_kws:
+      - days between dates
+      - how many days until
+      - workday calculator
     intent: calculator
     tier: 1
     sources: Competitor teardown & SERP keyword map
-    last_reviewed: 2026-11-13
-
+    last_reviewed: 2026-11-13T00:00:00.000Z
 - id: discount-calculator
   kind: calculator
   slug: discount-calculator
@@ -810,20 +1143,25 @@
       a: In standard retail transactions, percentage discounts are applied to the subtotal before sales tax is levied.
     - q: How do I calculate a reverse discount?
       a: Divide the sale price by (1 − discount rate). For example, a $40 item that was 20% off originally cost $40 ÷ 0.80 = $50.
-  related: [percentage-calculator, tip-calculator, age-calculator]
+  related:
+    - percentage-calculator
+    - tip-calculator
+    - age-calculator
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   reviewer: Best Converter Finance Team
   lang: en
   seo:
     primary_kw: discount calculator
-    secondary_kws: [sale price calculator, percent off calculator, how to calculate discount]
+    secondary_kws:
+      - sale price calculator
+      - percent off calculator
+      - how to calculate discount
     intent: calculator
     tier: 2
     sources: Competitor teardown & SERP keyword map
-    last_reviewed: 2026-11-13
-
+    last_reviewed: 2026-11-13T00:00:00.000Z
 - id: tip-calculator
   kind: calculator
   slug: tip-calculator
@@ -844,20 +1182,25 @@
       a: Etiquette guides traditionally recommend tipping on the food and beverage subtotal prior to sales tax.
     - q: How do you calculate an 18% tip quickly in your head?
       a: Find 10% (move decimal one place left), double it to get 20%, and subtract a small amount. Our calculator computes it to the exact cent.
-  related: [discount-calculator, percentage-calculator, word-counter]
+  related:
+    - discount-calculator
+    - percentage-calculator
+    - word-counter
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   reviewer: Best Converter Team
   lang: en
   seo:
     primary_kw: tip calculator
-    secondary_kws: [split bill calculator, restaurant tip calculator, gratuity calculator]
+    secondary_kws:
+      - split bill calculator
+      - restaurant tip calculator
+      - gratuity calculator
     intent: calculator
     tier: 2
     sources: Competitor teardown & SERP keyword map
-    last_reviewed: 2026-11-13
-
+    last_reviewed: 2026-11-13T00:00:00.000Z
 - id: word-counter
   kind: text
   slug: word-counter
@@ -873,25 +1216,30 @@
     - q: How does this tool count words?
       a: Words are counted based on standard whitespace and punctuation boundaries across plain text.
     - q: Does character count include spaces?
-      a: "Both metrics are displayed: total characters including spaces, and characters excluding whitespace."
+      a: 'Both metrics are displayed: total characters including spaces, and characters excluding whitespace.'
     - q: How is reading time calculated?
       a: Reading time assumes a standard adult comprehension rate of 200 words per minute (WPM).
     - q: Is my pasted text stored or sent to a server?
       a: No. All analysis executes locally in browser JavaScript memory. Your text never leaves your device.
-  related: [case-converter, json-formatter, percentage-calculator]
+  related:
+    - case-converter
+    - json-formatter
+    - percentage-calculator
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   reviewer: Best Converter Editorial Team
   lang: en
   seo:
     primary_kw: word counter
-    secondary_kws: [character counter, word count online, character count with spaces]
+    secondary_kws:
+      - character counter
+      - word count online
+      - character count with spaces
     intent: tool
     tier: 1
     sources: Competitor teardown & SERP keyword map
-    last_reviewed: 2026-11-13
-
+    last_reviewed: 2026-11-13T00:00:00.000Z
 - id: case-converter
   kind: text
   slug: case-converter
@@ -912,20 +1260,26 @@
       a: kebab-case separates words with hyphens (e.g., my-header-title) and is commonly used in CSS classes and web URLs.
     - q: Is there a character limit for case conversion?
       a: No. You can paste thousands of lines of text for instant client-side conversion.
-  related: [word-counter, json-formatter, percentage-calculator, fancy-text-generator]
+  related:
+    - word-counter
+    - json-formatter
+    - percentage-calculator
+    - fancy-text-generator
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   reviewer: Best Converter Engineering Team
   lang: en
   seo:
     primary_kw: case converter
-    secondary_kws: [uppercase to lowercase, title case converter, camelCase converter]
+    secondary_kws:
+      - uppercase to lowercase
+      - title case converter
+      - camelCase converter
     intent: tool
     tier: 2
     sources: Competitor teardown & SERP keyword map
-    last_reviewed: 2026-11-13
-
+    last_reviewed: 2026-11-13T00:00:00.000Z
 - id: json-formatter
   kind: text
   slug: json-formatter
@@ -946,20 +1300,25 @@
       a: Yes. Formatting executes entirely within your browser's V8 JavaScript engine. Zero data is transmitted across the network.
     - q: Does this tool validate according to RFC 8259?
       a: Yes. It strictly validates standard JSON object, array, string, numeric, boolean, and null data types.
-  related: [word-counter, case-converter, percentage-calculator]
+  related:
+    - word-counter
+    - case-converter
+    - percentage-calculator
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   reviewer: Best Converter Engineering Team
   lang: en
   seo:
     primary_kw: json formatter
-    secondary_kws: [json validator, json beautifier, json minify]
+    secondary_kws:
+      - json validator
+      - json beautifier
+      - json minify
     intent: tool
     tier: 2
     sources: Competitor teardown & SERP keyword map
-    last_reviewed: 2026-11-13
-
+    last_reviewed: 2026-11-13T00:00:00.000Z
 - id: qr-code-generator
   kind: generator
   slug: qr-code-generator
@@ -973,15 +1332,32 @@
   content: src/content/tools/qr-code-generator.mdx
   faq:
     - q: Can I use these QR codes for commercial projects?
-      a: "Yes. QR codes generated on Best Converter are 100% free for personal and commercial usage with zero copyright restrictions."
+      a: Yes. QR codes generated on Best Converter are 100% free for personal and commercial usage with zero copyright restrictions.
     - q: Do these QR codes ever expire?
-      a: "No. Static QR codes encode the destination text directly into the optical matrix and never expire."
-  related: [barcode-generator, password-generator, fancy-text-generator, random-number-generator]
+      a: No. Static QR codes encode the destination text directly into the optical matrix and never expire.
+  related:
+    - barcode-generator
+    - password-generator
+    - fancy-text-generator
+    - random-number-generator
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
-
+  seo:
+    primary_kw: qr code generator
+    secondary_kws:
+      - free qr code generator
+      - qr code generator no signup
+      - create qr code online
+      - custom qr code maker
+      - qr code for url
+      - wifi qr code generator
+      - vector qr code svg
+    intent: tool
+    tier: 1
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: password-generator
   kind: generator
   slug: password-generator
@@ -995,15 +1371,30 @@
   content: src/content/tools/password-generator.mdx
   faq:
     - q: Can Best Converter see the passwords I generate?
-      a: "No. All password generation executes locally using the browser's native JavaScript cryptographic engine. We never see, store, or transmit your passwords."
+      a: No. All password generation executes locally using the browser's native JavaScript cryptographic engine. We never see, store, or transmit your passwords.
     - q: What is the ideal password length?
-      a: "Security experts recommend a minimum of 16 characters combining uppercase, lowercase, numbers, and symbols."
-  related: [qr-code-generator, jwt-decoder, random-number-generator]
+      a: Security experts recommend a minimum of 16 characters combining uppercase, lowercase, numbers, and symbols.
+  related:
+    - qr-code-generator
+    - jwt-decoder
+    - random-number-generator
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
-
+  seo:
+    primary_kw: password generator
+    secondary_kws:
+      - strong password generator
+      - random password generator
+      - secure password generator 16 characters
+      - password generator with symbols
+      - offline password generator
+      - memorable passphrase generator
+    intent: tool
+    tier: 1
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: merge-pdf
   kind: pdf
   slug: merge-pdf
@@ -1017,15 +1408,30 @@
   content: src/content/tools/merge-pdf.mdx
   faq:
     - q: Is there a limit to how many PDF files I can merge?
-      a: "No. You can merge as many PDF files as your device's browser memory supports without any subscription or payment."
+      a: No. You can merge as many PDF files as your device's browser memory supports without any subscription or payment.
     - q: Does merging degrade the text or image quality?
-      a: "No. The merge process copies original vector text streams, fonts, and embedded images losslessly into the combined PDF container."
-  related: [split-pdf, compress-pdf, jpg-to-pdf]
+      a: No. The merge process copies original vector text streams, fonts, and embedded images losslessly into the combined PDF container.
+  related:
+    - split-pdf
+    - compress-pdf
+    - jpg-to-pdf
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
-
+  seo:
+    primary_kw: merge pdf
+    secondary_kws:
+      - merge pdf online free
+      - combine pdf files
+      - merge multiple pdfs into one
+      - join pdf files free
+      - merge pdf without upload
+      - combine pdf offline
+    intent: tool
+    tier: 1
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: split-pdf
   kind: pdf
   slug: split-pdf
@@ -1039,15 +1445,29 @@
   content: src/content/tools/split-pdf.mdx
   faq:
     - q: Can I extract non-consecutive pages?
-      a: "Yes. You can enter comma-separated numbers and ranges, such as 1, 3, 5-7, to extract exactly the pages you need."
+      a: Yes. You can enter comma-separated numbers and ranges, such as 1, 3, 5-7, to extract exactly the pages you need.
     - q: Are my sensitive PDF documents uploaded to your server?
-      a: "No. All PDF page extraction runs locally inside your browser memory using JavaScript. Your files never leave your device."
-  related: [merge-pdf, compress-pdf, jpg-to-pdf]
+      a: No. All PDF page extraction runs locally inside your browser memory using JavaScript. Your files never leave your device.
+  related:
+    - merge-pdf
+    - compress-pdf
+    - jpg-to-pdf
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
-
+  seo:
+    primary_kw: split pdf
+    secondary_kws:
+      - split pdf online free
+      - extract pages from pdf
+      - separate pdf pages
+      - cut pdf into pieces
+      - split pdf without uploading
+    intent: tool
+    tier: 1
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: compress-pdf
   kind: pdf
   slug: compress-pdf
@@ -1061,15 +1481,30 @@
   content: src/content/tools/compress-pdf.mdx
   faq:
     - q: Will compressing my PDF make the text blurry?
-      a: "No. Best Converter compresses structural PDF streams and metadata without rasterizing crisp vector text or vector line drawings."
+      a: No. Best Converter compresses structural PDF streams and metadata without rasterizing crisp vector text or vector line drawings.
     - q: Is there a file size limit for PDF compression?
-      a: "You can compress PDF files as large as your device's available browser memory allows with zero artificial paywalls."
-  related: [merge-pdf, split-pdf, compress-image-to-200kb]
+      a: You can compress PDF files as large as your device's available browser memory allows with zero artificial paywalls.
+  related:
+    - merge-pdf
+    - split-pdf
+    - compress-image-to-200kb
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
-
+  seo:
+    primary_kw: compress pdf
+    secondary_kws:
+      - compress pdf online free
+      - reduce pdf file size
+      - compress pdf to 200kb
+      - shrink pdf size
+      - compress pdf without losing quality
+      - pdf file compressor offline
+    intent: tool
+    tier: 1
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: emi-calculator
   kind: finance
   slug: emi-calculator
@@ -1083,15 +1518,29 @@
   content: src/content/tools/emi-calculator.mdx
   faq:
     - q: What happens when I increase my EMI payment?
-      a: "Making extra principal payments or choosing a shorter tenure substantially reduces the compound interest charged by your bank over the lifetime of the loan."
+      a: Making extra principal payments or choosing a shorter tenure substantially reduces the compound interest charged by your bank over the lifetime of the loan.
     - q: Can I calculate both fixed and floating loan EMIs?
-      a: "Yes. The calculated EMI applies to any standard reducing-balance loan schedule."
-  related: [sip-calculator, currency-converter, percentage-calculator]
+      a: Yes. The calculated EMI applies to any standard reducing-balance loan schedule.
+  related:
+    - sip-calculator
+    - currency-converter
+    - percentage-calculator
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
-
+  seo:
+    primary_kw: emi calculator
+    secondary_kws:
+      - home loan emi calculator
+      - car loan emi calculator
+      - personal loan emi calculator
+      - loan emi calculator with amortization schedule
+      - monthly emi formula calculator
+    intent: tool
+    tier: 1
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: sip-calculator
   kind: finance
   slug: sip-calculator
@@ -1105,15 +1554,29 @@
   content: src/content/tools/sip-calculator.mdx
   faq:
     - q: What is the advantage of a SIP over a lump-sum investment?
-      a: "A SIP enables rupee/dollar-cost averaging, purchasing more units when market prices drop and fewer units when prices rise, reducing volatility risk."
+      a: A SIP enables rupee/dollar-cost averaging, purchasing more units when market prices drop and fewer units when prices rise, reducing volatility risk.
     - q: Does this calculator guarantee actual returns?
-      a: "No. Mutual fund and equity returns fluctuate based on broader market performance. Projections are mathematical models based on the expected annual return rate."
-  related: [emi-calculator, currency-converter, percentage-calculator]
+      a: No. Mutual fund and equity returns fluctuate based on broader market performance. Projections are mathematical models based on the expected annual return rate.
+  related:
+    - emi-calculator
+    - currency-converter
+    - percentage-calculator
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
-
+  seo:
+    primary_kw: sip calculator
+    secondary_kws:
+      - sip calculator mutual fund
+      - systematic investment plan calculator
+      - monthly sip return calculator
+      - sip compounding calculator 10 years
+      - mutual fund sip calculation
+    intent: tool
+    tier: 1
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: bmi-calculator
   kind: finance
   slug: bmi-calculator
@@ -1127,15 +1590,29 @@
   content: src/content/tools/bmi-calculator.mdx
   faq:
     - q: Is BMI accurate for athletes and bodybuilders?
-      a: "BMI does not distinguish between lean muscle mass and adipose fat tissue. Muscular individuals may register as 'overweight' while maintaining very low body fat."
+      a: BMI does not distinguish between lean muscle mass and adipose fat tissue. Muscular individuals may register as 'overweight' while maintaining very low body fat.
     - q: What is considered a healthy BMI range?
-      a: "For adult men and women, a BMI between 18.5 and 24.9 is considered the healthy baseline range."
-  related: [age-calculator, percentage-calculator, unit-converter]
+      a: For adult men and women, a BMI between 18.5 and 24.9 is considered the healthy baseline range.
+  related:
+    - age-calculator
+    - percentage-calculator
+    - unit-converter
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
-
+  seo:
+    primary_kw: bmi calculator
+    secondary_kws:
+      - body mass index calculator
+      - calculate bmi online free
+      - bmi calculator for men and women
+      - healthy weight calculator
+      - metric bmi calculator kg cm
+    intent: tool
+    tier: 1
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: currency-converter
   kind: finance
   slug: currency-converter
@@ -1149,15 +1626,29 @@
   content: src/content/tools/currency-converter.mdx
   faq:
     - q: Are conversion calculations performed locally?
-      a: "Yes. Calculations run client-side in your browser using updated reference rates without tracking your financial data."
+      a: Yes. Calculations run client-side in your browser using updated reference rates without tracking your financial data.
     - q: Do banks charge fees beyond mid-market exchange rates?
-      a: "Yes. Commercial retail banks and airport exchange kiosks typically add a 2% to 4% markup margin over standard mid-market exchange rates."
-  related: [emi-calculator, sip-calculator, unit-converter]
+      a: Yes. Commercial retail banks and airport exchange kiosks typically add a 2% to 4% markup margin over standard mid-market exchange rates.
+  related:
+    - emi-calculator
+    - sip-calculator
+    - unit-converter
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
-
+  seo:
+    primary_kw: currency converter
+    secondary_kws:
+      - live currency exchange rate converter
+      - usd to eur converter
+      - usd to inr converter
+      - foreign exchange rates calculator
+      - money conversion tool
+    intent: tool
+    tier: 1
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: scientific-calculator
   kind: calculator
   slug: scientific-calculator
@@ -1171,15 +1662,30 @@
   content: src/content/tools/scientific-calculator.mdx
   faq:
     - q: Does this calculator execute securely without server uploads?
-      a: "Yes. Mathematical expressions are evaluated purely in client-side JavaScript memory without sending your calculations to any server."
+      a: Yes. Mathematical expressions are evaluated purely in client-side JavaScript memory without sending your calculations to any server.
     - q: Can I toggle between Degrees and Radians?
-      a: "Yes. Click the RAD / DEG button in the upper left corner of the calculator keypad to switch angle measurement modes."
-  related: [percentage-calculator, age-calculator, unit-converter, random-number-generator]
+      a: Yes. Click the RAD / DEG button in the upper left corner of the calculator keypad to switch angle measurement modes.
+  related:
+    - percentage-calculator
+    - age-calculator
+    - unit-converter
+    - random-number-generator
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
-
+  seo:
+    primary_kw: scientific calculator
+    secondary_kws:
+      - online scientific calculator
+      - free scientific calculator online
+      - calculator with trigonometry and log
+      - algebra calculator
+      - math calculator with square root
+    intent: tool
+    tier: 1
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: online-timer
   kind: media
   slug: online-timer
@@ -1193,15 +1699,29 @@
   content: src/content/tools/online-timer.mdx
   faq:
     - q: Does the timer continue running if I switch tabs?
-      a: "Yes. The timer calculates elapsed wall-clock time so your countdown remains synchronized even when viewing other tabs."
+      a: Yes. The timer calculates elapsed wall-clock time so your countdown remains synchronized even when viewing other tabs.
     - q: Are there audio alarms when the countdown completes?
-      a: "Yes. An alert notifies you immediately as soon as the timer reaches zero."
-  related: [typing-test, date-difference-calculator, screen-recorder]
+      a: Yes. An alert notifies you immediately as soon as the timer reaches zero.
+  related:
+    - typing-test
+    - date-difference-calculator
+    - screen-recorder
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
-
+  seo:
+    primary_kw: online timer
+    secondary_kws:
+      - online stopwatch and timer
+      - countdown timer online
+      - full screen online timer
+      - timer with sound alarm
+      - study timer pomodoro
+    intent: tool
+    tier: 2
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: text-to-speech
   kind: media
   slug: text-to-speech
@@ -1215,15 +1735,29 @@
   content: src/content/tools/text-to-speech.mdx
   faq:
     - q: Which voices are available?
-      a: "The available voices depend on your operating system (Apple Siri voices on Mac/iOS, Microsoft David/Zira on Windows, Google voices on Android)."
+      a: The available voices depend on your operating system (Apple Siri voices on Mac/iOS, Microsoft David/Zira on Windows, Google voices on Android).
     - q: Does this tool upload my text to an AI server?
-      a: "No. Audio synthesis runs entirely inside your browser using the native HTML5 Web Speech API (SpeechSynthesis)."
-  related: [word-counter, case-converter, typing-test]
+      a: No. Audio synthesis runs entirely inside your browser using the native HTML5 Web Speech API (SpeechSynthesis).
+  related:
+    - word-counter
+    - case-converter
+    - typing-test
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
-
+  seo:
+    primary_kw: text to speech
+    secondary_kws:
+      - text to speech online free
+      - free tts realistic voice
+      - speech synthesis online
+      - read text aloud online
+      - natural voice text to speech
+    intent: tool
+    tier: 1
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: screen-recorder
   kind: media
   slug: screen-recorder
@@ -1237,15 +1771,29 @@
   content: src/content/tools/screen-recorder.mdx
   faq:
     - q: Is there a watermark added to my screen recording?
-      a: "No. Best Converter does not add any watermarks, overlays, or branding to your recorded videos."
+      a: No. Best Converter does not add any watermarks, overlays, or branding to your recorded videos.
     - q: Are my screen recordings sent to a server?
-      a: "No. All video encoding uses your browser's native MediaRecorder API. The video blob is saved straight to your computer."
-  related: [photo-editor, resize-image, meme-generator]
+      a: No. All video encoding uses your browser's native MediaRecorder API. The video blob is saved straight to your computer.
+  related:
+    - photo-editor
+    - resize-image
+    - meme-generator
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
-
+  seo:
+    primary_kw: screen recorder
+    secondary_kws:
+      - screen recorder online free
+      - screen recorder without watermark
+      - browser screen recorder no download
+      - record screen and audio free
+      - screen capture online video
+    intent: tool
+    tier: 1
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: jwt-decoder
   kind: developer
   slug: jwt-decoder
@@ -1259,15 +1807,29 @@
   content: src/content/tools/jwt-decoder.mdx
   faq:
     - q: Does Best Converter verify the JWT signature?
-      a: "No. Signature verification requires knowing your server's secret key. Because you should never paste private keys into a web browser, this tool focuses on safely inspecting payload claims."
+      a: No. Signature verification requires knowing your server's secret key. Because you should never paste private keys into a web browser, this tool focuses on safely inspecting payload claims.
     - q: Is it safe to paste production tokens here?
-      a: "Yes. Processing executes 100% inside your browser memory. Inspect the browser Network tab to verify that zero HTTP requests are sent."
-  related: [json-formatter, password-generator, my-ip-address]
+      a: Yes. Processing executes 100% inside your browser memory. Inspect the browser Network tab to verify that zero HTTP requests are sent.
+  related:
+    - json-formatter
+    - password-generator
+    - my-ip-address
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
-
+  seo:
+    primary_kw: jwt decoder
+    secondary_kws:
+      - jwt decoder online
+      - decode json web token
+      - jwt debugger private no upload
+      - parse jwt token claims
+      - decode jwt header payload signature
+    intent: tool
+    tier: 1
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: unit-converter
   kind: developer
   slug: unit-converter
@@ -1281,15 +1843,29 @@
   content: src/content/tools/unit-converter.mdx
   faq:
     - q: How does the temperature conversion formula work?
-      a: "To convert Celsius to Fahrenheit, multiply by 9/5 (or 1.8) and add 32: F = (C * 1.8) + 32."
+      a: 'To convert Celsius to Fahrenheit, multiply by 9/5 (or 1.8) and add 32: F = (C * 1.8) + 32.'
     - q: Does the digital storage converter use binary or decimal units?
-      a: "This calculator uses binary measurement (1 KB = 1,024 Bytes and 1 MB = 1,024 KB) standard in computer operating systems."
-  related: [currency-converter, scientific-calculator, percentage-calculator]
+      a: This calculator uses binary measurement (1 KB = 1,024 Bytes and 1 MB = 1,024 KB) standard in computer operating systems.
+  related:
+    - currency-converter
+    - scientific-calculator
+    - percentage-calculator
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
-
+  seo:
+    primary_kw: unit converter
+    secondary_kws:
+      - unit converter online
+      - length weight temperature converter
+      - metric to imperial conversion
+      - cm to inches converter
+      - kg to lbs converter
+    intent: tool
+    tier: 2
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: my-ip-address
   kind: developer
   slug: my-ip-address
@@ -1303,15 +1879,29 @@
   content: src/content/tools/my-ip-address.mdx
   faq:
     - q: Is my private browsing information shared with third parties?
-      a: "No. All diagnostics on Best Converter are read client-side via JavaScript navigator APIs without logging or selling your information."
+      a: No. All diagnostics on Best Converter are read client-side via JavaScript navigator APIs without logging or selling your information.
     - q: What is a User Agent string?
-      a: "A user agent is a text string your browser includes with every web request so web servers know whether you are using Chrome, Safari, Firefox, Windows, Mac, or mobile."
-  related: [jwt-decoder, password-generator, json-formatter]
+      a: A user agent is a text string your browser includes with every web request so web servers know whether you are using Chrome, Safari, Firefox, Windows, Mac, or mobile.
+  related:
+    - jwt-decoder
+    - password-generator
+    - json-formatter
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
-
+  seo:
+    primary_kw: my ip address
+    secondary_kws:
+      - what is my ip address
+      - check my public ip
+      - my ipv4 address
+      - ip location and isp lookup
+      - client diagnostic tool
+    intent: tool
+    tier: 2
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: photo-editor
   kind: media
   slug: photo-editor
@@ -1325,15 +1915,29 @@
   content: src/content/tools/photo-editor.mdx
   faq:
     - q: Does editing degrade my original photo?
-      a: "No. Your original photo file on disk remains completely untouched; editing creates a new modified copy in your downloads."
+      a: No. Your original photo file on disk remains completely untouched; editing creates a new modified copy in your downloads.
     - q: Can I edit photos without an internet connection?
-      a: "Yes. The photo editor runs entirely in client-side JavaScript and operates seamlessly offline."
-  related: [resize-image, meme-generator, compress-image-to-200kb]
+      a: Yes. The photo editor runs entirely in client-side JavaScript and operates seamlessly offline.
+  related:
+    - resize-image
+    - meme-generator
+    - compress-image-to-200kb
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
-
+  seo:
+    primary_kw: photo editor
+    secondary_kws:
+      - online photo editor free
+      - edit picture in browser
+      - photo filters and crop tool
+      - adjust photo brightness contrast
+      - image editor no download
+    intent: tool
+    tier: 2
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: meme-generator
   kind: media
   slug: meme-generator
@@ -1347,15 +1951,29 @@
   content: src/content/tools/meme-generator.mdx
   faq:
     - q: Can I make memes on my phone?
-      a: "Yes. The meme generator is fully mobile-responsive and works seamlessly on iOS Safari and Android Chrome."
+      a: Yes. The meme generator is fully mobile-responsive and works seamlessly on iOS Safari and Android Chrome.
     - q: Does Best Converter save my memes publicly?
-      a: "No. All rendering occurs locally inside your browser. We do not store, publish, or view your memes."
-  related: [photo-editor, resize-image, qr-code-generator]
+      a: No. All rendering occurs locally inside your browser. We do not store, publish, or view your memes.
+  related:
+    - photo-editor
+    - resize-image
+    - qr-code-generator
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
-
+  seo:
+    primary_kw: meme generator
+    secondary_kws:
+      - meme generator online free
+      - create memes online
+      - meme maker with custom text
+      - add top and bottom text to image
+      - funny meme creator without watermark
+    intent: tool
+    tier: 2
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: random-number-generator
   kind: generator
   slug: random-number-generator
@@ -1369,15 +1987,29 @@
   content: src/content/tools/random-number-generator.mdx
   faq:
     - q: Are the generated numbers truly unbiased?
-      a: "Yes. Calculations leverage high-entropy pseudo-random distribution algorithms to ensure statistically uniform distribution."
+      a: Yes. Calculations leverage high-entropy pseudo-random distribution algorithms to ensure statistically uniform distribution.
     - q: Can I generate multiple unique numbers at once?
-      a: "Yes. Check the Unique Numbers Only box and select any quantity within your designated numerical range."
-  related: [password-generator, scientific-calculator, percentage-calculator]
+      a: Yes. Check the Unique Numbers Only box and select any quantity within your designated numerical range.
+  related:
+    - password-generator
+    - scientific-calculator
+    - percentage-calculator
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
-
+  seo:
+    primary_kw: random number generator
+    secondary_kws:
+      - random number generator online
+      - rng picker 1 to 100
+      - cryptographic random numbers
+      - random digit generator
+      - dice roll and coin flip numbers
+    intent: tool
+    tier: 2
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: fancy-text-generator
   kind: generator
   slug: fancy-text-generator
@@ -1391,15 +2023,29 @@
   content: src/content/tools/fancy-text-generator.mdx
   faq:
     - q: Why does fancy text work on platforms without custom font uploads?
-      a: "Fancy text uses real Unicode glyphs (Mathematical Alphanumeric Symbols) that modern operating systems and web browsers recognize as universal text characters rather than proprietary font files."
+      a: Fancy text uses real Unicode glyphs (Mathematical Alphanumeric Symbols) that modern operating systems and web browsers recognize as universal text characters rather than proprietary font files.
     - q: Does this tool send my text to a server?
-      a: "No. All character transformation runs instantly in client-side JavaScript within your browser."
-  related: [case-converter, word-counter, barcode-generator]
+      a: No. All character transformation runs instantly in client-side JavaScript within your browser.
+  related:
+    - case-converter
+    - word-counter
+    - barcode-generator
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
-
+  seo:
+    primary_kw: fancy text generator
+    secondary_kws:
+      - fancy text generator copy and paste
+      - cool font generator for instagram
+      - stylish text maker
+      - unicode font generator
+      - cursive and bold text generator
+    intent: tool
+    tier: 2
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: barcode-generator
   kind: generator
   slug: barcode-generator
@@ -1413,15 +2059,29 @@
   content: src/content/tools/barcode-generator.mdx
   faq:
     - q: Can retail laser scanners read these barcodes?
-      a: "Yes. As long as you print the barcode at adequate physical size with high contrast on non-reflective paper, standard optical and laser barcode scanners can read it."
+      a: Yes. As long as you print the barcode at adequate physical size with high contrast on non-reflective paper, standard optical and laser barcode scanners can read it.
     - q: Do I need to buy official UPC numbers to sell retail products?
-      a: "If you plan to sell products in major international retail stores (like Walmart or Amazon), you must obtain certified GS1 company prefixes and barcodes."
-  related: [qr-code-generator, password-generator, fancy-text-generator]
+      a: If you plan to sell products in major international retail stores (like Walmart or Amazon), you must obtain certified GS1 company prefixes and barcodes.
+  related:
+    - qr-code-generator
+    - password-generator
+    - fancy-text-generator
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
-
+  seo:
+    primary_kw: barcode generator
+    secondary_kws:
+      - barcode generator free online
+      - create barcode code 128
+      - upc ean barcode maker
+      - generate printable barcode vector
+      - product barcode generator
+    intent: tool
+    tier: 2
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
 - id: typing-test
   kind: media
   slug: typing-test
@@ -1435,11 +2095,26 @@
   content: src/content/tools/typing-test.mdx
   faq:
     - q: How is Words Per Minute (WPM) calculated?
-      a: "WPM is traditionally standardized as: WPM = (Total Characters Typed / 5) / Time Elapsed in Minutes."
+      a: 'WPM is traditionally standardized as: WPM = (Total Characters Typed / 5) / Time Elapsed in Minutes.'
     - q: What is touch typing?
-      a: "Touch typing is typing without looking at the keyboard keys, relying on muscle memory and the tactile home row bumps (F and J)."
-  related: [word-counter, online-timer, case-converter]
+      a: Touch typing is typing without looking at the keyboard keys, relying on muscle memory and the tactile home row bumps (F and J).
+  related:
+    - word-counter
+    - online-timer
+    - case-converter
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13
+  last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
+  seo:
+    primary_kw: typing test
+    secondary_kws:
+      - typing speed test 1 minute
+      - wpm test online free
+      - check typing speed words per minute
+      - keyboard typing test with accuracy
+      - free typing test for job interview
+    intent: tool
+    tier: 2
+    sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'

@@ -89,8 +89,10 @@ ${indexableTools.map((t) => generateUrlXml(`${siteConfig.url}/${t.slug}/`, t.las
   </sitemap>
 </sitemapindex>`;
   fs.writeFileSync(path.join(DIST_DIR, 'sitemap-index.xml'), sitemapIndex, 'utf-8');
+  // Also write sitemap.xml as direct alias for crawlers requesting /sitemap.xml
+  fs.writeFileSync(path.join(DIST_DIR, 'sitemap.xml'), sitemapIndex, 'utf-8');
 
-  console.log(`[Sitemap] Generated sitemap index and 3 shards (${indexableTools.length} indexable tools listed).`);
+  console.log(`[Sitemap] Generated sitemap-index.xml, sitemap.xml, and 3 shards (${indexableTools.length} indexable tools listed).`);
 }
 
 // Execute when called directly

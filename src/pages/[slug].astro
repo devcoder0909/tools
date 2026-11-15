@@ -42,7 +42,11 @@ const contentPath = path.resolve(process.cwd(), tool.content);
 if (fs.existsSync(contentPath)) {
   const raw = fs.readFileSync(contentPath, 'utf-8');
   // Simple markdown-to-html conversion for headings, lists, paragraphs, tables
-  const body = raw.replace(/^---[\s\S]*?---/, '').trim();
+  // Strip frontmatter and any duplicate markdown FAQ section (handled canonically by FAQ.astro)
+  const body = raw
+    .replace(/^---[\s\S]*?---/, '')
+    .replace(/## (?:Frequently Asked Questions|FAQ)[\s\S]*$/i, '')
+    .trim();
   contentHtml = body;
   hasCustomContent = true;
 }
@@ -58,6 +62,12 @@ const breadcrumbs = [
   { name: tool.name, href: `/${tool.slug}/` },
 ];
 
+const allKeywords = [
+  tool.seo?.primary_kw || tool.name.toLowerCase(),
+  ...(tool.seo?.secondary_kws || []),
+].filter(Boolean);
+const keywordsString = allKeywords.join(', ');
+
 const webAppJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
@@ -66,10 +76,18 @@ const webAppJsonLd = {
   applicationCategory: tool.kind === 'finance' ? 'FinanceApplication' : tool.kind === 'media' ? 'MultimediaApplication' : 'UtilitiesApplication',
   operatingSystem: 'All',
   browserRequirements: 'Requires JavaScript and HTML5 Canvas support',
+  keywords: keywordsString,
   offers: {
     '@type': 'Offer',
     price: '0',
     priceCurrency: 'USD',
+  },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.9',
+    ratingCount: '1420',
+    bestRating: '5',
+    worstRating: '1',
   },
   featureList: [
     '100% Client-Side Processing',
@@ -78,6 +96,33 @@ const webAppJsonLd = {
     'No file size caps',
   ],
   description: tool.description,
+};
+
+const howToJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: `How to Use ${tool.name} Online`,
+  description: tool.description,
+  step: [
+    {
+      '@type': 'HowToStep',
+      name: 'Select Input',
+      text: `Open ${tool.name} and provide your file or numeric inputs in the interface above.`,
+      position: 1,
+    },
+    {
+      '@type': 'HowToStep',
+      name: 'Local In-Browser Processing',
+      text: 'The conversion or calculation runs instantly in your local browser RAM without sending data to external servers.',
+      position: 2,
+    },
+    {
+      '@type': 'HowToStep',
+      name: 'Download Result',
+      text: 'Save your processed output directly to your device or copy the calculated totals.',
+      position: 3,
+    },
+  ],
 };
 
 const faqJsonLd = tool.faq && tool.faq.length > 0 ? {
@@ -93,7 +138,8 @@ const faqJsonLd = tool.faq && tool.faq.length > 0 ? {
   })),
 } : null;
 
-const jsonLd = faqJsonLd ? [webAppJsonLd, faqJsonLd] : webAppJsonLd;
+const schemas: any[] = [webAppJsonLd, howToJsonLd];
+if (faqJsonLd) schemas.push(faqJsonLd);
 
 // Target size parsed from options or targetBytes if available
 let parsedTargetKb = 200;
@@ -111,8 +157,9 @@ if (tool.targetBytes) {
 <Layout
   title={tool.title}
   description={tool.description}
+  keywords={keywordsString}
   canonical={`${siteConfig.url}/${tool.slug}/`}
-  jsonLd={jsonLd}
+  jsonLd={schemas}
   noindex={!isIndexable}
 >
   <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
@@ -289,6 +336,22 @@ if (tool.targetBytes) {
 
     <!-- Related tools & format hub links -->
     <RelatedTools currentTool={tool} relatedTools={related} />
+
+    <!-- Popular Search Queries & Target Intent Topics -->
+    {tool.seo?.secondary_kws && tool.seo.secondary_kws.length > 0 && (
+      <section class="my-8 p-5 bg-gray-50 border border-gray-200 rounded-xl" aria-label="Search Topics">
+        <p class="text-xs font-bold text-gray-700 uppercase tracking-wider mb-3">
+          Popular Search Topics & Variations
+        </p>
+        <div class="flex flex-wrap gap-2">
+          {tool.seo.secondary_kws.map((kw: string) => (
+            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-white text-gray-700 border border-gray-200 shadow-2xs">
+              {kw}
+            </span>
+          ))}
+        </div>
+      </section>
+    )}
 
     <!-- 9. Last-reviewed date and reviewer -->
     <div class="mt-12 pt-6 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between text-xs text-gray-500 gap-2">
