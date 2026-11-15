@@ -778,6 +778,8 @@
     - q: Is it safe to compress sensitive ID cards and passports here?
       a: Yes. Best Converter runs 100% inside your local browser memory using HTML5 Canvas. Your ID documents and personal photos are never uploaded to any remote server.
   related:
+    - compress-image-to-20kb
+    - image-compressor
     - compress-image-to-100kb
     - compress-image-to-200kb
     - resize-image
@@ -1222,6 +1224,7 @@
     - q: Is my pasted text stored or sent to a server?
       a: No. All analysis executes locally in browser JavaScript memory. Your text never leaves your device.
   related:
+    - character-counter
     - case-converter
     - json-formatter
     - percentage-calculator
@@ -1689,10 +1692,10 @@
 - id: online-timer
   kind: media
   slug: online-timer
-  name: Online Timer & Stopwatch
-  title: Online Timer & Stopwatch - Free & Accurate | Best Converter
-  subtitle: Accurate full-screen countdown timer and stopwatch with split lap tracking.
-  description: Free online countdown timer and millisecond stopwatch. Use Pomodoro study presets, audio alerts, and accurate split lap tracking directly in your browser.
+  name: Online Timer
+  title: Online Timer - Free Countdown & Alarm | Best Converter
+  subtitle: Accurate full-screen countdown timer with Pomodoro and audio alerts.
+  description: Free online countdown timer with audio alerts and Pomodoro study presets. Accurate, responsive, and easy to use directly in your browser.
   engine: media
   options: []
   presets: []
@@ -1703,6 +1706,7 @@
     - q: Are there audio alarms when the countdown completes?
       a: Yes. An alert notifies you immediately as soon as the timer reaches zero.
   related:
+    - online-stopwatch
     - typing-test
     - date-difference-calculator
     - screen-recorder
@@ -2099,8 +2103,9 @@
     - q: What is touch typing?
       a: Touch typing is typing without looking at the keyboard keys, relying on muscle memory and the tactile home row bumps (F and J).
   related:
-    - word-counter
+    - online-stopwatch
     - online-timer
+    - word-counter
     - case-converter
   indexable: true
   reviewed: true
@@ -2117,4 +2122,328 @@
     intent: tool
     tier: 2
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
+    last_reviewed: '2026-11-15T00:00:00.000Z'
+- id: compress-image-to-20kb
+  kind: converter
+  slug: compress-image-to-20kb
+  name: Compress Image to 20KB
+  title: Compress Image to 20KB - Free Online | Best Converter
+  subtitle: Reduce photo and signature file size to under 20KB for online forms and portals.
+  description: Compress image to 20KB online free. Reduce photo and signature image sizes for online forms, job applications, and passport portals without quality loss.
+  from: image
+  to: jpg
+  engine: target-size
+  targetBytes: 20480
+  options:
+    - quality
+    - batch
+  content: src/content/tools/compress-image-to-20kb.mdx
+  faq:
+    - q: How do I compress an image to under 20KB for job applications?
+      a: Upload your photo or signature, select 20KB as your target limit, and our tool automatically scales dimensions and adjusts compression to deliver an exact file under 20KB.
+    - q: Does compressing to 20KB blur my photo or signature?
+      a: Our smart compression engine preserves essential contrast and sharp edges while stripping invisible metadata to maximize optical clarity at tiny file sizes.
+    - q: Is there a limit to how many 20KB photos I can compress?
+      a: No. You can compress as many photos and documents as needed with 100% free unlimited conversions.
+  related:
+    - compress-image-to-50kb
+    - compress-image-to-100kb
+    - compress-image-to-200kb
+    - resize-image
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-15T00:00:00.000Z'
+  reviewer: Best Converter Compression Engineering Team
+  lang: en
+  seo:
+    primary_kw: compress image to 20kb
+    secondary_kws:
+      - compress image to 20kb online
+      - reduce photo size to 20kb
+      - compress signature to 20kb
+      - photo compressor 20kb online free
+      - compress passport photo to 20kb
+      - image compressor for ssc upsc form
+    intent: tool
+    tier: 1
+    sources: Google Search Console & High-Volume SERP Queries
+    last_reviewed: '2026-11-15T00:00:00.000Z'
+- id: loan-calculator
+  kind: finance
+  slug: loan-calculator
+  name: Loan Calculator
+  title: Loan Calculator - Monthly Payment | Best Converter
+  subtitle: Estimate monthly loan payments, total interest, and complete payoff schedules.
+  description: Calculate monthly loan payments, total interest, and full repayment schedules with our free online loan calculator. Fast, accurate, and easy to use.
+  engine: finance
+  options: []
+  content: src/content/tools/loan-calculator.mdx
+  faq:
+    - q: How is a monthly loan payment calculated?
+      a: 'Monthly payments are calculated using the standard amortization formula: M = P[r(1+r)^n] / [(1+r)^n - 1], where P is principal, r is monthly interest rate, and n is number of months.'
+    - q: Can I use this calculator for personal, auto, and student loans?
+      a: Yes. The calculation applies universally to any fixed-rate amortizing loan including auto loans, personal loans, and student debt.
+    - q: How does interest rate affect total repayment?
+      a: Even a 1% reduction in interest rate significantly cuts total interest paid over the life of a multi-year loan. Use our sliders to test different scenarios.
+  related:
+    - emi-calculator
+    - mortgage-calculator
+    - sip-calculator
+    - percentage-calculator
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-15T00:00:00.000Z'
+  reviewer: Best Converter Financial Analytics Team
+  lang: en
+  seo:
+    primary_kw: loan calculator
+    secondary_kws:
+      - free loan calculator
+      - personal loan calculator
+      - car loan calculator monthly payment
+      - loan interest calculator with schedule
+      - calculate loan payment online
+    intent: tool
+    tier: 1
+    sources: Google Search Console & High-Volume SERP Queries
+    last_reviewed: '2026-11-15T00:00:00.000Z'
+- id: mortgage-calculator
+  kind: finance
+  slug: mortgage-calculator
+  name: Mortgage Calculator
+  title: Mortgage Calculator - Home Loan Payment | Best Converter
+  subtitle: Estimate your monthly mortgage payments, interest breakdown, and amortization.
+  description: Free online mortgage calculator. Calculate your monthly home loan payments, interest breakdown, and complete amortization schedule in seconds.
+  engine: finance
+  options: []
+  content: src/content/tools/mortgage-calculator.mdx
+  faq:
+    - q: What is included in a monthly mortgage calculation?
+      a: Our calculator computes principal and interest amortization. Real estate taxes, homeowners insurance, and private mortgage insurance (PMI) may be added by your lender.
+    - q: What is the standard mortgage term length?
+      a: Most homeowners choose either a 15-year or 30-year fixed-rate mortgage. 15-year loans feature lower total interest, while 30-year loans offer lower monthly payments.
+    - q: How much house can I afford?
+      a: Financial advisors recommend keeping your total monthly housing payment below 28% to 36% of your gross monthly household income.
+  related:
+    - loan-calculator
+    - emi-calculator
+    - sip-calculator
+    - currency-converter
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-15T00:00:00.000Z'
+  reviewer: Best Converter Financial Analytics Team
+  lang: en
+  seo:
+    primary_kw: mortgage calculator
+    secondary_kws:
+      - home mortgage calculator
+      - monthly mortgage payment calculator
+      - house loan calculator with schedule
+      - mortgage amortization calculator free
+      - mortgage interest rate calculator
+    intent: tool
+    tier: 1
+    sources: Google Search Console & High-Volume SERP Queries
+    last_reviewed: '2026-11-15T00:00:00.000Z'
+- id: character-counter
+  kind: text
+  slug: character-counter
+  name: Character Counter
+  title: Character Counter - Free Online Tool | Best Converter
+  subtitle: Count characters, words, sentences, and paragraphs in real time as you type.
+  description: Count characters, words, sentences, and paragraphs in real time with our free character counter. Fast, accurate, and perfect for social media posts.
+  engine: text
+  options: []
+  content: src/content/tools/character-counter.mdx
+  faq:
+    - q: What is the character limit for Twitter (X) and Instagram posts?
+      a: Standard Twitter (X) posts are limited to 280 characters. Instagram captions support up to 2,200 characters, though the first 125 characters appear before truncation.
+    - q: Does this character counter count spaces?
+      a: Yes. Our tool simultaneously displays total characters with spaces AND characters without spaces for precise adherence to submission limits.
+    - q: Is there a limit to how much text I can paste?
+      a: No. You can paste entire essays, articles, or books with instant real-time character calculation.
+  related:
+    - word-counter
+    - case-converter
+    - json-formatter
+    - fancy-text-generator
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-15T00:00:00.000Z'
+  reviewer: Best Converter Content Analytics Team
+  lang: en
+  seo:
+    primary_kw: character counter
+    secondary_kws:
+      - character count online
+      - letter count tool
+      - character counter with spaces
+      - count characters for twitter
+      - character counter no spaces free
+    intent: tool
+    tier: 1
+    sources: Google Search Console & High-Volume SERP Queries
+    last_reviewed: '2026-11-15T00:00:00.000Z'
+- id: celsius-to-fahrenheit
+  kind: calculator
+  slug: celsius-to-fahrenheit
+  name: Celsius to Fahrenheit
+  title: Celsius to Fahrenheit Converter | Best Converter
+  subtitle: Convert Celsius to Fahrenheit (°C to °F) instantly with accurate formula.
+  description: Convert Celsius to Fahrenheit (°C to °F) instantly with our free online temperature converter. Includes conversion formula and reference chart.
+  engine: developer
+  options: []
+  content: src/content/tools/celsius-to-fahrenheit.mdx
+  faq:
+    - q: What is the formula to convert Celsius to Fahrenheit?
+      a: The formula is °F = (°C × 9/5) + 32, or multiply the Celsius temperature by 1.8 and add 32.
+    - q: What is 0 degrees Celsius in Fahrenheit?
+      a: 0°C is equal to 32°F, which represents the freezing point of pure water at standard atmospheric pressure.
+    - q: What temperature is the same in both Celsius and Fahrenheit?
+      a: '-40 degrees is identical in both scales: -40°C = -40°F.'
+  related:
+    - unit-converter
+    - percentage-calculator
+    - scientific-calculator
+    - online-calculator
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-15T00:00:00.000Z'
+  reviewer: Best Converter Mathematical Engineering Team
+  lang: en
+  seo:
+    primary_kw: celsius to fahrenheit
+    secondary_kws:
+      - convert celsius to fahrenheit
+      - c to f calculator
+      - celsius to fahrenheit formula
+      - temperature converter c to f
+      - fahrenheit to celsius online
+    intent: tool
+    tier: 1
+    sources: Google Search Console & High-Volume SERP Queries
+    last_reviewed: '2026-11-15T00:00:00.000Z'
+- id: online-calculator
+  kind: calculator
+  slug: online-calculator
+  name: Online Calculator
+  title: Online Calculator - Free Quick Math Tool | Best Converter
+  subtitle: Free full-featured desktop calculator for quick math, addition, and division.
+  description: Free online calculator for quick math, addition, subtraction, multiplication, and division. Fast, responsive, and easy to use on mobile and desktop.
+  engine: calculator
+  options: []
+  content: src/content/tools/online-calculator.mdx
+  faq:
+    - q: Can I use keyboard shortcuts on this online calculator?
+      a: Yes. You can use number keys (0-9), standard math operators (+, -, *, /), Enter for equals (=), and Backspace to delete numbers.
+    - q: Does this calculator support decimals and percentages?
+      a: Yes. Full decimal precision and instant percentage calculations are supported.
+    - q: Is this calculator free on mobile phones?
+      a: Yes. It features a responsive touch-optimized layout for iOS and Android phones and tablets.
+  related:
+    - scientific-calculator
+    - percentage-calculator
+    - celsius-to-fahrenheit
+    - discount-calculator
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-15T00:00:00.000Z'
+  reviewer: Best Converter Mathematical Engineering Team
+  lang: en
+  seo:
+    primary_kw: online calculator
+    secondary_kws:
+      - free online calculator
+      - basic calculator online
+      - simple math calculator
+      - desktop calculator online
+      - standard calculator free
+    intent: tool
+    tier: 1
+    sources: Google Search Console & High-Volume SERP Queries
+    last_reviewed: '2026-11-15T00:00:00.000Z'
+- id: online-stopwatch
+  kind: media
+  slug: online-stopwatch
+  name: Online Stopwatch
+  title: Online Stopwatch - Free Full Screen Timer | Best Converter
+  subtitle: Precise digital stopwatch with lap times, split intervals, and clean display.
+  description: Free online stopwatch with lap times, split intervals, and clean digital display. Accurate to milliseconds, perfect for sports, study, and workouts.
+  engine: media
+  options: []
+  content: src/content/tools/online-stopwatch.mdx
+  faq:
+    - q: How accurate is this online stopwatch?
+      a: Our stopwatch tracks time with millisecond precision using high-resolution browser performance timers.
+    - q: Does the stopwatch keep running if I switch browser tabs?
+      a: Yes. Time elapsed is calculated against absolute system timestamps, ensuring 100% accuracy even when backgrounded.
+    - q: Can I record lap times?
+      a: Yes. Click the Lap button while running to record individual split times and intervals.
+  related:
+    - online-timer
+    - typing-test
+    - screen-recorder
+    - text-to-speech
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-15T00:00:00.000Z'
+  reviewer: Best Converter Product Engineering Team
+  lang: en
+  seo:
+    primary_kw: online stopwatch
+    secondary_kws:
+      - stopwatch online free
+      - full screen stopwatch
+      - lap stopwatch online
+      - digital stopwatch tool
+      - precise timer stopwatch
+    intent: tool
+    tier: 1
+    sources: Google Search Console & High-Volume SERP Queries
+    last_reviewed: '2026-11-15T00:00:00.000Z'
+- id: image-compressor
+  kind: converter
+  slug: image-compressor
+  name: Image Compressor
+  title: Image Compressor - Reduce Photo Size Free | Best Converter
+  subtitle: Compress JPG, PNG, and WebP images online with customizable quality and size.
+  description: Free online image compressor. Reduce JPG, PNG, and WebP photo file sizes without losing quality. Fast batch compression and instant download.
+  from: image
+  to: jpg
+  engine: target-size
+  targetBytes: 204800
+  options:
+    - quality
+    - batch
+  content: src/content/tools/image-compressor.mdx
+  faq:
+    - q: How does this image compressor reduce file size without losing quality?
+      a: We strip redundant color metadata and apply perceptual quantization algorithms that remove invisible pixel data while keeping the photo optically identical.
+    - q: Which image formats are supported?
+      a: Our compressor accepts JPG, JPEG, PNG, WebP, and AVIF files, with batch processing for multiple files at once.
+    - q: Can I specify an exact target size like 100KB or 200KB?
+      a: Yes. You can select preset targets or input a custom kilobyte threshold for job forms and government uploads.
+  related:
+    - compress-image-to-20kb
+    - compress-image-to-50kb
+    - compress-image-to-100kb
+    - compress-image-to-200kb
+    - resize-image
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-15T00:00:00.000Z'
+  reviewer: Best Converter Compression Engineering Team
+  lang: en
+  seo:
+    primary_kw: image compressor
+    secondary_kws:
+      - compress image online free
+      - photo compressor without losing quality
+      - shrink image file size
+      - reduce photo size online
+      - compress jpeg png webp
+    intent: tool
+    tier: 1
+    sources: Google Search Console & High-Volume SERP Queries
     last_reviewed: '2026-11-15T00:00:00.000Z'

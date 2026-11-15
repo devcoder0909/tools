@@ -45,10 +45,11 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
   }, [jwtInput]);
 
   // --- Unit Converter State ---
-  const [unitCategory, setUnitCategory] = useState<'length' | 'weight' | 'temperature' | 'digital'>('length');
-  const [unitVal, setUnitVal] = useState(1);
-  const [unitFrom, setUnitFrom] = useState('m');
-  const [unitTo, setUnitTo] = useState('ft');
+  const isTempTool = toolId === 'celsius-to-fahrenheit';
+  const [unitCategory, setUnitCategory] = useState<'length' | 'weight' | 'temperature' | 'digital'>(isTempTool ? 'temperature' : 'length');
+  const [unitVal, setUnitVal] = useState(isTempTool ? 25 : 1);
+  const [unitFrom, setUnitFrom] = useState(isTempTool ? 'C' : 'm');
+  const [unitTo, setUnitTo] = useState(isTempTool ? 'F' : 'ft');
 
   const unitConversions: Record<string, Record<string, number>> = {
     length: {
@@ -166,8 +167,8 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
         </div>
       )}
 
-      {/* 2. Unit Converter */}
-      {toolId === 'unit-converter' && (
+      {/* 2. Unit & Temperature Converter */}
+      {(toolId === 'unit-converter' || toolId === 'celsius-to-fahrenheit') && (
         <div class="space-y-6 max-w-xl mx-auto">
           <div class="flex flex-wrap gap-2 justify-center border-b border-gray-200 pb-3">
             {(['length', 'weight', 'temperature', 'digital'] as const).map((cat) => (

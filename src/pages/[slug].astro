@@ -179,19 +179,19 @@ if (tool.targetBytes) {
     <!-- 3. The working tool above the fold -->
     {tool.kind === 'generator' || ['qr-code-generator', 'password-generator', 'barcode-generator', 'random-number-generator', 'fancy-text-generator'].includes(tool.id) ? (
       <GeneratorShell client:load toolId={tool.id} toolName={tool.name} />
-    ) : tool.kind === 'pdf' || ['merge-pdf', 'jpg-to-pdf', 'split-pdf', 'compress-pdf', 'png-to-pdf'].includes(tool.id) ? (
+    ) : tool.kind === 'pdf' || ['merge-pdf', 'jpg-to-pdf', 'split-pdf', 'compress-pdf', 'png-to-pdf', 'pdf-to-png', 'pdf-to-jpg'].includes(tool.id) ? (
       <PdfShell client:load toolId={tool.id} toolName={tool.name} />
-    ) : tool.kind === 'finance' || ['emi-calculator', 'sip-calculator', 'bmi-calculator', 'currency-converter'].includes(tool.id) ? (
+    ) : tool.kind === 'finance' || ['emi-calculator', 'sip-calculator', 'bmi-calculator', 'currency-converter', 'loan-calculator', 'mortgage-calculator'].includes(tool.id) ? (
       <FinanceShell client:load toolId={tool.id} toolName={tool.name} />
-    ) : tool.kind === 'media' || ['text-to-speech', 'screen-recorder', 'online-timer', 'typing-test', 'image-resizer', 'photo-editor', 'meme-generator'].includes(tool.id) ? (
+    ) : tool.kind === 'media' || ['text-to-speech', 'screen-recorder', 'online-timer', 'typing-test', 'image-resizer', 'photo-editor', 'meme-generator', 'online-stopwatch'].includes(tool.id) ? (
       <MediaShell client:load toolId={tool.id} toolName={tool.name} />
-    ) : tool.kind === 'developer' || ['jwt-decoder', 'unit-converter', 'my-ip-address'].includes(tool.id) ? (
+    ) : tool.kind === 'developer' || ['jwt-decoder', 'unit-converter', 'my-ip-address', 'celsius-to-fahrenheit'].includes(tool.id) ? (
       <DeveloperShell client:load toolId={tool.id} toolName={tool.name} />
     ) : tool.kind === 'calculator' || ['scientific-calculator', 'online-calculator'].includes(tool.id) ? (
       <CalculatorShell client:load toolId={tool.id} toolName={tool.name} />
-    ) : tool.kind === 'text' ? (
+    ) : tool.kind === 'text' || ['word-counter', 'case-converter', 'json-formatter', 'character-counter'].includes(tool.id) ? (
       <TextShell client:load toolId={tool.id} toolName={tool.name} />
-    ) : tool.engine === 'target-size' ? (
+    ) : tool.engine === 'target-size' || tool.slug.startsWith('compress-image-to-') || tool.slug === 'image-compressor' ? (
       <TargetSizeShell client:load toolId={tool.id} toolName={tool.name} defaultTargetKb={parsedTargetKb} />
     ) : (
       <ToolShell
@@ -204,29 +204,39 @@ if (tool.targetBytes) {
       />
     )}
 
-    <!-- 4. Privacy Guarantee Link -->
-    <div class="my-6 p-4 bg-gray-50 border border-gray-200 rounded-xl text-xs text-gray-600 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-      <div>
-        <span class="font-bold text-gray-800">Zero-Upload Guarantee:</span> Files and calculations execute locally on your device.
+    <!-- 4. Key Feature Highlights (Speed, Free, Unlimited, Quality) -->
+    <div class="my-6 grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+      <div class="p-3 bg-gray-50 border border-gray-200 rounded-xl">
+        <span class="block text-base font-bold text-gray-900">⚡ Instant</span>
+        <span class="text-xs text-gray-500">Zero wait queues</span>
       </div>
-      <a href="/privacy-explained/" class="text-green-700 font-semibold underline hover:text-green-800">
-        How our zero-upload privacy works &rarr;
-      </a>
+      <div class="p-3 bg-gray-50 border border-gray-200 rounded-xl">
+        <span class="block text-base font-bold text-gray-900">100% Free</span>
+        <span class="text-xs text-gray-500">No subscription</span>
+      </div>
+      <div class="p-3 bg-gray-50 border border-gray-200 rounded-xl">
+        <span class="block text-base font-bold text-gray-900">No Limits</span>
+        <span class="text-xs text-gray-500">Unlimited files</span>
+      </div>
+      <div class="p-3 bg-gray-50 border border-gray-200 rounded-xl">
+        <span class="block text-base font-bold text-gray-900">No Watermark</span>
+        <span class="text-xs text-gray-500">Original quality</span>
+      </div>
     </div>
 
     <!-- 5. Ad slot A (below the result area) -->
     <AdSlot slotPosition="belowResult" />
 
-    <!-- Direct Answer & GEO Extraction Definition -->
+    <!-- Direct Answer & Search Intent Definition -->
     <div class="my-6 p-4 rounded-xl bg-emerald-50/70 border border-emerald-200 text-xs sm:text-sm text-emerald-950">
       <div class="flex items-center gap-2 font-bold text-emerald-800 uppercase tracking-wider text-2xs mb-1">
         <svg class="w-4 h-4 text-emerald-600 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        Quick Answer & Definition
+        Overview & How It Works
       </div>
       <p class="leading-relaxed">
-        <strong>{tool.name}</strong> is a 100% private in-browser utility that processes data directly in your device RAM without cloud server uploads. It provides instantaneous results, zero wait queues, and total data confidentiality.
+        <strong>{tool.name}</strong> is a free, fast online utility that lets you process files and calculations directly in your browser. It offers high quality output, instant downloads, and batch processing with no registration, no hidden fees, and no file size paywalls.
       </p>
     </div>
 
@@ -280,10 +290,10 @@ if (tool.targetBytes) {
     <section class="my-10 border border-gray-200 rounded-2xl overflow-hidden bg-white shadow-xs">
       <div class="p-4 sm:p-6 bg-gray-50 border-b border-gray-200">
         <h2 class="text-lg sm:text-xl font-bold text-gray-900">
-          Why Best Converter Outperforms Cloud Competitors
+          Best Converter vs Competitor Tools (iLovePDF, Smallpdf, CloudConvert)
         </h2>
         <p class="text-xs sm:text-sm text-gray-600 mt-1">
-          Compare our client-side architecture against traditional upload-based online utility websites.
+          See why millions of users switch to Best Converter for unlimited, fast, and watermark-free online utilities.
         </p>
       </div>
       <div class="overflow-x-auto">
@@ -291,35 +301,40 @@ if (tool.targetBytes) {
           <thead>
             <tr class="border-b border-gray-200 bg-gray-100/60 text-gray-700">
               <th class="p-3 sm:p-4 font-bold">Feature & Capability</th>
-              <th class="p-3 sm:p-4 font-bold text-emerald-700">Best Converter (In-Browser)</th>
-              <th class="p-3 sm:p-4 font-medium text-gray-500">Traditional Cloud Utilities</th>
+              <th class="p-3 sm:p-4 font-bold text-emerald-700">Best Converter</th>
+              <th class="p-3 sm:p-4 font-medium text-gray-500">Other Online Converters</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-gray-100 text-gray-700">
             <tr>
-              <td class="p-3 sm:p-4 font-medium">Server File Uploads</td>
-              <td class="p-3 sm:p-4 font-bold text-emerald-700">Zero (100% Local RAM)</td>
-              <td class="p-3 sm:p-4 text-gray-500">Files uploaded to remote servers</td>
+              <td class="p-3 sm:p-4 font-medium">Daily Conversion Limits</td>
+              <td class="p-3 sm:p-4 font-bold text-emerald-700">Unlimited (Free Forever)</td>
+              <td class="p-3 sm:p-4 text-gray-500">Limited to 2–3 files per day</td>
             </tr>
             <tr>
-              <td class="p-3 sm:p-4 font-medium">Data Privacy & Security</td>
-              <td class="p-3 sm:p-4 font-bold text-emerald-700">Zero data leaks (GDPR/HIPAA safe)</td>
-              <td class="p-3 sm:p-4 text-gray-500">Stored on 3rd-party hard drives</td>
-            </tr>
-            <tr>
-              <td class="p-3 sm:p-4 font-medium">Processing Speed</td>
-              <td class="p-3 sm:p-4 font-bold text-emerald-700">Instant (No network latency)</td>
-              <td class="p-3 sm:p-4 text-gray-500">Queued upload + download delays</td>
+              <td class="p-3 sm:p-4 font-medium">Conversion Speed</td>
+              <td class="p-3 sm:p-4 font-bold text-emerald-700">Instant (Zero Queue Delay)</td>
+              <td class="p-3 sm:p-4 text-gray-500">Slow cloud queue & upload delay</td>
             </tr>
             <tr>
               <td class="p-3 sm:p-4 font-medium">File Size Caps</td>
-              <td class="p-3 sm:p-4 font-bold text-emerald-700">Unlimited (Device RAM capacity)</td>
-              <td class="p-3 sm:p-4 text-gray-500">10MB to 50MB paywall restrictions</td>
+              <td class="p-3 sm:p-4 font-bold text-emerald-700">No Artificial Paywalls</td>
+              <td class="p-3 sm:p-4 text-gray-500">10MB to 50MB paywall limits</td>
             </tr>
             <tr>
-              <td class="p-3 sm:p-4 font-medium">Pricing & Subscriptions</td>
-              <td class="p-3 sm:p-4 font-bold text-emerald-700">100% Free Forever</td>
-              <td class="p-3 sm:p-4 text-gray-500">$7 to $15/month subscriptions</td>
+              <td class="p-3 sm:p-4 font-medium">Watermarks on Output</td>
+              <td class="p-3 sm:p-4 font-bold text-emerald-700">None (100% Clean Files)</td>
+              <td class="p-3 sm:p-4 text-gray-500">Forced watermarks on free tier</td>
+            </tr>
+            <tr>
+              <td class="p-3 sm:p-4 font-medium">Account / Sign-Up</td>
+              <td class="p-3 sm:p-4 font-bold text-emerald-700">No Registration Needed</td>
+              <td class="p-3 sm:p-4 text-gray-500">Requires email and login</td>
+            </tr>
+            <tr>
+              <td class="p-3 sm:p-4 font-medium">Pricing</td>
+              <td class="p-3 sm:p-4 font-bold text-emerald-700">100% Free Always</td>
+              <td class="p-3 sm:p-4 text-gray-500">$7 to $15 / month subscriptions</td>
             </tr>
           </tbody>
         </table>

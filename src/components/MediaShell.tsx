@@ -94,7 +94,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
   };
 
   // --- 3. Online Timer & Stopwatch State ---
-  const [timerMode, setTimerMode] = useState<'timer' | 'stopwatch'>('timer');
+  const [timerMode, setTimerMode] = useState<'timer' | 'stopwatch'>(toolId === 'online-stopwatch' ? 'stopwatch' : 'timer');
   const [timerMinutes, setTimerMinutes] = useState(5);
   const [timerSecondsLeft, setTimerSecondsLeft] = useState(300);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
@@ -380,7 +380,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
       )}
 
       {/* 3. Online Timer & Stopwatch */}
-      {toolId === 'online-timer' && (
+      {(toolId === 'online-timer' || toolId === 'online-stopwatch') && (
         <div class="space-y-6 max-w-md mx-auto text-center">
           <div class="flex justify-center gap-2 border-b border-gray-200 pb-3">
             <button

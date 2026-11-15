@@ -142,21 +142,21 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
 
   return (
     <div class="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-xs mb-10">
-      {/* 1. EMI Calculator */}
-      {toolId === 'emi-calculator' && (
+      {/* 1. EMI / Loan / Mortgage Calculator */}
+      {(toolId === 'emi-calculator' || toolId === 'loan-calculator' || toolId === 'mortgage-calculator') && (
         <div class="space-y-8">
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="md:col-span-2 space-y-5">
               <div>
                 <div class="flex justify-between text-xs font-semibold text-gray-700 mb-1">
-                  <span>Loan Amount</span>
+                  <span>{toolId === 'mortgage-calculator' ? 'Mortgage Property / Loan Amount' : 'Loan Principal Amount'}</span>
                   <span class="font-bold text-gray-900">{loanAmount.toLocaleString()}</span>
                 </div>
                 <input
                   type="range"
-                  min="50000"
+                  min="10000"
                   max="10000000"
-                  step="25000"
+                  step="10000"
                   value={loanAmount}
                   onInput={(e) => setLoanAmount(Number((e.target as HTMLInputElement).value))}
                   class="w-full accent-green-600"
@@ -165,12 +165,12 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
 
               <div>
                 <div class="flex justify-between text-xs font-semibold text-gray-700 mb-1">
-                  <span>Interest Rate (% per annum)</span>
+                  <span>Annual Interest Rate (%)</span>
                   <span class="font-bold text-gray-900">{interestRate}%</span>
                 </div>
                 <input
                   type="range"
-                  min="1"
+                  min="0.5"
                   max="25"
                   step="0.1"
                   value={interestRate}
@@ -181,7 +181,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
 
               <div>
                 <div class="flex justify-between text-xs font-semibold text-gray-700 mb-1">
-                  <span>Loan Tenure</span>
+                  <span>Loan Term / Duration</span>
                   <span class="font-bold text-gray-900">{loanTenureYears} Years ({loanTenureYears * 12} Mos)</span>
                 </div>
                 <input
@@ -197,24 +197,26 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
 
             <div class="bg-gray-50 border border-gray-200 rounded-xl p-5 flex flex-col justify-between">
               <div>
-                <span class="text-xs uppercase font-semibold text-gray-500 tracking-wider">Monthly Loan EMI</span>
+                <span class="text-xs uppercase font-semibold text-gray-500 tracking-wider">
+                  {toolId === 'mortgage-calculator' ? 'Monthly Mortgage Payment' : 'Monthly Payment (EMI)'}
+                </span>
                 <p class="text-3xl font-extrabold text-green-700 my-2">
-                  {emiCalc.monthlyEmi.toLocaleString()}
+                  ${emiCalc.monthlyEmi.toLocaleString()}
                 </p>
               </div>
 
               <div class="space-y-2 text-xs border-t border-gray-200 pt-3">
                 <div class="flex justify-between text-gray-600">
-                  <span>Principal Amount:</span>
-                  <span class="font-bold text-gray-900">{loanAmount.toLocaleString()}</span>
+                  <span>Principal Borrowed:</span>
+                  <span class="font-bold text-gray-900">${loanAmount.toLocaleString()}</span>
                 </div>
                 <div class="flex justify-between text-gray-600">
-                  <span>Total Interest:</span>
-                  <span class="font-bold text-gray-900">{emiCalc.totalInterest.toLocaleString()}</span>
+                  <span>Total Interest Paid:</span>
+                  <span class="font-bold text-gray-900">${emiCalc.totalInterest.toLocaleString()}</span>
                 </div>
                 <div class="flex justify-between text-gray-900 font-bold border-t border-gray-200 pt-1">
-                  <span>Total Payable:</span>
-                  <span>{emiCalc.totalPayment.toLocaleString()}</span>
+                  <span>Total Loan Repayment:</span>
+                  <span>${emiCalc.totalPayment.toLocaleString()}</span>
                 </div>
               </div>
             </div>
@@ -223,7 +225,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
           {/* First 12 Months Amortization Table */}
           {emiCalc.schedule.length > 0 && (
             <div>
-              <h3 class="text-sm font-bold text-gray-900 mb-3">Initial Monthly Amortization Schedule</h3>
+              <div class="text-sm font-bold text-gray-900 mb-3">Initial Monthly Amortization Schedule</div>
               <div class="overflow-x-auto border border-gray-200 rounded-xl">
                 <table class="w-full text-left text-xs">
                   <thead class="bg-gray-50 text-gray-600 font-semibold border-b border-gray-200">

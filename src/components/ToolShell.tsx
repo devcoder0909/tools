@@ -286,7 +286,7 @@ export default function ToolShell({
       {items.length > 0 && (
         <div class="mt-6 space-y-3">
           <div class="flex items-center justify-between">
-            <h3 class="text-sm font-semibold text-gray-800">Files ({items.length})</h3>
+            <div class="text-sm font-semibold text-gray-800">Files ({items.length})</div>
             {items.some((i) => i.status === 'done') && (
               <button
                 onClick={downloadZip}

@@ -122,8 +122,8 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
 
   return (
     <div class="text-shell bg-white border border-gray-200 rounded-2xl shadow-sm p-6 sm:p-8 my-6">
-      {/* Word Counter */}
-      {toolId === 'word-counter' && (
+      {/* Word & Character Counter */}
+      {(toolId === 'word-counter' || toolId === 'character-counter') && (
         <div class="space-y-6">
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
             <div class="p-3 rounded-xl bg-green-50 border border-green-200">
