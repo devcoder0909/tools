@@ -14,7 +14,6 @@ import AdSlot from '../components/AdSlot.astro';
 import PromoSlot from '../components/PromoSlot.astro';
 import FAQ from '../components/FAQ.astro';
 import RelatedTools from '../components/RelatedTools.astro';
-import VideoTutorial from '../components/VideoTutorial.astro';
 import { renderToolMarkdown } from '../utils/markdown';
 import { getAllTools, getRelatedTools, formatDisplayDate, type ToolDefinition } from '../registry';
 import { siteConfig } from '../config/site';
@@ -134,185 +133,6 @@ const faqJsonLd = tool.faq && tool.faq.length > 0 ? {
   })),
 } : null;
 
-const toolVideos: Record<string, { duration: string; durationSecs: string; thumbnailUrl: string; steps: { timestamp: string; title: string; description: string }[] }> = {
-  'png-to-jpg': {
-    duration: '1:15',
-    durationSecs: 'PT1M15S',
-    thumbnailUrl: '/images/tools/png-to-jpg-video-thumb.svg',
-    steps: [
-      { timestamp: '0:00', title: 'Upload or Drop PNG Image', description: 'Drag and drop PNG images or paste directly from clipboard (Ctrl+V / Cmd+V). Handles 4K desktop screenshots and transparent graphics.' },
-      { timestamp: '0:25', title: 'Set Quality & Transparency Handling', description: 'Adjust the compression slider between 10% and 95%. Default 85% preserves photographic fidelity while transparent pixels render with clean solid white.' },
-      { timestamp: '0:50', title: 'Batch In-Memory Conversion', description: 'Click Convert All Files to run the Discrete Cosine Transform locally in your browser memory via HTML5 Canvas.' },
-      { timestamp: '1:10', title: 'Instant ZIP or Single Download', description: 'Download converted JPG images individually or as a single combined ZIP archive. Zero remote server transfers.' }
-    ]
-  },
-  'jpg-to-png': {
-    duration: '1:10',
-    durationSecs: 'PT1M10S',
-    thumbnailUrl: '/images/tools/jpg-to-png-video-thumb.svg',
-    steps: [
-      { timestamp: '0:00', title: 'Select JPG Photos', description: 'Select or drag JPG / JPEG images into the converter. Supports multi-megapixel camera shots without file size caps.' },
-      { timestamp: '0:20', title: 'Lossless PNG Rasterization', description: 'The local engine unpacks DCT JPEG blocks into an uncompressed 24-bit RGB pixel canvas ready for alpha transparency layers.' },
-      { timestamp: '0:45', title: 'Batch Processing & Conversion', description: 'Click Convert All Files to encode into standard Deflate-compressed PNG format in client RAM.' },
-      { timestamp: '1:05', title: 'Download Converted PNG Files', description: 'Save losslessly encoded PNG images with full color fidelity for graphic design and presentation mockups.' }
-    ]
-  },
-  'webp-to-jpg': {
-    duration: '1:08',
-    durationSecs: 'PT1M08S',
-    thumbnailUrl: '/images/tools/webp-to-jpg-video-thumb.svg',
-    steps: [
-      { timestamp: '0:00', title: 'Select WebP Files', description: 'Drop modern WebP graphics downloaded from Chrome or web pages directly onto the converter canvas.' },
-      { timestamp: '0:22', title: 'Set JPEG Quality Parameter', description: 'Choose between 10% and 95% output quality. WebP transparency automatically renders on clean white.' },
-      { timestamp: '0:45', title: 'Fast Browser Transcoding', description: 'Transcode WebP to universal JPG format using your device hardware acceleration without external uploads.' },
-      { timestamp: '1:02', title: 'Download Compatible JPG', description: 'Save universal JPG images that open in Photoshop, Microsoft Word, email clients, and government upload forms.' }
-    ]
-  },
-  'heic-to-jpg': {
-    duration: '1:20',
-    durationSecs: 'PT1M20S',
-    thumbnailUrl: '/images/tools/heic-to-jpg-video-thumb.svg',
-    steps: [
-      { timestamp: '0:00', title: 'Select iPhone HEIC Photos', description: 'Drop Apple HEIC/HEIF photos transferred via AirDrop, iCloud, or cable directly into the converter.' },
-      { timestamp: '0:25', title: 'In-Browser HEIF Decoding', description: 'The client-side WASM engine unpacks HEVC containers and color profiles without installing paid Windows Store extensions.' },
-      { timestamp: '0:55', title: 'Batch Conversion to JPG', description: 'Convert up to 50+ iPhone photos simultaneously with original 48MP resolution and sharpness preserved.' },
-      { timestamp: '1:15', title: 'Download Converted JPEG Files', description: 'Download universal JPG images compatible with all Windows PCs, Android devices, and legacy applications.' }
-    ]
-  },
-  'merge-pdf': {
-    duration: '1:18',
-    durationSecs: 'PT1M18S',
-    thumbnailUrl: '/images/tools/merge-pdf-video-thumb.svg',
-    steps: [
-      { timestamp: '0:00', title: 'Select Multiple PDF Documents', description: 'Click to choose 2 or more PDF documents or drag and drop files directly into the queue.' },
-      { timestamp: '0:22', title: 'Reorder Page Sequence', description: 'Drag and arrange documents into your preferred sequential order.' },
-      { timestamp: '0:45', title: 'In-Memory Page Stitching', description: 'pdf-lib stitches page trees, fonts, vectors, and hyperlinks in local browser RAM.' },
-      { timestamp: '1:10', title: 'Download Unified PDF', description: 'Save the merged PDF file instantly with zero watermarks and zero cloud uploads.' }
-    ]
-  },
-  'compress-pdf': {
-    duration: '1:25',
-    durationSecs: 'PT1M25S',
-    thumbnailUrl: '/images/tools/compress-pdf-video-thumb.svg',
-    steps: [
-      { timestamp: '0:00', title: 'Select Heavy PDF Document', description: 'Drop PDF files exceeding 5MB, 10MB or strict portal submission caps.' },
-      { timestamp: '0:25', title: 'Choose Target Compression', description: 'Select desired compression profile to shrink document while preserving text clarity.' },
-      { timestamp: '0:50', title: 'Stream & Image Optimization', description: 'Unused metadata is purged and embedded images are resampled in client RAM.' },
-      { timestamp: '1:15', title: 'Download Lightweight PDF', description: 'Download compact PDF file under 200KB / 1MB ready for visa, job, and tax portals.' }
-    ]
-  },
-  'split-pdf': {
-    duration: '1:12',
-    durationSecs: 'PT1M12S',
-    thumbnailUrl: '/images/tools/split-pdf-video-thumb.svg',
-    steps: [
-      { timestamp: '0:00', title: 'Upload Multi-Page PDF', description: 'Select any multi-page PDF document to inspect page thumbnails.' },
-      { timestamp: '0:20', title: 'Define Page Range', description: 'Enter page ranges like 1-3, 5, 8-10 or choose to separate every page individually.' },
-      { timestamp: '0:45', title: 'Client-Side Page Extraction', description: 'Extract selected pages with original resolution, typography, and vectors intact.' },
-      { timestamp: '1:05', title: 'Download Extracted PDF', description: 'Save new extracted PDF or download all individual pages as a ZIP archive.' }
-    ]
-  },
-  'rotate-pdf': {
-    duration: '1:05',
-    durationSecs: 'PT1M05S',
-    thumbnailUrl: '/images/tools/rotate-pdf-video-thumb.svg',
-    steps: [
-      { timestamp: '0:00', title: 'Upload Sideways PDF Scan', description: 'Drop PDF files with upside-down or sideways pages.' },
-      { timestamp: '0:18', title: 'Select Rotation Angle', description: 'Choose 90°, 180°, or 270° clockwise to fix document orientation.' },
-      { timestamp: '0:40', title: 'Permanent Matrix Update', description: 'Modifies the /Rotate dictionary key in the PDF structure permanently.' },
-      { timestamp: '1:00', title: 'Download Corrected PDF', description: 'Save permanently rotated PDF that displays correctly in all PDF viewers and print dialogs.' }
-    ]
-  },
-  'emi-calculator': {
-    duration: '1:24',
-    durationSecs: 'PT1M24S',
-    thumbnailUrl: '/images/tools/emi-calculator-video-thumb.svg',
-    steps: [
-      { timestamp: '0:00', title: 'Enter Principal Loan Amount', description: 'Type in your desired borrowing amount for home, car, or personal financing.' },
-      { timestamp: '0:22', title: 'Set Annual Interest Rate', description: 'Input the annual interest rate quoted by your lender to calculate reducing balance compounding.' },
-      { timestamp: '0:45', title: 'Adjust Loan Tenure', description: 'Choose loan duration in years or months to see instant amortization schedule.' },
-      { timestamp: '1:10', title: 'Inspect Amortization & Total Interest', description: 'View total payment breakdown between principal borrowed and overall interest payable.' }
-    ]
-  },
-  'compound-interest-calculator': {
-    duration: '1:30',
-    durationSecs: 'PT1M30S',
-    thumbnailUrl: '/images/tools/compound-interest-video-thumb.svg',
-    steps: [
-      { timestamp: '0:00', title: 'Set Initial Principal & Deposits', description: 'Enter initial investment capital and optional recurring monthly or annual contributions.' },
-      { timestamp: '0:25', title: 'Choose Compounding Frequency', description: 'Select daily, monthly, quarterly, semi-annual, or annual compounding frequency.' },
-      { timestamp: '0:50', title: 'Define Growth Rate & Timeline', description: 'Set estimated annual rate of return and target investment horizon in years.' },
-      { timestamp: '1:15', title: 'Review Future Corpus & Multiplier', description: 'Inspect exponential wealth accumulation chart and compound interest multiplier.' }
-    ]
-  },
-  'sip-calculator': {
-    duration: '1:15',
-    durationSecs: 'PT1M15S',
-    thumbnailUrl: '/images/tools/sip-calculator-video-thumb.svg',
-    steps: [
-      { timestamp: '0:00', title: 'Enter Monthly SIP Amount', description: 'Specify your recurring monthly mutual fund or ETF investment budget.' },
-      { timestamp: '0:20', title: 'Set Expected Return Rate', description: 'Input expected annual CAGR (e.g. 12% to 15% for long-term index/equity funds).' },
-      { timestamp: '0:45', title: 'Adjust Investment Duration', description: 'Slide from 5 years to 30 years to see rupee-cost averaging and compounding acceleration.' },
-      { timestamp: '1:05', title: 'Analyze Wealth Creation Milestones', description: 'Compare total invested capital against estimated future corpus returns.' }
-    ]
-  },
-  'percentage-calculator': {
-    duration: '1:05',
-    durationSecs: 'PT1M05S',
-    thumbnailUrl: '/images/tools/percentage-calculator-video-thumb.svg',
-    steps: [
-      { timestamp: '0:00', title: 'Select Calculation Mode', description: 'Choose from Percentage of a Number, Percentage Change, or What % is X of Y.' },
-      { timestamp: '0:20', title: 'Input Values in Real Time', description: 'Type values into the input fields for immediate sub-millisecond calculation.' },
-      { timestamp: '0:45', title: 'Inspect Step-by-Step Formula', description: 'See the transparent mathematical derivation and formula behind the result.' },
-      { timestamp: '1:00', title: 'Copy or Share Answer', description: 'Copy the calculated percentage or final discounted amount with a single click.' }
-    ]
-  },
-  'json-formatter': {
-    duration: '1:12',
-    durationSecs: 'PT1M12S',
-    thumbnailUrl: '/images/tools/json-formatter-video-thumb.svg',
-    steps: [
-      { timestamp: '0:00', title: 'Paste or Load Raw JSON', description: 'Paste minified, unformatted JSON strings directly from API payloads or files.' },
-      { timestamp: '0:20', title: 'Instant Syntax Validation', description: 'Real-time RFC 8259 parser identifies syntax errors, missing quotes, or misplaced commas.' },
-      { timestamp: '0:45', title: 'Format or Minify Payload', description: 'Choose between 2-space indentation, 4-space tree formatting, or 1-line minification.' },
-      { timestamp: '1:05', title: 'One-Click Copy or Download', description: 'Copy formatted JSON or save clean .json files directly with zero server transfers.' }
-    ]
-  },
-  'base64-encoder': {
-    duration: '1:08',
-    durationSecs: 'PT1M08S',
-    thumbnailUrl: '/images/tools/base64-encoder-video-thumb.svg',
-    steps: [
-      { timestamp: '0:00', title: 'Select Encode or Decode Mode', description: 'Toggle between encoding plain text/files into Base64 or decoding Base64 back to UTF-8.' },
-      { timestamp: '0:20', title: 'Input Text or File Payload', description: 'Type or paste data into the input pane for instant real-time translation.' },
-      { timestamp: '0:45', title: 'Inspect Radix-64 Stream', description: 'Verify 6-bit translation chunks and standard = padding output.' },
-      { timestamp: '1:00', title: 'Copy Base64 Output', description: 'Copy encoded Base64 string or Data URI to clipboard ready for code embedding.' }
-    ]
-  },
-  'qr-code-generator': {
-    duration: '1:10',
-    durationSecs: 'PT1M10S',
-    thumbnailUrl: '/images/tools/qr-code-generator-video-thumb.svg',
-    steps: [
-      { timestamp: '0:00', title: 'Select QR Code Content Type', description: 'Choose URL, plain text, Wi-Fi network credentials, email, or contact card.' },
-      { timestamp: '0:22', title: 'Set Error Correction Level', description: 'Select Reed-Solomon restoration tier (L 7%, M 15%, Q 25%, or H 30%).' },
-      { timestamp: '0:45', title: 'Live In-Browser Matrix Generation', description: 'The ISO/IEC 18004 engine generates finder markers and data modules instantly.' },
-      { timestamp: '1:02', title: 'Download High-Resolution PNG', description: 'Save permanent, non-expiring QR code image ready for print, menus, and flyers.' }
-    ]
-  },
-  'password-generator': {
-    duration: '1:04',
-    durationSecs: 'PT1M04S',
-    thumbnailUrl: '/images/tools/password-generator-video-thumb.svg',
-    steps: [
-      { timestamp: '0:00', title: 'Choose Password Length', description: 'Select desired character length from 8 to 64 characters (16+ recommended).' },
-      { timestamp: '0:18', title: 'Toggle Character Sets', description: 'Enable or disable uppercase, lowercase, numbers, and special cryptographic symbols.' },
-      { timestamp: '0:40', title: 'Inspect Real-Time Entropy', description: 'Verify Shannon entropy score and estimated brute-force crack time.' },
-      { timestamp: '0:58', title: 'Secure One-Click Copy', description: 'Copy generated strong password directly to clipboard with zero server logging.' }
-    ]
-  }
-};
-
 const workflowDiagrams: Record<string, string> = {
   'png-to-jpg': '/images/tools/png-to-jpg-workflow.svg',
   'jpg-to-png': '/images/tools/jpg-to-png-workflow.svg',
@@ -332,69 +152,10 @@ const workflowDiagrams: Record<string, string> = {
   'password-generator': '/images/tools/password-entropy-infographic.svg',
 };
 
-const videoData = toolVideos[tool.slug];
 const diagramUrl = workflowDiagrams[tool.slug];
 
 const schemas: any[] = [webAppJsonLd, howToJsonLd];
 if (faqJsonLd) schemas.push(faqJsonLd);
-
-let durationSeconds = 75;
-if (videoData?.duration) {
-  const parts = videoData.duration.split(':');
-  if (parts.length === 2) {
-    durationSeconds = parseInt(parts[0], 10) * 60 + parseInt(parts[1], 10);
-  }
-}
-
-if (videoData) {
-  const videoTitle = tool.from && tool.to
-    ? `How to Convert ${tool.from.toUpperCase()} to ${tool.to.toUpperCase()} Online (Step-by-Step Tutorial)`
-    : `How to Use ${tool.name} Online (Step-by-Step Tutorial)`;
-  const videoDesc = `Complete step-by-step video demonstration of ${tool.name.toLowerCase()} directly in your browser with zero server uploads and instant processing.`;
-
-  const clips = videoData.steps.map((step, idx, arr) => {
-    const parts = step.timestamp.split(':');
-    const startSec = parseInt(parts[0], 10) * 60 + parseInt(parts[1], 10);
-    const nextStep = arr[idx + 1];
-    let endSec = startSec + 20;
-    if (nextStep) {
-      const nextParts = nextStep.timestamp.split(':');
-      endSec = parseInt(nextParts[0], 10) * 60 + parseInt(nextParts[1], 10);
-    }
-    return {
-      '@type': 'Clip',
-      name: step.title,
-      startOffset: startSec,
-      endOffset: endSec,
-      url: `${siteConfig.url}/${tool.slug}/#video-step-${idx}`,
-    };
-  });
-
-  schemas.push({
-    '@context': 'https://schema.org',
-    '@type': 'VideoObject',
-    name: videoTitle,
-    description: videoDesc,
-    thumbnailUrl: `${siteConfig.url}${videoData.thumbnailUrl}`,
-    uploadDate: '2026-11-16T08:00:00+00:00',
-    duration: videoData.durationSecs,
-    contentUrl: `${siteConfig.url}/${tool.slug}/#video-tutorial`,
-    embedUrl: `${siteConfig.url}/${tool.slug}/#video-tutorial`,
-    transcript: videoData.steps.map((s) => `${s.timestamp} ${s.title}: ${s.description}`).join(' '),
-    hasPart: clips,
-  });
-
-  schemas.push({
-    '@context': 'https://schema.org',
-    '@type': 'ImageObject',
-    contentUrl: `${siteConfig.url}${videoData.thumbnailUrl}`,
-    name: `${tool.name} Video Tutorial Thumbnail`,
-    description: `Video demonstration poster for ${tool.name}.`,
-    width: 1280,
-    height: 720,
-    caption: `${tool.name} Step-by-Step Video Walkthrough`,
-  });
-}
 
 if (diagramUrl) {
   schemas.push({
@@ -410,17 +171,7 @@ if (diagramUrl) {
   });
 }
 
-const ogVideoProp = videoData ? {
-  url: `${siteConfig.url}/${tool.slug}/#video-tutorial`,
-  type: 'text/html',
-  width: 1280,
-  height: 720,
-  duration: durationSeconds,
-} : undefined;
-
-const ogImageProp = videoData
-  ? `${siteConfig.url}${videoData.thumbnailUrl}`
-  : diagramUrl
+const ogImageProp = diagramUrl
   ? `${siteConfig.url}${diagramUrl}`
   : undefined;
 
@@ -445,7 +196,6 @@ if (tool.targetBytes) {
   jsonLd={schemas}
   noindex={!isIndexable}
   ogImage={ogImageProp}
-  ogVideo={ogVideoProp}
 >
   <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
     <!-- 1. Breadcrumbs -->
@@ -536,11 +286,6 @@ if (tool.targetBytes) {
         <a href="#how-to" class="px-3.5 py-1.5 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200 whitespace-nowrap hover:bg-emerald-100 transition">
           📖 How to Use
         </a>
-        {videoData && (
-          <a href="#video-tutorial" class="px-3.5 py-1.5 rounded-xl bg-gray-50 text-gray-700 border border-gray-200 whitespace-nowrap hover:bg-gray-100 transition">
-            🎬 Video Tutorial
-          </a>
-        )}
         <a href="#guide" class="px-3.5 py-1.5 rounded-xl bg-gray-50 text-gray-700 border border-gray-200 whitespace-nowrap hover:bg-gray-100 transition">
           ⚙️ Technical Guide
         </a>
@@ -567,19 +312,6 @@ if (tool.targetBytes) {
         <strong>{tool.name}</strong> is a free, fast online utility that lets you process files and calculations directly in your browser. It offers high quality output, instant downloads, and batch processing with no registration, no hidden fees, and no file size paywalls.
       </p>
     </div>
-
-    <!-- Video Demonstration & Tutorial Walkthrough -->
-    {videoData && (
-      <VideoTutorial
-        toolName={tool.name}
-        toolSlug={tool.slug}
-        fromFormat={tool.from || ''}
-        toFormat={tool.to || ''}
-        videoDurationText={videoData.duration}
-        thumbnailUrl={videoData.thumbnailUrl}
-        transcriptSteps={videoData.steps}
-      />
-    )}
 
     <!-- 6. How-to steps & custom notes -->
     <div id="guide">

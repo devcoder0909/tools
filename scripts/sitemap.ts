@@ -290,45 +290,10 @@ ${indexableTools.map((t) => generateUrlXml(`${siteConfig.url}/${t.slug}/`, t.las
 </urlset>`;
   fs.writeFileSync(path.join(DIST_DIR, 'sitemap-tools.xml'), toolsXml, 'utf-8');
 
-  // 4. Dedicated Google Video Sitemap (xmlns:video="http://www.google.com/schemas/sitemap-video/1.1")
-  const videoEntriesXml = TOOL_MEDIA_REGISTRY.map((m) => {
-    const pageUrl = `${siteConfig.url}/${m.slug}/`;
-    const thumbUrl = `${siteConfig.url}${m.thumbnailUrl}`;
-    const playerUrl = `${siteConfig.url}/${m.slug}/#video-tutorial`;
-    const tagsXml = m.tags.map((t) => `      <video:tag>${escapeXml(t)}</video:tag>`).join('\n');
-
-    return `  <url>
-    <loc>${pageUrl}</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <video:video>
-      <video:thumbnail_loc>${thumbUrl}</video:thumbnail_loc>
-      <video:title>${escapeXml(m.title)}</video:title>
-      <video:description>${escapeXml(m.description)}</video:description>
-      <video:content_loc>${playerUrl}</video:content_loc>
-      <video:player_loc allow_embed="yes">${playerUrl}</video:player_loc>
-      <video:duration>${m.durationSecs}</video:duration>
-      <video:publication_date>2026-11-16T08:00:00+00:00</video:publication_date>
-      <video:family_friendly>yes</video:family_friendly>
-      <video:live>no</video:live>
-${tagsXml}
-    </video:video>
-  </url>`;
-  }).join('\n');
-
-  const videoSitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-${videoEntriesXml}
-</urlset>`;
-  fs.writeFileSync(path.join(DIST_DIR, 'sitemap-video.xml'), videoSitemapXml, 'utf-8');
-
-  // 5. Dedicated Google Image Sitemap (xmlns:image="http://www.google.com/schemas/sitemap-image/1.1")
+  // 4. Dedicated Google Image Sitemap (genuine architectural diagrams & workflow infographics)
   const imageEntriesXml = TOOL_MEDIA_REGISTRY.map((m) => {
     const pageUrl = `${siteConfig.url}/${m.slug}/`;
     const diagramUrl = `${siteConfig.url}${m.diagramUrl}`;
-    const thumbUrl = `${siteConfig.url}${m.thumbnailUrl}`;
 
     return `  <url>
     <loc>${pageUrl}</loc>
@@ -339,11 +304,6 @@ ${videoEntriesXml}
       <image:loc>${diagramUrl}</image:loc>
       <image:title>${escapeXml(m.diagramTitle)}</image:title>
       <image:caption>${escapeXml(m.diagramCaption)}</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>${thumbUrl}</image:loc>
-      <image:title>${escapeXml(m.name)} Video Tutorial Demonstration Poster</image:title>
-      <image:caption>${escapeXml(m.description)}</image:caption>
     </image:image>
   </url>`;
   }).join('\n');
@@ -415,15 +375,11 @@ ${collegesUrls.map((p) => generateUrlXml(p.url, p.lastmod, 'weekly', p.priority)
 </urlset>`;
   fs.writeFileSync(path.join(DIST_DIR, 'sitemap-colleges.xml'), collegesXml, 'utf-8');
 
-  // 7. Sitemap Index (combining all 5 distinct shards + video + image)
+  // 6. Sitemap Index (combining all 4 distinct shards + image)
   const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>${siteConfig.url}/sitemap-tools.xml</loc>
-    <lastmod>${today}</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>${siteConfig.url}/sitemap-video.xml</loc>
     <lastmod>${today}</lastmod>
   </sitemap>
   <sitemap>
@@ -447,7 +403,7 @@ ${collegesUrls.map((p) => generateUrlXml(p.url, p.lastmod, 'weekly', p.priority)
   // Also write sitemap.xml as direct alias for crawlers requesting /sitemap.xml
   fs.writeFileSync(path.join(DIST_DIR, 'sitemap.xml'), sitemapIndex, 'utf-8');
 
-  console.log(`[Sitemap] Generated sitemap-index.xml, sitemap.xml, sitemap-video.xml (${TOOL_MEDIA_REGISTRY.length} videos), sitemap-image.xml (${TOOL_MEDIA_REGISTRY.length * 2} images), and standard shards (${indexableTools.length} indexable tools listed).`);
+  console.log(`[Sitemap] Generated sitemap-index.xml, sitemap.xml, sitemap-image.xml (${TOOL_MEDIA_REGISTRY.length} images), and standard shards (${indexableTools.length} indexable tools listed).`);
 }
 
 // Execute when called directly

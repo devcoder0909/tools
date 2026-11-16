@@ -47,7 +47,6 @@ Content-Signal: search=yes, ai-train=yes
 Sitemap: https://convert.gudmud.site/sitemap-index.xml
 Sitemap: https://convert.gudmud.site/sitemap.xml
 Sitemap: https://convert.gudmud.site/sitemap-tools.xml
-Sitemap: https://convert.gudmud.site/sitemap-video.xml
 Sitemap: https://convert.gudmud.site/sitemap-image.xml
 Sitemap: https://convert.gudmud.site/sitemap-pages.xml
 Sitemap: https://convert.gudmud.site/sitemap-formats.xml
