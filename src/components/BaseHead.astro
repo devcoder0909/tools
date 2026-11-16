@@ -21,12 +21,22 @@ const {
   noindex = false,
 } = Astro.props;
 
-// Format title with brand if not already present and if within 60 chars limit
-let fullTitle = title;
-if (!title.includes(siteConfig.brand) && !title.includes('|')) {
-  const branded = `${title} | ${siteConfig.brand}`;
-  if (branded.length <= 60) {
-    fullTitle = branded;
+// Format title: only append brand if it doesn't already have it and fits comfortably <= 60 chars
+let fullTitle = title.trim();
+if (!fullTitle.includes(siteConfig.brand)) {
+  const withBrand = `${fullTitle} | ${siteConfig.brand}`;
+  if (withBrand.length <= 60) {
+    fullTitle = withBrand;
+  }
+}
+// Safety guard: ensure fullTitle never exceeds 60 characters
+if (fullTitle.length > 60) {
+  const pipeIndex = fullTitle.lastIndexOf(' | ');
+  if (pipeIndex >= 30) {
+    fullTitle = fullTitle.slice(0, pipeIndex);
+  }
+  if (fullTitle.length > 60) {
+    fullTitle = fullTitle.slice(0, 60).trim();
   }
 }
 ---
@@ -44,8 +54,9 @@ if (!title.includes(siteConfig.brand) && !title.includes('|')) {
 <link rel="manifest" href="/manifest.webmanifest" />
 <meta name="generator" content={Astro.generator} />
 
-<!-- Canonical URL -->
+<!-- Canonical & Discovery -->
 <link rel="canonical" href={canonical} />
+<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap-index.xml" />
 
 <!-- Primary Meta Tags -->
 <title>{fullTitle}</title>

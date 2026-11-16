@@ -99,6 +99,38 @@ export default function MediaShell({ toolId }: MediaShellProps) {
   const [timerSecondsLeft, setTimerSecondsLeft] = useState(300);
   const [isTimerRunning, setIsTimerRunning] = useState(false);
 
+  // Pomodoro Timer State
+  const [pomoMode, setPomoMode] = useState<'focus' | 'short' | 'long'>('focus');
+  const [pomoSecs, setPomoSecs] = useState(25 * 60);
+  const [isPomoActive, setIsPomoActive] = useState(false);
+  const [pomoCount, setPomoCount] = useState(0);
+
+  useEffect(() => {
+    let interval: any = null;
+    if (isPomoActive && pomoSecs > 0) {
+      interval = setInterval(() => setPomoSecs((prev) => prev - 1), 1000);
+    } else if (pomoSecs === 0 && isPomoActive) {
+      setIsPomoActive(false);
+      try {
+        const audioCtx = new (window.AudioContext || (window as any).webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        osc.connect(audioCtx.destination);
+        osc.frequency.value = 587.33;
+        osc.start();
+        setTimeout(() => osc.stop(), 500);
+      } catch {}
+      if (pomoMode === 'focus') {
+        setPomoCount((c) => c + 1);
+        setPomoMode('short');
+        setPomoSecs(5 * 60);
+      } else {
+        setPomoMode('focus');
+        setPomoSecs(25 * 60);
+      }
+    }
+    return () => clearInterval(interval);
+  }, [isPomoActive, pomoSecs, pomoMode]);
+
   // Stopwatch
   const [stopwatchMs, setStopwatchMs] = useState(0);
   const [isStopwatchRunning, setIsStopwatchRunning] = useState(false);
@@ -489,6 +521,71 @@ export default function MediaShell({ toolId }: MediaShellProps) {
               )}
             </div>
           )}
+        </div>
+      )}
+
+      {/* Pomodoro Timer */}
+      {toolId === 'pomodoro-timer' && (
+        <div class="space-y-6 max-w-md mx-auto text-center">
+          {/* Mode Switcher */}
+          <div class="flex justify-center gap-2 border-b border-gray-200 pb-3">
+            {[
+              { id: 'focus', label: 'Focus (25m)', sec: 25 * 60 },
+              { id: 'short', label: 'Short Break (5m)', sec: 5 * 60 },
+              { id: 'long', label: 'Long Break (15m)', sec: 15 * 60 },
+            ].map((m) => (
+              <button
+                key={m.id}
+                type="button"
+                onClick={() => {
+                  setPomoMode(m.id as any);
+                  setPomoSecs(m.sec);
+                  setIsPomoActive(false);
+                }}
+                class={`px-3 py-1.5 text-xs font-bold rounded-lg transition ${
+                  pomoMode === m.id
+                    ? 'bg-green-600 text-white shadow-xs'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                {m.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Clock Display */}
+          <div class="p-8 rounded-3xl bg-gray-50 border border-gray-200">
+            <span class="text-xs uppercase font-bold text-gray-500 tracking-wider">
+              {pomoMode === 'focus' ? '🎯 Work Focus Session' : pomoMode === 'short' ? '☕ 5-Minute Break' : '🌴 15-Minute Long Break'}
+            </span>
+            <div class="text-7xl font-extrabold font-mono text-gray-900 tracking-tight my-4">
+              {formatTimer(pomoSecs)}
+            </div>
+            <p class="text-xs text-gray-500">
+              Completed Pomodoro Cycles Today: <strong class="text-green-700 font-bold">{pomoCount}</strong>
+            </p>
+          </div>
+
+          {/* Controls */}
+          <div class="flex justify-center gap-3">
+            <button
+              type="button"
+              onClick={() => setIsPomoActive(!isPomoActive)}
+              class="px-8 py-3 text-sm font-bold rounded-xl bg-green-600 text-white hover:bg-green-700 transition shadow-xs"
+            >
+              {isPomoActive ? 'Pause' : 'Start Focus'}
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                setIsPomoActive(false);
+                setPomoSecs(pomoMode === 'focus' ? 25 * 60 : pomoMode === 'short' ? 5 * 60 : 15 * 60);
+              }}
+              class="px-5 py-3 text-sm font-semibold rounded-xl border border-gray-300 text-gray-700 hover:bg-gray-50 transition"
+            >
+              Reset
+            </button>
+          </div>
         </div>
       )}
 

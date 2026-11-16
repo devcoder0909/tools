@@ -261,21 +261,37 @@ export default function TargetSizeShell({
       <div class="mb-6 p-4 bg-gray-50 rounded-xl border border-gray-200 flex flex-wrap items-center justify-between gap-4">
         <div class="flex items-center space-x-3">
           <label class="text-xs font-bold text-gray-700 uppercase tracking-wider">Target Size:</label>
-          <div class="flex items-center space-x-1">
-            {[50, 100, 200, 500, 1024].map((kb) => (
+          <div class="flex items-center space-x-1 flex-wrap gap-1">
+            {[20, 50, 100, 200, 500, 1024].map((kb) => (
               <button
                 key={kb}
                 type="button"
                 onClick={() => setTargetKb(kb)}
                 class={`px-2.5 py-1 text-xs font-semibold rounded-lg transition ${
                   targetKb === kb
-                    ? 'bg-green-600 text-white'
+                    ? 'bg-green-600 text-white shadow-xs'
                     : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-100'
                 }`}
               >
                 {kb >= 1024 ? `${kb / 1024}MB` : `${kb}KB`}
               </button>
             ))}
+            <div class="flex items-center ml-2">
+              <input
+                type="number"
+                min="5"
+                max="10240"
+                value={targetKb}
+                onChange={(e) => {
+                  const val = parseInt((e.target as HTMLInputElement).value, 10);
+                  if (val > 0) setTargetKb(val);
+                }}
+                class="w-16 px-2 py-1 text-xs font-mono border border-gray-300 rounded-l-lg bg-white text-gray-900 focus:ring-1 focus:ring-green-500"
+              />
+              <span class="px-2 py-1 text-xs bg-gray-100 border border-l-0 border-gray-300 rounded-r-lg text-gray-600 font-semibold">
+                KB
+              </span>
+            </div>
           </div>
         </div>
 

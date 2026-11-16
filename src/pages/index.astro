@@ -15,20 +15,20 @@ const formatHubs = getFormatHubs();
 const featuredSlugs = [
   'image-compressor',
   'compress-image-to-20kb',
-  'qr-code-generator',
+  'pdf-to-jpg',
   'merge-pdf',
-  'compress-pdf',
-  'split-pdf',
+  'qr-code-generator',
+  'gst-calculator',
   'loan-calculator',
-  'mortgage-calculator',
+  'gpa-calculator',
+  'color-picker',
+  'aspect-ratio-calculator',
+  'base64-encoder',
   'character-counter',
   'online-calculator',
-  'password-generator',
-  'emi-calculator',
-  'celsius-to-fahrenheit',
-  'online-stopwatch',
-  'currency-converter',
-  'text-to-speech',
+  'pomodoro-timer',
+  'lorem-ipsum-generator',
+  'compress-pdf',
 ];
 const featuredTools = featuredSlugs
   .map((slug) => allTools.find((t) => t.slug === slug))
@@ -156,7 +156,7 @@ const faqJsonLd = {
           <p class="text-sm text-gray-500">Most popular free file converters, PDF editors, image compressors, and calculators.</p>
         </div>
         <a href="/tools/" class="text-sm font-semibold text-green-600 hover:underline">
-          View all 60+ tools &rarr;
+          View all 70+ tools &rarr;
         </a>
       </div>
 
@@ -280,7 +280,7 @@ const faqJsonLd = {
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-        {calculators.slice(0, 8).map((calc) => (
+        {calculators.slice(0, 12).map((calc) => (
           <a
             href={`/${calc.slug}/`}
             class="p-5 rounded-xl border border-gray-200 bg-white hover:border-emerald-500 hover:shadow-xs transition group"
@@ -314,7 +314,7 @@ const faqJsonLd = {
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-        {generatorsAndMedia.slice(0, 8).map((tool) => (
+        {generatorsAndMedia.slice(0, 12).map((tool) => (
           <a
             href={`/${tool.slug}/`}
             class="p-5 rounded-xl border border-gray-200 bg-white hover:border-purple-500 hover:shadow-xs transition group"

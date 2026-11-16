@@ -140,6 +140,41 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
     return Number(result.toFixed(2));
   }, [currAmount, currFrom, currTo]);
 
+  // --- GST Calculator State ---
+  const [gstAmount, setGstAmount] = useState<number>(5000);
+  const [gstRate, setGstRate] = useState<number>(18);
+  const [gstType, setGstType] = useState<'exclusive' | 'inclusive'>('exclusive');
+
+  const gstCalc = useMemo(() => {
+    const rate = Number(gstRate) || 0;
+    const amount = Number(gstAmount) || 0;
+
+    let netAmount = 0;
+    let totalGst = 0;
+    let grossTotal = 0;
+
+    if (gstType === 'exclusive') {
+      netAmount = amount;
+      totalGst = (amount * rate) / 100;
+      grossTotal = netAmount + totalGst;
+    } else {
+      grossTotal = amount;
+      netAmount = amount / (1 + rate / 100);
+      totalGst = grossTotal - netAmount;
+    }
+
+    const cgst = totalGst / 2;
+    const sgst = totalGst / 2;
+
+    return {
+      netAmount: Math.round(netAmount * 100) / 100,
+      totalGst: Math.round(totalGst * 100) / 100,
+      grossTotal: Math.round(grossTotal * 100) / 100,
+      cgst: Math.round(cgst * 100) / 100,
+      sgst: Math.round(sgst * 100) / 100,
+    };
+  }, [gstAmount, gstRate, gstType]);
+
   return (
     <div class="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-xs mb-10">
       {/* 1. EMI / Loan / Mortgage Calculator */}
@@ -459,6 +494,100 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
             <p class="text-xs text-gray-500">
               1 {currFrom} = {(currencyRates[currTo].rate / currencyRates[currFrom].rate).toFixed(4)} {currTo} • Reference benchmark
             </p>
+          </div>
+        </div>
+      )}
+
+      {/* 5. GST Calculator */}
+      {toolId === 'gst-calculator' && (
+        <div class="space-y-6 max-w-xl mx-auto">
+          {/* Inclusive / Exclusive Toggle */}
+          <div class="flex items-center justify-center gap-2 p-1 bg-gray-100 rounded-xl w-fit mx-auto border border-gray-200">
+            <button
+              type="button"
+              onClick={() => setGstType('exclusive')}
+              class={`px-4 py-2 text-xs font-bold rounded-lg transition ${
+                gstType === 'exclusive' ? 'bg-white text-green-700 shadow-xs' : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              GST Exclusive (Add GST)
+            </button>
+            <button
+              type="button"
+              onClick={() => setGstType('inclusive')}
+              class={`px-4 py-2 text-xs font-bold rounded-lg transition ${
+                gstType === 'inclusive' ? 'bg-white text-green-700 shadow-xs' : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              GST Inclusive (Remove GST)
+            </button>
+          </div>
+
+          {/* Amount and Rate Selection */}
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+                {gstType === 'exclusive' ? 'Net Initial Amount' : 'Gross Total Amount'}
+              </label>
+              <input
+                type="number"
+                min="1"
+                step="any"
+                value={gstAmount}
+                onInput={(e) => setGstAmount(Number((e.target as HTMLInputElement).value))}
+                class="w-full px-3 py-2 text-sm font-bold border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+              />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+                GST Rate (%)
+              </label>
+              <div class="flex items-center gap-1">
+                {[5, 12, 18, 28].map((rate) => (
+                  <button
+                    key={rate}
+                    type="button"
+                    onClick={() => setGstRate(rate)}
+                    class={`flex-1 py-2 text-xs font-bold rounded-lg border transition ${
+                      gstRate === rate
+                        ? 'bg-green-600 text-white border-green-600 shadow-xs'
+                        : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
+                    }`}
+                  >
+                    {rate}%
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Results Summary Card */}
+          <div class="bg-gray-50 border border-gray-200 rounded-2xl p-6">
+            <span class="text-xs uppercase font-semibold text-gray-500 block text-center">
+              Total Payable Amount
+            </span>
+            <p class="text-3xl sm:text-4xl font-extrabold text-green-700 my-2 text-center font-mono">
+              ₹{gstCalc.grossTotal.toLocaleString()}
+            </p>
+
+            <div class="divide-y divide-gray-200 border-t border-gray-200 mt-4 pt-2 text-xs">
+              <div class="flex justify-between py-2 text-gray-600">
+                <span>Net Pre-Tax Amount:</span>
+                <span class="font-bold text-gray-900 font-mono">₹{gstCalc.netAmount.toLocaleString()}</span>
+              </div>
+              <div class="flex justify-between py-2 text-gray-600">
+                <span>Total GST ({gstRate}%):</span>
+                <span class="font-bold text-green-700 font-mono">+₹{gstCalc.totalGst.toLocaleString()}</span>
+              </div>
+              <div class="flex justify-between py-2 text-gray-500">
+                <span>CGST ({gstRate / 2}%):</span>
+                <span class="font-mono">₹{gstCalc.cgst.toLocaleString()}</span>
+              </div>
+              <div class="flex justify-between py-2 text-gray-500">
+                <span>SGST / UTGST ({gstRate / 2}%):</span>
+                <span class="font-mono">₹{gstCalc.sgst.toLocaleString()}</span>
+              </div>
+            </div>
           </div>
         </div>
       )}

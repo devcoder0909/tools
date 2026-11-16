@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'preact/hooks';
+import { useState, useMemo, useEffect } from 'preact/hooks';
 
 interface TextShellProps {
   toolId: string;
@@ -6,6 +6,79 @@ interface TextShellProps {
 }
 
 export default function TextShell({ toolId, toolName: _toolName }: TextShellProps) {
+  // Lorem Ipsum Generator State
+  const [loremType, setLoremType] = useState<'paragraphs' | 'sentences' | 'words'>('paragraphs');
+  const [loremCount, setLoremCount] = useState<number>(3);
+  const [startWithLorem, setStartWithLorem] = useState<boolean>(true);
+  const [loremOutput, setLoremOutput] = useState<string>('');
+
+  const latinWords = [
+    'lorem', 'ipsum', 'dolor', 'sit', 'amet', 'consectetur', 'adipiscing', 'elit', 'sed', 'do',
+    'eiusmod', 'tempor', 'incididunt', 'ut', 'labore', 'et', 'dolore', 'magna', 'aliqua', 'enim',
+    'ad', 'minim', 'veniam', 'quis', 'nostrud', 'exercitation', 'ullamco', 'laboris', 'nisi', 'aliquip',
+    'ex', 'ea', 'commodo', 'consequat', 'duis', 'aute', 'irure', 'in', 'reprehenderit', 'voluptate',
+    'velit', 'esse', 'cillum', 'fugiat', 'nulla', 'pariatur', 'excepteur', 'sint', 'occaecat', 'cupidatat',
+    'non', 'proident', 'sunt', 'culpa', 'qui', 'officia', 'deserunt', 'mollit', 'anim', 'id', 'est', 'laborum'
+  ];
+
+  const generateLorem = () => {
+    const getRandomWord = () => latinWords[Math.floor(Math.random() * latinWords.length)];
+    const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+
+    if (loremType === 'words') {
+      const words: string[] = [];
+      if (startWithLorem && loremCount >= 2) {
+        words.push('Lorem', 'ipsum');
+        while (words.length < loremCount) words.push(getRandomWord());
+      } else {
+        for (let i = 0; i < loremCount; i++) {
+          words.push(i === 0 ? capitalize(getRandomWord()) : getRandomWord());
+        }
+      }
+      setLoremOutput(words.join(' '));
+      return;
+    }
+
+    const generateSentence = (forceLorem = false) => {
+      const len = 8 + Math.floor(Math.random() * 8);
+      const w: string[] = [];
+      if (forceLorem) {
+        w.push('Lorem', 'ipsum', 'dolor', 'sit', 'amet,', 'consectetur', 'adipiscing', 'elit');
+      } else {
+        for (let i = 0; i < len; i++) {
+          w.push(i === 0 ? capitalize(getRandomWord()) : getRandomWord());
+        }
+      }
+      return w.join(' ') + '.';
+    };
+
+    if (loremType === 'sentences') {
+      const sentences: string[] = [];
+      for (let i = 0; i < loremCount; i++) {
+        sentences.push(generateSentence(i === 0 && startWithLorem));
+      }
+      setLoremOutput(sentences.join(' '));
+      return;
+    }
+
+    // Paragraphs
+    const paras: string[] = [];
+    for (let p = 0; p < loremCount; p++) {
+      const sentenceCount = 4 + Math.floor(Math.random() * 3);
+      const s: string[] = [];
+      for (let i = 0; i < sentenceCount; i++) {
+        s.push(generateSentence(p === 0 && i === 0 && startWithLorem));
+      }
+      paras.push(s.join(' '));
+    }
+    setLoremOutput(paras.join('\n\n'));
+  };
+
+  useEffect(() => {
+    if (toolId === 'lorem-ipsum-generator') {
+      generateLorem();
+    }
+  }, [toolId, loremType, loremCount, startWithLorem]);
   const [text, setText] = useState<string>(
     toolId === 'json-formatter'
       ? '{"name":"Best Converter","type":"client-side","features":["privacy","speed","zero-upload"],"active":true}'
@@ -354,6 +427,80 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
           <div class="flex justify-between items-center text-xs text-gray-500">
             <span>Size: {(new Blob([text]).size / 1024).toFixed(2)} KB</span>
             <span class="text-green-700 font-medium">100% Client-Side Validation & Formatting</span>
+          </div>
+        </div>
+      )}
+
+      {/* Lorem Ipsum Generator */}
+      {toolId === 'lorem-ipsum-generator' && (
+        <div class="space-y-6 max-w-2xl mx-auto">
+          {/* Controls */}
+          <div class="p-4 bg-gray-50 rounded-xl border border-gray-200 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <label class="text-xs font-bold text-gray-700 uppercase tracking-wider">Generate:</label>
+              <input
+                type="number"
+                min="1"
+                max="50"
+                value={loremCount}
+                onInput={(e) => setLoremCount(Math.max(1, Number((e.target as HTMLInputElement).value)))}
+                class="w-16 px-2 py-1 text-xs font-bold font-mono border border-gray-300 rounded-lg text-center"
+              />
+              <select
+                value={loremType}
+                onChange={(e) => setLoremType((e.target as HTMLSelectElement).value as any)}
+                class="px-3 py-1 text-xs font-semibold border border-gray-300 rounded-lg bg-white"
+              >
+                <option value="paragraphs">Paragraphs</option>
+                <option value="sentences">Sentences</option>
+                <option value="words">Words</option>
+              </select>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <label class="flex items-center gap-2 cursor-pointer text-xs font-medium text-gray-700 select-none">
+                <input
+                  type="checkbox"
+                  checked={startWithLorem}
+                  onChange={(e) => setStartWithLorem((e.target as HTMLInputElement).checked)}
+                  class="rounded text-green-600 focus:ring-green-500"
+                />
+                Start with "Lorem ipsum"
+              </label>
+
+              <button
+                type="button"
+                onClick={generateLorem}
+                class="px-4 py-1.5 bg-green-600 hover:bg-green-700 text-white rounded-lg text-xs font-bold transition shadow-xs"
+              >
+                Regenerate
+              </button>
+            </div>
+          </div>
+
+          {/* Output Display */}
+          <div class="space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Generated Text</span>
+              <button
+                type="button"
+                onClick={() => {
+                  navigator.clipboard.writeText(loremOutput);
+                  setCopied(true);
+                  setTimeout(() => setCopied(false), 1800);
+                }}
+                class="px-3 py-1 text-xs font-semibold rounded-lg bg-green-50 hover:bg-green-100 text-green-700 border border-green-200 transition"
+              >
+                {copied ? '✓ Copied to Clipboard' : 'Copy Text'}
+              </button>
+            </div>
+
+            <textarea
+              rows={10}
+              readOnly
+              value={loremOutput}
+              class="w-full p-4 rounded-xl border border-gray-300 bg-white font-serif text-sm leading-relaxed text-gray-800 focus:ring-2 focus:ring-green-500"
+            />
           </div>
         </div>
       )}

@@ -32,6 +32,60 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
   const [tipRate, setTipRate] = useState<string>('18');
   const [splitCount, setSplitCount] = useState<string>('2');
 
+  // GPA Calculator State
+  const [courses, setCourses] = useState([
+    { id: 'c1', name: 'Course 1', grade: 'A', credits: 3 },
+    { id: 'c2', name: 'Course 2', grade: 'A-', credits: 4 },
+    { id: 'c3', name: 'Course 3', grade: 'B+', credits: 3 },
+    { id: 'c4', name: 'Course 4', grade: 'A', credits: 3 },
+  ]);
+
+  const gradePointsMap: Record<string, number> = {
+    'A+': 4.0, 'A': 4.0, 'A-': 3.7,
+    'B+': 3.3, 'B': 3.0, 'B-': 2.7,
+    'C+': 2.3, 'C': 2.0, 'C-': 1.7,
+    'D+': 1.3, 'D': 1.0, 'F': 0.0,
+  };
+
+  const gpaResult = useMemo(() => {
+    let totalPoints = 0;
+    let totalCredits = 0;
+    for (const c of courses) {
+      const cr = Number(c.credits) || 0;
+      const gp = gradePointsMap[c.grade] ?? 4.0;
+      totalPoints += gp * cr;
+      totalCredits += cr;
+    }
+    const gpa = totalCredits > 0 ? totalPoints / totalCredits : 0;
+    let standing = 'Good Academic Standing';
+    if (gpa >= 3.9) standing = 'Summa Cum Laude (Highest Honors)';
+    else if (gpa >= 3.7) standing = 'Magna Cum Laude (High Honors)';
+    else if (gpa >= 3.5) standing = 'Cum Laude (Dean\'s List)';
+    else if (gpa < 2.0 && totalCredits > 0) standing = 'Academic Probation Warning';
+
+    return {
+      gpa: gpa.toFixed(2),
+      totalCredits,
+      totalPoints: totalPoints.toFixed(1),
+      standing,
+    };
+  }, [courses]);
+
+  // Aspect Ratio Calculator State
+  const [arWidth, setArWidth] = useState<number>(1920);
+  const [arHeight, setArHeight] = useState<number>(1080);
+  const [arNewWidth, setArNewWidth] = useState<number>(1280);
+  const [arNewHeight, setArNewHeight] = useState<number>(720);
+
+  const gcd = (a: number, b: number): number => (b === 0 ? a : gcd(b, a % b));
+
+  const arRatio = useMemo(() => {
+    const w = Math.round(arWidth) || 1;
+    const h = Math.round(arHeight) || 1;
+    const d = gcd(w, h);
+    return `${w / d}:${h / d}`;
+  }, [arWidth, arHeight]);
+
   // Scientific Calculator State
   const [calcExpr, setCalcExpr] = useState<string>('0');
   const [calcPrev, setCalcPrev] = useState<string>('');
@@ -667,6 +721,217 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
                 {btn}
               </button>
             ))}
+          </div>
+        </div>
+      )}
+
+      {/* GPA Calculator */}
+      {toolId === 'gpa-calculator' && (
+        <div class="space-y-6 max-w-2xl mx-auto">
+          {/* GPA Score Card */}
+          <div class="bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 rounded-2xl p-6 text-center">
+            <span class="text-xs uppercase font-bold text-green-700 tracking-wider">
+              Cumulative Grade Point Average (GPA)
+            </span>
+            <p class="text-4xl sm:text-5xl font-extrabold text-green-800 my-2 font-mono">
+              {gpaResult.gpa} <span class="text-xl text-gray-400">/ 4.0</span>
+            </p>
+            <p class="text-xs font-semibold text-green-700">{gpaResult.standing}</p>
+            <div class="flex justify-center gap-6 mt-4 pt-3 border-t border-green-200/60 text-xs text-gray-600">
+              <span>Total Credits: <strong>{gpaResult.totalCredits}</strong></span>
+              <span>Total Grade Points: <strong>{gpaResult.totalPoints}</strong></span>
+            </div>
+          </div>
+
+          {/* Courses Table */}
+          <div class="border border-gray-200 rounded-xl overflow-hidden bg-white">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-gray-50 font-bold text-gray-600 border-b border-gray-200">
+                <tr>
+                  <th class="p-3">Course Name</th>
+                  <th class="p-3">Grade</th>
+                  <th class="p-3">Credits</th>
+                  <th class="p-3 text-right">Action</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100">
+                {courses.map((c, idx) => (
+                  <tr key={c.id}>
+                    <td class="p-3">
+                      <input
+                        type="text"
+                        value={c.name}
+                        onInput={(e) => {
+                          const updated = [...courses];
+                          updated[idx].name = (e.target as HTMLInputElement).value;
+                          setCourses(updated);
+                        }}
+                        class="w-full px-2 py-1 border border-gray-300 rounded text-xs"
+                      />
+                    </td>
+                    <td class="p-3">
+                      <select
+                        value={c.grade}
+                        onChange={(e) => {
+                          const updated = [...courses];
+                          updated[idx].grade = (e.target as HTMLSelectElement).value;
+                          setCourses(updated);
+                        }}
+                        class="px-2 py-1 border border-gray-300 rounded text-xs font-bold"
+                      >
+                        {Object.keys(gradePointsMap).map((g) => (
+                          <option value={g}>{g} ({gradePointsMap[g].toFixed(1)})</option>
+                        ))}
+                      </select>
+                    </td>
+                    <td class="p-3">
+                      <input
+                        type="number"
+                        min="1"
+                        max="10"
+                        value={c.credits}
+                        onInput={(e) => {
+                          const updated = [...courses];
+                          updated[idx].credits = Number((e.target as HTMLInputElement).value);
+                          setCourses(updated);
+                        }}
+                        class="w-16 px-2 py-1 border border-gray-300 rounded text-xs font-mono"
+                      />
+                    </td>
+                    <td class="p-3 text-right">
+                      {courses.length > 1 && (
+                        <button
+                          type="button"
+                          onClick={() => setCourses(courses.filter((_, i) => i !== idx))}
+                          class="text-red-500 hover:text-red-700 font-bold text-xs"
+                        >
+                          ✕
+                        </button>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setCourses([...courses, { id: `c-${Date.now()}`, name: `Course ${courses.length + 1}`, grade: 'A', credits: 3 }])}
+            class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-lg text-xs font-bold transition flex items-center gap-1.5"
+          >
+            + Add Another Course
+          </button>
+        </div>
+      )}
+
+      {/* Aspect Ratio Calculator */}
+      {toolId === 'aspect-ratio-calculator' && (
+        <div class="space-y-6 max-w-2xl mx-auto">
+          {/* Quick Presets */}
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class="text-xs font-bold text-gray-700 uppercase">Popular Ratios:</span>
+            {[
+              { label: '16:9 (HD Video)', w: 1920, h: 1080 },
+              { label: '4:3 (Standard)', w: 1024, h: 768 },
+              { label: '1:1 (Square)', w: 1080, h: 1080 },
+              { label: '9:16 (Reels / TikTok)', w: 1080, h: 1920 },
+              { label: '21:9 (Ultrawide)', w: 2560, h: 1080 },
+            ].map((p) => (
+              <button
+                key={p.label}
+                type="button"
+                onClick={() => {
+                  setArWidth(p.w);
+                  setArHeight(p.h);
+                  setArNewWidth(p.w);
+                  setArNewHeight(p.h);
+                }}
+                class="px-2.5 py-1 text-xs bg-gray-100 hover:bg-green-100 hover:text-green-700 rounded-lg border border-gray-200 transition"
+              >
+                {p.label}
+              </button>
+            ))}
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {/* Original Dimensions */}
+            <div class="p-5 bg-gray-50 rounded-xl border border-gray-200 space-y-3">
+              <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider">
+                Original Resolution
+              </label>
+              <div class="flex items-center gap-2">
+                <input
+                  type="number"
+                  min="1"
+                  value={arWidth}
+                  onInput={(e) => {
+                    const w = Number((e.target as HTMLInputElement).value);
+                    setArWidth(w);
+                    if (w > 0 && arHeight > 0) {
+                      setArNewHeight(Math.round((arNewWidth * arHeight) / w));
+                    }
+                  }}
+                  class="flex-1 px-3 py-2 text-sm font-mono border border-gray-300 rounded-lg font-bold"
+                  placeholder="Width"
+                />
+                <span class="text-gray-400 font-bold">×</span>
+                <input
+                  type="number"
+                  min="1"
+                  value={arHeight}
+                  onInput={(e) => {
+                    const h = Number((e.target as HTMLInputElement).value);
+                    setArHeight(h);
+                    if (arWidth > 0 && h > 0) {
+                      setArNewHeight(Math.round((arNewWidth * h) / arWidth));
+                    }
+                  }}
+                  class="flex-1 px-3 py-2 text-sm font-mono border border-gray-300 rounded-lg font-bold"
+                  placeholder="Height"
+                />
+              </div>
+              <p class="text-xs text-gray-500">Calculated Aspect Ratio: <strong class="text-green-700 font-mono">{arRatio}</strong></p>
+            </div>
+
+            {/* Resize Calculation */}
+            <div class="p-5 bg-gray-50 rounded-xl border border-gray-200 space-y-3">
+              <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider">
+                Scaled Target Resolution
+              </label>
+              <div class="flex items-center gap-2">
+                <input
+                  type="number"
+                  min="1"
+                  value={arNewWidth}
+                  onInput={(e) => {
+                    const nw = Number((e.target as HTMLInputElement).value);
+                    setArNewWidth(nw);
+                    if (arWidth > 0 && arHeight > 0 && nw > 0) {
+                      setArNewHeight(Math.round((nw * arHeight) / arWidth));
+                    }
+                  }}
+                  class="flex-1 px-3 py-2 text-sm font-mono border border-gray-300 rounded-lg font-bold text-green-700"
+                  placeholder="New Width"
+                />
+                <span class="text-gray-400 font-bold">×</span>
+                <input
+                  type="number"
+                  min="1"
+                  value={arNewHeight}
+                  onInput={(e) => {
+                    const nh = Number((e.target as HTMLInputElement).value);
+                    setArNewHeight(nh);
+                    if (arWidth > 0 && arHeight > 0 && nh > 0) {
+                      setArNewWidth(Math.round((nh * arWidth) / arHeight));
+                    }
+                  }}
+                  class="flex-1 px-3 py-2 text-sm font-mono border border-gray-300 rounded-lg font-bold text-green-700"
+                  placeholder="New Height"
+                />
+              </div>
+              <p class="text-xs text-gray-500">Changing either value auto-calculates the other</p>
+            </div>
           </div>
         </div>
       )}

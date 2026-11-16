@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'preact/hooks';
+import { useState, useMemo, useEffect } from 'preact/hooks';
 
 interface DeveloperShellProps {
   toolId: string;
@@ -6,6 +6,77 @@ interface DeveloperShellProps {
 }
 
 export default function DeveloperShell({ toolId }: DeveloperShellProps) {
+  // --- Color Picker State ---
+  const [hexColor, setHexColor] = useState('#16a34a');
+  const [copiedColor, setCopiedColor] = useState<string | null>(null);
+
+  const colorValues = useMemo(() => {
+    let hex = hexColor.trim();
+    if (!hex.startsWith('#')) hex = '#' + hex;
+    if (hex.length === 4) {
+      hex = '#' + hex[1] + hex[1] + hex[2] + hex[2] + hex[3] + hex[3];
+    }
+    const r = parseInt(hex.slice(1, 3), 16) || 0;
+    const g = parseInt(hex.slice(3, 5), 16) || 0;
+    const b = parseInt(hex.slice(5, 7), 16) || 0;
+
+    const rNorm = r / 255;
+    const gNorm = g / 255;
+    const bNorm = b / 255;
+    const max = Math.max(rNorm, gNorm, bNorm);
+    const min = Math.min(rNorm, gNorm, bNorm);
+    let h = 0;
+    let s = 0;
+    const l = (max + min) / 2;
+
+    if (max !== min) {
+      const d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      switch (max) {
+        case rNorm: h = (gNorm - bNorm) / d + (gNorm < bNorm ? 6 : 0); break;
+        case gNorm: h = (bNorm - rNorm) / d + 2; break;
+        case bNorm: h = (rNorm - gNorm) / d + 4; break;
+      }
+      h = Math.round(h * 60);
+    }
+    const sPct = Math.round(s * 100);
+    const lPct = Math.round(l * 100);
+
+    const rgbStr = `rgb(${r}, ${g}, ${b})`;
+    const hslStr = `hsl(${h}, ${sPct}%, ${lPct}%)`;
+    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+    const textColor = luminance > 0.5 ? '#111827' : '#ffffff';
+
+    return { hex, r, g, b, h, sPct, lPct, rgbStr, hslStr, textColor };
+  }, [hexColor]);
+
+  // --- Base64 Encoder / Decoder State ---
+  const [b64Mode, setB64Mode] = useState<'encode' | 'decode'>('encode');
+  const [b64Input, setB64Input] = useState('Hello World! Best Converter processes data 100% in browser.');
+  const [b64Output, setB64Output] = useState('');
+  const [b64Copied, setB64Copied] = useState(false);
+
+  useEffect(() => {
+    try {
+      if (b64Mode === 'encode') {
+        const bytes = new TextEncoder().encode(b64Input);
+        let binary = '';
+        for (let i = 0; i < bytes.byteLength; i++) {
+          binary += String.fromCharCode(bytes[i]);
+        }
+        setB64Output(btoa(binary));
+      } else {
+        const binary = atob(b64Input.trim());
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < binary.length; i++) {
+          bytes[i] = binary.charCodeAt(i);
+        }
+        setB64Output(new TextDecoder().decode(bytes));
+      }
+    } catch {
+      setB64Output(b64Mode === 'encode' ? 'Error encoding' : 'Invalid Base64 input string');
+    }
+  }, [b64Input, b64Mode]);
   // --- JWT Decoder State ---
   const sampleJwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkFsaWNlIERvZSIsImFkbWluIjp0cnVlLCJpYXQiOjE1MTYyMzkwMjIsImV4cCI6MTkyOTM5ODQwMH0.4PclnEI8y7i_v7nZ2f5b8vX5d8m8c7k2w9a0z';
   const [jwtInput, setJwtInput] = useState(sampleJwt);
@@ -250,6 +321,164 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
             <p class="text-xs text-gray-500">
               {unitVal} {unitFrom} = {convertedUnit} {unitTo}
             </p>
+          </div>
+        </div>
+      )}
+
+      {/* Color Picker Tool */}
+      {toolId === 'color-picker' && (
+        <div class="space-y-6 max-w-2xl mx-auto">
+          {/* Main Color Preview Box */}
+          <div
+            class="h-36 sm:h-44 rounded-2xl flex flex-col items-center justify-center p-6 shadow-sm border border-gray-200 transition-colors"
+            style={{ backgroundColor: colorValues.hex }}
+          >
+            <span
+              class="text-2xl sm:text-3xl font-mono font-extrabold tracking-wider"
+              style={{ color: colorValues.textColor }}
+            >
+              {colorValues.hex.toUpperCase()}
+            </span>
+            <span class="text-xs font-mono mt-1 opacity-90" style={{ color: colorValues.textColor }}>
+              {colorValues.rgbStr} • {colorValues.hslStr}
+            </span>
+          </div>
+
+          {/* Color Input Controls */}
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="p-4 bg-gray-50 rounded-xl border border-gray-200 space-y-3">
+              <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider">
+                Color Palette & Eyedropper
+              </label>
+              <div class="flex items-center gap-3">
+                <input
+                  type="color"
+                  value={colorValues.hex}
+                  onInput={(e) => setHexColor((e.target as HTMLInputElement).value)}
+                  class="w-14 h-12 rounded-lg cursor-pointer border border-gray-300 bg-white p-1"
+                />
+                <input
+                  type="text"
+                  value={hexColor}
+                  onInput={(e) => setHexColor((e.target as HTMLInputElement).value)}
+                  placeholder="#16a34a"
+                  class="flex-1 px-3 py-2 text-sm font-mono border border-gray-300 rounded-lg bg-white text-gray-900"
+                />
+              </div>
+            </div>
+
+            {/* Quick Palettes */}
+            <div class="p-4 bg-gray-50 rounded-xl border border-gray-200 space-y-2">
+              <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider">
+                Popular Color Swatches
+              </label>
+              <div class="flex flex-wrap gap-2">
+                {['#ef4444', '#f97316', '#f59e0b', '#10b981', '#06b6d4', '#3b82f6', '#6366f1', '#8b5cf6', '#ec4899', '#111827'].map((c) => (
+                  <button
+                    key={c}
+                    type="button"
+                    onClick={() => setHexColor(c)}
+                    class="w-7 h-7 rounded-md border border-black/10 shadow-2xs hover:scale-110 transition-transform"
+                    style={{ backgroundColor: c }}
+                    title={c}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Color Values & Copy Cards */}
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {[
+              { label: 'HEX', val: colorValues.hex.toUpperCase() },
+              { label: 'RGB', val: colorValues.rgbStr },
+              { label: 'HSL', val: colorValues.hslStr },
+            ].map(({ label, val }) => (
+              <div key={label} class="p-3 bg-white border border-gray-200 rounded-xl flex items-center justify-between">
+                <div>
+                  <span class="text-2xs font-bold text-gray-500 uppercase">{label}</span>
+                  <p class="font-mono text-xs font-bold text-gray-800 truncate">{val}</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => {
+                    navigator.clipboard.writeText(val);
+                    setCopiedColor(val);
+                    setTimeout(() => setCopiedColor(null), 1800);
+                  }}
+                  class="px-2.5 py-1 text-xs font-semibold bg-gray-100 hover:bg-green-100 hover:text-green-700 text-gray-700 rounded-lg transition"
+                >
+                  {copiedColor === val ? '✓ Copied' : 'Copy'}
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Base64 Encoder / Decoder Tool */}
+      {toolId === 'base64-encoder' && (
+        <div class="space-y-6 max-w-2xl mx-auto">
+          {/* Mode Switcher */}
+          <div class="flex items-center justify-center gap-2 p-1 bg-gray-100 rounded-xl w-fit mx-auto border border-gray-200">
+            <button
+              type="button"
+              onClick={() => setB64Mode('encode')}
+              class={`px-4 py-2 text-xs font-bold rounded-lg transition ${
+                b64Mode === 'encode' ? 'bg-white text-green-700 shadow-xs' : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              Text &rarr; Base64 (Encode)
+            </button>
+            <button
+              type="button"
+              onClick={() => setB64Mode('decode')}
+              class={`px-4 py-2 text-xs font-bold rounded-lg transition ${
+                b64Mode === 'decode' ? 'bg-white text-green-700 shadow-xs' : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              Base64 &rarr; Text (Decode)
+            </button>
+          </div>
+
+          {/* Input Box */}
+          <div class="space-y-2">
+            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider">
+              {b64Mode === 'encode' ? 'Source Text to Encode:' : 'Base64 String to Decode:'}
+            </label>
+            <textarea
+              rows={4}
+              value={b64Input}
+              onInput={(e) => setB64Input((e.target as HTMLTextAreaElement).value)}
+              placeholder={b64Mode === 'encode' ? 'Type or paste plain text here...' : 'Paste Base64 encoded string here...'}
+              class="w-full p-3 text-xs font-mono border border-gray-300 rounded-xl bg-white text-gray-900 focus:ring-2 focus:ring-green-500"
+            />
+          </div>
+
+          {/* Output Box */}
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider">
+                {b64Mode === 'encode' ? 'Base64 Encoded Output:' : 'Decoded Plain Text:'}
+              </label>
+              <button
+                type="button"
+                onClick={() => {
+                  navigator.clipboard.writeText(b64Output);
+                  setB64Copied(true);
+                  setTimeout(() => setB64Copied(false), 1800);
+                }}
+                class="px-3 py-1 text-xs font-semibold rounded-lg bg-green-50 hover:bg-green-100 text-green-700 border border-green-200 transition"
+              >
+                {b64Copied ? '✓ Copied to Clipboard' : 'Copy Output'}
+              </button>
+            </div>
+            <textarea
+              rows={4}
+              readOnly
+              value={b64Output}
+              class="w-full p-3 text-xs font-mono border border-gray-200 rounded-xl bg-gray-50 text-gray-800"
+            />
           </div>
         </div>
       )}

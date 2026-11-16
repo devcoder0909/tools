@@ -1,3 +1,5 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import { getAllTools, getAllFormats } from '../src/registry';
 import { siteConfig } from '../src/config/site';
 
@@ -19,6 +21,22 @@ async function pingIndexNow() {
     ...tools.map((t) => `${siteConfig.url}/${t.slug}/`),
   ];
 
+  const collegesDataPath = path.resolve(process.cwd(), 'src/data/colleges.json');
+  if (fs.existsSync(collegesDataPath)) {
+    urlList.push(
+      `${siteConfig.url}/colleges/`,
+      `${siteConfig.url}/cutoff/`,
+      `${siteConfig.url}/cutoff/computer-science/`,
+      `${siteConfig.url}/cutoff/iits/`,
+      `${siteConfig.url}/cutoff/nits/`,
+      `${siteConfig.url}/cutoff/iiits/`,
+      `${siteConfig.url}/cutoff/gftis/`,
+      `${siteConfig.url}/jee-main-rank-college-predictor/`,
+      `${siteConfig.url}/jee-advanced-rank-college-predictor/`,
+      `${siteConfig.url}/nirf-ranking/`
+    );
+  }
+
   const payload = {
     host: siteConfig.domain,
     key: apiKey,
@@ -28,23 +46,30 @@ async function pingIndexNow() {
 
   console.log(`[IndexNow] Preparing notification for ${urlList.length} URLs on ${siteConfig.domain}...`);
 
-  try {
-    const res = await fetch('https://api.indexnow.org/indexnow', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json; charset=utf-8',
-      },
-      body: JSON.stringify(payload),
-    });
+  const endpoints = [
+    'https://api.indexnow.org/indexnow',
+    'https://www.bing.com/indexnow',
+  ];
 
-    if (res.ok || res.status === 200 || res.status === 202) {
-      console.log(`[IndexNow] Successfully notified IndexNow for ${urlList.length} URLs (Status: ${res.status}).`);
-    } else {
-      const errorText = await res.text();
-      console.warn(`[IndexNow] Ping returned status ${res.status}: ${errorText}`);
+  for (const endpoint of endpoints) {
+    try {
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json; charset=utf-8',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (res.ok || res.status === 200 || res.status === 202) {
+        console.log(`[IndexNow] Successfully notified ${new URL(endpoint).hostname} for ${urlList.length} URLs (Status: ${res.status}).`);
+      } else {
+        const errorText = await res.text();
+        console.warn(`[IndexNow] ${new URL(endpoint).hostname} returned status ${res.status}: ${errorText}`);
+      }
+    } catch (err: any) {
+      console.warn(`[IndexNow] Notice: Could not reach ${endpoint} (${err.message}).`);
     }
-  } catch (err: any) {
-    console.warn(`[IndexNow] Notice: Could not reach IndexNow endpoint (${err.message}). Notification will retry on next build/deploy.`);
   }
 }
 

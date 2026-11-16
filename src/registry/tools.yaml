@@ -988,6 +988,7 @@
     - q: Are my photos uploaded to a remote server?
       a: No. All image scaling and canvas rendering executes directly inside your browser memory using HTML5 Canvas.
   related:
+    - aspect-ratio-calculator
     - compress-image-to-200kb
     - photo-editor
     - meme-generator
@@ -1030,6 +1031,8 @@
   related:
     - discount-calculator
     - tip-calculator
+    - gst-calculator
+    - gpa-calculator
     - date-difference-calculator
   indexable: true
   reviewed: true
@@ -1226,6 +1229,7 @@
   related:
     - character-counter
     - case-converter
+    - lorem-ipsum-generator
     - json-formatter
     - percentage-calculator
   indexable: true
@@ -1305,6 +1309,7 @@
       a: Yes. It strictly validates standard JSON object, array, string, numeric, boolean, and null data types.
   related:
     - word-counter
+    - base64-encoder
     - case-converter
     - percentage-calculator
   indexable: true
@@ -1415,6 +1420,7 @@
     - q: Does merging degrade the text or image quality?
       a: No. The merge process copies original vector text streams, fonts, and embedded images losslessly into the combined PDF container.
   related:
+    - pdf-to-jpg
     - split-pdf
     - compress-pdf
     - jpg-to-pdf
@@ -1452,6 +1458,7 @@
     - q: Are my sensitive PDF documents uploaded to your server?
       a: No. All PDF page extraction runs locally inside your browser memory using JavaScript. Your files never leave your device.
   related:
+    - pdf-to-jpg
     - merge-pdf
     - compress-pdf
     - jpg-to-pdf
@@ -1488,6 +1495,7 @@
     - q: Is there a file size limit for PDF compression?
       a: You can compress PDF files as large as your device's available browser memory allows with zero artificial paywalls.
   related:
+    - pdf-to-jpg
     - merge-pdf
     - split-pdf
     - compress-image-to-200kb
@@ -1706,6 +1714,7 @@
     - q: Are there audio alarms when the countdown completes?
       a: Yes. An alert notifies you immediately as soon as the timer reaches zero.
   related:
+    - pomodoro-timer
     - online-stopwatch
     - typing-test
     - date-difference-calculator
@@ -1815,6 +1824,7 @@
     - q: Is it safe to paste production tokens here?
       a: Yes. Processing executes 100% inside your browser memory. Inspect the browser Network tab to verify that zero HTTP requests are sent.
   related:
+    - base64-encoder
     - json-formatter
     - password-generator
     - my-ip-address
@@ -1923,6 +1933,8 @@
     - q: Can I edit photos without an internet connection?
       a: Yes. The photo editor runs entirely in client-side JavaScript and operates seamlessly offline.
   related:
+    - color-picker
+    - aspect-ratio-calculator
     - resize-image
     - meme-generator
     - compress-image-to-200kb
@@ -2381,6 +2393,7 @@
     - q: Can I record lap times?
       a: Yes. Click the Lap button while running to record individual split times and intervals.
   related:
+    - pomodoro-timer
     - online-timer
     - typing-test
     - screen-recorder
@@ -2447,3 +2460,316 @@
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
     last_reviewed: '2026-11-15T00:00:00.000Z'
+
+- id: color-picker
+  kind: developer
+  slug: color-picker
+  name: Color Picker
+  title: Color Picker - Hex, RGB & HSL Code Finder | Best Converter
+  subtitle: Interactive color wheel, palette swatches, and CSS code converter.
+  description: Free online color picker. Pick colors from palette, convert HEX, RGB, and HSL codes, and copy clean CSS color values with one click in your browser.
+  engine: developer
+  options: []
+  content: src/content/tools/color-picker.mdx
+  faq:
+    - q: How do I convert a HEX color code to RGB or HSL?
+      a: Type or paste your 6-character HEX code into the color picker. Our tool automatically computes and displays the exact RGB and HSL values with one-click copy buttons.
+    - q: What is the difference between HEX and RGB color formats?
+      a: HEX represents red, green, and blue values in hexadecimal notation (e.g., #16A34A), whereas RGB represents each primary color channel as a decimal number between 0 and 255 (e.g., rgb(22, 163, 74)).
+    - q: Can I pick colors from my desktop or screen?
+      a: Yes. Clicking the color swatch input opens your native browser eyedropper tool, allowing you to sample pixels anywhere on your screen.
+  related:
+    - base64-encoder
+    - json-formatter
+    - photo-editor
+    - unit-converter
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-16T00:00:00.000Z'
+  reviewer: Best Converter Design Engineering Team
+  lang: en
+  seo:
+    primary_kw: color picker
+    secondary_kws:
+      - hex color picker
+      - rgb color code picker
+      - html color picker
+      - css color converter
+      - color picker from image
+    intent: tool
+    tier: 1
+    sources: Google Search Console & High-Volume SERP Queries
+    last_reviewed: '2026-11-16T00:00:00.000Z'
+- id: base64-encoder
+  kind: developer
+  slug: base64-encoder
+  name: Base64 Encode & Decode
+  title: Base64 Encode & Decode - Free Online Tool | Best Converter
+  subtitle: Convert plain text and strings to Base64 or decode Base64 data instantly.
+  description: Free online Base64 encoder and decoder. Convert text and files to Base64 or decode Base64 data back to original text instantly with zero server uploads.
+  engine: developer
+  options: []
+  content: src/content/tools/base64-encoder.mdx
+  faq:
+    - q: What is Base64 encoding used for?
+      a: Base64 converts binary data into ASCII characters so it can be transmitted across networks without byte corruption in email headers, URLs, and JSON payloads.
+    - q: Does Base64 provide encryption or security?
+      a: No. Base64 is an encoding format, not an encryption cipher. Anyone can decode a Base64 string back to its original plain text.
+    - q: Is there a character limit when encoding Base64 here?
+      a: No. You can encode or decode long strings, JSON documents, or code snippets with instant local browser processing.
+  related:
+    - color-picker
+    - jwt-decoder
+    - json-formatter
+    - case-converter
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-16T00:00:00.000Z'
+  reviewer: Best Converter Developer Tools Team
+  lang: en
+  seo:
+    primary_kw: base64 encode
+    secondary_kws:
+      - base64 decode online
+      - base64 encoder decoder
+      - string to base64
+      - decode base64 string
+      - convert text to base64
+    intent: tool
+    tier: 1
+    sources: Google Search Console & High-Volume SERP Queries
+    last_reviewed: '2026-11-16T00:00:00.000Z'
+- id: gpa-calculator
+  kind: calculator
+  slug: gpa-calculator
+  name: GPA Calculator
+  title: GPA Calculator - College & High School Tool | Best Converter
+  subtitle: Calculate cumulative and semester grade point averages on a 4.0 scale.
+  description: Calculate your college or high school GPA quickly with our free online GPA calculator. Supports credit hours and letter grades on the standard 4.0 scale.
+  engine: calculator
+  options: []
+  content: src/content/tools/gpa-calculator.mdx
+  faq:
+    - q: How is cumulative GPA calculated?
+      a: Multiply each course grade point by its credit hours to get quality points. Sum all quality points and divide by the total number of credit hours attempted.
+    - q: What is the grade point value for an A or B?
+      a: Standard 4.0 scales assign 4.0 points for an A, 3.7 for an A-, 3.3 for a B+, 3.0 for a B, 2.7 for a B-, 2.0 for a C, and 0.0 for an F.
+    - q: What GPA is required for Latin Honors?
+      a: Most universities award Cum Laude for GPAs above 3.5, Magna Cum Laude for 3.7 to 3.89, and Summa Cum Laude for 3.90 to 4.0.
+  related:
+    - percentage-calculator
+    - online-calculator
+    - scientific-calculator
+    - age-calculator
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-16T00:00:00.000Z'
+  reviewer: Best Converter Education Analytics Team
+  lang: en
+  seo:
+    primary_kw: gpa calculator
+    secondary_kws:
+      - college gpa calculator
+      - cumulative gpa calculator
+      - calculate gpa 4.0 scale
+      - high school gpa calculator
+      - semester gpa calculator
+    intent: tool
+    tier: 1
+    sources: Google Search Console & High-Volume SERP Queries
+    last_reviewed: '2026-11-16T00:00:00.000Z'
+- id: gst-calculator
+  kind: finance
+  slug: gst-calculator
+  name: GST Calculator
+  title: GST Calculator - Online Tax Calculator Free | Best Converter
+  subtitle: Calculate GST inclusive and exclusive amounts with CGST and SGST splits.
+  description: Free online GST calculator. Calculate GST inclusive and exclusive amounts, SGST, CGST rates (5%, 12%, 18%, 28%) with instant net and gross tax breakdowns.
+  engine: finance
+  options: []
+  content: src/content/tools/gst-calculator.mdx
+  faq:
+    - q: What is the formula to calculate GST exclusive amount?
+      a: To add GST to a net amount, multiply the net price by (1 + GST rate / 100). For example, $1,000 + 18% GST = $1,000 * 1.18 = $1,180.
+    - q: How do I remove GST from an inclusive total?
+      a: To extract GST from an inclusive amount, divide the gross total by (1 + GST rate / 100). The difference between gross and net is the GST component.
+    - q: What are the standard GST tax slabs?
+      a: Standard Goods and Services Tax slabs commonly include 5% for essential goods, 12% for standard items, 18% for services and electronics, and 28% for luxury products.
+  related:
+    - discount-calculator
+    - percentage-calculator
+    - tip-calculator
+    - loan-calculator
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-16T00:00:00.000Z'
+  reviewer: Best Converter Financial Engineering Team
+  lang: en
+  seo:
+    primary_kw: gst calculator
+    secondary_kws:
+      - gst calculator online
+      - calculate gst inclusive
+      - gst exclusive calculator
+      - gst tax formula
+      - cgst sgst calculator
+    intent: tool
+    tier: 1
+    sources: Google Search Console & High-Volume SERP Queries
+    last_reviewed: '2026-11-16T00:00:00.000Z'
+- id: aspect-ratio-calculator
+  kind: calculator
+  slug: aspect-ratio-calculator
+  name: Aspect Ratio Calculator
+  title: Aspect Ratio Calculator - 16:9 & 4:3 Tool | Best Converter
+  subtitle: Calculate missing photo, video, and screen dimensions with live visual preview.
+  description: Free online aspect ratio calculator. Calculate dimensions for 16:9, 4:3, 1:1, 21:9 screen resolutions, photos, and video formats with live visual preview.
+  engine: calculator
+  options: []
+  content: src/content/tools/aspect-ratio-calculator.mdx
+  faq:
+    - q: What is the most common video and monitor aspect ratio?
+      a: 16:9 is the universal standard for YouTube, high-definition television, modern laptops, and desktop gaming monitors (e.g., 1920x1080 and 3840x2160).
+    - q: How do I calculate the new height when resizing an image?
+      a: Multiply the target width by the original height, then divide by the original width ((New Width * Original Height) / Original Width).
+    - q: What aspect ratio is used for Instagram Reels and TikTok?
+      a: Vertical short-form videos use a 9:16 aspect ratio, with 1080x1920 pixels being the recommended resolution.
+  related:
+    - resize-image
+    - photo-editor
+    - image-compressor
+    - online-calculator
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-16T00:00:00.000Z'
+  reviewer: Best Converter Media Engineering Team
+  lang: en
+  seo:
+    primary_kw: aspect ratio calculator
+    secondary_kws:
+      - 16 9 calculator
+      - calculate aspect ratio online
+      - image ratio calculator
+      - screen resolution calculator
+      - resize aspect ratio formula
+    intent: tool
+    tier: 1
+    sources: Google Search Console & High-Volume SERP Queries
+    last_reviewed: '2026-11-16T00:00:00.000Z'
+- id: lorem-ipsum-generator
+  kind: text
+  slug: lorem-ipsum-generator
+  name: Lorem Ipsum Generator
+  title: Lorem Ipsum Generator - Free Dummy Text | Best Converter
+  subtitle: Generate placeholder Latin dummy text for web development and UI mockups.
+  description: Generate custom Lorem Ipsum dummy text for mockups and web designs. Select paragraphs, sentences, or words with instant clipboard copy and clean formatting.
+  engine: text
+  options: []
+  content: src/content/tools/lorem-ipsum-generator.mdx
+  faq:
+    - q: Where does the classic Lorem Ipsum passage originate?
+      a: It comes from sections 1.10.32 and 1.10.33 of 'de Finibus Bonorum et Malorum' (The Extremes of Good and Evil), written by Cicero in 45 BC.
+    - q: Why do designers use placeholder dummy text?
+      a: Dummy text prevents clients and evaluators from being distracted by readable content, allowing them to focus entirely on visual typography and layout design.
+    - q: Can I choose between paragraphs, sentences, and word counts?
+      a: Yes. Our generator allows exact paragraph, sentence, or word quantity controls with one-click clipboard copying.
+  related:
+    - word-counter
+    - character-counter
+    - case-converter
+    - fancy-text-generator
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-16T00:00:00.000Z'
+  reviewer: Best Converter Content Design Team
+  lang: en
+  seo:
+    primary_kw: lorem ipsum generator
+    secondary_kws:
+      - dummy text generator
+      - placeholder text generator
+      - lorem ipsum text online
+      - generate dummy paragraphs
+      - lorem ipsum maker
+    intent: tool
+    tier: 1
+    sources: Google Search Console & High-Volume SERP Queries
+    last_reviewed: '2026-11-16T00:00:00.000Z'
+- id: pomodoro-timer
+  kind: media
+  slug: pomodoro-timer
+  name: Pomodoro Timer
+  title: Pomodoro Timer - 25 Minute Study Timer | Best Converter
+  subtitle: 25-minute focus intervals and 5-minute breaks for study productivity.
+  description: Free online Pomodoro timer for study and focus. Features 25-minute intervals, 5-minute breaks, audio notifications, and clean full-screen countdown clock.
+  engine: media
+  options: []
+  content: src/content/tools/pomodoro-timer.mdx
+  faq:
+    - q: How does the Pomodoro Technique work?
+      a: You work with complete focus for 25 minutes, followed by a 5-minute short break. After completing four work cycles, take a longer 15-30 minute break.
+    - q: Does this Pomodoro timer sound an alarm when time expires?
+      a: Yes. A clean audio notification chimes when your work or break interval ends, ensuring you stay on track without watching the screen.
+    - q: Can I use this timer full screen without ads?
+      a: Yes. Best Converter provides a distraction-free layout optimized for both desktop monitors and mobile devices.
+  related:
+    - online-timer
+    - online-stopwatch
+    - typing-test
+    - date-difference-calculator
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-16T00:00:00.000Z'
+  reviewer: Best Converter Productivity Engineering Team
+  lang: en
+  seo:
+    primary_kw: pomodoro timer
+    secondary_kws:
+      - pomodoro timer online
+      - 25 minute timer study
+      - study timer pomodoro
+      - focus timer online free
+      - productivity timer clock
+    intent: tool
+    tier: 1
+    sources: Google Search Console & High-Volume SERP Queries
+    last_reviewed: '2026-11-16T00:00:00.000Z'
+- id: pdf-to-jpg
+  kind: pdf
+  slug: pdf-to-jpg
+  name: PDF to JPG
+  title: PDF to JPG Converter - Free & In-Browser | Best Converter
+  subtitle: Extract PDF pages into crisp high-resolution JPEG photos without uploads.
+  description: Convert PDF files to JPG images free online. Extract PDF pages into high-resolution JPEG photos with zero file size paywalls and zero remote server uploads.
+  engine: pdf
+  options: []
+  content: src/content/tools/pdf-to-jpg.mdx
+  faq:
+    - q: How do I convert PDF pages into JPG images for free?
+      a: Drop your PDF file into the upload box above and click 'Convert to JPG Now'. The first page is extracted and rendered into a crisp JPEG photo ready for instant download.
+    - q: Are my sensitive PDF documents uploaded to external servers?
+      a: No. All extraction and rendering run locally inside your device browser memory. Your files are never stored or transmitted to external servers.
+    - q: Is there a page or file size limit for PDF conversion?
+      a: There are no arbitrary server paywalls. You can convert multi-page documents as long as your device has available RAM memory.
+  related:
+    - jpg-to-pdf
+    - merge-pdf
+    - split-pdf
+    - compress-pdf
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-16T00:00:00.000Z'
+  reviewer: Best Converter Document Engineering Team
+  lang: en
+  seo:
+    primary_kw: pdf to jpg
+    secondary_kws:
+      - convert pdf to jpg online
+      - pdf to jpg converter free
+      - pdf to image high quality
+      - extract images from pdf
+      - pdf to jpeg no upload
+    intent: tool
+    tier: 1
+    sources: Google Search Console & High-Volume SERP Queries
+    last_reviewed: '2026-11-16T00:00:00.000Z'
