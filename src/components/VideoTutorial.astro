@@ -23,8 +23,21 @@ const {
   transcriptSteps,
 } = Astro.props;
 
-const fromUpper = fromFormat.toUpperCase();
-const toUpper = toFormat.toUpperCase();
+const fromUpper = fromFormat ? fromFormat.toUpperCase() : '';
+const toUpper = toFormat ? toFormat.toUpperCase() : '';
+const isConversion = Boolean(fromUpper && toUpper);
+
+const videoHeading = isConversion
+  ? `Watch How to Convert ${fromUpper} to ${toUpper} in 60 Seconds`
+  : `Watch How to Use ${toolName} Online (Step-by-Step Walkthrough)`;
+
+const videoSubheading = isConversion
+  ? `Learn how to batch process ${fromUpper} files, adjust quality, flatten transparent layers, and export ${toUpper} files without installing software or uploading private data to remote servers.`
+  : `Learn how to use ${toolName.toLowerCase()} directly in your browser with real-time in-memory calculations, customizable parameters, and zero remote server uploads.`;
+
+const imageAlt = isConversion
+  ? `Video tutorial demonstration of converting ${fromUpper} to ${toUpper}`
+  : `Video tutorial demonstration of using ${toolName} online`;
 ---
 
 <section id="video-tutorial" class="my-10 border border-gray-200 rounded-3xl overflow-hidden bg-white shadow-xs">
@@ -37,10 +50,10 @@ const toUpper = toFormat.toUpperCase();
       Video Demonstration & Walkthrough
     </div>
     <h2 class="text-lg sm:text-2xl font-bold text-white">
-      Watch How to Convert {fromUpper} to {toUpper} in 60 Seconds
+      {videoHeading}
     </h2>
     <p class="text-xs sm:text-sm text-gray-300 mt-1 max-w-2xl">
-      Learn how to batch process {fromUpper} files, adjust quality, flatten transparent layers, and export {toUpper} files without installing software or uploading private data to remote servers.
+      {videoSubheading}
     </p>
   </div>
 
@@ -51,7 +64,7 @@ const toUpper = toFormat.toUpperCase();
       <img
         id={`video-poster-${toolSlug}`}
         src={thumbnailUrl}
-        alt={`Video tutorial demonstration of converting ${fromUpper} to ${toUpper}`}
+        alt={imageAlt}
         width="1280"
         height="720"
         class="w-full h-full object-cover transition-opacity duration-300"

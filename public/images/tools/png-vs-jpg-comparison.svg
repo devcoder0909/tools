@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none" role="img" aria-labelledby="svg-title-png-vs-jpg-comparison-svg svg-desc-png-vs-jpg-comparison-svg">
+  <title id="svg-title-png-vs-jpg-comparison-svg">PNG vs JPG Image Format Technical Comparison Infographic</title>
+  <desc id="svg-desc-png-vs-jpg-comparison-svg">Detailed comparison matrix between lossless PNG with alpha transparency and lossy DCT compressed JPEG.</desc>
   <defs>
     <linearGradient id="compBg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#f8fafc" />

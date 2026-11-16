@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none" role="img" aria-labelledby="svg-title-jpg-to-png-workflow-svg svg-desc-jpg-to-png-workflow-svg">
+  <title id="svg-title-jpg-to-png-workflow-svg">Jpg To Png Client-Side Architecture & Process Flow Diagram</title>
+  <desc id="svg-desc-jpg-to-png-workflow-svg">Technical flowchart illustrating the 100% in-browser RAM conversion and processing pipeline for Jpg To Png.</desc>
   <defs>
     <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#f8fafc" />

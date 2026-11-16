@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none" role="img" aria-labelledby="svg-title-pdf-security-infographic-svg svg-desc-pdf-security-infographic-svg">
+  <title id="svg-title-pdf-security-infographic-svg">Client-Side PDF Security & In-Memory Privacy Architecture</title>
+  <desc id="svg-desc-pdf-security-infographic-svg">Diagram illustrating zero server uploads, local browser RAM processing, and instant document destruction.</desc>
   <defs>
     <linearGradient id="secBg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#f8fafc" />

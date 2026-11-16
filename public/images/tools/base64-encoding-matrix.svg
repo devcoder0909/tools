@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none" role="img" aria-labelledby="svg-title-base64-encoding-matrix-svg svg-desc-base64-encoding-matrix-svg">
+  <title id="svg-title-base64-encoding-matrix-svg">RFC 4648 Base64 6-Bit Encoding Architecture Matrix Infographic</title>
+  <desc id="svg-desc-base64-encoding-matrix-svg">Diagram illustrating ASCII 8-bit octet splitting into 6-bit Radix-64 indices and padding characters.</desc>
   <defs>
     <linearGradient id="b64Bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#0f172a" />

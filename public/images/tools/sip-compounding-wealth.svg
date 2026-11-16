@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none" role="img" aria-labelledby="svg-title-sip-compounding-wealth-svg svg-desc-sip-compounding-wealth-svg">
+  <title id="svg-title-sip-compounding-wealth-svg">Systematic Investment Plan (SIP) Compounding Wealth Multiplier Chart</title>
+  <desc id="svg-desc-sip-compounding-wealth-svg">Visual breakdown of monthly SIP investments, rupee cost averaging, and long-term corpus milestones.</desc>
   <defs>
     <linearGradient id="sipBg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#f8fafc" />

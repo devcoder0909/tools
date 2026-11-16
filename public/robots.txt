@@ -3,7 +3,16 @@ Allow: /
 Disallow: /embed/
 Disallow: /_internal/
 
-# AI Search & Answer Engine Crawlers
+# Google Media Crawlers (Images & Videos)
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /images/
+Allow: /
+
+# General Google & Bing Crawlers
 User-agent: Googlebot
 Allow: /
 
@@ -13,6 +22,7 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
+# AI Search & Answer Engine Crawlers
 User-agent: GPTBot
 Allow: /
 
@@ -37,5 +47,8 @@ Content-Signal: search=yes, ai-train=yes
 Sitemap: https://convert.gudmud.site/sitemap-index.xml
 Sitemap: https://convert.gudmud.site/sitemap.xml
 Sitemap: https://convert.gudmud.site/sitemap-tools.xml
+Sitemap: https://convert.gudmud.site/sitemap-video.xml
+Sitemap: https://convert.gudmud.site/sitemap-image.xml
 Sitemap: https://convert.gudmud.site/sitemap-pages.xml
 Sitemap: https://convert.gudmud.site/sitemap-formats.xml
+Sitemap: https://convert.gudmud.site/sitemap-colleges.xml

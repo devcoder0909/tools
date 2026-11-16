@@ -21,6 +21,15 @@ function formatIsoDate(dateVal: any): string {
   return new Date().toISOString().split('T')[0];
 }
 
+function escapeXml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
 function generateUrlXml(loc: string, lastmod: any, changefreq: string = 'weekly', priority: string = '0.8') {
   const formattedDate = formatIsoDate(lastmod);
   return `  <url>
@@ -30,6 +39,215 @@ function generateUrlXml(loc: string, lastmod: any, changefreq: string = 'weekly'
     <priority>${priority}</priority>
   </url>`;
 }
+
+// Rich Media & Video Definition Registry for Google Video and Image Sitemaps
+interface ToolMediaDef {
+  slug: string;
+  name: string;
+  title: string;
+  description: string;
+  durationSecs: number;
+  thumbnailUrl: string;
+  diagramUrl: string;
+  diagramTitle: string;
+  diagramCaption: string;
+  tags: string[];
+}
+
+const TOOL_MEDIA_REGISTRY: ToolMediaDef[] = [
+  {
+    slug: 'png-to-jpg',
+    name: 'PNG to JPG Converter',
+    title: 'How to Convert PNG to JPG Online (Step-by-Step Tutorial)',
+    description: 'Complete step-by-step video demonstration of converting PNG to JPG directly in your browser with zero server uploads and instant processing.',
+    durationSecs: 75,
+    thumbnailUrl: '/images/tools/png-to-jpg-video-thumb.svg',
+    diagramUrl: '/images/tools/png-to-jpg-workflow.svg',
+    diagramTitle: 'PNG to JPG Client-Side Architecture Diagram',
+    diagramCaption: 'In-browser HTML5 Canvas rasterization pipeline with zero cloud uploads.',
+    tags: ['png to jpg', 'image converter', 'client-side conversion', 'transparency handling'],
+  },
+  {
+    slug: 'jpg-to-png',
+    name: 'JPG to PNG Converter',
+    title: 'How to Convert JPG to PNG Online (Step-by-Step Tutorial)',
+    description: 'Complete step-by-step video demonstration of converting JPG to lossless PNG format in your local browser RAM.',
+    durationSecs: 70,
+    thumbnailUrl: '/images/tools/jpg-to-png-video-thumb.svg',
+    diagramUrl: '/images/tools/jpg-to-png-workflow.svg',
+    diagramTitle: 'JPG to PNG Client-Side Workflow Diagram',
+    diagramCaption: 'Decoding DCT compressed JPEG into lossless 24-bit RGB pixel canvas.',
+    tags: ['jpg to png', 'jpeg converter', 'lossless png', 'rasterization'],
+  },
+  {
+    slug: 'webp-to-jpg',
+    name: 'WebP to JPG Converter',
+    title: 'How to Convert WebP to JPG Online (Step-by-Step Tutorial)',
+    description: 'Learn how to convert modern Google WebP graphics into universal JPG images with instant browser transcoding.',
+    durationSecs: 68,
+    thumbnailUrl: '/images/tools/webp-to-jpg-video-thumb.svg',
+    diagramUrl: '/images/tools/webp-to-jpg-workflow.svg',
+    diagramTitle: 'WebP to JPG In-Browser Transcoding Pipeline',
+    diagramCaption: 'Hardware-accelerated WebP unpack and JPEG quantizer with white alpha background.',
+    tags: ['webp to jpg', 'webp converter', 'google webp', 'jpeg encoding'],
+  },
+  {
+    slug: 'heic-to-jpg',
+    name: 'HEIC to JPG Converter',
+    title: 'How to Convert iPhone HEIC to JPG Online (Step-by-Step Tutorial)',
+    description: 'Step-by-step tutorial converting Apple iPhone HEIC and HEIF photos to high quality JPGs using client-side libheif WASM.',
+    durationSecs: 80,
+    thumbnailUrl: '/images/tools/heic-to-jpg-video-thumb.svg',
+    diagramUrl: '/images/tools/heic-to-jpg-workflow.svg',
+    diagramTitle: 'HEIC to JPG WASM Decoding Architecture',
+    diagramCaption: 'Local WebAssembly HEVC extraction with original 48MP color accuracy preserved.',
+    tags: ['heic to jpg', 'iphone photos', 'apple heic', 'heif to jpeg'],
+  },
+  {
+    slug: 'merge-pdf',
+    name: 'Merge PDF Online',
+    title: 'How to Merge PDF Documents Online (Step-by-Step Tutorial)',
+    description: 'Complete walkthrough showing how to combine and merge multiple PDF files into one unified document with pdf-lib in browser RAM.',
+    durationSecs: 78,
+    thumbnailUrl: '/images/tools/merge-pdf-video-thumb.svg',
+    diagramUrl: '/images/tools/merge-pdf-workflow.svg',
+    diagramTitle: 'Client-Side PDF Document Assembly Matrix',
+    diagramCaption: 'Stitching page trees, fonts, vectors, and hyperlinks in client memory with zero server uploads.',
+    tags: ['merge pdf', 'combine pdf', 'pdf joiner', 'pdf-lib'],
+  },
+  {
+    slug: 'compress-pdf',
+    name: 'Compress PDF Online',
+    title: 'How to Compress PDF Files Online (Step-by-Step Tutorial)',
+    description: 'Video demonstration shrinking heavy PDF documents below 200KB or 1MB for portal submission while preserving typography.',
+    durationSecs: 85,
+    thumbnailUrl: '/images/tools/compress-pdf-video-thumb.svg',
+    diagramUrl: '/images/tools/compress-pdf-workflow.svg',
+    diagramTitle: 'In-Memory PDF Stream and Image Optimization Flow',
+    diagramCaption: 'Purging redundant metadata streams and resampling embedded raster images in client RAM.',
+    tags: ['compress pdf', 'reduce pdf size', 'shrink pdf', 'pdf optimizer'],
+  },
+  {
+    slug: 'split-pdf',
+    name: 'Split PDF Online',
+    title: 'How to Split PDF Pages Online (Step-by-Step Tutorial)',
+    description: 'Tutorial showing how to separate, split, and extract specific page ranges from multi-page PDF documents.',
+    durationSecs: 72,
+    thumbnailUrl: '/images/tools/split-pdf-video-thumb.svg',
+    diagramUrl: '/images/tools/split-pdf-workflow.svg',
+    diagramTitle: 'PDF Page Tree Disassembly & Extraction Pipeline',
+    diagramCaption: 'Extracting discrete page subsets into clean independent PDF files with original vectors intact.',
+    tags: ['split pdf', 'extract pdf pages', 'separate pdf', 'pdf splitter'],
+  },
+  {
+    slug: 'rotate-pdf',
+    name: 'Rotate PDF Online',
+    title: 'How to Permanently Rotate PDF Pages Online (Step-by-Step Tutorial)',
+    description: 'Walkthrough fixing sideways or upside-down PDF scans with permanent 90, 180, and 270 degree clockwise orientation adjustments.',
+    durationSecs: 65,
+    thumbnailUrl: '/images/tools/rotate-pdf-video-thumb.svg',
+    diagramUrl: '/images/tools/rotate-pdf-workflow.svg',
+    diagramTitle: 'PDF Coordinate Matrix Rotation Architecture',
+    diagramCaption: 'Modifying the /Rotate dictionary key permanently without degrading vector sharpness.',
+    tags: ['rotate pdf', 'fix sideways pdf', 'turn pdf pages', 'pdf orientation'],
+  },
+  {
+    slug: 'emi-calculator',
+    name: 'EMI Calculator',
+    title: 'How to Calculate Loan EMI & Reducing Balance Interest (Step-by-Step Tutorial)',
+    description: 'Complete video tutorial demonstrating loan amortization, reducing balance calculations, and monthly payment schedules.',
+    durationSecs: 84,
+    thumbnailUrl: '/images/tools/emi-calculator-video-thumb.svg',
+    diagramUrl: '/images/tools/emi-calculator-infographic.svg',
+    diagramTitle: 'Loan Amortization Matrix and Reducing Balance Infographic',
+    diagramCaption: 'Visualizing principal vs interest split across repayment cycles.',
+    tags: ['emi calculator', 'loan calculator', 'mortgage calculator', 'amortization schedule'],
+  },
+  {
+    slug: 'compound-interest-calculator',
+    name: 'Compound Interest Calculator',
+    title: 'How to Calculate Compound Interest & Future Value (Step-by-Step Tutorial)',
+    description: 'Learn how exponential compounding frequency accelerates long-term investment wealth accumulation.',
+    durationSecs: 90,
+    thumbnailUrl: '/images/tools/compound-interest-video-thumb.svg',
+    diagramUrl: '/images/tools/compound-interest-growth.svg',
+    diagramTitle: 'Compound Interest Growth & Hockey-Stick Wealth Curve',
+    diagramCaption: 'Exponential future value accumulation across daily, monthly, and annual compounding frequencies.',
+    tags: ['compound interest calculator', 'future value', 'compounding frequency', 'wealth multiplier'],
+  },
+  {
+    slug: 'sip-calculator',
+    name: 'SIP Calculator',
+    title: 'How SIP Compounding Builds Long-Term Wealth (Step-by-Step Tutorial)',
+    description: 'Video demonstration of Systematic Investment Plan (SIP) returns, rupee cost averaging, and corpus growth milestones.',
+    durationSecs: 75,
+    thumbnailUrl: '/images/tools/sip-calculator-video-thumb.svg',
+    diagramUrl: '/images/tools/sip-compounding-wealth.svg',
+    diagramTitle: 'Systematic Investment Plan (SIP) Compounding Wealth Multiplier',
+    diagramCaption: 'Monthly SIP investment accumulation milestones across 10, 15, and 20 year horizons.',
+    tags: ['sip calculator', 'mutual fund returns', 'rupee cost averaging', 'wealth compounding'],
+  },
+  {
+    slug: 'percentage-calculator',
+    name: 'Percentage Calculator',
+    title: 'How to Calculate Percentages & % Change Fast (Step-by-Step Tutorial)',
+    description: 'Instant mathematical tutorial explaining percentage of numbers, percentage change, and proportions with formulas.',
+    durationSecs: 65,
+    thumbnailUrl: '/images/tools/percentage-calculator-video-thumb.svg',
+    diagramUrl: '/images/tools/percentage-calculator-formulas.svg',
+    diagramTitle: 'Comprehensive Percentage Mathematics & Formula Matrix',
+    diagramCaption: 'Visual reference guide covering what is X% of Y, X is what % of Y, and percentage change.',
+    tags: ['percentage calculator', 'percent change', 'math calculator', 'discount formula'],
+  },
+  {
+    slug: 'json-formatter',
+    name: 'JSON Formatter & Validator',
+    title: 'How to Format, Validate, & Beautify JSON Payloads (Step-by-Step Tutorial)',
+    description: 'Video demonstration validating RFC 8259 JSON syntax, fixing formatting errors, and minifying payloads locally.',
+    durationSecs: 72,
+    thumbnailUrl: '/images/tools/json-formatter-video-thumb.svg',
+    diagramUrl: '/images/tools/json-formatter-structure.svg',
+    diagramTitle: 'RFC 8259 JSON Syntax Tree & Node Hierarchy Diagram',
+    diagramCaption: 'Client-side AST parser validation with error detection and 2-space indentation.',
+    tags: ['json formatter', 'beautify json', 'json validator', 'json parser'],
+  },
+  {
+    slug: 'base64-encoder',
+    name: 'Base64 Encoder & Decoder',
+    title: 'How to Encode & Decode Base64 Data Streams (Step-by-Step Tutorial)',
+    description: 'Step-by-step tutorial explaining 6-bit Radix-64 encoding, ASCII 8-bit octet splitting, and padding characters.',
+    durationSecs: 68,
+    thumbnailUrl: '/images/tools/base64-encoder-video-thumb.svg',
+    diagramUrl: '/images/tools/base64-encoding-matrix.svg',
+    diagramTitle: 'RFC 4648 Base64 6-Bit Encoding Architecture Matrix',
+    diagramCaption: 'Translating 8-bit ASCII bytes into 6-bit Radix-64 index chunks with zero server transfers.',
+    tags: ['base64 encoder', 'base64 decoder', 'radix 64', 'base64 translation'],
+  },
+  {
+    slug: 'qr-code-generator',
+    name: 'QR Code Generator',
+    title: 'How to Generate High-Resolution QR Codes with Error Correction (Step-by-Step Tutorial)',
+    description: 'Video demonstration generating custom QR codes with Reed-Solomon error correction for URLs, Wi-Fi, and text.',
+    durationSecs: 70,
+    thumbnailUrl: '/images/tools/qr-code-generator-video-thumb.svg',
+    diagramUrl: '/images/tools/qr-code-anatomy-infographic.svg',
+    diagramTitle: 'ISO/IEC 18004 QR Code Matrix Anatomy Infographic',
+    diagramCaption: 'Finder patterns, timing tracks, alignment markers, and Reed-Solomon data blocks.',
+    tags: ['qr code generator', 'reed solomon', 'qr code matrix', 'permanent qr code'],
+  },
+  {
+    slug: 'password-generator',
+    name: 'Password Generator',
+    title: 'How to Generate Cryptographically Secure Passwords (Step-by-Step Tutorial)',
+    description: 'Video tutorial generating cryptographically strong passwords using crypto.getRandomValues and Shannon entropy analysis.',
+    durationSecs: 64,
+    thumbnailUrl: '/images/tools/password-generator-video-thumb.svg',
+    diagramUrl: '/images/tools/password-entropy-infographic.svg',
+    diagramTitle: 'Cryptographic Entropy & Brute-Force Crack Time Matrix',
+    diagramCaption: 'Logarithmic entropy calculation and NIST SP 800-63B password complexity standards.',
+    tags: ['password generator', 'password entropy', 'cryptographic security', 'shannon entropy'],
+  },
+];
 
 export function buildSitemaps() {
   ensureDist();
@@ -72,7 +290,72 @@ ${indexableTools.map((t) => generateUrlXml(`${siteConfig.url}/${t.slug}/`, t.las
 </urlset>`;
   fs.writeFileSync(path.join(DIST_DIR, 'sitemap-tools.xml'), toolsXml, 'utf-8');
 
-  // 4. Colleges Sitemap
+  // 4. Dedicated Google Video Sitemap (xmlns:video="http://www.google.com/schemas/sitemap-video/1.1")
+  const videoEntriesXml = TOOL_MEDIA_REGISTRY.map((m) => {
+    const pageUrl = `${siteConfig.url}/${m.slug}/`;
+    const thumbUrl = `${siteConfig.url}${m.thumbnailUrl}`;
+    const playerUrl = `${siteConfig.url}/${m.slug}/#video-tutorial`;
+    const tagsXml = m.tags.map((t) => `      <video:tag>${escapeXml(t)}</video:tag>`).join('\n');
+
+    return `  <url>
+    <loc>${pageUrl}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <video:video>
+      <video:thumbnail_loc>${thumbUrl}</video:thumbnail_loc>
+      <video:title>${escapeXml(m.title)}</video:title>
+      <video:description>${escapeXml(m.description)}</video:description>
+      <video:content_loc>${playerUrl}</video:content_loc>
+      <video:player_loc allow_embed="yes">${playerUrl}</video:player_loc>
+      <video:duration>${m.durationSecs}</video:duration>
+      <video:publication_date>2026-11-16T08:00:00+00:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+      <video:live>no</video:live>
+${tagsXml}
+    </video:video>
+  </url>`;
+  }).join('\n');
+
+  const videoSitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+${videoEntriesXml}
+</urlset>`;
+  fs.writeFileSync(path.join(DIST_DIR, 'sitemap-video.xml'), videoSitemapXml, 'utf-8');
+
+  // 5. Dedicated Google Image Sitemap (xmlns:image="http://www.google.com/schemas/sitemap-image/1.1")
+  const imageEntriesXml = TOOL_MEDIA_REGISTRY.map((m) => {
+    const pageUrl = `${siteConfig.url}/${m.slug}/`;
+    const diagramUrl = `${siteConfig.url}${m.diagramUrl}`;
+    const thumbUrl = `${siteConfig.url}${m.thumbnailUrl}`;
+
+    return `  <url>
+    <loc>${pageUrl}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>${diagramUrl}</image:loc>
+      <image:title>${escapeXml(m.diagramTitle)}</image:title>
+      <image:caption>${escapeXml(m.diagramCaption)}</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>${thumbUrl}</image:loc>
+      <image:title>${escapeXml(m.name)} Video Tutorial Demonstration Poster</image:title>
+      <image:caption>${escapeXml(m.description)}</image:caption>
+    </image:image>
+  </url>`;
+  }).join('\n');
+
+  const imageSitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+${imageEntriesXml}
+</urlset>`;
+  fs.writeFileSync(path.join(DIST_DIR, 'sitemap-image.xml'), imageSitemapXml, 'utf-8');
+
+  // 6. Colleges Sitemap
   const collegesDataPath = path.resolve(process.cwd(), 'src/data/colleges.json');
   let collegesUrls: { url: string; lastmod: string; priority: string }[] = [];
   if (fs.existsSync(collegesDataPath)) {
@@ -132,19 +415,27 @@ ${collegesUrls.map((p) => generateUrlXml(p.url, p.lastmod, 'weekly', p.priority)
 </urlset>`;
   fs.writeFileSync(path.join(DIST_DIR, 'sitemap-colleges.xml'), collegesXml, 'utf-8');
 
-  // 5. Sitemap Index
+  // 7. Sitemap Index (combining all 5 distinct shards + video + image)
   const sitemapIndex = `<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>${siteConfig.url}/sitemap-tools.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>${siteConfig.url}/sitemap-video.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>${siteConfig.url}/sitemap-image.xml</loc>
+    <lastmod>${today}</lastmod>
+  </sitemap>
   <sitemap>
     <loc>${siteConfig.url}/sitemap-pages.xml</loc>
     <lastmod>${today}</lastmod>
   </sitemap>
   <sitemap>
     <loc>${siteConfig.url}/sitemap-formats.xml</loc>
-    <lastmod>${today}</lastmod>
-  </sitemap>
-  <sitemap>
-    <loc>${siteConfig.url}/sitemap-tools.xml</loc>
     <lastmod>${today}</lastmod>
   </sitemap>
   <sitemap>
@@ -156,7 +447,7 @@ ${collegesUrls.map((p) => generateUrlXml(p.url, p.lastmod, 'weekly', p.priority)
   // Also write sitemap.xml as direct alias for crawlers requesting /sitemap.xml
   fs.writeFileSync(path.join(DIST_DIR, 'sitemap.xml'), sitemapIndex, 'utf-8');
 
-  console.log(`[Sitemap] Generated sitemap-index.xml, sitemap.xml, and 3 shards (${indexableTools.length} indexable tools listed).`);
+  console.log(`[Sitemap] Generated sitemap-index.xml, sitemap.xml, sitemap-video.xml (${TOOL_MEDIA_REGISTRY.length} videos), sitemap-image.xml (${TOOL_MEDIA_REGISTRY.length * 2} images), and standard shards (${indexableTools.length} indexable tools listed).`);
 }
 
 // Execute when called directly

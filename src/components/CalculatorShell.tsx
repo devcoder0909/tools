@@ -325,78 +325,174 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
             </button>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-start">
             {percMode === 'calc' && (
               <>
-                <div>
-                  <label class="block text-xs font-semibold text-gray-700 mb-1">Percentage (%)</label>
+                <div class="space-y-1.5">
+                  <label class="block text-xs font-bold text-gray-700">Percentage (%)</label>
                   <input
                     type="number"
                     value={pVal1}
                     onInput={(e) => setPVal1((e.target as HTMLInputElement).value)}
-                    class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 font-mono text-lg"
+                    class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 font-mono text-base sm:text-lg font-bold"
                     placeholder="e.g. 15"
                   />
+                  <div class="flex flex-wrap gap-1 pt-1">
+                    {['5', '10', '15', '20', '25', '30', '50', '75'].map((pct) => (
+                      <button
+                        key={pct}
+                        type="button"
+                        onClick={() => setPVal1(pct)}
+                        class={`px-2 py-0.5 text-2xs font-semibold rounded-md border transition ${
+                          pVal1 === pct
+                            ? 'bg-emerald-600 text-white border-emerald-600 shadow-2xs'
+                            : 'bg-white text-gray-700 border-gray-200 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-800'
+                        }`}
+                      >
+                        {pct}%
+                      </button>
+                    ))}
+                  </div>
                 </div>
-                <div>
-                  <label class="block text-xs font-semibold text-gray-700 mb-1">Of Number</label>
+                <div class="space-y-1.5">
+                  <label class="block text-xs font-bold text-gray-700">Of Number (Base Value)</label>
                   <input
                     type="number"
                     value={pVal2}
                     onInput={(e) => setPVal2((e.target as HTMLInputElement).value)}
-                    class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 font-mono text-lg"
+                    class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 font-mono text-base sm:text-lg font-bold"
                     placeholder="e.g. 250"
                   />
+                  <div class="flex flex-wrap gap-1 pt-1">
+                    {['50', '100', '250', '500', '1000', '5000'].map((num) => (
+                      <button
+                        key={num}
+                        type="button"
+                        onClick={() => setPVal2(num)}
+                        class={`px-2 py-0.5 text-2xs font-semibold rounded-md border transition ${
+                          pVal2 === num
+                            ? 'bg-emerald-600 text-white border-emerald-600 shadow-2xs'
+                            : 'bg-white text-gray-700 border-gray-200 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-800'
+                        }`}
+                      >
+                        {num}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </>
             )}
 
             {percMode === 'isWhat' && (
               <>
-                <div>
-                  <label class="block text-xs font-semibold text-gray-700 mb-1">Number X</label>
+                <div class="space-y-1.5">
+                  <label class="block text-xs font-bold text-gray-700">Number X (Numerator)</label>
                   <input
                     type="number"
                     value={pVal1}
                     onInput={(e) => setPVal1((e.target as HTMLInputElement).value)}
-                    class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 font-mono text-lg"
+                    class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 font-mono text-base sm:text-lg font-bold"
                     placeholder="e.g. 35"
                   />
+                  <div class="flex flex-wrap gap-1 pt-1">
+                    {['10', '25', '35', '50', '75', '100'].map((num) => (
+                      <button
+                        key={num}
+                        type="button"
+                        onClick={() => setPVal1(num)}
+                        class={`px-2 py-0.5 text-2xs font-semibold rounded-md border transition ${
+                          pVal1 === num
+                            ? 'bg-emerald-600 text-white border-emerald-600 shadow-2xs'
+                            : 'bg-white text-gray-700 border-gray-200 hover:bg-emerald-50'
+                        }`}
+                      >
+                        {num}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-                <div>
-                  <label class="block text-xs font-semibold text-gray-700 mb-1">Is what % of Number Y</label>
+                <div class="space-y-1.5">
+                  <label class="block text-xs font-bold text-gray-700">Is what % of Number Y (Denominator)</label>
                   <input
                     type="number"
                     value={pVal2}
                     onInput={(e) => setPVal2((e.target as HTMLInputElement).value)}
-                    class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 font-mono text-lg"
+                    class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 font-mono text-base sm:text-lg font-bold"
                     placeholder="e.g. 140"
                   />
+                  <div class="flex flex-wrap gap-1 pt-1">
+                    {['50', '100', '140', '200', '500', '1000'].map((num) => (
+                      <button
+                        key={num}
+                        type="button"
+                        onClick={() => setPVal2(num)}
+                        class={`px-2 py-0.5 text-2xs font-semibold rounded-md border transition ${
+                          pVal2 === num
+                            ? 'bg-emerald-600 text-white border-emerald-600 shadow-2xs'
+                            : 'bg-white text-gray-700 border-gray-200 hover:bg-emerald-50'
+                        }`}
+                      >
+                        {num}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </>
             )}
 
             {percMode === 'change' && (
               <>
-                <div>
-                  <label class="block text-xs font-semibold text-gray-700 mb-1">Initial Value (From)</label>
+                <div class="space-y-1.5">
+                  <label class="block text-xs font-bold text-gray-700">Initial Value (From)</label>
                   <input
                     type="number"
                     value={pVal1}
                     onInput={(e) => setPVal1((e.target as HTMLInputElement).value)}
-                    class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 font-mono text-lg"
+                    class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 font-mono text-base sm:text-lg font-bold"
                     placeholder="e.g. 100"
                   />
+                  <div class="flex flex-wrap gap-1 pt-1">
+                    {['50', '100', '200', '500'].map((num) => (
+                      <button
+                        key={num}
+                        type="button"
+                        onClick={() => setPVal1(num)}
+                        class={`px-2 py-0.5 text-2xs font-semibold rounded-md border transition ${
+                          pVal1 === num
+                            ? 'bg-emerald-600 text-white border-emerald-600 shadow-2xs'
+                            : 'bg-white text-gray-700 border-gray-200 hover:bg-emerald-50'
+                        }`}
+                      >
+                        {num}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-                <div>
-                  <label class="block text-xs font-semibold text-gray-700 mb-1">Final Value (To)</label>
+                <div class="space-y-1.5">
+                  <label class="block text-xs font-bold text-gray-700">Final Value (To)</label>
                   <input
                     type="number"
                     value={pVal2}
                     onInput={(e) => setPVal2((e.target as HTMLInputElement).value)}
-                    class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 font-mono text-lg"
+                    class="w-full px-4 py-2.5 rounded-xl border border-gray-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 font-mono text-base sm:text-lg font-bold"
                     placeholder="e.g. 125"
                   />
+                  <div class="flex flex-wrap gap-1 pt-1">
+                    {['75', '125', '150', '250', '500'].map((num) => (
+                      <button
+                        key={num}
+                        type="button"
+                        onClick={() => setPVal2(num)}
+                        class={`px-2 py-0.5 text-2xs font-semibold rounded-md border transition ${
+                          pVal2 === num
+                            ? 'bg-emerald-600 text-white border-emerald-600 shadow-2xs'
+                            : 'bg-white text-gray-700 border-gray-200 hover:bg-emerald-50'
+                        }`}
+                      >
+                        {num}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               </>
             )}
@@ -556,6 +652,22 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
                 class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 font-mono text-lg"
                 placeholder="20"
               />
+              <div class="flex flex-wrap gap-1 mt-1.5">
+                {['10', '15', '20', '25', '30', '50'].map((d) => (
+                  <button
+                    key={d}
+                    type="button"
+                    onClick={() => setDiscountPercent(d)}
+                    class={`px-2 py-0.5 text-2xs font-semibold rounded-md border transition ${
+                      discountPercent === d
+                        ? 'bg-emerald-600 text-white border-emerald-600 shadow-2xs'
+                        : 'bg-white text-gray-700 border-gray-200 hover:bg-emerald-50'
+                    }`}
+                  >
+                    {d}%
+                  </button>
+                ))}
+              </div>
             </div>
             <div>
               <label class="block text-xs font-semibold text-gray-700 mb-1">Sales Tax (%) [Optional]</label>

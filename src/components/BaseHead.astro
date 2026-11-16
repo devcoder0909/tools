@@ -9,6 +9,14 @@ export interface Props {
   type?: 'website' | 'article';
   jsonLd?: Record<string, any> | Record<string, any>[];
   noindex?: boolean;
+  ogImage?: string;
+  ogVideo?: {
+    url: string;
+    type?: string;
+    width?: number;
+    height?: number;
+    duration?: number;
+  };
 }
 
 const {
@@ -19,6 +27,8 @@ const {
   type = 'website',
   jsonLd,
   noindex = false,
+  ogImage,
+  ogVideo,
 } = Astro.props;
 
 // Format title: only append brand if it doesn't already have it and fits comfortably <= 60 chars
@@ -39,6 +49,7 @@ if (fullTitle.length > 60) {
     fullTitle = fullTitle.slice(0, 60).trim();
   }
 }
+const metaImage = ogImage || `${siteConfig.url}/og-image.png`;
 ---
 
 <!-- Global Metadata -->
@@ -73,23 +84,31 @@ if (fullTitle.length > 60) {
 <meta property="og:description" content={description} />
 <meta property="og:site_name" content={siteConfig.brand} />
 <meta property="og:locale" content="en_US" />
-<meta property="og:image" content={`${siteConfig.url}/og-image.png`} />
+<meta property="og:image" content={metaImage} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content={`${fullTitle} - ${siteConfig.brand}`} />
+
+{ogVideo && (
+  <>
+    <meta property="og:video" content={ogVideo.url} />
+    <meta property="og:video:type" content={ogVideo.type || 'text/html'} />
+    {ogVideo.width && <meta property="og:video:width" content={String(ogVideo.width)} />}
+    {ogVideo.height && <meta property="og:video:height" content={String(ogVideo.height)} />}
+    {ogVideo.duration && <meta property="og:video:duration" content={String(ogVideo.duration)} />}
+    <meta name="twitter:player" content={ogVideo.url} />
+    {ogVideo.width && <meta name="twitter:player:width" content={String(ogVideo.width)} />}
+    {ogVideo.height && <meta name="twitter:player:height" content={String(ogVideo.height)} />}
+  </>
+)}
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:url" content={canonical} />
 <meta name="twitter:title" content={fullTitle} />
 <meta name="twitter:description" content={description} />
-<meta name="twitter:image" content={`${siteConfig.url}/og-image.png`} />
+<meta name="twitter:image" content={metaImage} />
 <meta name="twitter:image:alt" content={`${fullTitle} - ${siteConfig.brand}`} />
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={canonical} />
-<meta property="twitter:title" content={fullTitle} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={`${siteConfig.url}/og-image.png`} />
 
 <!-- Verification -->
 {siteConfig.searchConsoleMeta && (

@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none" role="img" aria-labelledby="svg-title-percentage-calculator-formulas-svg svg-desc-percentage-calculator-formulas-svg">
+  <title id="svg-title-percentage-calculator-formulas-svg">Percentage Calculation Formulas & Mathematical Matrix Infographic</title>
+  <desc id="svg-desc-percentage-calculator-formulas-svg">Visual reference matrix for calculating percentage of a number, percentage change, and proportions.</desc>
   <defs>
     <linearGradient id="pctBg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#f8fafc" />

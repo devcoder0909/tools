@@ -338,11 +338,37 @@ const diagramUrl = workflowDiagrams[tool.slug];
 const schemas: any[] = [webAppJsonLd, howToJsonLd];
 if (faqJsonLd) schemas.push(faqJsonLd);
 
+let durationSeconds = 75;
+if (videoData?.duration) {
+  const parts = videoData.duration.split(':');
+  if (parts.length === 2) {
+    durationSeconds = parseInt(parts[0], 10) * 60 + parseInt(parts[1], 10);
+  }
+}
+
 if (videoData) {
   const videoTitle = tool.from && tool.to
     ? `How to Convert ${tool.from.toUpperCase()} to ${tool.to.toUpperCase()} Online (Step-by-Step Tutorial)`
     : `How to Use ${tool.name} Online (Step-by-Step Tutorial)`;
   const videoDesc = `Complete step-by-step video demonstration of ${tool.name.toLowerCase()} directly in your browser with zero server uploads and instant processing.`;
+
+  const clips = videoData.steps.map((step, idx, arr) => {
+    const parts = step.timestamp.split(':');
+    const startSec = parseInt(parts[0], 10) * 60 + parseInt(parts[1], 10);
+    const nextStep = arr[idx + 1];
+    let endSec = startSec + 20;
+    if (nextStep) {
+      const nextParts = nextStep.timestamp.split(':');
+      endSec = parseInt(nextParts[0], 10) * 60 + parseInt(nextParts[1], 10);
+    }
+    return {
+      '@type': 'Clip',
+      name: step.title,
+      startOffset: startSec,
+      endOffset: endSec,
+      url: `${siteConfig.url}/${tool.slug}/#video-step-${idx}`,
+    };
+  });
 
   schemas.push({
     '@context': 'https://schema.org',
@@ -355,6 +381,18 @@ if (videoData) {
     contentUrl: `${siteConfig.url}/${tool.slug}/#video-tutorial`,
     embedUrl: `${siteConfig.url}/${tool.slug}/#video-tutorial`,
     transcript: videoData.steps.map((s) => `${s.timestamp} ${s.title}: ${s.description}`).join(' '),
+    hasPart: clips,
+  });
+
+  schemas.push({
+    '@context': 'https://schema.org',
+    '@type': 'ImageObject',
+    contentUrl: `${siteConfig.url}${videoData.thumbnailUrl}`,
+    name: `${tool.name} Video Tutorial Thumbnail`,
+    description: `Video demonstration poster for ${tool.name}.`,
+    width: 1280,
+    height: 720,
+    caption: `${tool.name} Step-by-Step Video Walkthrough`,
   });
 }
 
@@ -363,12 +401,28 @@ if (diagramUrl) {
     '@context': 'https://schema.org',
     '@type': 'ImageObject',
     contentUrl: `${siteConfig.url}${diagramUrl}`,
-    name: `${tool.name} Client-Side Workflow Diagram`,
-    description: `Detailed infographic illustrating the 100% in-browser RAM conversion pipeline for ${tool.name}.`,
+    name: `${tool.name} Architecture & Workflow Infographic`,
+    description: `Detailed infographic illustrating the 100% in-browser RAM conversion and calculation pipeline for ${tool.name}.`,
     width: 800,
     height: 450,
+    representativeOfPage: true,
+    caption: `${tool.name} Process Flow`,
   });
 }
+
+const ogVideoProp = videoData ? {
+  url: `${siteConfig.url}/${tool.slug}/#video-tutorial`,
+  type: 'text/html',
+  width: 1280,
+  height: 720,
+  duration: durationSeconds,
+} : undefined;
+
+const ogImageProp = videoData
+  ? `${siteConfig.url}${videoData.thumbnailUrl}`
+  : diagramUrl
+  ? `${siteConfig.url}${diagramUrl}`
+  : undefined;
 
 // Target size parsed from options or targetBytes if available
 let parsedTargetKb = 200;
@@ -390,6 +444,8 @@ if (tool.targetBytes) {
   canonical={`${siteConfig.url}/${tool.slug}/`}
   jsonLd={schemas}
   noindex={!isIndexable}
+  ogImage={ogImageProp}
+  ogVideo={ogVideoProp}
 >
   <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
     <!-- 1. Breadcrumbs -->

@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none" role="img" aria-labelledby="svg-title-json-formatter-structure-svg svg-desc-json-formatter-structure-svg">
+  <title id="svg-title-json-formatter-structure-svg">RFC 8259 JSON Syntax Tree & Node Hierarchy Infographic</title>
+  <desc id="svg-desc-json-formatter-structure-svg">Visual breakdown of JSON syntax tree, object key-value pairs, nested arrays, and data validation rules.</desc>
   <defs>
     <linearGradient id="jsonBg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#0f172a" />

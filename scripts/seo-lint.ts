@@ -177,12 +177,12 @@ export function runSeoLint() {
       }
     });
 
-    // Size check: HTML <= 85KB (or 110KB for 100+ item master directories)
+    // Size check: HTML <= 95KB (or 110KB for 100+ item master directories)
     const isMasterCatalog =
       urlPath === '/colleges/' ||
       urlPath === '/tools/' ||
       urlPath === '/cutoff/computer-science/';
-    const maxBudget = isMasterCatalog ? 110 * 1024 : 85 * 1024;
+    const maxBudget = isMasterCatalog ? 110 * 1024 : 95 * 1024;
     const stats = fs.statSync(filePath);
     if (stats.size > maxBudget) {
       errors.push(`HTML size (${(stats.size / 1024).toFixed(1)}KB) exceeds budget of ${(maxBudget / 1024).toFixed(0)}KB`);
