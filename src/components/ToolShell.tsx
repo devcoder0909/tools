@@ -612,7 +612,7 @@ export default function ToolShell({
               100% In-Browser Privacy
             </span>
             <span>•</span>
-            <span>No File Size Caps</span>
+            <span>Local In-Memory Execution</span>
             <span>•</span>
             <span>Zero Watermarks</span>
           </div>

@@ -2313,7 +2313,7 @@
     - q: Does compressing to 20KB blur my photo or signature?
       a: Our smart compression engine preserves essential contrast and sharp edges while stripping invisible metadata to maximize optical clarity at tiny file sizes.
     - q: Is there a limit to how many 20KB photos I can compress?
-      a: No. You can compress as many photos and documents as needed with 100% free unlimited conversions.
+      a: No. All conversions run locally inside your browser memory with no daily quotas or paywalls.
   related:
     - compress-image-to-50kb
     - compress-image-to-100kb
