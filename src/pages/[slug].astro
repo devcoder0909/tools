@@ -365,22 +365,6 @@ if (tool.targetBytes) {
     <!-- Related tools & format hub links -->
     <RelatedTools currentTool={tool} relatedTools={related} />
 
-    <!-- Popular Search Queries & Target Intent Topics -->
-    {tool.seo?.secondary_kws && tool.seo.secondary_kws.length > 0 && (
-      <section class="my-8 p-5 bg-gray-50 border border-gray-200 rounded-xl" aria-label="Search Topics">
-        <p class="text-xs font-bold text-gray-700 uppercase tracking-wider mb-3">
-          Popular Search Topics & Variations
-        </p>
-        <div class="flex flex-wrap gap-2">
-          {tool.seo.secondary_kws.map((kw: string) => (
-            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-white text-gray-700 border border-gray-200 shadow-2xs">
-              {kw}
-            </span>
-          ))}
-        </div>
-      </section>
-    )}
-
     <!-- 9. Last-reviewed date and reviewer -->
     <div class="mt-12 pt-6 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between text-xs text-gray-500 gap-2">
       <span>

@@ -67,7 +67,6 @@ const metaImage = ogImage || `${siteConfig.url}/og-image.png`;
 <title>{fullTitle}</title>
 <meta name="title" content={fullTitle} />
 <meta name="description" content={description} />
-{keywords && <meta name="keywords" content={keywords} />}
 {noindex && <meta name="robots" content="noindex, follow" />}
 {!noindex && <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />}
 
