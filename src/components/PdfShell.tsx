@@ -1,5 +1,5 @@
 import { useState, useRef } from 'preact/hooks';
-import { PDFDocument } from 'pdf-lib';
+import { PDFDocument, degrees } from 'pdf-lib';
 
 interface PdfShellProps {
   toolId: string;
@@ -22,6 +22,7 @@ export default function PdfShell({ toolId }: PdfShellProps) {
   const [splitRange, setSplitRange] = useState('1');
   const [pageSize, setPageSize] = useState<'fit' | 'a4' | 'letter'>('a4');
   const [orientation, setOrientation] = useState<'portrait' | 'landscape'>('portrait');
+  const [rotateAngle, setRotateAngle] = useState<number>(90);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFiles = (incoming: FileList | File[]) => {
@@ -237,6 +238,41 @@ export default function PdfShell({ toolId }: PdfShellProps) {
   const isSplit = toolId === 'split-pdf';
   const isCompress = toolId === 'compress-pdf';
   const isPdfToJpg = toolId === 'pdf-to-jpg';
+  const isRotate = toolId === 'rotate-pdf';
+
+  // --- 6. Rotate PDF ---
+  const rotatePdf = async () => {
+    if (files.length === 0) {
+      alert('Please upload a PDF file to rotate.');
+      return;
+    }
+    setIsProcessing(true);
+    setStatusMessage(`Rotating PDF pages by ${rotateAngle}° client-side...`);
+
+    try {
+      const sourceFile = files[0];
+      const arrayBuffer = await sourceFile.file.arrayBuffer();
+      const pdfDoc = await PDFDocument.load(arrayBuffer);
+      const pages = pdfDoc.getPages();
+
+      for (const page of pages) {
+        const currentRotation = page.getRotation().angle;
+        page.setRotation(degrees((currentRotation + rotateAngle) % 360));
+      }
+
+      const pdfBytes = await pdfDoc.save();
+      const blob = new Blob([pdfBytes as unknown as BlobPart], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+      setDownloadUrl(url);
+      setDownloadFilename(`rotated-${rotateAngle}deg-${sourceFile.name}`);
+      setStatusMessage(`Successfully rotated ${pages.length} pages by ${rotateAngle}° (${formatSize(blob.size)})!`);
+    } catch (err: any) {
+      console.error('PDF Rotate error:', err);
+      setStatusMessage(`Rotation failed: ${err.message || 'Invalid PDF'}`);
+    } finally {
+      setIsProcessing(false);
+    }
+  };
 
   // --- 5. PDF to JPG ---
   const convertPdfToJpg = async () => {
@@ -364,6 +400,32 @@ export default function PdfShell({ toolId }: PdfShellProps) {
         </div>
       )}
 
+      {/* Options for Rotate PDF */}
+      {isRotate && files.length > 0 && (
+        <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 mb-6">
+          <label class="block text-xs font-medium text-gray-700 mb-2">Select Rotation Angle</label>
+          <div class="grid grid-cols-3 gap-2">
+            {[
+              { label: '90° Clockwise', angle: 90 },
+              { label: '180° Flip', angle: 180 },
+              { label: '270° Counter-Clockwise', angle: 270 },
+            ].map((opt) => (
+              <button
+                type="button"
+                onClick={() => setRotateAngle(opt.angle)}
+                class={`px-3 py-2 rounded-lg text-xs font-bold border transition cursor-pointer ${
+                  rotateAngle === opt.angle
+                    ? 'bg-green-600 text-white border-green-600 shadow-xs'
+                    : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-100'
+                }`}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Selected Files List */}
       {files.length > 0 && (
         <div class="mb-6 space-y-2">
@@ -459,6 +521,17 @@ export default function PdfShell({ toolId }: PdfShellProps) {
             class="px-6 py-2.5 text-xs font-bold rounded-xl bg-green-600 text-white hover:bg-green-700 transition disabled:opacity-50 cursor-pointer"
           >
             {isProcessing ? 'Converting...' : 'Convert to JPG Now'}
+          </button>
+        )}
+
+        {isRotate && (
+          <button
+            type="button"
+            disabled={files.length === 0 || isProcessing}
+            onClick={rotatePdf}
+            class="px-6 py-2.5 text-xs font-bold rounded-xl bg-green-600 text-white hover:bg-green-700 transition disabled:opacity-50 cursor-pointer"
+          >
+            {isProcessing ? 'Rotating...' : `Rotate PDF (${rotateAngle}°) Now`}
           </button>
         )}
 

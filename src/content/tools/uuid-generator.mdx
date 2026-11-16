@@ -1,0 +1,42 @@
+---
+title: "UUID Generator - Free Online v4 GUIDs"
+subtitle: "Generate random version 4 UUIDs and GUIDs in your browser."
+description: "Generate random v4 UUIDs and GUIDs instantly online. Free cryptographically secure identifier generator with bulk generation and one-click copy."
+last_reviewed: "2026-11-16"
+reviewer: "Best Converter Cryptography & DevTools Team"
+reviewed: true
+---
+
+## How to Generate Version 4 UUIDs and GUIDs Online
+
+Generating universally unique identifiers for database records, session keys, and distributed system tracing takes a single click:
+
+1. **Configure Parameters:** Choose your desired quantity of identifiers (from 1 to 500 UUIDs), hyphen formatting (standard hyphenated vs unhyphenated hex), and case preference (lowercase vs uppercase).
+2. **Generate Identifiers:** Click **Generate New UUIDs**. The tool utilizes the browser's native `crypto.randomUUID()` hardware entropy pool to spawn cryptographically secure pseudo-random strings.
+3. **Copy or Export:** Copy a single GUID or click **Copy All to Clipboard** to insert the generated batch directly into SQL insert scripts, JSON fixtures, or schema definitions.
+
+---
+
+## What is a Version 4 UUID?
+
+A Universally Unique Identifier (UUID), defined by RFC 4122, is a 128-bit label formatted as 32 hexadecimal digits displayed in five groups separated by hyphens (`8-4-4-4-12`):
+
+$$\text{xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx}$$
+
+Key architectural characteristics include:
+- **Version 4 Bit Flag:** The 13th character is always `4`, denoting that the identifier was constructed from pseudorandom numbers rather than MAC hardware addresses or timestamps.
+- **Variant 1 Flag:** The 17th character starts with `8`, `9`, `a`, or `b`, denoting compliance with standard DCE 1.1 / RFC 4122 variant conventions.
+- **Collision Impossibility:** With $2^{122}$ (approximately $5.3 \times 10^{36}$) possible values, generating 1 billion UUIDs per second for 100 years yields a collision probability smaller than one in a billion.
+
+---
+
+## UUID Format Variations Comparison
+
+| Format Style | Example Representation | Common Use Case |
+| :--- | :--- | :--- |
+| **Standard Canonical** | `f47ac10b-58cc-4372-a567-0e02b2c3d479` | PostgreSQL `UUID`, REST APIs |
+| **Uppercase Standard** | `F47AC10B-58CC-4372-A567-0E02B2C3D479` | Microsoft Windows GUID, COM |
+| **No Hyphens (Compact)** | `f47ac10b58cc4372a5670e02b2c3d479` | MongoDB string keys, S3 prefixes |
+| **Base64 / URL-Safe** | `9HrBC1jMQ3KlZw4CssPUeQ` | URL shorteners, microservice tokens |
+
+All generation runs purely inside your browser memory using the Web Cryptography API. Generated keys are never tracked, logged, or cached on any remote servers.

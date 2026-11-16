@@ -175,6 +175,43 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
     };
   }, [gstAmount, gstRate, gstType]);
 
+  // --- Compound Interest Calculator State ---
+  const [ciPrincipal, setCiPrincipal] = useState<number>(10000);
+  const [ciRate, setCiRate] = useState<number>(8);
+  const [ciYears, setCiYears] = useState<number>(10);
+  const [ciFrequency, setCiFrequency] = useState<number>(12); // monthly
+
+  const ciCalc = useMemo(() => {
+    const P = Number(ciPrincipal) || 0;
+    const r = (Number(ciRate) || 0) / 100;
+    const t = Number(ciYears) || 0;
+    const n = Number(ciFrequency) || 1;
+
+    if (P <= 0 || r <= 0 || t <= 0) {
+      return { futureValue: P, totalInterest: 0, schedule: [] };
+    }
+
+    const futureValue = P * Math.pow(1 + r / n, n * t);
+    const totalInterest = futureValue - P;
+
+    const schedule: { year: number; interestEarned: number; balance: number }[] = [];
+    for (let y = 1; y <= Math.min(t, 20); y++) {
+      const yearBalance = P * Math.pow(1 + r / n, n * y);
+      const prevBalance = y === 1 ? P : P * Math.pow(1 + r / n, n * (y - 1));
+      schedule.push({
+        year: y,
+        interestEarned: Math.round(yearBalance - prevBalance),
+        balance: Math.round(yearBalance),
+      });
+    }
+
+    return {
+      futureValue: Math.round(futureValue),
+      totalInterest: Math.round(totalInterest),
+      schedule,
+    };
+  }, [ciPrincipal, ciRate, ciYears, ciFrequency]);
+
   return (
     <div class="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-xs mb-10">
       {/* 1. EMI / Loan / Mortgage Calculator */}
@@ -589,6 +626,141 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
               </div>
             </div>
           </div>
+        </div>
+      )}
+
+      {/* 6. Compound Interest Calculator */}
+      {toolId === 'compound-interest-calculator' && (
+        <div class="space-y-8">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="md:col-span-2 space-y-5">
+              <div>
+                <div class="flex justify-between text-xs font-semibold text-gray-700 mb-1">
+                  <span>Initial Principal Deposit ($)</span>
+                  <span class="font-bold text-gray-900">${ciPrincipal.toLocaleString()}</span>
+                </div>
+                <input
+                  type="range"
+                  min="500"
+                  max="1000000"
+                  step="500"
+                  value={ciPrincipal}
+                  onInput={(e) => setCiPrincipal(Number((e.target as HTMLInputElement).value))}
+                  class="w-full accent-green-600"
+                />
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs font-semibold text-gray-700 mb-1">
+                  <span>Annual Nominal Interest Rate (%)</span>
+                  <span class="font-bold text-gray-900">{ciRate}%</span>
+                </div>
+                <input
+                  type="range"
+                  min="0.5"
+                  max="30"
+                  step="0.1"
+                  value={ciRate}
+                  onInput={(e) => setCiRate(Number((e.target as HTMLInputElement).value))}
+                  class="w-full accent-green-600"
+                />
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs font-semibold text-gray-700 mb-1">
+                  <span>Investment Tenure (Years)</span>
+                  <span class="font-bold text-gray-900">{ciYears} Years</span>
+                </div>
+                <input
+                  type="range"
+                  min="1"
+                  max="40"
+                  value={ciYears}
+                  onInput={(e) => setCiYears(Number((e.target as HTMLInputElement).value))}
+                  class="w-full accent-green-600"
+                />
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-gray-700 mb-2">Compounding Frequency</label>
+                <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">
+                  {[
+                    { label: 'Annually', freq: 1 },
+                    { label: 'Semi-Annual', freq: 2 },
+                    { label: 'Quarterly', freq: 4 },
+                    { label: 'Monthly', freq: 12 },
+                    { label: 'Daily', freq: 365 },
+                  ].map((item) => (
+                    <button
+                      key={item.freq}
+                      type="button"
+                      onClick={() => setCiFrequency(item.freq)}
+                      class={`py-2 px-2 text-xs font-bold rounded-lg border transition cursor-pointer ${
+                        ciFrequency === item.freq
+                          ? 'bg-green-600 text-white border-green-600 shadow-xs'
+                          : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
+                      }`}
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-gray-50 border border-gray-200 rounded-xl p-5 flex flex-col justify-between">
+              <div>
+                <span class="text-xs uppercase font-semibold text-gray-500 tracking-wider">
+                  Maturity Future Balance
+                </span>
+                <p class="text-3xl font-extrabold text-green-700 my-2">
+                  ${ciCalc.futureValue.toLocaleString()}
+                </p>
+              </div>
+
+              <div class="space-y-2 text-xs border-t border-gray-200 pt-3">
+                <div class="flex justify-between text-gray-600">
+                  <span>Initial Principal:</span>
+                  <span class="font-bold text-gray-900">${ciPrincipal.toLocaleString()}</span>
+                </div>
+                <div class="flex justify-between text-gray-600">
+                  <span>Total Accrued Interest:</span>
+                  <span class="font-bold text-green-700">+${ciCalc.totalInterest.toLocaleString()}</span>
+                </div>
+                <div class="flex justify-between text-gray-900 font-bold border-t border-gray-200 pt-1">
+                  <span>Total Return Multiplier:</span>
+                  <span>{(ciPrincipal > 0 ? (ciCalc.futureValue / ciPrincipal).toFixed(2) : '1.00')}x</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Schedule Table */}
+          {ciCalc.schedule.length > 0 && (
+            <div class="border-t border-gray-200 pt-6">
+              <div class="text-sm font-bold text-gray-900 mb-3">Year-by-Year Compound Growth Schedule</div>
+              <div class="overflow-x-auto max-h-64 border border-gray-200 rounded-xl">
+                <table class="w-full text-xs text-left">
+                  <thead class="bg-gray-100 text-gray-600 uppercase font-semibold sticky top-0">
+                    <tr>
+                      <th class="p-2.5">Year</th>
+                      <th class="p-2.5">Interest Earned</th>
+                      <th class="p-2.5">Year-End Balance</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-gray-200">
+                    {ciCalc.schedule.map((row) => (
+                      <tr key={row.year} class="hover:bg-gray-50">
+                        <td class="p-2.5 font-bold text-gray-900">Year {row.year}</td>
+                        <td class="p-2.5 text-green-600 font-medium">+${row.interestEarned.toLocaleString()}</td>
+                        <td class="p-2.5 font-bold text-gray-900">${row.balance.toLocaleString()}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>

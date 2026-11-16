@@ -208,6 +208,74 @@ export default function MediaShell({ toolId }: MediaShellProps) {
   const memeCanvasRef = useRef<HTMLCanvasElement>(null);
   const [memeUrl, setMemeUrl] = useState<string | null>(null);
 
+  // --- 7. Crop Image State ---
+  const [cropAspect, setCropAspect] = useState<'free' | '1:1' | '16:9' | '4:3' | '9:16'>('1:1');
+  const [cropUrl, setCropUrl] = useState<string | null>(null);
+  const [cropDims, setCropDims] = useState<{ w: number; h: number }>({ w: 0, h: 0 });
+  const cropCanvasRef = useRef<HTMLCanvasElement>(null);
+
+  const applyCrop = () => {
+    if (!imageSrc) return;
+    const canvas = cropCanvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const img = new Image();
+    img.onload = () => {
+      let cropW = img.naturalWidth;
+      let cropH = img.naturalHeight;
+
+      if (cropAspect === '1:1') {
+        const side = Math.min(img.naturalWidth, img.naturalHeight);
+        cropW = side;
+        cropH = side;
+      } else if (cropAspect === '16:9') {
+        if (img.naturalWidth / img.naturalHeight > 16 / 9) {
+          cropH = img.naturalHeight;
+          cropW = Math.round(cropH * (16 / 9));
+        } else {
+          cropW = img.naturalWidth;
+          cropH = Math.round(cropW * (9 / 16));
+        }
+      } else if (cropAspect === '4:3') {
+        if (img.naturalWidth / img.naturalHeight > 4 / 3) {
+          cropH = img.naturalHeight;
+          cropW = Math.round(cropH * (4 / 3));
+        } else {
+          cropW = img.naturalWidth;
+          cropH = Math.round(cropW * (3 / 4));
+        }
+      } else if (cropAspect === '9:16') {
+        if (img.naturalWidth / img.naturalHeight > 9 / 16) {
+          cropH = img.naturalHeight;
+          cropW = Math.round(cropH * (9 / 16));
+        } else {
+          cropW = img.naturalWidth;
+          cropH = Math.round(cropW * (16 / 9));
+        }
+      }
+
+      const startX = Math.round((img.naturalWidth - cropW) / 2);
+      const startY = Math.round((img.naturalHeight - cropH) / 2);
+
+      canvas.width = cropW;
+      canvas.height = cropH;
+      ctx.clearRect(0, 0, cropW, cropH);
+      ctx.drawImage(img, startX, startY, cropW, cropH, 0, 0, cropW, cropH);
+
+      setCropDims({ w: cropW, h: cropH });
+      setCropUrl(canvas.toDataURL('image/png'));
+    };
+    img.src = imageSrc;
+  };
+
+  useEffect(() => {
+    if (toolId === 'crop-image' && imageSrc) {
+      applyCrop();
+    }
+  }, [toolId, imageSrc, cropAspect]);
+
   const handleImageUpload = (file: File) => {
     const url = URL.createObjectURL(file);
     setImageSrc(url);
@@ -835,6 +903,90 @@ export default function MediaShell({ toolId }: MediaShellProps) {
               Download Meme PNG
             </a>
           </div>
+        </div>
+      )}
+
+      {/* 7. Crop Image */}
+      {toolId === 'crop-image' && (
+        <div class="space-y-6">
+          {!imageSrc ? (
+            <label class="border-2 border-dashed border-gray-300 hover:border-green-500 rounded-xl p-8 block text-center bg-gray-50 cursor-pointer">
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => {
+                  if (e.currentTarget.files?.[0]) handleImageUpload(e.currentTarget.files[0]);
+                }}
+                class="hidden"
+              />
+              <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-xs border border-gray-200 text-green-600">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <p class="text-sm font-bold text-gray-900 mb-1">Click to select an image to crop</p>
+              <p class="text-xs text-gray-500">Supports JPG, PNG, and WebP. 100% private in-browser canvas.</p>
+            </label>
+          ) : (
+            <div class="space-y-6">
+              <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 space-y-3">
+                <div class="flex items-center justify-between">
+                  <label class="text-xs font-bold text-gray-700 uppercase tracking-wider">Aspect Ratio Preset</label>
+                  {cropDims.w > 0 && (
+                    <span class="text-xs font-mono font-bold text-gray-500">
+                      Output: {cropDims.w} × {cropDims.h} px
+                    </span>
+                  )}
+                </div>
+
+                <div class="flex flex-wrap gap-2">
+                  {[
+                    { id: '1:1', label: '1:1 Square (Profile/Post)' },
+                    { id: '16:9', label: '16:9 Widescreen (YouTube)' },
+                    { id: '4:3', label: '4:3 Standard Photo' },
+                    { id: '9:16', label: '9:16 Story / Reel' },
+                    { id: 'free', label: 'Original Full' },
+                  ].map((preset) => (
+                    <button
+                      key={preset.id}
+                      type="button"
+                      onClick={() => setCropAspect(preset.id as any)}
+                      class={`px-3 py-1.5 text-xs font-bold rounded-lg border transition cursor-pointer ${
+                        cropAspect === preset.id
+                          ? 'bg-green-600 text-white border-green-600 shadow-xs'
+                          : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
+                      }`}
+                    >
+                      {preset.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div class="flex flex-col items-center justify-center p-4 bg-gray-50 rounded-xl border border-gray-200">
+                <canvas ref={cropCanvasRef} class="max-w-full max-h-80 rounded-lg shadow-xs bg-white mb-4" />
+                <div class="flex gap-3">
+                  <a
+                    href={cropUrl || ''}
+                    download="cropped-image.png"
+                    class="px-6 py-2.5 text-xs font-bold rounded-xl bg-green-600 text-white hover:bg-green-700 transition shadow-xs cursor-pointer"
+                  >
+                    Crop & Download PNG
+                  </a>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setImageSrc(null);
+                      setCropUrl(null);
+                    }}
+                    class="px-4 py-2.5 text-xs font-semibold rounded-xl border border-gray-300 text-gray-700 hover:bg-gray-100 transition cursor-pointer"
+                  >
+                    Select Another Image
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>

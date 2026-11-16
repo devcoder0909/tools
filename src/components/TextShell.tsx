@@ -88,6 +88,90 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
   const [jsonError, setJsonError] = useState<string | null>(null);
   const [jsonIndent, setJsonIndent] = useState<number>(2);
 
+  // --- Diff Checker State ---
+  const [diffOriginal, setDiffOriginal] = useState<string>(
+    'Best Converter is a free online tool suite.\nAll processing is 100% client side.\nFast and private file operations.'
+  );
+  const [diffModified, setDiffModified] = useState<string>(
+    'Best Converter is a free online tool suite.\nAll processing runs locally in browser RAM.\nFast and private file operations.\nUnlimited usage with zero watermarks.'
+  );
+
+  const diffResult = useMemo(() => {
+    const origLines = diffOriginal.split('\n');
+    const modLines = diffModified.split('\n');
+
+    const m = origLines.length;
+    const n = modLines.length;
+    const dp = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
+
+    for (let i = 0; i < m; i++) {
+      for (let j = 0; j < n; j++) {
+        if (origLines[i] === modLines[j]) {
+          dp[i + 1][j + 1] = dp[i][j] + 1;
+        } else {
+          dp[i + 1][j + 1] = Math.max(dp[i + 1][j], dp[i][j + 1]);
+        }
+      }
+    }
+
+    let i = m;
+    let j = n;
+    const diff: { type: 'equal' | 'removed' | 'added'; text: string; origLine?: number; modLine?: number }[] = [];
+
+    while (i > 0 || j > 0) {
+      if (i > 0 && j > 0 && origLines[i - 1] === modLines[j - 1]) {
+        diff.unshift({ type: 'equal', text: origLines[i - 1], origLine: i, modLine: j });
+        i--;
+        j--;
+      } else if (j > 0 && (i === 0 || dp[i][j - 1] >= dp[i - 1][j])) {
+        diff.unshift({ type: 'added', text: modLines[j - 1], modLine: j });
+        j--;
+      } else if (i > 0 && (j === 0 || dp[i][j - 1] < dp[i - 1][j])) {
+        diff.unshift({ type: 'removed', text: origLines[i - 1], origLine: i });
+        i--;
+      }
+    }
+
+    const addedCount = diff.filter((d) => d.type === 'added').length;
+    const removedCount = diff.filter((d) => d.type === 'removed').length;
+
+    return { diff, addedCount, removedCount };
+  }, [diffOriginal, diffModified]);
+
+  // --- Markdown to HTML State ---
+  const [mdInput, setMdInput] = useState<string>(
+    '## Markdown Preview\n\n**Best Converter** processes all your data **100% in browser**.\n\n### Core Features\n\n- Zero server uploads\n- Instant client-side conversions\n- Unlimited file sizes\n\nVisit [Best Converter](https://convert.gudmud.site) for fast utilities!'
+  );
+  const [mdCopied, setMdCopied] = useState<boolean>(false);
+
+  const htmlOutput = useMemo(() => {
+    let raw = mdInput;
+    raw = raw.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    raw = raw.replace(/^### (.*$)/gim, '<h3>$1</h3>');
+    raw = raw.replace(/^## (.*$)/gim, '<h2>$1</h2>');
+    raw = raw.replace(/^# (.*$)/gim, '<h2>$1</h2>');
+    raw = raw.replace(/\*\*\*(.*?)\*\*\*/gim, '<strong><em>$1</em></strong>');
+    raw = raw.replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>');
+    raw = raw.replace(/\*(.*?)\*/gim, '<em>$1</em>');
+    raw = raw.replace(/\[(.*?)\]\((.*?)\)/gim, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+    raw = raw.replace(/`([^`]+)`/gim, '<code>$1</code>');
+    raw = raw.replace(/^\s*-\s+(.*$)/gim, '<li>$1</li>');
+    raw = raw.replace(/(<li>.*<\/li>)/gim, '<ul>$1</ul>');
+    raw = raw.replace(/<\/ul>\s*<ul>/gim, '');
+    raw = raw.replace(/^\> (.*$)/gim, '<blockquote>$1</blockquote>');
+
+    const paras = raw.split(/\n\n+/);
+    return paras
+      .map((p) => {
+        const trimmed = p.trim();
+        if (!trimmed) return '';
+        if (/^<(h[1-6]|ul|ol|blockquote|pre)/i.test(trimmed)) return trimmed;
+        return `<p>${trimmed.replace(/\n/g, '<br/>')}</p>`;
+      })
+      .filter(Boolean)
+      .join('\n');
+  }, [mdInput]);
+
   // Word Counter calculations
   const stats = useMemo(() => {
     const raw = text.trim();
@@ -500,6 +584,150 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
               readOnly
               value={loremOutput}
               class="w-full p-4 rounded-xl border border-gray-300 bg-white font-serif text-sm leading-relaxed text-gray-800 focus:ring-2 focus:ring-green-500"
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Diff Checker */}
+      {toolId === 'diff-checker' && (
+        <div class="space-y-6">
+          <div class="flex items-center justify-between p-3 bg-gray-50 border border-gray-200 rounded-xl text-xs font-semibold">
+            <div class="flex items-center gap-3">
+              <span class="inline-flex items-center gap-1 text-green-700 bg-green-100 px-2.5 py-0.5 rounded-full font-bold">
+                +{diffResult.addedCount} Added
+              </span>
+              <span class="inline-flex items-center gap-1 text-red-700 bg-red-100 px-2.5 py-0.5 rounded-full font-bold">
+                -{diffResult.removedCount} Removed
+              </span>
+            </div>
+            <div class="text-gray-500 text-2xs">
+              100% In-Browser Comparison
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+                Original Text (Baseline)
+              </label>
+              <textarea
+                rows={6}
+                value={diffOriginal}
+                onInput={(e) => setDiffOriginal((e.target as HTMLTextAreaElement).value)}
+                placeholder="Paste original text here..."
+                class="w-full p-3 font-mono text-xs border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500"
+              />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+                Modified Text (Updated)
+              </label>
+              <textarea
+                rows={6}
+                value={diffModified}
+                onInput={(e) => setDiffModified((e.target as HTMLTextAreaElement).value)}
+                placeholder="Paste modified text here..."
+                class="w-full p-3 font-mono text-xs border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500"
+              />
+            </div>
+          </div>
+
+          <div class="border border-gray-200 rounded-xl overflow-hidden">
+            <div class="p-2.5 bg-gray-100 border-b border-gray-200 text-xs font-bold text-gray-700">
+              Highlighted Line Differences
+            </div>
+            <div class="font-mono text-xs divide-y divide-gray-100 max-h-80 overflow-y-auto">
+              {diffResult.diff.map((line, idx) => (
+                <div
+                  key={idx}
+                  class={`flex items-start px-3 py-1.5 ${
+                    line.type === 'added'
+                      ? 'bg-green-50 text-green-900 font-medium'
+                      : line.type === 'removed'
+                      ? 'bg-red-50 text-red-900 line-through'
+                      : 'bg-white text-gray-700'
+                  }`}
+                >
+                  <span
+                    class={`w-6 text-center select-none font-bold mr-2 ${
+                      line.type === 'added'
+                        ? 'text-green-600'
+                        : line.type === 'removed'
+                        ? 'text-red-500'
+                        : 'text-gray-300'
+                    }`}
+                  >
+                    {line.type === 'added' ? '+' : line.type === 'removed' ? '-' : ' '}
+                  </span>
+                  <span class="break-all whitespace-pre-wrap">{line.text || ' '}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Markdown to HTML Converter */}
+      {toolId === 'markdown-to-html' && (
+        <div class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <label class="text-xs font-bold text-gray-700 uppercase tracking-wider">Markdown Editor</label>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setMdInput(
+                      '# Live Heading\n\n- Free & Instant\n- Pure In-Browser Client\n\n**Bold Text** and *italic* styling.'
+                    )
+                  }
+                  class="text-2xs text-gray-500 hover:text-green-600 cursor-pointer"
+                >
+                  Load Sample
+                </button>
+              </div>
+              <textarea
+                rows={12}
+                value={mdInput}
+                onInput={(e) => setMdInput((e.target as HTMLTextAreaElement).value)}
+                placeholder="Type or paste markdown here..."
+                class="w-full p-3 font-mono text-xs border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500"
+              />
+            </div>
+
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <label class="text-xs font-bold text-gray-700 uppercase tracking-wider">Live Visual Preview</label>
+                <span class="text-2xs font-semibold text-green-700">Instant Real-Time</span>
+              </div>
+              <div
+                class="p-4 border border-gray-200 rounded-xl bg-gray-50 max-h-[300px] overflow-y-auto prose prose-sm leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: htmlOutput }}
+              />
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between items-center mb-1">
+              <label class="text-xs font-bold text-gray-700 uppercase tracking-wider">Generated HTML Markup</label>
+              <button
+                type="button"
+                onClick={() => {
+                  navigator.clipboard.writeText(htmlOutput);
+                  setMdCopied(true);
+                  setTimeout(() => setMdCopied(false), 2000);
+                }}
+                class="text-xs font-bold text-green-700 hover:underline cursor-pointer"
+              >
+                {mdCopied ? '✓ Copied HTML!' : 'Copy HTML Code'}
+              </button>
+            </div>
+            <textarea
+              rows={5}
+              readOnly
+              value={htmlOutput}
+              class="w-full p-3 font-mono text-xs border border-gray-200 rounded-xl bg-gray-50 text-gray-800"
             />
           </div>
         </div>

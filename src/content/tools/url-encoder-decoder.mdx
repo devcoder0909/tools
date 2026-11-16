@@ -1,0 +1,44 @@
+---
+title: "URL Encoder Decoder - Percent Encoding"
+subtitle: "Encode and decode URLs and query parameters online for free."
+description: "Encode or decode URLs online for free. Safely escape special query parameters and percent-encode URIs with instant client-side string processing."
+last_reviewed: "2026-11-16"
+reviewer: "Best Converter Web Developer Utilities Team"
+reviewed: true
+---
+
+## How to Encode or Decode URLs and Query Strings Online
+
+Escaping unsafe ASCII characters and decoding percent-encoded URL parameters is fast and secure:
+
+1. **Paste URL String:** Enter your raw URL, REST API endpoint, or query parameter string into the text box above.
+2. **Choose Mode:** Select **Encode URL** to convert reserved characters like spaces, ampersands, and slashes into percent-encoded entities (`%20`, `%26`, `%2F`), or choose **Decode URL** to restore human-readable UTF-8 text.
+3. **Copy Result:** Use the **Copy Result** button to immediately copy the sanitized string to your clipboard for use in curl requests, frontend state, or web routing.
+
+---
+
+## Why Percent-Encoding is Critical for Web Infrastructure
+
+The Uniform Resource Identifier (URI) specification (RFC 3986) designates specific reserved and unreserved character ranges:
+
+- **Reserved Characters:** Characters such as `:`, `/`, `?`, `#`, `[`, `]`, `@`, `!`, `$`, `&`, `'`, `(`, `)`, `*`, `+`, `,`, `;`, and `=` serve syntactic functions within a URI delimiter tree.
+- **Unreserved Characters:** Standard alphanumeric characters (`A-Z`, `a-z`, `0-9`), hyphens (`-`), underscores (`_`), periods (`.`), and tildes (`~`) are universally safe and never require escaping.
+- **Query Parameter Safety:** When passing search queries containing characters like `&` or `=`, failing to percent-encode them causes HTTP servers to interpret them as separate parameter delimiters, corrupting server payloads.
+
+---
+
+## Common ASCII Characters and Their Percent-Encoded Representations
+
+| Character | Description | Percent-Encoded Hex Code |
+| :--- | :--- | :--- |
+| **Space (` `)** | White space separator | `%20` or `+` |
+| **Exclamation (`!`)** | Exclamation mark | `%21` |
+| **Quotes (`"`)** | Double quote symbol | `%22` |
+| **Hash (`#`)** | URI fragment anchor | `%23` |
+| **Ampersand (`&`)** | Parameter query delimiter | `%26` |
+| **Slash (`/`)** | Path hierarchy separator | `%2F` |
+| **Colon (`:`)** | Protocol / port delimiter | `%3A` |
+| **Equal (`=`)** | Key-value separator | `%3D` |
+| **Question (`?`)** | Query string initiator | `%3F` |
+
+Our URL encoder and decoder runs entirely on client-side ECMAScript routines (`encodeURIComponent` and `decodeURIComponent`). Your private tokens, session identifiers, and API keys are never leaked to external telemetry endpoints.

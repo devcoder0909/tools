@@ -184,6 +184,302 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
     };
   });
 
+  // --- URL Encoder / Decoder State ---
+  const [urlMode, setUrlMode] = useState<'encode' | 'decode'>('encode');
+  const [urlInput, setUrlInput] = useState('https://example.com/search?query=best converter & tags=free,online');
+  const [urlOutput, setUrlOutput] = useState('');
+  const [urlCopied, setUrlCopied] = useState(false);
+
+  useEffect(() => {
+    try {
+      if (urlMode === 'encode') {
+        setUrlOutput(encodeURIComponent(urlInput));
+      } else {
+        setUrlOutput(decodeURIComponent(urlInput));
+      }
+    } catch {
+      setUrlOutput('Error parsing URL string');
+    }
+  }, [urlInput, urlMode]);
+
+  // --- UUID Generator State ---
+  const [uuidCount, setUuidCount] = useState<number>(5);
+  const [uuidUppercase, setUuidUppercase] = useState<boolean>(false);
+  const [uuidHyphens, setUuidHyphens] = useState<boolean>(true);
+  const [uuidList, setUuidList] = useState<string[]>([]);
+  const [uuidCopied, setUuidCopied] = useState(false);
+
+  const generateUuids = () => {
+    const list: string[] = [];
+    for (let i = 0; i < uuidCount; i++) {
+      let id = typeof crypto !== 'undefined' && crypto.randomUUID
+        ? crypto.randomUUID()
+        : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+            const r = (Math.random() * 16) | 0;
+            const v = c === 'x' ? r : (r & 0x3) | 0x8;
+            return v.toString(16);
+          });
+      if (!uuidHyphens) id = id.replace(/-/g, '');
+      if (uuidUppercase) id = id.toUpperCase();
+      list.push(id);
+    }
+    setUuidList(list);
+  };
+
+  useEffect(() => {
+    if (toolId === 'uuid-generator') generateUuids();
+  }, [toolId, uuidCount, uuidUppercase, uuidHyphens]);
+
+  // --- Hash Generator State ---
+  const [hashInput, setHashInput] = useState('The quick brown fox jumps over the lazy dog');
+  const [hashes, setHashes] = useState<{ sha256: string; sha512: string; sha1: string; sha384: string; md5: string }>({
+    sha256: '',
+    sha512: '',
+    sha1: '',
+    sha384: '',
+    md5: '',
+  });
+
+  const simpleMd5 = (str: string): string => {
+    function md5cycle(x: any, k: any) {
+      let a = x[0], b = x[1], c = x[2], d = x[3];
+      a = ff(a, b, c, d, k[0], 7, -680876936);
+      d = ff(d, a, b, c, k[1], 12, -389564586);
+      c = ff(c, d, a, b, k[2], 17, 606105819);
+      b = ff(b, c, d, a, k[3], 22, -1044525330);
+      a = ff(a, b, c, d, k[4], 7, -176418897);
+      d = ff(d, a, b, c, k[5], 12, 1200080426);
+      c = ff(c, d, a, b, k[6], 17, -1473231341);
+      b = ff(b, c, d, a, k[7], 22, -45705983);
+      a = ff(a, b, c, d, k[8], 7, 1770035416);
+      d = ff(d, a, b, c, k[9], 12, -1958414417);
+      c = ff(c, d, a, b, k[10], 17, -42063);
+      b = ff(b, c, d, a, k[11], 22, -1990404162);
+      a = ff(a, b, c, d, k[12], 7, 1804603682);
+      d = ff(d, a, b, c, k[13], 12, -40341101);
+      c = ff(c, d, a, b, k[14], 17, -1502002290);
+      b = ff(b, c, d, a, k[15], 22, 1236535329);
+
+      a = gg(a, b, c, d, k[1], 5, -165796510);
+      d = gg(d, a, b, c, k[6], 9, -1069501632);
+      c = gg(c, d, a, b, k[11], 14, 643717713);
+      b = gg(b, c, d, a, k[0], 20, -373897302);
+      a = gg(a, b, c, d, k[5], 5, -701558691);
+      d = gg(d, a, b, c, k[10], 9, 38016083);
+      c = gg(c, d, a, b, k[15], 14, -660478335);
+      b = gg(b, c, d, a, k[4], 20, -405537848);
+      a = gg(a, b, c, d, k[9], 5, 568446438);
+      d = gg(d, a, b, c, k[14], 9, -1019803690);
+      c = gg(c, d, a, b, k[3], 14, -187363961);
+      b = gg(b, c, d, a, k[8], 20, 1163531501);
+      a = gg(a, b, c, d, k[13], 5, -1444681467);
+      d = gg(d, a, b, c, k[2], 9, -51403784);
+      c = gg(c, d, a, b, k[7], 14, 1735328473);
+      b = gg(b, c, d, a, k[12], 20, -1926607734);
+
+      a = hh(a, b, c, d, k[5], 4, -378558);
+      d = hh(d, a, b, c, k[8], 11, -2022574463);
+      c = hh(c, d, a, b, k[11], 16, 1839030562);
+      b = hh(b, c, d, a, k[14], 23, -35309556);
+      a = hh(a, b, c, d, k[1], 4, -1530992060);
+      d = hh(d, a, b, c, k[4], 11, 1272893353);
+      c = hh(c, d, a, b, k[7], 16, -155497632);
+      b = hh(b, c, d, a, k[10], 23, -1094730640);
+      a = hh(a, b, c, d, k[13], 4, 681279174);
+      d = hh(d, a, b, c, k[0], 11, -358537222);
+      c = hh(c, d, a, b, k[3], 16, -722521979);
+      b = hh(b, c, d, a, k[6], 23, 76029189);
+      a = hh(a, b, c, d, k[9], 4, -640364487);
+      d = hh(d, a, b, c, k[12], 11, -421815835);
+      c = hh(c, d, a, b, k[15], 16, 530742520);
+      b = hh(b, c, d, a, k[2], 23, -995338651);
+
+      a = ii(a, b, c, d, k[0], 6, -198630844);
+      d = ii(d, a, b, c, k[7], 10, 1126891415);
+      c = ii(c, d, a, b, k[14], 15, -1416354905);
+      b = ii(b, c, d, a, k[5], 21, -57434055);
+      a = ii(a, b, c, d, k[12], 6, 1700485571);
+      d = ii(d, a, b, c, k[3], 10, -1894986606);
+      c = ii(c, d, a, b, k[10], 15, -1051523);
+      b = ii(b, c, d, a, k[1], 21, -2054922799);
+      a = ii(a, b, c, d, k[8], 6, 1873313359);
+      d = ii(d, a, b, c, k[15], 10, -30611744);
+      c = ii(c, d, a, b, k[6], 15, -1560198380);
+      b = ii(b, c, d, a, k[13], 21, 1309151649);
+      a = ii(a, b, c, d, k[4], 6, -145523070);
+      d = ii(d, a, b, c, k[11], 10, -1120210379);
+      c = ii(c, d, a, b, k[2], 15, 718787259);
+      b = ii(b, c, d, a, k[9], 21, -343485551);
+
+      x[0] = add32(a, x[0]);
+      x[1] = add32(b, x[1]);
+      x[2] = add32(c, x[2]);
+      x[3] = add32(d, x[3]);
+    }
+    function cmn(q: number, a: number, b: number, x: number, s: number, t: number) {
+      a = add32(add32(a, q), add32(x, t));
+      return add32((a << s) | (a >>> (32 - s)), b);
+    }
+    function ff(a: number, b: number, c: number, d: number, x: number, s: number, t: number) {
+      return cmn((b & c) | (~b & d), a, b, x, s, t);
+    }
+    function gg(a: number, b: number, c: number, d: number, x: number, s: number, t: number) {
+      return cmn((b & d) | (c & ~d), a, b, x, s, t);
+    }
+    function hh(a: number, b: number, c: number, d: number, x: number, s: number, t: number) {
+      return cmn(b ^ c ^ d, a, b, x, s, t);
+    }
+    function ii(a: number, b: number, c: number, d: number, x: number, s: number, t: number) {
+      return cmn(c ^ (b | ~d), a, b, x, s, t);
+    }
+    function add32(a: number, b: number) {
+      return (a + b) & 0xffffffff;
+    }
+    function md51(s: string) {
+      const n = s.length;
+      const state = [1732584193, -271733879, -1732584194, 271733878];
+      let i = 0;
+      const tail = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      for (i = 64; i <= n; i += 64) {
+        md5cycle(state, md5blk(s.substring(i - 64, i)));
+      }
+      s = s.substring(i - 64);
+      let j = 0;
+      for (j = 0; j < s.length; j++) tail[j >> 2] |= s.charCodeAt(j) << ((j % 4) << 3);
+      tail[j >> 2] |= 0x80 << ((j % 4) << 3);
+      if (j > 55) {
+        md5cycle(state, tail);
+        for (let k = 0; k < 16; k++) tail[k] = 0;
+      }
+      tail[14] = n * 8;
+      md5cycle(state, tail);
+      return state;
+    }
+    function md5blk(s: string) {
+      const md5blks: number[] = [];
+      for (let i = 0; i < 64; i += 4) {
+        md5blks[i >> 2] = s.charCodeAt(i) + (s.charCodeAt(i + 1) << 8) + (s.charCodeAt(i + 2) << 16) + (s.charCodeAt(i + 3) << 24);
+      }
+      return md5blks;
+    }
+    function rhex(n: number) {
+      let s = '', j = 0;
+      for (; j <= 3; j++) s += ((n >> (j * 8 + 4)) & 0x0f).toString(16) + ((n >> (j * 8)) & 0x0f).toString(16);
+      return s;
+    }
+    const x = md51(str);
+    return rhex(x[0]) + rhex(x[1]) + rhex(x[2]) + rhex(x[3]);
+  };
+
+  useEffect(() => {
+    if (toolId !== 'hash-generator') return;
+    const encoder = new TextEncoder();
+    const data = encoder.encode(hashInput);
+
+    const calcHash = async (algo: string): Promise<string> => {
+      try {
+        const buf = await crypto.subtle.digest(algo, data);
+        return Array.from(new Uint8Array(buf))
+          .map((b) => b.toString(16).padStart(2, '0'))
+          .join('');
+      } catch {
+        return '';
+      }
+    };
+
+    Promise.all([
+      calcHash('SHA-256'),
+      calcHash('SHA-512'),
+      calcHash('SHA-1'),
+      calcHash('SHA-384'),
+    ]).then(([sha256, sha512, sha1, sha384]) => {
+      setHashes({
+        sha256,
+        sha512,
+        sha1,
+        sha384,
+        md5: simpleMd5(hashInput),
+      });
+    });
+  }, [hashInput, toolId]);
+
+  // --- JSON to CSV State ---
+  const [jsonCsvInput, setJsonCsvInput] = useState(
+    JSON.stringify([
+      { id: 1, name: 'Alice Smith', email: 'alice@example.com', role: 'Engineer', active: true },
+      { id: 2, name: 'Bob Jones', email: 'bob@example.com', role: 'Product Manager', active: false },
+      { id: 3, name: 'Charlie Ray', email: 'charlie@example.com', role: 'Designer', active: true }
+    ], null, 2)
+  );
+  const [jsonCsvDelimiter, setJsonCsvDelimiter] = useState<',' | ';' | '\t'>(',');
+  const [jsonCsvOutput, setJsonCsvOutput] = useState('');
+  const [jsonCsvError, setJsonCsvError] = useState<string | null>(null);
+
+  useEffect(() => {
+    try {
+      setJsonCsvError(null);
+      const parsed = JSON.parse(jsonCsvInput.trim());
+      const arr = Array.isArray(parsed) ? parsed : [parsed];
+      if (arr.length === 0) {
+        setJsonCsvOutput('');
+        return;
+      }
+      const keys = Array.from(new Set(arr.flatMap((obj) => Object.keys(obj))));
+      const escapeVal = (v: any) => {
+        if (v === null || v === undefined) return '';
+        const s = typeof v === 'object' ? JSON.stringify(v) : String(v);
+        if (s.includes(jsonCsvDelimiter) || s.includes('"') || s.includes('\n')) {
+          return `"${s.replace(/"/g, '""')}"`;
+        }
+        return s;
+      };
+
+      const header = keys.map(escapeVal).join(jsonCsvDelimiter);
+      const rows = arr.map((item) => keys.map((k) => escapeVal(item[k])).join(jsonCsvDelimiter));
+      setJsonCsvOutput([header, ...rows].join('\n'));
+    } catch (err: any) {
+      setJsonCsvError(err.message || 'Invalid JSON data');
+    }
+  }, [jsonCsvInput, jsonCsvDelimiter]);
+
+  // --- CSV to JSON State ---
+  const [csvJsonInput, setCsvJsonInput] = useState(
+    'id,name,role,salary\n1,Alice,Developer,95000\n2,Bob,Designer,82000\n3,Carol,Manager,110000'
+  );
+  const [csvJsonOutput, setCsvJsonOutput] = useState('');
+  const [csvAutoType, setCsvAutoType] = useState(true);
+
+  useEffect(() => {
+    try {
+      const lines = csvJsonInput.trim().split(/\r?\n/).filter(Boolean);
+      if (lines.length < 2) {
+        setCsvJsonOutput('[]');
+        return;
+      }
+      const delimiter = lines[0].includes('\t') ? '\t' : lines[0].includes(';') ? ';' : ',';
+      const headers = lines[0].split(delimiter).map((h) => h.trim().replace(/^"|"$/g, ''));
+      const result = [];
+
+      for (let i = 1; i < lines.length; i++) {
+        const parts = lines[i].split(delimiter).map((p) => p.trim().replace(/^"|"$/g, ''));
+        const obj: Record<string, any> = {};
+        headers.forEach((h, idx) => {
+          let val: any = parts[idx] !== undefined ? parts[idx] : '';
+          if (csvAutoType) {
+            if (val === 'true') val = true;
+            else if (val === 'false') val = false;
+            else if (val !== '' && !isNaN(Number(val))) val = Number(val);
+          }
+          obj[h] = val;
+        });
+        result.push(obj);
+      }
+      setCsvJsonOutput(JSON.stringify(result, null, 2));
+    } catch {
+      setCsvJsonOutput('Error parsing CSV');
+    }
+  }, [csvJsonInput, csvAutoType]);
+
   return (
     <div class="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-xs mb-10">
       {/* 1. JWT Decoder */}
@@ -516,6 +812,334 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
             <div class="p-3 bg-gray-50">
               <span class="font-medium text-gray-600 block mb-1">User Agent</span>
               <span class="font-mono text-3xs text-gray-800 break-all">{clientInfo.userAgent}</span>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 4. URL Encoder / Decoder */}
+      {toolId === 'url-encoder-decoder' && (
+        <div class="space-y-6">
+          <div class="flex items-center gap-2 border-b border-gray-200 pb-3">
+            <button
+              type="button"
+              onClick={() => setUrlMode('encode')}
+              class={`px-4 py-2 text-xs font-bold rounded-lg transition cursor-pointer ${
+                urlMode === 'encode'
+                  ? 'bg-green-600 text-white shadow-xs'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              Encode URL
+            </button>
+            <button
+              type="button"
+              onClick={() => setUrlMode('decode')}
+              class={`px-4 py-2 text-xs font-bold rounded-lg transition cursor-pointer ${
+                urlMode === 'decode'
+                  ? 'bg-green-600 text-white shadow-xs'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              Decode URL
+            </button>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-gray-700 mb-1">
+              {urlMode === 'encode' ? 'Raw URL or String to Encode' : 'Percent-Encoded URL to Decode'}
+            </label>
+            <textarea
+              rows={4}
+              value={urlInput}
+              onInput={(e) => setUrlInput((e.target as HTMLTextAreaElement).value)}
+              class="w-full p-3 text-xs font-mono border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500"
+            />
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <label class="text-xs font-semibold text-gray-700">Result Output</label>
+              <button
+                type="button"
+                onClick={() => {
+                  navigator.clipboard.writeText(urlOutput);
+                  setUrlCopied(true);
+                  setTimeout(() => setUrlCopied(false), 2000);
+                }}
+                class="text-xs font-bold text-green-700 hover:underline cursor-pointer"
+              >
+                {urlCopied ? '✓ Copied!' : 'Copy to Clipboard'}
+              </button>
+            </div>
+            <textarea
+              rows={4}
+              readOnly
+              value={urlOutput}
+              class="w-full p-3 text-xs font-mono border border-gray-200 rounded-xl bg-gray-50 text-gray-800"
+            />
+          </div>
+        </div>
+      )}
+
+      {/* 5. UUID Generator */}
+      {toolId === 'uuid-generator' && (
+        <div class="space-y-6">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-gray-50 p-4 rounded-xl border border-gray-200">
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1">Quantity ({uuidCount})</label>
+              <input
+                type="range"
+                min="1"
+                max="50"
+                value={uuidCount}
+                onInput={(e) => setUuidCount(Number((e.target as HTMLInputElement).value))}
+                class="w-full accent-green-600"
+              />
+            </div>
+            <div class="flex items-center gap-2">
+              <input
+                type="checkbox"
+                id="uuidHyphens"
+                checked={uuidHyphens}
+                onChange={(e) => setUuidHyphens((e.target as HTMLInputElement).checked)}
+                class="rounded text-green-600"
+              />
+              <label for="uuidHyphens" class="text-xs font-semibold text-gray-700 cursor-pointer">
+                Include Hyphens
+              </label>
+            </div>
+            <div class="flex items-center gap-2">
+              <input
+                type="checkbox"
+                id="uuidUpper"
+                checked={uuidUppercase}
+                onChange={(e) => setUuidUppercase((e.target as HTMLInputElement).checked)}
+                class="rounded text-green-600"
+              />
+              <label for="uuidUpper" class="text-xs font-semibold text-gray-700 cursor-pointer">
+                Uppercase Output
+              </label>
+            </div>
+          </div>
+
+          <div class="flex justify-between items-center">
+            <button
+              type="button"
+              onClick={generateUuids}
+              class="px-5 py-2 text-xs font-bold rounded-xl bg-green-600 text-white hover:bg-green-700 transition cursor-pointer"
+            >
+              Generate New Batch
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                navigator.clipboard.writeText(uuidList.join('\n'));
+                setUuidCopied(true);
+                setTimeout(() => setUuidCopied(false), 2000);
+              }}
+              class="text-xs font-bold text-green-700 hover:underline cursor-pointer"
+            >
+              {uuidCopied ? '✓ Copied All!' : 'Copy All to Clipboard'}
+            </button>
+          </div>
+
+          <div class="border border-gray-200 rounded-xl divide-y divide-gray-100 max-h-72 overflow-y-auto">
+            {uuidList.map((id, idx) => (
+              <div key={idx} class="flex items-center justify-between p-3 bg-white hover:bg-gray-50 text-xs font-mono">
+                <span class="text-gray-900 select-all">{id}</span>
+                <button
+                  type="button"
+                  onClick={() => navigator.clipboard.writeText(id)}
+                  class="text-gray-400 hover:text-green-600 text-3xs uppercase font-bold"
+                >
+                  Copy
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* 6. Hash Generator */}
+      {toolId === 'hash-generator' && (
+        <div class="space-y-6">
+          <div>
+            <label class="block text-xs font-semibold text-gray-700 mb-1">Input Text String</label>
+            <textarea
+              rows={3}
+              value={hashInput}
+              onInput={(e) => setHashInput((e.target as HTMLTextAreaElement).value)}
+              placeholder="Enter text to hash..."
+              class="w-full p-3 text-xs font-mono border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500"
+            />
+          </div>
+
+          <div class="space-y-3">
+            {[
+              { name: 'SHA-256', val: hashes.sha256, bits: 256 },
+              { name: 'SHA-512', val: hashes.sha512, bits: 512 },
+              { name: 'MD5', val: hashes.md5, bits: 128 },
+              { name: 'SHA-1', val: hashes.sha1, bits: 160 },
+              { name: 'SHA-384', val: hashes.sha384, bits: 384 },
+            ].map((item) => (
+              <div key={item.name} class="p-3 bg-gray-50 border border-gray-200 rounded-xl">
+                <div class="flex items-center justify-between mb-1 text-2xs font-bold text-gray-500 uppercase">
+                  <span>{item.name} ({item.bits} bits)</span>
+                  <button
+                    type="button"
+                    onClick={() => navigator.clipboard.writeText(item.val)}
+                    class="text-green-700 hover:underline cursor-pointer"
+                  >
+                    Copy Hash
+                  </button>
+                </div>
+                <div class="font-mono text-xs text-gray-900 break-all select-all bg-white p-2 rounded-lg border border-gray-200">
+                  {item.val || 'Computing...'}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* 7. JSON to CSV */}
+      {toolId === 'json-to-csv' && (
+        <div class="space-y-6">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <label class="text-xs font-semibold text-gray-700">Delimiter:</label>
+              {[
+                { label: 'Comma (,)', val: ',' as const },
+                { label: 'Semicolon (;)', val: ';' as const },
+                { label: 'Tab (\\t)', val: '\t' as const },
+              ].map((d) => (
+                <button
+                  key={d.label}
+                  type="button"
+                  onClick={() => setJsonCsvDelimiter(d.val)}
+                  class={`px-2.5 py-1 text-xs font-bold rounded-lg border transition cursor-pointer ${
+                    jsonCsvDelimiter === d.val
+                      ? 'bg-green-600 text-white border-green-600'
+                      : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-100'
+                  }`}
+                >
+                  {d.label}
+                </button>
+              ))}
+            </div>
+            {jsonCsvError && (
+              <span class="text-2xs font-bold text-red-600">{jsonCsvError}</span>
+            )}
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1">JSON Input (Array of Objects)</label>
+              <textarea
+                rows={10}
+                value={jsonCsvInput}
+                onInput={(e) => setJsonCsvInput((e.target as HTMLTextAreaElement).value)}
+                class="w-full p-3 text-xs font-mono border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500"
+              />
+            </div>
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <label class="text-xs font-semibold text-gray-700">CSV Output</label>
+                <div class="flex gap-2">
+                  <button
+                    type="button"
+                    onClick={() => navigator.clipboard.writeText(jsonCsvOutput)}
+                    class="text-2xs font-bold text-green-700 hover:underline cursor-pointer"
+                  >
+                    Copy
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const blob = new Blob([jsonCsvOutput], { type: 'text/csv;charset=utf-8;' });
+                      const url = URL.createObjectURL(blob);
+                      const a = document.createElement('a');
+                      a.href = url;
+                      a.download = 'export.csv';
+                      a.click();
+                    }}
+                    class="text-2xs font-bold text-gray-900 hover:underline cursor-pointer"
+                  >
+                    Download CSV
+                  </button>
+                </div>
+              </div>
+              <textarea
+                rows={10}
+                readOnly
+                value={jsonCsvOutput}
+                class="w-full p-3 text-xs font-mono border border-gray-200 rounded-xl bg-gray-50 text-gray-800"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 8. CSV to JSON */}
+      {toolId === 'csv-to-json' && (
+        <div class="space-y-6">
+          <div class="flex items-center gap-3">
+            <input
+              type="checkbox"
+              id="csvAutoType"
+              checked={csvAutoType}
+              onChange={(e) => setCsvAutoType((e.target as HTMLInputElement).checked)}
+              class="rounded text-green-600"
+            />
+            <label for="csvAutoType" class="text-xs font-semibold text-gray-700 cursor-pointer">
+              Auto-parse Numbers & Booleans
+            </label>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 mb-1">CSV Input Data</label>
+              <textarea
+                rows={10}
+                value={csvJsonInput}
+                onInput={(e) => setCsvJsonInput((e.target as HTMLTextAreaElement).value)}
+                class="w-full p-3 text-xs font-mono border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500"
+              />
+            </div>
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <label class="text-xs font-semibold text-gray-700">JSON Output</label>
+                <div class="flex gap-2">
+                  <button
+                    type="button"
+                    onClick={() => navigator.clipboard.writeText(csvJsonOutput)}
+                    class="text-2xs font-bold text-green-700 hover:underline cursor-pointer"
+                  >
+                    Copy JSON
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const blob = new Blob([csvJsonOutput], { type: 'application/json' });
+                      const url = URL.createObjectURL(blob);
+                      const a = document.createElement('a');
+                      a.href = url;
+                      a.download = 'data.json';
+                      a.click();
+                    }}
+                    class="text-2xs font-bold text-gray-900 hover:underline cursor-pointer"
+                  >
+                    Download JSON
+                  </button>
+                </div>
+              </div>
+              <textarea
+                rows={10}
+                readOnly
+                value={csvJsonOutput}
+                class="w-full p-3 text-xs font-mono border border-gray-200 rounded-xl bg-gray-50 text-gray-800"
+              />
             </div>
           </div>
         </div>

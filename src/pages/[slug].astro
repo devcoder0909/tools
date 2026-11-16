@@ -204,17 +204,17 @@ if (tool.targetBytes) {
     <!-- 3. The working tool above the fold -->
     {tool.kind === 'generator' || ['qr-code-generator', 'password-generator', 'barcode-generator', 'random-number-generator', 'fancy-text-generator'].includes(tool.id) ? (
       <GeneratorShell client:load toolId={tool.id} toolName={tool.name} />
-    ) : tool.kind === 'pdf' || ['merge-pdf', 'jpg-to-pdf', 'split-pdf', 'compress-pdf', 'png-to-pdf', 'pdf-to-png', 'pdf-to-jpg'].includes(tool.id) ? (
+    ) : tool.kind === 'pdf' || ['merge-pdf', 'jpg-to-pdf', 'split-pdf', 'compress-pdf', 'png-to-pdf', 'pdf-to-png', 'pdf-to-jpg', 'rotate-pdf'].includes(tool.id) ? (
       <PdfShell client:load toolId={tool.id} toolName={tool.name} />
-    ) : tool.kind === 'finance' || ['emi-calculator', 'sip-calculator', 'bmi-calculator', 'currency-converter', 'loan-calculator', 'mortgage-calculator', 'gst-calculator'].includes(tool.id) ? (
+    ) : tool.kind === 'finance' || ['emi-calculator', 'sip-calculator', 'bmi-calculator', 'currency-converter', 'loan-calculator', 'mortgage-calculator', 'gst-calculator', 'compound-interest-calculator'].includes(tool.id) ? (
       <FinanceShell client:load toolId={tool.id} toolName={tool.name} />
-    ) : tool.kind === 'media' || ['text-to-speech', 'screen-recorder', 'online-timer', 'typing-test', 'image-resizer', 'photo-editor', 'meme-generator', 'online-stopwatch', 'pomodoro-timer'].includes(tool.id) ? (
+    ) : tool.kind === 'media' || ['text-to-speech', 'screen-recorder', 'online-timer', 'typing-test', 'image-resizer', 'photo-editor', 'meme-generator', 'online-stopwatch', 'pomodoro-timer', 'crop-image'].includes(tool.id) ? (
       <MediaShell client:load toolId={tool.id} toolName={tool.name} />
-    ) : tool.kind === 'developer' || ['jwt-decoder', 'unit-converter', 'my-ip-address', 'celsius-to-fahrenheit', 'color-picker', 'base64-encoder'].includes(tool.id) ? (
+    ) : tool.kind === 'developer' || ['jwt-decoder', 'unit-converter', 'my-ip-address', 'celsius-to-fahrenheit', 'color-picker', 'base64-encoder', 'url-encoder-decoder', 'uuid-generator', 'hash-generator', 'json-to-csv', 'csv-to-json'].includes(tool.id) ? (
       <DeveloperShell client:load toolId={tool.id} toolName={tool.name} />
     ) : tool.kind === 'calculator' || ['scientific-calculator', 'online-calculator', 'gpa-calculator', 'aspect-ratio-calculator', 'percentage-calculator', 'age-calculator', 'date-difference-calculator', 'discount-calculator', 'tip-calculator'].includes(tool.id) ? (
       <CalculatorShell client:load toolId={tool.id} toolName={tool.name} />
-    ) : tool.kind === 'text' || ['word-counter', 'case-converter', 'json-formatter', 'character-counter', 'lorem-ipsum-generator'].includes(tool.id) ? (
+    ) : tool.kind === 'text' || ['word-counter', 'case-converter', 'json-formatter', 'character-counter', 'lorem-ipsum-generator', 'diff-checker', 'markdown-to-html'].includes(tool.id) ? (
       <TextShell client:load toolId={tool.id} toolName={tool.name} />
     ) : tool.engine === 'target-size' || tool.slug.startsWith('compress-image-to-') || tool.slug === 'image-compressor' ? (
       <TargetSizeShell client:load toolId={tool.id} toolName={tool.name} defaultTargetKb={parsedTargetKb} />

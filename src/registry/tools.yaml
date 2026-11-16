@@ -992,6 +992,7 @@
     - compress-image-to-200kb
     - photo-editor
     - meme-generator
+    - crop-image
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
@@ -1232,6 +1233,8 @@
     - lorem-ipsum-generator
     - json-formatter
     - percentage-calculator
+    - diff-checker
+    - markdown-to-html
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
@@ -1272,6 +1275,8 @@
     - json-formatter
     - percentage-calculator
     - fancy-text-generator
+    - diff-checker
+    - markdown-to-html
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
@@ -1312,6 +1317,10 @@
     - base64-encoder
     - case-converter
     - percentage-calculator
+    - diff-checker
+    - url-encoder-decoder
+    - json-to-csv
+    - csv-to-json
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
@@ -1386,6 +1395,8 @@
     - qr-code-generator
     - jwt-decoder
     - random-number-generator
+    - uuid-generator
+    - hash-generator
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
@@ -1424,6 +1435,7 @@
     - split-pdf
     - compress-pdf
     - jpg-to-pdf
+    - rotate-pdf
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
@@ -1462,6 +1474,7 @@
     - merge-pdf
     - compress-pdf
     - jpg-to-pdf
+    - rotate-pdf
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
@@ -1499,6 +1512,7 @@
     - merge-pdf
     - split-pdf
     - compress-image-to-200kb
+    - rotate-pdf
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
@@ -1536,6 +1550,7 @@
     - sip-calculator
     - currency-converter
     - percentage-calculator
+    - compound-interest-calculator
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
@@ -1572,6 +1587,7 @@
     - emi-calculator
     - currency-converter
     - percentage-calculator
+    - compound-interest-calculator
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
@@ -1828,6 +1844,8 @@
     - json-formatter
     - password-generator
     - my-ip-address
+    - url-encoder-decoder
+    - hash-generator
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
@@ -1938,6 +1956,7 @@
     - resize-image
     - meme-generator
     - compress-image-to-200kb
+    - crop-image
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
@@ -1974,6 +1993,7 @@
     - photo-editor
     - resize-image
     - qr-code-generator
+    - crop-image
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
@@ -2010,6 +2030,7 @@
     - password-generator
     - scientific-calculator
     - percentage-calculator
+    - uuid-generator
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
@@ -2202,6 +2223,7 @@
     - mortgage-calculator
     - sip-calculator
     - percentage-calculator
+    - compound-interest-calculator
   indexable: true
   reviewed: true
   last_reviewed: '2026-11-15T00:00:00.000Z'
@@ -2280,6 +2302,7 @@
     - case-converter
     - json-formatter
     - fancy-text-generator
+    - diff-checker
   indexable: true
   reviewed: true
   last_reviewed: '2026-11-15T00:00:00.000Z'
@@ -2460,7 +2483,6 @@
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
     last_reviewed: '2026-11-15T00:00:00.000Z'
-
 - id: color-picker
   kind: developer
   slug: color-picker
@@ -2475,7 +2497,7 @@
     - q: How do I convert a HEX color code to RGB or HSL?
       a: Type or paste your 6-character HEX code into the color picker. Our tool automatically computes and displays the exact RGB and HSL values with one-click copy buttons.
     - q: What is the difference between HEX and RGB color formats?
-      a: HEX represents red, green, and blue values in hexadecimal notation (e.g., #16A34A), whereas RGB represents each primary color channel as a decimal number between 0 and 255 (e.g., rgb(22, 163, 74)).
+      a: HEX represents red, green, and blue values in hexadecimal notation (e.g.,
     - q: Can I pick colors from my desktop or screen?
       a: Yes. Clicking the color swatch input opens your native browser eyedropper tool, allowing you to sample pixels anywhere on your screen.
   related:
@@ -2522,6 +2544,9 @@
     - jwt-decoder
     - json-formatter
     - case-converter
+    - url-encoder-decoder
+    - uuid-generator
+    - hash-generator
   indexable: true
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
@@ -2678,6 +2703,7 @@
     - character-counter
     - case-converter
     - fancy-text-generator
+    - markdown-to-html
   indexable: true
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
@@ -2756,6 +2782,7 @@
     - merge-pdf
     - split-pdf
     - compress-pdf
+    - rotate-pdf
   indexable: true
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
@@ -2769,6 +2796,406 @@
       - pdf to image high quality
       - extract images from pdf
       - pdf to jpeg no upload
+    intent: tool
+    tier: 1
+    sources: Google Search Console & High-Volume SERP Queries
+    last_reviewed: '2026-11-16T00:00:00.000Z'
+- id: crop-image
+  kind: media
+  slug: crop-image
+  name: Crop Image
+  title: Crop Image Online - Free Image Cropper
+  subtitle: Crop JPG, PNG, and WebP images online with custom aspect ratios.
+  description: Crop images online for free. Trim JPG, PNG, and WebP photos with custom aspect ratios, circular crops, and instant download without quality loss.
+  engine: media
+  options: []
+  content: src/content/tools/crop-image.mdx
+  faq:
+    - q: How do I crop an image online for free?
+      a: Drag and drop your image into the cropper above, adjust the crop boundary or select an aspect ratio preset, and click Crop & Download.
+    - q: What image formats can I crop?
+      a: Our tool supports JPG, PNG, WebP, GIF, BMP, and SVG images with full fidelity preservation.
+    - q: Are my photos uploaded to a remote server?
+      a: No. All cropping transformations occur locally inside your browser memory using HTML5 Canvas.
+  related:
+    - resize-image
+    - photo-editor
+    - meme-generator
+    - compress-image-to-50kb
+    - jpg-to-png
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-16T00:00:00.000Z'
+  reviewer: Best Converter Multimedia Engineering Team
+  lang: en
+  seo:
+    primary_kw: crop image
+    secondary_kws:
+      - crop image online
+      - free image cropper
+      - crop photo online free
+      - crop picture to square
+      - crop image 16 9
+    intent: tool
+    tier: 1
+    sources: Google Search Console & High-Volume SERP Queries
+    last_reviewed: '2026-11-16T00:00:00.000Z'
+- id: rotate-pdf
+  kind: pdf
+  slug: rotate-pdf
+  name: Rotate PDF
+  title: Rotate PDF Online - Free PDF Rotator
+  subtitle: Rotate PDF pages 90, 180, or 270 degrees permanently online.
+  description: Rotate PDF pages online for free. Permanently change PDF page orientation clockwise or counterclockwise in your browser with zero server uploads.
+  engine: pdf
+  options: []
+  content: src/content/tools/rotate-pdf.mdx
+  faq:
+    - q: How do I permanently rotate PDF pages?
+      a: Drop your PDF file into the upload box, select your rotation angle (90, 180, or 270 degrees), and click Apply & Download PDF.
+    - q: Will rotating a PDF reduce its visual clarity or text sharpness?
+      a: No. The internal coordinate rotation matrix is adjusted without re-rasterizing vector fonts or graphics.
+    - q: Is there a page count limit for PDF rotation?
+      a: There are no limits. Multi-page documents process in seconds directly in your device RAM.
+  related:
+    - merge-pdf
+    - split-pdf
+    - compress-pdf
+    - pdf-to-jpg
+    - jpg-to-pdf
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-16T00:00:00.000Z'
+  reviewer: Best Converter Document Engineering Team
+  lang: en
+  seo:
+    primary_kw: rotate pdf
+    secondary_kws:
+      - rotate pdf online
+      - free pdf rotator
+      - permanently rotate pdf
+      - rotate pdf 90 degrees
+      - rotate pdf pages free
+    intent: tool
+    tier: 1
+    sources: Google Search Console & High-Volume SERP Queries
+    last_reviewed: '2026-11-16T00:00:00.000Z'
+- id: diff-checker
+  kind: text
+  slug: diff-checker
+  name: Diff Checker
+  title: Diff Checker - Text Difference Finder
+  subtitle: Compare two text files side by side and highlight differences.
+  description: Compare text online and find differences instantly. Free diff checker highlights changes, added lines, and removed words side by side in browser.
+  engine: text
+  options: []
+  content: src/content/tools/diff-checker.mdx
+  faq:
+    - q: How do I compare two text documents online?
+      a: Paste the original version in the left box and the modified version in the right box. Differences are automatically highlighted.
+    - q: Can I use Diff Checker for source code and JSON?
+      a: Yes. It works with plain text, programming code, markdown, JSON, XML, and configuration files.
+    - q: Is my confidential text sent to external servers?
+      a: No. All diff calculations run 100% locally in your browser memory with zero network transmission.
+  related:
+    - word-counter
+    - json-formatter
+    - case-converter
+    - character-counter
+    - markdown-to-html
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-16T00:00:00.000Z'
+  reviewer: Best Converter Text Utilities Engineering Team
+  lang: en
+  seo:
+    primary_kw: diff checker
+    secondary_kws:
+      - text difference checker
+      - compare text online
+      - diff tool free
+      - code diff checker
+      - compare two documents
+    intent: tool
+    tier: 1
+    sources: Google Search Console & High-Volume SERP Queries
+    last_reviewed: '2026-11-16T00:00:00.000Z'
+- id: compound-interest-calculator
+  kind: finance
+  slug: compound-interest-calculator
+  name: Compound Interest Calculator
+  title: Compound Interest Calculator - Free Tool
+  subtitle: Calculate compound interest, future balance, and investment growth.
+  description: Calculate compound interest online for free. Forecast your savings and investment growth with customizable compounding intervals and breakdown schedules.
+  engine: finance
+  options: []
+  content: src/content/tools/compound-interest-calculator.mdx
+  faq:
+    - q: What is the compound interest formula?
+      a: The formula is A = P(1 + r/n)^(nt), where P is principal, r is annual rate, n is compounding frequency, and t is time in years.
+    - q: How does compounding frequency affect interest earned?
+      a: More frequent compounding (e.g., daily or monthly vs annual) yields higher interest because earned interest starts generating returns earlier.
+    - q: Can I calculate compound interest with monthly contributions?
+      a: Yes. You can forecast growth with regular compounding periods and view year-by-year totals.
+  related:
+    - sip-calculator
+    - emi-calculator
+    - loan-calculator
+    - mortgage-calculator
+    - percentage-calculator
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-16T00:00:00.000Z'
+  reviewer: Best Converter Financial Algorithms Team
+  lang: en
+  seo:
+    primary_kw: compound interest calculator
+    secondary_kws:
+      - compound interest calculation
+      - investment growth calculator
+      - savings interest calculator
+      - daily compound interest calculator
+      - compounding calculator online
+    intent: tool
+    tier: 1
+    sources: Google Search Console & High-Volume SERP Queries
+    last_reviewed: '2026-11-16T00:00:00.000Z'
+- id: url-encoder-decoder
+  kind: developer
+  slug: url-encoder-decoder
+  name: URL Encoder Decoder
+  title: URL Encoder Decoder - Percent Encoding
+  subtitle: Encode and decode URLs and query parameters online for free.
+  description: Encode or decode URLs online for free. Safely escape special query parameters and percent-encode URIs with instant client-side string processing.
+  engine: developer
+  options: []
+  content: src/content/tools/url-encoder-decoder.mdx
+  faq:
+    - q: What is percent-encoding in URLs?
+      a: Percent-encoding replaces unsafe ASCII characters with a percent sign followed by their two-digit hexadecimal representation (e.g. %20 for space).
+    - q: When should I encode a URL?
+      a: Encode URLs when passing parameters with spaces, ampersands, slashes, or non-ASCII characters in query strings.
+    - q: Is this URL encoder secure for sensitive tokens?
+      a: Yes. All processing executes locally in your browser with zero remote transmission or logging.
+  related:
+    - base64-encoder
+    - jwt-decoder
+    - json-formatter
+    - hash-generator
+    - uuid-generator
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-16T00:00:00.000Z'
+  reviewer: Best Converter Web Developer Utilities Team
+  lang: en
+  seo:
+    primary_kw: url encoder decoder
+    secondary_kws:
+      - url encoder online
+      - url decode online
+      - percent encoding tool
+      - uri encoder decoder
+      - url encode query string
+    intent: tool
+    tier: 1
+    sources: Google Search Console & High-Volume SERP Queries
+    last_reviewed: '2026-11-16T00:00:00.000Z'
+- id: uuid-generator
+  kind: developer
+  slug: uuid-generator
+  name: UUID Generator
+  title: UUID Generator - Free Online v4 GUIDs
+  subtitle: Generate random version 4 UUIDs and GUIDs in your browser.
+  description: Generate random v4 UUIDs and GUIDs instantly online. Free cryptographically secure identifier generator with bulk generation and one-click copy.
+  engine: developer
+  options: []
+  content: src/content/tools/uuid-generator.mdx
+  faq:
+    - q: What is a version 4 UUID?
+      a: A Version 4 UUID is a 128-bit identifier generated using cryptographically secure pseudo-random numbers conforming to RFC 4122.
+    - q: Can two generated UUIDs collide?
+      a: With 2^122 possible values, the probability of a duplicate UUID is so infinitesimally low that collisions are practically impossible.
+    - q: Can I generate multiple UUIDs at once?
+      a: Yes. You can batch generate up to 500 UUIDs at a time and copy all to your clipboard with one click.
+  related:
+    - hash-generator
+    - base64-encoder
+    - url-encoder-decoder
+    - jwt-decoder
+    - password-generator
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-16T00:00:00.000Z'
+  reviewer: Best Converter Cryptography & DevTools Team
+  lang: en
+  seo:
+    primary_kw: uuid generator
+    secondary_kws:
+      - guid generator online
+      - v4 uuid generator
+      - bulk uuid generator
+      - random uuid generator
+      - rfc 4122 uuid
+    intent: tool
+    tier: 1
+    sources: Google Search Console & High-Volume SERP Queries
+    last_reviewed: '2026-11-16T00:00:00.000Z'
+- id: hash-generator
+  kind: developer
+  slug: hash-generator
+  name: Hash Generator
+  title: Hash Generator - MD5, SHA-256 & SHA-512
+  subtitle: Compute cryptographic checksums and hashes directly in browser.
+  description: Generate MD5, SHA-1, SHA-256, and SHA-512 hashes online for free. Secure cryptographic checksum calculation in your browser with zero remote logging.
+  engine: developer
+  options: []
+  content: src/content/tools/hash-generator.mdx
+  faq:
+    - q: Which hash algorithms are supported?
+      a: The generator computes SHA-256, SHA-512, SHA-384, SHA-1, and MD5 cryptographic digests instantly.
+    - q: Can a cryptographic hash be decrypted or reversed?
+      a: No. Cryptographic hashes are one-way mathematical functions and cannot be reversed back to their original input text.
+    - q: Are my inputs or passwords saved anywhere?
+      a: No. All calculations run strictly in your browser RAM using the native Web Cryptography API.
+  related:
+    - uuid-generator
+    - base64-encoder
+    - jwt-decoder
+    - password-generator
+    - url-encoder-decoder
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-16T00:00:00.000Z'
+  reviewer: Best Converter Security Architecture Team
+  lang: en
+  seo:
+    primary_kw: hash generator
+    secondary_kws:
+      - sha256 generator
+      - md5 hash generator
+      - sha512 generator online
+      - cryptographic hash tool
+      - online checksum generator
+    intent: tool
+    tier: 1
+    sources: Google Search Console & High-Volume SERP Queries
+    last_reviewed: '2026-11-16T00:00:00.000Z'
+- id: markdown-to-html
+  kind: text
+  slug: markdown-to-html
+  name: Markdown to HTML
+  title: Markdown to HTML Converter Online
+  subtitle: Convert Markdown syntax to clean HTML markup with live preview.
+  description: Convert Markdown to clean HTML code online with real-time live preview. Free in-browser parser supports GitHub flavored markdown, tables, and code blocks.
+  engine: text
+  options: []
+  content: src/content/tools/markdown-to-html.mdx
+  faq:
+    - q: How do I convert Markdown to HTML online?
+      a: Type or paste your Markdown in the left editor. The converted HTML code and rendered visual preview update in real time.
+    - q: Does this parser support GitHub Flavored Markdown (GFM)?
+      a: Yes. It supports GFM tables, strikethrough, task lists, blockquotes, and fenced code blocks.
+    - q: Can I copy the raw HTML markup?
+      a: Yes. Click the Copy HTML button to copy clean semantic markup ready for any CMS or website.
+  related:
+    - diff-checker
+    - word-counter
+    - json-formatter
+    - case-converter
+    - character-counter
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-16T00:00:00.000Z'
+  reviewer: Best Converter Content Engineering Team
+  lang: en
+  seo:
+    primary_kw: markdown to html
+    secondary_kws:
+      - convert markdown to html
+      - markdown to html converter online
+      - md to html free
+      - github markdown to html
+      - markdown preview online
+    intent: tool
+    tier: 1
+    sources: Google Search Console & High-Volume SERP Queries
+    last_reviewed: '2026-11-16T00:00:00.000Z'
+- id: json-to-csv
+  kind: developer
+  slug: json-to-csv
+  name: JSON to CSV
+  title: JSON to CSV Converter - Free Online
+  subtitle: Convert JSON objects and arrays into downloadable CSV files.
+  description: Convert JSON data to CSV spreadsheets online for free. Fast in-memory parser handles nested objects, arrays, and custom delimiters with instant download.
+  engine: developer
+  options: []
+  content: src/content/tools/json-to-csv.mdx
+  faq:
+    - q: How do I convert a JSON array into a CSV spreadsheet?
+      a: Paste your JSON array into the editor or upload a .json file, then click Download CSV to save the spreadsheet.
+    - q: Can the converter handle nested JSON objects?
+      a: Yes. Nested object keys are flattened into dot-notation column headers (e.g., user.address.city).
+    - q: Can I open the exported CSV in Microsoft Excel and Google Sheets?
+      a: Yes. The output uses standard UTF-8 CSV formatting with header rows fully compatible with Excel, Sheets, and databases.
+  related:
+    - csv-to-json
+    - json-formatter
+    - base64-encoder
+    - url-encoder-decoder
+    - diff-checker
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-16T00:00:00.000Z'
+  reviewer: Best Converter Data Architecture Team
+  lang: en
+  seo:
+    primary_kw: json to csv
+    secondary_kws:
+      - convert json to csv
+      - json to csv converter online
+      - json to excel converter
+      - convert json array to csv
+      - json to spreadsheet free
+    intent: tool
+    tier: 1
+    sources: Google Search Console & High-Volume SERP Queries
+    last_reviewed: '2026-11-16T00:00:00.000Z'
+- id: csv-to-json
+  kind: developer
+  slug: csv-to-json
+  name: CSV to JSON
+  title: CSV to JSON Converter - Free Online
+  subtitle: Convert CSV tabular records into structured JSON array format.
+  description: Convert CSV spreadsheets to structured JSON online for free. Instant client-side parser detects headers, delimiters, and numbers without server uploads.
+  engine: developer
+  options: []
+  content: src/content/tools/csv-to-json.mdx
+  faq:
+    - q: How do I convert CSV data to JSON format?
+      a: Paste your CSV text or upload a .csv file. The parser extracts the columns and generates a formatted JSON array instantly.
+    - q: Does the converter automatically parse numbers and booleans?
+      a: Yes. You can toggle auto type parsing so numbers and boolean values are correctly typed rather than left as strings.
+    - q: What delimiters are supported?
+      a: Comma (,), semicolon (;), and tab-separated values (TSV) are automatically detected and parsed.
+  related:
+    - json-to-csv
+    - json-formatter
+    - base64-encoder
+    - url-encoder-decoder
+    - diff-checker
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-16T00:00:00.000Z'
+  reviewer: Best Converter Data Architecture Team
+  lang: en
+  seo:
+    primary_kw: csv to json
+    secondary_kws:
+      - convert csv to json
+      - csv to json converter online
+      - excel to json converter
+      - spreadsheet to json
+      - parse csv to json free
     intent: tool
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
