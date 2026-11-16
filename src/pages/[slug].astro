@@ -289,9 +289,6 @@ if (tool.targetBytes) {
         <a href="#guide" class="px-3.5 py-1.5 rounded-xl bg-gray-50 text-gray-700 border border-gray-200 whitespace-nowrap hover:bg-gray-100 transition">
           ⚙️ Technical Guide
         </a>
-        <a href="#comparison" class="px-3.5 py-1.5 rounded-xl bg-gray-50 text-gray-700 border border-gray-200 whitespace-nowrap hover:bg-gray-100 transition">
-          ⚖️ vs Competitors
-        </a>
         {tool.faq && tool.faq.length > 0 && (
           <a href="#faq" class="px-3.5 py-1.5 rounded-xl bg-gray-50 text-gray-700 border border-gray-200 whitespace-nowrap hover:bg-gray-100 transition">
             ❓ FAQ
@@ -356,61 +353,6 @@ if (tool.targetBytes) {
 
     <!-- House promo slot after how-to block -->
     <PromoSlot slotPosition="postHowTo" />
-
-    <!-- Head-to-Head Comparison Matrix -->
-    <section id="comparison" class="my-10 border border-gray-200 rounded-3xl overflow-hidden bg-white shadow-xs">
-      <div class="p-4 sm:p-6 bg-gray-50 border-b border-gray-200">
-        <h2 class="text-lg sm:text-xl font-bold text-gray-900">
-          Best Converter vs Competitor Tools (iLovePDF, Smallpdf, CloudConvert)
-        </h2>
-        <p class="text-xs sm:text-sm text-gray-600 mt-1">
-          See why millions of users switch to Best Converter for unlimited, fast, and watermark-free online utilities.
-        </p>
-      </div>
-      <div class="overflow-x-auto">
-        <table class="w-full text-left text-xs sm:text-sm border-collapse">
-          <thead>
-            <tr class="border-b border-gray-200 bg-gray-100/60 text-gray-700">
-              <th class="p-3 sm:p-4 font-bold">Feature & Capability</th>
-              <th class="p-3 sm:p-4 font-bold text-emerald-700">Best Converter</th>
-              <th class="p-3 sm:p-4 font-medium text-gray-500">Other Online Converters</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-gray-100 text-gray-700">
-            <tr>
-              <td class="p-3 sm:p-4 font-medium">Daily Conversion Limits</td>
-              <td class="p-3 sm:p-4 font-bold text-emerald-700">Unlimited (Free Forever)</td>
-              <td class="p-3 sm:p-4 text-gray-500">Limited to 2–3 files per day</td>
-            </tr>
-            <tr>
-              <td class="p-3 sm:p-4 font-medium">Conversion Speed</td>
-              <td class="p-3 sm:p-4 font-bold text-emerald-700">Instant (Zero Queue Delay)</td>
-              <td class="p-3 sm:p-4 text-gray-500">Slow cloud queue & upload delay</td>
-            </tr>
-            <tr>
-              <td class="p-3 sm:p-4 font-medium">File Size Caps</td>
-              <td class="p-3 sm:p-4 font-bold text-emerald-700">No Artificial Paywalls</td>
-              <td class="p-3 sm:p-4 text-gray-500">10MB to 50MB paywall limits</td>
-            </tr>
-            <tr>
-              <td class="p-3 sm:p-4 font-medium">Watermarks on Output</td>
-              <td class="p-3 sm:p-4 font-bold text-emerald-700">None (100% Clean Files)</td>
-              <td class="p-3 sm:p-4 text-gray-500">Forced watermarks on free tier</td>
-            </tr>
-            <tr>
-              <td class="p-3 sm:p-4 font-medium">Account / Sign-Up</td>
-              <td class="p-3 sm:p-4 font-bold text-emerald-700">No Registration Needed</td>
-              <td class="p-3 sm:p-4 text-gray-500">Requires email and login</td>
-            </tr>
-            <tr>
-              <td class="p-3 sm:p-4 font-medium">Pricing</td>
-              <td class="p-3 sm:p-4 font-bold text-emerald-700">100% Free Always</td>
-              <td class="p-3 sm:p-4 text-gray-500">$7 to $15 / month subscriptions</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
 
     <!-- 7. Tool-specific FAQ -->
     {tool.faq && tool.faq.length > 0 && (
