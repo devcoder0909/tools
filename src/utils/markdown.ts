@@ -148,6 +148,8 @@ export function renderToolMarkdown(rawMarkdown: string): string {
     }
     if (stripped.startsWith('### ')) {
       output.push(closeLists());
+      output.push(closeTable());
+      output.push(startSection());
       output.push(`<h3 class="text-lg sm:text-xl font-bold text-gray-900 mt-8 mb-3">${formatInline(stripped.slice(4))}</h3>`);
       continue;
     }

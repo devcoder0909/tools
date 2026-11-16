@@ -1352,12 +1352,16 @@
   faq:
     - q: What is the difference between beautifying and minifying JSON?
       a: Beautifying formats JSON with clean indentations and newlines for human legibility. Minifying removes all unnecessary whitespace to minimize network transmission bytes.
-    - q: Does this validator highlight syntax errors?
-      a: Yes. If your JSON contains invalid syntax (like single quotes or trailing commas), an error message highlights the issue.
+    - q: Does this validator highlight syntax errors with line numbers?
+      a: Yes. If your JSON contains invalid syntax (like single quotes or trailing commas), an error message highlights the exact character and line issue.
     - q: Is it safe to paste confidential API keys or client JSON here?
-      a: Yes. Formatting executes entirely within your browser's V8 JavaScript engine. Zero data is transmitted across the network.
+      a: Yes. Formatting executes entirely within your browser's V8 JavaScript engine. Zero data is transmitted across the network or stored on servers.
     - q: Does this tool validate according to RFC 8259?
-      a: Yes. It strictly validates standard JSON object, array, string, numeric, boolean, and null data types.
+      a: Yes. It strictly validates standard JSON object, array, string, numeric, boolean, and null data types in compliance with international standards.
+    - q: Why does standard JSON reject single quotes and trailing commas?
+      a: The RFC 8259 specification mandates double quotes for all string keys and values and prohibits trailing commas to prevent parsing ambiguities across programming languages.
+    - q: Can I format large multi-megabyte JSON payloads here?
+      a: Yes. Because processing occurs directly in client RAM without network round-trips, it comfortably parses multi-megabyte payloads.
   related:
     - word-counter
     - base64-encoder
@@ -1369,7 +1373,7 @@
     - csv-to-json
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13T00:00:00.000Z
+  last_reviewed: '2026-11-16T00:00:00.000Z'
   reviewer: Best Converter Engineering Team
   lang: en
   seo:
@@ -1378,10 +1382,15 @@
       - json validator
       - json beautifier
       - json minify
+      - format json online
+      - json parser online
+      - json pretty print
+      - validate json schema free
+      - json error finder online
     intent: tool
-    tier: 2
+    tier: 1
     sources: Competitor teardown & SERP keyword map
-    last_reviewed: 2026-11-13T00:00:00.000Z
+    last_reviewed: '2026-11-16T00:00:00.000Z'
 - id: qr-code-generator
   kind: generator
   slug: qr-code-generator
@@ -1395,9 +1404,17 @@
   content: src/content/tools/qr-code-generator.mdx
   faq:
     - q: Can I use these QR codes for commercial projects?
-      a: Yes. QR codes generated on Best Converter are 100% free for personal and commercial usage with zero copyright restrictions.
+      a: Yes. QR codes generated on Best Converter are 100% free for personal and commercial usage with zero copyright restrictions or licensing fees.
     - q: Do these QR codes ever expire?
-      a: No. Static QR codes encode the destination text directly into the optical matrix and never expire.
+      a: No. Static QR codes encode the destination text or URL directly into the optical matrix and will function indefinitely without expiring.
+    - q: Which error correction level should I choose?
+      a: Level M (15% restoration) is ideal for standard digital and paper use. Choose Level H (30% restoration) for high-wear environments like outdoor stickers or printed packaging.
+    - q: How much data can a standard QR code store?
+      a: A Version 40 QR code can store up to 7,089 numeric characters, 4,296 alphanumeric characters, or 2,953 binary bytes.
+    - q: What is the difference between static and dynamic QR codes?
+      a: Static QR codes directly store destination data in the pixel matrix with zero tracking servers. Dynamic codes redirect through an intermediary URL.
+    - q: How do I create a Wi-Fi QR code for guests?
+      a: Format your payload using the standard Wi-Fi protocol (WIFI:S:SSID;T:WPA;P:password;;), allowing smartphones to connect instantly upon scanning.
   related:
     - barcode-generator
     - password-generator
@@ -1405,7 +1422,8 @@
     - random-number-generator
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13T00:00:00.000Z
+  last_reviewed: '2026-11-16T00:00:00.000Z'
+  reviewer: Best Converter Digital Imaging Team
   lang: en
   seo:
     primary_kw: qr code generator
@@ -1417,10 +1435,11 @@
       - qr code for url
       - wifi qr code generator
       - vector qr code svg
+      - high resolution qr code download
     intent: tool
     tier: 1
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: '2026-11-16T00:00:00.000Z'
 - id: password-generator
   kind: generator
   slug: password-generator
@@ -1433,10 +1452,18 @@
   presets: []
   content: src/content/tools/password-generator.mdx
   faq:
-    - q: Can Best Converter see the passwords I generate?
-      a: No. All password generation executes locally using the browser's native JavaScript cryptographic engine. We never see, store, or transmit your passwords.
-    - q: What is the ideal password length?
-      a: Security experts recommend a minimum of 16 characters combining uppercase, lowercase, numbers, and symbols.
+    - q: Can Best Converter see or log the passwords I generate?
+      a: No. All password generation executes locally using the browser's native window.crypto API. We never see, log, or transmit your passwords.
+    - q: What is the NIST recommended minimum password length?
+      a: NIST SP 800-63B recommends a minimum of 16 characters combining uppercase, lowercase, numbers, and symbols to resist brute-force dictionary attacks.
+    - q: How does password entropy measure security strength?
+      a: Shannon entropy calculates the random combinations in bits (E = L × log2(N)). Passwords with >= 80 bits of entropy are virtually uncrackable.
+    - q: What makes a password vulnerable to dictionary attacks?
+      a: Using dictionary words, predictable character substitutions (like @ for a), sequential numbers, or personal birthdates makes passwords trivial to crack.
+    - q: How long does it take for a supercomputer to crack a 16-character password?
+      a: A 16-character password with full alphanumeric and symbol sets (105 bits of entropy) would take an advanced GPU cluster over 1 billion years to crack.
+    - q: Should I include ambiguous characters like O, 0, l, and 1?
+      a: Excluding visually similar characters prevents human typographical errors when manually transcribing passwords across physical devices.
   related:
     - qr-code-generator
     - jwt-decoder
@@ -1445,7 +1472,8 @@
     - hash-generator
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13T00:00:00.000Z
+  last_reviewed: '2026-11-16T00:00:00.000Z'
+  reviewer: Best Converter Cybersecurity Engineering Team
   lang: en
   seo:
     primary_kw: password generator
@@ -1456,6 +1484,8 @@
       - password generator with symbols
       - offline password generator
       - memorable passphrase generator
+      - nist password generator
+      - cryptographic password maker
     intent: tool
     tier: 1
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
@@ -2639,12 +2669,18 @@
   options: []
   content: src/content/tools/base64-encoder.mdx
   faq:
-    - q: What is Base64 encoding used for?
-      a: Base64 converts binary data into ASCII characters so it can be transmitted across networks without byte corruption in email headers, URLs, and JSON payloads.
-    - q: Does Base64 provide encryption or security?
-      a: No. Base64 is an encoding format, not an encryption cipher. Anyone can decode a Base64 string back to its original plain text.
-    - q: Is there a character limit when encoding Base64 here?
-      a: No. You can encode or decode long strings, JSON documents, or code snippets with instant local browser processing.
+    - q: What is Base64 encoding used for in modern web development?
+      a: Base64 converts binary data into 6-bit ASCII characters so it can be transmitted safely across text-based protocols like HTTP headers, email MIME, and JSON payloads.
+    - q: Does Base64 provide encryption or cryptographic security?
+      a: No. Base64 is an encoding format, not an encryption cipher. Anyone can decode a Base64 string back to its original plain text with zero secret keys.
+    - q: Why does Base64 output increase file size by 33%?
+      a: Base64 translates 3 bytes of raw binary data (24 bits) into 4 ASCII characters (4 bytes), producing an exact 33.3% data volume expansion.
+    - q: What do the trailing equal signs (= or ==) mean in Base64?
+      a: The equal signs represent padding bytes added when the source binary stream is not an exact multiple of 3 bytes, ensuring 4-character alignment.
+    - q: How do I embed a Base64 encoded image into HTML or CSS?
+      a: Prefix the encoded string with the Data URI scheme (e.g. data:image/png;base64,iVBORw0...) and insert it directly into the src or url() attribute.
+    - q: Is there a string length limit when encoding Base64 in this browser tool?
+      a: No. Because encoding executes directly in your local browser memory using modern Web APIs, you can process multi-megabyte strings with zero server limits.
   related:
     - color-picker
     - jwt-decoder
@@ -2666,6 +2702,9 @@
       - string to base64
       - decode base64 string
       - convert text to base64
+      - image to base64 data uri
+      - base64 padding explained
+      - base64 converter client side
     intent: tool
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries

@@ -266,6 +266,50 @@ const toolVideos: Record<string, { duration: string; durationSecs: string; thumb
       { timestamp: '0:45', title: 'Inspect Step-by-Step Formula', description: 'See the transparent mathematical derivation and formula behind the result.' },
       { timestamp: '1:00', title: 'Copy or Share Answer', description: 'Copy the calculated percentage or final discounted amount with a single click.' }
     ]
+  },
+  'json-formatter': {
+    duration: '1:12',
+    durationSecs: 'PT1M12S',
+    thumbnailUrl: '/images/tools/json-formatter-video-thumb.svg',
+    steps: [
+      { timestamp: '0:00', title: 'Paste or Load Raw JSON', description: 'Paste minified, unformatted JSON strings directly from API payloads or files.' },
+      { timestamp: '0:20', title: 'Instant Syntax Validation', description: 'Real-time RFC 8259 parser identifies syntax errors, missing quotes, or misplaced commas.' },
+      { timestamp: '0:45', title: 'Format or Minify Payload', description: 'Choose between 2-space indentation, 4-space tree formatting, or 1-line minification.' },
+      { timestamp: '1:05', title: 'One-Click Copy or Download', description: 'Copy formatted JSON or save clean .json files directly with zero server transfers.' }
+    ]
+  },
+  'base64-encoder': {
+    duration: '1:08',
+    durationSecs: 'PT1M08S',
+    thumbnailUrl: '/images/tools/base64-encoder-video-thumb.svg',
+    steps: [
+      { timestamp: '0:00', title: 'Select Encode or Decode Mode', description: 'Toggle between encoding plain text/files into Base64 or decoding Base64 back to UTF-8.' },
+      { timestamp: '0:20', title: 'Input Text or File Payload', description: 'Type or paste data into the input pane for instant real-time translation.' },
+      { timestamp: '0:45', title: 'Inspect Radix-64 Stream', description: 'Verify 6-bit translation chunks and standard = padding output.' },
+      { timestamp: '1:00', title: 'Copy Base64 Output', description: 'Copy encoded Base64 string or Data URI to clipboard ready for code embedding.' }
+    ]
+  },
+  'qr-code-generator': {
+    duration: '1:10',
+    durationSecs: 'PT1M10S',
+    thumbnailUrl: '/images/tools/qr-code-generator-video-thumb.svg',
+    steps: [
+      { timestamp: '0:00', title: 'Select QR Code Content Type', description: 'Choose URL, plain text, Wi-Fi network credentials, email, or contact card.' },
+      { timestamp: '0:22', title: 'Set Error Correction Level', description: 'Select Reed-Solomon restoration tier (L 7%, M 15%, Q 25%, or H 30%).' },
+      { timestamp: '0:45', title: 'Live In-Browser Matrix Generation', description: 'The ISO/IEC 18004 engine generates finder markers and data modules instantly.' },
+      { timestamp: '1:02', title: 'Download High-Resolution PNG', description: 'Save permanent, non-expiring QR code image ready for print, menus, and flyers.' }
+    ]
+  },
+  'password-generator': {
+    duration: '1:04',
+    durationSecs: 'PT1M04S',
+    thumbnailUrl: '/images/tools/password-generator-video-thumb.svg',
+    steps: [
+      { timestamp: '0:00', title: 'Choose Password Length', description: 'Select desired character length from 8 to 64 characters (16+ recommended).' },
+      { timestamp: '0:18', title: 'Toggle Character Sets', description: 'Enable or disable uppercase, lowercase, numbers, and special cryptographic symbols.' },
+      { timestamp: '0:40', title: 'Inspect Real-Time Entropy', description: 'Verify Shannon entropy score and estimated brute-force crack time.' },
+      { timestamp: '0:58', title: 'Secure One-Click Copy', description: 'Copy generated strong password directly to clipboard with zero server logging.' }
+    ]
   }
 };
 
@@ -282,6 +326,10 @@ const workflowDiagrams: Record<string, string> = {
   'compound-interest-calculator': '/images/tools/compound-interest-growth.svg',
   'sip-calculator': '/images/tools/sip-compounding-wealth.svg',
   'percentage-calculator': '/images/tools/percentage-calculator-formulas.svg',
+  'json-formatter': '/images/tools/json-formatter-structure.svg',
+  'base64-encoder': '/images/tools/base64-encoding-matrix.svg',
+  'qr-code-generator': '/images/tools/qr-code-anatomy-infographic.svg',
+  'password-generator': '/images/tools/password-entropy-infographic.svg',
 };
 
 const videoData = toolVideos[tool.slug];

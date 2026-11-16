@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none">
+  <defs>
+    <linearGradient id="jsonBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="jsonCodeBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <filter id="jsonGlow" x="-10%" y="-10%" width="120%" height="120%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#38bdf8" flood-opacity="0.15" />
+    </filter>
+  </defs>
+
+  <rect width="800" height="450" rx="16" fill="url(#jsonBg)" stroke="#334155" stroke-width="2" />
+
+  <!-- Header -->
+  <rect x="250" y="22" width="300" height="28" rx="14" fill="#0369a1" fill-opacity="0.3" stroke="#38bdf8" stroke-width="1" />
+  <text x="400" y="41" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#38bdf8" letter-spacing="0.5">
+    RFC 8259 PARSING &amp; TREE HIERARCHY
+  </text>
+  <text x="400" y="78" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" font-weight="800" fill="#ffffff">
+    How JSON Formatting, Beautification &amp; Validation Work
+  </text>
+  <text x="400" y="98" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#94a3b8">
+    Tokenization, Syntax Tree Validation, and Zero-Data-Leak In-Browser Processing
+  </text>
+
+  <!-- Left: Raw Compact Minified JSON -->
+  <g transform="translate(40, 118)">
+    <rect width="335" height="295" rx="12" fill="url(#jsonCodeBg)" stroke="#334155" stroke-width="1.5" />
+    <rect x="16" y="14" width="28" height="28" rx="6" fill="#f59e0b" fill-opacity="0.2" />
+    <text x="30" y="33" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#fbbf24">1</text>
+    <text x="54" y="33" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">Raw Minified Payload</text>
+
+    <rect x="16" y="52" width="303" height="70" rx="6" fill="#020617" stroke="#1e293b" />
+    <text x="26" y="72" font-family="monospace" font-size="11" fill="#64748b">// 1-line compressed API response</text>
+    <text x="26" y="90" font-family="monospace" font-size="11" fill="#38bdf8">{"status":200,"user":{"id":402,</text>
+    <text x="26" y="106" font-family="monospace" font-size="11" fill="#38bdf8">"role":"admin"},"tags":["api","auth"]}</text>
+
+    <!-- Token Breakdown -->
+    <rect x="16" y="132" width="303" height="135" rx="6" fill="#090d16" stroke="#1e293b" />
+    <text x="26" y="152" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#e2e8f0">Lexical Token Breakdown</text>
+    
+    <circle cx="34" cy="174" r="5" fill="#38bdf8" />
+    <text x="46" y="178" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">Strings &amp; Keys: UTF-8 Double Quotes ("key")</text>
+
+    <circle cx="34" cy="198" r="5" fill="#a78bfa" />
+    <text x="46" y="202" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">Numerics &amp; Booleans: IEEE 754 (200, true, false)</text>
+
+    <circle cx="34" cy="222" r="5" fill="#34d399" />
+    <text x="46" y="226" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">Structural Arrays &amp; Objects: [ ] and { }</text>
+
+    <circle cx="34" cy="246" r="5" fill="#f87171" />
+    <text x="46" y="250" font-family="system-ui, sans-serif" font-size="11" fill="#cbd5e1">Strict Syntax: No trailing commas permitted</text>
+  </g>
+
+  <!-- Right: Formatted 2-Space Indented Output -->
+  <g transform="translate(425, 118)">
+    <rect width="335" height="295" rx="12" fill="url(#jsonCodeBg)" stroke="#334155" stroke-width="1.5" />
+    <rect x="16" y="14" width="28" height="28" rx="6" fill="#10b981" fill-opacity="0.2" />
+    <text x="30" y="33" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#34d399">2</text>
+    <text x="54" y="33" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">Formatted &amp; Validated Tree</text>
+
+    <rect x="16" y="52" width="303" height="225" rx="6" fill="#020617" stroke="#1e293b" />
+    <text x="26" y="74" font-family="monospace" font-size="11" fill="#f8fafc">{</text>
+    <text x="38" y="92" font-family="monospace" font-size="11" fill="#38bdf8">  "status"<tspan fill="#f8fafc">: </tspan><tspan fill="#a78bfa">200</tspan><tspan fill="#f8fafc">,</tspan></text>
+    <text x="38" y="110" font-family="monospace" font-size="11" fill="#38bdf8">  "user"<tspan fill="#f8fafc">: {</tspan></text>
+    <text x="50" y="128" font-family="monospace" font-size="11" fill="#38bdf8">    "id"<tspan fill="#f8fafc">: </tspan><tspan fill="#a78bfa">402</tspan><tspan fill="#f8fafc">,</tspan></text>
+    <text x="50" y="146" font-family="monospace" font-size="11" fill="#38bdf8">    "role"<tspan fill="#f8fafc">: </tspan><tspan fill="#34d399">"admin"</tspan></text>
+    <text x="38" y="164" font-family="monospace" font-size="11" fill="#f8fafc">  },</text>
+    <text x="38" y="182" font-family="monospace" font-size="11" fill="#38bdf8">  "tags"<tspan fill="#f8fafc">: [</tspan></text>
+    <text x="50" y="200" font-family="monospace" font-size="11" fill="#34d399">    "api"<tspan fill="#f8fafc">,</tspan></text>
+    <text x="50" y="218" font-family="monospace" font-size="11" fill="#34d399">    "auth"</text>
+    <text x="38" y="236" font-family="monospace" font-size="11" fill="#f8fafc">  ]</text>
+    <text x="26" y="254" font-family="monospace" font-size="11" fill="#f8fafc">}</text>
+
+    <!-- Badge -->
+    <rect x="180" y="240" width="130" height="24" rx="4" fill="#065f46" />
+    <text x="245" y="256" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#34d399">✓ Valid JSON (RFC 8259)</text>
+  </g>
+</svg>
