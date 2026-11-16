@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none">
+  <defs>
+    <linearGradient id="compBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#f1f5f9" />
+    </linearGradient>
+    <linearGradient id="pngGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f8fafc" />
+    </linearGradient>
+    <linearGradient id="jpgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f0fdf4" />
+    </linearGradient>
+    <filter id="cShadow" x="-5%" y="-5%" width="110%" height="110%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.06" />
+    </filter>
+  </defs>
+
+  <rect width="800" height="450" rx="16" fill="url(#compBg)" stroke="#e2e8f0" stroke-width="2" />
+
+  <!-- Header -->
+  <rect x="290" y="24" width="220" height="28" rx="14" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1" />
+  <text x="400" y="43" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#047857" letter-spacing="0.5">
+    FORMAT BENCHMARK MATRIX
+  </text>
+  <text x="400" y="82" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" font-weight="800" fill="#0f172a">
+    PNG vs JPG: Technical Specifications &amp; Byte Delta
+  </text>
+  <text x="400" y="104" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#64748b">
+    Compare compression algorithm, transparency handling, and real-world file weights
+  </text>
+
+  <!-- Left: PNG Box -->
+  <g transform="translate(45, 125)" filter="url(#cShadow)">
+    <rect width="330" height="260" rx="12" fill="url(#pngGrad)" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="20" y="20" width="80" height="28" rx="6" fill="#f1f5f9" />
+    <text x="60" y="39" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#334155">PNG</text>
+    <text x="115" y="39" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#64748b">Lossless Graphics Format</text>
+
+    <!-- File Size Metric Box -->
+    <rect x="20" y="65" width="290" height="50" rx="8" fill="#f8fafc" stroke="#e2e8f0" />
+    <text x="35" y="90" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">Original 4K Screenshot Size</text>
+    <text x="35" y="107" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#dc2626">7.85 MB</text>
+    <text x="240" y="98" font-family="system-ui, sans-serif" font-size="20">🐘 Heavy</text>
+
+    <text x="25" y="145" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#1e293b">Compression:</text>
+    <text x="130" y="145" font-family="system-ui, sans-serif" font-size="12" fill="#475569">Deflate / LZ77 (Lossless)</text>
+
+    <text x="25" y="175" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#1e293b">Transparency:</text>
+    <text x="130" y="175" font-family="system-ui, sans-serif" font-size="12" fill="#047857">Full 8-bit Alpha Channel</text>
+
+    <text x="25" y="205" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#1e293b">Ideal For:</text>
+    <text x="130" y="205" font-family="system-ui, sans-serif" font-size="12" fill="#475569">Logos, Icons, Raw UI</text>
+
+    <rect x="20" y="225" width="290" height="24" rx="6" fill="#fef2f2" stroke="#fecaca" />
+    <text x="165" y="241" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#b91c1c">Slow to upload &amp; email heavy</text>
+  </g>
+
+  <!-- VS Badge -->
+  <g transform="translate(385, 240)">
+    <circle cx="15" cy="15" r="22" fill="#0f172a" stroke="#ffffff" stroke-width="3" />
+    <text x="15" y="20" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#ffffff">VS</text>
+  </g>
+
+  <!-- Right: JPG Box -->
+  <g transform="translate(425, 125)" filter="url(#cShadow)">
+    <rect width="330" height="260" rx="12" fill="url(#jpgGrad)" stroke="#10b981" stroke-width="2" />
+    <rect x="20" y="20" width="80" height="28" rx="6" fill="#10b981" />
+    <text x="60" y="39" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#ffffff">JPG</text>
+    <text x="115" y="39" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#047857">Universal Web Standard</text>
+
+    <!-- File Size Metric Box -->
+    <rect x="20" y="65" width="290" height="50" rx="8" fill="#ffffff" stroke="#a7f3d0" />
+    <text x="35" y="90" font-family="system-ui, sans-serif" font-size="11" fill="#047857">Converted Output Size (85% Q)</text>
+    <text x="35" y="107" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#059669">1.12 MB (-85.7%)</text>
+    <text x="240" y="98" font-family="system-ui, sans-serif" font-size="20">⚡ Fast</text>
+
+    <text x="25" y="145" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#1e293b">Compression:</text>
+    <text x="130" y="145" font-family="system-ui, sans-serif" font-size="12" fill="#047857">Discrete Cosine Transform (DCT)</text>
+
+    <text x="25" y="175" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#1e293b">Transparency:</text>
+    <text x="130" y="175" font-family="system-ui, sans-serif" font-size="12" fill="#475569">Solid White Backing Filled</text>
+
+    <text x="25" y="205" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#1e293b">Ideal For:</text>
+    <text x="130" y="205" font-family="system-ui, sans-serif" font-size="12" fill="#047857">Photos, Web, Email, Portals</text>
+
+    <rect x="20" y="225" width="290" height="24" rx="6" fill="#ecfdf5" stroke="#a7f3d0" />
+    <text x="165" y="241" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#047857">80%+ lighter with photographic fidelity</text>
+  </g>
+
+  <!-- Footer Tip -->
+  <text x="400" y="420" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">
+    Tip: For web publishing, converting heavy PNG screenshots to 85% JPG improves Google Core Web Vitals (LCP).
+  </text>
+</svg>

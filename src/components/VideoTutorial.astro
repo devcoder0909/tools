@@ -1,0 +1,215 @@
+---
+export interface Props {
+  toolName: string;
+  toolSlug: string;
+  fromFormat: string;
+  toFormat: string;
+  videoDurationText?: string;
+  thumbnailUrl: string;
+  transcriptSteps: {
+    timestamp: string;
+    title: string;
+    description: string;
+  }[];
+}
+
+const {
+  toolName,
+  toolSlug,
+  fromFormat,
+  toFormat,
+  videoDurationText = '1:15',
+  thumbnailUrl,
+  transcriptSteps,
+} = Astro.props;
+
+const fromUpper = fromFormat.toUpperCase();
+const toUpper = toFormat.toUpperCase();
+---
+
+<section id="video-tutorial" class="my-10 border border-gray-200 rounded-3xl overflow-hidden bg-white shadow-xs">
+  <div class="p-4 sm:p-6 bg-gradient-to-r from-gray-900 via-slate-900 to-emerald-950 text-white">
+    <div class="flex items-center gap-2 text-emerald-400 font-bold uppercase tracking-wider text-2xs sm:text-xs mb-1">
+      <svg class="w-4 h-4 text-emerald-400 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      Video Demonstration & Walkthrough
+    </div>
+    <h2 class="text-lg sm:text-2xl font-bold text-white">
+      Watch How to Convert {fromUpper} to {toUpper} in 60 Seconds
+    </h2>
+    <p class="text-xs sm:text-sm text-gray-300 mt-1 max-w-2xl">
+      Learn how to batch process {fromUpper} files, adjust quality, flatten transparent layers, and export {toUpper} files without installing software or uploading private data to remote servers.
+    </p>
+  </div>
+
+  <div class="p-4 sm:p-6 bg-gray-50 border-b border-gray-200">
+    <!-- Video Player Simulation Container -->
+    <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-gray-950 shadow-inner group border border-gray-800">
+      <!-- Poster / Thumbnail Image -->
+      <img
+        id={`video-poster-${toolSlug}`}
+        src={thumbnailUrl}
+        alt={`Video tutorial demonstration of converting ${fromUpper} to ${toUpper}`}
+        width="1280"
+        height="720"
+        class="w-full h-full object-cover transition-opacity duration-300"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+
+      <!-- Play Button Overlay -->
+      <div
+        id={`video-overlay-${toolSlug}`}
+        class="absolute inset-0 flex flex-col items-center justify-center bg-black/40 hover:bg-black/30 transition cursor-pointer"
+        onclick={`
+          const poster = document.getElementById('video-poster-${toolSlug}');
+          const overlay = document.getElementById('video-overlay-${toolSlug}');
+          const sim = document.getElementById('video-simulator-${toolSlug}');
+          if (poster && overlay && sim) {
+            poster.classList.add('hidden');
+            overlay.classList.add('hidden');
+            sim.classList.remove('hidden');
+            window.startVideoSim_${toolSlug.replace(/-/g, '_')}();
+          }
+        `}
+      >
+        <button
+          type="button"
+          aria-label={`Play video demonstration for ${toolName}`}
+          class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white flex items-center justify-center shadow-lg transition transform group-hover:scale-105"
+        >
+          <svg class="w-8 h-8 sm:w-10 sm:h-10 ml-1 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </button>
+        <span class="mt-3 px-3 py-1 rounded-full bg-black/70 text-white text-xs font-semibold backdrop-blur-xs">
+          Interactive Video Walkthrough ({videoDurationText})
+        </span>
+      </div>
+
+      <!-- Live Video Simulator Screen (Runs client-side when clicked) -->
+      <div id={`video-simulator-${toolSlug}`} class="hidden absolute inset-0 bg-slate-900 p-4 sm:p-8 flex flex-col justify-between text-white select-none">
+        <div class="flex items-center justify-between border-b border-gray-800 pb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-500 inline-block"></span>
+            <span class="w-3 h-3 rounded-full bg-green-500 inline-block"></span>
+            <span class="text-xs text-gray-400 font-mono ml-2">Best Converter • In-Browser RAM Engine</span>
+          </div>
+          <span id={`sim-time-${toolSlug}`} class="text-xs text-emerald-400 font-mono font-bold">0:00 / {videoDurationText}</span>
+        </div>
+
+        <div class="my-auto text-center space-y-4">
+          <div id={`sim-stage-icon-${toolSlug}`} class="text-4xl sm:text-6xl animate-bounce">
+            📄
+          </div>
+          <div id={`sim-stage-title-${toolSlug}`} class="text-base sm:text-xl font-bold text-white">
+            Step 1: Selecting {fromUpper} File
+          </div>
+          <p id={`sim-stage-desc-${toolSlug}`} class="text-xs sm:text-sm text-gray-300 max-w-md mx-auto">
+            Input file loaded locally into browser memory via HTML5 FileReader API.
+          </p>
+
+          <!-- Progress Bar -->
+          <div class="w-full max-w-md mx-auto bg-gray-800 rounded-full h-2.5 overflow-hidden border border-gray-700">
+            <div id={`sim-progress-${toolSlug}`} class="bg-emerald-500 h-2.5 rounded-full transition-all duration-300" style="width: 15%"></div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-xs text-gray-400 border-t border-gray-800 pt-3">
+          <button
+            type="button"
+            class="text-emerald-400 hover:text-emerald-300 font-semibold"
+            onclick={`window.startVideoSim_${toolSlug.replace(/-/g, '_')}();`}
+          >
+            ↻ Replay Simulation
+          </button>
+          <span>100% In-Browser • Zero Remote Data Transfer</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter Bookmarks / Key Moments -->
+    <div class="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-2">
+      {transcriptSteps.map((step, idx) => (
+        <div class="p-2.5 bg-white border border-gray-200 rounded-xl text-left">
+          <div class="flex items-center gap-1.5 text-2xs font-bold text-emerald-700">
+            <span class="px-1.5 py-0.5 rounded bg-emerald-100 font-mono">{step.timestamp}</span>
+            <span>Step {idx + 1}</span>
+          </div>
+          <span class="block text-xs font-semibold text-gray-900 mt-1 truncate">{step.title}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Full Video Transcript (Collapsible for Accessibility & Deep Search Engine Indexing) -->
+  <div class="p-4 sm:p-6 bg-white">
+    <details class="group" open>
+      <summary class="flex items-center justify-between cursor-pointer list-none font-bold text-sm sm:text-base text-gray-900 hover:text-emerald-700 transition">
+        <span class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          Complete Video Tutorial Transcript (Timestamped)
+        </span>
+        <span class="text-xs text-gray-500 font-normal">Indexed for search</span>
+      </summary>
+
+      <div class="mt-4 space-y-4 pt-3 border-t border-gray-100 text-xs sm:text-sm text-gray-700">
+        {transcriptSteps.map((step) => (
+          <div class="flex items-start gap-3">
+            <span class="px-2 py-1 rounded bg-gray-100 text-gray-700 font-mono font-semibold text-2xs shrink-0 mt-0.5">
+              {step.timestamp}
+            </span>
+            <div>
+              <strong class="text-gray-900 block font-semibold">{step.title}</strong>
+              <p class="text-gray-600 mt-0.5 leading-relaxed">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </details>
+  </div>
+</section>
+
+<script is:inline define:vars={{ toolSlug, fromUpper, toUpper, videoDurationText }}>
+  // Interactive Step Simulator
+  window[`startVideoSim_${toolSlug.replace(/-/g, '_')}`] = function () {
+    const icon = document.getElementById(`sim-stage-icon-${toolSlug}`);
+    const title = document.getElementById(`sim-stage-title-${toolSlug}`);
+    const desc = document.getElementById(`sim-stage-desc-${toolSlug}`);
+    const prog = document.getElementById(`sim-progress-${toolSlug}`);
+    const time = document.getElementById(`sim-time-${toolSlug}`);
+
+    if (!icon || !title || !desc || !prog || !time) return;
+
+    // Stage 1: Load
+    icon.textContent = '📄';
+    title.textContent = `Step 1: Selecting ${fromUpper} Image`;
+    desc.textContent = `Reading ${fromUpper} into browser RAM via HTML5 File API. Zero bytes sent across network.`;
+    prog.style.width = '25%';
+    time.textContent = '0:15 / ' + videoDurationText;
+
+    // Stage 2: In-Memory Conversion
+    setTimeout(() => {
+      icon.textContent = '⚡';
+      title.textContent = `Step 2: Encoding into ${toUpper} Matrix`;
+      desc.textContent = `Applying 85% JPEG Discrete Cosine Transform in client-side HTML5 Canvas buffer.`;
+      prog.style.width = '65%';
+      time.textContent = '0:40 / ' + videoDurationText;
+    }, 2000);
+
+    // Stage 3: Complete & Ready
+    setTimeout(() => {
+      icon.textContent = '💾';
+      title.textContent = `Step 3: Conversion Complete!`;
+      desc.textContent = `File size reduced by 82%. Converted ${toUpper} ready for instant 1-click download or ZIP.`;
+      prog.style.width = '100%';
+      time.textContent = videoDurationText + ' / ' + videoDurationText;
+    }, 4000);
+  };
+</script>

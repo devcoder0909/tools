@@ -14,6 +14,8 @@ import AdSlot from '../components/AdSlot.astro';
 import PromoSlot from '../components/PromoSlot.astro';
 import FAQ from '../components/FAQ.astro';
 import RelatedTools from '../components/RelatedTools.astro';
+import VideoTutorial from '../components/VideoTutorial.astro';
+import { renderToolMarkdown } from '../utils/markdown';
 import { getAllTools, getRelatedTools, formatDisplayDate, type ToolDefinition } from '../registry';
 import { siteConfig } from '../config/site';
 import fs from 'node:fs';
@@ -41,13 +43,7 @@ const contentPath = path.resolve(process.cwd(), tool.content);
 
 if (fs.existsSync(contentPath)) {
   const raw = fs.readFileSync(contentPath, 'utf-8');
-  // Simple markdown-to-html conversion for headings, lists, paragraphs, tables
-  // Strip frontmatter and any duplicate markdown FAQ section (handled canonically by FAQ.astro)
-  const body = raw
-    .replace(/^---[\s\S]*?---/, '')
-    .replace(/## (?:Frequently Asked Questions|FAQ)[\s\S]*$/i, '')
-    .trim();
-  contentHtml = body;
+  contentHtml = renderToolMarkdown(raw);
   hasCustomContent = true;
 }
 
@@ -138,8 +134,92 @@ const faqJsonLd = tool.faq && tool.faq.length > 0 ? {
   })),
 } : null;
 
+const toolVideos: Record<string, { duration: string; durationSecs: string; thumbnailUrl: string; steps: { timestamp: string; title: string; description: string }[] }> = {
+  'png-to-jpg': {
+    duration: '1:15',
+    durationSecs: 'PT1M15S',
+    thumbnailUrl: '/images/tools/png-to-jpg-video-thumb.svg',
+    steps: [
+      { timestamp: '0:00', title: 'Upload or Drop PNG Image', description: 'Drag and drop PNG images or paste directly from clipboard (Ctrl+V / Cmd+V). Handles 4K desktop screenshots and transparent graphics.' },
+      { timestamp: '0:25', title: 'Set Quality & Transparency Handling', description: 'Adjust the compression slider between 10% and 95%. Default 85% preserves photographic fidelity while transparent pixels render with clean solid white.' },
+      { timestamp: '0:50', title: 'Batch In-Memory Conversion', description: 'Click Convert All Files to run the Discrete Cosine Transform locally in your browser memory via HTML5 Canvas.' },
+      { timestamp: '1:10', title: 'Instant ZIP or Single Download', description: 'Download converted JPG images individually or as a single combined ZIP archive. Zero remote server transfers.' }
+    ]
+  },
+  'jpg-to-png': {
+    duration: '1:10',
+    durationSecs: 'PT1M10S',
+    thumbnailUrl: '/images/tools/jpg-to-png-video-thumb.svg',
+    steps: [
+      { timestamp: '0:00', title: 'Select JPG Photos', description: 'Select or drag JPG / JPEG images into the converter. Supports multi-megapixel camera shots without file size caps.' },
+      { timestamp: '0:20', title: 'Lossless PNG Rasterization', description: 'The local engine unpacks DCT JPEG blocks into an uncompressed 24-bit RGB pixel canvas ready for alpha transparency layers.' },
+      { timestamp: '0:45', title: 'Batch Processing & Conversion', description: 'Click Convert All Files to encode into standard Deflate-compressed PNG format in client RAM.' },
+      { timestamp: '1:05', title: 'Download Converted PNG Files', description: 'Save losslessly encoded PNG images with full color fidelity for graphic design and presentation mockups.' }
+    ]
+  },
+  'webp-to-jpg': {
+    duration: '1:08',
+    durationSecs: 'PT1M08S',
+    thumbnailUrl: '/images/tools/webp-to-jpg-video-thumb.svg',
+    steps: [
+      { timestamp: '0:00', title: 'Select WebP Files', description: 'Drop modern WebP graphics downloaded from Chrome or web pages directly onto the converter canvas.' },
+      { timestamp: '0:22', title: 'Set JPEG Quality Parameter', description: 'Choose between 10% and 95% output quality. WebP transparency automatically renders on clean white.' },
+      { timestamp: '0:45', title: 'Fast Browser Transcoding', description: 'Transcode WebP to universal JPG format using your device hardware acceleration without external uploads.' },
+      { timestamp: '1:02', title: 'Download Compatible JPG', description: 'Save universal JPG images that open in Photoshop, Microsoft Word, email clients, and government upload forms.' }
+    ]
+  },
+  'heic-to-jpg': {
+    duration: '1:20',
+    durationSecs: 'PT1M20S',
+    thumbnailUrl: '/images/tools/heic-to-jpg-video-thumb.svg',
+    steps: [
+      { timestamp: '0:00', title: 'Select iPhone HEIC Photos', description: 'Drop Apple HEIC/HEIF photos transferred via AirDrop, iCloud, or cable directly into the converter.' },
+      { timestamp: '0:25', title: 'In-Browser HEIF Decoding', description: 'The client-side WASM engine unpacks HEVC containers and color profiles without installing paid Windows Store extensions.' },
+      { timestamp: '0:55', title: 'Batch Conversion to JPG', description: 'Convert up to 50+ iPhone photos simultaneously with original 48MP resolution and sharpness preserved.' },
+      { timestamp: '1:15', title: 'Download Converted JPEG Files', description: 'Download universal JPG images compatible with all Windows PCs, Android devices, and legacy applications.' }
+    ]
+  }
+};
+
+const workflowDiagrams: Record<string, string> = {
+  'png-to-jpg': '/images/tools/png-to-jpg-workflow.svg',
+  'jpg-to-png': '/images/tools/jpg-to-png-workflow.svg',
+  'webp-to-jpg': '/images/tools/webp-to-jpg-workflow.svg',
+  'heic-to-jpg': '/images/tools/heic-to-jpg-workflow.svg',
+};
+
+const videoData = toolVideos[tool.slug];
+const diagramUrl = workflowDiagrams[tool.slug];
+
 const schemas: any[] = [webAppJsonLd, howToJsonLd];
 if (faqJsonLd) schemas.push(faqJsonLd);
+
+if (videoData) {
+  schemas.push({
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name: `How to Convert ${tool.from?.toUpperCase() || ''} to ${tool.to?.toUpperCase() || ''} Online (Step-by-Step Tutorial)`,
+    description: `Complete step-by-step video demonstration showing how to convert ${tool.from?.toUpperCase() || ''} to ${tool.to?.toUpperCase() || ''} directly in your browser with zero server uploads and adjustable compression.`,
+    thumbnailUrl: `${siteConfig.url}${videoData.thumbnailUrl}`,
+    uploadDate: '2026-11-16T08:00:00+00:00',
+    duration: videoData.durationSecs,
+    contentUrl: `${siteConfig.url}/${tool.slug}/#video-tutorial`,
+    embedUrl: `${siteConfig.url}/${tool.slug}/#video-tutorial`,
+    transcript: videoData.steps.map((s) => `${s.timestamp} ${s.title}: ${s.description}`).join(' '),
+  });
+}
+
+if (diagramUrl) {
+  schemas.push({
+    '@context': 'https://schema.org',
+    '@type': 'ImageObject',
+    contentUrl: `${siteConfig.url}${diagramUrl}`,
+    name: `${tool.name} Client-Side Workflow Diagram`,
+    description: `Detailed infographic illustrating the 100% in-browser RAM conversion pipeline for ${tool.name}.`,
+    width: 800,
+    height: 450,
+  });
+}
 
 // Target size parsed from options or targetBytes if available
 let parsedTargetKb = 200;
@@ -258,11 +338,16 @@ if (tool.targetBytes) {
         <a href="#how-to" class="px-3.5 py-1.5 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200 whitespace-nowrap hover:bg-emerald-100 transition">
           📖 How to Use
         </a>
-        <a href="#comparison" class="px-3.5 py-1.5 rounded-xl bg-gray-50 text-gray-700 border border-gray-200 whitespace-nowrap hover:bg-gray-100 transition">
-          ⚖️ vs Competitors
-        </a>
+        {videoData && (
+          <a href="#video-tutorial" class="px-3.5 py-1.5 rounded-xl bg-gray-50 text-gray-700 border border-gray-200 whitespace-nowrap hover:bg-gray-100 transition">
+            🎬 Video Tutorial
+          </a>
+        )}
         <a href="#guide" class="px-3.5 py-1.5 rounded-xl bg-gray-50 text-gray-700 border border-gray-200 whitespace-nowrap hover:bg-gray-100 transition">
           ⚙️ Technical Guide
+        </a>
+        <a href="#comparison" class="px-3.5 py-1.5 rounded-xl bg-gray-50 text-gray-700 border border-gray-200 whitespace-nowrap hover:bg-gray-100 transition">
+          ⚖️ vs Competitors
         </a>
         {tool.faq && tool.faq.length > 0 && (
           <a href="#faq" class="px-3.5 py-1.5 rounded-xl bg-gray-50 text-gray-700 border border-gray-200 whitespace-nowrap hover:bg-gray-100 transition">
@@ -285,17 +370,26 @@ if (tool.targetBytes) {
       </p>
     </div>
 
+    <!-- Video Demonstration & Tutorial Walkthrough -->
+    {videoData && (
+      <VideoTutorial
+        toolName={tool.name}
+        toolSlug={tool.slug}
+        fromFormat={tool.from || ''}
+        toFormat={tool.to || ''}
+        videoDurationText={videoData.duration}
+        thumbnailUrl={videoData.thumbnailUrl}
+        transcriptSteps={videoData.steps}
+      />
+    )}
+
     <!-- 6. How-to steps & custom notes -->
     <div id="guide">
       {hasCustomContent ? (
         <article class="prose prose-gray max-w-none my-8 leading-relaxed">
           <div
-            class="space-y-6 text-gray-700 leading-relaxed [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-gray-900 [&>h2]:mt-8 [&>h2]:mb-4 [&>h3]:text-lg [&>h3]:font-semibold [&>h3]:text-gray-900 [&>h3]:mt-6 [&>h3]:mb-2 [&>ul]:list-disc [&>ul]:pl-5 [&>ol]:list-decimal [&>ol]:pl-5 [&>p]:mb-4 [&>table]:w-full [&>table]:border-collapse [&>table]:my-6 [&>table_th]:border [&>table_th]:border-gray-200 [&>table_th]:bg-gray-50 [&>table_th]:p-3 [&>table_th]:text-left [&>table_td]:border [&>table_td]:border-gray-200 [&>table_td]:p-3"
-            set:html={contentHtml
-              .replace(/### (.*)/g, '<h3>$1</h3>')
-              .replace(/## (.*)/g, '<h2>$1</h2>')
-              .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-              .replace(/\n\n/g, '<p></p>')}
+            class="space-y-6 text-gray-700 leading-relaxed"
+            set:html={contentHtml}
           />
         </article>
       ) : (
