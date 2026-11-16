@@ -1,7 +1,7 @@
 export const siteConfig = {
-  brand: 'Best Converter',
+  brand: 'Gudmud Convert',
   domain: 'convert.gudmud.site',
-  company: 'Best Converter',
+  company: 'Gudmud Convert',
   contactEmail: 'support@gudmud.site',
   url: 'https://convert.gudmud.site',
   tagline: 'Free, Private In-Browser Converters & Calculators',

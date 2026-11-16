@@ -1,6 +1,6 @@
 {
-  "name": "Best Converter",
-  "short_name": "BestConverter",
+  "name": "Gudmud Convert",
+  "short_name": "GudmudConvert",
   "description": "Free, Private Online Converters and Calculators. Fast, client-side, zero file uploads.",
   "start_url": "/",
   "display": "standalone",
