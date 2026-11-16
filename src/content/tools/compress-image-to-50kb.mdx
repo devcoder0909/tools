@@ -17,20 +17,6 @@ Many official document submission portals enforce a strict file size ceiling of 
 
 Because these files often contain sensitive personal data (passports, driver licenses, signatures), our client-side tool compresses your photo directly inside your browser memory. No private pictures are ever transmitted to external servers.
 
----
-
-## Measured Before and After Test Results
-
-Our compression engine uses a multi-pass binary search on JPEG encoding quality, followed by proportional dimension scaling if optical density cannot fit under 50KB:
-
-| Sample Asset | Input Format & Size | Final Output Size | Dimensions Delta | Quality Setting |
-| :--- | :--- | :--- | :--- | :--- |
-| **Passport Style ID Portrait** | JPEG (2.15 MB) | 48.6 KB | 1200×1600 → 600×800 | 52% |
-| **Scanned Signature Document** | PNG (840 KB) | 36.4 KB | 1000×400 → 800×320 | 60% (as WebP) |
-| **National ID Card Photo** | JPEG (1.62 MB) | 49.1 KB | 1920×1080 → 720×405 | 45% |
-
----
-
 ## How to Compress Images to 50KB on Mobile Devices
 
 - **On iPhone / iPad:** Open Safari, visit this page, tap the upload box, and pick your picture from the Photos app. Our engine compresses the file to under 50KB in under one second. Tap Download and choose "Save to Files" or "Save Image".

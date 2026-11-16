@@ -45,19 +45,3 @@ The table below contrasts key technical specifications between Apple's HEIC cont
 | **Browser Compatibility** | Limited native browser support outside Apple Safari | 100% universal support across all desktop and mobile browsers |
 | **Color Depth** | 8-bit, 10-bit, or 12-bit Wide Gamut (Display P3) | 24-bit Truecolor with 8-bit Alpha (32-bit RGBA) |
 | **Best Used For** | Mobile camera capture storage on iOS devices | Graphic design, transparent cutouts, digital art, and editing |
-
----
-
-## Measured File Size Comparison
-
-Converting compressed HEIC captures to lossless PNG expands byte size because PNG guarantees bit-for-bit optical fidelity without discarding high-frequency pixel variations:
-
-| Sample Image Description | Original HEIC Size | Converted PNG Size | Size Delta | Visual Fidelity |
-| :--- | :--- | :--- | :--- | :--- |
-| **iPhone 15 Pro Portrait Cutout (1200x1600)** | 1.82 MB | 4.65 MB | +155.5% | Flawless subject edge isolation; transparent alpha |
-| **Macro Nature Photography (3024x4032)** | 2.45 MB | 14.20 MB | +479.6% | Pixel-perfect foliage definition; zero DCT ringing |
-| **Document & Receipt Snapshot (2048x1536)** | 840 KB | 2.92 MB | +247.6% | Razor-sharp text typography; zero blur |
-| **Architecture Exterior (4032x3024)** | 3.10 MB | 18.40 MB | +493.5% | Pristine brickwork texture; lossless dynamic range |
-
-*Note: All conversion operations run 100% client-side in your browser RAM using WebAssembly and HTML5 Canvas decoding.*
-
