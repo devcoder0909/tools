@@ -222,6 +222,50 @@ const toolVideos: Record<string, { duration: string; durationSecs: string; thumb
       { timestamp: '0:40', title: 'Permanent Matrix Update', description: 'Modifies the /Rotate dictionary key in the PDF structure permanently.' },
       { timestamp: '1:00', title: 'Download Corrected PDF', description: 'Save permanently rotated PDF that displays correctly in all PDF viewers and print dialogs.' }
     ]
+  },
+  'emi-calculator': {
+    duration: '1:24',
+    durationSecs: 'PT1M24S',
+    thumbnailUrl: '/images/tools/emi-calculator-video-thumb.svg',
+    steps: [
+      { timestamp: '0:00', title: 'Enter Principal Loan Amount', description: 'Type in your desired borrowing amount for home, car, or personal financing.' },
+      { timestamp: '0:22', title: 'Set Annual Interest Rate', description: 'Input the annual interest rate quoted by your lender to calculate reducing balance compounding.' },
+      { timestamp: '0:45', title: 'Adjust Loan Tenure', description: 'Choose loan duration in years or months to see instant amortization schedule.' },
+      { timestamp: '1:10', title: 'Inspect Amortization & Total Interest', description: 'View total payment breakdown between principal borrowed and overall interest payable.' }
+    ]
+  },
+  'compound-interest-calculator': {
+    duration: '1:30',
+    durationSecs: 'PT1M30S',
+    thumbnailUrl: '/images/tools/compound-interest-video-thumb.svg',
+    steps: [
+      { timestamp: '0:00', title: 'Set Initial Principal & Deposits', description: 'Enter initial investment capital and optional recurring monthly or annual contributions.' },
+      { timestamp: '0:25', title: 'Choose Compounding Frequency', description: 'Select daily, monthly, quarterly, semi-annual, or annual compounding frequency.' },
+      { timestamp: '0:50', title: 'Define Growth Rate & Timeline', description: 'Set estimated annual rate of return and target investment horizon in years.' },
+      { timestamp: '1:15', title: 'Review Future Corpus & Multiplier', description: 'Inspect exponential wealth accumulation chart and compound interest multiplier.' }
+    ]
+  },
+  'sip-calculator': {
+    duration: '1:15',
+    durationSecs: 'PT1M15S',
+    thumbnailUrl: '/images/tools/sip-calculator-video-thumb.svg',
+    steps: [
+      { timestamp: '0:00', title: 'Enter Monthly SIP Amount', description: 'Specify your recurring monthly mutual fund or ETF investment budget.' },
+      { timestamp: '0:20', title: 'Set Expected Return Rate', description: 'Input expected annual CAGR (e.g. 12% to 15% for long-term index/equity funds).' },
+      { timestamp: '0:45', title: 'Adjust Investment Duration', description: 'Slide from 5 years to 30 years to see rupee-cost averaging and compounding acceleration.' },
+      { timestamp: '1:05', title: 'Analyze Wealth Creation Milestones', description: 'Compare total invested capital against estimated future corpus returns.' }
+    ]
+  },
+  'percentage-calculator': {
+    duration: '1:05',
+    durationSecs: 'PT1M05S',
+    thumbnailUrl: '/images/tools/percentage-calculator-video-thumb.svg',
+    steps: [
+      { timestamp: '0:00', title: 'Select Calculation Mode', description: 'Choose from Percentage of a Number, Percentage Change, or What % is X of Y.' },
+      { timestamp: '0:20', title: 'Input Values in Real Time', description: 'Type values into the input fields for immediate sub-millisecond calculation.' },
+      { timestamp: '0:45', title: 'Inspect Step-by-Step Formula', description: 'See the transparent mathematical derivation and formula behind the result.' },
+      { timestamp: '1:00', title: 'Copy or Share Answer', description: 'Copy the calculated percentage or final discounted amount with a single click.' }
+    ]
   }
 };
 
@@ -234,6 +278,10 @@ const workflowDiagrams: Record<string, string> = {
   'compress-pdf': '/images/tools/compress-pdf-workflow.svg',
   'split-pdf': '/images/tools/split-pdf-workflow.svg',
   'rotate-pdf': '/images/tools/rotate-pdf-workflow.svg',
+  'emi-calculator': '/images/tools/emi-calculator-infographic.svg',
+  'compound-interest-calculator': '/images/tools/compound-interest-growth.svg',
+  'sip-calculator': '/images/tools/sip-compounding-wealth.svg',
+  'percentage-calculator': '/images/tools/percentage-calculator-formulas.svg',
 };
 
 const videoData = toolVideos[tool.slug];

@@ -14,6 +14,7 @@ export function renderToolMarkdown(rawMarkdown: string): string {
   let inUl = false;
   let inOl = false;
   let inTable = false;
+  let inSection = false;
   let tableRows: string[][] = [];
 
   function closeLists(): string {
@@ -25,6 +26,26 @@ export function renderToolMarkdown(rawMarkdown: string): string {
     if (inOl) {
       res += '</ol>\n';
       inOl = false;
+    }
+    return res;
+  }
+
+  function startSection(): string {
+    let res = '';
+    if (inSection) {
+      res += '</section>\n';
+    }
+    inSection = true;
+    res += '<section class="space-y-4">\n';
+    return res;
+  }
+
+  function closeAll(): string {
+    let res = closeLists();
+    res += closeTable();
+    if (inSection) {
+      res += '</section>\n';
+      inSection = false;
     }
     return res;
   }
@@ -132,9 +153,15 @@ export function renderToolMarkdown(rawMarkdown: string): string {
     }
     if (stripped.startsWith('## ') || stripped.startsWith('# ')) {
       output.push(closeLists());
+      output.push(closeTable());
+      output.push(startSection());
       const heading = stripped.startsWith('## ') ? stripped.slice(3) : stripped.slice(2);
       output.push(`<h2 class="text-xl sm:text-2xl font-bold text-gray-900 mt-10 mb-4">${formatInline(heading)}</h2>`);
       continue;
+    }
+
+    if (!inSection) {
+      output.push(startSection());
     }
 
     // Blockquote
@@ -172,8 +199,7 @@ export function renderToolMarkdown(rawMarkdown: string): string {
     output.push(`<p class="mb-4 text-gray-700 leading-relaxed">${formatInline(stripped)}</p>`);
   }
 
-  output.push(closeLists());
-  output.push(closeTable());
+  output.push(closeAll());
 
   return output.filter(Boolean).join('\n');
 }

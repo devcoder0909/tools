@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none">
+  <defs>
+    <linearGradient id="pctBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#f1f5f9" />
+    </linearGradient>
+    <filter id="pctCardShadow" x="-5%" y="-5%" width="110%" height="110%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.06" />
+    </filter>
+  </defs>
+
+  <rect width="800" height="450" rx="16" fill="url(#pctBg)" stroke="#e2e8f0" stroke-width="2" />
+
+  <!-- Header -->
+  <rect x="260" y="22" width="280" height="28" rx="14" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1" />
+  <text x="400" y="41" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#2563eb" letter-spacing="0.5">
+    PERCENTAGE CALCULATION FORMULAS
+  </text>
+  <text x="400" y="78" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" font-weight="800" fill="#0f172a">
+    Visual Cheat Sheet of 4 Core Percentage Modes
+  </text>
+  <text x="400" y="98" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#64748b">
+    Step-by-step mathematical logic for retail discounts, tip calculations, and growth rates
+  </text>
+
+  <!-- Card 1: What is X% of Y? -->
+  <g transform="translate(40, 116)" filter="url(#pctCardShadow)">
+    <rect width="345" height="142" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="16" y="14" width="28" height="28" rx="6" fill="#eff6ff" />
+    <text x="30" y="33" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#2563eb">1</text>
+    <text x="54" y="32" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Percentage of a Number</text>
+    <rect x="16" y="50" width="313" height="34" rx="6" fill="#f8fafc" stroke="#e2e8f0" />
+    <text x="26" y="72" font-family="system-ui, monospace" font-size="13" font-weight="700" fill="#2563eb">Result = (Percentage ÷ 100) × Total</text>
+    <text x="18" y="105" font-family="system-ui, sans-serif" font-size="12" fill="#475569">Example: What is <tspan font-weight="700" fill="#0f172a">20%</tspan> of <tspan font-weight="700" fill="#0f172a">150</tspan>?</text>
+    <text x="18" y="125" font-family="system-ui, sans-serif" font-size="12" fill="#16a34a" font-weight="700">Answer: (20 ÷ 100) × 150 = 30</text>
+  </g>
+
+  <!-- Card 2: X is what % of Y? -->
+  <g transform="translate(415, 116)" filter="url(#pctCardShadow)">
+    <rect width="345" height="142" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="16" y="14" width="28" height="28" rx="6" fill="#ecfdf5" />
+    <text x="30" y="33" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#059669">2</text>
+    <text x="54" y="32" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Ratio to Percentage</text>
+    <rect x="16" y="50" width="313" height="34" rx="6" fill="#f8fafc" stroke="#e2e8f0" />
+    <text x="26" y="72" font-family="system-ui, monospace" font-size="13" font-weight="700" fill="#059669">Percentage = (Part ÷ Whole) × 100</text>
+    <text x="18" y="105" font-family="system-ui, sans-serif" font-size="12" fill="#475569">Example: <tspan font-weight="700" fill="#0f172a">45</tspan> is what % of <tspan font-weight="700" fill="#0f172a">180</tspan>?</text>
+    <text x="18" y="125" font-family="system-ui, sans-serif" font-size="12" fill="#16a34a" font-weight="700">Answer: (45 ÷ 180) × 100 = 25%</text>
+  </g>
+
+  <!-- Card 3: Percentage Increase / Decrease -->
+  <g transform="translate(40, 276)" filter="url(#pctCardShadow)">
+    <rect width="345" height="150" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="16" y="14" width="28" height="28" rx="6" fill="#fef3c7" />
+    <text x="30" y="33" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#d97706">3</text>
+    <text x="54" y="32" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Percentage Change (Inc / Dec)</text>
+    <rect x="16" y="50" width="313" height="34" rx="6" fill="#f8fafc" stroke="#e2e8f0" />
+    <text x="26" y="72" font-family="system-ui, monospace" font-size="12" font-weight="700" fill="#d97706">% Change = ((New - Old) ÷ |Old|) × 100</text>
+    <text x="18" y="105" font-family="system-ui, sans-serif" font-size="12" fill="#475569">Example: Price went from <tspan font-weight="700" fill="#0f172a">$80</tspan> to <tspan font-weight="700" fill="#0f172a">$100</tspan></text>
+    <text x="18" y="128" font-family="system-ui, sans-serif" font-size="12" fill="#16a34a" font-weight="700">Answer: ((100 - 80) ÷ 80) × 100 = +25% Increase</text>
+  </g>
+
+  <!-- Card 4: Discount & Markdown -->
+  <g transform="translate(415, 276)" filter="url(#pctCardShadow)">
+    <rect width="345" height="150" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="16" y="14" width="28" height="28" rx="6" fill="#fdf2f8" />
+    <text x="30" y="33" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#db2777">4</text>
+    <text x="54" y="32" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Discount &amp; Final Price</text>
+    <rect x="16" y="50" width="313" height="34" rx="6" fill="#f8fafc" stroke="#e2e8f0" />
+    <text x="26" y="72" font-family="system-ui, monospace" font-size="12" font-weight="700" fill="#db2777">Final = Original × (1 - Discount ÷ 100)</text>
+    <text x="18" y="105" font-family="system-ui, sans-serif" font-size="12" fill="#475569">Example: Item price <tspan font-weight="700" fill="#0f172a">$120</tspan> with <tspan font-weight="700" fill="#0f172a">15%</tspan> off</text>
+    <text x="18" y="128" font-family="system-ui, sans-serif" font-size="12" fill="#16a34a" font-weight="700">Answer: $120 × (1 - 0.15) = $102 (Saved: $18)</text>
+  </g>
+</svg>
