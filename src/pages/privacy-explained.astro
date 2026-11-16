@@ -11,7 +11,7 @@ const breadcrumbs = [
 const articleJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: 'How Zero-Upload Privacy Works on Best Converter',
+  headline: 'How Zero-Upload Privacy Works on Gudmud Convert',
   description: 'Technical explanation and step-by-step verification guide for client-side, in-browser file conversion without server uploads.',
   url: `${siteConfig.url}/privacy-explained/`,
   author: {
@@ -19,13 +19,13 @@ const articleJsonLd = {
     name: siteConfig.brand,
   },
   datePublished: '2026-11-13',
-  dateModified: '2026-11-13',
+  dateModified: '2026-11-16',
 };
 ---
 
 <Layout
-  title="Zero-Upload Privacy: How It Works | Best Converter"
-  description="Learn how Best Converter runs 100% in your browser. Verify with your Network tab that photos and files are never uploaded to any remote server."
+  title="Zero-Upload Privacy: How It Works | Gudmud Convert"
+  description="Learn how Gudmud Convert runs 100% in your browser. Verify with your Network tab that photos and files are never uploaded to any remote server."
   canonical={`${siteConfig.url}/privacy-explained/`}
   jsonLd={articleJsonLd}
 >
@@ -69,7 +69,7 @@ const articleJsonLd = {
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-gray-900">How Best Converter Eliminates Server Uploads</h2>
+        <h2 class="text-2xl font-bold text-gray-900">How {siteConfig.brand} Eliminates Server Uploads</h2>
         <p>
           Modern web browsers are full-featured operating environments capable of high-performance multimedia computing. {siteConfig.brand} eliminates server intermediaries completely:
         </p>
@@ -124,8 +124,8 @@ const articleJsonLd = {
     </article>
 
     <div class="mt-12 pt-6 border-t border-gray-200 flex items-center justify-between text-xs text-gray-500">
-      <span>Last reviewed: <time datetime="2026-11-13">13 Nov 2026</time></span>
-      <span>Published by: Best Converter Security & Architecture Team</span>
+      <span>Last reviewed: <time datetime="2026-11-16">16 Nov 2026</time></span>
+      <span>Published by: {siteConfig.brand} Engineering Team</span>
     </div>
   </div>
 </Layout>

@@ -77,13 +77,6 @@ const webAppJsonLd = {
     price: '0',
     priceCurrency: 'USD',
   },
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.9',
-    ratingCount: '1420',
-    bestRating: '5',
-    worstRating: '1',
-  },
   featureList: [
     '100% Client-Side Processing',
     'Zero Server Uploads',
@@ -191,7 +184,6 @@ if (tool.targetBytes) {
 <Layout
   title={tool.title}
   description={tool.description}
-  keywords={keywordsString}
   canonical={`${siteConfig.url}/${tool.slug}/`}
   jsonLd={schemas}
   noindex={!isIndexable}

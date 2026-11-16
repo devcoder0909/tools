@@ -291,7 +291,9 @@ ${indexableTools.map((t) => generateUrlXml(`${siteConfig.url}/${t.slug}/`, t.las
   fs.writeFileSync(path.join(DIST_DIR, 'sitemap-tools.xml'), toolsXml, 'utf-8');
 
   // 4. Dedicated Google Image Sitemap (genuine architectural diagrams & workflow infographics)
-  const imageEntriesXml = TOOL_MEDIA_REGISTRY.map((m) => {
+  const imageEntriesXml = TOOL_MEDIA_REGISTRY
+    .filter((m) => indexableTools.some((t) => t.slug === m.slug))
+    .map((m) => {
     const pageUrl = `${siteConfig.url}/${m.slug}/`;
     const diagramUrl = `${siteConfig.url}${m.diagramUrl}`;
 

@@ -12,3 +12,8 @@ playwright-report/
 *google-client*.json
 *google-secret*.json
 google-*.json
+service-account*.json
+*service-account*.json
+*service_account*.json
+*.pem
+*.key

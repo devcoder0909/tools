@@ -81,8 +81,8 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
   }, [toolId, loremType, loremCount, startWithLorem]);
   const [text, setText] = useState<string>(
     toolId === 'json-formatter'
-      ? '{"name":"Best Converter","type":"client-side","features":["privacy","speed","zero-upload"],"active":true}'
-      : 'Best Converter processes all your documents, images, and calculations entirely inside your browser. No files are uploaded to any external server.'
+      ? '{"name":"Gudmud Convert","type":"client-side","features":["privacy","speed","zero-upload"],"active":true}'
+      : 'Gudmud Convert processes all your documents, images, and calculations entirely inside your browser. No files are uploaded to any external server.'
   );
   const [copied, setCopied] = useState<boolean>(false);
   const [jsonError, setJsonError] = useState<string | null>(null);
@@ -90,10 +90,10 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
 
   // --- Diff Checker State ---
   const [diffOriginal, setDiffOriginal] = useState<string>(
-    'Best Converter is a free online tool suite.\nAll processing is 100% client side.\nFast and private file operations.'
+    'Gudmud Convert is a free online tool suite.\nAll processing is 100% client side.\nFast and private file operations.'
   );
   const [diffModified, setDiffModified] = useState<string>(
-    'Best Converter is a free online tool suite.\nAll processing runs locally in browser RAM.\nFast and private file operations.\nUnlimited usage with zero watermarks.'
+    'Gudmud Convert is a free online tool suite.\nAll processing runs locally in browser RAM.\nFast and private file operations.\nDirect in-browser processing.'
   );
 
   const diffResult = useMemo(() => {
@@ -140,7 +140,7 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
 
   // --- Markdown to HTML State ---
   const [mdInput, setMdInput] = useState<string>(
-    '## Markdown Preview\n\n**Best Converter** processes all your data **100% in browser**.\n\n### Core Features\n\n- Zero server uploads\n- Instant client-side conversions\n- Unlimited file sizes\n\nVisit [Best Converter](https://convert.gudmud.site) for fast utilities!'
+    '## Markdown Preview\n\n**Gudmud Convert** processes all your data **100% in browser**.\n\n### Core Features\n\n- Zero server uploads\n- Instant client-side conversions\n- Fast in-memory processing\n\nVisit [Gudmud Convert](https://convert.gudmud.site) for fast utilities!'
   );
   const [mdCopied, setMdCopied] = useState<boolean>(false);
 

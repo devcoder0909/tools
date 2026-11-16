@@ -307,7 +307,7 @@ export default function PdfShell({ toolId }: PdfShellProps) {
         ctx.fillText(`Page 1 of ${pageCount} Pages`, canvas.width / 2, 280);
         ctx.fillStyle = '#16a34a';
         ctx.font = 'bold 18px sans-serif';
-        ctx.fillText('✓ Converted 100% Free with Best Converter', canvas.width / 2, 340);
+        ctx.fillText('✓ Converted Free with Gudmud Convert', canvas.width / 2, 340);
       }
 
       const blob: Blob = await new Promise((resolve) => {

@@ -6,7 +6,6 @@ import Footer from '../components/Footer.astro';
 export interface Props {
   title: string;
   description: string;
-  keywords?: string;
   canonical?: string;
   type?: 'website' | 'article';
   jsonLd?: Record<string, any> | Record<string, any>[];
@@ -17,7 +16,6 @@ export interface Props {
 const {
   title,
   description,
-  keywords,
   canonical,
   type = 'website',
   jsonLd,
@@ -32,7 +30,6 @@ const {
     <BaseHead
       title={title}
       description={description}
-      keywords={keywords}
       canonical={canonical}
       type={type}
       jsonLd={jsonLd}

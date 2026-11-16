@@ -43,7 +43,7 @@ export default function GeneratorShell({ toolId }: GeneratorShellProps) {
   const [randResult, setRandResult] = useState<number[]>([]);
 
   // Fancy Text State
-  const [fancyInput, setFancyInput] = useState('Best Converter Online');
+  const [fancyInput, setFancyInput] = useState('Gudmud Convert');
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
 
   // --- QR Code Logic ---

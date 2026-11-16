@@ -52,7 +52,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
 
   // --- Base64 Encoder / Decoder State ---
   const [b64Mode, setB64Mode] = useState<'encode' | 'decode'>('encode');
-  const [b64Input, setB64Input] = useState('Hello World! Best Converter processes data 100% in browser.');
+  const [b64Input, setB64Input] = useState('Hello World! Gudmud Convert processes data 100% in browser.');
   const [b64Output, setB64Output] = useState('');
   const [b64Copied, setB64Copied] = useState(false);
 
@@ -186,7 +186,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
 
   // --- URL Encoder / Decoder State ---
   const [urlMode, setUrlMode] = useState<'encode' | 'decode'>('encode');
-  const [urlInput, setUrlInput] = useState('https://example.com/search?query=best converter & tags=free,online');
+  const [urlInput, setUrlInput] = useState('https://convert.gudmud.site/search?query=file converter & tags=free,online');
   const [urlOutput, setUrlOutput] = useState('');
   const [urlCopied, setUrlCopied] = useState(false);
 

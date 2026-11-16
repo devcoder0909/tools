@@ -33,17 +33,19 @@ interface MetadataResponse {
 
 const DEFAULT_URLS = [
   'https://convert.gudmud.site/',
-  'https://convert.gudmud.site/json-formatter/',
-  'https://convert.gudmud.site/base64-encoder/',
-  'https://convert.gudmud.site/qr-code-generator/',
-  'https://convert.gudmud.site/password-generator/',
-  'https://convert.gudmud.site/emi-calculator/',
-  'https://convert.gudmud.site/compound-interest-calculator/',
-  'https://convert.gudmud.site/sip-calculator/',
-  'https://convert.gudmud.site/percentage-calculator/',
-  'https://convert.gudmud.site/merge-pdf/',
-  'https://convert.gudmud.site/compress-pdf/',
+  'https://convert.gudmud.site/heic-to-jpg/',
+  'https://convert.gudmud.site/webp-to-png/',
+  'https://convert.gudmud.site/webp-to-jpg/',
   'https://convert.gudmud.site/png-to-jpg/',
+  'https://convert.gudmud.site/jpg-to-png/',
+  'https://convert.gudmud.site/image-compressor/',
+  'https://convert.gudmud.site/compress-image-to-20kb/',
+  'https://convert.gudmud.site/compress-image-to-50kb/',
+  'https://convert.gudmud.site/compress-image-to-100kb/',
+  'https://convert.gudmud.site/percentage-calculator/',
+  'https://convert.gudmud.site/age-calculator/',
+  'https://convert.gudmud.site/json-formatter/',
+  'https://convert.gudmud.site/word-counter/',
 ];
 
 export function IndexingTesterShell() {
@@ -410,6 +412,62 @@ export function IndexingTesterShell() {
                 {authError}
               </div>
             )}
+
+            {/* Help box for OAuth 403 Access Denied */}
+            <div class="mt-4 p-4 rounded-2xl bg-amber-50 border border-amber-200 text-xs text-amber-900 space-y-2">
+              <div class="flex items-center gap-2 font-bold text-amber-800">
+                <svg class="w-4 h-4 text-amber-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                Resolving "Error 403: access_denied (App has not completed verification)"
+              </div>
+              <p>
+                Because this GCP OAuth Client is currently in <strong>Testing Mode</strong>, Google only permits authorized test accounts to sign in.
+              </p>
+              <ol class="list-decimal pl-5 space-y-1 text-amber-800">
+                <li>
+                  Open <a href="https://console.cloud.google.com/apis/credentials/consent?project=precise-space-365809" target="_blank" rel="noopener" class="font-bold underline text-amber-900 hover:text-black">Google Cloud Console &gt; OAuth consent screen</a> for project <code class="px-1 py-0.5 rounded bg-amber-100 font-mono">precise-space-365809</code>.
+                </li>
+                <li>
+                  Under <strong>Test users</strong> (Audience section), click <strong>+ ADD USERS</strong>.
+                </li>
+                <li>
+                  Add <code class="px-1.5 py-0.5 rounded bg-amber-100 font-mono font-bold text-amber-950">tusharpujhari79@gmail.com</code> and click <strong>SAVE</strong>.
+                </li>
+                <li>
+                  Return here and click <strong>Sign In with Google</strong> — Google will authenticate you immediately!
+                </li>
+              </ol>
+            </div>
+
+            {/* Service Account Ownership Info */}
+            <div class="mt-4 p-4 rounded-2xl bg-slate-900 border border-slate-800 text-xs text-slate-300 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-white flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                  Headless Service Account Integration (Zero OAuth Prompt)
+                </span>
+                <span class="text-2xs font-mono px-2 py-0.5 rounded bg-emerald-950 text-emerald-300 border border-emerald-800">
+                  Search Console Verified
+                </span>
+              </div>
+              <p class="text-slate-400">
+                You already added these Service Accounts as <strong>Owner</strong> in Google Search Console:
+              </p>
+              <ul class="font-mono text-2xs space-y-1 text-slate-300 bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+                <li class="flex items-center justify-between">
+                  <span>converter@precise-space-365809.iam.gserviceaccount.com</span>
+                  <span class="text-emerald-400 font-bold">Owner ✓</span>
+                </li>
+                <li class="flex items-center justify-between">
+                  <span>converter-594@precise-space-365809.iam.gserviceaccount.com</span>
+                  <span class="text-emerald-400 font-bold">Owner ✓</span>
+                </li>
+              </ul>
+              <p class="text-slate-400 text-2xs pt-1">
+                To run automated indexing without browser logins, download the JSON key from GCP IAM &gt; Service Accounts, save it as <code class="text-emerald-300 font-mono">service-account.json</code> in this project, and run: <code class="text-emerald-300 font-mono">pnpm run indexing</code> (or <code class="text-emerald-300 font-mono">pnpm run indexing:auto</code> for continuous indexing).
+              </p>
+            </div>
           </div>
 
           {/* Step 2: Target URL and Action Buttons */}

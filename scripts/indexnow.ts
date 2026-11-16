@@ -1,5 +1,3 @@
-import fs from 'node:fs';
-import path from 'node:path';
 import { getAllTools, getAllFormats } from '../src/registry';
 import { siteConfig } from '../src/config/site';
 
