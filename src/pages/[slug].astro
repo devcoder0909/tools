@@ -178,6 +178,50 @@ const toolVideos: Record<string, { duration: string; durationSecs: string; thumb
       { timestamp: '0:55', title: 'Batch Conversion to JPG', description: 'Convert up to 50+ iPhone photos simultaneously with original 48MP resolution and sharpness preserved.' },
       { timestamp: '1:15', title: 'Download Converted JPEG Files', description: 'Download universal JPG images compatible with all Windows PCs, Android devices, and legacy applications.' }
     ]
+  },
+  'merge-pdf': {
+    duration: '1:18',
+    durationSecs: 'PT1M18S',
+    thumbnailUrl: '/images/tools/merge-pdf-video-thumb.svg',
+    steps: [
+      { timestamp: '0:00', title: 'Select Multiple PDF Documents', description: 'Click to choose 2 or more PDF documents or drag and drop files directly into the queue.' },
+      { timestamp: '0:22', title: 'Reorder Page Sequence', description: 'Drag and arrange documents into your preferred sequential order.' },
+      { timestamp: '0:45', title: 'In-Memory Page Stitching', description: 'pdf-lib stitches page trees, fonts, vectors, and hyperlinks in local browser RAM.' },
+      { timestamp: '1:10', title: 'Download Unified PDF', description: 'Save the merged PDF file instantly with zero watermarks and zero cloud uploads.' }
+    ]
+  },
+  'compress-pdf': {
+    duration: '1:25',
+    durationSecs: 'PT1M25S',
+    thumbnailUrl: '/images/tools/compress-pdf-video-thumb.svg',
+    steps: [
+      { timestamp: '0:00', title: 'Select Heavy PDF Document', description: 'Drop PDF files exceeding 5MB, 10MB or strict portal submission caps.' },
+      { timestamp: '0:25', title: 'Choose Target Compression', description: 'Select desired compression profile to shrink document while preserving text clarity.' },
+      { timestamp: '0:50', title: 'Stream & Image Optimization', description: 'Unused metadata is purged and embedded images are resampled in client RAM.' },
+      { timestamp: '1:15', title: 'Download Lightweight PDF', description: 'Download compact PDF file under 200KB / 1MB ready for visa, job, and tax portals.' }
+    ]
+  },
+  'split-pdf': {
+    duration: '1:12',
+    durationSecs: 'PT1M12S',
+    thumbnailUrl: '/images/tools/split-pdf-video-thumb.svg',
+    steps: [
+      { timestamp: '0:00', title: 'Upload Multi-Page PDF', description: 'Select any multi-page PDF document to inspect page thumbnails.' },
+      { timestamp: '0:20', title: 'Define Page Range', description: 'Enter page ranges like 1-3, 5, 8-10 or choose to separate every page individually.' },
+      { timestamp: '0:45', title: 'Client-Side Page Extraction', description: 'Extract selected pages with original resolution, typography, and vectors intact.' },
+      { timestamp: '1:05', title: 'Download Extracted PDF', description: 'Save new extracted PDF or download all individual pages as a ZIP archive.' }
+    ]
+  },
+  'rotate-pdf': {
+    duration: '1:05',
+    durationSecs: 'PT1M05S',
+    thumbnailUrl: '/images/tools/rotate-pdf-video-thumb.svg',
+    steps: [
+      { timestamp: '0:00', title: 'Upload Sideways PDF Scan', description: 'Drop PDF files with upside-down or sideways pages.' },
+      { timestamp: '0:18', title: 'Select Rotation Angle', description: 'Choose 90°, 180°, or 270° clockwise to fix document orientation.' },
+      { timestamp: '0:40', title: 'Permanent Matrix Update', description: 'Modifies the /Rotate dictionary key in the PDF structure permanently.' },
+      { timestamp: '1:00', title: 'Download Corrected PDF', description: 'Save permanently rotated PDF that displays correctly in all PDF viewers and print dialogs.' }
+    ]
   }
 };
 
@@ -186,6 +230,10 @@ const workflowDiagrams: Record<string, string> = {
   'jpg-to-png': '/images/tools/jpg-to-png-workflow.svg',
   'webp-to-jpg': '/images/tools/webp-to-jpg-workflow.svg',
   'heic-to-jpg': '/images/tools/heic-to-jpg-workflow.svg',
+  'merge-pdf': '/images/tools/merge-pdf-workflow.svg',
+  'compress-pdf': '/images/tools/compress-pdf-workflow.svg',
+  'split-pdf': '/images/tools/split-pdf-workflow.svg',
+  'rotate-pdf': '/images/tools/rotate-pdf-workflow.svg',
 };
 
 const videoData = toolVideos[tool.slug];
@@ -195,11 +243,16 @@ const schemas: any[] = [webAppJsonLd, howToJsonLd];
 if (faqJsonLd) schemas.push(faqJsonLd);
 
 if (videoData) {
+  const videoTitle = tool.from && tool.to
+    ? `How to Convert ${tool.from.toUpperCase()} to ${tool.to.toUpperCase()} Online (Step-by-Step Tutorial)`
+    : `How to Use ${tool.name} Online (Step-by-Step Tutorial)`;
+  const videoDesc = `Complete step-by-step video demonstration of ${tool.name.toLowerCase()} directly in your browser with zero server uploads and instant processing.`;
+
   schemas.push({
     '@context': 'https://schema.org',
     '@type': 'VideoObject',
-    name: `How to Convert ${tool.from?.toUpperCase() || ''} to ${tool.to?.toUpperCase() || ''} Online (Step-by-Step Tutorial)`,
-    description: `Complete step-by-step video demonstration showing how to convert ${tool.from?.toUpperCase() || ''} to ${tool.to?.toUpperCase() || ''} directly in your browser with zero server uploads and adjustable compression.`,
+    name: videoTitle,
+    description: videoDesc,
     thumbnailUrl: `${siteConfig.url}${videoData.thumbnailUrl}`,
     uploadDate: '2026-11-16T08:00:00+00:00',
     duration: videoData.durationSecs,
