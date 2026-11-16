@@ -50,4 +50,3 @@ Sitemap: https://convert.gudmud.site/sitemap-tools.xml
 Sitemap: https://convert.gudmud.site/sitemap-image.xml
 Sitemap: https://convert.gudmud.site/sitemap-pages.xml
 Sitemap: https://convert.gudmud.site/sitemap-formats.xml
-Sitemap: https://convert.gudmud.site/sitemap-colleges.xml

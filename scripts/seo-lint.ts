@@ -178,10 +178,7 @@ export function runSeoLint() {
     });
 
     // Size check: HTML <= 95KB (or 110KB for 100+ item master directories)
-    const isMasterCatalog =
-      urlPath === '/colleges/' ||
-      urlPath === '/tools/' ||
-      urlPath === '/cutoff/computer-science/';
+    const isMasterCatalog = urlPath === '/tools/';
     const maxBudget = isMasterCatalog ? 110 * 1024 : 95 * 1024;
     const stats = fs.statSync(filePath);
     if (stats.size > maxBudget) {
@@ -264,9 +261,7 @@ export function runSeoLint() {
   const indexablePages = audits.filter(
     (a) =>
       a.isIndexable &&
-      a.wordCount > 150 &&
-      !a.urlPath.startsWith('/colleges/') &&
-      !a.urlPath.startsWith('/cutoff/')
+      a.wordCount > 150
   );
   for (let i = 0; i < indexablePages.length; i++) {
     for (let j = i + 1; j < indexablePages.length; j++) {

@@ -10,8 +10,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build:data": "tsx scripts/build-data.ts",
-    "build": "pnpm run build:data && astro check && astro build && pnpm run postbuild",
+    "build": "astro check && astro build && pnpm run postbuild",
     "postbuild": "tsx scripts/sitemap.ts && tsx scripts/seo-lint.ts && tsx scripts/indexnow.ts",
     "preview": "astro preview",
     "astro": "astro",

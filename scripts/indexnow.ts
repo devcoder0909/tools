@@ -21,22 +21,6 @@ async function pingIndexNow() {
     ...tools.map((t) => `${siteConfig.url}/${t.slug}/`),
   ];
 
-  const collegesDataPath = path.resolve(process.cwd(), 'src/data/colleges.json');
-  if (fs.existsSync(collegesDataPath)) {
-    urlList.push(
-      `${siteConfig.url}/colleges/`,
-      `${siteConfig.url}/cutoff/`,
-      `${siteConfig.url}/cutoff/computer-science/`,
-      `${siteConfig.url}/cutoff/iits/`,
-      `${siteConfig.url}/cutoff/nits/`,
-      `${siteConfig.url}/cutoff/iiits/`,
-      `${siteConfig.url}/cutoff/gftis/`,
-      `${siteConfig.url}/jee-main-rank-college-predictor/`,
-      `${siteConfig.url}/jee-advanced-rank-college-predictor/`,
-      `${siteConfig.url}/nirf-ranking/`
-    );
-  }
-
   const payload = {
     host: siteConfig.domain,
     key: apiKey,
