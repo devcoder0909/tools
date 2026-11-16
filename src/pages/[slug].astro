@@ -306,7 +306,15 @@ if (tool.targetBytes) {
         Overview & How It Works
       </div>
       <p class="leading-relaxed">
-        <strong>{tool.name}</strong> is a free, fast online utility that lets you process files and calculations directly in your browser. It offers high quality output, instant downloads, and batch processing with no registration, no hidden fees, and no file size paywalls.
+        {tool.from && tool.to ? (
+          <><strong>{tool.name}</strong> converts {tool.from.toUpperCase()} files to {tool.to.toUpperCase()} locally inside your browser. All decoding and re-encoding runs in device RAM with zero server uploads.</>
+        ) : tool.slug.startsWith('compress-image-to-') || tool.engine === 'target-size' ? (
+          <><strong>{tool.name}</strong> compresses images to target size using client-side canvas processing without transmitting your photos to external servers.</>
+        ) : tool.kind === 'calculator' || tool.kind === 'finance' ? (
+          <><strong>{tool.name}</strong> provides real-time calculations directly in your browser with instant formula derivations and zero data logging.</>
+        ) : (
+          <><strong>{tool.name}</strong> runs client-side in your browser with zero server uploads and instant processing.</>
+        )}
       </p>
     </div>
 
