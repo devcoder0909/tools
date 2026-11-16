@@ -114,22 +114,24 @@ export function getRelatedTools(tool: ToolDefinition): ToolDefinition[] {
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-export function formatDisplayDate(dateStr?: string): string {
-  if (!dateStr) return '13 Nov 2026';
+export function formatDisplayDate(dateVal?: any): string {
+  if (!dateVal) return '16 Nov 2026';
   try {
-    const parts = dateStr.split('-');
-    if (parts.length === 3) {
-      const year = parts[0];
-      const monthIdx = parseInt(parts[1], 10) - 1;
-      const day = parseInt(parts[2], 10);
-      if (monthIdx >= 0 && monthIdx < 12 && !isNaN(day)) {
-        return `${day} ${MONTHS[monthIdx]} ${year}`;
-      }
-    }
-    const d = new Date(dateStr);
+    const d = new Date(dateVal);
     if (!isNaN(d.getTime())) {
       return `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
     }
   } catch {}
-  return dateStr;
+  return String(dateVal);
+}
+
+export function formatIsoDate(dateVal?: any): string {
+  if (!dateVal) return '2026-11-16';
+  try {
+    const d = new Date(dateVal);
+    if (!isNaN(d.getTime())) {
+      return d.toISOString().split('T')[0];
+    }
+  } catch {}
+  return '2026-11-16';
 }

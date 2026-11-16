@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import FAQ from '../../components/FAQ.astro';
-import { getAllFormats, getToolsForFormat, formatDisplayDate, type FormatDefinition } from '../../registry';
+import { getAllFormats, getToolsForFormat, formatDisplayDate, formatIsoDate, type FormatDefinition } from '../../registry';
 import { siteConfig } from '../../config/site';
 
 export async function getStaticPaths() {
@@ -135,11 +135,13 @@ const breadcrumbs = [
     <!-- Reviewer & Date -->
     <div class="mt-12 pt-6 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between text-xs text-gray-500 gap-2">
       <span>
-        Last reviewed: <time datetime={format.last_reviewed || '2026-11-13'}>{formatDisplayDate(format.last_reviewed || '2026-11-13')}</time>
+        Last reviewed: <time datetime={formatIsoDate(format.last_reviewed)}>{formatDisplayDate(format.last_reviewed)}</time>
       </span>
-      <span>
-        Reviewed by: <strong class="text-gray-700">{format.reviewer || 'Best Converter Team'}</strong>
-      </span>
+      {format.reviewer && !format.reviewer.toLowerCase().includes('team') && !format.reviewer.toLowerCase().includes('converter') && (
+        <span>
+          Reviewed by: <strong class="text-gray-700">{format.reviewer}</strong>
+        </span>
+      )}
     </div>
   </div>
 </Layout>

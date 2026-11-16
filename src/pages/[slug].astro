@@ -15,7 +15,7 @@ import PromoSlot from '../components/PromoSlot.astro';
 import FAQ from '../components/FAQ.astro';
 import RelatedTools from '../components/RelatedTools.astro';
 import { renderToolMarkdown } from '../utils/markdown';
-import { getAllTools, getRelatedTools, formatDisplayDate, type ToolDefinition } from '../registry';
+import { getAllTools, getRelatedTools, formatDisplayDate, formatIsoDate, type ToolDefinition } from '../registry';
 import { siteConfig } from '../config/site';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -373,14 +373,16 @@ if (tool.targetBytes) {
     <!-- Related tools & format hub links -->
     <RelatedTools currentTool={tool} relatedTools={related} />
 
-    <!-- 9. Last-reviewed date and reviewer -->
+    <!-- 9. Last-reviewed date -->
     <div class="mt-12 pt-6 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between text-xs text-gray-500 gap-2">
       <span>
-        Last reviewed: <time datetime={tool.last_reviewed}>{formatDisplayDate(tool.last_reviewed)}</time>
+        Last reviewed: <time datetime={formatIsoDate(tool.last_reviewed)}>{formatDisplayDate(tool.last_reviewed)}</time>
       </span>
-      <span>
-        Reviewed by: <strong class="text-gray-700">{tool.reviewer || 'Best Converter Team'}</strong>
-      </span>
+      {tool.reviewer && !tool.reviewer.toLowerCase().includes('team') && !tool.reviewer.toLowerCase().includes('converter') && (
+        <span>
+          Reviewed by: <strong class="text-gray-700">{tool.reviewer}</strong>
+        </span>
+      )}
     </div>
   </div>
 </Layout>
