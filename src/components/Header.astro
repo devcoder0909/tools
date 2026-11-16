@@ -5,11 +5,17 @@ import { mainNav } from '../config/nav';
 
 <header class="border-b border-gray-200 bg-white sticky top-0 z-40">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-    <a href="/" class="flex items-center space-x-2.5 font-bold text-gray-900 text-xl tracking-tight hover:text-green-600 transition-colors">
-      <span class="w-8 h-8 rounded-lg bg-green-600 text-white flex items-center justify-center font-extrabold text-sm shadow-sm">
-        BC
-      </span>
-      <span>{siteConfig.brand}</span>
+    <a href="/" class="flex items-center hover:opacity-90 transition-opacity" aria-label={`${siteConfig.brand} - Home`}>
+      <img
+        src="/images/brand/logo.webp"
+        alt={siteConfig.brand}
+        width="163"
+        height="40"
+        class="h-9 sm:h-10 w-auto object-contain"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
     </a>
 
     <nav class="hidden md:flex items-center space-x-6 text-sm font-medium text-gray-600" aria-label="Main Navigation">

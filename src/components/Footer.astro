@@ -10,6 +10,24 @@ import PromoSlot from './PromoSlot.astro';
       <PromoSlot slotPosition="footer" />
     </div>
 
+    <!-- Brand Identity -->
+    <div class="mb-8 border-b border-gray-200 pb-8">
+      <a href="/" class="inline-block hover:opacity-90 transition-opacity" aria-label={`${siteConfig.brand} - Home`}>
+        <img
+          src="/images/brand/logo.webp"
+          alt={siteConfig.brand}
+          width="143"
+          height="35"
+          class="h-8 w-auto object-contain"
+          loading="lazy"
+          decoding="async"
+        />
+      </a>
+      <p class="text-xs text-gray-500 mt-2 max-w-md">
+        Private in-browser file converters, image compressors, and utilities. 100% client-side memory execution with zero server uploads.
+      </p>
+    </div>
+
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8 mb-12">
       {footerNav.map((column) => (
         <div>

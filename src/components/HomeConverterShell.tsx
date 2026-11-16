@@ -374,14 +374,6 @@ export default function HomeConverterShell() {
               Drop photos here or paste from clipboard (Ctrl+V)
             </p>
           </div>
-
-          <div class="flex items-center justify-center gap-4 text-2xs text-gray-400 pt-2">
-            <span>⚡ Zero upload latency</span>
-            <span>•</span>
-            <span>100% Client-Side RAM</span>
-            <span>•</span>
-            <span>No Paywalls</span>
-          </div>
         </div>
       </div>
 
