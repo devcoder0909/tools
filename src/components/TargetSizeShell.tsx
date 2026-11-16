@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'preact/hooks';
+import { useState, useRef, useEffect, useMemo } from 'preact/hooks';
 import { zipSync } from 'fflate';
 
 interface TargetSizeShellProps {
@@ -23,6 +23,7 @@ interface TargetProcessedItem {
   resultUrl?: string;
   resultFileName?: string;
   errorMessage?: string;
+  thumbUrl?: string;
 }
 
 export default function TargetSizeShell({
@@ -48,6 +49,10 @@ export default function TargetSizeShell({
     }
   }, [toolId]);
 
+  const createThumbUrl = (file: File) => {
+    return file.type.startsWith('image/') ? URL.createObjectURL(file) : undefined;
+  };
+
   const handleFiles = (incomingFiles: File[]) => {
     let hasPng = false;
     const newItems: TargetProcessedItem[] = incomingFiles.map((file, idx) => {
@@ -58,6 +63,7 @@ export default function TargetSizeShell({
         originalSize: file.size,
         status: 'idle',
         progress: 0,
+        thumbUrl: createThumbUrl(file),
       };
     });
     if (hasPng) setPngNotice(true);
@@ -89,7 +95,7 @@ export default function TargetSizeShell({
     return `${(bytes / Math.pow(k, i)).toFixed(1)} ${sizes[i]}`;
   };
 
-  // Binary search engine for target size optimization
+  // Binary search engine for exact target byte size
   const compressToTarget = async (
     item: TargetProcessedItem,
     maxBytes: number,
@@ -99,6 +105,7 @@ export default function TargetSizeShell({
     try {
       const img = new Image();
       const objectUrl = URL.createObjectURL(item.file);
+
       await new Promise((resolve, reject) => {
         img.onload = () => resolve(true);
         img.onerror = () => reject(new Error('Failed to load image in browser'));
@@ -107,95 +114,109 @@ export default function TargetSizeShell({
 
       const origW = img.naturalWidth || img.width;
       const origH = img.naturalHeight || img.height;
+
+      const canvas = document.createElement('canvas');
+      canvas.width = origW;
+      canvas.height = origH;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) throw new Error('Canvas context not available');
+
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+
+      if (ext === 'jpg') {
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, origW, origH);
+      }
+      ctx.drawImage(img, 0, 0);
       URL.revokeObjectURL(objectUrl);
 
-      let currentW = origW;
-      let currentH = origH;
-      let bestBlob: Blob | null = null;
-      let bestQuality = 85;
-      let iterations = 0;
-
-      // Pass 1: Binary search on quality (0.05 to 0.95, up to 10 iterations)
+      // Phase 1: Quality Binary Search (10 iterations)
       let lowQ = 0.05;
       let highQ = 0.95;
+      let bestBlob: Blob | null = null;
+      let bestQ = 0.8;
 
-      const renderCanvas = async (w: number, h: number, q: number): Promise<Blob> => {
-        const canvas = document.createElement('canvas');
-        canvas.width = w;
-        canvas.height = h;
-        const ctx = canvas.getContext('2d');
-        if (!ctx) throw new Error('Could not initialize canvas rendering context');
-
-        if (ext === 'jpg' || ext === 'jpeg') {
-          ctx.fillStyle = '#ffffff';
-          ctx.fillRect(0, 0, w, h);
-        }
-        ctx.drawImage(img, 0, 0, w, h);
-
-        return new Promise<Blob>((resolve, reject) => {
-          canvas.toBlob(
-            (b) => {
-              if (b) resolve(b);
-              else reject(new Error('Canvas toBlob failed'));
-            },
-            mimeType,
-            q
-          );
-        });
-      };
-
-      while (lowQ <= highQ && iterations < 10) {
-        iterations++;
+      for (let i = 0; i < 10; i++) {
         const midQ = (lowQ + highQ) / 2;
-        const blob = await renderCanvas(currentW, currentH, midQ);
+        const blob: Blob | null = await new Promise((resolve) => {
+          canvas.toBlob((b) => resolve(b), mimeType, midQ);
+        });
+
+        if (!blob) break;
 
         if (blob.size <= maxBytes) {
           bestBlob = blob;
-          bestQuality = Math.round(midQ * 100);
-          // Try higher quality to see if we can get better fidelity under maxBytes
-          lowQ = midQ + 0.05;
+          bestQ = midQ;
+          lowQ = midQ;
         } else {
-          // File is too large, reduce quality
-          highQ = midQ - 0.05;
+          highQ = midQ;
         }
       }
 
-      // Pass 2: If even at lowest quality (0.05) file is larger than target, apply 10% dimension downscaling down to 200px
+      let finalWidth = origW;
+      let finalHeight = origH;
+
+      // Phase 2: Dimension Downscaling if still over budget
       if (!bestBlob || bestBlob.size > maxBytes) {
         let scale = 0.9;
-        while (currentW * scale >= 200 && currentH * scale >= 200) {
-          currentW = Math.round(currentW * scale);
-          currentH = Math.round(currentH * scale);
-          const scaledBlob = await renderCanvas(currentW, currentH, 0.65);
-          if (scaledBlob.size <= maxBytes) {
-            bestBlob = scaledBlob;
-            bestQuality = 65;
+        const minScale = 0.15;
+
+        while (scale >= minScale) {
+          const scaledW = Math.max(1, Math.round(origW * scale));
+          const scaledH = Math.max(1, Math.round(origH * scale));
+
+          const scaledCanvas = document.createElement('canvas');
+          scaledCanvas.width = scaledW;
+          scaledCanvas.height = scaledH;
+          const sCtx = scaledCanvas.getContext('2d');
+          if (!sCtx) break;
+
+          sCtx.imageSmoothingEnabled = true;
+          sCtx.imageSmoothingQuality = 'high';
+
+          if (ext === 'jpg') {
+            sCtx.fillStyle = '#ffffff';
+            sCtx.fillRect(0, 0, scaledW, scaledH);
+          }
+          sCtx.drawImage(canvas, 0, 0, scaledW, scaledH);
+
+          const candidateBlob: Blob | null = await new Promise((resolve) => {
+            scaledCanvas.toBlob((b) => resolve(b), mimeType, 0.7);
+          });
+
+          if (candidateBlob && candidateBlob.size <= maxBytes) {
+            bestBlob = candidateBlob;
+            finalWidth = scaledW;
+            finalHeight = scaledH;
+            bestQ = 0.7;
             break;
           }
+          scale -= 0.1;
         }
       }
 
-      // If still over budget, take the lowest size we could reach
       if (!bestBlob) {
-        bestBlob = await renderCanvas(Math.max(200, Math.round(currentW * 0.5)), Math.max(200, Math.round(currentH * 0.5)), 0.05);
-        bestQuality = 5;
+        bestBlob = await new Promise((resolve, reject) => {
+          canvas.toBlob((b) => (b ? resolve(b) : reject(new Error('Export failed'))), mimeType, 0.1);
+        });
       }
 
       const baseName = item.file.name.substring(0, item.file.name.lastIndexOf('.')) || item.file.name;
-      const outFileName = `${baseName}-${targetKb}kb.${ext}`;
-      const downloadUrl = URL.createObjectURL(bestBlob);
+      const resultFileName = `${baseName}-${targetKb}kb.${ext}`;
+      const resultUrl = URL.createObjectURL(bestBlob!);
 
       return {
         ...item,
         status: 'done',
         progress: 100,
-        resultBlob: bestBlob,
-        resultUrl: downloadUrl,
-        resultFileName: outFileName,
-        newSize: bestBlob.size,
-        qualityUsed: bestQuality,
-        width: currentW,
-        height: currentH,
+        resultBlob: bestBlob!,
+        resultUrl,
+        resultFileName,
+        newSize: bestBlob!.size,
+        qualityUsed: Math.round(bestQ * 100),
+        width: finalWidth,
+        height: finalHeight,
         originalWidth: origW,
         originalHeight: origH,
       };
@@ -204,7 +225,7 @@ export default function TargetSizeShell({
         ...item,
         status: 'error',
         progress: 0,
-        errorMessage: err.message || 'Error compressing image',
+        errorMessage: err.message || 'Compression failed',
       };
     }
   };
@@ -251,25 +272,39 @@ export default function TargetSizeShell({
   const clearAll = () => {
     items.forEach((item) => {
       if (item.resultUrl) URL.revokeObjectURL(item.resultUrl);
+      if (item.thumbUrl) URL.revokeObjectURL(item.thumbUrl);
     });
     setItems([]);
   };
 
+  const removeItem = (id: string) => {
+    setItems((prev) => {
+      const t = prev.find((i) => i.id === id);
+      if (t?.resultUrl) URL.revokeObjectURL(t.resultUrl);
+      if (t?.thumbUrl) URL.revokeObjectURL(t.thumbUrl);
+      return prev.filter((i) => i.id !== id);
+    });
+  };
+
+  const doneCount = useMemo(() => items.filter((i) => i.status === 'done').length, [items]);
+
   return (
-    <div class="target-size-shell bg-white border border-gray-200 rounded-2xl shadow-sm p-4 sm:p-6 my-6">
-      {/* Target Size Controls */}
-      <div class="mb-6 p-4 bg-gray-50 rounded-xl border border-gray-200 flex flex-wrap items-center justify-between gap-4">
-        <div class="flex items-center space-x-3">
-          <label class="text-xs font-bold text-gray-700 uppercase tracking-wider">Target Size:</label>
+    <div class="target-size-shell bg-white border border-gray-200 rounded-3xl shadow-md p-4 sm:p-8 my-6 transition-all">
+      {/* Target Size Controls Bar */}
+      <div class="mb-6 p-4 sm:p-5 bg-gradient-to-r from-emerald-50/70 to-gray-50 rounded-2xl border border-emerald-200/80 flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center space-x-3 flex-wrap gap-2">
+          <label class="text-xs font-bold text-gray-800 uppercase tracking-wider flex items-center gap-1">
+            <span>🎯</span> Target Size:
+          </label>
           <div class="flex items-center space-x-1 flex-wrap gap-1">
             {[20, 50, 100, 200, 500, 1024].map((kb) => (
               <button
                 key={kb}
                 type="button"
                 onClick={() => setTargetKb(kb)}
-                class={`px-2.5 py-1 text-xs font-semibold rounded-lg transition ${
+                class={`px-3 py-1.5 text-xs font-bold rounded-xl transition ${
                   targetKb === kb
-                    ? 'bg-green-600 text-white shadow-xs'
+                    ? 'bg-emerald-600 text-white shadow-xs'
                     : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-100'
                 }`}
               >
@@ -286,168 +321,233 @@ export default function TargetSizeShell({
                   const val = parseInt((e.target as HTMLInputElement).value, 10);
                   if (val > 0) setTargetKb(val);
                 }}
-                class="w-16 px-2 py-1 text-xs font-mono border border-gray-300 rounded-l-lg bg-white text-gray-900 focus:ring-1 focus:ring-green-500"
+                class="w-16 px-2.5 py-1.5 text-xs font-mono font-bold border border-gray-300 rounded-l-xl bg-white text-gray-900 focus:ring-1 focus:ring-emerald-500"
               />
-              <span class="px-2 py-1 text-xs bg-gray-100 border border-l-0 border-gray-300 rounded-r-lg text-gray-600 font-semibold">
+              <span class="px-2.5 py-1.5 text-xs bg-gray-100 border border-l-0 border-gray-300 rounded-r-xl text-gray-600 font-bold">
                 KB
               </span>
             </div>
           </div>
         </div>
 
-        <div class="flex items-center space-x-3">
+        <div class="flex items-center space-x-2">
           <label class="text-xs font-bold text-gray-700 uppercase tracking-wider">Format:</label>
           <select
             value={outputFormat}
             onChange={(e) => setOutputFormat((e.target as HTMLSelectElement).value as any)}
-            class="text-xs font-semibold px-3 py-1.5 rounded-lg border border-gray-300 bg-white text-gray-800 focus:ring-2 focus:ring-green-500"
+            class="text-xs font-bold px-3 py-1.5 rounded-xl border border-gray-300 bg-white text-gray-800 focus:ring-2 focus:ring-emerald-500 shadow-2xs"
           >
-            <option value="jpg">JPG (Universal compatibility)</option>
-            <option value="webp">WebP (Modern high efficiency)</option>
+            <option value="jpg">JPG (Universal format)</option>
+            <option value="webp">WebP (High efficiency)</option>
           </select>
         </div>
       </div>
 
       {pngNotice && (
-        <div class="mb-4 p-3 bg-amber-50 border border-amber-200 rounded-lg text-xs text-amber-800 flex items-start justify-between">
+        <div class="mb-4 p-3 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-800 flex items-start justify-between">
           <span>
             <strong>PNG Notice:</strong> Standard PNG format uses lossless compression which cannot be dialed down to an exact byte budget without posterization. Files will be converted to high-efficiency {outputFormat.toUpperCase()} to satisfy the {targetKb}KB target.
           </span>
-          <button onClick={() => setPngNotice(false)} class="text-amber-600 hover:text-amber-900 ml-2 font-bold">×</button>
+          <button onClick={() => setPngNotice(false)} class="text-amber-600 hover:text-amber-900 ml-2 font-bold text-sm">×</button>
         </div>
       )}
 
-      {/* Drag & Drop Zone */}
+      {/* Hero Drag & Drop Zone */}
       <div
         onDragOver={onDragOver}
         onDragLeave={onDragLeave}
         onDrop={onDrop}
         onClick={() => fileInputRef.current?.click()}
-        class={`border-2 border-dashed rounded-xl p-8 sm:p-12 text-center cursor-pointer transition-colors ${
+        class={`border-2 border-dashed rounded-3xl p-8 sm:p-14 text-center cursor-pointer transition-all duration-300 group ${
           isDragging
-            ? 'border-green-600 bg-green-50'
-            : 'border-gray-300 hover:border-green-500 bg-gray-50'
+            ? 'border-emerald-500 bg-emerald-50 scale-[1.01] shadow-xl shadow-emerald-100'
+            : 'border-gray-300 hover:border-emerald-500 hover:bg-emerald-50/20 bg-gradient-to-b from-gray-50/70 to-white'
         }`}
       >
         <input
           ref={fileInputRef}
           type="file"
           multiple
-          accept="image/*,.heic,.heif"
+          accept="image/*,.heic,.heif,.webp"
           class="hidden"
           onChange={(e) => {
             const target = e.target as HTMLInputElement;
             if (target.files) handleFiles(Array.from(target.files));
           }}
         />
-        <div class="space-y-3">
-          <div class="mx-auto w-12 h-12 rounded-full bg-green-100 text-green-700 flex items-center justify-center font-bold text-xl">
-            ↓
+        <div class="max-w-md mx-auto space-y-4">
+          <div
+            class={`mx-auto w-16 h-16 sm:w-20 sm:h-20 rounded-3xl flex items-center justify-center transition-all duration-300 shadow-sm ${
+              isDragging
+                ? 'bg-emerald-600 text-white scale-110'
+                : 'bg-emerald-100 text-emerald-700 group-hover:scale-105 group-hover:bg-emerald-600 group-hover:text-white'
+            }`}
+          >
+            <svg class="w-8 h-8 sm:w-10 sm:h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+            </svg>
           </div>
-          <p class="text-base font-semibold text-gray-800">
-            Drag & drop images to compress to <span class="text-green-600 font-bold">&le; {targetKb}KB</span>
-          </p>
-          <p class="text-xs text-gray-500">
-            Click to browse files • Paste from clipboard (Ctrl+V) • 100% private in-browser
+
+          <div>
+            <div class="inline-flex items-center gap-2 px-8 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-600 to-green-600 text-white font-bold text-base shadow-md group-hover:shadow-lg transition-all">
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+              </svg>
+              <span>Choose Images</span>
+            </div>
+            <p class="text-xs text-gray-500 mt-2">
+              Drag & drop photos or paste from clipboard (Ctrl+V)
+            </p>
+          </div>
+
+          <p class="text-2xs text-emerald-700 font-semibold bg-emerald-50 inline-block px-3 py-1 rounded-full border border-emerald-200">
+            Guaranteed compression to &le; {targetKb} KB per photo
           </p>
         </div>
       </div>
 
-      {/* Action Buttons */}
+      {/* Files List & Results */}
       {items.length > 0 && (
-        <div class="mt-6 flex flex-wrap items-center justify-between gap-3">
-          <div class="text-xs text-gray-600 font-medium">
-            {items.length} {items.length === 1 ? 'file' : 'files'} selected
-          </div>
-          <div class="flex items-center space-x-3">
-            <button
-              type="button"
-              onClick={clearAll}
-              class="px-4 py-2 text-xs font-medium text-gray-600 hover:text-red-600 transition"
-            >
-              Clear All
-            </button>
-            {items.some((i) => i.status === 'done') && (
+        <div class="mt-8 space-y-3">
+          <div class="flex items-center justify-between p-3.5 bg-gray-50 border border-gray-200 rounded-2xl">
+            <div class="text-xs sm:text-sm font-bold text-gray-900">
+              {items.length} {items.length === 1 ? 'image' : 'images'} selected
+              {doneCount > 0 && <span class="text-emerald-700 ml-2 font-bold">({doneCount} compressed)</span>}
+            </div>
+            <div class="flex items-center gap-2">
               <button
                 type="button"
-                onClick={downloadZip}
-                class="px-4 py-2 text-xs font-semibold rounded-lg bg-gray-800 hover:bg-gray-900 text-white transition shadow-xs"
+                onClick={() => fileInputRef.current?.click()}
+                class="px-3 py-1.5 text-xs font-semibold text-gray-700 bg-white border border-gray-300 rounded-xl hover:bg-gray-50"
               >
-                Download All as ZIP
+                + Add More
               </button>
-            )}
-            <button
-              type="button"
-              disabled={isProcessingAll}
-              onClick={runAll}
-              class="px-6 py-2.5 text-xs font-bold rounded-lg bg-green-600 hover:bg-green-700 text-white transition shadow-sm disabled:opacity-50"
-            >
-              {isProcessingAll ? 'Compressing...' : `Compress All to ≤ ${targetKb}KB`}
-            </button>
+              <button
+                type="button"
+                onClick={clearAll}
+                class="px-3 py-1.5 text-xs font-semibold text-red-600 bg-white border border-gray-300 rounded-xl hover:bg-red-50"
+              >
+                Clear
+              </button>
+            </div>
           </div>
-        </div>
-      )}
 
-      {/* Results Table */}
-      {items.length > 0 && (
-        <div class="mt-6 border border-gray-200 rounded-xl overflow-hidden text-sm">
-          <table class="w-full text-left divide-y divide-gray-200">
-            <thead class="bg-gray-50 text-xs font-semibold text-gray-500 uppercase">
-              <tr>
-                <th class="px-4 py-3">File Name</th>
-                <th class="px-4 py-3">Original Size</th>
-                <th class="px-4 py-3">Result Size</th>
-                <th class="px-4 py-3 hidden sm:table-cell">Quality</th>
-                <th class="px-4 py-3 hidden sm:table-cell">Dimensions</th>
-                <th class="px-4 py-3 text-right">Action</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-gray-200 bg-white">
-              {items.map((item) => (
-                <tr key={item.id} class="hover:bg-gray-50/80 transition">
-                  <td class="px-4 py-3 font-medium text-gray-900 truncate max-w-[160px] sm:max-w-xs">
-                    {item.file.name}
-                  </td>
-                  <td class="px-4 py-3 text-gray-500 font-mono text-xs">
-                    {formatSize(item.originalSize)}
-                  </td>
-                  <td class="px-4 py-3 font-mono text-xs">
-                    {item.status === 'done' && item.newSize && (
-                      <span
-                        class={`inline-flex items-center px-2 py-0.5 rounded font-bold ${
-                          item.newSize <= targetKb * 1024
-                            ? 'bg-green-100 text-green-800'
-                            : 'bg-amber-100 text-amber-800'
-                        }`}
-                      >
-                        {formatSize(item.newSize)}
+          <div class="space-y-2.5 max-h-[460px] overflow-y-auto pr-1">
+            {items.map((item) => {
+              const savedPct =
+                item.newSize && item.originalSize > item.newSize
+                  ? Math.round(((item.originalSize - item.newSize) / item.originalSize) * 100)
+                  : 0;
+
+              return (
+                <div
+                  key={item.id}
+                  class={`flex flex-col sm:flex-row sm:items-center justify-between p-3.5 border rounded-2xl bg-white gap-3 transition ${
+                    item.status === 'done'
+                      ? 'border-emerald-200 bg-emerald-50/20'
+                      : item.status === 'error'
+                      ? 'border-red-200 bg-red-50/20'
+                      : 'border-gray-200'
+                  }`}
+                >
+                  <div class="flex items-center space-x-3.5 min-w-0 flex-1">
+                    {item.thumbUrl ? (
+                      <div class="w-14 h-14 rounded-xl overflow-hidden bg-gray-100 flex-shrink-0 border border-gray-200 shadow-2xs">
+                        <img src={item.thumbUrl} alt="" class="w-full h-full object-cover" loading="lazy" />
+                      </div>
+                    ) : (
+                      <span class="w-14 h-14 rounded-xl bg-gray-100 text-gray-500 flex items-center justify-center font-bold text-xs uppercase flex-shrink-0 border border-gray-200">
+                        IMG
                       </span>
                     )}
-                    {item.status === 'processing' && <span class="text-green-600">Processing...</span>}
-                    {item.status === 'idle' && <span class="text-gray-400">Ready</span>}
-                    {item.status === 'error' && <span class="text-red-500 text-xs">{item.errorMessage}</span>}
-                  </td>
-                  <td class="px-4 py-3 text-gray-500 text-xs hidden sm:table-cell">
-                    {item.qualityUsed ? `${item.qualityUsed}%` : '—'}
-                  </td>
-                  <td class="px-4 py-3 text-gray-500 text-xs hidden sm:table-cell">
-                    {item.width && item.height ? `${item.width} × ${item.height}` : '—'}
-                  </td>
-                  <td class="px-4 py-3 text-right">
+
+                    <div class="min-w-0 flex-1">
+                      <p class="text-sm font-semibold text-gray-900 truncate max-w-xs sm:max-w-md">
+                        {item.file.name}
+                      </p>
+                      <div class="flex items-center gap-2 text-xs text-gray-500 mt-0.5 flex-wrap">
+                        <span class="font-mono">{formatSize(item.originalSize)}</span>
+                        <span>→</span>
+                        {item.status === 'done' && item.newSize ? (
+                          <span class="inline-flex items-center gap-1.5">
+                            <span class="font-mono font-bold text-emerald-800">{formatSize(item.newSize)}</span>
+                            {savedPct > 0 && (
+                              <span class="px-2 py-0.2 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
+                                -{savedPct}%
+                              </span>
+                            )}
+                            {item.qualityUsed && (
+                              <span class="text-[10px] text-gray-400 font-mono">
+                                ({item.qualityUsed}% Q, {item.width}×{item.height}px)
+                              </span>
+                            )}
+                          </span>
+                        ) : (
+                          <span class="text-xs text-gray-400">Target &le; {targetKb}KB</span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center space-x-2 self-end sm:self-auto flex-shrink-0">
+                    {item.status === 'processing' && (
+                      <span class="text-xs font-semibold text-emerald-700 animate-pulse">Compressing...</span>
+                    )}
                     {item.status === 'done' && item.resultUrl && (
                       <a
                         href={item.resultUrl}
                         download={item.resultFileName}
-                        class="inline-block px-3 py-1 bg-green-50 text-green-700 hover:bg-green-100 border border-green-200 rounded font-semibold text-xs transition"
+                        class="inline-flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-emerald-600 to-green-600 text-white rounded-xl text-xs font-bold shadow-xs hover:shadow-md transition"
                       >
-                        Download
+                        <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                        <span>Download</span>
                       </a>
                     )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                    {item.status === 'error' && (
+                      <span class="text-xs text-red-600 font-semibold">{item.errorMessage}</span>
+                    )}
+                    <button
+                      type="button"
+                      onClick={() => removeItem(item.id)}
+                      class="w-7 h-7 rounded-lg text-gray-400 hover:text-red-600 hover:bg-gray-100 flex items-center justify-center transition"
+                    >
+                      ×
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Bottom Action Footer */}
+          <div class="pt-4 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <span class="text-xs text-gray-500">
+              {doneCount > 0 ? `${doneCount} of ${items.length} compressed` : `${items.length} images ready`}
+            </span>
+            <div class="flex items-center gap-3 w-full sm:w-auto justify-end">
+              {doneCount > 1 && (
+                <button
+                  type="button"
+                  onClick={downloadZip}
+                  class="flex-1 sm:flex-initial px-5 py-2.5 rounded-xl text-xs font-bold bg-gray-900 text-white hover:bg-gray-800 transition"
+                >
+                  Download All as ZIP
+                </button>
+              )}
+              {doneCount < items.length && (
+                <button
+                  type="button"
+                  onClick={runAll}
+                  disabled={isProcessingAll}
+                  class="flex-1 sm:flex-initial px-6 py-2.5 rounded-xl text-xs font-bold bg-gradient-to-r from-emerald-600 to-green-600 text-white hover:from-emerald-700 hover:to-green-700 shadow-md transition disabled:opacity-50"
+                >
+                  {isProcessingAll ? 'Compressing...' : `Compress All to ≤ ${targetKb}KB`}
+                </button>
+              )}
+            </div>
+          </div>
         </div>
       )}
     </div>

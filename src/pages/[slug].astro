@@ -231,29 +231,49 @@ if (tool.targetBytes) {
 
     <!-- 4. Key Feature Highlights (Speed, Free, Unlimited, Quality) -->
     <div class="my-6 grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
-      <div class="p-3 bg-gray-50 border border-gray-200 rounded-xl">
-        <span class="block text-base font-bold text-gray-900">⚡ Instant</span>
-        <span class="text-xs text-gray-500">Zero wait queues</span>
+      <div class="p-3 bg-white border border-gray-200 rounded-2xl shadow-2xs">
+        <span class="block text-sm sm:text-base font-bold text-gray-900">⚡ Instant</span>
+        <span class="text-2xs sm:text-xs text-gray-500">Zero wait queues</span>
       </div>
-      <div class="p-3 bg-gray-50 border border-gray-200 rounded-xl">
-        <span class="block text-base font-bold text-gray-900">100% Free</span>
-        <span class="text-xs text-gray-500">No subscription</span>
+      <div class="p-3 bg-white border border-gray-200 rounded-2xl shadow-2xs">
+        <span class="block text-sm sm:text-base font-bold text-gray-900">100% Free</span>
+        <span class="text-2xs sm:text-xs text-gray-500">No subscriptions</span>
       </div>
-      <div class="p-3 bg-gray-50 border border-gray-200 rounded-xl">
-        <span class="block text-base font-bold text-gray-900">No Limits</span>
-        <span class="text-xs text-gray-500">Unlimited files</span>
+      <div class="p-3 bg-white border border-gray-200 rounded-2xl shadow-2xs">
+        <span class="block text-sm sm:text-base font-bold text-gray-900">No Limits</span>
+        <span class="text-2xs sm:text-xs text-gray-500">Unlimited files</span>
       </div>
-      <div class="p-3 bg-gray-50 border border-gray-200 rounded-xl">
-        <span class="block text-base font-bold text-gray-900">No Watermark</span>
-        <span class="text-xs text-gray-500">Original quality</span>
+      <div class="p-3 bg-white border border-gray-200 rounded-2xl shadow-2xs">
+        <span class="block text-sm sm:text-base font-bold text-gray-900">No Watermark</span>
+        <span class="text-2xs sm:text-xs text-gray-500">Original quality</span>
       </div>
     </div>
 
     <!-- 5. Ad slot A (below the result area) -->
     <AdSlot slotPosition="belowResult" />
 
+    <!-- Content Hub Navigation Tabs (CloudConvert & FreeConvert Style) -->
+    <div class="mt-10 mb-6 border-b border-gray-200">
+      <div class="flex items-center space-x-2 sm:space-x-3 overflow-x-auto pb-3 text-xs sm:text-sm font-semibold text-gray-600">
+        <a href="#how-to" class="px-3.5 py-1.5 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200 whitespace-nowrap hover:bg-emerald-100 transition">
+          📖 How to Use
+        </a>
+        <a href="#comparison" class="px-3.5 py-1.5 rounded-xl bg-gray-50 text-gray-700 border border-gray-200 whitespace-nowrap hover:bg-gray-100 transition">
+          ⚖️ vs Competitors
+        </a>
+        <a href="#guide" class="px-3.5 py-1.5 rounded-xl bg-gray-50 text-gray-700 border border-gray-200 whitespace-nowrap hover:bg-gray-100 transition">
+          ⚙️ Technical Guide
+        </a>
+        {tool.faq && tool.faq.length > 0 && (
+          <a href="#faq" class="px-3.5 py-1.5 rounded-xl bg-gray-50 text-gray-700 border border-gray-200 whitespace-nowrap hover:bg-gray-100 transition">
+            ❓ FAQ
+          </a>
+        )}
+      </div>
+    </div>
+
     <!-- Direct Answer & Search Intent Definition -->
-    <div class="my-6 p-4 rounded-xl bg-emerald-50/70 border border-emerald-200 text-xs sm:text-sm text-emerald-950">
+    <div id="how-to" class="my-6 p-4 sm:p-5 rounded-2xl bg-emerald-50/70 border border-emerald-200 text-xs sm:text-sm text-emerald-950">
       <div class="flex items-center gap-2 font-bold text-emerald-800 uppercase tracking-wider text-2xs mb-1">
         <svg class="w-4 h-4 text-emerald-600 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -266,53 +286,55 @@ if (tool.targetBytes) {
     </div>
 
     <!-- 6. How-to steps & custom notes -->
-    {hasCustomContent ? (
-      <article class="prose prose-gray max-w-none my-8 leading-relaxed">
-        <div
-          class="space-y-6 text-gray-700 leading-relaxed [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-gray-900 [&>h2]:mt-8 [&>h2]:mb-4 [&>h3]:text-lg [&>h3]:font-semibold [&>h3]:text-gray-900 [&>h3]:mt-6 [&>h3]:mb-2 [&>ul]:list-disc [&>ul]:pl-5 [&>ol]:list-decimal [&>ol]:pl-5 [&>p]:mb-4 [&>table]:w-full [&>table]:border-collapse [&>table]:my-6 [&>table_th]:border [&>table_th]:border-gray-200 [&>table_th]:bg-gray-50 [&>table_th]:p-3 [&>table_th]:text-left [&>table_td]:border [&>table_td]:border-gray-200 [&>table_td]:p-3"
-          set:html={contentHtml
-            .replace(/### (.*)/g, '<h3>$1</h3>')
-            .replace(/## (.*)/g, '<h2>$1</h2>')
-            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-            .replace(/\n\n/g, '<p></p>')}
-        />
-      </article>
-    ) : (
-      <article class="my-8 text-gray-700 space-y-6">
-        <h2 class="text-2xl font-bold text-gray-900">How to Use {tool.name}</h2>
-        {tool.kind === 'calculator' ? (
-          <ol class="list-decimal pl-5 space-y-2">
-            <li>Enter your numeric values into the corresponding input fields above.</li>
-            <li>Results and formula explanations update automatically in real time as you type.</li>
-            <li>Review the calculated totals or copy them directly for your calculations.</li>
-          </ol>
-        ) : tool.kind === 'text' ? (
-          <ol class="list-decimal pl-5 space-y-2">
-            <li>Paste or type your source text into the editor area above.</li>
-            <li>Select the desired formatting, casing style, or validation action.</li>
-            <li>Copy the converted output directly to your clipboard with one click.</li>
-          </ol>
-        ) : tool.engine === 'target-size' ? (
-          <ol class="list-decimal pl-5 space-y-2">
-            <li>Drop your JPG, PNG, or WebP photo into the compression zone above.</li>
-            <li>Our browser engine runs a binary search across quality and dimension steps to meet your target budget.</li>
-            <li>Download your compressed image instantly with verified byte size.</li>
-          </ol>
-        ) : (
-          <ol class="list-decimal pl-5 space-y-2">
-            <li>Select or drag your files into the designated drop area above.</li>
-            <li>Choose your preferred conversion parameters or quality options.</li>
-            <li>Process and save the resulting files directly to your device.</li>
-          </ol>
-        )}
-      </article>
-    )}
+    <div id="guide">
+      {hasCustomContent ? (
+        <article class="prose prose-gray max-w-none my-8 leading-relaxed">
+          <div
+            class="space-y-6 text-gray-700 leading-relaxed [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-gray-900 [&>h2]:mt-8 [&>h2]:mb-4 [&>h3]:text-lg [&>h3]:font-semibold [&>h3]:text-gray-900 [&>h3]:mt-6 [&>h3]:mb-2 [&>ul]:list-disc [&>ul]:pl-5 [&>ol]:list-decimal [&>ol]:pl-5 [&>p]:mb-4 [&>table]:w-full [&>table]:border-collapse [&>table]:my-6 [&>table_th]:border [&>table_th]:border-gray-200 [&>table_th]:bg-gray-50 [&>table_th]:p-3 [&>table_th]:text-left [&>table_td]:border [&>table_td]:border-gray-200 [&>table_td]:p-3"
+            set:html={contentHtml
+              .replace(/### (.*)/g, '<h3>$1</h3>')
+              .replace(/## (.*)/g, '<h2>$1</h2>')
+              .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+              .replace(/\n\n/g, '<p></p>')}
+          />
+        </article>
+      ) : (
+        <article class="my-8 text-gray-700 space-y-6">
+          <h2 class="text-2xl font-bold text-gray-900">How to Use {tool.name}</h2>
+          {tool.kind === 'calculator' ? (
+            <ol class="list-decimal pl-5 space-y-2">
+              <li>Enter your numeric values into the corresponding input fields above.</li>
+              <li>Results and formula explanations update automatically in real time as you type.</li>
+              <li>Review the calculated totals or copy them directly for your calculations.</li>
+            </ol>
+          ) : tool.kind === 'text' ? (
+            <ol class="list-decimal pl-5 space-y-2">
+              <li>Paste or type your source text into the editor area above.</li>
+              <li>Select the desired formatting, casing style, or validation action.</li>
+              <li>Copy the converted output directly to your clipboard with one click.</li>
+            </ol>
+          ) : tool.engine === 'target-size' ? (
+            <ol class="list-decimal pl-5 space-y-2">
+              <li>Drop your JPG, PNG, or WebP photo into the compression zone above.</li>
+              <li>Our browser engine runs a binary search across quality and dimension steps to meet your target budget.</li>
+              <li>Download your compressed image instantly with verified byte size.</li>
+            </ol>
+          ) : (
+            <ol class="list-decimal pl-5 space-y-2">
+              <li>Select or drag your files into the designated drop area above.</li>
+              <li>Choose your preferred conversion parameters or quality options.</li>
+              <li>Process and save the resulting files directly to your device.</li>
+            </ol>
+          )}
+        </article>
+      )}
+    </div>
 
     <!-- House promo slot after how-to block -->
     <PromoSlot slotPosition="postHowTo" />
 
     <!-- Head-to-Head Comparison Matrix -->
-    <section class="my-10 border border-gray-200 rounded-2xl overflow-hidden bg-white shadow-xs">
+    <section id="comparison" class="my-10 border border-gray-200 rounded-3xl overflow-hidden bg-white shadow-xs">
       <div class="p-4 sm:p-6 bg-gray-50 border-b border-gray-200">
         <h2 class="text-lg sm:text-xl font-bold text-gray-900">
           Best Converter vs Competitor Tools (iLovePDF, Smallpdf, CloudConvert)
