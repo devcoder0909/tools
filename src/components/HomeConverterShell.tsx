@@ -233,11 +233,10 @@ export default function HomeConverterShell() {
                 key={fmt}
                 type="button"
                 onClick={() => setTargetFormat(fmt)}
-                class={`px-3 py-1.5 text-xs font-bold rounded-lg uppercase transition-all ${
-                  targetFormat === fmt
+                class={`px-3 py-1.5 text-xs font-bold rounded-lg uppercase transition-all ${targetFormat === fmt
                     ? 'bg-emerald-600 text-white shadow-xs'
                     : 'text-gray-600 hover:text-gray-900'
-                }`}
+                  }`}
               >
                 {fmt}
               </button>
@@ -248,11 +247,10 @@ export default function HomeConverterShell() {
         <button
           type="button"
           onClick={() => setShowOptions(!showOptions)}
-          class={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all ${
-            showOptions
+          class={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all ${showOptions
               ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
               : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
-          }`}
+            }`}
         >
           <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -293,11 +291,10 @@ export default function HomeConverterShell() {
                     key={s.val}
                     type="button"
                     onClick={() => setScale(s.val)}
-                    class={`py-1 text-2xs font-semibold rounded-lg border text-center transition ${
-                      scale === s.val
+                    class={`py-1 text-2xs font-semibold rounded-lg border text-center transition ${scale === s.val
                         ? 'bg-emerald-600 text-white border-emerald-600'
                         : 'bg-white text-gray-700 border-gray-300'
-                    }`}
+                      }`}
                   >
                     {s.label}
                   </button>
@@ -317,11 +314,10 @@ export default function HomeConverterShell() {
                     key={t.val}
                     type="button"
                     onClick={() => setTargetKb(t.val)}
-                    class={`px-2 py-1 text-2xs font-semibold rounded-lg border transition ${
-                      targetKb === t.val
+                    class={`px-2 py-1 text-2xs font-semibold rounded-lg border transition ${targetKb === t.val
                         ? 'bg-emerald-600 text-white border-emerald-600'
                         : 'bg-white text-gray-700 border-gray-300'
-                    }`}
+                      }`}
                   >
                     {t.label}
                   </button>
@@ -338,11 +334,10 @@ export default function HomeConverterShell() {
         onDragLeave={onDragLeave}
         onDrop={onDrop}
         onClick={() => fileInputRef.current?.click()}
-        class={`border-2 border-dashed rounded-3xl p-8 sm:p-14 text-center cursor-pointer transition-all duration-300 group ${
-          isDragging
+        class={`border-2 border-dashed rounded-3xl p-8 sm:p-14 text-center cursor-pointer transition-all duration-300 group ${isDragging
             ? 'border-emerald-600 bg-emerald-50 scale-[1.01] shadow-lg shadow-emerald-100'
             : 'border-gray-300 hover:border-emerald-500 hover:bg-emerald-50/20 bg-gradient-to-b from-gray-50/60 to-white'
-        }`}
+          }`}
       >
         <input
           ref={fileInputRef}
@@ -358,11 +353,10 @@ export default function HomeConverterShell() {
 
         <div class="max-w-md mx-auto space-y-4">
           <div
-            class={`mx-auto w-16 h-16 sm:w-20 sm:h-20 rounded-3xl flex items-center justify-center transition-all duration-300 shadow-sm ${
-              isDragging
+            class={`mx-auto w-16 h-16 sm:w-20 sm:h-20 rounded-3xl flex items-center justify-center transition-all duration-300 shadow-sm ${isDragging
                 ? 'bg-emerald-600 text-white scale-110'
                 : 'bg-emerald-100 text-emerald-700 group-hover:scale-105 group-hover:bg-emerald-600 group-hover:text-white'
-            }`}
+              }`}
           >
             <svg class="w-8 h-8 sm:w-10 sm:h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
               <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
@@ -431,13 +425,12 @@ export default function HomeConverterShell() {
               return (
                 <div
                   key={item.id}
-                  class={`flex flex-col sm:flex-row sm:items-center justify-between p-3.5 border rounded-2xl bg-white gap-3 transition ${
-                    item.status === 'done'
+                  class={`flex flex-col sm:flex-row sm:items-center justify-between p-3.5 border rounded-2xl bg-white gap-3 transition ${item.status === 'done'
                       ? 'border-emerald-200 bg-emerald-50/20'
                       : item.status === 'error'
-                      ? 'border-red-200 bg-red-50/20'
-                      : 'border-gray-200'
-                  }`}
+                        ? 'border-red-200 bg-red-50/20'
+                        : 'border-gray-200'
+                    }`}
                 >
                   <div class="flex items-center space-x-3 min-w-0 flex-1">
                     {item.thumbUrl ? (

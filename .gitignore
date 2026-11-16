@@ -9,3 +9,6 @@ Thumbs.db
 coverage/
 test-results/
 playwright-report/
+*google-client*.json
+*google-secret*.json
+google-*.json
