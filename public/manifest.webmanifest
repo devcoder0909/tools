@@ -1,6 +1,6 @@
 {
-  "name": "BestConverter",
-  "short_name": "BestConverter",
+  "name": "ZixTool",
+  "short_name": "ZixTool",
   "description": "Private in-browser file converters and calculators. Fast client-side execution with zero file uploads.",
   "start_url": "/",
   "display": "standalone",
