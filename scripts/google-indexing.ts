@@ -146,6 +146,9 @@ async function publishGoogleUrl(token: string, url: string, type: 'URL_UPDATED' 
       console.log(`  ✓ [Google 200 OK] ${url} (notifyTime: ${body.urlNotificationMetadata?.latestUpdate?.notifyTime || 'now'})`);
     } else {
       console.error(`  ✗ [Google ${status}] ${url}:`, body.error?.message || JSON.stringify(body));
+      if (body.error?.message?.includes('Failed to verify the URL ownership')) {
+        console.warn(`    👉 Action Required: Add 'converter@precise-space-365809.iam.gserviceaccount.com' as an Owner of '${new URL(url).origin}' in Google Search Console (Settings > Users and permissions).`);
+      }
     }
     return { status, body };
   } catch (err: any) {
@@ -197,6 +200,9 @@ async function notifyIndexNow(urls: string[]) {
     } else {
       const text = await res.text();
       console.error(`  ✗ [IndexNow ${res.status}] Notification response:`, text);
+      if (text.includes('UserForbiddedToAccessSite') || res.status === 403) {
+        console.warn(`    👉 Action Required: Ensure '${siteConfig.domain}' has DNS active in Cloudflare Pages so search engines can read '${siteConfig.url}/${INDEXNOW_KEY}.txt'.`);
+      }
     }
   } catch (err: any) {
     console.error(`  ✗ [IndexNow Error]:`, err.message);
