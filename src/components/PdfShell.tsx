@@ -353,7 +353,7 @@ export default function PdfShell({ toolId }: PdfShellProps) {
           {isJpgToPdf ? 'Click to select JPG / PNG images' : 'Click to select PDF document(s)'}
         </p>
         <p class="text-xs text-slate-500">
-          Drag &amp; drop files here or browse from device • Processed locally in browser RAM
+          Drag &amp; drop files here or browse from device
         </p>
       </div>
 

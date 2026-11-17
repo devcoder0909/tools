@@ -113,16 +113,10 @@ import PromoSlot from './PromoSlot.astro';
       </div>
     </div>
 
-    <div class="border-t border-gray-200 pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-gray-500 space-y-4 md:space-y-0">
-      <div class="flex items-center gap-3">
-        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200/60 text-emerald-800 text-2xs font-semibold">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span>Engine: Client-Side (Zero Cloud)</span>
-        </span>
-        <p>
-          &copy; {new Date().getFullYear()} {siteConfig.company}. All tools operate entirely on your client device.
-        </p>
-      </div>
+    <div class="border-t border-slate-200/80 pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 space-y-4 md:space-y-0">
+      <p>
+        &copy; {new Date().getFullYear()} {siteConfig.company}. All tools operate entirely on your client device.
+      </p>
       <div class="flex items-center space-x-6">
         <a href="/privacy/" class="hover:underline">Privacy Policy</a>
         <a href="/cookies/" class="hover:underline">Cookie Policy</a>

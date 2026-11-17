@@ -401,7 +401,7 @@ export default function TargetSizeShell({
           </div>
 
           <p class="text-2xs text-slate-400 pt-0.5">
-            Automatic compression to &le; {targetKb} KB per photo • 100% in-browser RAM
+            Automatic compression to &le; {targetKb} KB per photo
           </p>
         </div>
       </div>

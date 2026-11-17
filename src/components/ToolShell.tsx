@@ -357,11 +357,10 @@ export default function ToolShell({
                 key={fmt}
                 type="button"
                 onClick={() => setSelectedFormat(fmt)}
-                class={`px-3 py-1 text-xs font-bold rounded-lg uppercase transition-all ${
-                  selectedFormat === fmt
-                    ? 'bg-slate-900 text-white shadow-xs'
-                    : 'text-slate-600 hover:text-slate-900'
-                }`}
+                class={`px-3 py-1 text-xs font-bold rounded-lg uppercase transition-all ${selectedFormat === fmt
+                  ? 'bg-slate-900 text-white shadow-xs'
+                  : 'text-slate-600 hover:text-slate-900'
+                  }`}
               >
                 {fmt}
               </button>
@@ -375,11 +374,10 @@ export default function ToolShell({
           onClick={() => setShowAdvanced(!showAdvanced)}
           aria-expanded={showAdvanced}
           aria-label="Image Compression Settings"
-          class={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold border transition-all ${
-            showAdvanced
-              ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
-              : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
-          }`}
+          class={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold border transition-all ${showAdvanced
+            ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
+            : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
+            }`}
         >
           <svg class="w-3.5 h-3.5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -410,33 +408,30 @@ export default function ToolShell({
                 <button
                   type="button"
                   onClick={() => applyQualityPreset('max')}
-                  class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition-all ${
-                    qualityPreset === 'max'
-                      ? 'bg-slate-900 text-white border-slate-900 shadow-xs'
-                      : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
-                  }`}
+                  class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition-all ${qualityPreset === 'max'
+                    ? 'bg-slate-900 text-white border-slate-900 shadow-xs'
+                    : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
+                    }`}
                 >
                   ⚡ Smallest (65%)
                 </button>
                 <button
                   type="button"
                   onClick={() => applyQualityPreset('balanced')}
-                  class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition-all ${
-                    qualityPreset === 'balanced'
-                      ? 'bg-slate-900 text-white border-slate-900 shadow-xs'
-                      : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
-                  }`}
+                  class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition-all ${qualityPreset === 'balanced'
+                    ? 'bg-slate-900 text-white border-slate-900 shadow-xs'
+                    : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
+                    }`}
                 >
                   ⚖️ Balanced (82%)
                 </button>
                 <button
                   type="button"
                   onClick={() => applyQualityPreset('high')}
-                  class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition-all ${
-                    qualityPreset === 'high'
-                      ? 'bg-slate-900 text-white border-slate-900 shadow-xs'
-                      : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
-                  }`}
+                  class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition-all ${qualityPreset === 'high'
+                    ? 'bg-slate-900 text-white border-slate-900 shadow-xs'
+                    : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
+                    }`}
                 >
                   💎 Crisp (92%)
                 </button>
@@ -471,11 +466,10 @@ export default function ToolShell({
                     key={s.val}
                     type="button"
                     onClick={() => setScalePreset(s.val)}
-                    class={`py-1 text-2xs font-semibold rounded-lg border text-center transition-all ${
-                      scalePreset === s.val
-                        ? 'bg-slate-900 text-white border-slate-900 shadow-xs'
-                        : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
-                    }`}
+                    class={`py-1 text-2xs font-semibold rounded-lg border text-center transition-all ${scalePreset === s.val
+                      ? 'bg-slate-900 text-white border-slate-900 shadow-xs'
+                      : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
+                      }`}
                   >
                     {s.label}
                   </button>
@@ -501,11 +495,10 @@ export default function ToolShell({
                     key={t.val}
                     type="button"
                     onClick={() => setTargetSizeLimitKb(t.val)}
-                    class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition-all ${
-                      targetSizeLimitKb === t.val
-                        ? 'bg-slate-900 text-white border-slate-900 shadow-xs'
-                        : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
-                    }`}
+                    class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition-all ${targetSizeLimitKb === t.val
+                      ? 'bg-slate-900 text-white border-slate-900 shadow-xs'
+                      : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
+                      }`}
                   >
                     {t.label}
                   </button>
@@ -549,11 +542,10 @@ export default function ToolShell({
         onDragLeave={onDragLeave}
         onDrop={onDrop}
         onClick={() => fileInputRef.current?.click()}
-        class={`relative rounded-2xl sm:rounded-3xl p-8 sm:p-14 text-center cursor-pointer transition-all duration-200 group border-2 border-dashed ${
-          isDragging
-            ? 'border-emerald-500 bg-emerald-50/40 scale-[1.005] shadow-xl shadow-emerald-500/10'
-            : 'border-slate-200 hover:border-emerald-500/80 hover:bg-emerald-50/20 bg-slate-50/40'
-        }`}
+        class={`relative rounded-2xl sm:rounded-3xl p-8 sm:p-14 text-center cursor-pointer transition-all duration-200 group border-2 border-dashed ${isDragging
+          ? 'border-emerald-500 bg-emerald-50/40 scale-[1.005] shadow-xl shadow-emerald-500/10'
+          : 'border-slate-200 hover:border-emerald-500/80 hover:bg-emerald-50/20 bg-slate-50/40'
+          }`}
       >
         <input
           ref={fileInputRef}
@@ -569,11 +561,10 @@ export default function ToolShell({
         <div class="max-w-md mx-auto space-y-4">
           {/* Cloud Upload Icon */}
           <div
-            class={`mx-auto w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center transition-all duration-300 ${
-              isDragging
-                ? 'bg-emerald-600 text-white scale-105 shadow-md shadow-emerald-500/20'
-                : 'bg-emerald-50 text-emerald-600 border border-emerald-100 group-hover:scale-105 group-hover:bg-slate-900 group-hover:text-white group-hover:border-slate-900'
-            }`}
+            class={`mx-auto w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center transition-all duration-300 ${isDragging
+              ? 'bg-emerald-600 text-white scale-105 shadow-md shadow-emerald-500/20'
+              : 'bg-emerald-50 text-emerald-600 border border-emerald-100 group-hover:scale-105 group-hover:bg-slate-900 group-hover:text-white group-hover:border-slate-900'
+              }`}
           >
             <svg class="w-7 h-7 sm:w-8 sm:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
               <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
@@ -605,7 +596,7 @@ export default function ToolShell({
           </div>
 
           <p class="text-2xs text-slate-400 pt-0.5">
-            Files processed locally in browser memory • Zero cloud storage
+            Private client-side processing
           </p>
         </div>
       </div>
@@ -661,10 +652,9 @@ export default function ToolShell({
               return (
                 <div
                   key={item.id}
-                  class={`flex flex-col sm:flex-row sm:items-center justify-between p-3.5 sm:p-4 border rounded-2xl bg-white gap-3 transition-all duration-200 hover:border-slate-300 hover:shadow-xs ${
-                    item.status === 'done'
-                      ? 'border-emerald-200 bg-emerald-50/20'
-                      : item.status === 'error'
+                  class={`flex flex-col sm:flex-row sm:items-center justify-between p-3.5 sm:p-4 border rounded-2xl bg-white gap-3 transition-all duration-200 hover:border-slate-300 hover:shadow-xs ${item.status === 'done'
+                    ? 'border-emerald-200 bg-emerald-50/20'
+                    : item.status === 'error'
                       ? 'border-rose-200 bg-rose-50/20'
                       : 'border-slate-200'
                     }`}
