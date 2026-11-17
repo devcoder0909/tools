@@ -9,8 +9,8 @@
   hub: true
   indexable: true
   last_reviewed: "2026-11-13"
-  reviewer: "Gudmud Convert Team"
-  title: "HEIC File: What It Is & How to Convert | Gudmud Convert"
+  reviewer: "BestConverter Team"
+  title: "HEIC File: What It Is & How to Convert | BestConverter"
   description: "Learn what HEIC files are, why Apple devices use them, how to view them on Windows, and convert HEIC to JPG securely in your browser without uploads."
   content: |
     ## What is a HEIC File?
@@ -51,8 +51,8 @@
   hub: true
   indexable: true
   last_reviewed: "2026-11-13"
-  reviewer: "Gudmud Convert Team"
-  title: "JPG File: What It Is & How to Convert | Gudmud Convert"
+  reviewer: "BestConverter Team"
+  title: "JPG File: What It Is & How to Convert | BestConverter"
   description: "Complete technical guide to JPG and JPEG: 8-bit discrete cosine transform compression, universal browser support, and lossless conversion tools."
   content: |
     ## What is a JPG / JPEG File?
@@ -91,8 +91,8 @@
   hub: true
   indexable: true
   last_reviewed: "2026-11-13"
-  reviewer: "Gudmud Convert Team"
-  title: "PNG File: What It Is & How to Convert | Gudmud Convert"
+  reviewer: "BestConverter Team"
+  title: "PNG File: What It Is & How to Convert | BestConverter"
   description: "Complete guide to Portable Network Graphics (PNG): lossless DEFLATE compression, full 8-bit alpha transparency, and browser optimization."
   content: |
     ## What is a PNG File?
@@ -129,8 +129,8 @@
   hub: true
   indexable: true
   last_reviewed: "2026-11-13"
-  reviewer: "Gudmud Convert Team"
-  title: "WebP File: What It Is & How to Convert | Gudmud Convert"
+  reviewer: "BestConverter Team"
+  title: "WebP File: What It Is & How to Convert | BestConverter"
   description: "Learn about modern WebP images: 25-34% smaller file sizes than JPG, full alpha transparency, animated frames, and cross-browser performance."
   content: |
     ## What is a WebP File?
@@ -167,8 +167,8 @@
   hub: true
   indexable: true
   last_reviewed: "2026-11-13"
-  reviewer: "Gudmud Convert Team"
-  title: "AVIF File: What It Is & How to Convert | Gudmud Convert"
+  reviewer: "BestConverter Team"
+  title: "AVIF File: What It Is & How to Convert | BestConverter"
   description: "Next-gen AV1 Image File Format (AVIF) explained: extreme byte compression, 12-bit HDR color depth, browser support, and instant conversion."
   content: |
     ## What is an AVIF File?
@@ -204,7 +204,7 @@
   animation: true
   hub: false
   indexable: false
-  title: "GIF File: Specs & Limitations | Gudmud Convert"
+  title: "GIF File: Specs & Limitations | BestConverter"
   description: "Specs and history of Graphics Interchange Format (GIF): 256-color palette limits, frame-based animations, and modern WebP alternatives."
 
 - id: bmp
@@ -217,7 +217,7 @@
   animation: false
   hub: false
   indexable: false
-  title: "BMP File: Raw Bitmap Graphics | Gudmud Convert"
+  title: "BMP File: Raw Bitmap Graphics | BestConverter"
   description: "Technical specs of Windows Bitmap (BMP): uncompressed pixel arrays, legacy compatibility, and modern web conversion choices."
 
 - id: tiff
@@ -230,7 +230,7 @@
   animation: false
   hub: false
   indexable: false
-  title: "TIFF File: High-Fidelity Print Standard | Gudmud Convert"
+  title: "TIFF File: High-Fidelity Print Standard | BestConverter"
   description: "Detailed guide to TIFF images: print prepress workflows, CMYK/archival fidelity, and why TIFF must be converted for the web."
 
 - id: svg
@@ -243,7 +243,7 @@
   animation: true
   hub: false
   indexable: false
-  title: "SVG File: Scalable Vector Graphics | Gudmud Convert"
+  title: "SVG File: Scalable Vector Graphics | BestConverter"
   description: "Guide to Scalable Vector Graphics (SVG): infinite resolution XML vectors, interactive DOM styling, and rasterization to PNG."
 
 - id: jfif
@@ -256,7 +256,7 @@
   animation: false
   hub: false
   indexable: false
-  title: "JFIF File: JPEG Interchange Format | Gudmud Convert"
+  title: "JFIF File: JPEG Interchange Format | BestConverter"
   description: "Learn what JFIF files are, why modern browsers download them instead of JPG, and how to safely rename or convert them."
 
 - id: pdf
@@ -269,6 +269,6 @@
   animation: false
   hub: false
   indexable: false
-  title: "PDF File: Universal Document Format | Gudmud Convert"
+  title: "PDF File: Universal Document Format | BestConverter"
   description: "Complete guide to Portable Document Format (PDF): multi-page architecture, print fidelity, and image compilation facts."
 
