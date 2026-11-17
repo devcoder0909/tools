@@ -423,6 +423,30 @@ export function IndexingTesterShell() {
               </div>
             )}
 
+            {/* Help box for OAuth 400 origin_mismatch */}
+            <div class="mt-4 p-4 rounded-2xl bg-blue-50 border border-blue-200 text-xs text-blue-900 space-y-2">
+              <div class="flex items-center gap-2 font-bold text-blue-800">
+                <svg class="w-4 h-4 text-blue-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Resolving "Error 400: origin_mismatch"
+              </div>
+              <p>
+                When accessing from <code class="px-1 py-0.5 rounded bg-blue-100 font-mono font-bold">https://zixtool.online</code>, Google requires the new origin to be added to your OAuth Client:
+              </p>
+              <ol class="list-decimal pl-5 space-y-1 text-blue-800">
+                <li>
+                  Open <a href={`https://console.cloud.google.com/apis/credentials/oauthclient/${googleOAuthConfig.clientId}?project=${googleOAuthConfig.projectId}`} target="_blank" rel="noopener" class="font-bold underline text-blue-900 hover:text-black">Google Cloud Console &gt; OAuth 2.0 Client IDs ({googleOAuthConfig.clientId.slice(0, 16)}...)</a>.
+                </li>
+                <li>
+                  Under <strong>Authorized JavaScript origins</strong>, click <strong>+ ADD URI</strong> and enter: <code class="px-1 py-0.5 rounded bg-blue-100 font-mono font-bold select-all">https://zixtool.online</code> (and optionally <code class="px-1 py-0.5 rounded bg-blue-100 font-mono font-bold select-all">https://www.zixtool.online</code>).
+                </li>
+                <li>
+                  Click <strong>SAVE</strong> at the bottom.
+                </li>
+              </ol>
+            </div>
+
             {/* Help box for OAuth 403 Access Denied */}
             <div class="mt-4 p-4 rounded-2xl bg-amber-50 border border-amber-200 text-xs text-amber-900 space-y-2">
               <div class="flex items-center gap-2 font-bold text-amber-800">
