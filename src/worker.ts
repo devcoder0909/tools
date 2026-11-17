@@ -16,7 +16,17 @@ export default {
       return Response.redirect(canonicalTarget, 301);
     }
 
-    // 2. Direct IndexNow Key verification responses (guarantees zero-cache & exact byte matching)
+    // 2. Google Search Console & IndexNow Key verification responses
+    if (url.pathname === '/googlefc307c410c314053.html') {
+      return new Response('google-site-verification: googlefc307c410c314053.html', {
+        status: 200,
+        headers: {
+          'Content-Type': 'text/html; charset=utf-8',
+          'Cache-Control': 'no-cache',
+        },
+      });
+    }
+
     if (url.pathname === `/${INDEXNOW_KEY}.txt` || url.pathname === '/c0nvert8892df91024gudmud.txt') {
       const keyToReturn = url.pathname.includes(INDEXNOW_KEY) ? INDEXNOW_KEY : 'c0nvert8892df91024gudmud';
       return new Response(keyToReturn, {
