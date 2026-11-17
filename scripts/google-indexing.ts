@@ -112,15 +112,24 @@ function findServiceAccountKey(): ServiceAccountKey | null {
     }
   }
 
-  // Also check if raw JSON key was passed in environment variable
-  if (process.env.GCP_SERVICE_ACCOUNT_KEY) {
+  // Also check if raw JSON key was passed in environment variable (supports raw JSON or base64)
+  const envKey = process.env.GCP_SERVICE_ACCOUNT_KEY || process.env.GOOGLE_SERVICE_ACCOUNT_KEY;
+  if (envKey) {
     try {
-      const parsed = JSON.parse(process.env.GCP_SERVICE_ACCOUNT_KEY);
+      let rawJson = envKey.trim();
+      if (!rawJson.startsWith('{') && rawJson.length > 50) {
+        try {
+          rawJson = Buffer.from(rawJson, 'base64').toString('utf-8');
+        } catch {}
+      }
+      const parsed = JSON.parse(rawJson);
       if (parsed.client_email && parsed.private_key) {
-        console.log(`[Google Indexing] Loaded Service Account from GCP_SERVICE_ACCOUNT_KEY env var (${parsed.client_email})`);
+        console.log(`[Google Indexing] Loaded Service Account from environment variable (${parsed.client_email})`);
         return parsed;
       }
-    } catch {}
+    } catch (err: any) {
+      console.warn(`[Google Indexing] Failed to parse service account JSON from environment:`, err.message);
+    }
   }
 
   return null;
