@@ -1,5 +1,4 @@
 REFINED UTILITY WEBSITE KEYWORD STRATEGY
-Raw entries: 2314 | Unique normalized keywords: 1905 | Duplicate occurrences removed: 409
 
 LANDING PAGE PLAN
 
@@ -67,6 +66,7 @@ Build requirements: Build only when backend functionality and meaningful user de
 CORE KEYWORDS BY CLUSTER (noise excluded)
 
 ## Background Remover
+
 - abode remove bg
 - adobe express remove bg
 - adobe photoshop remove bg

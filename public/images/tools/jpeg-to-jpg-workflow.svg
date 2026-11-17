@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none" role="img" aria-labelledby="svg-title-jpeg-to-jpg-wf svg-desc-jpeg-to-jpg-wf">
+  <title id="svg-title-jpeg-to-jpg-wf">JPEG to JPG Converter &amp; Extension Normalization Diagram</title>
+  <desc id="svg-desc-jpeg-to-jpg-wf">Technical diagram demonstrating ISO/IEC 10918-1 binary marker verification and lossless extension normalization in browser memory.</desc>
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#f1f5f9" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.06" />
+    </filter>
+  </defs>
+
+  <rect width="800" height="450" rx="16" fill="url(#bgGrad)" stroke="#e2e8f0" stroke-width="2" />
+
+  <rect x="250" y="24" width="300" height="28" rx="14" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1" />
+  <text x="400" y="43" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#047857" letter-spacing="0.5">
+    EXTENSION &amp; FORMAT NORMALIZATION
+  </text>
+  <text x="400" y="82" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="800" fill="#0f172a">
+    How JPEG to JPG Standardization Works
+  </text>
+  <text x="400" y="104" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#64748b">
+    ISO 10918-1 JFIF Magic Bytes • 100% Lossless Standardization • Zero Server Uploads
+  </text>
+
+  <!-- Step 1 -->
+  <g transform="translate(40, 130)" filter="url(#shadow)">
+    <rect width="210" height="250" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="15" y="15" width="32" height="32" rx="8" fill="#ecfdf5" />
+    <text x="31" y="37" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#059669">1</text>
+    <text x="58" y="37" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Select .JPEG Files</text>
+    
+    <rect x="25" y="65" width="160" height="80" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="4 4" />
+    <text x="105" y="100" text-anchor="middle" font-size="24">📁</text>
+    <text x="105" y="125" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#475569">4-Letter .jpeg extension</text>
+
+    <text x="25" y="170" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• DSLR raw exports</text>
+    <text x="25" y="190" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Mac / iOS 4-letter files</text>
+    <text x="25" y="210" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Rejected by legacy sites</text>
+    <rect x="25" y="222" width="160" height="20" rx="4" fill="#ecfdf5" />
+    <text x="105" y="236" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#047857">Read in browser RAM</text>
+  </g>
+
+  <!-- Flow 1 -->
+  <g transform="translate(262, 245)">
+    <circle cx="15" cy="0" r="14" fill="#10b981" />
+    <path d="M11 -4 L19 0 L11 4" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- Step 2 -->
+  <g transform="translate(295, 130)" filter="url(#shadow)">
+    <rect width="210" height="250" rx="12" fill="#ffffff" stroke="#10b981" stroke-width="2" />
+    <rect x="15" y="15" width="32" height="32" rx="8" fill="#10b981" />
+    <text x="31" y="37" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#ffffff">2</text>
+    <text x="58" y="37" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Verify JFIF Markers</text>
+    
+    <rect x="25" y="65" width="160" height="80" rx="8" fill="#f0fdf4" stroke="#86efac" />
+    <text x="105" y="95" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#15803d">SOI Marker: 0xFFD8</text>
+    <text x="105" y="115" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#166534">JFIF Header: 0xFFE0</text>
+    <text x="105" y="132" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" font-weight="700" fill="#047857">Identical Binary Bitstream</text>
+
+    <text x="25" y="170" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Verify binary integrity</text>
+    <text x="25" y="190" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Zero generational loss</text>
+    <text x="25" y="210" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• No re-compression artifacts</text>
+    <rect x="25" y="222" width="160" height="20" rx="4" fill="#f0fdf4" />
+    <text x="105" y="236" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#15803d">100% Bit-for-Bit Identical</text>
+  </g>
+
+  <!-- Flow 2 -->
+  <g transform="translate(517, 245)">
+    <circle cx="15" cy="0" r="14" fill="#10b981" />
+    <path d="M11 -4 L19 0 L11 4" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- Step 3 -->
+  <g transform="translate(550, 130)" filter="url(#shadow)">
+    <rect width="210" height="250" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="15" y="15" width="32" height="32" rx="8" fill="#ecfdf5" />
+    <text x="31" y="37" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#059669">3</text>
+    <text x="58" y="37" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Save Clean .JPG</text>
+    
+    <rect x="25" y="65" width="160" height="80" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="4 4" />
+    <text x="105" y="100" text-anchor="middle" font-size="24">✅</text>
+    <text x="105" y="125" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#475569">Universal .jpg Format</text>
+
+    <text x="25" y="170" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Accepted by all forms &amp; CMS</text>
+    <text x="25" y="190" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Batch save as single ZIP</text>
+    <text x="25" y="210" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Zero privacy leak</text>
+    <rect x="25" y="222" width="160" height="20" rx="4" fill="#ecfdf5" />
+    <text x="105" y="236" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#047857">100% In-Browser Safety</text>
+  </g>
+</svg>

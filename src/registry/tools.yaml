@@ -816,10 +816,10 @@
       a: Yes. Gudmud Convert runs 100% inside your local browser memory using HTML5 Canvas. Your ID documents and personal photos are never uploaded to any remote server.
   related:
     - compress-image-to-20kb
+    - photo-compressor
+    - jpg-compressor
+    - passport-photo-resizer
     - image-compressor
-    - compress-image-to-100kb
-    - compress-image-to-200kb
-    - resize-image
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
@@ -2597,11 +2597,11 @@
     - q: Can I specify an exact target size like 100KB or 200KB?
       a: Yes. You can select preset targets or input a custom kilobyte threshold for job forms and government uploads.
   related:
-    - compress-image-to-20kb
+    - photo-compressor
+    - jpg-compressor
+    - passport-photo-resizer
     - compress-image-to-50kb
     - compress-image-to-100kb
-    - compress-image-to-200kb
-    - resize-image
   indexable: true
   reviewed: true
   last_reviewed: '2026-11-15T00:00:00.000Z'
@@ -2928,10 +2928,10 @@
     - split-pdf
     - compress-pdf
     - rotate-pdf
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
-  reviewer: Gudmud Convert Document Engineering Team
+  reviewer: Gudmud Convert Standards Review
   lang: en
   seo:
     primary_kw: pdf to jpg
@@ -3364,5 +3364,195 @@
     intent: tool
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
+    last_reviewed: '2026-11-16T00:00:00.000Z'
+- id: jpeg-to-jpg
+  kind: converter
+  slug: jpeg-to-jpg
+  name: JPEG to JPG Converter
+  title: JPEG to JPG Converter - Free & Instant | Gudmud Convert
+  subtitle: Convert .jpeg photos to universal .jpg format in your browser. Zero uploads.
+  description: Convert JPEG to JPG free online in your browser. Batch convert .jpeg images to .jpg format with original quality preserved and zero server uploads.
+  from: jpeg
+  to: jpg
+  engine: canvas
+  options:
+    - quality
+    - strip-metadata
+    - batch
+  presets: []
+  content: src/content/tools/jpeg-to-jpg.mdx
+  faq:
+    - q: Are JPEG and JPG the same file format?
+      a: Yes. Both extensions represent the identical ISO/IEC 10918-1 image standard. The three-letter .jpg extension was created for early MS-DOS operating systems that required 8.3 filenames.
+    - q: Does converting JPEG to JPG reduce photo quality?
+      a: No. Because JPEG and JPG share identical compression encoding, converting between them preserves 100% full resolution and pixel fidelity.
+    - q: Why do some websites require .jpg instead of .jpeg?
+      a: Some legacy government portals and job application systems use rigid file upload validation scripts that only check for the exact three-letter .jpg extension.
+    - q: Are my photos uploaded to any external server?
+      a: No. All conversion operations execute 100% client-side in your device browser RAM with zero server transfers.
+  related:
+    - png-to-jpg
+    - jpg-to-png
+    - image-compressor
+    - compress-image-to-50kb
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-16T00:00:00.000Z'
+  reviewer: Gudmud Convert Standards Review
+  lang: en
+  seo:
+    primary_kw: jpeg to jpg
+    secondary_kws:
+      - convert jpeg to jpg
+      - change jpeg to jpg
+      - jpeg to jpg converter free
+      - convert jpeg to jpg online
+      - compress jpeg to jpg
+      - how to convert a jpeg to jpg on iphone
+      - are jpeg and jpg the same
+    intent: tool
+    tier: 1
+    sources: Researched keywords export & Google SERP seed analysis
+    last_reviewed: '2026-11-16T00:00:00.000Z'
+- id: photo-compressor
+  kind: converter
+  slug: photo-compressor
+  name: Photo Compressor
+  title: Photo Compressor - Reduce Photo Size | Gudmud Convert
+  subtitle: Compress photos and reduce file sizes online in your browser. 100% private in RAM.
+  description: Free online photo compressor and size reducer. Shrink JPG, PNG, and WebP photo file sizes below 20KB, 50KB, or 100KB with zero uploads and full privacy.
+  from: image
+  to: jpg
+  engine: target-size
+  options:
+    - quality
+    - strip-metadata
+    - batch
+  presets: []
+  content: src/content/tools/photo-compressor.mdx
+  faq:
+    - q: How do I compress a photo to below 50KB?
+      a: Upload your photo, select the 50KB target size preset, and click Convert. Our binary search engine finds the sharpest image quality that stays strictly under 51,200 bytes.
+    - q: Does compressing a photo reduce its quality?
+      a: Controlled lossy compression discards subtle color frequencies invisible to the human eye. At 80% to 90% settings, facial features and contours remain sharp and crisp.
+    - q: Are my photos uploaded to any remote server?
+      a: No. All compression runs 100% locally in your device RAM using HTML5 Canvas. Your photos never leave your device.
+    - q: Can I compress multiple photos at once?
+      a: Yes. You can batch upload multiple pictures and download all compressed files in a single ZIP archive.
+  related:
+    - image-compressor
+    - compress-image-to-50kb
+    - compress-image-to-100kb
+    - passport-photo-resizer
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-16T00:00:00.000Z'
+  reviewer: Gudmud Convert Standards Review
+  lang: en
+  seo:
+    primary_kw: photo compressor
+    secondary_kws:
+      - photo size reducer
+      - online photo compressor
+      - photo compressor free
+      - photo compressor below 100kb
+      - photo compressor below 50kb
+      - photo compressor below 20kb
+      - photo compressor and resizer
+    intent: tool
+    tier: 1
+    sources: Researched keywords export & Google SERP seed analysis
+    last_reviewed: '2026-11-16T00:00:00.000Z'
+- id: jpg-compressor
+  kind: converter
+  slug: jpg-compressor
+  name: JPG Compressor
+  title: JPG Compressor - Reduce JPG File Size | Gudmud Convert
+  subtitle: Compress JPG and JPEG photos online. Choose target KB limits or custom quality in browser RAM.
+  description: Compress JPG images online free. Reduce JPEG file size by up to 80% with adjustable quality and target KB limits in your browser. Zero server uploads.
+  from: jpg
+  to: jpg
+  engine: target-size
+  options:
+    - quality
+    - strip-metadata
+    - batch
+  presets: []
+  content: src/content/tools/jpg-compressor.mdx
+  faq:
+    - q: How much can I compress a JPG image?
+      a: Standard JPEG photos can typically be compressed by 50% to 80% with no perceptible difference in visual clarity.
+    - q: Can I compress a JPG to an exact file size limit?
+      a: Yes. Choose a preset target limit (such as 20KB, 50KB, or 100KB) and our engine calculates the exact quantization matrix required.
+    - q: Does compressing a JPG delete metadata?
+      a: By default, redundant EXIF camera metadata and GPS coordinates are stripped to maximize byte savings and protect your location privacy.
+  related:
+    - photo-compressor
+    - image-compressor
+    - compress-image-to-100kb
+    - jpeg-to-jpg
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-16T00:00:00.000Z'
+  reviewer: Gudmud Convert Standards Review
+  lang: en
+  seo:
+    primary_kw: jpg compressor
+    secondary_kws:
+      - compress jpg
+      - kompres jpg
+      - reduce jpg file size
+      - jpg compressor below 100kb
+      - jpg compressor below 50kb
+      - online jpg compressor
+    intent: tool
+    tier: 1
+    sources: Researched keywords export & Google SERP seed analysis
+    last_reviewed: '2026-11-16T00:00:00.000Z'
+- id: passport-photo-resizer
+  kind: converter
+  slug: passport-photo-resizer
+  name: Passport Photo Resizer
+  title: Passport Photo Resizer & Compressor | Gudmud Convert
+  subtitle: Resize and compress photos and signatures for passport portals, exams, and ID cards online.
+  description: Resize and compress passport size photos and signatures online free. Meet exact KB and dimension limits for government portals, exams, and ID cards.
+  from: image
+  to: jpg
+  engine: target-size
+  options:
+    - quality
+    - strip-metadata
+    - batch
+  presets: []
+  content: src/content/tools/passport-photo-resizer.mdx
+  faq:
+    - q: How do I resize a photo to passport size?
+      a: Upload your portrait, select the 50KB target size preset, and ensure your face occupies 70% to 80% of the frame against a plain light background.
+    - q: What is the file size limit for government exam photos?
+      a: Most recruitment boards (such as SSC, UPSC, and state public service commissions) require candidate photos between 20KB and 50KB, and signatures between 10KB and 20KB.
+    - q: Can I compress photos for Aadhar card or PAN card?
+      a: Yes. Both identity card submission portals enforce ceilings under 50KB or 100KB, which our presets satisfy automatically.
+  related:
+    - compress-image-to-20kb
+    - compress-image-to-50kb
+    - photo-compressor
+    - image-compressor
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-16T00:00:00.000Z'
+  reviewer: Gudmud Convert Standards Review
+  lang: en
+  seo:
+    primary_kw: passport photo resizer
+    secondary_kws:
+      - passport size photo compressor
+      - tnpsc photo compressor
+      - bank exam photo compressor
+      - aadhar card photo compressor
+      - driving licence photo compressor
+      - photo size reducer for exam
+    intent: tool
+    tier: 1
+    sources: Researched keywords export & Google SERP seed analysis
     last_reviewed: '2026-11-16T00:00:00.000Z'
 

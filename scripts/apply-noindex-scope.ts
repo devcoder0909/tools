@@ -36,6 +36,11 @@ const CATEGORY_A_IDS = new Set([
   'word-counter',
   'case-converter',
   'json-formatter',
+  'pdf-to-jpg',
+  'jpeg-to-jpg',
+  'photo-compressor',
+  'jpg-compressor',
+  'passport-photo-resizer',
 ]);
 
 const yamlPath = path.resolve(process.cwd(), 'src/registry/tools.yaml');

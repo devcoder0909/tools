@@ -1,0 +1,64 @@
+---
+title: "JPG Compressor - Reduce JPG File Size | Gudmud Convert"
+subtitle: "Compress JPG and JPEG photos online. Choose target KB limits or custom quality in browser RAM."
+description: "Compress JPG images online free. Reduce JPEG file size by up to 80% with adjustable quality and target KB limits in your browser. Zero server uploads."
+last_reviewed: "2026-11-16"
+reviewer: "Gudmud Convert Compression Engineering"
+reviewed: true
+---
+
+## How to Compress JPG Images Online in 3 Steps
+
+Shrink heavy JPEG photographs and screenshots by up to 80% while preserving sharp optical quality:
+
+1. **Select or Drop JPG Files:** Click the upload area above to choose single or multiple `.jpg` or `.jpeg` images from your computer or smartphone, or drag and drop files directly onto the browser canvas.
+2. **Choose Target Size or Adjust Quality:** Select a preset byte limit (**20KB**, **50KB**, **100KB**, **200KB**, or **500KB**) or manually set the JPEG quality slider between 10% and 95%.
+3. **Convert and Download:** Click **Convert All Files** to execute the local canvas re-encoding in browser RAM. Download individual images or click **Download All as ZIP** to save the entire collection.
+
+![JPG DCT Matrix Quantization and In-Browser Compression Architecture](/images/tools/jpg-compressor-workflow.svg)
+
+---
+
+## How JPEG Compression Works in Your Browser
+
+JPEG uses the Discrete Cosine Transform (DCT) algorithm to compress visual information:
+
+- **Chrominance Subsampling:** The human eye is significantly more sensitive to brightness (luminance) than to subtle color nuances (chrominance). JPEG compression compresses color channels more aggressively while preserving fine luminance edges.
+- **Quantization Matrices:** When you select an 80% to 90% quality setting, high-frequency spatial noise is rounded off, significantly reducing byte count without softening visible photo details.
+- **Client-Side RAM Processing:** Unlike traditional online compressors that upload your files to external cloud servers, Gudmud Convert performs all image decoding, quantization, and encoding locally in your browser memory.
+
+---
+
+## When to Use Target-Size Presets for JPG Files
+
+Different platforms enforce strict byte ceilings on image uploads:
+
+| Target Size Preset | Primary Application / Use Case | Portal Limit |
+| :--- | :--- | :--- |
+| **Under 20KB** | Candidate signatures, thumb impressions, exam portals | Max 20,480 bytes |
+| **Under 50KB** | Passport photos, visa application forms, government IDs | Max 51,200 bytes |
+| **Under 100KB** | Job portal avatars, resume headshots, university admissions | Max 102,400 bytes |
+| **Under 200KB** | Web form attachments, identity card scans, PDF inclusions | Max 204,800 bytes |
+| **Under 500KB** | Email attachments, website banners, blog post imagery | Balanced quality |
+
+---
+
+## Preserving Visual Fidelity When Compressing JPGs
+
+To ensure your compressed JPG photos look crisp and sharp:
+- **Use 85% Quality for General Photos:** 85% provides the optimal balance, reducing file size by 60% to 75% while keeping optical artifacts invisible.
+- **Preserve Native Resolution:** Our compressor maintains full pixel dimensions unless you explicitly choose to downsample width and height.
+- **Avoid Re-compressing Multiple Times:** Re-saving an already compressed JPEG repeatedly introduces generational artifacts. Start with your highest resolution original photo for best results.
+
+---
+
+## Frequently Asked Questions (FAQ)
+
+### Does compressing a JPG reduce image quality?
+Lossy JPEG compression reduces file size by discarding redundant color frequencies. At quality levels between 80% and 92%, differences are visually imperceptible on high-resolution screens and mobile devices.
+
+### Can I compress JPG files to an exact file size?
+Yes. Our engine uses an iterative binary search to calculate the precise quantization level required to produce an output file strictly below your chosen target limit (e.g. 50KB or 100KB).
+
+### Are my JPG images uploaded to any server?
+No. All processing occurs 100% inside your browser memory using HTML5 Canvas. Your photos never leave your device.
