@@ -1,5 +1,5 @@
 export const siteConfig = {
-  brand: 'BestConverter',
+  brand: 'ZixTool',
   domain: 'zixtool.online',
   company: 'ZixTool',
   contactEmail: 'support@zixtool.online',

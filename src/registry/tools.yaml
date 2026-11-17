@@ -2,7 +2,7 @@
   kind: converter
   slug: heic-to-jpg
   name: HEIC to JPG Converter
-  title: HEIC to JPG Converter - Free, No Upload | BestConverter
+  title: HEIC to JPG Converter - Free, No Upload | ZixTool
   subtitle: Open iPhone photos anywhere. Drop HEIC files, get JPGs, nothing uploaded.
   description: Convert HEIC to JPG free in your browser. Photos never leave your device, no sign-up, no file limits, and you can batch convert and download as ZIP.
   from: heic
@@ -47,7 +47,7 @@
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-16T00:00:00.000Z
-  reviewer: BestConverter Image Engineering Team
+  reviewer: ZixTool Image Engineering Team
   lang: en
   seo:
     primary_kw: heic to jpg
@@ -70,7 +70,7 @@
   kind: converter
   slug: heic-to-png
   name: HEIC to PNG
-  title: HEIC to PNG Converter - Lossless Alpha | BestConverter
+  title: HEIC to PNG Converter - Lossless Alpha | ZixTool
   description: Convert iPhone HEIC photos to lossless PNG format with transparency retention. Runs entirely in your browser without file uploads.
   from: heic
   to: png
@@ -84,7 +84,7 @@
       a: PNG uses lossless compression and preserves alpha transparency channels, making it ideal for cutouts, graphic design, and preserving maximum pixel detail.
     - q: Are my iPhone photos uploaded to any remote server?
       a: No. All HEIC decoding and PNG encoding run 100% locally in your browser memory using WebAssembly. Your photos never leave your device.
-    - q: Does BestConverter support burst and portrait photos?
+    - q: Does ZixTool support burst and portrait photos?
       a: Yes. You can drop multi-image bursts and camera rolls into the converter for simultaneous batch processing.
   related:
     - heic-to-jpg
@@ -93,7 +93,7 @@
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-14T00:00:00.000Z
-  reviewer: BestConverter Image Engineering Team
+  reviewer: ZixTool Image Engineering Team
   lang: en
   seo:
     primary_kw: heic to png
@@ -111,7 +111,7 @@
   kind: converter
   slug: heic-to-pdf
   name: HEIC to PDF
-  title: HEIC to PDF Converter - Secure Document | BestConverter
+  title: HEIC to PDF Converter - Secure Document | ZixTool
   description: Convert iPhone HEIC camera photos into standard PDF documents in your browser. 100% private in-memory conversion with zero file uploads.
   from: heic
   to: pdf
@@ -123,7 +123,7 @@
   content: src/content/tools/heic-to-pdf.mdx
   faq:
     - q: Can I combine multiple iPhone photos into one PDF document?
-      a: Yes. Upload multiple HEIC receipts or document photos and BestConverter will compile them into successive pages of a single PDF file.
+      a: Yes. Upload multiple HEIC receipts or document photos and ZixTool will compile them into successive pages of a single PDF file.
     - q: Are my confidential receipts and contracts uploaded to the cloud?
       a: No. All PDF generation executes locally in your device RAM. Your private paperwork is never transmitted across the network.
     - q: What page sizes are supported?
@@ -135,7 +135,7 @@
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-14T00:00:00.000Z
-  reviewer: BestConverter Document Engineering Team
+  reviewer: ZixTool Document Engineering Team
   lang: en
   seo:
     primary_kw: heic to pdf
@@ -153,7 +153,7 @@
   kind: converter
   slug: webp-to-jpg
   name: WebP to JPG Converter
-  title: WebP to JPG Converter - Free & Private | BestConverter
+  title: WebP to JPG Converter - Free & Private | ZixTool
   description: Convert WebP images to JPG in your browser with zero server uploads. Batch convert files, control compression quality, and download instantly.
   from: webp
   to: jpg
@@ -203,7 +203,7 @@
   kind: converter
   slug: webp-to-png
   name: WebP to PNG
-  title: WebP to PNG Converter - Keep Transparency | BestConverter
+  title: WebP to PNG Converter - Keep Transparency | ZixTool
   description: Convert WebP images to uncompressed PNG while retaining full alpha transparency. Runs client-side in browser RAM for absolute privacy.
   from: webp
   to: png
@@ -214,7 +214,7 @@
   content: src/content/tools/webp-to-png.mdx
   faq:
     - q: Does converting WebP to PNG preserve transparent backgrounds?
-      a: Yes. BestConverter preserves full 8-bit alpha transparency channels, ensuring transparent cutouts and logos remain perfectly isolated.
+      a: Yes. ZixTool preserves full 8-bit alpha transparency channels, ensuring transparent cutouts and logos remain perfectly isolated.
     - q: Why convert WebP to PNG instead of JPG?
       a: PNG is a lossless format that prevents visual degradation, artifacts, and color banding during editing in Photoshop, Illustrator, and Figma.
     - q: Is there a file size limit for converting WebP to PNG?
@@ -226,7 +226,7 @@
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-14T00:00:00.000Z
-  reviewer: BestConverter Image Engineering Team
+  reviewer: ZixTool Image Engineering Team
   lang: en
   seo:
     primary_kw: webp to png
@@ -244,7 +244,7 @@
   kind: converter
   slug: png-to-webp
   name: PNG to WebP
-  title: PNG to WebP Converter - Shrink Image Size | BestConverter
+  title: PNG to WebP Converter - Shrink Image Size | ZixTool
   description: Convert PNG images to modern WebP format for faster web page load speeds. 100% client-side, free, and batch-enabled with zero uploads.
   from: png
   to: webp
@@ -268,7 +268,7 @@
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-14T00:00:00.000Z
-  reviewer: BestConverter Performance Engineering Team
+  reviewer: ZixTool Performance Engineering Team
   lang: en
   seo:
     primary_kw: png to webp
@@ -286,7 +286,7 @@
   kind: converter
   slug: jpg-to-webp
   name: JPG to WebP
-  title: JPG to WebP Converter - Optimize Size | BestConverter
+  title: JPG to WebP Converter - Optimize Size | ZixTool
   description: Convert JPG photos to lightweight WebP files. Cut file sizes while maintaining sharp visual quality directly on your device.
   from: jpg
   to: webp
@@ -310,7 +310,7 @@
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-14T00:00:00.000Z
-  reviewer: BestConverter Performance Engineering Team
+  reviewer: ZixTool Performance Engineering Team
   lang: en
   seo:
     primary_kw: jpg to webp
@@ -328,7 +328,7 @@
   kind: converter
   slug: avif-to-jpg
   name: AVIF to JPG
-  title: AVIF to JPG Converter - Universal Format | BestConverter
+  title: AVIF to JPG Converter - Universal Format | ZixTool
   description: Convert next-gen AVIF images to universally supported JPG format. Quick, private, client-side browser conversion with zero server uploads.
   from: avif
   to: jpg
@@ -342,7 +342,7 @@
     - q: Why won't my computer open .avif images?
       a: Many desktop software suites (older Photoshop, Microsoft Office Word, and Windows Photo Viewer) lack AV1 image codecs. Converting to JPG restores universal compatibility.
     - q: Does converting AVIF to JPG degrade image quality?
-      a: BestConverter uses an 88% to 90% JPEG quality setting that preserves fine textures and dynamic range without optical degradation.
+      a: ZixTool uses an 88% to 90% JPEG quality setting that preserves fine textures and dynamic range without optical degradation.
     - q: Can I batch convert multiple AVIF files at once?
       a: Yes. Drag and drop multiple AVIF images to convert them in parallel and download them individually or as a single ZIP archive.
   related:
@@ -352,7 +352,7 @@
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-14T00:00:00.000Z
-  reviewer: BestConverter Image Engineering Team
+  reviewer: ZixTool Image Engineering Team
   lang: en
   seo:
     primary_kw: avif to jpg
@@ -370,7 +370,7 @@
   kind: converter
   slug: avif-to-png
   name: AVIF to PNG
-  title: AVIF to PNG Converter - Lossless Alpha | BestConverter
+  title: AVIF to PNG Converter - Lossless Alpha | ZixTool
   description: Convert AVIF pictures to crisp PNG images with full transparency retention. Completely offline and private in your browser.
   from: avif
   to: png
@@ -391,7 +391,7 @@
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-14T00:00:00.000Z
-  reviewer: BestConverter Image Engineering Team
+  reviewer: ZixTool Image Engineering Team
   lang: en
   seo:
     primary_kw: avif to png
@@ -408,7 +408,7 @@
   kind: converter
   slug: png-to-jpg
   name: PNG to JPG Converter
-  title: PNG to JPG Converter - Free & Private | BestConverter
+  title: PNG to JPG Converter - Free & Private | ZixTool
   description: Convert PNG images to JPG in your browser with zero uploads. Choose quality, reduce file sizes by up to 80%, and download single files or ZIP.
   from: png
   to: jpg
@@ -428,9 +428,9 @@
     - q: Why are Windows and Mac screenshots saved as heavy PNGs?
       a: Operating systems use PNG for screenshots to maintain crisp text and UI edges. However, converting them to 85% JPG shrinks file size by over 80% for seamless emailing and messaging.
     - q: Is it safe to convert confidential or personal photos here?
-      a: 100% safe. BestConverter processes images entirely inside your local device RAM using HTML5 Canvas. Your files are never uploaded to remote servers or stored in any database.
+      a: 100% safe. ZixTool processes images entirely inside your local device RAM using HTML5 Canvas. Your files are never uploaded to remote servers or stored in any database.
     - q: How do I change a PNG to a JPG on iPhone or Android?
-      a: Open BestConverter in your mobile browser (Safari or Chrome), tap to upload PNG photos from your library or files, adjust quality, and tap Download. No app installation required.
+      a: Open ZixTool in your mobile browser (Safari or Chrome), tap to upload PNG photos from your library or files, adjust quality, and tap Download. No app installation required.
   related:
     - jpg-to-png
     - png-to-webp
@@ -459,7 +459,7 @@
   kind: converter
   slug: jpg-to-png
   name: JPG to PNG Converter
-  title: JPG to PNG Converter - Free & Private | BestConverter
+  title: JPG to PNG Converter - Free & Private | ZixTool
   description: Convert JPG photos to PNG format free in your browser. Preserve pixel fidelity with 100% private in-browser conversion and batch export.
   from: jpg
   to: png
@@ -474,7 +474,7 @@
     - q: Will converting JPG to PNG increase the file size?
       a: Yes. Because PNG uses lossless compression, the pixel data is stored in uncompressed 24-bit RGB tables, typically making the resulting PNG larger than the original compressed JPEG.
     - q: How do I convert JPG to PNG without losing quality?
-      a: BestConverter reads the JPEG DCT stream directly into local memory and rasterizes it into a lossless 24-bit PNG without downsampling, preserving exact source pixel resolution.
+      a: ZixTool reads the JPEG DCT stream directly into local memory and rasterizes it into a lossless 24-bit PNG without downsampling, preserving exact source pixel resolution.
     - q: Does converting JPG to PNG make the background transparent?
       a: No. Since JPEG files have solid backgrounds, converting them produces an opaque PNG. However, the resulting PNG is ready for transparent background cutouts in photo editors.
     - q: Are my photos secure during conversion?
@@ -511,7 +511,7 @@
   kind: converter
   slug: jfif-to-jpg
   name: JFIF to JPG
-  title: JFIF to JPG Converter - Fix Download Format | BestConverter
+  title: JFIF to JPG Converter - Fix Download Format | ZixTool
   description: Convert and rename stubborn JFIF image downloads to standard JPG files. Instant in-browser conversion with zero quality loss.
   from: jfif
   to: jpg
@@ -526,7 +526,7 @@
     - q: Can I upload converted JPG files to websites that reject JFIF?
       a: Yes. Converting to standard JPG completely resolves 'unsupported format' errors on government forms, university portals, and Discord.
     - q: Is there any loss in visual quality when converting JFIF to JPG?
-      a: No. JFIF and JPG use the identical internal JPEG compression algorithm. BestConverter normalizes the container headers with 100% optical fidelity.
+      a: No. JFIF and JPG use the identical internal JPEG compression algorithm. ZixTool normalizes the container headers with 100% optical fidelity.
   related:
     - jpg-to-png
     - webp-to-jpg
@@ -534,7 +534,7 @@
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-14T00:00:00.000Z
-  reviewer: BestConverter Image Engineering Team
+  reviewer: ZixTool Image Engineering Team
   lang: en
   seo:
     primary_kw: jfif to jpg
@@ -551,7 +551,7 @@
   kind: converter
   slug: svg-to-png
   name: SVG to PNG
-  title: SVG to PNG Converter - High-Res Raster | BestConverter
+  title: SVG to PNG Converter - High-Res Raster | ZixTool
   description: Render and convert vector SVG graphics into transparent PNG raster images at any custom resolution directly in your browser without uploads.
   from: svg
   to: png
@@ -564,7 +564,7 @@
   faq:
     - q: Why convert vector SVG to raster PNG?
       a: Major social media platforms (Twitter, LinkedIn, Instagram) and document editors block SVG uploads due to XML script security risks. PNG is universally accepted.
-    - q: Does BestConverter preserve transparent backgrounds in SVG?
+    - q: Does ZixTool preserve transparent backgrounds in SVG?
       a: Yes. Transparent canvas layers in SVG graphics are preserved with 8-bit alpha transparency in the output PNG.
     - q: Can I convert multiple SVG icons at once?
       a: Yes. Drag and drop multiple vector icons to batch rasterize them in parallel and download as a ZIP archive.
@@ -575,7 +575,7 @@
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-14T00:00:00.000Z
-  reviewer: BestConverter Graphic Engineering Team
+  reviewer: ZixTool Graphic Engineering Team
   lang: en
   seo:
     primary_kw: svg to png
@@ -592,7 +592,7 @@
   kind: converter
   slug: bmp-to-jpg
   name: BMP to JPG
-  title: BMP to JPG Converter - Compress Image Size | BestConverter
+  title: BMP to JPG Converter - Compress Image Size | ZixTool
   description: Convert bulky Windows BMP files to highly compressed JPG photos. Fast, secure client-side batch processing without data leaks.
   from: bmp
   to: jpg
@@ -616,7 +616,7 @@
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-14T00:00:00.000Z
-  reviewer: BestConverter Image Engineering Team
+  reviewer: ZixTool Image Engineering Team
   lang: en
   seo:
     primary_kw: bmp to jpg
@@ -633,7 +633,7 @@
   kind: converter
   slug: tiff-to-jpg
   name: TIFF to JPG
-  title: TIFF to JPG Converter - Fast In-Browser | BestConverter
+  title: TIFF to JPG Converter - Fast In-Browser | ZixTool
   description: Convert print-ready TIFF images to web-ready JPG pictures. No server uploads, keeping your confidential scans completely private in browser.
   from: tiff
   to: jpg
@@ -649,7 +649,7 @@
     - q: Does converting TIFF to JPG affect document readability?
       a: No. Our high-resolution JPEG encoder maintains crisp letterforms, fine signatures, and contrast without introducing blur.
     - q: Can I convert multi-megabyte TIFF files?
-      a: Yes. BestConverter processes multi-megabyte scanner TIFFs locally using device memory without artificial file limits.
+      a: Yes. ZixTool processes multi-megabyte scanner TIFFs locally using device memory without artificial file limits.
   related:
     - bmp-to-jpg
     - jpg-to-png
@@ -657,7 +657,7 @@
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-14T00:00:00.000Z
-  reviewer: BestConverter Document Engineering Team
+  reviewer: ZixTool Document Engineering Team
   lang: en
   seo:
     primary_kw: tiff to jpg
@@ -674,7 +674,7 @@
   kind: converter
   slug: gif-to-png
   name: GIF to PNG
-  title: GIF to PNG Converter - Extract Sharp Frames | BestConverter
+  title: GIF to PNG Converter - Extract Sharp Frames | ZixTool
   description: Convert GIF images and animations to clean still PNG graphics. Safe, private, and instantaneous in your web browser with zero file uploads.
   from: gif
   to: png
@@ -697,7 +697,7 @@
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-14T00:00:00.000Z
-  reviewer: BestConverter Image Engineering Team
+  reviewer: ZixTool Image Engineering Team
   lang: en
   seo:
     primary_kw: gif to png
@@ -714,7 +714,7 @@
   kind: pdf
   slug: jpg-to-pdf
   name: JPG to PDF Converter
-  title: JPG to PDF Converter - Free & In-Browser | BestConverter
+  title: JPG to PDF Converter - Free & In-Browser | ZixTool
   description: Convert JPG to PDF free in your browser. Combine multiple JPEG images into a single PDF document with custom margins, paper sizes, and zero uploads.
   from: jpg
   to: pdf
@@ -727,7 +727,7 @@
   content: src/content/tools/jpg-to-pdf.mdx
   faq:
     - q: Can I arrange photos into a multi-page PDF?
-      a: Yes. Upload multiple JPG images and BestConverter will compile each image into successive pages of a single PDF file.
+      a: Yes. Upload multiple JPG images and ZixTool will compile each image into successive pages of a single PDF file.
     - q: Does converting JPG to PDF reduce image resolution?
       a: No. Your original photo dimensions and JPEG encoding streams are embedded directly into the PDF structure without quality loss.
   related:
@@ -754,7 +754,7 @@
   kind: pdf
   slug: png-to-pdf
   name: PNG to PDF Converter
-  title: PNG to PDF Converter - Free & In-Browser | BestConverter
+  title: PNG to PDF Converter - Free & In-Browser | ZixTool
   description: Convert PNG to PDF free in your browser. Combine PNG images and screenshots into a single multi-page PDF document with zero server uploads.
   from: png
   to: pdf
@@ -794,7 +794,7 @@
   kind: converter
   slug: compress-image-to-50kb
   name: Compress Image to 50KB
-  title: Compress Image to 50KB - Free Online | BestConverter
+  title: Compress Image to 50KB - Free Online | ZixTool
   subtitle: Reduce photo size to under 50KB for government forms and official portals.
   description: Compress image to 50KB or less free in your browser. Perfect for government forms, ID cards, and job applications without uploading your sensitive photos.
   from: image
@@ -813,7 +813,7 @@
     - q: Can I compress a transparent PNG to 50KB?
       a: Standard PNG is lossless and often cannot reach 50KB without heavy posterization. Our tool offers to convert PNG to WebP or JPG to satisfy the 50KB limit while preserving visual fidelity.
     - q: Is it safe to compress sensitive ID cards and passports here?
-      a: Yes. BestConverter runs 100% inside your local browser memory using HTML5 Canvas. Your ID documents and personal photos are never uploaded to any remote server.
+      a: Yes. ZixTool runs 100% inside your local browser memory using HTML5 Canvas. Your ID documents and personal photos are never uploaded to any remote server.
   related:
     - compress-image-to-20kb
     - photo-compressor
@@ -823,7 +823,7 @@
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
-  reviewer: BestConverter Image Engineering Team
+  reviewer: ZixTool Image Engineering Team
   lang: en
   seo:
     primary_kw: compress image to 50kb
@@ -839,7 +839,7 @@
   kind: converter
   slug: compress-image-to-100kb
   name: Compress Image to 100KB
-  title: Compress Image to 100KB - Free Online | BestConverter
+  title: Compress Image to 100KB - Free Online | ZixTool
   subtitle: Shrink photos to 100KB or less for job portals and email attachments.
   description: Compress image to 100KB free online. Reduce JPG, PNG, and WebP photos to exactly under 100KB with zero file uploads, instant download, and privacy preserved.
   from: image
@@ -866,7 +866,7 @@
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
-  reviewer: BestConverter Image Engineering Team
+  reviewer: ZixTool Image Engineering Team
   lang: en
   seo:
     primary_kw: compress image to 100kb
@@ -882,7 +882,7 @@
   kind: converter
   slug: compress-image-to-200kb
   name: Compress Image to 200KB
-  title: Compress Image to 200KB - Free Online | BestConverter
+  title: Compress Image to 200KB - Free Online | ZixTool
   subtitle: Optimize photos to under 200KB. Perfect balance of sharpness and file size.
   description: Compress image to 200KB free online in your browser. Balance crisp visual quality with compact size for email attachments and web forms with zero uploads.
   from: image
@@ -909,7 +909,7 @@
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
-  reviewer: BestConverter Image Engineering Team
+  reviewer: ZixTool Image Engineering Team
   lang: en
   seo:
     primary_kw: compress image to 200kb
@@ -925,7 +925,7 @@
   kind: converter
   slug: compress-image-to-500kb
   name: Compress Image to 500KB
-  title: Compress Image to 500KB - Free Online | BestConverter
+  title: Compress Image to 500KB - Free Online | ZixTool
   subtitle: Shrink multi-megabyte camera photos to under 500KB with crystal clarity.
   description: Compress image to 500KB or less free in your browser. Shrink large camera photos and high-res scans for email and job applications with zero uploads.
   from: image
@@ -950,7 +950,7 @@
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
-  reviewer: BestConverter Image Engineering Team
+  reviewer: ZixTool Image Engineering Team
   lang: en
   seo:
     primary_kw: compress image to 500kb
@@ -966,7 +966,7 @@
   kind: converter
   slug: compress-image-to-1mb
   name: Compress Image to 1MB
-  title: Compress Image to 1MB - Free Online | BestConverter
+  title: Compress Image to 1MB - Free Online | ZixTool
   subtitle: Compress large DSLR and camera photos to 1MB with zero detail loss.
   description: Compress image to 1MB free in your browser. Reduce DSLR and phone photos under 1MB while keeping rich details with zero server uploads and fast download.
   from: image
@@ -991,7 +991,7 @@
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
-  reviewer: BestConverter Image Engineering Team
+  reviewer: ZixTool Image Engineering Team
   lang: en
   seo:
     primary_kw: compress image to 1mb
@@ -1007,7 +1007,7 @@
   kind: media
   slug: resize-image
   name: Resize Image
-  title: Resize Image Online - Exact Dimensions | BestConverter
+  title: Resize Image Online - Exact Dimensions | ZixTool
   description: Resize images online free in your browser. Scale photos to exact pixel width and height or percentage with aspect ratio lock and zero server uploads.
   from: image
   to: image
@@ -1050,7 +1050,7 @@
   kind: calculator
   slug: percentage-calculator
   name: Percentage Calculator
-  title: Percentage Calculator - Free and Accurate | BestConverter
+  title: Percentage Calculator - Free and Accurate | ZixTool
   subtitle: Calculate percentages, percentage increases, and differences instantly.
   description: Calculate percentage of a number, percentage increase or decrease, and fractions instantly in your browser with step-by-step formulas and zero tracking.
   engine: calc-percentage
@@ -1079,7 +1079,7 @@
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-16T00:00:00.000Z
-  reviewer: BestConverter Mathematics Team
+  reviewer: ZixTool Mathematics Team
   lang: en
   seo:
     primary_kw: percentage calculator
@@ -1101,7 +1101,7 @@
   kind: calculator
   slug: age-calculator
   name: Age Calculator
-  title: Age Calculator - Free and Accurate | BestConverter
+  title: Age Calculator - Free and Accurate | ZixTool
   subtitle: Calculate exact age in years, months, days, weeks, and hours.
   description: Calculate your exact age from date of birth in years, months, days, weeks, and hours. Fast, accurate, and completely private in your web browser.
   engine: calc-age
@@ -1124,7 +1124,7 @@
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
-  reviewer: BestConverter Team
+  reviewer: ZixTool Team
   lang: en
   seo:
     primary_kw: age calculator
@@ -1140,7 +1140,7 @@
   kind: calculator
   slug: date-difference-calculator
   name: Date Difference Calculator
-  title: Date Difference Calculator - Free & Fast | BestConverter
+  title: Date Difference Calculator - Free & Fast | ZixTool
   subtitle: Calculate total days, workdays, and weeks between two calendar dates.
   description: Calculate elapsed days, business workdays, weeks, and months between two dates. Works completely offline in your browser with zero tracking.
   engine: calc-date
@@ -1163,7 +1163,7 @@
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
-  reviewer: BestConverter Team
+  reviewer: ZixTool Team
   lang: en
   seo:
     primary_kw: date difference calculator
@@ -1179,7 +1179,7 @@
   kind: calculator
   slug: discount-calculator
   name: Discount Calculator
-  title: Discount Calculator - Free and Accurate | BestConverter
+  title: Discount Calculator - Free and Accurate | ZixTool
   subtitle: Calculate final sale prices, total money saved, and sales tax.
   description: Calculate sale prices, percentage discounts, and sales tax instantly in your browser. Find out how much you save with clear step-by-step math.
   engine: calc-discount
@@ -1202,7 +1202,7 @@
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
-  reviewer: BestConverter Finance Team
+  reviewer: ZixTool Finance Team
   lang: en
   seo:
     primary_kw: discount calculator
@@ -1218,7 +1218,7 @@
   kind: calculator
   slug: tip-calculator
   name: Tip Calculator
-  title: Tip Calculator - Free and Accurate | BestConverter
+  title: Tip Calculator - Free and Accurate | ZixTool
   subtitle: Calculate restaurant tips and split bills per person easily.
   description: Calculate dining tips, total restaurant bills, and split per-person costs accurately in your browser. Fast tip percentages with zero intrusive ads.
   engine: calc-tip
@@ -1241,7 +1241,7 @@
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
-  reviewer: BestConverter Team
+  reviewer: ZixTool Team
   lang: en
   seo:
     primary_kw: tip calculator
@@ -1257,7 +1257,7 @@
   kind: text
   slug: word-counter
   name: Word Counter
-  title: Word Counter - Free Online Tool | BestConverter
+  title: Word Counter - Free Online Tool | ZixTool
   subtitle: Count words, characters, sentences, and estimated reading time.
   description: Count words, characters with and without spaces, sentences, and reading time in real time. 100% private in-browser analysis with zero server logging.
   engine: text-word-count
@@ -1284,7 +1284,7 @@
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
-  reviewer: BestConverter Editorial Team
+  reviewer: ZixTool Editorial Team
   lang: en
   seo:
     primary_kw: word counter
@@ -1300,7 +1300,7 @@
   kind: text
   slug: case-converter
   name: Case Converter
-  title: Case Converter - Free Online Tool | BestConverter
+  title: Case Converter - Free Online Tool | ZixTool
   subtitle: Convert text to UPPERCASE, lowercase, Title Case, and camelCase.
   description: Convert text instantly between UPPERCASE, lowercase, Title Case, Sentence case, camelCase, kebab-case, and snake_case in your browser with one click.
   engine: text-case
@@ -1326,7 +1326,7 @@
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
-  reviewer: BestConverter Engineering Team
+  reviewer: ZixTool Engineering Team
   lang: en
   seo:
     primary_kw: case converter
@@ -1342,7 +1342,7 @@
   kind: text
   slug: json-formatter
   name: JSON Formatter & Validator
-  title: JSON Formatter - Free Validator & Tool | BestConverter
+  title: JSON Formatter - Free Validator & Tool | ZixTool
   subtitle: Prettify, minify, and validate JSON data instantly in your browser.
   description: Format, beautify, minify, and validate JSON data with clear syntax error alerts. Runs 100% locally in your browser without sending data to servers.
   engine: text-json
@@ -1374,7 +1374,7 @@
   indexable: true
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
-  reviewer: BestConverter Engineering Team
+  reviewer: ZixTool Engineering Team
   lang: en
   seo:
     primary_kw: json formatter
@@ -1395,7 +1395,7 @@
   kind: generator
   slug: qr-code-generator
   name: QR Code Generator
-  title: Free QR Code Generator - Custom & Private | BestConverter
+  title: Free QR Code Generator - Custom & Private | ZixTool
   subtitle: Generate custom QR codes for websites, WiFi, and text instantly in browser.
   description: Free online QR code generator. Create custom QR codes for URLs, WiFi networks, and text with custom colors and instant PNG download.
   engine: generator
@@ -1404,7 +1404,7 @@
   content: src/content/tools/qr-code-generator.mdx
   faq:
     - q: Can I use these QR codes for commercial projects?
-      a: Yes. QR codes generated on BestConverter are 100% free for personal and commercial usage with zero copyright restrictions or licensing fees.
+      a: Yes. QR codes generated on ZixTool are 100% free for personal and commercial usage with zero copyright restrictions or licensing fees.
     - q: Do these QR codes ever expire?
       a: No. Static QR codes encode the destination text or URL directly into the optical matrix and will function indefinitely without expiring.
     - q: Which error correction level should I choose?
@@ -1423,7 +1423,7 @@
   indexable: false
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
-  reviewer: BestConverter Digital Imaging Team
+  reviewer: ZixTool Digital Imaging Team
   lang: en
   seo:
     primary_kw: qr code generator
@@ -1444,7 +1444,7 @@
   kind: generator
   slug: password-generator
   name: Password Generator
-  title: Secure Password Generator - Fast Crypto | BestConverter
+  title: Secure Password Generator - Fast Crypto | ZixTool
   subtitle: Generate cryptographically strong passwords locally. Zero server transmission.
   description: Free online secure password generator. Create strong passwords with custom length, symbols, and entropy calculation using browser crypto API.
   engine: generator
@@ -1452,7 +1452,7 @@
   presets: []
   content: src/content/tools/password-generator.mdx
   faq:
-    - q: Can BestConverter see or log the passwords I generate?
+    - q: Can ZixTool see or log the passwords I generate?
       a: No. All password generation executes locally using the browser's native window.crypto API. We never see, log, or transmit your passwords.
     - q: What is the NIST recommended minimum password length?
       a: NIST SP 800-63B recommends a minimum of 16 characters combining uppercase, lowercase, numbers, and symbols to resist brute-force dictionary attacks.
@@ -1473,7 +1473,7 @@
   indexable: false
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
-  reviewer: BestConverter Cybersecurity Engineering Team
+  reviewer: ZixTool Cybersecurity Engineering Team
   lang: en
   seo:
     primary_kw: password generator
@@ -1494,7 +1494,7 @@
   kind: pdf
   slug: merge-pdf
   name: Merge PDF
-  title: Merge PDF Online - Free & Private | BestConverter
+  title: Merge PDF Online - Free & Private | ZixTool
   subtitle: Combine multiple PDF documents into one file directly in browser memory.
   description: Merge PDF files free online in your browser. Combine multiple documents into one single PDF without file size limits and zero server uploads.
   engine: pdf
@@ -1509,10 +1509,10 @@
     - q: Should I merge my PDFs before or after compressing them?
       a: We recommend merging your documents first, then compressing the single unified PDF. This allows the compressor to optimize shared fonts and duplicate dictionaries in one pass.
     - q: Is it safe to merge confidential documents like tax forms and contracts?
-      a: 100% safe. BestConverter processes documents entirely inside your local device RAM. Your files are never uploaded to remote servers or stored in any database.
+      a: 100% safe. ZixTool processes documents entirely inside your local device RAM. Your files are never uploaded to remote servers or stored in any database.
     - q: Can I rearrange the page sequence before merging?
       a: Yes. Drag and drop the document cards in the processing queue to arrange your files in your exact preferred sequential order before clicking merge.
-    - q: Does BestConverter add any watermarks to merged PDFs?
+    - q: Does ZixTool add any watermarks to merged PDFs?
       a: Never. All merged output files are clean, completely unwatermarked, and ready for official submission to government portals, clients, or employers.
   related:
     - pdf-to-jpg
@@ -1545,7 +1545,7 @@
   kind: pdf
   slug: split-pdf
   name: Split PDF
-  title: Split PDF Online - Extract Pages Free | BestConverter
+  title: Split PDF Online - Extract Pages Free | ZixTool
   subtitle: Extract specific page ranges from any PDF document without server uploads.
   description: Split PDF files free online in your browser. Extract individual pages or custom page ranges into a separate PDF with zero server uploads.
   engine: pdf
@@ -1562,8 +1562,8 @@
     - q: How do I extract just one signature page from a 50-page contract?
       a: Upload the document, enter the single page number in the range field (for example, 48), and click Extract. A 1-page PDF will be generated immediately.
     - q: Can I split PDF files completely offline without an internet connection?
-      a: Yes. Once the BestConverter tool loads in your web browser, you can disconnect from the internet or switch to airplane mode and continue splitting documents.
-    - q: Does BestConverter insert watermarks into extracted PDF pages?
+      a: Yes. Once the ZixTool tool loads in your web browser, you can disconnect from the internet or switch to airplane mode and continue splitting documents.
+    - q: Does ZixTool insert watermarks into extracted PDF pages?
       a: Never. All output files are clean, completely unwatermarked, and ready for official submission to employers, legal counsel, or government agencies.
   related:
     - pdf-to-jpg
@@ -1595,7 +1595,7 @@
   kind: pdf
   slug: compress-pdf
   name: Compress PDF
-  title: Compress PDF Online - Reduce File Size | BestConverter
+  title: Compress PDF Online - Reduce File Size | ZixTool
   subtitle: Optimize and compress PDF document size locally in browser memory.
   description: Compress PDF files free online in your browser. Reduce PDF document file size for email and portal uploads without uploading to third-party servers.
   engine: pdf
@@ -1604,7 +1604,7 @@
   content: src/content/tools/compress-pdf.mdx
   faq:
     - q: Will compressing my PDF make the text or figures blurry?
-      a: No. BestConverter compresses structural PDF streams and resamples embedded photos without rasterizing vector text paths. Typography remains razor-sharp at high zoom levels.
+      a: No. ZixTool compresses structural PDF streams and resamples embedded photos without rasterizing vector text paths. Typography remains razor-sharp at high zoom levels.
     - q: How do I compress a PDF to under 200KB or 1MB for portal uploads?
       a: Upload your PDF to our tool. The compressor automatically optimizes font descriptors, strips unneeded metadata, and downsamples raster imagery to meet strict portal requirements.
     - q: Is there a file size limit for PDF compression?
@@ -1613,7 +1613,7 @@
       a: No. Processing executes 100% locally inside your device RAM using WebAssembly. Files are never transmitted across the network, stored, or inspected by third parties.
     - q: Why did my PDF only shrink by a small percentage?
       a: Digital PDFs that consist purely of vector text and fonts are already compressed using Deflate. Substantial size reductions (70% to 90%) occur primarily in documents containing scanned pages or photos.
-    - q: Does BestConverter add any watermarks to compressed PDFs?
+    - q: Does ZixTool add any watermarks to compressed PDFs?
       a: Never. All compressed output files are clean, completely unwatermarked, and ready for official government, academic, or corporate submission.
   related:
     - pdf-to-jpg
@@ -1646,7 +1646,7 @@
   kind: finance
   slug: emi-calculator
   name: EMI Calculator
-  title: EMI Calculator - Home, Car & Personal Loan | BestConverter
+  title: EMI Calculator - Home, Car & Personal Loan | ZixTool
   subtitle: Calculate monthly loan EMI payments with detailed amortization schedules.
   description: Free online EMI calculator for home, car, and personal loans. Calculate monthly EMI, total interest, and view a complete monthly amortization schedule.
   engine: finance
@@ -1674,7 +1674,7 @@
   indexable: false
   reviewed: true
   last_reviewed: 2026-11-16T00:00:00.000Z
-  reviewer: BestConverter Financial Engineering Team
+  reviewer: ZixTool Financial Engineering Team
   lang: en
   seo:
     primary_kw: emi calculator
@@ -1695,7 +1695,7 @@
   kind: finance
   slug: sip-calculator
   name: SIP Calculator
-  title: SIP Calculator - Mutual Fund Investment | BestConverter
+  title: SIP Calculator - Mutual Fund Investment | ZixTool
   subtitle: Calculate wealth returns on systematic investment plans with compounding.
   description: Free online SIP calculator. Calculate mutual fund maturity values, total invested capital, and estimated wealth gain with compound interest projections.
   engine: finance
@@ -1723,7 +1723,7 @@
   indexable: false
   reviewed: true
   last_reviewed: 2026-11-16T00:00:00.000Z
-  reviewer: BestConverter Financial Engineering Team
+  reviewer: ZixTool Financial Engineering Team
   lang: en
   seo:
     primary_kw: sip calculator
@@ -1744,7 +1744,7 @@
   kind: finance
   slug: bmi-calculator
   name: BMI Calculator
-  title: BMI Calculator - Free Body Mass Index Check | BestConverter
+  title: BMI Calculator - Free Body Mass Index Check | ZixTool
   subtitle: Calculate your Body Mass Index with Metric and Imperial unit support.
   description: Free online BMI calculator. Check your Body Mass Index using kg/cm or lbs/ft-in with official WHO weight categories and healthy weight targets.
   engine: finance
@@ -1780,7 +1780,7 @@
   kind: finance
   slug: currency-converter
   name: Currency Converter
-  title: Currency Converter - Live Exchange Rates | BestConverter
+  title: Currency Converter - Live Exchange Rates | ZixTool
   subtitle: Convert money between international currencies with live benchmark rates.
   description: Free online currency converter. Convert exchange rates between USD, EUR, GBP, INR, JPY, CAD, AUD and more with instant in-browser calculation.
   engine: finance
@@ -1816,7 +1816,7 @@
   kind: calculator
   slug: scientific-calculator
   name: Scientific Calculator
-  title: Scientific Calculator - Free Online Math | BestConverter
+  title: Scientific Calculator - Free Online Math | ZixTool
   subtitle: Compute trigonometry, powers, logarithms, and scientific math in browser.
   description: Free online scientific calculator. Perform trigonometric, logarithmic, square root, exponent, and parenthetical calculations directly in your browser.
   engine: calculator
@@ -1853,7 +1853,7 @@
   kind: media
   slug: online-timer
   name: Online Timer
-  title: Online Timer - Free Countdown & Alarm | BestConverter
+  title: Online Timer - Free Countdown & Alarm | ZixTool
   subtitle: Accurate full-screen countdown timer with Pomodoro and audio alerts.
   description: Free online countdown timer with audio alerts and Pomodoro study presets. Accurate, responsive, and easy to use directly in your browser.
   engine: media
@@ -1891,7 +1891,7 @@
   kind: media
   slug: text-to-speech
   name: Text to Speech
-  title: Text to Speech Online - Free Voice Reader | BestConverter
+  title: Text to Speech Online - Free Voice Reader | ZixTool
   subtitle: Convert text to spoken voice audio directly in your browser without uploads.
   description: Free online text to speech converter. Listen to written articles, documents, and notes with customizable voice accents, speech rate, and pitch controls.
   engine: media
@@ -1927,7 +1927,7 @@
   kind: media
   slug: screen-recorder
   name: Screen Recorder
-  title: Online Screen Recorder - Free, No Watermark | BestConverter
+  title: Online Screen Recorder - Free, No Watermark | ZixTool
   subtitle: Record full screen, app windows, and browser tabs with audio in browser.
   description: Free online screen recorder with audio. Capture desktop screens, browser tabs, or app windows without watermarks, plugins, or third-party server uploads.
   engine: media
@@ -1936,7 +1936,7 @@
   content: src/content/tools/screen-recorder.mdx
   faq:
     - q: Is there a watermark added to my screen recording?
-      a: No. BestConverter does not add any watermarks, overlays, or branding to your recorded videos.
+      a: No. ZixTool does not add any watermarks, overlays, or branding to your recorded videos.
     - q: Are my screen recordings sent to a server?
       a: No. All video encoding uses your browser's native MediaRecorder API. The video blob is saved straight to your computer.
   related:
@@ -1963,7 +1963,7 @@
   kind: developer
   slug: jwt-decoder
   name: JWT Decoder
-  title: JWT Decoder Online - Safe In-Browser Tool | BestConverter
+  title: JWT Decoder Online - Safe In-Browser Tool | ZixTool
   subtitle: Decode JSON Web Tokens locally. Secrets and tokens never leave your device.
   description: Free online JWT decoder. Inspect JSON Web Token headers, payload claims, and expiration timestamps with complete privacy and zero server transmission.
   engine: developer
@@ -1971,7 +1971,7 @@
   presets: []
   content: src/content/tools/jwt-decoder.mdx
   faq:
-    - q: Does BestConverter verify the JWT signature?
+    - q: Does ZixTool verify the JWT signature?
       a: No. Signature verification requires knowing your server's secret key. Because you should never paste private keys into a web browser, this tool focuses on safely inspecting payload claims.
     - q: Is it safe to paste production tokens here?
       a: Yes. Processing executes 100% inside your browser memory. Inspect the browser Network tab to verify that zero HTTP requests are sent.
@@ -2002,7 +2002,7 @@
   kind: developer
   slug: unit-converter
   name: Unit Converter
-  title: Unit Converter - Length, Weight & Temp | BestConverter
+  title: Unit Converter - Length, Weight & Temp | ZixTool
   subtitle: Convert units of length, mass, temperature, and digital data storage.
   description: Free online unit converter. Quickly convert metric and imperial measurements for length, weight, temperature, and digital data storage in your browser.
   engine: developer
@@ -2038,7 +2038,7 @@
   kind: developer
   slug: my-ip-address
   name: My IP & Client Diagnostic
-  title: My IP Address & Browser Diagnostics | BestConverter
+  title: My IP Address & Browser Diagnostics | ZixTool
   subtitle: Check your browser network configuration, screen display, and user agent.
   description: Free online browser and network diagnostic tool. Inspect your client screen resolution, color depth, system timezone, language, and user-agent string.
   engine: developer
@@ -2047,7 +2047,7 @@
   content: src/content/tools/my-ip-address.mdx
   faq:
     - q: Is my private browsing information shared with third parties?
-      a: No. All diagnostics on BestConverter are read client-side via JavaScript navigator APIs without logging or selling your information.
+      a: No. All diagnostics on ZixTool are read client-side via JavaScript navigator APIs without logging or selling your information.
     - q: What is a User Agent string?
       a: A user agent is a text string your browser includes with every web request so web servers know whether you are using Chrome, Safari, Firefox, Windows, Mac, or mobile.
   related:
@@ -2074,7 +2074,7 @@
   kind: media
   slug: photo-editor
   name: Photo Editor
-  title: Online Photo Editor - Filters & Color | BestConverter
+  title: Online Photo Editor - Filters & Color | ZixTool
   subtitle: Adjust brightness, contrast, grayscale, and color balance directly in browser.
   description: Free online photo editor. Fine-tune image brightness, contrast, saturation, and filters with live canvas preview and zero server uploads.
   engine: media
@@ -2113,7 +2113,7 @@
   kind: media
   slug: meme-generator
   name: Meme Generator
-  title: Free Meme Generator - Custom Captions | BestConverter
+  title: Free Meme Generator - Custom Captions | ZixTool
   subtitle: Create viral memes with custom top and bottom captions directly in browser.
   description: Free online meme generator. Add classic Impact font captions with black outlines to your photos and create custom memes with zero watermarks or uploads.
   engine: media
@@ -2123,7 +2123,7 @@
   faq:
     - q: Can I make memes on my phone?
       a: Yes. The meme generator is fully mobile-responsive and works seamlessly on iOS Safari and Android Chrome.
-    - q: Does BestConverter save my memes publicly?
+    - q: Does ZixTool save my memes publicly?
       a: No. All rendering occurs locally inside your browser. We do not store, publish, or view your memes.
   related:
     - photo-editor
@@ -2150,7 +2150,7 @@
   kind: generator
   slug: random-number-generator
   name: Random Number Generator
-  title: Random Number Generator - Custom Ranges | BestConverter
+  title: Random Number Generator - Custom Ranges | ZixTool
   subtitle: Generate cryptographically fair random numbers, dice rolls, and lottery picks.
   description: Free online random number generator. Generate true random numbers within custom ranges, unique non-repeating lists, and lottery numbers in your browser.
   engine: generator
@@ -2187,7 +2187,7 @@
   kind: generator
   slug: fancy-text-generator
   name: Fancy Text Generator
-  title: Fancy Text Generator - Cool Font Styles | BestConverter
+  title: Fancy Text Generator - Cool Font Styles | ZixTool
   subtitle: Convert plain text into aesthetic Unicode fonts with one-click clipboard copy.
   description: Free online fancy text generator. Convert normal text into stylish Unicode fonts including cursive, gothic, bold, bubble, and monospace with one-click copy.
   engine: generator
@@ -2223,7 +2223,7 @@
   kind: generator
   slug: barcode-generator
   name: Barcode Generator
-  title: Barcode Generator Online - Free & Custom | BestConverter
+  title: Barcode Generator Online - Free & Custom | ZixTool
   subtitle: Generate high-resolution optical barcodes directly in your web browser.
   description: Free online barcode generator. Create scannable linear barcodes for inventory, retail packaging, and book tracking with instant high-resolution PNG download.
   engine: generator
@@ -2259,7 +2259,7 @@
   kind: media
   slug: typing-test
   name: Typing Speed Test
-  title: Typing Speed Test - Free 60s WPM Check | BestConverter
+  title: Typing Speed Test - Free 60s WPM Check | ZixTool
   subtitle: Test your keyboard typing speed, words per minute (WPM), and accuracy.
   description: Free online typing test. Measure your keyboard typing speed in words per minute (WPM) and accuracy percentage with instant real-time feedback in your browser.
   engine: media
@@ -2296,7 +2296,7 @@
   kind: converter
   slug: compress-image-to-20kb
   name: Compress Image to 20KB
-  title: Compress Image to 20KB - Free Online | BestConverter
+  title: Compress Image to 20KB - Free Online | ZixTool
   subtitle: Reduce photo and signature file size to under 20KB for online forms and portals.
   description: Compress image to 20KB online free. Reduce photo and signature image sizes for online forms, job applications, and passport portals without quality loss.
   from: image
@@ -2322,7 +2322,7 @@
   indexable: true
   reviewed: true
   last_reviewed: '2026-11-15T00:00:00.000Z'
-  reviewer: BestConverter Compression Engineering Team
+  reviewer: ZixTool Compression Engineering Team
   lang: en
   seo:
     primary_kw: compress image to 20kb
@@ -2341,7 +2341,7 @@
   kind: finance
   slug: loan-calculator
   name: Loan Calculator
-  title: Loan Calculator - Monthly Payment | BestConverter
+  title: Loan Calculator - Monthly Payment | ZixTool
   subtitle: Estimate monthly loan payments, total interest, and complete payoff schedules.
   description: Calculate monthly loan payments, total interest, and full repayment schedules with our free online loan calculator. Fast, accurate, and easy to use.
   engine: finance
@@ -2363,7 +2363,7 @@
   indexable: false
   reviewed: true
   last_reviewed: '2026-11-15T00:00:00.000Z'
-  reviewer: BestConverter Financial Analytics Team
+  reviewer: ZixTool Financial Analytics Team
   lang: en
   seo:
     primary_kw: loan calculator
@@ -2381,7 +2381,7 @@
   kind: finance
   slug: mortgage-calculator
   name: Mortgage Calculator
-  title: Mortgage Calculator - Home Loan Payment | BestConverter
+  title: Mortgage Calculator - Home Loan Payment | ZixTool
   subtitle: Estimate your monthly mortgage payments, interest breakdown, and amortization.
   description: Free online mortgage calculator. Calculate your monthly home loan payments, interest breakdown, and complete amortization schedule in seconds.
   engine: finance
@@ -2402,7 +2402,7 @@
   indexable: false
   reviewed: true
   last_reviewed: '2026-11-15T00:00:00.000Z'
-  reviewer: BestConverter Financial Analytics Team
+  reviewer: ZixTool Financial Analytics Team
   lang: en
   seo:
     primary_kw: mortgage calculator
@@ -2420,7 +2420,7 @@
   kind: text
   slug: character-counter
   name: Character Counter
-  title: Character Counter - Free Online Tool | BestConverter
+  title: Character Counter - Free Online Tool | ZixTool
   subtitle: Count characters, words, sentences, and paragraphs in real time as you type.
   description: Count characters, words, sentences, and paragraphs in real time with our free character counter. Fast, accurate, and perfect for social media posts.
   engine: text
@@ -2442,7 +2442,7 @@
   indexable: false
   reviewed: true
   last_reviewed: '2026-11-15T00:00:00.000Z'
-  reviewer: BestConverter Content Analytics Team
+  reviewer: ZixTool Content Analytics Team
   lang: en
   seo:
     primary_kw: character counter
@@ -2460,7 +2460,7 @@
   kind: calculator
   slug: celsius-to-fahrenheit
   name: Celsius to Fahrenheit
-  title: Celsius to Fahrenheit Converter | BestConverter
+  title: Celsius to Fahrenheit Converter | ZixTool
   subtitle: Convert Celsius to Fahrenheit (°C to °F) instantly with accurate formula.
   description: Convert Celsius to Fahrenheit (°C to °F) instantly with our free online temperature converter. Includes conversion formula and reference chart.
   engine: developer
@@ -2481,7 +2481,7 @@
   indexable: false
   reviewed: true
   last_reviewed: '2026-11-15T00:00:00.000Z'
-  reviewer: BestConverter Mathematical Engineering Team
+  reviewer: ZixTool Mathematical Engineering Team
   lang: en
   seo:
     primary_kw: celsius to fahrenheit
@@ -2499,7 +2499,7 @@
   kind: calculator
   slug: online-calculator
   name: Online Calculator
-  title: Online Calculator - Free Quick Math Tool | BestConverter
+  title: Online Calculator - Free Quick Math Tool | ZixTool
   subtitle: Free full-featured desktop calculator for quick math, addition, and division.
   description: Free online calculator for quick math, addition, subtraction, multiplication, and division. Fast, responsive, and easy to use on mobile and desktop.
   engine: calculator
@@ -2520,7 +2520,7 @@
   indexable: false
   reviewed: true
   last_reviewed: '2026-11-15T00:00:00.000Z'
-  reviewer: BestConverter Mathematical Engineering Team
+  reviewer: ZixTool Mathematical Engineering Team
   lang: en
   seo:
     primary_kw: online calculator
@@ -2538,7 +2538,7 @@
   kind: media
   slug: online-stopwatch
   name: Online Stopwatch
-  title: Online Stopwatch - Free Full Screen Timer | BestConverter
+  title: Online Stopwatch - Free Full Screen Timer | ZixTool
   subtitle: Precise digital stopwatch with lap times, split intervals, and clean display.
   description: Free online stopwatch with lap times, split intervals, and clean digital display. Accurate to milliseconds, perfect for sports, study, and workouts.
   engine: media
@@ -2560,7 +2560,7 @@
   indexable: false
   reviewed: true
   last_reviewed: '2026-11-15T00:00:00.000Z'
-  reviewer: BestConverter Product Engineering Team
+  reviewer: ZixTool Product Engineering Team
   lang: en
   seo:
     primary_kw: online stopwatch
@@ -2578,7 +2578,7 @@
   kind: converter
   slug: image-compressor
   name: Image Compressor
-  title: Image Compressor - Reduce Photo Size Free | BestConverter
+  title: Image Compressor - Reduce Photo Size Free | ZixTool
   subtitle: Compress JPG, PNG, and WebP images online with customizable quality and size.
   description: Free online image compressor. Reduce JPG, PNG, and WebP photo file sizes without losing quality. Fast batch compression and instant download.
   from: image
@@ -2605,7 +2605,7 @@
   indexable: true
   reviewed: true
   last_reviewed: '2026-11-15T00:00:00.000Z'
-  reviewer: BestConverter Compression Engineering Team
+  reviewer: ZixTool Compression Engineering Team
   lang: en
   seo:
     primary_kw: image compressor
@@ -2623,7 +2623,7 @@
   kind: developer
   slug: color-picker
   name: Color Picker
-  title: Color Picker - Hex, RGB & HSL Code Finder | BestConverter
+  title: Color Picker - Hex, RGB & HSL Code Finder | ZixTool
   subtitle: Interactive color wheel, palette swatches, and CSS code converter.
   description: Free online color picker. Pick colors from palette, convert HEX, RGB, and HSL codes, and copy clean CSS color values with one click in your browser.
   engine: developer
@@ -2644,7 +2644,7 @@
   indexable: false
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
-  reviewer: BestConverter Design Engineering Team
+  reviewer: ZixTool Design Engineering Team
   lang: en
   seo:
     primary_kw: color picker
@@ -2662,7 +2662,7 @@
   kind: developer
   slug: base64-encoder
   name: Base64 Encode & Decode
-  title: Base64 Encode & Decode - Free Online Tool | BestConverter
+  title: Base64 Encode & Decode - Free Online Tool | ZixTool
   subtitle: Convert plain text and strings to Base64 or decode Base64 data instantly.
   description: Free online Base64 encoder and decoder. Convert text and files to Base64 or decode Base64 data back to original text instantly with zero server uploads.
   engine: developer
@@ -2692,7 +2692,7 @@
   indexable: false
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
-  reviewer: BestConverter Developer Tools Team
+  reviewer: ZixTool Developer Tools Team
   lang: en
   seo:
     primary_kw: base64 encode
@@ -2713,7 +2713,7 @@
   kind: calculator
   slug: gpa-calculator
   name: GPA Calculator
-  title: GPA Calculator - College & High School Tool | BestConverter
+  title: GPA Calculator - College & High School Tool | ZixTool
   subtitle: Calculate cumulative and semester grade point averages on a 4.0 scale.
   description: Calculate your college or high school GPA quickly with our free online GPA calculator. Supports credit hours and letter grades on the standard 4.0 scale.
   engine: calculator
@@ -2734,7 +2734,7 @@
   indexable: false
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
-  reviewer: BestConverter Education Analytics Team
+  reviewer: ZixTool Education Analytics Team
   lang: en
   seo:
     primary_kw: gpa calculator
@@ -2752,7 +2752,7 @@
   kind: finance
   slug: gst-calculator
   name: GST Calculator
-  title: GST Calculator - Online Tax Calculator Free | BestConverter
+  title: GST Calculator - Online Tax Calculator Free | ZixTool
   subtitle: Calculate GST inclusive and exclusive amounts with CGST and SGST splits.
   description: Free online GST calculator. Calculate GST inclusive and exclusive amounts, SGST, CGST rates (5%, 12%, 18%, 28%) with instant net and gross tax breakdowns.
   engine: finance
@@ -2773,7 +2773,7 @@
   indexable: false
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
-  reviewer: BestConverter Financial Engineering Team
+  reviewer: ZixTool Financial Engineering Team
   lang: en
   seo:
     primary_kw: gst calculator
@@ -2791,7 +2791,7 @@
   kind: calculator
   slug: aspect-ratio-calculator
   name: Aspect Ratio Calculator
-  title: Aspect Ratio Calculator - 16:9 & 4:3 Tool | BestConverter
+  title: Aspect Ratio Calculator - 16:9 & 4:3 Tool | ZixTool
   subtitle: Calculate missing photo, video, and screen dimensions with live visual preview.
   description: Free online aspect ratio calculator. Calculate dimensions for 16:9, 4:3, 1:1, 21:9 screen resolutions, photos, and video formats with live visual preview.
   engine: calculator
@@ -2812,7 +2812,7 @@
   indexable: false
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
-  reviewer: BestConverter Media Engineering Team
+  reviewer: ZixTool Media Engineering Team
   lang: en
   seo:
     primary_kw: aspect ratio calculator
@@ -2830,7 +2830,7 @@
   kind: text
   slug: lorem-ipsum-generator
   name: Lorem Ipsum Generator
-  title: Lorem Ipsum Generator - Free Dummy Text | BestConverter
+  title: Lorem Ipsum Generator - Free Dummy Text | ZixTool
   subtitle: Generate placeholder Latin dummy text for web development and UI mockups.
   description: Generate custom Lorem Ipsum dummy text for mockups and web designs. Select paragraphs, sentences, or words with instant clipboard copy and clean formatting.
   engine: text
@@ -2852,7 +2852,7 @@
   indexable: false
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
-  reviewer: BestConverter Content Design Team
+  reviewer: ZixTool Content Design Team
   lang: en
   seo:
     primary_kw: lorem ipsum generator
@@ -2870,7 +2870,7 @@
   kind: media
   slug: pomodoro-timer
   name: Pomodoro Timer
-  title: Pomodoro Timer - 25 Minute Study Timer | BestConverter
+  title: Pomodoro Timer - 25 Minute Study Timer | ZixTool
   subtitle: 25-minute focus intervals and 5-minute breaks for study productivity.
   description: Free online Pomodoro timer for study and focus. Features 25-minute intervals, 5-minute breaks, audio notifications, and clean full-screen countdown clock.
   engine: media
@@ -2882,7 +2882,7 @@
     - q: Does this Pomodoro timer sound an alarm when time expires?
       a: Yes. A clean audio notification chimes when your work or break interval ends, ensuring you stay on track without watching the screen.
     - q: Can I use this timer full screen without ads?
-      a: Yes. BestConverter provides a distraction-free layout optimized for both desktop monitors and mobile devices.
+      a: Yes. ZixTool provides a distraction-free layout optimized for both desktop monitors and mobile devices.
   related:
     - online-timer
     - online-stopwatch
@@ -2891,7 +2891,7 @@
   indexable: false
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
-  reviewer: BestConverter Productivity Engineering Team
+  reviewer: ZixTool Productivity Engineering Team
   lang: en
   seo:
     primary_kw: pomodoro timer
@@ -2909,7 +2909,7 @@
   kind: pdf
   slug: pdf-to-jpg
   name: PDF to JPG
-  title: PDF to JPG Converter - Free & In-Browser | BestConverter
+  title: PDF to JPG Converter - Free & In-Browser | ZixTool
   subtitle: Extract PDF pages into crisp high-resolution JPEG photos without uploads.
   description: Convert PDF files to JPG images free online. Extract PDF pages into high-resolution JPEG photos with zero file size paywalls and zero remote server uploads.
   engine: pdf
@@ -2931,7 +2931,7 @@
   indexable: true
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
-  reviewer: BestConverter Standards Review
+  reviewer: ZixTool Standards Review
   lang: en
   seo:
     primary_kw: pdf to jpg
@@ -2971,7 +2971,7 @@
   indexable: false
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
-  reviewer: BestConverter Multimedia Engineering Team
+  reviewer: ZixTool Multimedia Engineering Team
   lang: en
   seo:
     primary_kw: crop image
@@ -2989,7 +2989,7 @@
   kind: pdf
   slug: rotate-pdf
   name: Rotate PDF
-  title: Rotate PDF Online - Free & Permanent | BestConverter
+  title: Rotate PDF Online - Free & Permanent | ZixTool
   subtitle: Rotate PDF pages 90, 180, or 270 degrees permanently online.
   description: Rotate PDF pages online for free. Permanently change PDF page orientation clockwise or counterclockwise in your browser with zero server uploads.
   engine: pdf
@@ -2999,14 +2999,14 @@
     - q: How do I permanently rotate and save a PDF file?
       a: Drop your PDF file into the upload area above, select your rotation angle (90°, 180°, or 270° clockwise), and click Apply & Download PDF to save the permanently rotated file.
     - q: Why does my PDF rotate in Chrome or Acrobat but revert when emailed?
-      a: Browser and reader rotate buttons only adjust your local screen view temporarily. BestConverter permanently updates the internal /Rotate dictionary key so orientation persists everywhere.
+      a: Browser and reader rotate buttons only adjust your local screen view temporarily. ZixTool permanently updates the internal /Rotate dictionary key so orientation persists everywhere.
     - q: Will rotating a PDF reduce its visual clarity or text sharpness?
       a: No. The internal coordinate rotation matrix is adjusted without re-rasterizing vector fonts, vector lines, or embedded images. Quality remains 100% identical.
     - q: Are my sensitive PDF documents uploaded to external servers?
       a: No. All rotation logic executes 100% locally inside your web browser RAM via WebAssembly. Your files are never uploaded to remote servers or stored in any database.
     - q: Can I rotate upside-down mobile phone and scanner scans?
       a: Yes. Simply select 180° to flip upside-down scans upright, or 90° clockwise/counter-clockwise to fix pages scanned in sideways landscape mode.
-    - q: Does BestConverter insert watermarks on rotated PDFs?
+    - q: Does ZixTool insert watermarks on rotated PDFs?
       a: Never. All output files are clean, completely unwatermarked, and ready for official submission to employers, legal counsel, or government agencies.
   related:
     - merge-pdf
@@ -3017,7 +3017,7 @@
   indexable: false
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
-  reviewer: BestConverter Document Engineering Team
+  reviewer: ZixTool Document Engineering Team
   lang: en
   seo:
     primary_kw: rotate pdf
@@ -3062,7 +3062,7 @@
   indexable: false
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
-  reviewer: BestConverter Text Utilities Engineering Team
+  reviewer: ZixTool Text Utilities Engineering Team
   lang: en
   seo:
     primary_kw: diff checker
@@ -3080,7 +3080,7 @@
   kind: finance
   slug: compound-interest-calculator
   name: Compound Interest Calculator
-  title: Compound Interest Calculator & Growth Chart | BestConverter
+  title: Compound Interest Calculator & Growth Chart | ZixTool
   subtitle: Calculate compound interest, future balance, and investment growth.
   description: Calculate compound interest online for free. Forecast your savings and investment growth with customizable compounding intervals and breakdown schedules.
   engine: finance
@@ -3108,7 +3108,7 @@
   indexable: false
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
-  reviewer: BestConverter Financial Algorithms Team
+  reviewer: ZixTool Financial Algorithms Team
   lang: en
   seo:
     primary_kw: compound interest calculator
@@ -3151,7 +3151,7 @@
   indexable: false
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
-  reviewer: BestConverter Web Developer Utilities Team
+  reviewer: ZixTool Web Developer Utilities Team
   lang: en
   seo:
     primary_kw: url encoder decoder
@@ -3191,7 +3191,7 @@
   indexable: false
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
-  reviewer: BestConverter Cryptography & DevTools Team
+  reviewer: ZixTool Cryptography & DevTools Team
   lang: en
   seo:
     primary_kw: uuid generator
@@ -3231,7 +3231,7 @@
   indexable: false
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
-  reviewer: BestConverter Security Architecture Team
+  reviewer: ZixTool Security Architecture Team
   lang: en
   seo:
     primary_kw: hash generator
@@ -3271,7 +3271,7 @@
   indexable: false
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
-  reviewer: BestConverter Content Engineering Team
+  reviewer: ZixTool Content Engineering Team
   lang: en
   seo:
     primary_kw: markdown to html
@@ -3311,7 +3311,7 @@
   indexable: false
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
-  reviewer: BestConverter Data Architecture Team
+  reviewer: ZixTool Data Architecture Team
   lang: en
   seo:
     primary_kw: json to csv
@@ -3351,7 +3351,7 @@
   indexable: false
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
-  reviewer: BestConverter Data Architecture Team
+  reviewer: ZixTool Data Architecture Team
   lang: en
   seo:
     primary_kw: csv to json
@@ -3369,7 +3369,7 @@
   kind: converter
   slug: jpeg-to-jpg
   name: JPEG to JPG Converter
-  title: JPEG to JPG Converter - Free & Instant | BestConverter
+  title: JPEG to JPG Converter - Free & Instant | ZixTool
   subtitle: Convert .jpeg photos to universal .jpg format in your browser. Zero uploads.
   description: Convert JPEG to JPG free online in your browser. Batch convert .jpeg images to .jpg format with original quality preserved and zero server uploads.
   from: jpeg
@@ -3398,7 +3398,7 @@
   indexable: true
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
-  reviewer: BestConverter Standards Review
+  reviewer: ZixTool Standards Review
   lang: en
   seo:
     primary_kw: jpeg to jpg
@@ -3418,7 +3418,7 @@
   kind: converter
   slug: photo-compressor
   name: Photo Compressor
-  title: Photo Compressor - Reduce Photo Size | BestConverter
+  title: Photo Compressor - Reduce Photo Size | ZixTool
   subtitle: Compress photos and reduce file sizes online in your browser. 100% private in RAM.
   description: Free online photo compressor and size reducer. Shrink JPG, PNG, and WebP photo file sizes below 20KB, 50KB, or 100KB with zero uploads and full privacy.
   from: image
@@ -3447,7 +3447,7 @@
   indexable: true
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
-  reviewer: BestConverter Standards Review
+  reviewer: ZixTool Standards Review
   lang: en
   seo:
     primary_kw: photo compressor
@@ -3467,7 +3467,7 @@
   kind: converter
   slug: jpg-compressor
   name: JPG Compressor
-  title: JPG Compressor - Reduce JPG File Size | BestConverter
+  title: JPG Compressor - Reduce JPG File Size | ZixTool
   subtitle: Compress JPG and JPEG photos online. Choose target KB limits or custom quality in browser RAM.
   description: Compress JPG images online free. Reduce JPEG file size by up to 80% with adjustable quality and target KB limits in your browser. Zero server uploads.
   from: jpg
@@ -3494,7 +3494,7 @@
   indexable: true
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
-  reviewer: BestConverter Standards Review
+  reviewer: ZixTool Standards Review
   lang: en
   seo:
     primary_kw: jpg compressor
@@ -3513,7 +3513,7 @@
   kind: converter
   slug: passport-photo-resizer
   name: Passport Photo Resizer
-  title: Passport Photo Resizer & Compressor | BestConverter
+  title: Passport Photo Resizer & Compressor | ZixTool
   subtitle: Resize and compress photos and signatures for passport portals, exams, and ID cards online.
   description: Resize and compress passport size photos and signatures online free. Meet exact KB and dimension limits for government portals, exams, and ID cards.
   from: image
@@ -3540,7 +3540,7 @@
   indexable: true
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
-  reviewer: BestConverter Standards Review
+  reviewer: ZixTool Standards Review
   lang: en
   seo:
     primary_kw: passport photo resizer
