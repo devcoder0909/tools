@@ -1,5 +1,5 @@
-// Best Converter - In-Browser Progressive Web App Service Worker
-const CACHE_NAME = 'best-converter-v1';
+// ZixTool - In-Browser Progressive Web App Service Worker
+const CACHE_NAME = 'zixtool-v1';
 const PRECACHE_ASSETS = [
   '/',
   '/tools/',

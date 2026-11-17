@@ -1,3 +1,8 @@
 # 301 Permanent Redirects
 /all-tools/  /tools/  301
 /all-tools  /tools/  301
+
+# Preferred Domain & HTTPS Enforcement (Host-level standard)
+https://www.zixtool.online/*  https://zixtool.online/:splat  301!
+http://www.zixtool.online/*   https://zixtool.online/:splat  301!
+http://zixtool.online/*       https://zixtool.online/:splat  301!

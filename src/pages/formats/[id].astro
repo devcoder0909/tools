@@ -26,12 +26,51 @@ const breadcrumbs = [
   { name: 'Formats', href: '/formats/' },
   { name: format.name, href: `/formats/${format.id}/` },
 ];
+
+const formatJsonLd: any[] = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    headline: `${format.name} File Format Guide`,
+    description: format.description,
+    url: `${siteConfig.url}/formats/${format.id}/`,
+    inLanguage: 'en-US',
+    datePublished: formatIsoDate(format.last_reviewed),
+    dateModified: formatIsoDate(format.last_reviewed),
+    publisher: {
+      '@type': 'Organization',
+      name: siteConfig.brand,
+      url: siteConfig.url,
+      logo: `${siteConfig.url}/images/brand/logo.png`,
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${siteConfig.url}/formats/${format.id}/`,
+    },
+  },
+];
+
+if (format.faq && format.faq.length > 0) {
+  formatJsonLd.push({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: format.faq.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.a,
+      },
+    })),
+  });
+}
 ---
 
 <Layout
   title={format.title}
   description={format.description}
   canonical={`${siteConfig.url}/formats/${format.id}/`}
+  jsonLd={formatJsonLd}
   noindex={!isIndexable}
 >
   <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8">

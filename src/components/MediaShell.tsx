@@ -7,7 +7,7 @@ interface MediaShellProps {
 
 export default function MediaShell({ toolId }: MediaShellProps) {
   // --- 1. Text to Speech State ---
-  const [ttsText, setTtsText] = useState('Hello and welcome to Gudmud Convert! All tools process your data privately inside your browser.');
+  const [ttsText, setTtsText] = useState('Hello and welcome to ZixTool! All tools process your data privately inside your browser.');
   const [ttsVoices, setTtsVoices] = useState<SpeechSynthesisVoice[]>([]);
   const [selectedVoice, setSelectedVoice] = useState<string>('');
   const [ttsRate, setTtsRate] = useState(1);

@@ -249,7 +249,31 @@ export function runSeoLint() {
     }
   }
 
-  // 3. Inbound internal links check for indexable pages
+  // 3. Inbound internal links check & Broken Link Detection
+  const validBuiltPaths = new Set<string>(audits.map((a) => a.urlPath));
+  // Add valid redirects from _redirects
+  const redirectsPath = path.resolve(process.cwd(), 'public/_redirects');
+  if (fs.existsSync(redirectsPath)) {
+    const lines = fs.readFileSync(redirectsPath, 'utf-8').split('\n');
+    for (const line of lines) {
+      const trimmed = line.trim();
+      if (!trimmed || trimmed.startsWith('#')) continue;
+      const parts = trimmed.split(/\s+/);
+      if (parts[0] && parts[0].startsWith('/')) {
+        validBuiltPaths.add(parts[0].endsWith('/') ? parts[0] : parts[0] + '/');
+      }
+    }
+  }
+
+  // Broken internal link validation
+  for (const page of audits) {
+    for (const targetUrl of page.outboundInternalLinks) {
+      if (!validBuiltPaths.has(targetUrl)) {
+        page.errors.push(`Broken internal link target: "${targetUrl}"`);
+      }
+    }
+  }
+
   for (const page of audits.filter((a) => a.isIndexable && a.urlPath !== '/')) {
     const inbound = inboundLinkCount.get(page.urlPath) || 0;
     if (inbound < 3) {

@@ -81,8 +81,8 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
   }, [toolId, loremType, loremCount, startWithLorem]);
   const [text, setText] = useState<string>(
     toolId === 'json-formatter'
-      ? '{"name":"Gudmud Convert","type":"client-side","features":["privacy","speed","zero-upload"],"active":true}'
-      : 'Gudmud Convert processes all your documents, images, and calculations entirely inside your browser. No files are uploaded to any external server.'
+      ? '{"name":"ZixTool","type":"client-side","features":["privacy","speed","zero-upload"],"active":true}'
+      : 'ZixTool processes all your documents, images, and calculations entirely inside your browser. No files are uploaded to any external server.'
   );
   const [copied, setCopied] = useState<boolean>(false);
   const [jsonError, setJsonError] = useState<string | null>(null);
@@ -90,10 +90,10 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
 
   // --- Diff Checker State ---
   const [diffOriginal, setDiffOriginal] = useState<string>(
-    'Gudmud Convert is a free online tool suite.\nAll processing is 100% client side.\nFast and private file operations.'
+    'ZixTool is a free online tool suite.\nAll processing is 100% client side.\nFast and private file operations.'
   );
   const [diffModified, setDiffModified] = useState<string>(
-    'Gudmud Convert is a free online tool suite.\nAll processing runs locally in browser RAM.\nFast and private file operations.\nDirect in-browser processing.'
+    'ZixTool is a free online tool suite.\nAll processing runs locally in browser RAM.\nFast and private file operations.\nDirect in-browser processing.'
   );
 
   const diffResult = useMemo(() => {
@@ -140,7 +140,7 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
 
   // --- Markdown to HTML State ---
   const [mdInput, setMdInput] = useState<string>(
-    '## Markdown Preview\n\n**BestConverter** processes all your data **locally in your browser**.\n\n### Core Features\n\n- Zero server uploads\n- Instant client-side conversions\n- Fast in-memory processing\n\nVisit [BestConverter](https://zixtool.online) for fast utilities!'
+    '## Markdown Preview\n\n**ZixTool** processes all your data **locally in your browser**.\n\n### Core Features\n\n- Zero server uploads\n- Instant client-side conversions\n- Fast in-memory processing\n\nVisit [ZixTool](https://zixtool.online) for fast utilities!'
   );
   const [mdCopied, setMdCopied] = useState<boolean>(false);
 

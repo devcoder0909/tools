@@ -19,7 +19,7 @@
 
   <!-- Title -->
   <text x="400" y="38" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="#0f172a">
-    Best Converter: 100% Client-Side In-Browser Architecture
+    ZixTool: 100% Client-Side In-Browser Architecture
   </text>
   <text x="400" y="60" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#64748b">
     Your private files never leave your device RAM • Zero network payloads transmitted
