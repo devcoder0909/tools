@@ -328,11 +328,11 @@ export default function PdfShell({ toolId }: PdfShellProps) {
   };
 
   return (
-    <div class="bg-white border border-gray-200 rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-sm mb-10">
+    <div class="bg-white border border-slate-200/80 rounded-3xl p-5 sm:p-8 shadow-xl shadow-slate-200/40 mb-10 transition-all">
       {/* Upload Zone */}
       <div
         onClick={() => fileInputRef.current?.click()}
-        class="border-2 border-dashed border-gray-300 hover:border-emerald-500 rounded-2xl p-6 sm:p-10 text-center bg-gray-50/50 hover:bg-emerald-50/20 transition cursor-pointer mb-6"
+        class="border-2 border-dashed border-slate-200 hover:border-emerald-500/80 rounded-2xl sm:rounded-3xl p-8 sm:p-14 text-center bg-slate-50/40 hover:bg-emerald-50/20 transition cursor-pointer mb-6 group"
       >
         <input
           ref={fileInputRef}
@@ -344,28 +344,28 @@ export default function PdfShell({ toolId }: PdfShellProps) {
           }}
           class="hidden"
         />
-        <div class="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center mx-auto mb-3 border border-emerald-100 text-emerald-600">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+        <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center mx-auto mb-3.5 border border-emerald-100 text-emerald-600 group-hover:scale-105 group-hover:bg-slate-900 group-hover:text-white group-hover:border-slate-900 transition-all">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 4v16m8-8H4" />
           </svg>
         </div>
-        <p class="text-sm sm:text-base font-bold text-gray-900 mb-1">
+        <p class="text-sm sm:text-base font-bold text-slate-900 mb-1">
           {isJpgToPdf ? 'Click to select JPG / PNG images' : 'Click to select PDF document(s)'}
         </p>
-        <p class="text-xs text-gray-500">
-          Drag &amp; drop files here or browse from device
+        <p class="text-xs text-slate-500">
+          Drag &amp; drop files here or browse from device • Processed locally in browser RAM
         </p>
       </div>
 
       {/* Options for JPG to PDF */}
       {isJpgToPdf && files.length > 0 && (
-        <div class="grid grid-cols-2 gap-4 bg-gray-50 p-4 rounded-xl border border-gray-200 mb-6">
+        <div class="grid grid-cols-2 gap-4 bg-slate-50/80 p-4 rounded-2xl border border-slate-200/80 mb-6">
           <div>
-            <label class="block text-xs font-medium text-gray-700 mb-1">Page Size</label>
+            <label class="block text-xs font-semibold text-slate-700 mb-1.5">Page Size</label>
             <select
               value={pageSize}
               onChange={(e) => setPageSize((e.target as HTMLSelectElement).value as any)}
-              class="w-full px-3 py-1.5 text-xs border border-gray-300 rounded-lg bg-white"
+              class="w-full px-3 py-2 text-xs font-medium border border-slate-200 rounded-xl bg-white text-slate-800 focus:ring-2 focus:ring-slate-900"
             >
               <option value="a4">Standard A4</option>
               <option value="letter">US Letter</option>
@@ -373,11 +373,11 @@ export default function PdfShell({ toolId }: PdfShellProps) {
             </select>
           </div>
           <div>
-            <label class="block text-xs font-medium text-gray-700 mb-1">Orientation</label>
+            <label class="block text-xs font-semibold text-slate-700 mb-1.5">Orientation</label>
             <select
               value={orientation}
               onChange={(e) => setOrientation((e.target as HTMLSelectElement).value as any)}
-              class="w-full px-3 py-1.5 text-xs border border-gray-300 rounded-lg bg-white"
+              class="w-full px-3 py-2 text-xs font-medium border border-slate-200 rounded-xl bg-white text-slate-800 focus:ring-2 focus:ring-slate-900"
             >
               <option value="portrait">Portrait</option>
               <option value="landscape">Landscape</option>
@@ -388,22 +388,22 @@ export default function PdfShell({ toolId }: PdfShellProps) {
 
       {/* Options for Split PDF */}
       {isSplit && files.length > 0 && (
-        <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 mb-6">
-          <label class="block text-xs font-medium text-gray-700 mb-1">Page Range to Extract (e.g. 1-3, 5)</label>
+        <div class="bg-slate-50/80 p-4 rounded-2xl border border-slate-200/80 mb-6">
+          <label class="block text-xs font-semibold text-slate-700 mb-1.5">Page Range to Extract (e.g. 1-3, 5)</label>
           <input
             type="text"
             value={splitRange}
             onInput={(e) => setSplitRange((e.target as HTMLInputElement).value)}
             placeholder="1-2"
-            class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg bg-white"
+            class="w-full px-3 py-2 text-sm border border-slate-200 rounded-xl bg-white text-slate-900 focus:ring-2 focus:ring-slate-900"
           />
         </div>
       )}
 
       {/* Options for Rotate PDF */}
       {isRotate && files.length > 0 && (
-        <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 mb-6">
-          <label class="block text-xs font-medium text-gray-700 mb-2">Select Rotation Angle</label>
+        <div class="bg-slate-50/80 p-4 rounded-2xl border border-slate-200/80 mb-6">
+          <label class="block text-xs font-semibold text-slate-700 mb-2">Select Rotation Angle</label>
           <div class="grid grid-cols-3 gap-2">
             {[
               { label: '90° Clockwise', angle: 90 },
@@ -411,12 +411,13 @@ export default function PdfShell({ toolId }: PdfShellProps) {
               { label: '270° Counter-Clockwise', angle: 270 },
             ].map((opt) => (
               <button
+                key={opt.angle}
                 type="button"
                 onClick={() => setRotateAngle(opt.angle)}
-                class={`px-3 py-2 rounded-lg text-xs font-bold border transition cursor-pointer ${
+                class={`px-3 py-2 rounded-xl text-xs font-semibold border transition-all cursor-pointer ${
                   rotateAngle === opt.angle
-                    ? 'bg-green-600 text-white border-green-600 shadow-xs'
-                    : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-100'
+                    ? 'bg-slate-900 text-white border-slate-900 shadow-xs'
+                    : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
                 }`}
               >
                 {opt.label}
@@ -429,12 +430,12 @@ export default function PdfShell({ toolId }: PdfShellProps) {
       {/* Selected Files List */}
       {files.length > 0 && (
         <div class="mb-6 space-y-2">
-          <div class="flex items-center justify-between text-xs font-semibold text-gray-600 mb-2">
+          <div class="flex items-center justify-between text-xs font-semibold text-slate-600 mb-2">
             <span>Selected Files ({files.length})</span>
             <button
               type="button"
               onClick={() => setFiles([])}
-              class="text-red-600 hover:underline cursor-pointer"
+              class="text-rose-600 hover:underline cursor-pointer"
             >
               Clear All
             </button>
@@ -442,15 +443,15 @@ export default function PdfShell({ toolId }: PdfShellProps) {
 
           <div class="max-h-56 overflow-y-auto space-y-2 pr-1">
             {files.map((item) => (
-              <div class="flex items-center justify-between p-3 bg-gray-50 border border-gray-200 rounded-xl text-xs">
+              <div class="flex items-center justify-between p-3.5 bg-white border border-slate-200 rounded-xl text-xs shadow-2xs">
                 <div class="truncate mr-3">
-                  <p class="font-medium text-gray-900 truncate">{item.name}</p>
-                  <p class="text-gray-500">{formatSize(item.size)}</p>
+                  <p class="font-medium text-slate-900 truncate">{item.name}</p>
+                  <p class="text-slate-500 font-mono mt-0.5">{formatSize(item.size)}</p>
                 </div>
                 <button
                   type="button"
                   onClick={() => removeFile(item.id)}
-                  class="text-gray-400 hover:text-red-600 font-bold px-2 py-1 cursor-pointer"
+                  class="text-slate-400 hover:text-rose-600 font-bold px-2 py-1 cursor-pointer transition"
                 >
                   ✕
                 </button>
@@ -462,7 +463,7 @@ export default function PdfShell({ toolId }: PdfShellProps) {
 
       {/* Status Message */}
       {statusMessage && (
-        <div class={`p-3.5 rounded-xl text-xs font-semibold mb-6 ${downloadUrl ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-blue-50 text-blue-800'}`}>
+        <div class={`p-3.5 rounded-xl text-xs font-semibold mb-6 ${downloadUrl ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' : 'bg-slate-100 text-slate-800 border border-slate-200'}`}>
           {statusMessage}
         </div>
       )}
@@ -474,9 +475,9 @@ export default function PdfShell({ toolId }: PdfShellProps) {
             type="button"
             disabled={files.length < 2 || isProcessing}
             onClick={mergePdfs}
-            class="px-6 py-2.5 text-xs font-bold rounded-xl bg-green-600 text-white hover:bg-green-700 transition disabled:opacity-50 cursor-pointer"
+            class="px-6 py-3 text-xs font-semibold rounded-xl bg-slate-900 text-white hover:bg-emerald-600 transition shadow-sm hover:shadow-md disabled:opacity-50 cursor-pointer active:scale-[0.99]"
           >
-            {isProcessing ? 'Merging...' : 'Merge PDFs Now'}
+            {isProcessing ? 'Merging...' : '⚡ Merge PDFs Now'}
           </button>
         )}
 
@@ -485,9 +486,9 @@ export default function PdfShell({ toolId }: PdfShellProps) {
             type="button"
             disabled={files.length === 0 || isProcessing}
             onClick={imagesToPdf}
-            class="px-6 py-2.5 text-xs font-bold rounded-xl bg-green-600 text-white hover:bg-green-700 transition disabled:opacity-50 cursor-pointer"
+            class="px-6 py-3 text-xs font-semibold rounded-xl bg-slate-900 text-white hover:bg-emerald-600 transition shadow-sm hover:shadow-md disabled:opacity-50 cursor-pointer active:scale-[0.99]"
           >
-            {isProcessing ? 'Converting...' : 'Convert to PDF Now'}
+            {isProcessing ? 'Converting...' : '⚡ Convert to PDF Now'}
           </button>
         )}
 
@@ -496,9 +497,9 @@ export default function PdfShell({ toolId }: PdfShellProps) {
             type="button"
             disabled={files.length === 0 || isProcessing}
             onClick={splitPdf}
-            class="px-6 py-2.5 text-xs font-bold rounded-xl bg-green-600 text-white hover:bg-green-700 transition disabled:opacity-50 cursor-pointer"
+            class="px-6 py-3 text-xs font-semibold rounded-xl bg-slate-900 text-white hover:bg-emerald-600 transition shadow-sm hover:shadow-md disabled:opacity-50 cursor-pointer active:scale-[0.99]"
           >
-            {isProcessing ? 'Extracting...' : 'Extract & Download Pages'}
+            {isProcessing ? 'Extracting...' : '⚡ Extract & Download Pages'}
           </button>
         )}
 
@@ -507,9 +508,9 @@ export default function PdfShell({ toolId }: PdfShellProps) {
             type="button"
             disabled={files.length === 0 || isProcessing}
             onClick={compressPdf}
-            class="px-6 py-2.5 text-xs font-bold rounded-xl bg-green-600 text-white hover:bg-green-700 transition disabled:opacity-50 cursor-pointer"
+            class="px-6 py-3 text-xs font-semibold rounded-xl bg-slate-900 text-white hover:bg-emerald-600 transition shadow-sm hover:shadow-md disabled:opacity-50 cursor-pointer active:scale-[0.99]"
           >
-            {isProcessing ? 'Compressing...' : 'Compress PDF Now'}
+            {isProcessing ? 'Compressing...' : '⚡ Compress PDF Now'}
           </button>
         )}
 
@@ -518,9 +519,9 @@ export default function PdfShell({ toolId }: PdfShellProps) {
             type="button"
             disabled={files.length === 0 || isProcessing}
             onClick={convertPdfToJpg}
-            class="px-6 py-2.5 text-xs font-bold rounded-xl bg-green-600 text-white hover:bg-green-700 transition disabled:opacity-50 cursor-pointer"
+            class="px-6 py-3 text-xs font-semibold rounded-xl bg-slate-900 text-white hover:bg-emerald-600 transition shadow-sm hover:shadow-md disabled:opacity-50 cursor-pointer active:scale-[0.99]"
           >
-            {isProcessing ? 'Converting...' : 'Convert to JPG Now'}
+            {isProcessing ? 'Converting...' : '⚡ Convert to JPG Now'}
           </button>
         )}
 
@@ -529,9 +530,9 @@ export default function PdfShell({ toolId }: PdfShellProps) {
             type="button"
             disabled={files.length === 0 || isProcessing}
             onClick={rotatePdf}
-            class="px-6 py-2.5 text-xs font-bold rounded-xl bg-green-600 text-white hover:bg-green-700 transition disabled:opacity-50 cursor-pointer"
+            class="px-6 py-3 text-xs font-semibold rounded-xl bg-slate-900 text-white hover:bg-emerald-600 transition shadow-sm hover:shadow-md disabled:opacity-50 cursor-pointer active:scale-[0.99]"
           >
-            {isProcessing ? 'Rotating...' : `Rotate PDF (${rotateAngle}°) Now`}
+            {isProcessing ? 'Rotating...' : `⚡ Rotate PDF (${rotateAngle}°) Now`}
           </button>
         )}
 
@@ -539,9 +540,12 @@ export default function PdfShell({ toolId }: PdfShellProps) {
           <a
             href={downloadUrl}
             download={downloadFilename}
-            class="px-6 py-2.5 text-xs font-bold rounded-xl bg-gray-900 text-white hover:bg-black transition shadow-xs"
+            class="px-6 py-3 text-xs font-semibold rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white transition shadow-sm hover:shadow-md active:scale-[0.99] flex items-center gap-1.5"
           >
-            Download {downloadFilename}
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            <span>Download {downloadFilename}</span>
           </a>
         )}
       </div>

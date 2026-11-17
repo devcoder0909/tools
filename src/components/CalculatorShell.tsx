@@ -285,18 +285,18 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
   }, [billAmount, tipRate, splitCount]);
 
   return (
-    <div class="calculator-shell bg-white border border-gray-200 rounded-2xl sm:rounded-3xl shadow-sm p-4 sm:p-8 my-6">
+    <div class="calculator-shell bg-white border border-slate-200/80 rounded-3xl shadow-xl shadow-slate-200/40 p-5 sm:p-8 my-6 transition-all">
       {/* Percentage Calculator */}
       {toolId === 'percentage-calculator' && (
         <div class="space-y-6">
-          <div class="flex flex-wrap gap-2 border-b border-gray-200 pb-4">
+          <div class="flex flex-wrap gap-2 border-b border-slate-200/80 pb-4">
             <button
               type="button"
               onClick={() => setPercMode('calc')}
-              class={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+              class={`px-4 py-2 text-xs font-semibold rounded-xl transition-all ${
                 percMode === 'calc'
-                  ? 'bg-green-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-slate-900 text-white shadow-xs'
+                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
               What is X% of Y?
@@ -304,10 +304,10 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
             <button
               type="button"
               onClick={() => setPercMode('isWhat')}
-              class={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+              class={`px-4 py-2 text-xs font-semibold rounded-xl transition-all ${
                 percMode === 'isWhat'
-                  ? 'bg-green-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-slate-900 text-white shadow-xs'
+                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
               X is what % of Y?
@@ -315,10 +315,10 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
             <button
               type="button"
               onClick={() => setPercMode('change')}
-              class={`px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+              class={`px-4 py-2 text-xs font-semibold rounded-xl transition-all ${
                 percMode === 'change'
-                  ? 'bg-green-600 text-white'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-slate-900 text-white shadow-xs'
+                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
               % Change from X to Y

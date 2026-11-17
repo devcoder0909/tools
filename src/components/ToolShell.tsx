@@ -340,7 +340,7 @@ export default function ToolShell({
   };
 
   return (
-    <div class="tool-shell bg-white border border-gray-200 rounded-3xl shadow-md p-4 sm:p-8 my-6 transition-all">
+    <div class="tool-shell bg-white border border-slate-200/80 rounded-3xl shadow-xl shadow-slate-200/40 p-5 sm:p-8 my-6 transition-all">
       {deviceWarning && (
         <div class="mb-4 p-3 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-800 flex items-center">
           <span class="mr-2 font-bold">Device Notice:</span> {deviceWarning}
@@ -348,10 +348,10 @@ export default function ToolShell({
       )}
 
       {/* Top Format & Quick Action Bar (CloudConvert & FreeConvert Style) */}
-      <div class="flex flex-wrap items-center justify-between gap-3 pb-5 mb-5 border-b border-gray-100">
-        <div class="flex items-center gap-2">
-          <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Convert to:</span>
-          <div class="inline-flex rounded-xl p-1 bg-gray-100 border border-gray-200">
+      <div class="flex flex-wrap items-center justify-between gap-3 pb-5 mb-5 border-b border-slate-100">
+        <div class="flex items-center gap-2.5">
+          <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Convert to:</span>
+          <div class="inline-flex rounded-xl p-1 bg-slate-100 border border-slate-200">
             {['jpg', 'png', 'webp'].map((fmt) => (
               <button
                 key={fmt}
@@ -359,8 +359,8 @@ export default function ToolShell({
                 onClick={() => setSelectedFormat(fmt)}
                 class={`px-3 py-1 text-xs font-bold rounded-lg uppercase transition-all ${
                   selectedFormat === fmt
-                    ? 'bg-emerald-600 text-white shadow-xs'
-                    : 'text-gray-600 hover:text-gray-900'
+                    ? 'bg-slate-900 text-white shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
                 {fmt}
@@ -369,51 +369,51 @@ export default function ToolShell({
           </div>
         </div>
 
-        {/* Settings Toggle Button */}
+        {/* Optimize & Settings Toggle Button */}
         <button
           type="button"
           onClick={() => setShowAdvanced(!showAdvanced)}
           aria-expanded={showAdvanced}
           aria-label="Image Compression Settings"
-          class={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all ${
+          class={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold border transition-all ${
             showAdvanced
               ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
-              : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
+              : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
           }`}
         >
-          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <svg class="w-3.5 h-3.5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
             <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
-          <span>Settings</span>
-          <span class="text-[10px] px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold">
-            {targetSizeLimitKb > 0 ? `${targetSizeLimitKb}KB Target` : `Quality ${quality}%`}
+          <span>Optimization & Resize</span>
+          <span class="text-[10px] px-1.5 py-0.2 rounded-full bg-emerald-100 text-emerald-800 font-bold">
+            {targetSizeLimitKb > 0 ? `${targetSizeLimitKb}KB Limit` : `${quality}%`}
           </span>
         </button>
       </div>
 
       {/* Advanced Options Accordion Panel */}
       {showAdvanced && (
-        <div class="mb-6 p-4 sm:p-5 bg-gradient-to-br from-emerald-50/60 to-gray-50 border border-emerald-200/80 rounded-2xl space-y-4 animate-[fadeIn_0.2s_ease-out]">
-          <div class="flex items-center justify-between pb-2 border-b border-emerald-200/60">
-            <h3 class="text-xs font-bold text-gray-900 uppercase tracking-wider flex items-center gap-1.5">
+        <div class="mb-6 p-4 sm:p-5 bg-slate-50/80 border border-slate-200 rounded-2xl space-y-4 animate-[fadeIn_0.2s_ease-out]">
+          <div class="flex items-center justify-between pb-2 border-b border-slate-200/80">
+            <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-1.5">
               <span>⚡</span> Image Optimization Controls
             </h3>
-            <span class="text-2xs text-gray-500">Fine-tune compression & resolution</span>
+            <span class="text-2xs text-slate-500">Fine-tune compression &amp; resolution</span>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* 1. Quality & Compression */}
             <div class="space-y-2">
-              <label class="block text-xs font-bold text-gray-700">Compression Quality</label>
-              <div class="flex items-center gap-1 flex-wrap">
+              <label class="block text-xs font-bold text-slate-700">Compression Quality</label>
+              <div class="flex items-center gap-1.5 flex-wrap">
                 <button
                   type="button"
                   onClick={() => applyQualityPreset('max')}
-                  class={`px-2 py-1 text-2xs font-semibold rounded-lg border transition ${
+                  class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition-all ${
                     qualityPreset === 'max'
-                      ? 'bg-emerald-600 text-white border-emerald-600'
-                      : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
+                      ? 'bg-slate-900 text-white border-slate-900 shadow-xs'
+                      : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
                   }`}
                 >
                   ⚡ Smallest (65%)
@@ -421,10 +421,10 @@ export default function ToolShell({
                 <button
                   type="button"
                   onClick={() => applyQualityPreset('balanced')}
-                  class={`px-2 py-1 text-2xs font-semibold rounded-lg border transition ${
+                  class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition-all ${
                     qualityPreset === 'balanced'
-                      ? 'bg-emerald-600 text-white border-emerald-600'
-                      : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
+                      ? 'bg-slate-900 text-white border-slate-900 shadow-xs'
+                      : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
                   }`}
                 >
                   ⚖️ Balanced (82%)
@@ -432,10 +432,10 @@ export default function ToolShell({
                 <button
                   type="button"
                   onClick={() => applyQualityPreset('high')}
-                  class={`px-2 py-1 text-2xs font-semibold rounded-lg border transition ${
+                  class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition-all ${
                     qualityPreset === 'high'
-                      ? 'bg-emerald-600 text-white border-emerald-600'
-                      : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
+                      ? 'bg-slate-900 text-white border-slate-900 shadow-xs'
+                      : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
                   }`}
                 >
                   💎 Crisp (92%)
@@ -451,16 +451,16 @@ export default function ToolShell({
                     setQuality(Number((e.target as HTMLInputElement).value));
                     setQualityPreset('custom');
                   }}
-                  class="w-full accent-emerald-600"
+                  class="w-full accent-slate-900"
                 />
-                <span class="text-xs font-mono font-bold text-emerald-800 w-9 text-right">{quality}%</span>
+                <span class="text-xs font-mono font-bold text-slate-900 w-9 text-right">{quality}%</span>
               </div>
             </div>
 
             {/* 2. Resize & Scale */}
             <div class="space-y-2">
-              <label class="block text-xs font-bold text-gray-700">Resize Scale</label>
-              <div class="grid grid-cols-4 gap-1">
+              <label class="block text-xs font-bold text-slate-700">Resize Scale</label>
+              <div class="grid grid-cols-4 gap-1.5">
                 {[
                   { label: '100%', val: 1 },
                   { label: '75%', val: 0.75 },
@@ -471,25 +471,25 @@ export default function ToolShell({
                     key={s.val}
                     type="button"
                     onClick={() => setScalePreset(s.val)}
-                    class={`py-1 text-2xs font-semibold rounded-lg border text-center transition ${
+                    class={`py-1 text-2xs font-semibold rounded-lg border text-center transition-all ${
                       scalePreset === s.val
-                        ? 'bg-emerald-600 text-white border-emerald-600'
-                        : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
+                        ? 'bg-slate-900 text-white border-slate-900 shadow-xs'
+                        : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
                     }`}
                   >
                     {s.label}
                   </button>
                 ))}
               </div>
-              <p class="text-[11px] text-gray-500">
+              <p class="text-[11px] text-slate-500">
                 {scalePreset === 1 ? 'Keeps original pixel dimensions' : `Downsamples image to ${scalePreset * 100}% width & height`}
               </p>
             </div>
 
             {/* 3. Target Max File Size Limit (SimpleImageResizer / TargetSize feature) */}
             <div class="space-y-2">
-              <label class="block text-xs font-bold text-gray-700">Target Max File Size (Optional)</label>
-              <div class="flex items-center gap-1 flex-wrap">
+              <label class="block text-xs font-bold text-slate-700">Target Max File Size (Optional)</label>
+              <div class="flex items-center gap-1.5 flex-wrap">
                 {[
                   { label: 'Off', val: 0 },
                   { label: '20KB', val: 20 },
@@ -501,17 +501,17 @@ export default function ToolShell({
                     key={t.val}
                     type="button"
                     onClick={() => setTargetSizeLimitKb(t.val)}
-                    class={`px-2 py-1 text-2xs font-semibold rounded-lg border transition ${
+                    class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition-all ${
                       targetSizeLimitKb === t.val
-                        ? 'bg-emerald-600 text-white border-emerald-600'
-                        : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
+                        ? 'bg-slate-900 text-white border-slate-900 shadow-xs'
+                        : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
                     }`}
                   >
                     {t.label}
                   </button>
                 ))}
               </div>
-              <p class="text-[11px] text-gray-500">
+              <p class="text-[11px] text-slate-500">
                 {targetSizeLimitKb > 0
                   ? `Forces output file under ${targetSizeLimitKb} KB via binary search compression`
                   : 'No strict byte ceiling enforced'}
@@ -519,23 +519,23 @@ export default function ToolShell({
             </div>
           </div>
 
-          <div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-emerald-200/60 text-xs">
-            <label class="flex items-center gap-2 cursor-pointer select-none text-gray-700 font-medium">
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-slate-200/80 text-xs">
+            <label class="flex items-center gap-2 cursor-pointer select-none text-slate-700 font-medium">
               <input
                 type="checkbox"
                 checked={stripMetadata}
                 onChange={(e) => setStripMetadata((e.target as HTMLInputElement).checked)}
-                class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                class="rounded border-slate-300 text-slate-900 focus:ring-slate-900"
               />
-              <span>Strip EXIF / Camera metadata (removes GPS & saves ~15KB)</span>
+              <span>Strip EXIF / Camera metadata (removes GPS &amp; saves ~15KB)</span>
             </label>
 
-            <label class="flex items-center gap-2 cursor-pointer select-none text-gray-700 font-medium">
+            <label class="flex items-center gap-2 cursor-pointer select-none text-slate-700 font-medium">
               <input
                 type="checkbox"
                 checked={autoConvert}
                 onChange={(e) => setAutoConvert((e.target as HTMLInputElement).checked)}
-                class="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500"
+                class="rounded border-slate-300 text-slate-900 focus:ring-slate-900"
               />
               <span>Auto-convert upon file drop</span>
             </label>
@@ -549,10 +549,10 @@ export default function ToolShell({
         onDragLeave={onDragLeave}
         onDrop={onDrop}
         onClick={() => fileInputRef.current?.click()}
-        class={`relative rounded-2xl sm:rounded-3xl p-6 sm:p-12 text-center cursor-pointer transition-all duration-200 group border-2 border-dashed ${
+        class={`relative rounded-2xl sm:rounded-3xl p-8 sm:p-14 text-center cursor-pointer transition-all duration-200 group border-2 border-dashed ${
           isDragging
-            ? 'border-emerald-500 bg-emerald-50 scale-[1.01] shadow-lg shadow-emerald-100/50'
-            : 'border-gray-300 hover:border-emerald-500 hover:bg-emerald-50/20 bg-gray-50/40'
+            ? 'border-emerald-500 bg-emerald-50/40 scale-[1.005] shadow-xl shadow-emerald-500/10'
+            : 'border-slate-200 hover:border-emerald-500/80 hover:bg-emerald-50/20 bg-slate-50/40'
         }`}
       >
         <input
@@ -566,13 +566,13 @@ export default function ToolShell({
           }}
         />
 
-        <div class="max-w-md mx-auto space-y-3.5">
+        <div class="max-w-md mx-auto space-y-4">
           {/* Cloud Upload Icon */}
           <div
-            class={`mx-auto w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center transition-all duration-200 ${
+            class={`mx-auto w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center transition-all duration-300 ${
               isDragging
-                ? 'bg-emerald-600 text-white scale-105'
-                : 'bg-emerald-100/80 text-emerald-700 group-hover:scale-105 group-hover:bg-emerald-600 group-hover:text-white'
+                ? 'bg-emerald-600 text-white scale-105 shadow-md shadow-emerald-500/20'
+                : 'bg-emerald-50 text-emerald-600 border border-emerald-100 group-hover:scale-105 group-hover:bg-slate-900 group-hover:text-white group-hover:border-slate-900'
             }`}
           >
             <svg class="w-7 h-7 sm:w-8 sm:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
@@ -581,31 +581,31 @@ export default function ToolShell({
           </div>
 
           <div>
-            <div class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm sm:text-base shadow-xs transition">
+            <div class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-3.5 rounded-xl bg-slate-900 hover:bg-emerald-600 text-white font-medium text-sm sm:text-base shadow-sm hover:shadow-md transition-all active:scale-[0.99]">
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
               </svg>
               <span>Choose Files</span>
             </div>
-            <p class="text-xs text-gray-500 mt-2">
+            <p class="text-xs text-slate-500 mt-2.5">
               or drag &amp; drop images here, or paste from clipboard (Ctrl+V)
             </p>
           </div>
 
           {/* Supported Format Pills */}
-          <div class="flex flex-wrap items-center justify-center gap-1.5 pt-1 text-2xs font-semibold text-gray-500">
-            <span class="px-2 py-0.5 rounded-md bg-white border border-gray-200">JPG</span>
-            <span class="px-2 py-0.5 rounded-md bg-white border border-gray-200">PNG</span>
-            <span class="px-2 py-0.5 rounded-md bg-white border border-gray-200">WebP</span>
-            <span class="px-2 py-0.5 rounded-md bg-white border border-gray-200">HEIC</span>
-            <span class="px-2 py-0.5 rounded-md bg-white border border-gray-200">GIF</span>
-            <span class="px-2 py-0.5 rounded-md bg-white border border-gray-200">BMP</span>
-            <span class="px-2 py-0.5 rounded-md bg-white border border-gray-200">TIFF</span>
-            <span class="px-2 py-0.5 rounded-md bg-white border border-gray-200">SVG</span>
+          <div class="flex flex-wrap items-center justify-center gap-1.5 pt-1 text-2xs font-semibold text-slate-500">
+            <span class="px-2 py-0.5 rounded-md bg-white border border-slate-200">JPG</span>
+            <span class="px-2 py-0.5 rounded-md bg-white border border-slate-200">PNG</span>
+            <span class="px-2 py-0.5 rounded-md bg-white border border-slate-200">WebP</span>
+            <span class="px-2 py-0.5 rounded-md bg-white border border-slate-200">HEIC</span>
+            <span class="px-2 py-0.5 rounded-md bg-white border border-slate-200">GIF</span>
+            <span class="px-2 py-0.5 rounded-md bg-white border border-slate-200">BMP</span>
+            <span class="px-2 py-0.5 rounded-md bg-white border border-slate-200">TIFF</span>
+            <span class="px-2 py-0.5 rounded-md bg-white border border-slate-200">SVG</span>
           </div>
 
-          <p class="text-2xs text-gray-400 pt-0.5">
-            Files processed locally in browser memory
+          <p class="text-2xs text-slate-400 pt-0.5">
+            Files processed locally in browser memory • Zero cloud storage
           </p>
         </div>
       </div>
@@ -614,15 +614,15 @@ export default function ToolShell({
       {items.length > 0 && (
         <div class="mt-8 space-y-4">
           {/* Queue Header & Global Controls */}
-          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-3 bg-gray-50 border border-gray-200 rounded-2xl">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-3.5 bg-slate-50/80 border border-slate-200/80 rounded-2xl">
             <div class="flex items-center gap-2">
               <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span class="text-sm font-bold text-gray-900">
+              <span class="text-sm font-bold text-slate-900">
                 {items.length} {items.length === 1 ? 'File' : 'Files'} Selected
               </span>
-              <span class="text-xs text-gray-500 font-mono">({formatSize(totalOriginalBytes)})</span>
+              <span class="text-xs text-slate-500 font-mono">({formatSize(totalOriginalBytes)})</span>
               {doneCount > 0 && (
-                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">
                   {doneCount} Converted
                   {totalSavedPercent > 0 && ` • -${totalSavedPercent}% Size`}
                 </span>
@@ -633,7 +633,7 @@ export default function ToolShell({
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                class="px-3 py-1.5 text-xs font-semibold text-gray-700 bg-white border border-gray-300 rounded-xl hover:bg-gray-50 transition flex items-center gap-1"
+                class="px-3 py-1.5 text-xs font-semibold text-slate-700 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition flex items-center gap-1"
               >
                 <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
@@ -643,7 +643,7 @@ export default function ToolShell({
               <button
                 type="button"
                 onClick={clearAll}
-                class="px-3 py-1.5 text-xs font-semibold text-red-600 hover:text-red-700 bg-white border border-gray-300 rounded-xl hover:bg-red-50 transition"
+                class="px-3 py-1.5 text-xs font-semibold text-rose-600 hover:text-rose-700 bg-white border border-slate-200 rounded-xl hover:bg-rose-50 transition"
               >
                 Clear All
               </button>
@@ -661,37 +661,37 @@ export default function ToolShell({
               return (
                 <div
                   key={item.id}
-                  class={`flex flex-col sm:flex-row sm:items-center justify-between p-3.5 sm:p-4 border rounded-2xl bg-white gap-3 transition-all duration-200 hover:shadow-xs ${
+                  class={`flex flex-col sm:flex-row sm:items-center justify-between p-3.5 sm:p-4 border rounded-2xl bg-white gap-3 transition-all duration-200 hover:border-slate-300 hover:shadow-xs ${
                     item.status === 'done'
                       ? 'border-emerald-200 bg-emerald-50/20'
                       : item.status === 'error'
-                      ? 'border-red-200 bg-red-50/20'
-                      : 'border-gray-200'
-                  }`}
+                      ? 'border-rose-200 bg-rose-50/20'
+                      : 'border-slate-200'
+                    }`}
                 >
                   <div class="flex items-center space-x-3.5 min-w-0 flex-1">
                     {/* Thumbnail preview */}
                     {item.thumbUrl ? (
-                      <div class="w-14 h-14 rounded-xl overflow-hidden bg-gray-100 flex-shrink-0 border border-gray-200 shadow-xs relative">
+                      <div class="w-14 h-14 rounded-xl overflow-hidden bg-slate-100 flex-shrink-0 border border-slate-200 shadow-2xs relative">
                         <img src={item.thumbUrl} alt="" class="w-full h-full object-cover" loading="lazy" />
-                        <span class="absolute bottom-0 right-0 px-1 text-[9px] font-bold bg-black/60 text-white rounded-tl">
+                        <span class="absolute bottom-0 right-0 px-1 text-[9px] font-bold bg-slate-900/70 text-white rounded-tl">
                           {item.file.name.split('.').pop()?.toUpperCase()}
                         </span>
                       </div>
                     ) : (
-                      <span class="w-14 h-14 rounded-xl bg-gray-100 text-gray-500 flex items-center justify-center font-bold text-xs uppercase flex-shrink-0 border border-gray-200">
+                      <span class="w-14 h-14 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center font-bold text-xs uppercase flex-shrink-0 border border-slate-200">
                         {item.file.name.split('.').pop() || 'FILE'}
                       </span>
                     )}
 
                     <div class="min-w-0 flex-1">
-                      <p class="text-sm font-semibold text-gray-900 truncate max-w-xs sm:max-w-md">
+                      <p class="text-sm font-semibold text-slate-900 truncate max-w-xs sm:max-w-md">
                         {item.file.name}
                       </p>
-                      <div class="flex items-center gap-2 text-xs text-gray-500 mt-0.5 flex-wrap">
+                      <div class="flex items-center gap-2 text-xs text-slate-500 mt-0.5 flex-wrap">
                         <span class="font-mono">{formatSize(item.originalSize)}</span>
-                        <span class="text-gray-300">→</span>
-                        <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-gray-100 text-gray-700 uppercase">
+                        <span class="text-slate-300">→</span>
+                        <span class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-700 uppercase">
                           {selectedFormat}
                         </span>
 
@@ -704,7 +704,7 @@ export default function ToolShell({
                               </span>
                             )}
                             {item.width && item.height && (
-                              <span class="text-[10px] text-gray-400 font-mono">
+                              <span class="text-[10px] text-slate-400 font-mono">
                                 ({item.width}×{item.height}px)
                               </span>
                             )}
@@ -719,9 +719,9 @@ export default function ToolShell({
                     {/* Processing: progress bar */}
                     {item.status === 'processing' && (
                       <div class="flex items-center gap-2 min-w-[130px]">
-                        <div class="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
+                        <div class="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
                           <div
-                            class="h-full bg-gradient-to-r from-emerald-400 to-green-600 rounded-full animate-[progress_1.2s_ease-in-out_infinite]"
+                            class="h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full animate-[progress_1.2s_ease-in-out_infinite]"
                             style="width: 70%; animation: progress 1.2s ease-in-out infinite;"
                           ></div>
                         </div>
@@ -737,7 +737,7 @@ export default function ToolShell({
                       <a
                         href={item.resultUrl}
                         download={item.resultFileName}
-                        class="inline-flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white rounded-xl text-xs font-bold shadow-xs hover:shadow-md transition-all"
+                        class="inline-flex items-center gap-1.5 px-4 py-2 bg-slate-900 hover:bg-emerald-600 text-white rounded-xl text-xs font-semibold shadow-xs hover:shadow-md transition-all active:scale-[0.99]"
                       >
                         <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -748,7 +748,7 @@ export default function ToolShell({
 
                     {/* Error */}
                     {item.status === 'error' && (
-                      <span class="text-xs text-red-600 font-semibold">{item.errorMessage}</span>
+                      <span class="text-xs text-rose-600 font-semibold">{item.errorMessage}</span>
                     )}
 
                     {/* Idle: Single Convert Button */}
@@ -765,7 +765,7 @@ export default function ToolShell({
                             setItems([...updated]);
                           }
                         }}
-                        class="px-3.5 py-1.5 bg-gray-100 hover:bg-emerald-100 hover:text-emerald-800 text-gray-700 rounded-xl text-xs font-bold transition-all border border-gray-200 hover:border-emerald-300"
+                        class="px-3.5 py-1.5 bg-slate-100 hover:bg-slate-900 hover:text-white text-slate-700 rounded-xl text-xs font-semibold transition-all border border-slate-200"
                       >
                         Convert
                       </button>
@@ -775,7 +775,7 @@ export default function ToolShell({
                     <button
                       type="button"
                       onClick={() => removeItem(item.id)}
-                      class="w-7 h-7 rounded-lg text-gray-400 hover:text-red-600 hover:bg-gray-100 flex items-center justify-center transition"
+                      class="w-7 h-7 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-slate-100 flex items-center justify-center transition"
                       title="Remove file"
                     >
                       <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -789,12 +789,12 @@ export default function ToolShell({
           </div>
 
           {/* Primary Batch Action Footer Bar (FreeConvert / CloudConvert Giant Action Bar) */}
-          <div class="pt-4 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <div class="text-xs text-gray-600 font-medium text-center sm:text-left">
+          <div class="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div class="text-xs text-slate-600 font-medium text-center sm:text-left">
               {doneCount === totalCount ? (
                 <span class="text-emerald-700 font-bold">✓ All {totalCount} files converted successfully!</span>
               ) : isProcessingAll ? (
-                <span class="text-emerald-700 font-semibold animate-pulse">Converting files in browser RAM...</span>
+                <span class="text-slate-700 font-semibold animate-pulse">Converting files in browser RAM...</span>
               ) : (
                 <span>Click Convert All to process all files in parallel</span>
               )}
@@ -805,7 +805,7 @@ export default function ToolShell({
                 <button
                   type="button"
                   onClick={downloadZip}
-                  class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white shadow-md hover:shadow-lg transition-all"
+                  class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-semibold bg-emerald-600 hover:bg-emerald-500 text-white shadow-sm hover:shadow-md transition-all active:scale-[0.99]"
                 >
                   <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -819,7 +819,7 @@ export default function ToolShell({
                   type="button"
                   onClick={runAll}
                   disabled={isProcessingAll}
-                  class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 py-3 rounded-2xl text-xs sm:text-sm font-bold bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white shadow-md hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                  class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-xs sm:text-sm font-semibold bg-slate-900 hover:bg-emerald-600 text-white shadow-sm hover:shadow-md transition-all disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.99]"
                 >
                   {isProcessingAll ? (
                     <>
@@ -832,7 +832,7 @@ export default function ToolShell({
                   ) : (
                     <>
                       <span>⚡ Convert All Files</span>
-                      <span class="px-2 py-0.5 rounded-full bg-white/20 text-xs">
+                      <span class="px-2 py-0.5 rounded-full bg-white/20 text-xs font-mono">
                         {totalCount - doneCount}
                       </span>
                     </>

@@ -289,29 +289,29 @@ export default function TargetSizeShell({
   const doneCount = useMemo(() => items.filter((i) => i.status === 'done').length, [items]);
 
   return (
-    <div class="target-size-shell bg-white border border-gray-200 rounded-2xl sm:rounded-3xl shadow-sm p-4 sm:p-8 my-6 transition-all">
+    <div class="target-size-shell bg-white border border-slate-200/80 rounded-3xl shadow-xl shadow-slate-200/40 p-5 sm:p-8 my-6 transition-all">
       {/* Target Size Controls Bar */}
-      <div class="mb-6 p-4 sm:p-5 bg-gradient-to-r from-emerald-50/70 to-gray-50 rounded-2xl border border-emerald-200/80 flex flex-wrap items-center justify-between gap-4">
+      <div class="mb-6 p-4 sm:p-5 bg-slate-50/80 rounded-2xl border border-slate-200/80 flex flex-wrap items-center justify-between gap-4">
         <div class="flex items-center space-x-3 flex-wrap gap-2">
-          <label class="text-xs font-bold text-gray-800 uppercase tracking-wider flex items-center gap-1">
+          <label class="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
             <span>🎯</span> Target Size:
           </label>
-          <div class="flex items-center space-x-1 flex-wrap gap-1">
+          <div class="flex items-center space-x-1.5 flex-wrap gap-1">
             {[20, 50, 100, 200, 500, 1024].map((kb) => (
               <button
                 key={kb}
                 type="button"
                 onClick={() => setTargetKb(kb)}
-                class={`px-3 py-1.5 text-xs font-bold rounded-xl transition ${
+                class={`px-3 py-1.5 text-xs font-bold rounded-xl transition-all ${
                   targetKb === kb
-                    ? 'bg-emerald-600 text-white shadow-xs'
-                    : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-100'
+                    ? 'bg-slate-900 text-white shadow-xs'
+                    : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
                 }`}
               >
                 {kb >= 1024 ? `${kb / 1024}MB` : `${kb}KB`}
               </button>
             ))}
-            <div class="flex items-center ml-2">
+            <div class="flex items-center ml-1">
               <input
                 type="number"
                 min="5"
@@ -321,9 +321,9 @@ export default function TargetSizeShell({
                   const val = parseInt((e.target as HTMLInputElement).value, 10);
                   if (val > 0) setTargetKb(val);
                 }}
-                class="w-16 px-2.5 py-1.5 text-xs font-mono font-bold border border-gray-300 rounded-l-xl bg-white text-gray-900 focus:ring-1 focus:ring-emerald-500"
+                class="w-16 px-2.5 py-1.5 text-xs font-mono font-bold border border-slate-200 rounded-l-xl bg-white text-slate-900 focus:ring-1 focus:ring-slate-900"
               />
-              <span class="px-2.5 py-1.5 text-xs bg-gray-100 border border-l-0 border-gray-300 rounded-r-xl text-gray-600 font-bold">
+              <span class="px-2.5 py-1.5 text-xs bg-slate-100 border border-l-0 border-slate-200 rounded-r-xl text-slate-600 font-bold">
                 KB
               </span>
             </div>
@@ -331,11 +331,11 @@ export default function TargetSizeShell({
         </div>
 
         <div class="flex items-center space-x-2">
-          <label class="text-xs font-bold text-gray-700 uppercase tracking-wider">Format:</label>
+          <label class="text-xs font-bold text-slate-700 uppercase tracking-wider">Format:</label>
           <select
             value={outputFormat}
             onChange={(e) => setOutputFormat((e.target as HTMLSelectElement).value as any)}
-            class="text-xs font-bold px-3 py-1.5 rounded-xl border border-gray-300 bg-white text-gray-800 focus:ring-2 focus:ring-emerald-500 shadow-2xs"
+            class="text-xs font-bold px-3 py-1.5 rounded-xl border border-slate-200 bg-white text-slate-800 focus:ring-2 focus:ring-slate-900 shadow-2xs"
           >
             <option value="jpg">JPG (Universal format)</option>
             <option value="webp">WebP (High efficiency)</option>
@@ -358,10 +358,10 @@ export default function TargetSizeShell({
         onDragLeave={onDragLeave}
         onDrop={onDrop}
         onClick={() => fileInputRef.current?.click()}
-        class={`border-2 border-dashed rounded-2xl sm:rounded-3xl p-6 sm:p-12 text-center cursor-pointer transition-all duration-200 group ${
+        class={`border-2 border-dashed rounded-2xl sm:rounded-3xl p-8 sm:p-14 text-center cursor-pointer transition-all duration-200 group ${
           isDragging
-            ? 'border-emerald-500 bg-emerald-50 scale-[1.01] shadow-lg shadow-emerald-100/50'
-            : 'border-gray-300 hover:border-emerald-500 hover:bg-emerald-50/20 bg-gray-50/40'
+            ? 'border-emerald-500 bg-emerald-50/40 scale-[1.005] shadow-xl shadow-emerald-500/10'
+            : 'border-slate-200 hover:border-emerald-500/80 hover:bg-emerald-50/20 bg-slate-50/40'
         }`}
       >
         <input
@@ -375,12 +375,12 @@ export default function TargetSizeShell({
             if (target.files) handleFiles(Array.from(target.files));
           }}
         />
-        <div class="max-w-md mx-auto space-y-3.5">
+        <div class="max-w-md mx-auto space-y-4">
           <div
-            class={`mx-auto w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center transition-all duration-200 ${
+            class={`mx-auto w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center transition-all duration-300 ${
               isDragging
-                ? 'bg-emerald-600 text-white scale-105'
-                : 'bg-emerald-100/80 text-emerald-700 group-hover:scale-105 group-hover:bg-emerald-600 group-hover:text-white'
+                ? 'bg-emerald-600 text-white scale-105 shadow-md shadow-emerald-500/20'
+                : 'bg-emerald-50 text-emerald-600 border border-emerald-100 group-hover:scale-105 group-hover:bg-slate-900 group-hover:text-white group-hover:border-slate-900'
             }`}
           >
             <svg class="w-7 h-7 sm:w-8 sm:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
@@ -389,18 +389,18 @@ export default function TargetSizeShell({
           </div>
 
           <div>
-            <div class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm sm:text-base shadow-xs transition">
+            <div class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-3.5 rounded-xl bg-slate-900 hover:bg-emerald-600 text-white font-medium text-sm sm:text-base shadow-sm hover:shadow-md transition-all active:scale-[0.99]">
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
               </svg>
               <span>Choose Images</span>
             </div>
-            <p class="text-xs text-gray-500 mt-2">
+            <p class="text-xs text-slate-500 mt-2.5">
               Drag &amp; drop photos or paste from clipboard (Ctrl+V)
             </p>
           </div>
 
-          <p class="text-2xs text-gray-400 pt-0.5">
+          <p class="text-2xs text-slate-400 pt-0.5">
             Automatic compression to &le; {targetKb} KB per photo • 100% in-browser RAM
           </p>
         </div>
@@ -409,8 +409,8 @@ export default function TargetSizeShell({
       {/* Files List & Results */}
       {items.length > 0 && (
         <div class="mt-8 space-y-3">
-          <div class="flex items-center justify-between p-3.5 bg-gray-50 border border-gray-200 rounded-2xl">
-            <div class="text-xs sm:text-sm font-bold text-gray-900">
+          <div class="flex items-center justify-between p-3.5 bg-slate-50/80 border border-slate-200/80 rounded-2xl">
+            <div class="text-xs sm:text-sm font-bold text-slate-900">
               {items.length} {items.length === 1 ? 'image' : 'images'} selected
               {doneCount > 0 && <span class="text-emerald-700 ml-2 font-bold">({doneCount} compressed)</span>}
             </div>
@@ -418,14 +418,14 @@ export default function TargetSizeShell({
               <button
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
-                class="px-3 py-1.5 text-xs font-semibold text-gray-700 bg-white border border-gray-300 rounded-xl hover:bg-gray-50"
+                class="px-3 py-1.5 text-xs font-semibold text-slate-700 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition"
               >
                 + Add More
               </button>
               <button
                 type="button"
                 onClick={clearAll}
-                class="px-3 py-1.5 text-xs font-semibold text-red-600 bg-white border border-gray-300 rounded-xl hover:bg-red-50"
+                class="px-3 py-1.5 text-xs font-semibold text-rose-600 bg-white border border-slate-200 rounded-xl hover:bg-rose-50 transition"
               >
                 Clear
               </button>
@@ -442,30 +442,30 @@ export default function TargetSizeShell({
               return (
                 <div
                   key={item.id}
-                  class={`flex flex-col sm:flex-row sm:items-center justify-between p-3.5 border rounded-2xl bg-white gap-3 transition ${
+                  class={`flex flex-col sm:flex-row sm:items-center justify-between p-3.5 border rounded-2xl bg-white gap-3 transition-all duration-200 hover:border-slate-300 hover:shadow-xs ${
                     item.status === 'done'
                       ? 'border-emerald-200 bg-emerald-50/20'
                       : item.status === 'error'
-                      ? 'border-red-200 bg-red-50/20'
-                      : 'border-gray-200'
+                      ? 'border-rose-200 bg-rose-50/20'
+                      : 'border-slate-200'
                   }`}
                 >
                   <div class="flex items-center space-x-3.5 min-w-0 flex-1">
                     {item.thumbUrl ? (
-                      <div class="w-14 h-14 rounded-xl overflow-hidden bg-gray-100 flex-shrink-0 border border-gray-200 shadow-2xs">
+                      <div class="w-14 h-14 rounded-xl overflow-hidden bg-slate-100 flex-shrink-0 border border-slate-200 shadow-2xs">
                         <img src={item.thumbUrl} alt="" class="w-full h-full object-cover" loading="lazy" />
                       </div>
                     ) : (
-                      <span class="w-14 h-14 rounded-xl bg-gray-100 text-gray-500 flex items-center justify-center font-bold text-xs uppercase flex-shrink-0 border border-gray-200">
+                      <span class="w-14 h-14 rounded-xl bg-slate-100 text-slate-500 flex items-center justify-center font-bold text-xs uppercase flex-shrink-0 border border-slate-200">
                         IMG
                       </span>
                     )}
 
                     <div class="min-w-0 flex-1">
-                      <p class="text-sm font-semibold text-gray-900 truncate max-w-xs sm:max-w-md">
+                      <p class="text-sm font-semibold text-slate-900 truncate max-w-xs sm:max-w-md">
                         {item.file.name}
                       </p>
-                      <div class="flex items-center gap-2 text-xs text-gray-500 mt-0.5 flex-wrap">
+                      <div class="flex items-center gap-2 text-xs text-slate-500 mt-0.5 flex-wrap">
                         <span class="font-mono">{formatSize(item.originalSize)}</span>
                         <span>→</span>
                         {item.status === 'done' && item.newSize ? (
@@ -477,13 +477,13 @@ export default function TargetSizeShell({
                               </span>
                             )}
                             {item.qualityUsed && (
-                              <span class="text-[10px] text-gray-400 font-mono">
+                              <span class="text-[10px] text-slate-400 font-mono">
                                 ({item.qualityUsed}% Q, {item.width}×{item.height}px)
                               </span>
                             )}
                           </span>
                         ) : (
-                          <span class="text-xs text-gray-400">Target &le; {targetKb}KB</span>
+                          <span class="text-xs text-slate-400">Target &le; {targetKb}KB</span>
                         )}
                       </div>
                     </div>
@@ -497,7 +497,7 @@ export default function TargetSizeShell({
                       <a
                         href={item.resultUrl}
                         download={item.resultFileName}
-                        class="inline-flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-emerald-600 to-green-600 text-white rounded-xl text-xs font-bold shadow-xs hover:shadow-md transition"
+                        class="inline-flex items-center gap-1.5 px-4 py-2 bg-slate-900 hover:bg-emerald-600 text-white rounded-xl text-xs font-semibold shadow-xs hover:shadow-md transition-all active:scale-[0.99]"
                       >
                         <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -506,12 +506,12 @@ export default function TargetSizeShell({
                       </a>
                     )}
                     {item.status === 'error' && (
-                      <span class="text-xs text-red-600 font-semibold">{item.errorMessage}</span>
+                      <span class="text-xs text-rose-600 font-semibold">{item.errorMessage}</span>
                     )}
                     <button
                       type="button"
                       onClick={() => removeItem(item.id)}
-                      class="w-7 h-7 rounded-lg text-gray-400 hover:text-red-600 hover:bg-gray-100 flex items-center justify-center transition"
+                      class="w-7 h-7 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-slate-100 flex items-center justify-center transition"
                     >
                       ×
                     </button>
@@ -522,8 +522,8 @@ export default function TargetSizeShell({
           </div>
 
           {/* Bottom Action Footer */}
-          <div class="pt-4 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <span class="text-xs text-gray-500">
+          <div class="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <span class="text-xs text-slate-500 font-medium">
               {doneCount > 0 ? `${doneCount} of ${items.length} compressed` : `${items.length} images ready`}
             </span>
             <div class="flex items-center gap-3 w-full sm:w-auto justify-end">
@@ -531,7 +531,7 @@ export default function TargetSizeShell({
                 <button
                   type="button"
                   onClick={downloadZip}
-                  class="flex-1 sm:flex-initial px-5 py-2.5 rounded-xl text-xs font-bold bg-gray-900 text-white hover:bg-gray-800 transition"
+                  class="flex-1 sm:flex-initial px-5 py-2.5 rounded-xl text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white shadow-sm transition-all active:scale-[0.99]"
                 >
                   Download All as ZIP
                 </button>
@@ -541,9 +541,9 @@ export default function TargetSizeShell({
                   type="button"
                   onClick={runAll}
                   disabled={isProcessingAll}
-                  class="flex-1 sm:flex-initial px-6 py-2.5 rounded-xl text-xs font-bold bg-gradient-to-r from-emerald-600 to-green-600 text-white hover:from-emerald-700 hover:to-green-700 shadow-md transition disabled:opacity-50"
+                  class="flex-1 sm:flex-initial px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-slate-900 hover:bg-emerald-600 text-white shadow-sm hover:shadow-md transition-all disabled:opacity-50 active:scale-[0.99]"
                 >
-                  {isProcessingAll ? 'Compressing...' : `Compress All to ≤ ${targetKb}KB`}
+                  {isProcessingAll ? 'Compressing...' : `⚡ Compress All to ≤ ${targetKb}KB`}
                 </button>
               )}
             </div>

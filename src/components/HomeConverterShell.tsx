@@ -222,20 +222,20 @@ export default function HomeConverterShell() {
   };
 
   return (
-    <div class="home-converter-shell bg-white border border-gray-200 rounded-2xl sm:rounded-3xl shadow-sm p-4 sm:p-8 my-6 sm:my-8 max-w-4xl mx-auto transition-all">
+    <div class="home-converter-shell bg-white border border-slate-200/80 rounded-2xl sm:rounded-3xl shadow-xl shadow-slate-200/40 p-5 sm:p-8 my-6 sm:my-8 max-w-4xl mx-auto transition-all">
       {/* Format & Optimization Controls Bar */}
-      <div class="flex flex-wrap items-center justify-between gap-4 mb-6 pb-4 border-b border-gray-100">
-        <div class="flex items-center gap-2">
-          <label class="text-xs font-bold text-gray-500 uppercase tracking-wider">Convert to:</label>
-          <div class="inline-flex rounded-xl p-1 bg-gray-100 border border-gray-200">
+      <div class="flex flex-wrap items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-100">
+        <div class="flex items-center gap-2.5">
+          <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Convert to:</label>
+          <div class="inline-flex rounded-xl p-1 bg-slate-100 border border-slate-200">
             {(['jpg', 'png', 'webp'] as const).map((fmt) => (
               <button
                 key={fmt}
                 type="button"
                 onClick={() => setTargetFormat(fmt)}
                 class={`px-3 py-1.5 text-xs font-bold rounded-lg uppercase transition-all ${targetFormat === fmt
-                    ? 'bg-emerald-600 text-white shadow-xs'
-                    : 'text-gray-600 hover:text-gray-900'
+                    ? 'bg-slate-900 text-white shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900'
                   }`}
               >
                 {fmt}
@@ -249,12 +249,12 @@ export default function HomeConverterShell() {
           onClick={() => setShowOptions(!showOptions)}
           aria-expanded={showOptions}
           aria-label="Image Compression Settings"
-          class={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all ${showOptions
+          class={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold border transition-all ${showOptions
               ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
-              : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
+              : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
             }`}
         >
-          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <svg class="w-3.5 h-3.5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
             <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
@@ -336,9 +336,9 @@ export default function HomeConverterShell() {
         onDragLeave={onDragLeave}
         onDrop={onDrop}
         onClick={() => fileInputRef.current?.click()}
-        class={`border-2 border-dashed rounded-2xl sm:rounded-3xl p-6 sm:p-12 text-center cursor-pointer transition-all duration-200 group ${isDragging
-            ? 'border-emerald-600 bg-emerald-50 scale-[1.01] shadow-lg shadow-emerald-100/50'
-            : 'border-gray-300 hover:border-emerald-500 hover:bg-emerald-50/20 bg-gray-50/40'
+        class={`border-2 border-dashed rounded-2xl sm:rounded-3xl p-6 sm:p-12 text-center cursor-pointer transition-all duration-300 group ${isDragging
+            ? 'border-emerald-500 bg-emerald-50/70 scale-[1.01] shadow-xl shadow-emerald-500/10'
+            : 'border-slate-200/90 hover:border-emerald-500/70 hover:bg-emerald-50/30 bg-slate-50/50'
           }`}
       >
         <input
@@ -355,9 +355,9 @@ export default function HomeConverterShell() {
 
         <div class="max-w-md mx-auto space-y-3.5">
           <div
-            class={`mx-auto w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center transition-all duration-200 ${isDragging
+            class={`mx-auto w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center transition-all duration-300 ${isDragging
                 ? 'bg-emerald-600 text-white scale-105'
-                : 'bg-emerald-100/80 text-emerald-700 group-hover:scale-105 group-hover:bg-emerald-600 group-hover:text-white'
+                : 'bg-emerald-50 text-emerald-700 group-hover:scale-105 group-hover:bg-slate-900 group-hover:text-white'
               }`}
           >
             <svg class="w-7 h-7 sm:w-8 sm:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
@@ -366,18 +366,19 @@ export default function HomeConverterShell() {
           </div>
 
           <div>
-            <div class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm sm:text-base shadow-xs transition">
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <div class="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto px-7 py-3 rounded-xl bg-slate-900 hover:bg-emerald-600 text-white font-semibold text-sm sm:text-base shadow-sm hover:shadow-md transition-all duration-200">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
               </svg>
-              <span>Choose Files</span>
+              <span>Choose Photos</span>
             </div>
-            <p class="text-xs text-gray-500 mt-2">
-              Drop photos here or paste from clipboard (Ctrl+V)
+            <p class="text-xs text-slate-500 mt-2.5">
+              Drag & drop photos or paste from clipboard <kbd class="px-1.5 py-0.5 rounded bg-slate-100 text-2xs font-mono font-semibold text-slate-500 border border-slate-200">Ctrl+V</kbd>
             </p>
           </div>
-          <p class="text-2xs text-gray-400 pt-0.5">
-            Files processed locally in browser memory
+          <p class="text-2xs text-slate-400 pt-0.5 flex items-center justify-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+            <span>100% In-Memory Execution • Zero Server Latency</span>
           </p>
         </div>
       </div>

@@ -481,7 +481,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
   }, [csvJsonInput, csvAutoType]);
 
   return (
-    <div class="bg-white border border-gray-200 rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-sm mb-10">
+    <div class="bg-white border border-slate-200/80 rounded-3xl p-5 sm:p-8 shadow-xl shadow-slate-200/40 mb-10 transition-all">
       {/* 1. JWT Decoder */}
       {toolId === 'jwt-decoder' && (
         <div class="space-y-6">
