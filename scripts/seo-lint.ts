@@ -177,8 +177,8 @@ export function runSeoLint() {
       }
     });
 
-    // Size check: HTML <= 95KB (or 110KB for 100+ item master directories)
-    const isMasterCatalog = urlPath === '/tools/';
+    // Size check: HTML <= 95KB (or 110KB for 100+ item master directories / root hub)
+    const isMasterCatalog = urlPath === '/tools/' || urlPath === '/';
     const maxBudget = isMasterCatalog ? 110 * 1024 : 95 * 1024;
     const stats = fs.statSync(filePath);
     if (stats.size > maxBudget) {

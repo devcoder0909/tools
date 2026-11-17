@@ -11,24 +11,24 @@ const calculators = allTools.filter((t) => t.kind === 'finance' || t.kind === 'c
 const generatorsAndMedia = allTools.filter((t) => t.kind === 'generator' || t.kind === 'media' || t.kind === 'developer' || t.kind === 'text');
 const formatHubs = getFormatHubs();
 
-// Flagship Tier 1 featured tools (highest search volume)
+// Flagship Tier 1 featured tools
 const featuredSlugs = [
   'image-compressor',
+  'passport-photo-resizer',
+  'compress-image-to-50kb',
   'compress-image-to-20kb',
+  'heic-to-jpg',
   'pdf-to-jpg',
   'merge-pdf',
-  'qr-code-generator',
-  'gst-calculator',
-  'loan-calculator',
-  'gpa-calculator',
-  'color-picker',
-  'aspect-ratio-calculator',
-  'base64-encoder',
-  'character-counter',
-  'online-calculator',
-  'pomodoro-timer',
-  'lorem-ipsum-generator',
   'compress-pdf',
+  'jpg-compressor',
+  'photo-compressor',
+  'jpeg-to-jpg',
+  'webp-to-png',
+  'png-to-jpg',
+  'emi-calculator',
+  'qr-code-generator',
+  'json-formatter',
 ];
 const featuredTools = featuredSlugs
   .map((slug) => allTools.find((t) => t.slug === slug))
@@ -37,9 +37,9 @@ const featuredTools = featuredSlugs
 const websiteJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: siteConfig.brand,
+  name: 'ZixTool',
   url: siteConfig.url,
-  description: 'Private online file converters, PDF utilities, image compressors, and calculators executed locally in your browser.',
+  description: 'Fast, 100% private online file converters, PDF editors, image compressors, and calculators executed locally in your browser.',
   potentialAction: {
     '@type': 'SearchAction',
     target: `${siteConfig.url}/tools/?q={search_term_string}`,
@@ -50,7 +50,7 @@ const websiteJsonLd = {
 const organizationJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: siteConfig.brand,
+  name: 'ZixTool',
   url: siteConfig.url,
   logo: `${siteConfig.url}/images/brand/logo.png`,
   sameAs: [
@@ -63,37 +63,60 @@ const organizationJsonLd = {
   },
 };
 
+const webAppJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'ZixTool Online Utilities',
+  url: siteConfig.url,
+  applicationCategory: 'UtilitiesApplication',
+  operatingSystem: 'All modern web browsers',
+  browserRequirements: 'Requires JavaScript and modern HTML5 Canvas/WebAssembly support',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+  featureList: [
+    '100% Client-Side In-Browser Processing',
+    'Zero File Uploads to Cloud Servers',
+    'Image Compression to Exact KB Limits (20KB, 50KB, 100KB)',
+    'Client-Side PDF Merging, Splitting and Compression',
+    'Privacy Compliant and Safe for Biometric IDs',
+    'Works Offline via Progressive Web App (PWA)',
+  ],
+};
+
 const faqJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'Is Gudmud Convert free to use with no hidden fees?',
+      name: 'Is ZixTool free to use with no hidden fees or limits?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes. Every tool on Gudmud Convert is free to use with no daily conversion quotas, no file size paywalls, no watermarks, and no sign-up or credit card required.',
+        text: 'Yes. Every tool on ZixTool is 100% free with no daily conversion quotas, no file size paywalls, no watermarks, and no sign-up or credit card required.',
       },
     },
     {
       '@type': 'Question',
-      name: 'How do I compress an image to 20KB or a specific file size?',
+      name: 'How does client-side in-browser file conversion protect my privacy?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Use our Compress Image to 20KB tool or Universal Image Compressor. Simply upload your JPG, PNG, or WebP photo, select 20KB target size, and our adaptive compression algorithm shrinks the file size while preserving maximum visual sharpness.',
+        text: 'ZixTool processes your files entirely inside your device RAM using WebAssembly and HTML5 Canvas. Your documents, photos, and biometric signatures never leave your browser and are never uploaded to any remote cloud server.',
       },
     },
     {
       '@type': 'Question',
-      name: 'Are my uploaded files and documents kept private and secure?',
+      name: 'How do I compress photos and signatures for exam portals (TNPSC, UPSC, Bank Exams)?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes. Gudmud Convert processes your files directly inside your browser memory using WebAssembly and HTML5 Canvas. Your documents and photos are never uploaded to any remote server or stored in the cloud.',
+        text: 'Use our Passport Photo Resizer or dedicated Compress to 20KB and 50KB tools. Select your target byte ceiling; our automated binary search engine clamps the output strictly within portal limits while preserving crisp facial and signature contours.',
       },
     },
     {
       '@type': 'Question',
-      name: 'Can I convert HEIC photos from iPhone without installing apps?',
+      name: 'Can I convert Apple HEIC photos to JPG without installing software?',
       acceptedAnswer: {
         '@type': 'Answer',
         text: 'Yes. Our HEIC to JPG tool decodes Apple HEIC and HEIF photos locally using WebAssembly in any browser, exporting high quality JPGs without needing paid codec extensions.',
@@ -101,18 +124,34 @@ const faqJsonLd = {
     },
     {
       '@type': 'Question',
-      name: 'What file formats can I convert online for free?',
+      name: 'Can I convert multi-page PDF documents into high-resolution JPG images?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Gudmud Convert supports all major formats including HEIC, JPG, PNG, WebP, AVIF, GIF, SVG, BMP, TIFF, and PDF, alongside core deterministic calculators and developer formatters.',
+        text: 'Yes. Our PDF to JPG converter parses PDF vector streams and bitmaps in browser memory, allowing you to convert individual pages or extract all pages in a single ZIP download with zero server uploads.',
       },
     },
     {
       '@type': 'Question',
-      name: 'Does Gudmud Convert add any watermarks to my converted files?',
+      name: 'What image and document formats are supported on ZixTool?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'ZixTool supports all major formats including HEIC, JPG, JPEG, PNG, WebP, AVIF, GIF, SVG, BMP, TIFF, and PDF, alongside core deterministic calculators and developer formatters.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Does ZixTool add watermarks or reduce image quality?',
       acceptedAnswer: {
         '@type': 'Answer',
         text: 'No. All conversions, compressions, and generated files are 100% clean with zero watermarks, brand logos, or artificial quality degradation.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I use ZixTool offline without an active internet connection?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Once this page loads, ZixTool assets are cached by your browser via Progressive Web App (PWA) standards. You can disconnect from Wi-Fi or mobile data and continue converting and compressing photos offline.',
       },
     },
   ],
@@ -120,223 +159,454 @@ const faqJsonLd = {
 ---
 
 <Layout
-  title="Gudmud Convert - Free Online File Converters & Tools"
-  description="100% free online file converters, PDF editors, image compressors, and calculators. Convert HEIC to JPG, merge PDFs, shrink photo sizes, and create QR codes."
+  title="ZixTool - Free Online File Converters & Tools"
+  description="Fast, 100% private online file converters, PDF editors, image compressors, and calculators. Works locally in your browser with zero file uploads."
   canonical={`${siteConfig.url}/`}
-  jsonLd={[websiteJsonLd, organizationJsonLd, faqJsonLd]}
+  jsonLd={[websiteJsonLd, organizationJsonLd, webAppJsonLd, faqJsonLd]}
 >
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
-    <!-- Hero Section -->
-    <header class="text-center max-w-3xl mx-auto mb-8">
-      <h1 class="text-3xl sm:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
-        Free Online File Converters, PDF Tools & Calculators
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-10 sm:py-16">
+    <!-- Hero Header -->
+    <header class="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+      <!-- Trust Pill Badge -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-emerald-800 text-xs font-semibold mb-5 shadow-2xs">
+        <span class="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>100% In-Browser RAM • 0 Cloud Uploads • Private & Fast</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-5xl font-black text-gray-900 tracking-tight leading-tight mb-4">
+        Free Online File Converters, Image Compressors & Utilities
       </h1>
-      <p class="text-base sm:text-lg text-gray-600 leading-relaxed">
-        Convert images, merge and compress PDFs, shrink photo file sizes, generate custom QR codes, and calculate loan EMIs directly in your browser without registration or uploads.
+      <p class="text-base sm:text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
+        Convert images, compress photos to 20KB–100KB for exam portals, edit PDFs, and calculate finances directly in device memory. No registration, no queues, and your data never leaves your device.
       </p>
+
+      <!-- Quick-Intent Shortcuts -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mt-6" aria-label="Most Requested Tools">
+        <a href="/compress-image-to-50kb/" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gray-100 hover:bg-emerald-50 hover:text-emerald-700 text-gray-700 text-xs font-medium border border-gray-200/60 transition">
+          <span>📷</span><span>Compress to 50KB</span>
+        </a>
+        <a href="/passport-photo-resizer/" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gray-100 hover:bg-emerald-50 hover:text-emerald-700 text-gray-700 text-xs font-medium border border-gray-200/60 transition">
+          <span>🪪</span><span>Exam & Passport Photo</span>
+        </a>
+        <a href="/heic-to-jpg/" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gray-100 hover:bg-emerald-50 hover:text-emerald-700 text-gray-700 text-xs font-medium border border-gray-200/60 transition">
+          <span>🔄</span><span>HEIC to JPG</span>
+        </a>
+        <a href="/jpg-compressor/" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gray-100 hover:bg-emerald-50 hover:text-emerald-700 text-gray-700 text-xs font-medium border border-gray-200/60 transition">
+          <span>📉</span><span>JPG Compressor</span>
+        </a>
+        <a href="/pdf-to-jpg/" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gray-100 hover:bg-emerald-50 hover:text-emerald-700 text-gray-700 text-xs font-medium border border-gray-200/60 transition">
+          <span>📄</span><span>PDF to JPG</span>
+        </a>
+        <a href="/merge-pdf/" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gray-100 hover:bg-emerald-50 hover:text-emerald-700 text-gray-700 text-xs font-medium border border-gray-200/60 transition">
+          <span>📑</span><span>Merge PDF</span>
+        </a>
+        <a href="/emi-calculator/" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gray-100 hover:bg-emerald-50 hover:text-emerald-700 text-gray-700 text-xs font-medium border border-gray-200/60 transition">
+          <span>💰</span><span>EMI Calculator</span>
+        </a>
+        <a href="/qr-code-generator/" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gray-100 hover:bg-emerald-50 hover:text-emerald-700 text-gray-700 text-xs font-medium border border-gray-200/60 transition">
+          <span>📱</span><span>QR Generator</span>
+        </a>
+      </div>
     </header>
 
-    <!-- Working Universal Tool Above the Fold -->
-    <HomeConverterShell client:load />
+    <!-- Interactive Universal Dropzone Above the Fold -->
+    <div class="mb-14">
+      <HomeConverterShell client:load />
+    </div>
 
-    <!-- Popular Flagship Utilities -->
+    <!-- Psychology Trust Pillars -->
+    <section class="mb-16" aria-labelledby="trust-pillars-heading">
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <h2 id="trust-pillars-heading" class="text-xl sm:text-2xl font-bold text-gray-900 tracking-tight">
+          Engineered for Complete Privacy & Zero Latency
+        </h2>
+        <p class="text-sm text-gray-500 mt-1">Why hundreds of thousands of users trust ZixTool over traditional cloud uploaders.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="p-5 rounded-2xl border border-gray-200/80 bg-white shadow-2xs hover:border-emerald-500/50 transition">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-lg mb-3">🛡️</div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1.5">100% In-Device Memory</h3>
+          <p class="text-xs text-gray-500 leading-relaxed">All files are processed in local RAM via WebAssembly. Your photos, biometric IDs, and PDFs never upload to any remote server.</p>
+        </div>
+        <div class="p-5 rounded-2xl border border-gray-200/80 bg-white shadow-2xs hover:border-emerald-500/50 transition">
+          <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-lg mb-3">⚡</div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1.5">Instant Zero Latency</h3>
+          <p class="text-xs text-gray-500 leading-relaxed">No uploading over slow internet and no waiting in server queues. Even heavy 20MB photos transcode in milliseconds on your device.</p>
+        </div>
+        <div class="p-5 rounded-2xl border border-gray-200/80 bg-white shadow-2xs hover:border-emerald-500/50 transition">
+          <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-lg mb-3">🎯</div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1.5">Exact Target Byte Limits</h3>
+          <p class="text-xs text-gray-500 leading-relaxed">Automated binary search quantization ensures images strictly meet strict portal byte ceilings (under 20KB, 50KB, 100KB).</p>
+        </div>
+        <div class="p-5 rounded-2xl border border-gray-200/80 bg-white shadow-2xs hover:border-emerald-500/50 transition">
+          <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold text-lg mb-3">🚫</div>
+          <h3 class="font-bold text-gray-900 text-sm mb-1.5">Zero Traps or Watermarks</h3>
+          <p class="text-xs text-gray-500 leading-relaxed">No subscription paywalls, no forced account signups, and zero brand watermarks stamped onto your personal output files.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Search & Category Filter Section -->
+    <section class="mb-14" aria-labelledby="explore-heading">
+      <div class="bg-gradient-to-b from-gray-50 to-white border border-gray-200 rounded-3xl p-6 sm:p-8">
+        <div class="max-w-2xl mx-auto text-center mb-6">
+          <h2 id="explore-heading" class="text-2xl font-bold text-gray-900 tracking-tight">
+            Explore 70+ Smart Online Utilities
+          </h2>
+          <p class="text-sm text-gray-500 mt-1">Instant search or choose a category below to quickly find the exact tool you need.</p>
+        </div>
+
+        <!-- Search Input -->
+        <div class="max-w-xl mx-auto mb-6">
+          <div class="relative">
+            <input
+              type="text"
+              id="home-tool-search"
+              placeholder="Search tools by name, format, or task (e.g. 50kb, heic, emi, pdf to jpg)..."
+              class="w-full pl-11 pr-4 py-3 rounded-2xl border border-gray-300 bg-white text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 shadow-xs transition"
+              aria-label="Search all tools"
+            />
+            <svg class="w-5 h-5 text-gray-400 absolute left-3.5 top-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Category Tabs -->
+        <div class="flex flex-wrap items-center justify-center gap-2" role="tablist">
+          <button type="button" class="category-tab active px-4 py-2 rounded-xl text-xs font-bold transition bg-emerald-600 text-white shadow-xs" data-category="all">
+            All Tools ({allTools.length})
+          </button>
+          <button type="button" class="category-tab px-4 py-2 rounded-xl text-xs font-semibold transition bg-white border border-gray-200 text-gray-700 hover:bg-gray-100" data-category="converter">
+            🖼️ Image & Photos ({converters.length})
+          </button>
+          <button type="button" class="category-tab px-4 py-2 rounded-xl text-xs font-semibold transition bg-white border border-gray-200 text-gray-700 hover:bg-gray-100" data-category="pdf">
+            📑 PDF & Documents ({pdfTools.length})
+          </button>
+          <button type="button" class="category-tab px-4 py-2 rounded-xl text-xs font-semibold transition bg-white border border-gray-200 text-gray-700 hover:bg-gray-100" data-category="finance">
+            💰 Calculators & Finance ({calculators.length})
+          </button>
+          <button type="button" class="category-tab px-4 py-2 rounded-xl text-xs font-semibold transition bg-white border border-gray-200 text-gray-700 hover:bg-gray-100" data-category="developer">
+            🛠️ Developer & Utilities ({generatorsAndMedia.length})
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Flagship Top Tools Grid -->
     <section class="mb-16" aria-labelledby="featured-heading">
       <div class="flex items-center justify-between mb-6">
         <div>
-          <h2 id="featured-heading" class="text-2xl font-bold text-gray-900">
-            Featured Online Utilities & Tools
+          <h2 id="featured-heading" class="text-2xl font-bold text-gray-900 tracking-tight">
+            Top Rated Online Utilities & Converters
           </h2>
-          <p class="text-sm text-gray-500">Most popular free file converters, PDF editors, image compressors, and calculators.</p>
+          <p class="text-sm text-gray-500">Most requested tools for everyday file conversions, exam photo preparation, and calculations.</p>
         </div>
-        <a href="/tools/" class="text-sm font-semibold text-green-600 hover:underline">
-          View all 70+ tools &rarr;
+        <a href="/tools/" class="hidden sm:inline-flex items-center gap-1 text-sm font-semibold text-emerald-600 hover:text-emerald-700 hover:underline">
+          <span>View all 70+ tools</span>
+          <span>&rarr;</span>
         </a>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="tools-container">
         {featuredTools.map((tool) => (
           <a
             href={`/${tool!.slug}/`}
-            class="p-4 rounded-xl border border-gray-200 bg-white hover:border-green-500 hover:shadow-xs transition group flex flex-col justify-between"
+            class="home-tool-card p-4 rounded-2xl border border-gray-200/80 bg-white hover:border-emerald-500 hover:shadow-sm transition group flex flex-col justify-between"
+            data-category={tool!.kind}
+            data-name={tool!.name.toLowerCase()}
+            data-desc={tool!.description.toLowerCase()}
           >
             <div>
               <div class="flex items-center justify-between mb-2">
-                <span class="text-2xs font-bold uppercase px-2 py-0.5 rounded bg-gray-100 text-gray-700">
+                <span class="text-2xs font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-gray-100 text-gray-700 group-hover:bg-emerald-50 group-hover:text-emerald-700 transition-colors">
                   {tool!.kind}
                 </span>
-                <span class="text-green-600 text-xs opacity-0 group-hover:opacity-100 transition-opacity">
-                  &rarr;
+                <span class="text-emerald-600 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                  Open &rarr;
                 </span>
               </div>
-              <h3 class="font-bold text-gray-900 group-hover:text-green-600 text-sm sm:text-base mb-1">
+              <h3 class="font-bold text-gray-900 group-hover:text-emerald-600 text-sm sm:text-base mb-1 transition-colors">
                 {tool!.name}
               </h3>
-              <p class="text-xs text-gray-500 line-clamp-2">
+              <p class="text-xs text-gray-500 line-clamp-2 leading-relaxed">
                 {tool!.description}
               </p>
+            </div>
+            <div class="mt-3 pt-2.5 border-t border-gray-100 flex items-center justify-between text-2xs text-gray-400">
+              <span>Client-Side</span>
+              <span class="font-medium text-emerald-600 group-hover:underline">100% Free</span>
             </div>
           </a>
         ))}
       </div>
     </section>
 
-    <!-- PDF & Document Utilities -->
-    <section class="mb-16" aria-labelledby="pdf-heading">
+    <!-- PDF & Document Management Suite -->
+    <section class="mb-16" aria-labelledby="pdf-suite-heading">
       <div class="flex items-center justify-between mb-6">
         <div>
-          <h2 id="pdf-heading" class="text-2xl font-bold text-gray-900">
-            Free PDF Tools & Document Editors
+          <h2 id="pdf-suite-heading" class="text-2xl font-bold text-gray-900 tracking-tight">
+            Free PDF Document Management Tools
           </h2>
-          <p class="text-sm text-gray-500">Merge multiple PDFs, split pages, compress file sizes, and extract text without limits.</p>
+          <p class="text-sm text-gray-500">Merge multiple PDFs, split pages, compress file sizes, and extract high-resolution JPG images.</p>
         </div>
-        <a href="/tools/#pdf" class="text-sm font-semibold text-green-600 hover:underline">
+        <a href="/tools/#pdf" class="text-sm font-semibold text-emerald-600 hover:underline">
           All PDF tools &rarr;
         </a>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {pdfTools.map((tool) => (
+        {pdfTools.slice(0, 6).map((tool) => (
           <a
             href={`/${tool.slug}/`}
-            class="p-5 rounded-xl border border-gray-200 bg-white hover:border-red-500 hover:shadow-xs transition group"
+            class="home-tool-card p-5 rounded-2xl border border-gray-200/80 bg-white hover:border-rose-500/80 hover:shadow-sm transition group flex flex-col justify-between"
+            data-category="pdf"
+            data-name={tool.name.toLowerCase()}
+            data-desc={tool.description.toLowerCase()}
           >
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-2xs font-semibold px-2 py-0.5 rounded bg-red-50 text-red-700 uppercase">
-                PDF
-              </span>
-              <span class="text-red-600 opacity-0 group-hover:opacity-100 transition-opacity">
-                &rarr;
-              </span>
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-2xs font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-rose-50 text-rose-700">PDF Suite</span>
+                <span class="text-rose-600 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">Launch &rarr;</span>
+              </div>
+              <h3 class="font-bold text-gray-900 group-hover:text-rose-600 text-base mb-1 transition-colors">{tool.name}</h3>
+              <p class="text-xs text-gray-500 line-clamp-2 leading-relaxed">{tool.description}</p>
             </div>
-            <h3 class="font-bold text-gray-900 group-hover:text-red-600 text-base mb-1">
-              {tool.name}
-            </h3>
-            <p class="text-xs text-gray-500 line-clamp-2">
-              {tool.description}
-            </p>
+            <div class="mt-3 pt-2.5 border-t border-gray-100 flex items-center justify-between text-2xs text-gray-400">
+              <span>Browser Memory</span>
+              <span class="text-rose-600 font-medium">No Adobe Required</span>
+            </div>
           </a>
         ))}
       </div>
     </section>
 
-    <!-- Image Converters & Compression Grid -->
-    <section class="mb-16" aria-labelledby="converters-heading">
+    <!-- Image Converters & Photo Compression Suite -->
+    <section class="mb-16" aria-labelledby="image-suite-heading">
       <div class="flex items-center justify-between mb-6">
         <div>
-          <h2 id="converters-heading" class="text-2xl font-bold text-gray-900">
-            Image Converters & Photo Compression
+          <h2 id="image-suite-heading" class="text-2xl font-bold text-gray-900 tracking-tight">
+            Image Converters & Target Size Compression
           </h2>
-          <p class="text-sm text-gray-500">Convert HEIC, JPG, PNG, WebP and shrink photo file sizes down to 20KB, 50KB, or 100KB.</p>
+          <p class="text-sm text-gray-500">Transcode HEIC, JPG, PNG, WebP and compress photos strictly below 20KB, 50KB, or 100KB.</p>
         </div>
-        <a href="/tools/#converters" class="text-sm font-semibold text-green-600 hover:underline">
+        <a href="/tools/#converters" class="text-sm font-semibold text-emerald-600 hover:underline">
           View all converters &rarr;
         </a>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {converters.slice(0, 9).map((tool) => (
+        {converters.slice(0, 6).map((tool) => (
           <a
             href={`/${tool.slug}/`}
-            class="p-5 rounded-xl border border-gray-200 bg-white hover:border-green-500 hover:shadow-xs transition group"
+            class="home-tool-card p-5 rounded-2xl border border-gray-200/80 bg-white hover:border-emerald-500 hover:shadow-sm transition group flex flex-col justify-between"
+            data-category="converter"
+            data-name={tool.name.toLowerCase()}
+            data-desc={tool.description.toLowerCase()}
           >
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-2xs font-semibold px-2 py-0.5 rounded bg-gray-100 text-gray-700 uppercase">
-                {tool.slug.includes('compress') ? 'Compress' : 'Convert'}
-              </span>
-              <span class="text-green-600 opacity-0 group-hover:opacity-100 transition-opacity">
-                &rarr;
-              </span>
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-2xs font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700">
+                  {tool.slug.includes('compress') ? 'Compression' : 'Converter'}
+                </span>
+                <span class="text-emerald-600 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">Open &rarr;</span>
+              </div>
+              <h3 class="font-bold text-gray-900 group-hover:text-emerald-600 text-base mb-1 transition-colors">{tool.name}</h3>
+              <p class="text-xs text-gray-500 line-clamp-2 leading-relaxed">{tool.description}</p>
             </div>
-            <h3 class="font-bold text-gray-900 group-hover:text-green-600 text-base mb-1">
-              {tool.name}
-            </h3>
-            <p class="text-xs text-gray-500 line-clamp-2">
-              {tool.description}
-            </p>
+            <div class="mt-3 pt-2.5 border-t border-gray-100 flex items-center justify-between text-2xs text-gray-400">
+              <span>Lossless & Quantized</span>
+              <span class="text-emerald-600 font-medium">Zero Uploads</span>
+            </div>
           </a>
         ))}
       </div>
     </section>
 
-    <!-- Calculators & Financial Tools Grid -->
-    <section class="mb-16" aria-labelledby="calculators-heading">
+    <!-- Financial & Loan Calculators -->
+    <section class="mb-16" aria-labelledby="finance-heading">
       <div class="flex items-center justify-between mb-6">
         <div>
-          <h2 id="calculators-heading" class="text-2xl font-bold text-gray-900">
-            Calculators & Financial Tools
+          <h2 id="finance-heading" class="text-2xl font-bold text-gray-900 tracking-tight">
+            Financial & Loan Calculators
           </h2>
-          <p class="text-sm text-gray-500">Calculate loan EMIs, mortgage payments, compound interest, BMI, and currency exchange rates.</p>
+          <p class="text-sm text-gray-500">Calculate home loan EMIs, SIP mutual fund returns, compound interest, and GST instantly.</p>
         </div>
-        <a href="/calculators/" class="text-sm font-semibold text-green-600 hover:underline">
+        <a href="/calculators/" class="text-sm font-semibold text-emerald-600 hover:underline">
           View all calculators &rarr;
         </a>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-        {calculators.slice(0, 12).map((calc) => (
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {calculators.slice(0, 6).map((calc) => (
           <a
             href={`/${calc.slug}/`}
-            class="p-5 rounded-xl border border-gray-200 bg-white hover:border-emerald-500 hover:shadow-xs transition group"
+            class="home-tool-card p-5 rounded-2xl border border-gray-200/80 bg-white hover:border-blue-500 hover:shadow-sm transition group flex flex-col justify-between"
+            data-category="finance"
+            data-name={calc.name.toLowerCase()}
+            data-desc={calc.description.toLowerCase()}
           >
-            <span class="text-2xs font-semibold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 uppercase mb-2 inline-block">
-              {calc.kind}
-            </span>
-            <h3 class="font-bold text-gray-900 group-hover:text-emerald-600 text-base mb-1">
-              {calc.name}
-            </h3>
-            <p class="text-xs text-gray-500 line-clamp-2">
-              {calc.description}
-            </p>
+            <div>
+              <span class="text-2xs font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 mb-2 inline-block">
+                {calc.kind}
+              </span>
+              <h3 class="font-bold text-gray-900 group-hover:text-blue-600 text-base mb-1 transition-colors">{calc.name}</h3>
+              <p class="text-xs text-gray-500 line-clamp-2 leading-relaxed">{calc.description}</p>
+            </div>
+            <div class="mt-3 pt-2.5 border-t border-gray-100 text-2xs text-gray-400 flex justify-between">
+              <span>Deterministic</span>
+              <span class="text-blue-600 font-medium">Instant Math</span>
+            </div>
           </a>
         ))}
       </div>
     </section>
 
-    <!-- Generators & Media Grid -->
-    <section class="mb-16" aria-labelledby="generators-heading">
-      <div class="flex items-center justify-between mb-6">
-        <div>
-          <h2 id="generators-heading" class="text-2xl font-bold text-gray-900">
-            Online Generators & Utility Tools
+    <!-- Government Exam & Official Portal Specifications Guide -->
+    <section class="mb-16" aria-labelledby="exam-specs-heading">
+      <div class="p-6 sm:p-8 rounded-3xl bg-slate-900 text-white shadow-xl">
+        <div class="max-w-3xl mb-6">
+          <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-2xs font-bold uppercase tracking-wider mb-2">
+            Compliance Guide
+          </div>
+          <h2 id="exam-specs-heading" class="text-2xl sm:text-3xl font-bold tracking-tight">
+            Official Exam & Identity Portal Specifications
           </h2>
-          <p class="text-sm text-gray-500">High-resolution QR code generator, character counter, online stopwatch, and secure passwords.</p>
+          <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+            State commissions, banking boards, and national identity authorities enforce automated byte ceilings. If your file exceeds the mandated limit by even one byte, the application portal rejects it.
+          </p>
         </div>
-        <a href="/tools/#generators" class="text-sm font-semibold text-green-600 hover:underline">
-          All utilities &rarr;
-        </a>
-      </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-        {generatorsAndMedia.slice(0, 12).map((tool) => (
-          <a
-            href={`/${tool.slug}/`}
-            class="p-5 rounded-xl border border-gray-200 bg-white hover:border-purple-500 hover:shadow-xs transition group"
-          >
-            <span class="text-2xs font-semibold px-2 py-0.5 rounded bg-purple-50 text-purple-700 uppercase mb-2 inline-block">
-              {tool.kind}
-            </span>
-            <h3 class="font-bold text-gray-900 group-hover:text-purple-600 text-base mb-1">
-              {tool.name}
-            </h3>
-            <p class="text-xs text-gray-500 line-clamp-2">
-              {tool.description}
-            </p>
-          </a>
-        ))}
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs text-slate-200 border-collapse">
+            <thead>
+              <tr class="border-b border-slate-700 text-slate-400 text-2xs uppercase tracking-wider font-semibold">
+                <th class="py-3 px-3">Portal / Document Type</th>
+                <th class="py-3 px-3">Target Byte Limit</th>
+                <th class="py-3 px-3">Required Dimensions</th>
+                <th class="py-3 px-3">Accepted Formats</th>
+                <th class="py-3 px-3 text-right">Dedicated Tool</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800">
+              <tr>
+                <td class="py-3 px-3 font-bold text-white">Passport & Visa Photos</td>
+                <td class="py-3 px-3 text-emerald-400 font-mono">20KB to 50KB</td>
+                <td class="py-3 px-3">35mm x 45mm (200 x 230 px)</td>
+                <td class="py-3 px-3">JPG, JPEG</td>
+                <td class="py-3 px-3 text-right">
+                  <a href="/passport-photo-resizer/" class="text-emerald-400 hover:text-emerald-300 underline font-semibold">Resize Photo &rarr;</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="py-3 px-3 font-bold text-white">Candidate Signatures & Thumbprints</td>
+                <td class="py-3 px-3 text-emerald-400 font-mono">10KB to 20KB</td>
+                <td class="py-3 px-3">140 x 60 pixels</td>
+                <td class="py-3 px-3">JPG, JPEG</td>
+                <td class="py-3 px-3 text-right">
+                  <a href="/compress-image-to-20kb/" class="text-emerald-400 hover:text-emerald-300 underline font-semibold">Compress 20KB &rarr;</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="py-3 px-3 font-bold text-white">State Civil Service (TNPSC, UPSC, SSC)</td>
+                <td class="py-3 px-3 text-emerald-400 font-mono">20KB to 50KB</td>
+                <td class="py-3 px-3">200 x 230 pixels</td>
+                <td class="py-3 px-3">JPG, JPEG</td>
+                <td class="py-3 px-3 text-right">
+                  <a href="/compress-image-to-50kb/" class="text-emerald-400 hover:text-emerald-300 underline font-semibold">Compress 50KB &rarr;</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="py-3 px-3 font-bold text-white">Bank Exams (IBPS, SBI, RRB Railway)</td>
+                <td class="py-3 px-3 text-emerald-400 font-mono">20KB to 50KB</td>
+                <td class="py-3 px-3">200 x 230 pixels</td>
+                <td class="py-3 px-3">JPG, JPEG</td>
+                <td class="py-3 px-3 text-right">
+                  <a href="/passport-photo-resizer/" class="text-emerald-400 hover:text-emerald-300 underline font-semibold">Bank Exam Tool &rarr;</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="py-3 px-3 font-bold text-white">Aadhar & PAN Card Verification Scans</td>
+                <td class="py-3 px-3 text-emerald-400 font-mono">Strictly Under 100KB</td>
+                <td class="py-3 px-3">600 x 400 pixels</td>
+                <td class="py-3 px-3">JPG, PNG</td>
+                <td class="py-3 px-3 text-right">
+                  <a href="/compress-image-to-100kb/" class="text-emerald-400 hover:text-emerald-300 underline font-semibold">Compress 100KB &rarr;</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
 
-    <!-- Format Guides Hub -->
+    <!-- Psychological Comparison: ZixTool vs Traditional Cloud Converters -->
+    <section class="mb-16" aria-labelledby="comparison-heading">
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <h2 id="comparison-heading" class="text-2xl font-bold text-gray-900 tracking-tight">
+          Why ZixTool Beats Cloud-Based Converters
+        </h2>
+        <p class="text-sm text-gray-500 mt-1">See how client-side execution solves the top frustrations users face with traditional tools.</p>
+      </div>
+
+      <div class="overflow-x-auto border border-gray-200 rounded-3xl bg-white shadow-2xs">
+        <table class="w-full text-left text-xs sm:text-sm text-gray-700 border-collapse">
+          <thead>
+            <tr class="border-b border-gray-200 bg-gray-50 text-2xs sm:text-xs font-bold text-gray-600 uppercase tracking-wider">
+              <th class="py-3.5 px-4 sm:px-6">Feature / Capability</th>
+              <th class="py-3.5 px-4 sm:px-6 text-emerald-700 bg-emerald-50/50">ZixTool (In-Browser Architecture)</th>
+              <th class="py-3.5 px-4 sm:px-6 text-gray-500">Traditional Cloud Converters</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100">
+            <tr>
+              <td class="py-3 px-4 sm:px-6 font-semibold text-gray-900">File Upload to Remote Server</td>
+              <td class="py-3 px-4 sm:px-6 font-bold text-emerald-600 bg-emerald-50/30">0% (Zero uploads - files stay in RAM)</td>
+              <td class="py-3 px-4 sm:px-6 text-rose-600">Mandatory (Files stored on third-party disks)</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 sm:px-6 font-semibold text-gray-900">Processing Latency & Speed</td>
+              <td class="py-3 px-4 sm:px-6 font-bold text-emerald-600 bg-emerald-50/30">Instant (Processed by device CPU/GPU)</td>
+              <td class="py-3 px-4 sm:px-6 text-gray-500">Slow (Upload queue + remote render + download)</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 sm:px-6 font-semibold text-gray-900">Biometric & Confidential Data Safety</td>
+              <td class="py-3 px-4 sm:px-6 font-bold text-emerald-600 bg-emerald-50/30">100% Safe (No logs, leaks, or snooping)</td>
+              <td class="py-3 px-4 sm:px-6 text-rose-600">High Risk (Sent over internet to unknown servers)</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 sm:px-6 font-semibold text-gray-900">Daily Limits & Paywalls</td>
+              <td class="py-3 px-4 sm:px-6 font-bold text-emerald-600 bg-emerald-50/30">Unlimited (Free forever with no caps)</td>
+              <td class="py-3 px-4 sm:px-6 text-gray-500">2-5 free files per day, then paid subscriptions</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 sm:px-6 font-semibold text-gray-900">Output Watermarks</td>
+              <td class="py-3 px-4 sm:px-6 font-bold text-emerald-600 bg-emerald-50/30">Zero Watermarks (Clean original files)</td>
+              <td class="py-3 px-4 sm:px-6 text-gray-500">Often forced branding unless paying monthly</td>
+            </tr>
+            <tr>
+              <td class="py-3 px-4 sm:px-6 font-semibold text-gray-900">Offline Operation</td>
+              <td class="py-3 px-4 sm:px-6 font-bold text-emerald-600 bg-emerald-50/30">Works 100% Offline via PWA Caching</td>
+              <td class="py-3 px-4 sm:px-6 text-rose-600">Fails immediately without internet access</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Format Guides & Specifications Hub -->
     <section class="mb-16" aria-labelledby="formats-heading">
       <div class="flex items-center justify-between mb-6">
         <div>
-          <h2 id="formats-heading" class="text-2xl font-bold text-gray-900">
-            Image Format Guides & Specifications
+          <h2 id="formats-heading" class="text-2xl font-bold text-gray-900 tracking-tight">
+            Image Format Standards & Specifications
           </h2>
-          <p class="text-sm text-gray-500">Detailed format comparisons, compression benchmarks, and compatibility guides.</p>
+          <p class="text-sm text-gray-500">Technical specifications, compression benchmarks, and cross-platform compatibility guides.</p>
         </div>
-        <a href="/formats/" class="text-sm font-semibold text-green-600 hover:underline">
-          All formats &rarr;
+        <a href="/formats/" class="text-sm font-semibold text-emerald-600 hover:underline">
+          All format guides &rarr;
         </a>
       </div>
 
@@ -344,12 +614,12 @@ const faqJsonLd = {
         {formatHubs.map((fmt) => (
           <a
             href={`/formats/${fmt.id}/`}
-            class="p-4 rounded-lg border border-gray-200 bg-gray-50 hover:bg-white hover:border-green-500 transition text-center group"
+            class="p-4 rounded-xl border border-gray-200 bg-gray-50/60 hover:bg-white hover:border-emerald-500 hover:shadow-xs transition text-center group"
           >
-            <span class="block font-mono font-bold text-lg text-gray-900 group-hover:text-green-600">
-              {fmt.extension.toUpperCase()}
+            <span class="block font-mono font-bold text-lg text-gray-900 group-hover:text-emerald-600 transition-colors">
+              .{fmt.extension.toUpperCase()}
             </span>
-            <span class="text-xs text-gray-500">
+            <span class="text-xs text-gray-500 line-clamp-1 mt-0.5">
               {fmt.name}
             </span>
           </a>
@@ -357,81 +627,143 @@ const faqJsonLd = {
       </div>
     </section>
 
-    <!-- Client-Side Architecture -->
-    <section class="bg-gray-50 border border-gray-200 rounded-2xl p-6 sm:p-8 mb-16 text-center" aria-label="Processing Architecture">
-      <p class="text-sm sm:text-base text-gray-700 max-w-3xl mx-auto">
-        All conversions and calculations run locally inside your browser memory using WebAssembly and HTML5 Canvas. Your files are processed on your device and are never uploaded to remote servers.
-      </p>
-    </section>
-
-    <!-- Frequently Asked Questions (FAQ) -->
+    <!-- Frequently Asked Questions (FAQ) Section -->
     <section class="mb-16" aria-labelledby="faq-heading">
       <div class="max-w-4xl mx-auto">
-        <h2 id="faq-heading" class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 text-center sm:text-left">
-          Frequently Asked Questions
-        </h2>
+        <div class="text-center max-w-2xl mx-auto mb-8">
+          <h2 id="faq-heading" class="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">
+            Frequently Asked Questions
+          </h2>
+          <p class="text-sm text-gray-500 mt-1">Common questions about privacy, supported formats, and how ZixTool works.</p>
+        </div>
+
         <div class="space-y-4">
-          <details class="group bg-white p-5 rounded-xl border border-gray-200 [&_summary::-webkit-details-marker]:hidden" open>
+          <details class="group bg-white p-5 rounded-2xl border border-gray-200 [&_summary::-webkit-details-marker]:hidden" open>
             <summary class="flex items-center justify-between cursor-pointer font-bold text-gray-900 text-base sm:text-lg">
-              <span>Is Gudmud Convert free to use with no hidden fees?</span>
+              <span>Is ZixTool free to use with no hidden fees or limits?</span>
               <span class="ml-4 flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform">▼</span>
             </summary>
             <p class="mt-3 text-sm text-gray-600 leading-relaxed">
-              Yes. Every tool on Gudmud Convert is free to use with no daily conversion quotas, no file size paywalls, no watermarks, and no sign-up or credit card required.
+              Yes. Every tool on ZixTool is 100% free to use with no daily conversion quotas, no file size paywalls, no watermarks, and no sign-up or credit card required.
             </p>
           </details>
 
-          <details class="group bg-white p-5 rounded-xl border border-gray-200 [&_summary::-webkit-details-marker]:hidden">
+          <details class="group bg-white p-5 rounded-2xl border border-gray-200 [&_summary::-webkit-details-marker]:hidden">
             <summary class="flex items-center justify-between cursor-pointer font-bold text-gray-900 text-base sm:text-lg">
-              <span>How do I compress an image to 20KB or a specific file size?</span>
+              <span>How does client-side in-browser file conversion protect my privacy?</span>
               <span class="ml-4 flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform">▼</span>
             </summary>
             <p class="mt-3 text-sm text-gray-600 leading-relaxed">
-              Use our Compress Image to 20KB tool or Universal Image Compressor. Simply upload your JPG, PNG, or WebP photo, select 20KB target size, and our adaptive compression algorithm shrinks the file size while preserving maximum visual sharpness.
+              ZixTool processes your files entirely inside your device RAM using WebAssembly and HTML5 Canvas. Your documents, photos, and biometric signatures never leave your browser and are never uploaded to any remote cloud server or stored on external disks.
             </p>
           </details>
 
-          <details class="group bg-white p-5 rounded-xl border border-gray-200 [&_summary::-webkit-details-marker]:hidden">
+          <details class="group bg-white p-5 rounded-2xl border border-gray-200 [&_summary::-webkit-details-marker]:hidden">
             <summary class="flex items-center justify-between cursor-pointer font-bold text-gray-900 text-base sm:text-lg">
-              <span>Are my uploaded files and documents kept private and secure?</span>
+              <span>How do I compress photos and signatures for exam portals (TNPSC, UPSC, Bank Exams)?</span>
               <span class="ml-4 flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform">▼</span>
             </summary>
             <p class="mt-3 text-sm text-gray-600 leading-relaxed">
-              Yes. Gudmud Convert processes your files directly inside your browser memory using WebAssembly and HTML5 Canvas. Your documents and photos are never uploaded to any remote server or stored in the cloud.
+              Use our <a href="/passport-photo-resizer/" class="text-emerald-600 font-semibold underline">Passport Photo Resizer</a> or dedicated <a href="/compress-image-to-20kb/" class="text-emerald-600 font-semibold underline">Compress to 20KB</a> and <a href="/compress-image-to-50kb/" class="text-emerald-600 font-semibold underline">Compress to 50KB</a> tools. Select your target byte ceiling and dimensions; our automated binary search engine clamps the output strictly within portal limits while preserving crisp facial and signature contours.
             </p>
           </details>
 
-          <details class="group bg-white p-5 rounded-xl border border-gray-200 [&_summary::-webkit-details-marker]:hidden">
+          <details class="group bg-white p-5 rounded-2xl border border-gray-200 [&_summary::-webkit-details-marker]:hidden">
             <summary class="flex items-center justify-between cursor-pointer font-bold text-gray-900 text-base sm:text-lg">
-              <span>Can I convert HEIC photos from iPhone without installing apps?</span>
+              <span>Can I convert Apple HEIC photos to JPG without installing software?</span>
               <span class="ml-4 flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform">▼</span>
             </summary>
             <p class="mt-3 text-sm text-gray-600 leading-relaxed">
-              Yes. Our HEIC to JPG tool decodes Apple HEIC and HEIF photos locally using WebAssembly in any browser, exporting high quality JPGs without needing paid codec extensions.
+              Yes. Our <a href="/heic-to-jpg/" class="text-emerald-600 font-semibold underline">HEIC to JPG converter</a> decodes Apple HEIC and HEIF photos locally using WebAssembly in any browser, exporting high quality JPGs without needing paid codec extensions or desktop applications.
             </p>
           </details>
 
-          <details class="group bg-white p-5 rounded-xl border border-gray-200 [&_summary::-webkit-details-marker]:hidden">
+          <details class="group bg-white p-5 rounded-2xl border border-gray-200 [&_summary::-webkit-details-marker]:hidden">
             <summary class="flex items-center justify-between cursor-pointer font-bold text-gray-900 text-base sm:text-lg">
-              <span>What file formats can I convert online for free?</span>
+              <span>Can I convert multi-page PDF documents into high-resolution JPG images?</span>
               <span class="ml-4 flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform">▼</span>
             </summary>
             <p class="mt-3 text-sm text-gray-600 leading-relaxed">
-              Gudmud Convert supports all major formats including HEIC, JPG, PNG, WebP, AVIF, GIF, SVG, BMP, TIFF, and PDF, alongside core deterministic calculators and developer formatters.
+              Yes. Our <a href="/pdf-to-jpg/" class="text-emerald-600 font-semibold underline">PDF to JPG tool</a> parses PDF vector streams and bitmaps in browser memory, allowing you to convert individual pages or extract all pages in a single ZIP download with zero server uploads.
             </p>
           </details>
 
-          <details class="group bg-white p-5 rounded-xl border border-gray-200 [&_summary::-webkit-details-marker]:hidden">
+          <details class="group bg-white p-5 rounded-2xl border border-gray-200 [&_summary::-webkit-details-marker]:hidden">
             <summary class="flex items-center justify-between cursor-pointer font-bold text-gray-900 text-base sm:text-lg">
-              <span>Does Gudmud Convert add any watermarks to my converted files?</span>
+              <span>What image and document formats are supported on ZixTool?</span>
               <span class="ml-4 flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform">▼</span>
             </summary>
             <p class="mt-3 text-sm text-gray-600 leading-relaxed">
-              No. All conversions, compressions, and generated files are 100% clean with zero watermarks, brand logos, or quality degradation.
+              ZixTool supports all major formats including HEIC, JPG, JPEG, PNG, WebP, AVIF, GIF, SVG, BMP, TIFF, and PDF, alongside core deterministic calculators and developer formatters.
+            </p>
+          </details>
+
+          <details class="group bg-white p-5 rounded-2xl border border-gray-200 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-gray-900 text-base sm:text-lg">
+              <span>Does ZixTool add watermarks or reduce image quality?</span>
+              <span class="ml-4 flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <p class="mt-3 text-sm text-gray-600 leading-relaxed">
+              No. All conversions, compressions, and generated files are 100% clean with zero watermarks, brand logos, or artificial quality degradation.
+            </p>
+          </details>
+
+          <details class="group bg-white p-5 rounded-2xl border border-gray-200 [&_summary::-webkit-details-marker]:hidden">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-gray-900 text-base sm:text-lg">
+              <span>Can I use ZixTool offline without an active internet connection?</span>
+              <span class="ml-4 flex-shrink-0 text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <p class="mt-3 text-sm text-gray-600 leading-relaxed">
+              Yes. Once this page loads, ZixTool assets are cached by your browser via Progressive Web App (PWA) standards. You can disconnect from Wi-Fi or mobile data and continue converting and compressing photos offline.
             </p>
           </details>
         </div>
       </div>
     </section>
   </div>
+
+  <!-- Interactive Live Filter & Search Logic -->
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('home-tool-search');
+      const tabs = document.querySelectorAll('.category-tab');
+      const cards = document.querySelectorAll('.home-tool-card');
+      let currentCategory = 'all';
+
+      function filterTools() {
+        const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
+
+        cards.forEach((card) => {
+          const cat = card.getAttribute('data-category');
+          const name = card.getAttribute('data-name') || '';
+          const desc = card.getAttribute('data-desc') || '';
+          const matchesCategory = currentCategory === 'all' || cat === currentCategory;
+          const matchesSearch = !query || name.includes(query) || desc.includes(query);
+
+          if (matchesCategory && matchesSearch) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      }
+
+      if (searchInput) {
+        searchInput.addEventListener('input', filterTools);
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          tabs.forEach((t) => {
+            t.classList.remove('bg-emerald-600', 'text-white', 'shadow-xs');
+            t.classList.add('bg-white', 'border', 'border-gray-200', 'text-gray-700');
+          });
+          tab.classList.remove('bg-white', 'border', 'border-gray-200', 'text-gray-700');
+          tab.classList.add('bg-emerald-600', 'text-white', 'shadow-xs');
+          currentCategory = tab.getAttribute('data-category') || 'all';
+          filterTools();
+        });
+      });
+    });
+  </script>
 </Layout>
