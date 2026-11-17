@@ -42,22 +42,23 @@ const breadcrumbs = [
           type="text"
           id="tool-search-input"
           placeholder="Search 70+ tools (e.g. color picker, base64, gpa, gst, merge pdf, qr code)..."
-          class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 shadow-xs"
+          class="w-full pl-11 pr-14 py-3 border border-slate-200/90 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 shadow-xs bg-white text-slate-900 transition"
         />
-        <svg class="w-5 h-5 text-gray-400 absolute left-3 top-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg class="w-5 h-5 text-slate-400 absolute left-3.5 top-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
+        <span class="absolute right-3.5 top-2.5 px-2 py-1 rounded-md bg-slate-100 text-2xs font-mono font-semibold text-slate-400 border border-slate-200">/</span>
       </div>
     </div>
 
     <!-- Quick Navigation Anchor Links -->
-    <div class="flex flex-wrap gap-2 mb-10 pb-4 border-b border-gray-200">
-      <a href="#pdf" class="px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-green-100 text-gray-700 hover:text-green-800 text-xs font-semibold transition">PDF Tools ({pdfTools.length})</a>
-      <a href="#converters" class="px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-green-100 text-gray-700 hover:text-green-800 text-xs font-semibold transition">Image Converters ({imageConverters.length})</a>
-      <a href="#calculators" class="px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-green-100 text-gray-700 hover:text-green-800 text-xs font-semibold transition">Calculators & Finance ({calculators.length})</a>
-      <a href="#generators" class="px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-green-100 text-gray-700 hover:text-green-800 text-xs font-semibold transition">Generators ({generators.length})</a>
-      <a href="#media" class="px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-green-100 text-gray-700 hover:text-green-800 text-xs font-semibold transition">Media & Recorders ({mediaTools.length})</a>
-      <a href="#developer" class="px-3 py-1.5 rounded-lg bg-gray-100 hover:bg-green-100 text-gray-700 hover:text-green-800 text-xs font-semibold transition">Developer & Text ({developerTools.length})</a>
+    <div class="flex flex-wrap gap-2 mb-10 pb-4 border-b border-slate-200">
+      <a href="#pdf" class="px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-900 hover:text-white text-slate-700 text-xs font-semibold border border-slate-200/60 transition-all">PDF Tools ({pdfTools.length})</a>
+      <a href="#converters" class="px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-900 hover:text-white text-slate-700 text-xs font-semibold border border-slate-200/60 transition-all">Image Converters ({imageConverters.length})</a>
+      <a href="#calculators" class="px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-900 hover:text-white text-slate-700 text-xs font-semibold border border-slate-200/60 transition-all">Calculators &amp; Finance ({calculators.length})</a>
+      <a href="#generators" class="px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-900 hover:text-white text-slate-700 text-xs font-semibold border border-slate-200/60 transition-all">Generators ({generators.length})</a>
+      <a href="#media" class="px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-900 hover:text-white text-slate-700 text-xs font-semibold border border-slate-200/60 transition-all">Media &amp; Recorders ({mediaTools.length})</a>
+      <a href="#developer" class="px-3.5 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-900 hover:text-white text-slate-700 text-xs font-semibold border border-slate-200/60 transition-all">Developer &amp; Text ({developerTools.length})</a>
     </div>
 
     <!-- PDF Tools -->
