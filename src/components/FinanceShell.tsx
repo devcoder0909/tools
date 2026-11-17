@@ -267,7 +267,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
   }, [currAmount, currFrom, currTo]);
 
   return (
-    <div class="bg-white border border-gray-200 rounded-3xl p-5 sm:p-8 shadow-xs mb-10">
+    <div class="bg-white border border-gray-200 rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-sm mb-10">
       {/* ======================================================== */}
       {/* 1. SIP CALCULATOR (GROWW / ZERODHA HIGH-CONVERTING STYLE) */}
       {/* ======================================================== */}

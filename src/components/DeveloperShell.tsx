@@ -52,7 +52,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
 
   // --- Base64 Encoder / Decoder State ---
   const [b64Mode, setB64Mode] = useState<'encode' | 'decode'>('encode');
-  const [b64Input, setB64Input] = useState('Hello World! Gudmud Convert processes data 100% in browser.');
+  const [b64Input, setB64Input] = useState('Hello World! Client-side Base64 encoder and decoder.');
   const [b64Output, setB64Output] = useState('');
   const [b64Copied, setB64Copied] = useState(false);
 
@@ -481,7 +481,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
   }, [csvJsonInput, csvAutoType]);
 
   return (
-    <div class="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-xs mb-10">
+    <div class="bg-white border border-gray-200 rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-sm mb-10">
       {/* 1. JWT Decoder */}
       {toolId === 'jwt-decoder' && (
         <div class="space-y-6">

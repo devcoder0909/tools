@@ -328,11 +328,11 @@ export default function PdfShell({ toolId }: PdfShellProps) {
   };
 
   return (
-    <div class="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-xs mb-10">
+    <div class="bg-white border border-gray-200 rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-sm mb-10">
       {/* Upload Zone */}
       <div
         onClick={() => fileInputRef.current?.click()}
-        class="border-2 border-dashed border-gray-300 hover:border-green-500 rounded-xl p-8 sm:p-12 text-center bg-gray-50 hover:bg-green-50/20 transition cursor-pointer mb-6"
+        class="border-2 border-dashed border-gray-300 hover:border-emerald-500 rounded-2xl p-6 sm:p-10 text-center bg-gray-50/50 hover:bg-emerald-50/20 transition cursor-pointer mb-6"
       >
         <input
           ref={fileInputRef}
@@ -344,16 +344,16 @@ export default function PdfShell({ toolId }: PdfShellProps) {
           }}
           class="hidden"
         />
-        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-xs border border-gray-200 text-green-600">
+        <div class="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center mx-auto mb-3 border border-emerald-100 text-emerald-600">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
           </svg>
         </div>
-        <p class="text-sm font-bold text-gray-900 mb-1">
+        <p class="text-sm sm:text-base font-bold text-gray-900 mb-1">
           {isJpgToPdf ? 'Click to select JPG / PNG images' : 'Click to select PDF document(s)'}
         </p>
         <p class="text-xs text-gray-500">
-          Or drag and drop files here. 100% private client-side processing.
+          Drag &amp; drop files here or browse from device
         </p>
       </div>
 

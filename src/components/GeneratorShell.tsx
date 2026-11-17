@@ -268,7 +268,7 @@ export default function GeneratorShell({ toolId }: GeneratorShellProps) {
   ];
 
   return (
-    <div class="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-xs mb-10">
+    <div class="bg-white border border-gray-200 rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-sm mb-10">
       {/* 1. QR Code Generator */}
       {toolId === 'qr-code-generator' && (
         <div class="space-y-6">
@@ -469,10 +469,10 @@ export default function GeneratorShell({ toolId }: GeneratorShellProps) {
               </button>
             </div>
 
-            <div class="flex items-center justify-center gap-4 text-xs text-gray-600">
+            <div class="flex items-center justify-center gap-4 text-xs text-gray-600 flex-wrap">
               <span>Entropy: <strong>{calcEntropy(passResult)} bits</strong></span>
-              <span>Strength: <strong class="text-green-600">{calcEntropy(passResult) > 75 ? 'Very Strong' : calcEntropy(passResult) > 50 ? 'Strong' : 'Moderate'}</strong></span>
-              <span>Privacy: <strong>100% Client-Side Crypto</strong></span>
+              <span>Strength: <strong class="text-emerald-600">{calcEntropy(passResult) > 75 ? 'Very Strong' : calcEntropy(passResult) > 50 ? 'Strong' : 'Moderate'}</strong></span>
+              <span>Standard: <strong>NIST SP 800-63B</strong></span>
             </div>
           </div>
 

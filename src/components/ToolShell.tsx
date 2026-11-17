@@ -543,16 +543,16 @@ export default function ToolShell({
         </div>
       )}
 
-      {/* Main Drag & Drop Zone (FreeConvert / iLoveIMG Hero Card) */}
+      {/* Main Drag & Drop Zone */}
       <div
         onDragOver={onDragOver}
         onDragLeave={onDragLeave}
         onDrop={onDrop}
         onClick={() => fileInputRef.current?.click()}
-        class={`relative rounded-3xl p-8 sm:p-14 text-center cursor-pointer transition-all duration-300 group border-2 border-dashed ${
+        class={`relative rounded-2xl sm:rounded-3xl p-6 sm:p-12 text-center cursor-pointer transition-all duration-200 group border-2 border-dashed ${
           isDragging
-            ? 'border-emerald-500 bg-emerald-50 scale-[1.01] shadow-xl shadow-emerald-100/60'
-            : 'border-gray-300 hover:border-emerald-500 hover:bg-emerald-50/30 bg-gradient-to-b from-gray-50/80 via-white to-gray-50/30'
+            ? 'border-emerald-500 bg-emerald-50 scale-[1.01] shadow-lg shadow-emerald-100/50'
+            : 'border-gray-300 hover:border-emerald-500 hover:bg-emerald-50/20 bg-gray-50/40'
         }`}
       >
         <input
@@ -566,35 +566,34 @@ export default function ToolShell({
           }}
         />
 
-        <div class="max-w-md mx-auto space-y-4">
-          {/* Animated Cloud Upload Icon */}
+        <div class="max-w-md mx-auto space-y-3.5">
+          {/* Cloud Upload Icon */}
           <div
-            class={`mx-auto w-20 h-20 rounded-3xl flex items-center justify-center transition-all duration-300 shadow-sm ${
+            class={`mx-auto w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center transition-all duration-200 ${
               isDragging
-                ? 'bg-emerald-600 text-white scale-110 shadow-emerald-200'
-                : 'bg-emerald-100 text-emerald-700 group-hover:scale-105 group-hover:bg-emerald-600 group-hover:text-white'
+                ? 'bg-emerald-600 text-white scale-105'
+                : 'bg-emerald-100/80 text-emerald-700 group-hover:scale-105 group-hover:bg-emerald-600 group-hover:text-white'
             }`}
           >
-            <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <svg class="w-7 h-7 sm:w-8 sm:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
               <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
             </svg>
           </div>
 
           <div>
-            {/* Primary Action Button (FreeConvert style) */}
-            <div class="inline-flex items-center gap-2 px-8 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-600 to-green-600 text-white font-bold text-base shadow-md group-hover:shadow-lg group-hover:from-emerald-500 group-hover:to-green-500 transition-all duration-200">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+            <div class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm sm:text-base shadow-xs transition">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
               </svg>
               <span>Choose Files</span>
             </div>
             <p class="text-xs text-gray-500 mt-2">
-              or drop images here, or paste from clipboard (Ctrl+V)
+              or drag &amp; drop images here, or paste from clipboard (Ctrl+V)
             </p>
           </div>
 
           {/* Supported Format Pills */}
-          <div class="flex flex-wrap items-center justify-center gap-1.5 pt-2 text-2xs font-semibold text-gray-500">
+          <div class="flex flex-wrap items-center justify-center gap-1.5 pt-1 text-2xs font-semibold text-gray-500">
             <span class="px-2 py-0.5 rounded-md bg-white border border-gray-200">JPG</span>
             <span class="px-2 py-0.5 rounded-md bg-white border border-gray-200">PNG</span>
             <span class="px-2 py-0.5 rounded-md bg-white border border-gray-200">WebP</span>
@@ -605,19 +604,9 @@ export default function ToolShell({
             <span class="px-2 py-0.5 rounded-md bg-white border border-gray-200">SVG</span>
           </div>
 
-          {/* Trust Guarantees */}
-          <div class="pt-2 flex items-center justify-center gap-4 text-2xs text-gray-400">
-            <span class="flex items-center gap-1 text-emerald-700 font-medium">
-              <svg class="w-3.5 h-3.5 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
-              </svg>
-              100% In-Browser Privacy
-            </span>
-            <span>•</span>
-            <span>Local In-Memory Execution</span>
-            <span>•</span>
-            <span>Zero Watermarks</span>
-          </div>
+          <p class="text-2xs text-gray-400 pt-0.5">
+            Files processed locally in browser memory
+          </p>
         </div>
       </div>
 

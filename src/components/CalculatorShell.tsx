@@ -285,7 +285,7 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
   }, [billAmount, tipRate, splitCount]);
 
   return (
-    <div class="calculator-shell bg-white border border-gray-200 rounded-2xl shadow-sm p-6 sm:p-8 my-6">
+    <div class="calculator-shell bg-white border border-gray-200 rounded-2xl sm:rounded-3xl shadow-sm p-4 sm:p-8 my-6">
       {/* Percentage Calculator */}
       {toolId === 'percentage-calculator' && (
         <div class="space-y-6">

@@ -289,7 +289,7 @@ export default function TargetSizeShell({
   const doneCount = useMemo(() => items.filter((i) => i.status === 'done').length, [items]);
 
   return (
-    <div class="target-size-shell bg-white border border-gray-200 rounded-3xl shadow-md p-4 sm:p-8 my-6 transition-all">
+    <div class="target-size-shell bg-white border border-gray-200 rounded-2xl sm:rounded-3xl shadow-sm p-4 sm:p-8 my-6 transition-all">
       {/* Target Size Controls Bar */}
       <div class="mb-6 p-4 sm:p-5 bg-gradient-to-r from-emerald-50/70 to-gray-50 rounded-2xl border border-emerald-200/80 flex flex-wrap items-center justify-between gap-4">
         <div class="flex items-center space-x-3 flex-wrap gap-2">
@@ -358,10 +358,10 @@ export default function TargetSizeShell({
         onDragLeave={onDragLeave}
         onDrop={onDrop}
         onClick={() => fileInputRef.current?.click()}
-        class={`border-2 border-dashed rounded-3xl p-8 sm:p-14 text-center cursor-pointer transition-all duration-300 group ${
+        class={`border-2 border-dashed rounded-2xl sm:rounded-3xl p-6 sm:p-12 text-center cursor-pointer transition-all duration-200 group ${
           isDragging
-            ? 'border-emerald-500 bg-emerald-50 scale-[1.01] shadow-xl shadow-emerald-100'
-            : 'border-gray-300 hover:border-emerald-500 hover:bg-emerald-50/20 bg-gradient-to-b from-gray-50/70 to-white'
+            ? 'border-emerald-500 bg-emerald-50 scale-[1.01] shadow-lg shadow-emerald-100/50'
+            : 'border-gray-300 hover:border-emerald-500 hover:bg-emerald-50/20 bg-gray-50/40'
         }`}
       >
         <input
@@ -375,33 +375,33 @@ export default function TargetSizeShell({
             if (target.files) handleFiles(Array.from(target.files));
           }}
         />
-        <div class="max-w-md mx-auto space-y-4">
+        <div class="max-w-md mx-auto space-y-3.5">
           <div
-            class={`mx-auto w-16 h-16 sm:w-20 sm:h-20 rounded-3xl flex items-center justify-center transition-all duration-300 shadow-sm ${
+            class={`mx-auto w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center transition-all duration-200 ${
               isDragging
-                ? 'bg-emerald-600 text-white scale-110'
-                : 'bg-emerald-100 text-emerald-700 group-hover:scale-105 group-hover:bg-emerald-600 group-hover:text-white'
+                ? 'bg-emerald-600 text-white scale-105'
+                : 'bg-emerald-100/80 text-emerald-700 group-hover:scale-105 group-hover:bg-emerald-600 group-hover:text-white'
             }`}
           >
-            <svg class="w-8 h-8 sm:w-10 sm:h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <svg class="w-7 h-7 sm:w-8 sm:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
               <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
             </svg>
           </div>
 
           <div>
-            <div class="inline-flex items-center gap-2 px-8 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-600 to-green-600 text-white font-bold text-base shadow-md group-hover:shadow-lg transition-all">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+            <div class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm sm:text-base shadow-xs transition">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
               </svg>
               <span>Choose Images</span>
             </div>
             <p class="text-xs text-gray-500 mt-2">
-              Drag & drop photos or paste from clipboard (Ctrl+V)
+              Drag &amp; drop photos or paste from clipboard (Ctrl+V)
             </p>
           </div>
 
-          <p class="text-2xs text-emerald-700 font-semibold bg-emerald-50 inline-block px-3 py-1 rounded-full border border-emerald-200">
-            Guaranteed compression to &le; {targetKb} KB per photo
+          <p class="text-2xs text-gray-400 pt-0.5">
+            Automatic compression to &le; {targetKb} KB per photo • 100% in-browser RAM
           </p>
         </div>
       </div>

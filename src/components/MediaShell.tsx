@@ -360,7 +360,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
   }, [toolId, imageSrc, topText, bottomText]);
 
   return (
-    <div class="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-xs mb-10">
+    <div class="bg-white border border-gray-200 rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-sm mb-10">
       {/* 1. Text to Speech */}
       {toolId === 'text-to-speech' && (
         <div class="space-y-6 max-w-xl mx-auto">
@@ -442,7 +442,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
             </div>
             <h2 class="text-xl font-bold text-gray-900 mb-2">Browser Screen & Audio Recorder</h2>
             <p class="text-xs text-gray-500 max-w-md mx-auto mb-6">
-              Record full desktop screen, specific app windows, or Chrome tabs with microphone audio. Processed 100% locally with zero server uploads.
+              Record full desktop screen, specific app windows, or Chrome tabs with microphone audio in browser memory.
             </p>
 
             {!isRecording ? (
@@ -716,7 +716,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                 class="hidden"
               />
               <p class="text-sm font-bold text-gray-900 mb-1">Click to select an image</p>
-              <p class="text-xs text-gray-500">JPG, PNG, or WebP. 100% in-browser processing.</p>
+              <p class="text-xs text-gray-500">Supports JPG, PNG, and WebP.</p>
             </label>
           ) : (
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
@@ -925,7 +925,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                 </svg>
               </div>
               <p class="text-sm font-bold text-gray-900 mb-1">Click to select an image to crop</p>
-              <p class="text-xs text-gray-500">Supports JPG, PNG, and WebP. 100% private in-browser canvas.</p>
+              <p class="text-xs text-gray-500">Supports JPG, PNG, and WebP.</p>
             </label>
           ) : (
             <div class="space-y-6">

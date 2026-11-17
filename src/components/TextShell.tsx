@@ -278,7 +278,7 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
   };
 
   return (
-    <div class="text-shell bg-white border border-gray-200 rounded-2xl shadow-sm p-6 sm:p-8 my-6">
+    <div class="text-shell bg-white border border-gray-200 rounded-2xl sm:rounded-3xl shadow-sm p-4 sm:p-8 my-6">
       {/* Word & Character Counter */}
       {(toolId === 'word-counter' || toolId === 'character-counter') && (
         <div class="space-y-6">
@@ -338,7 +338,7 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
               <span class="mx-2">•</span>
               <span>Speaking: <strong class="text-gray-800">{stats.speakingTime}</strong></span>
             </div>
-            <div class="text-green-700 font-medium">100% Client-Side • Text never leaves your browser</div>
+            <div class="text-gray-400 text-xs">Local in-browser processing</div>
           </div>
         </div>
       )}
@@ -510,7 +510,7 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
 
           <div class="flex justify-between items-center text-xs text-gray-500">
             <span>Size: {(new Blob([text]).size / 1024).toFixed(2)} KB</span>
-            <span class="text-green-700 font-medium">100% Client-Side Validation & Formatting</span>
+            <span class="text-gray-400 text-xs">RFC 8259 syntax validation</span>
           </div>
         </div>
       )}
@@ -601,8 +601,8 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
                 -{diffResult.removedCount} Removed
               </span>
             </div>
-            <div class="text-gray-500 text-2xs">
-              100% In-Browser Comparison
+            <div class="text-gray-400 text-2xs">
+              Inline comparison
             </div>
           </div>
 
