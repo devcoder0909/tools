@@ -1,7 +1,7 @@
 {
-  "name": "Gudmud Convert",
-  "short_name": "GudmudConvert",
-  "description": "Free, Private Online Converters and Calculators. Fast, client-side, zero file uploads.",
+  "name": "BestConverter",
+  "short_name": "BestConverter",
+  "description": "Private in-browser file converters and calculators. Fast client-side execution with zero file uploads.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",

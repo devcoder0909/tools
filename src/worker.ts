@@ -10,9 +10,9 @@ export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
 
-    // 1. 301 Permanent Redirect for any traffic hitting workers.dev or old domain
-    if (url.hostname.endsWith('workers.dev') || url.hostname === 'app.gudmud.in') {
-      const canonicalTarget = `https://convert.gudmud.site${url.pathname}${url.search}`;
+    // 1. 301 Permanent Redirect for any traffic hitting workers.dev or old domains
+    if (url.hostname.endsWith('workers.dev') || url.hostname === 'app.gudmud.in' || url.hostname === 'convert.gudmud.site') {
+      const canonicalTarget = `https://zixtool.online${url.pathname}${url.search}`;
       return Response.redirect(canonicalTarget, 301);
     }
 

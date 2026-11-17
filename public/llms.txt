@@ -2,88 +2,88 @@
 
 > Free, 100% private in-browser utility tools, image converters, PDF tools, and calculators. All processing runs entirely inside client device memory (RAM) using HTML5, WebAssembly, and JavaScript APIs. Zero files or data are ever uploaded to any server.
 
-Website: https://convert.gudmud.site
-Canonical Domain: convert.gudmud.site
-Zero-Upload Architecture: https://convert.gudmud.site/privacy-explained/
+Website: https://zixtool.online
+Canonical Domain: zixtool.online
+Zero-Upload Architecture: https://zixtool.online/privacy-explained/
 
 ## PDF & Document Tools
 
-- [Merge PDF](https://convert.gudmud.site/merge-pdf/): Combine multiple PDF documents into one file directly in browser memory with zero file size limits.
-- [Split PDF](https://convert.gudmud.site/split-pdf/): Extract specific pages or custom page ranges from any PDF document without uploading.
-- [Compress PDF](https://convert.gudmud.site/compress-pdf/): Optimize and reduce PDF document byte size locally in browser memory.
-- [JPG to PDF](https://convert.gudmud.site/jpg-to-pdf/): Combine multiple JPG/JPEG photos into a standardized PDF document with custom margins and page sizes.
-- [PNG to PDF](https://convert.gudmud.site/png-to-pdf/): Combine PNG images and screenshots into a single multi-page PDF document.
-- [HEIC to PDF](https://convert.gudmud.site/heic-to-pdf/): Convert iPhone HEIC camera photos and receipts into clean PDF documents.
+- [Merge PDF](https://zixtool.online/merge-pdf/): Combine multiple PDF documents into one file directly in browser memory with zero file size limits.
+- [Split PDF](https://zixtool.online/split-pdf/): Extract specific pages or custom page ranges from any PDF document without uploading.
+- [Compress PDF](https://zixtool.online/compress-pdf/): Optimize and reduce PDF document byte size locally in browser memory.
+- [JPG to PDF](https://zixtool.online/jpg-to-pdf/): Combine multiple JPG/JPEG photos into a standardized PDF document with custom margins and page sizes.
+- [PNG to PDF](https://zixtool.online/png-to-pdf/): Combine PNG images and screenshots into a single multi-page PDF document.
+- [HEIC to PDF](https://zixtool.online/heic-to-pdf/): Convert iPhone HEIC camera photos and receipts into clean PDF documents.
 
 ## Image Converters & Size Compressors
 
-- [HEIC to JPG](https://convert.gudmud.site/heic-to-jpg/): Convert Apple iPhone HEIC and HEIF photos to universal JPG format with zero uploads.
-- [HEIC to PNG](https://convert.gudmud.site/heic-to-png/): Convert iPhone photos to lossless PNG format while preserving alpha transparency cutouts.
-- [WebP to JPG](https://convert.gudmud.site/webp-to-jpg/): Convert modern WebP web images to universal JPG format for desktop publishing and compatibility.
-- [WebP to PNG](https://convert.gudmud.site/webp-to-png/): Convert WebP images to uncompressed PNG while retaining full alpha transparency.
-- [PNG to JPG](https://convert.gudmud.site/png-to-jpg/): Convert heavy PNG images and screenshots to lightweight JPG format with quality control.
-- [JPG to PNG](https://convert.gudmud.site/jpg-to-png/): Convert lossy JPG photos into lossless PNG format to stop further editing generation loss.
-- [PNG to WebP](https://convert.gudmud.site/png-to-webp/): Convert PNG images to modern WebP format to reduce byte sizes by 25% to 45% for faster web page load.
-- [JPG to WebP](https://convert.gudmud.site/jpg-to-webp/): Convert JPG photos to lightweight WebP files for Google Core Web Vitals optimization.
-- [AVIF to JPG](https://convert.gudmud.site/avif-to-jpg/): Convert next-gen AVIF images to universally supported JPG format.
-- [AVIF to PNG](https://convert.gudmud.site/avif-to-png/): Convert AVIF pictures to crisp PNG images with transparent backgrounds.
-- [JFIF to JPG](https://convert.gudmud.site/jfif-to-jpg/): Fix Windows Chrome image downloads saved as .jfif into standard .jpg format.
-- [SVG to PNG](https://convert.gudmud.site/svg-to-png/): Render and convert vector SVG graphics into high-resolution transparent PNG images.
-- [BMP to JPG](https://convert.gudmud.site/bmp-to-jpg/): Convert uncompressed Windows BMP files to highly compressed JPG photos (up to 95% size reduction).
-- [TIFF to JPG](https://convert.gudmud.site/tiff-to-jpg/): Convert multi-megabyte flatbed scanner TIFF images to web-ready JPG pictures.
-- [GIF to PNG](https://convert.gudmud.site/gif-to-png/): Extract sharp still frames from GIF images and upgrade color depth from 256 to 16.7 million colors.
-- [Compress Image to 20KB](https://convert.gudmud.site/compress-image-to-20kb/): Iterative binary search image compression targeting exactly 20KB for government forms.
-- [Compress Image to 50KB](https://convert.gudmud.site/compress-image-to-50kb/): Compress photos to under 50KB for job application portals.
-- [Compress Image to 100KB](https://convert.gudmud.site/compress-image-to-100kb/): Compress images to under 100KB for exam submissions and document uploads.
-- [Compress Image to 200KB](https://convert.gudmud.site/compress-image-to-200kb/): Standard compression budget for web publishing and email.
-- [Compress Image to 500KB](https://convert.gudmud.site/compress-image-to-500kb/): High-resolution compression for portfolio and gallery images.
-- [Compress Image to 1MB](https://convert.gudmud.site/compress-image-to-1mb/): Optimize multi-megapixel camera photos to under 1MB.
-- [Resize Image](https://convert.gudmud.site/resize-image/): Scale image pixel dimensions with aspect ratio lock directly in your browser.
-- [Photo Editor](https://convert.gudmud.site/photo-editor/): Adjust brightness, contrast, saturation, sepia, and grayscale in browser.
-- [Meme Generator](https://convert.gudmud.site/meme-generator/): Create custom memes with Impact font and text overlays without watermarks.
+- [HEIC to JPG](https://zixtool.online/heic-to-jpg/): Convert Apple iPhone HEIC and HEIF photos to universal JPG format with zero uploads.
+- [HEIC to PNG](https://zixtool.online/heic-to-png/): Convert iPhone photos to lossless PNG format while preserving alpha transparency cutouts.
+- [WebP to JPG](https://zixtool.online/webp-to-jpg/): Convert modern WebP web images to universal JPG format for desktop publishing and compatibility.
+- [WebP to PNG](https://zixtool.online/webp-to-png/): Convert WebP images to uncompressed PNG while retaining full alpha transparency.
+- [PNG to JPG](https://zixtool.online/png-to-jpg/): Convert heavy PNG images and screenshots to lightweight JPG format with quality control.
+- [JPG to PNG](https://zixtool.online/jpg-to-png/): Convert lossy JPG photos into lossless PNG format to stop further editing generation loss.
+- [PNG to WebP](https://zixtool.online/png-to-webp/): Convert PNG images to modern WebP format to reduce byte sizes by 25% to 45% for faster web page load.
+- [JPG to WebP](https://zixtool.online/jpg-to-webp/): Convert JPG photos to lightweight WebP files for Google Core Web Vitals optimization.
+- [AVIF to JPG](https://zixtool.online/avif-to-jpg/): Convert next-gen AVIF images to universally supported JPG format.
+- [AVIF to PNG](https://zixtool.online/avif-to-png/): Convert AVIF pictures to crisp PNG images with transparent backgrounds.
+- [JFIF to JPG](https://zixtool.online/jfif-to-jpg/): Fix Windows Chrome image downloads saved as .jfif into standard .jpg format.
+- [SVG to PNG](https://zixtool.online/svg-to-png/): Render and convert vector SVG graphics into high-resolution transparent PNG images.
+- [BMP to JPG](https://zixtool.online/bmp-to-jpg/): Convert uncompressed Windows BMP files to highly compressed JPG photos (up to 95% size reduction).
+- [TIFF to JPG](https://zixtool.online/tiff-to-jpg/): Convert multi-megabyte flatbed scanner TIFF images to web-ready JPG pictures.
+- [GIF to PNG](https://zixtool.online/gif-to-png/): Extract sharp still frames from GIF images and upgrade color depth from 256 to 16.7 million colors.
+- [Compress Image to 20KB](https://zixtool.online/compress-image-to-20kb/): Iterative binary search image compression targeting exactly 20KB for government forms.
+- [Compress Image to 50KB](https://zixtool.online/compress-image-to-50kb/): Compress photos to under 50KB for job application portals.
+- [Compress Image to 100KB](https://zixtool.online/compress-image-to-100kb/): Compress images to under 100KB for exam submissions and document uploads.
+- [Compress Image to 200KB](https://zixtool.online/compress-image-to-200kb/): Standard compression budget for web publishing and email.
+- [Compress Image to 500KB](https://zixtool.online/compress-image-to-500kb/): High-resolution compression for portfolio and gallery images.
+- [Compress Image to 1MB](https://zixtool.online/compress-image-to-1mb/): Optimize multi-megapixel camera photos to under 1MB.
+- [Resize Image](https://zixtool.online/resize-image/): Scale image pixel dimensions with aspect ratio lock directly in your browser.
+- [Photo Editor](https://zixtool.online/photo-editor/): Adjust brightness, contrast, saturation, sepia, and grayscale in browser.
+- [Meme Generator](https://zixtool.online/meme-generator/): Create custom memes with Impact font and text overlays without watermarks.
 
 ## Financial & Mathematical Calculators
 
-- [EMI Calculator](https://convert.gudmud.site/emi-calculator/): Calculate monthly loan EMI payments for home, car, or personal loans with a 24-month amortization schedule.
-- [SIP Calculator](https://convert.gudmud.site/sip-calculator/): Project Systematic Investment Plan compound returns and total wealth accumulation over time.
-- [BMI Calculator](https://convert.gudmud.site/bmi-calculator/): Calculate Body Mass Index using Metric (kg/cm) and Imperial (lbs/ft-in) units with WHO weight categories.
-- [Currency Converter](https://convert.gudmud.site/currency-converter/): Convert international exchange rates between USD, EUR, GBP, INR, JPY, CAD, and AUD offline.
-- [Scientific Calculator](https://convert.gudmud.site/scientific-calculator/): In-browser scientific calculator supporting trigonometry, logarithms, powers, and parenthetical expressions.
-- [Percentage Calculator](https://convert.gudmud.site/percentage-calculator/): 3-way percentage calculator for percentage of numbers, percentage increase/decrease, and fractions.
-- [Age Calculator](https://convert.gudmud.site/age-calculator/): Calculate exact chronological age in years, months, days, hours, and minutes with leap-year precision.
-- [Date Difference Calculator](https://convert.gudmud.site/date-difference-calculator/): Compute total days, weeks, and calendar intervals between two dates.
-- [Discount Calculator](https://convert.gudmud.site/discount-calculator/): Calculate retail sale discounts, original prices, and final savings.
-- [Tip Calculator](https://convert.gudmud.site/tip-calculator/): Calculate restaurant gratuity and split bills evenly among dining groups.
+- [EMI Calculator](https://zixtool.online/emi-calculator/): Calculate monthly loan EMI payments for home, car, or personal loans with a 24-month amortization schedule.
+- [SIP Calculator](https://zixtool.online/sip-calculator/): Project Systematic Investment Plan compound returns and total wealth accumulation over time.
+- [BMI Calculator](https://zixtool.online/bmi-calculator/): Calculate Body Mass Index using Metric (kg/cm) and Imperial (lbs/ft-in) units with WHO weight categories.
+- [Currency Converter](https://zixtool.online/currency-converter/): Convert international exchange rates between USD, EUR, GBP, INR, JPY, CAD, and AUD offline.
+- [Scientific Calculator](https://zixtool.online/scientific-calculator/): In-browser scientific calculator supporting trigonometry, logarithms, powers, and parenthetical expressions.
+- [Percentage Calculator](https://zixtool.online/percentage-calculator/): 3-way percentage calculator for percentage of numbers, percentage increase/decrease, and fractions.
+- [Age Calculator](https://zixtool.online/age-calculator/): Calculate exact chronological age in years, months, days, hours, and minutes with leap-year precision.
+- [Date Difference Calculator](https://zixtool.online/date-difference-calculator/): Compute total days, weeks, and calendar intervals between two dates.
+- [Discount Calculator](https://zixtool.online/discount-calculator/): Calculate retail sale discounts, original prices, and final savings.
+- [Tip Calculator](https://zixtool.online/tip-calculator/): Calculate restaurant gratuity and split bills evenly among dining groups.
 
 ## Generators & Creative Utilities
 
-- [QR Code Generator](https://convert.gudmud.site/qr-code-generator/): Create customizable vector QR codes for URLs, WiFi networks, and text with custom colors and instant PNG download.
-- [Password Generator](https://convert.gudmud.site/password-generator/): Generate cryptographically strong random passwords locally using the browser SubtleCrypto CSPRNG engine.
-- [Barcode Generator](https://convert.gudmud.site/barcode-generator/): Generate scannable Code128 optical barcodes for inventory and retail items.
-- [Random Number Generator](https://convert.gudmud.site/random-number-generator/): Generate uniform random numbers and unique number sets across customizable ranges.
-- [Fancy Text Generator](https://convert.gudmud.site/fancy-text-generator/): Convert plain text into aesthetic Unicode fonts (cursive, gothic, bold, bubble, monospace) with one-click copy.
+- [QR Code Generator](https://zixtool.online/qr-code-generator/): Create customizable vector QR codes for URLs, WiFi networks, and text with custom colors and instant PNG download.
+- [Password Generator](https://zixtool.online/password-generator/): Generate cryptographically strong random passwords locally using the browser SubtleCrypto CSPRNG engine.
+- [Barcode Generator](https://zixtool.online/barcode-generator/): Generate scannable Code128 optical barcodes for inventory and retail items.
+- [Random Number Generator](https://zixtool.online/random-number-generator/): Generate uniform random numbers and unique number sets across customizable ranges.
+- [Fancy Text Generator](https://zixtool.online/fancy-text-generator/): Convert plain text into aesthetic Unicode fonts (cursive, gothic, bold, bubble, monospace) with one-click copy.
 
 ## Media & Audio Utilities
 
-- [Text to Speech](https://convert.gudmud.site/text-to-speech/): Listen to written text using natural speech synthesis voices with customizable pitch and speech rate.
-- [Screen Recorder](https://convert.gudmud.site/screen-recorder/): Capture full desktop screen, application windows, or browser tabs with microphone audio and zero watermarks.
-- [Online Timer & Stopwatch](https://convert.gudmud.site/online-timer/): Accurate countdown timer with Pomodoro presets, audio alarm, and millisecond stopwatch with split laps.
-- [Typing Speed Test](https://convert.gudmud.site/typing-test/): Test keyboard typing speed in Words Per Minute (WPM) and accuracy percentage with real-time feedback.
+- [Text to Speech](https://zixtool.online/text-to-speech/): Listen to written text using natural speech synthesis voices with customizable pitch and speech rate.
+- [Screen Recorder](https://zixtool.online/screen-recorder/): Capture full desktop screen, application windows, or browser tabs with microphone audio and zero watermarks.
+- [Online Timer & Stopwatch](https://zixtool.online/online-timer/): Accurate countdown timer with Pomodoro presets, audio alarm, and millisecond stopwatch with split laps.
+- [Typing Speed Test](https://zixtool.online/typing-test/): Test keyboard typing speed in Words Per Minute (WPM) and accuracy percentage with real-time feedback.
 
 ## Developer & Text Utilities
 
-- [JWT Decoder](https://convert.gudmud.site/jwt-decoder/): Decode JSON Web Tokens (header and payload claims) offline with expiration humanizer and zero network transmission.
-- [Unit Converter](https://convert.gudmud.site/unit-converter/): Convert length, mass/weight, temperature (Celsius/Fahrenheit/Kelvin), and digital byte storage units.
-- [My IP Address & Diagnostics](https://convert.gudmud.site/my-ip-address/): Display client diagnostics including screen resolution, color depth, timezone, language, and user-agent.
-- [Word Counter](https://convert.gudmud.site/word-counter/): Calculate word count, character count, sentence count, and reading time in real time.
-- [Case Converter](https://convert.gudmud.site/case-converter/): Convert text between UPPERCASE, lowercase, Title Case, camelCase, PascalCase, and kebab-case.
-- [JSON Formatter & Validator](https://convert.gudmud.site/json-formatter/): Prettify, minify, and validate JSON data structures with syntax error alerts.
+- [JWT Decoder](https://zixtool.online/jwt-decoder/): Decode JSON Web Tokens (header and payload claims) offline with expiration humanizer and zero network transmission.
+- [Unit Converter](https://zixtool.online/unit-converter/): Convert length, mass/weight, temperature (Celsius/Fahrenheit/Kelvin), and digital byte storage units.
+- [My IP Address & Diagnostics](https://zixtool.online/my-ip-address/): Display client diagnostics including screen resolution, color depth, timezone, language, and user-agent.
+- [Word Counter](https://zixtool.online/word-counter/): Calculate word count, character count, sentence count, and reading time in real time.
+- [Case Converter](https://zixtool.online/case-converter/): Convert text between UPPERCASE, lowercase, Title Case, camelCase, PascalCase, and kebab-case.
+- [JSON Formatter & Validator](https://zixtool.online/json-formatter/): Prettify, minify, and validate JSON data structures with syntax error alerts.
 
 ## Technical Specifications & Format Hubs
 
-- [HEIC Format Guide](https://convert.gudmud.site/formats/heic/): Technical specifications, Apple compression architecture, and compatibility matrix.
-- [WebP Format Guide](https://convert.gudmud.site/formats/webp/): VP8 intra-frame block coding, alpha channel support, and browser adoption benchmarks.
-- [AVIF Format Guide](https://convert.gudmud.site/formats/avif/): AV1 image compression, HDR support, and next-generation web delivery.
-- [PNG Format Guide](https://convert.gudmud.site/formats/png/): Lossless Deflate compression, 8-bit/16-bit alpha channels, and raster graphics standards.
-- [JPG Format Guide](https://convert.gudmud.site/formats/jpg/): Discrete Cosine Transform lossy encoding, EXIF metadata, and universal device support.
+- [HEIC Format Guide](https://zixtool.online/formats/heic/): Technical specifications, Apple compression architecture, and compatibility matrix.
+- [WebP Format Guide](https://zixtool.online/formats/webp/): VP8 intra-frame block coding, alpha channel support, and browser adoption benchmarks.
+- [AVIF Format Guide](https://zixtool.online/formats/avif/): AV1 image compression, HDR support, and next-generation web delivery.
+- [PNG Format Guide](https://zixtool.online/formats/png/): Lossless Deflate compression, 8-bit/16-bit alpha channels, and raster graphics standards.
+- [JPG Format Guide](https://zixtool.online/formats/jpg/): Discrete Cosine Transform lossy encoding, EXIF metadata, and universal device support.
 

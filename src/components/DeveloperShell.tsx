@@ -186,7 +186,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
 
   // --- URL Encoder / Decoder State ---
   const [urlMode, setUrlMode] = useState<'encode' | 'decode'>('encode');
-  const [urlInput, setUrlInput] = useState('https://convert.gudmud.site/search?query=file converter & tags=free,online');
+  const [urlInput, setUrlInput] = useState('https://zixtool.online/search?query=file converter & tags=tools,online');
   const [urlOutput, setUrlOutput] = useState('');
   const [urlCopied, setUrlCopied] = useState(false);
 

@@ -9,7 +9,7 @@ export const googleOAuthConfig = {
   projectId: 'precise-space-365809',
   authUri: 'https://accounts.google.com/o/oauth2/auth',
   tokenUri: 'https://oauth2.googleapis.com/token',
-  javascriptOrigins: ['https://convert.gudmud.site'],
+  javascriptOrigins: ['https://zixtool.online', 'https://convert.gudmud.site'],
   indexingScope: 'https://www.googleapis.com/auth/indexing',
   indexingEndpoint: 'https://indexing.googleapis.com/v3/urlNotifications:publish',
   metadataEndpoint: 'https://indexing.googleapis.com/v3/urlNotifications/metadata',

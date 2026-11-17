@@ -140,7 +140,7 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
 
   // --- Markdown to HTML State ---
   const [mdInput, setMdInput] = useState<string>(
-    '## Markdown Preview\n\n**Gudmud Convert** processes all your data **100% in browser**.\n\n### Core Features\n\n- Zero server uploads\n- Instant client-side conversions\n- Fast in-memory processing\n\nVisit [Gudmud Convert](https://convert.gudmud.site) for fast utilities!'
+    '## Markdown Preview\n\n**BestConverter** processes all your data **locally in your browser**.\n\n### Core Features\n\n- Zero server uploads\n- Instant client-side conversions\n- Fast in-memory processing\n\nVisit [BestConverter](https://zixtool.online) for fast utilities!'
   );
   const [mdCopied, setMdCopied] = useState<boolean>(false);
 

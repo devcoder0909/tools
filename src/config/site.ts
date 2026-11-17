@@ -1,9 +1,9 @@
 export const siteConfig = {
-  brand: 'Gudmud Convert',
-  domain: 'convert.gudmud.site',
-  company: 'Gudmud Convert',
-  contactEmail: 'support@gudmud.site',
-  url: 'https://convert.gudmud.site',
+  brand: 'BestConverter',
+  domain: 'zixtool.online',
+  company: 'ZixTool',
+  contactEmail: 'support@zixtool.online',
+  url: 'https://zixtool.online',
   tagline: 'Free, Private In-Browser Converters & Calculators',
   description: 'Fast, private, client-side tools and converters. Your files never leave your device.',
   analytics: {

@@ -32,36 +32,36 @@ interface MetadataResponse {
 }
 
 const DEFAULT_URLS = [
-  'https://convert.gudmud.site/',
-  'https://convert.gudmud.site/heic-to-jpg/',
-  'https://convert.gudmud.site/photo-compressor/',
-  'https://convert.gudmud.site/jpg-compressor/',
-  'https://convert.gudmud.site/passport-photo-resizer/',
-  'https://convert.gudmud.site/jpeg-to-jpg/',
-  'https://convert.gudmud.site/pdf-to-jpg/',
-  'https://convert.gudmud.site/webp-to-png/',
-  'https://convert.gudmud.site/webp-to-jpg/',
-  'https://convert.gudmud.site/png-to-jpg/',
-  'https://convert.gudmud.site/jpg-to-png/',
-  'https://convert.gudmud.site/image-compressor/',
-  'https://convert.gudmud.site/compress-image-to-20kb/',
-  'https://convert.gudmud.site/compress-image-to-50kb/',
-  'https://convert.gudmud.site/compress-image-to-100kb/',
-  'https://convert.gudmud.site/percentage-calculator/',
-  'https://convert.gudmud.site/emi-calculator/',
-  'https://convert.gudmud.site/sip-calculator/',
-  'https://convert.gudmud.site/json-formatter/',
-  'https://convert.gudmud.site/base64-encoder/',
-  'https://convert.gudmud.site/qr-code-generator/',
-  'https://convert.gudmud.site/password-generator/',
-  'https://convert.gudmud.site/age-calculator/',
-  'https://convert.gudmud.site/word-counter/',
+  'https://zixtool.online/',
+  'https://zixtool.online/heic-to-jpg/',
+  'https://zixtool.online/photo-compressor/',
+  'https://zixtool.online/jpg-compressor/',
+  'https://zixtool.online/passport-photo-resizer/',
+  'https://zixtool.online/jpeg-to-jpg/',
+  'https://zixtool.online/pdf-to-jpg/',
+  'https://zixtool.online/webp-to-png/',
+  'https://zixtool.online/webp-to-jpg/',
+  'https://zixtool.online/png-to-jpg/',
+  'https://zixtool.online/jpg-to-png/',
+  'https://zixtool.online/image-compressor/',
+  'https://zixtool.online/compress-image-to-20kb/',
+  'https://zixtool.online/compress-image-to-50kb/',
+  'https://zixtool.online/compress-image-to-100kb/',
+  'https://zixtool.online/percentage-calculator/',
+  'https://zixtool.online/emi-calculator/',
+  'https://zixtool.online/sip-calculator/',
+  'https://zixtool.online/json-formatter/',
+  'https://zixtool.online/base64-encoder/',
+  'https://zixtool.online/qr-code-generator/',
+  'https://zixtool.online/password-generator/',
+  'https://zixtool.online/age-calculator/',
+  'https://zixtool.online/word-counter/',
 ];
 
 export function IndexingTesterShell() {
   const [activeTab, setActiveTab] = useState<'google' | 'indexnow' | 'overview'>('google');
   const [accessToken, setAccessToken] = useState<string>('');
-  const [targetUrl, setTargetUrl] = useState<string>('https://convert.gudmud.site/json-formatter/');
+  const [targetUrl, setTargetUrl] = useState<string>('https://zixtool.online/json-formatter/');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [lastStatusCode, setLastStatusCode] = useState<number | null>(null);
   const [responseTimeMs, setResponseTimeMs] = useState<number | null>(null);
@@ -259,9 +259,9 @@ export function IndexingTesterShell() {
 
     const apiKey = 'fbfbc05b9070df2dcd6684c6d12c7a0b';
     const payload = {
-      host: 'convert.gudmud.site',
+      host: 'zixtool.online',
       key: apiKey,
-      keyLocation: `https://convert.gudmud.site/${apiKey}.txt`,
+      keyLocation: `https://zixtool.online/${apiKey}.txt`,
       urlList: [targetUrl],
     };
 
@@ -374,7 +374,7 @@ export function IndexingTesterShell() {
               Google OAuth 2.0 Authorization
             </h2>
             <p class="text-xs sm:text-sm text-gray-600 mb-4">
-              Authorize using the Google Account that is an <strong>Owner or Full User</strong> of <code class="px-1.5 py-0.5 rounded bg-gray-100 font-mono text-gray-800">https://convert.gudmud.site</code> in Google Search Console.
+              Authorize using the Google Account that is an <strong>Owner or Full User</strong> of <code class="px-1.5 py-0.5 rounded bg-gray-100 font-mono text-gray-800">https://zixtool.online</code> in Google Search Console.
             </p>
 
             <div class="flex flex-wrap items-center gap-3">
@@ -505,7 +505,7 @@ export function IndexingTesterShell() {
                   >
                     <option value="">Quick Pick URL...</option>
                     {DEFAULT_URLS.map((u) => (
-                      <option value={u}>{u.replace('https://convert.gudmud.site', '')}</option>
+                      <option value={u}>{u.replace('https://zixtool.online', '')}</option>
                     ))}
                   </select>
                 </div>
@@ -608,7 +608,7 @@ export function IndexingTesterShell() {
               <div class="mb-4 p-3 rounded-xl bg-amber-950/60 border border-amber-500/30 text-xs text-amber-200 space-y-1">
                 <strong>⚠️ 403 Permission Denied:</strong>
                 <div>1. Ensure the <strong>Indexing API</strong> is enabled in your Google Cloud Project (<code class="text-amber-300 font-mono">{googleOAuthConfig.projectId}</code>).</div>
-                <div>2. Ensure the signed-in Google account is an <strong>Owner</strong> of <code class="text-amber-300 font-mono">https://convert.gudmud.site</code> in Google Search Console.</div>
+                <div>2. Ensure the signed-in Google account is an <strong>Owner</strong> of <code class="text-amber-300 font-mono">https://zixtool.online</code> in Google Search Console.</div>
               </div>
             )}
 
@@ -651,16 +651,16 @@ export function IndexingTesterShell() {
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
               <div class="p-4 rounded-2xl bg-gray-50 border border-gray-200 text-xs">
                 <div class="text-gray-500 font-semibold mb-1">Host Domain</div>
-                <div class="font-mono font-bold text-gray-900">convert.gudmud.site</div>
+                <div class="font-mono font-bold text-gray-900">zixtool.online</div>
               </div>
               <div class="p-4 rounded-2xl bg-gray-50 border border-gray-200 text-xs">
                 <div class="text-gray-500 font-semibold mb-1">IndexNow Key Location</div>
                 <a
-                  href="https://convert.gudmud.site/fbfbc05b9070df2dcd6684c6d12c7a0b.txt"
+                  href="https://zixtool.online/fbfbc05b9070df2dcd6684c6d12c7a0b.txt"
                   target="_blank"
                   class="font-mono text-emerald-600 hover:underline break-all"
                 >
-                  https://convert.gudmud.site/fbfbc05b9070df2dcd6684c6d12c7a0b.txt
+                  https://zixtool.online/fbfbc05b9070df2dcd6684c6d12c7a0b.txt
                 </a>
               </div>
             </div>
@@ -726,13 +726,13 @@ export function IndexingTesterShell() {
             <ol class="list-decimal pl-5 space-y-2">
               <li>Open the <a href="https://console.cloud.google.com/apis/library/indexing.googleapis.com?project=precise-space-365809" target="_blank" class="text-emerald-600 font-bold hover:underline">Google Cloud Console Indexing API Library</a> for project <code class="px-1.5 py-0.5 rounded bg-gray-100 font-mono">precise-space-365809</code>.</li>
               <li>Click <strong>Enable</strong> if not already enabled.</li>
-              <li>Under <strong>APIs &amp; Services &gt; Credentials</strong>, your Web Client ID (<code class="px-1.5 py-0.5 rounded bg-gray-100 font-mono">{googleOAuthConfig.clientId.slice(0, 25)}...</code>) is configured with Authorized JavaScript Origin: <code class="px-1.5 py-0.5 rounded bg-gray-100 font-mono">https://convert.gudmud.site</code>.</li>
+              <li>Under <strong>APIs &amp; Services &gt; Credentials</strong>, your Web Client ID (<code class="px-1.5 py-0.5 rounded bg-gray-100 font-mono">{googleOAuthConfig.clientId.slice(0, 25)}...</code>) is configured with Authorized JavaScript Origin: <code class="px-1.5 py-0.5 rounded bg-gray-100 font-mono">https://zixtool.online</code>.</li>
             </ol>
 
             <h3 class="text-base font-bold text-gray-900 mt-6">2. Required Google Search Console Setup:</h3>
             <ol class="list-decimal pl-5 space-y-2">
               <li>Go to <a href="https://search.google.com/search-console" target="_blank" class="text-emerald-600 font-bold hover:underline">Google Search Console</a>.</li>
-              <li>Ensure the property for <code class="px-1.5 py-0.5 rounded bg-gray-100 font-mono">https://convert.gudmud.site/</code> is verified.</li>
+              <li>Ensure the property for <code class="px-1.5 py-0.5 rounded bg-gray-100 font-mono">https://zixtool.online/</code> is verified.</li>
               <li>Under <strong>Settings &gt; Users and permissions</strong>, ensure your Google email account has <strong>Owner</strong> permissions.</li>
             </ol>
 

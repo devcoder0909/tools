@@ -8,7 +8,7 @@ interface GeneratorShellProps {
 
 export default function GeneratorShell({ toolId }: GeneratorShellProps) {
   // QR Code State
-  const [qrText, setQrText] = useState('https://convert.gudmud.site/');
+  const [qrText, setQrText] = useState('https://zixtool.online/');
   const [qrType, setQrType] = useState<'url' | 'text' | 'wifi' | 'email'>('url');
   const [wifiSsid, setWifiSsid] = useState('');
   const [wifiPassword, setWifiPassword] = useState('');

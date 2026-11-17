@@ -185,9 +185,9 @@ async function notifyIndexNow(urls: string[]) {
       method: 'POST',
       headers: { 'Content-Type': 'application/json; charset=utf-8' },
       body: JSON.stringify({
-        host: 'convert.gudmud.site',
+        host: siteConfig.domain,
         key: INDEXNOW_KEY,
-        keyLocation: `https://convert.gudmud.site/${INDEXNOW_KEY}.txt`,
+        keyLocation: `${siteConfig.url}/${INDEXNOW_KEY}.txt`,
         urlList: urls,
       }),
     });
