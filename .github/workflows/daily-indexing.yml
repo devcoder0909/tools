@@ -1,0 +1,33 @@
+name: Daily Automated Search Engine Indexing
+
+on:
+  schedule:
+    # Runs twice every day at 03:00 UTC and 15:00 UTC (08:30 AM and 08:30 PM IST)
+    - cron: '0 3,15 * * *'
+  workflow_dispatch: # Allows manual trigger from GitHub Actions dashboard anytime
+
+jobs:
+  index:
+    name: Google & IndexNow Daily Discovery
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 12
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Dispatch Multi-Engine Indexing (Google & IndexNow)
+        env:
+          GCP_SERVICE_ACCOUNT_KEY: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+        run: pnpm run indexing

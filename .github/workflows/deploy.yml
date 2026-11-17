@@ -38,7 +38,8 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist --project-name=best-converter
 
-      - name: Notify IndexNow
+      - name: Dispatch Multi-Engine Indexing (Google & IndexNow)
         env:
+          GCP_SERVICE_ACCOUNT_KEY: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
           INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
-        run: pnpm exec tsx scripts/indexnow.ts
+        run: pnpm run indexing

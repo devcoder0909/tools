@@ -34,6 +34,11 @@ interface MetadataResponse {
 const DEFAULT_URLS = [
   'https://convert.gudmud.site/',
   'https://convert.gudmud.site/heic-to-jpg/',
+  'https://convert.gudmud.site/photo-compressor/',
+  'https://convert.gudmud.site/jpg-compressor/',
+  'https://convert.gudmud.site/passport-photo-resizer/',
+  'https://convert.gudmud.site/jpeg-to-jpg/',
+  'https://convert.gudmud.site/pdf-to-jpg/',
   'https://convert.gudmud.site/webp-to-png/',
   'https://convert.gudmud.site/webp-to-jpg/',
   'https://convert.gudmud.site/png-to-jpg/',
@@ -43,8 +48,13 @@ const DEFAULT_URLS = [
   'https://convert.gudmud.site/compress-image-to-50kb/',
   'https://convert.gudmud.site/compress-image-to-100kb/',
   'https://convert.gudmud.site/percentage-calculator/',
-  'https://convert.gudmud.site/age-calculator/',
+  'https://convert.gudmud.site/emi-calculator/',
+  'https://convert.gudmud.site/sip-calculator/',
   'https://convert.gudmud.site/json-formatter/',
+  'https://convert.gudmud.site/base64-encoder/',
+  'https://convert.gudmud.site/qr-code-generator/',
+  'https://convert.gudmud.site/password-generator/',
+  'https://convert.gudmud.site/age-calculator/',
   'https://convert.gudmud.site/word-counter/',
 ];
 

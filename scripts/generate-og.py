@@ -56,7 +56,7 @@ def generate_og():
     draw.text(((width - d_w) // 2, 335), desc_text, fill=(100, 116, 139), font=font_sub)
 
     # Badges pill at bottom
-    badges = ['100% Client-Side RAM', 'Zero File Uploads', 'No Watermarks', 'Free Forever']
+    badges = ['Client-Side Processing', 'Zero Cloud Uploads', 'Private In-Browser', 'Lossless Quality']
     badge_y = 420
     pill_padding_x = 20
     pill_height = 42

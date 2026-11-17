@@ -91,6 +91,7 @@ function findServiceAccountKey(): ServiceAccountKey | null {
   const possiblePaths = [
     process.env.GOOGLE_APPLICATION_CREDENTIALS,
     path.resolve(process.cwd(), 'service-account.json'),
+    path.resolve(process.cwd(), 'service-account.json.json'),
     path.resolve(process.cwd(), 'google-service-account.json'),
     path.resolve(process.cwd(), 'converter-service-account.json'),
     path.resolve(process.cwd(), '.google-service-account.json'),

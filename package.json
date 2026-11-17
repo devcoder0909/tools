@@ -21,6 +21,8 @@
     "indexnow": "tsx scripts/indexnow.ts",
     "google-indexing": "tsx scripts/google-indexing.ts",
     "indexing": "tsx scripts/google-indexing.ts",
+    "indexing:daily": "tsx scripts/google-indexing.ts",
+    "indexing:watch": "tsx scripts/google-indexing.ts --continuous --interval 360",
     "indexing:auto": "tsx scripts/google-indexing.ts --continuous --interval 60",
     "scaffold": "tsx scripts/content-scaffold.ts"
   },
