@@ -1,0 +1,75 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SeoAnalyzer from '../../components/admin/SeoAnalyzer';
+import { getAllTools } from '../../registry';
+import { siteConfig } from '../../config/site';
+import fs from 'node:fs';
+import path from 'node:path';
+
+const allTools = getAllTools();
+const flagshipSlugs = [
+  'image-compressor',
+  'passport-photo-resizer',
+  'background-remover',
+  'merge-pdf',
+  'emi-calculator',
+];
+
+const presetPages = flagshipSlugs.map((slug) => {
+  const tool = allTools.find((t) => t.slug === slug);
+  if (!tool) return null;
+
+  let content = '';
+  try {
+    const filePath = path.resolve(process.cwd(), tool.content);
+    if (fs.existsSync(filePath)) {
+      content = fs.readFileSync(filePath, 'utf-8').slice(0, 1200);
+    }
+  } catch {}
+
+  return {
+    slug: tool.slug,
+    name: tool.name,
+    url: `${siteConfig.url}/${tool.slug}/`,
+    title: tool.title,
+    metaDescription: tool.description,
+    focusKeyword: tool.seo?.primary_kw || tool.name.toLowerCase(),
+    canonical: `${siteConfig.url}/${tool.slug}/`,
+    h1: tool.name,
+    content: content || tool.description,
+  };
+}).filter(Boolean);
+---
+
+<Layout
+  title={`Yoast SEO Analyzer & Live Snippet Simulator | ${siteConfig.brand}`}
+  description="Internal editorial SEO audit tool and live snippet simulator for reviewing titles, descriptions, focus keywords, and Flesch readability."
+  canonical={`${siteConfig.url}/internal/seo-analyzer/`}
+  noindex={true}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <!-- Admin Navigation Banner -->
+    <div class="flex items-center justify-between mb-8 pb-4 border-b border-slate-200">
+      <div class="flex items-center gap-3">
+        <a href="/" class="text-sm font-semibold text-slate-500 hover:text-slate-900 transition flex items-center gap-1">
+          &larr; Back to ZixTool
+        </a>
+        <span class="text-slate-300">/</span>
+        <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-800">
+          Admin Internal Tool
+        </span>
+      </div>
+      <div class="flex items-center gap-2">
+        <a
+          href="/internal/indexing-tester/"
+          class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition"
+        >
+          Google Indexing Tester &rarr;
+        </a>
+      </div>
+    </div>
+
+    <!-- Interactive Client Component -->
+    <SeoAnalyzer client:load presetPages={presetPages as any[]} />
+  </div>
+</Layout>

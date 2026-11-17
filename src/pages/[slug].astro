@@ -10,6 +10,7 @@ import PdfShell from '../components/PdfShell';
 import FinanceShell from '../components/FinanceShell';
 import MediaShell from '../components/MediaShell';
 import DeveloperShell from '../components/DeveloperShell';
+import BackgroundRemoverShell from '../components/BackgroundRemoverShell';
 import AdSlot from '../components/AdSlot.astro';
 import PromoSlot from '../components/PromoSlot.astro';
 import FAQ from '../components/FAQ.astro';
@@ -127,6 +128,7 @@ const faqJsonLd = tool.faq && tool.faq.length > 0 ? {
 } : null;
 
 const workflowDiagrams: Record<string, string> = {
+  'background-remover': '/images/tools/background-remover-workflow.svg',
   'png-to-jpg': '/images/tools/png-to-jpg-workflow.svg',
   'jpg-to-png': '/images/tools/jpg-to-png-workflow.svg',
   'webp-to-jpg': '/images/tools/webp-to-jpg-workflow.svg',
@@ -222,7 +224,9 @@ if (tool.targetBytes) {
     </div>
 
     <!-- 3. The working tool above the fold -->
-    {tool.kind === 'generator' || ['qr-code-generator', 'password-generator', 'barcode-generator', 'random-number-generator', 'fancy-text-generator'].includes(tool.id) ? (
+    {tool.id === 'background-remover' ? (
+      <BackgroundRemoverShell client:load toolId={tool.id} toolName={tool.name} />
+    ) : tool.kind === 'generator' || ['qr-code-generator', 'password-generator', 'barcode-generator', 'random-number-generator', 'fancy-text-generator'].includes(tool.id) ? (
       <GeneratorShell client:load toolId={tool.id} toolName={tool.name} />
     ) : tool.kind === 'pdf' || ['merge-pdf', 'jpg-to-pdf', 'split-pdf', 'compress-pdf', 'png-to-pdf', 'pdf-to-png', 'pdf-to-jpg', 'rotate-pdf'].includes(tool.id) ? (
       <PdfShell client:load toolId={tool.id} toolName={tool.name} />

@@ -329,7 +329,7 @@
   slug: avif-to-jpg
   name: AVIF to JPG
   title: AVIF to JPG Converter - Universal Format | ZixTool
-  description: Convert next-gen AVIF images to universally supported JPG format. Quick, private, client-side browser conversion with zero server uploads.
+  description: Convert AVIF to JPG online free. Quickly transform next-gen AVIF images to universal JPG format with zero cloud uploads and instant browser download.
   from: avif
   to: jpg
   engine: canvas
@@ -371,7 +371,7 @@
   slug: avif-to-png
   name: AVIF to PNG
   title: AVIF to PNG Converter - Lossless Alpha | ZixTool
-  description: Convert AVIF pictures to crisp PNG images with full transparency retention. Completely offline and private in your browser.
+  description: Convert AVIF to PNG online free. Transform modern AVIF files into lossless PNG images with alpha transparency and zero server uploads in browser RAM.
   from: avif
   to: png
   engine: canvas
@@ -593,7 +593,7 @@
   slug: bmp-to-jpg
   name: BMP to JPG
   title: BMP to JPG Converter - Compress Image Size | ZixTool
-  description: Convert bulky Windows BMP files to highly compressed JPG photos. Fast, secure client-side batch processing without data leaks.
+  description: Convert BMP to JPG online free. Transform bulky Windows BMP files to highly compressed JPG photos with zero cloud uploads and instant browser download.
   from: bmp
   to: jpg
   engine: canvas
@@ -1103,7 +1103,7 @@
   name: Age Calculator
   title: Age Calculator - Free and Accurate | ZixTool
   subtitle: Calculate exact age in years, months, days, weeks, and hours.
-  description: Calculate your exact age from date of birth in years, months, days, weeks, and hours. Fast, accurate, and completely private in your web browser.
+  description: Free online age calculator. Calculate your exact age from date of birth in years, months, days, and hours. Fast, accurate, and completely private in your browser.
   engine: calc-age
   options: []
   presets: []
@@ -1302,7 +1302,7 @@
   name: Case Converter
   title: Case Converter - Free Online Tool | ZixTool
   subtitle: Convert text to UPPERCASE, lowercase, Title Case, and camelCase.
-  description: Convert text instantly between UPPERCASE, lowercase, Title Case, Sentence case, camelCase, kebab-case, and snake_case in your browser with one click.
+  description: Free online case converter. Convert text between UPPERCASE, lowercase, Title Case, camelCase, and snake_case in your browser instantly with zero server uploads.
   engine: text-case
   options: []
   presets: []
@@ -3556,3 +3556,50 @@
     sources: Researched keywords export & Google SERP seed analysis
     last_reviewed: '2026-11-16T00:00:00.000Z'
 
+- id: background-remover
+  kind: media
+  slug: background-remover
+  name: Background Remover
+  title: Background Remover - Free Online | ZixTool
+  subtitle: Free online background remover to create transparent PNG cutouts in browser RAM.
+  description: Free online background remover. Remove backgrounds from images and create transparent PNG cutouts or clean white backgrounds in your browser instantly.
+  from: image
+  to: png
+  engine: canvas
+  options:
+    - tolerance
+    - custom-bg
+    - transparent
+  presets: []
+  content: src/content/tools/background-remover.mdx
+  faq:
+    - q: How can I remove the background from an image for free?
+      a: Upload your image to ZixTool's Background Remover, select Transparent PNG mode, and click Download. The entire process runs locally in your web browser with zero subscriptions or watermarks.
+    - q: Can I replace the background with a pure white color for product listings?
+      a: Yes. Click the White Background preset button. The tool automatically isolates your product and replaces the perimeter with clean RGB white suitable for Amazon and eBay.
+    - q: Does this tool support transparent PNG downloads?
+      a: Yes. When Transparent mode is selected, your image is exported as an uncompressed 32-bit PNG file preserving full alpha transparency cutouts.
+  related:
+    - image-compressor
+    - passport-photo-resizer
+    - png-to-jpg
+    - photo-editor
+    - resize-image
+  indexable: true
+  reviewed: true
+  last_reviewed: '2026-11-17T00:00:00.000Z'
+  reviewer: ZixTool Standards Review
+  lang: en
+  seo:
+    primary_kw: background remover
+    secondary_kws:
+      - remove background from image
+      - remove bg
+      - remove background online
+      - free background remover
+      - transparent background maker
+      - ai background remover
+    intent: tool
+    tier: 1
+    sources: Researched keywords export & Google SERP seed analysis
+    last_reviewed: '2026-11-17T00:00:00.000Z'

@@ -1,0 +1,322 @@
+# TASK: IMPLEMENT COMPLETE YOAST-STYLE SEO SYSTEM IN MY EXISTING WEBSITE
+
+Act as a Senior Technical SEO Engineer, SEO Architect, and Full-Stack Developer.
+
+Your task is to audit, implement, and optimize my EXISTING WEBSITE with a complete Yoast SEO-style system, following modern technical SEO, on-page SEO, content SEO, structured data, and AI search optimization practices.
+
+## 1. FIRST: INSPECT THE EXISTING WEBSITE
+
+Before changing anything:
+
+1. Identify the framework, programming language, CMS, database, and hosting architecture.
+2. Inspect the existing routing system and all public-facing pages.
+3. Inspect existing SEO metadata, robots.txt, sitemap, canonical tags, and schema.
+4. Identify duplicate URLs, indexing problems, broken links, and performance issues.
+5. Identify existing SEO functionality to avoid duplication.
+6. Create a list of issues and an implementation plan.
+
+IMPORTANT:
+- Do not rebuild the website.
+- Do not change the existing design unnecessarily.
+- Do not remove existing functionality.
+- Do not break existing URLs.
+- Preserve existing database records.
+- Take appropriate backups before modifying critical files or database structures.
+
+## 2. CENTRALIZED SEO MANAGEMENT
+
+Implement a reusable SEO management system.
+
+Every public-facing page must support:
+
+- SEO title
+- Meta description
+- Focus keyword
+- Additional keywords
+- URL slug
+- Canonical URL
+- Robots index/noindex
+- Open Graph title
+- Open Graph description
+- Open Graph image
+- Twitter/X card metadata
+- Schema type
+- Breadcrumb title
+
+Use sensible automatic defaults when fields are empty.
+
+Allow individual pages to override global SEO defaults.
+
+Do not output duplicate meta tags.
+
+## 3. TECHNICAL SEO
+
+Implement:
+
+- HTTPS enforcement.
+- Preferred domain redirects.
+- HTTP to HTTPS redirects.
+- Canonical URL handling.
+- XML sitemap generation.
+- robots.txt configuration.
+- Correct meta robots tags.
+- Clean URL structure.
+- Proper 301 redirects.
+- Redirect chain detection.
+- Redirect loop prevention.
+- Broken internal link detection.
+- Broken external link detection where practical.
+- Correct 404 and 410 responses.
+- Proper 5xx error handling.
+- Noindex private and administrative pages.
+- Remove duplicate URL variations.
+- Ensure important pages are crawlable.
+- Prevent irrelevant pages from entering the sitemap.
+
+The sitemap must automatically update when public content is created, updated, published, or deleted.
+
+## 4. ON-PAGE SEO
+
+For every indexable page:
+
+- Unique SEO title.
+- Unique meta description.
+- One primary H1.
+- Correct H2/H3 hierarchy.
+- Focus keyword optimization.
+- Natural keyword variations.
+- Descriptive URLs.
+- Image ALT text.
+- Internal links.
+- Breadcrumb navigation where appropriate.
+- Relevant content structure.
+- Duplicate title detection.
+- Duplicate description detection.
+- Keyword cannibalization detection.
+- Thin-content warnings.
+- Missing metadata warnings.
+
+Do not insert keywords unnaturally.
+
+## 5. YOAST-STYLE SEO ANALYSIS
+
+Build an SEO analysis panel for the admin/content editor.
+
+Include:
+
+- SEO score.
+- Focus keyword analysis.
+- Title analysis.
+- Meta description analysis.
+- URL analysis.
+- Heading analysis.
+- Content analysis.
+- Image ALT analysis.
+- Internal linking analysis.
+- Canonical analysis.
+- Schema analysis.
+- Readability analysis.
+
+Provide clear Green / Orange / Red indicators.
+
+Every failed check must explain:
+1. What is wrong.
+2. Why it matters.
+3. How to fix it.
+
+Provide live SEO snippet previews.
+
+Do not modify published content automatically without approval.
+
+## 6. STRUCTURED DATA
+
+Implement valid JSON-LD structured data based on the actual content type.
+
+Support where applicable:
+
+- Organization
+- WebSite
+- WebPage
+- BreadcrumbList
+- Article
+- BlogPosting
+- Product
+- SoftwareApplication
+- Person
+- FAQPage where eligible
+- LocalBusiness where applicable
+
+Requirements:
+
+- Avoid duplicate schema.
+- Use accurate information.
+- Match schema with visible content.
+- Generate dynamic schema from database records where appropriate.
+- Validate JSON-LD output.
+- Never generate fake reviews, ratings, prices, or business information.
+
+## 7. XML SITEMAP SYSTEM
+
+Generate and maintain:
+
+- Main sitemap index.
+- Pages sitemap.
+- Posts sitemap.
+- Categories sitemap where useful.
+- Other relevant public content sitemaps.
+
+Requirements:
+
+- Include canonical URLs only.
+- Exclude noindex pages.
+- Exclude private pages.
+- Exclude duplicate URLs.
+- Update automatically.
+- Use lastmod only when the content genuinely changes.
+- Follow XML sitemap standards.
+
+## 8. ROBOTS.TXT AND AI CRAWLERS
+
+Create a properly configured robots.txt.
+
+Ensure important public content is accessible to legitimate search crawlers.
+
+Review restrictions affecting AI crawlers.
+
+Do not accidentally block important assets or public pages.
+
+Create an optional /llms.txt file containing links to the most important website resources.
+
+Treat llms.txt as an experimental discoverability feature, not a guaranteed ranking factor.
+
+## 9. INTERNAL LINKING
+
+Implement:
+
+- Related content suggestions.
+- Relevant internal linking.
+- Breadcrumbs.
+- Orphan page detection.
+- Pages with insufficient internal links.
+- Descriptive anchor text.
+- Logical category and topic hierarchy.
+
+Never insert irrelevant links simply to increase link counts.
+
+## 10. PERFORMANCE AND MOBILE SEO
+
+Optimize:
+
+- Core Web Vitals.
+- Largest Contentful Paint.
+- Interaction to Next Paint.
+- Cumulative Layout Shift.
+- Image compression.
+- Modern image formats where supported.
+- Lazy loading.
+- CSS delivery.
+- JavaScript execution.
+- Font loading.
+- Caching.
+- Mobile responsiveness.
+
+Maintain existing website functionality and visual identity.
+
+## 11. CONTENT AND KEYWORD QUALITY
+
+Create an SEO audit system to identify:
+
+- Duplicate content.
+- Thin content.
+- Outdated content.
+- Missing headings.
+- Missing descriptions.
+- Keyword cannibalization.
+- Search intent mismatch.
+- Missing internal links.
+- Missing image descriptions.
+
+Do not create mass-generated doorway pages, duplicate location pages, or keyword-stuffed content.
+
+Do not automatically publish AI-generated content.
+
+## 12. OFF-PAGE SEO
+
+Provide reporting or recommendations for:
+
+- Competitor backlink opportunities.
+- Backlink profile audits.
+- Unlinked brand mentions.
+- Relevant link-building opportunities.
+- Google Business Profile applicability.
+
+Do not automatically create spam backlinks or fake business listings.
+
+## 13. EXCLUDED TASKS
+
+Do NOT implement:
+
+- Google Search Console integration.
+- Google Analytics integration.
+- Google Analytics tracking code.
+- Search Console API connections.
+- Analytics dashboards requiring Google Analytics.
+
+All other applicable SEO implementation tasks must be considered.
+
+## 14. SECURITY AND CODE QUALITY
+
+- Sanitize all SEO input.
+- Escape HTML output.
+- Prevent stored XSS.
+- Use secure database queries.
+- Validate canonical URLs.
+- Prevent open redirects.
+- Protect admin SEO settings.
+- Follow existing coding conventions.
+- Avoid unnecessary dependencies.
+- Avoid duplicate functionality.
+
+## 15. FINAL TESTING
+
+After implementation, test:
+
+1. Every important public URL.
+2. SEO title and meta description.
+3. Canonical URLs.
+4. Robots meta tags.
+5. XML sitemap validity.
+6. robots.txt accessibility.
+7. JSON-LD validity.
+8. Open Graph tags.
+9. Redirect behavior.
+10. HTTP status codes.
+11. Broken links.
+12. Mobile responsiveness.
+13. Page speed.
+14. Duplicate metadata.
+15. Noindex and private-page exclusions.
+
+## 16. FINAL DELIVERABLE
+
+When finished, provide:
+
+- Files created.
+- Files modified.
+- Database changes, if any.
+- SEO features implemented.
+- Technical issues fixed.
+- Pages audited.
+- Remaining SEO issues.
+- Test results.
+- Any tasks requiring manual external action.
+
+## FINAL INSTRUCTION
+
+Do not just provide recommendations or a report.
+
+ACTUALLY IMPLEMENT the SEO improvements in my existing website.
+
+Work systematically, inspect before modifying, preserve existing functionality, and test everything after implementation.
+
+Prioritize correct implementation, clean code, performance, maintainability, and search-engine accessibility over simply achieving a high SEO score.

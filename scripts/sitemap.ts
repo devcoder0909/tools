@@ -56,6 +56,18 @@ interface ToolMediaDef {
 
 const TOOL_MEDIA_REGISTRY: ToolMediaDef[] = [
   {
+    slug: 'background-remover',
+    name: 'Background Remover',
+    title: 'How to Remove Background from Image Online (Step-by-Step Tutorial)',
+    description: 'Learn how to remove backgrounds from JPG, PNG, and WebP images and generate transparent PNG cutouts directly inside browser memory.',
+    durationSecs: 65,
+    thumbnailUrl: '/images/tools/background-remover-workflow.svg',
+    diagramUrl: '/images/tools/background-remover-workflow.svg',
+    diagramTitle: 'Background Remover Client-Side Architecture Diagram',
+    diagramCaption: 'In-browser HTML5 Canvas chroma detection and Euclidean RGB distance masking.',
+    tags: ['remove bg', 'remove background', 'transparent png', 'background remover online'],
+  },
+  {
     slug: 'png-to-jpg',
     name: 'PNG to JPG Converter',
     title: 'How to Convert PNG to JPG Online (Step-by-Step Tutorial)',

@@ -2,40 +2,17 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import type { PageSeoInput } from '../utils/seo';
 
-export interface Props {
-  title: string;
-  description: string;
-  canonical?: string;
-  type?: 'website' | 'article';
-  jsonLd?: Record<string, any> | Record<string, any>[];
-  noindex?: boolean;
-  ogImage?: string;
-}
+export interface Props extends PageSeoInput {}
 
-const {
-  title,
-  description,
-  canonical,
-  type = 'website',
-  jsonLd,
-  noindex = false,
-  ogImage,
-} = Astro.props;
+const props = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en" class="h-full antialiased scroll-smooth">
   <head>
-    <BaseHead
-      title={title}
-      description={description}
-      canonical={canonical}
-      type={type}
-      jsonLd={jsonLd}
-      noindex={noindex}
-      ogImage={ogImage}
-    />
+    <BaseHead {...props} />
   </head>
   <body class="flex min-h-full flex-col bg-slate-50/40 text-slate-900 font-sans antialiased overflow-x-hidden selection:bg-emerald-600 selection:text-white">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-green-600 focus:text-white focus:rounded-md focus:shadow-md focus:font-semibold">

@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /embed/
+Disallow: /internal/
 Disallow: /_internal/
 
 # Google Media Crawlers (Images & Videos)

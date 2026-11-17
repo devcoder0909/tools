@@ -1,45 +1,10 @@
 ---
 import { siteConfig } from '../config/site';
+import { resolvePageSeo, type PageSeoInput } from '../utils/seo';
 
-export interface Props {
-  title: string;
-  description: string;
-  canonical?: string;
-  type?: 'website' | 'article';
-  jsonLd?: Record<string, any> | Record<string, any>[];
-  noindex?: boolean;
-  ogImage?: string;
-}
+export interface Props extends PageSeoInput {}
 
-const {
-  title,
-  description,
-  canonical = Astro.url.href,
-  type = 'website',
-  jsonLd,
-  noindex = false,
-  ogImage,
-} = Astro.props;
-
-// Format title: only append brand if it doesn't already have it and fits comfortably <= 60 chars
-let fullTitle = title.trim();
-if (!fullTitle.includes(siteConfig.brand)) {
-  const withBrand = `${fullTitle} | ${siteConfig.brand}`;
-  if (withBrand.length <= 60) {
-    fullTitle = withBrand;
-  }
-}
-// Safety guard: ensure fullTitle never exceeds 60 characters
-if (fullTitle.length > 60) {
-  const pipeIndex = fullTitle.lastIndexOf(' | ');
-  if (pipeIndex >= 30) {
-    fullTitle = fullTitle.slice(0, pipeIndex);
-  }
-  if (fullTitle.length > 60) {
-    fullTitle = fullTitle.slice(0, 60).trim();
-  }
-}
-const metaImage = ogImage || `${siteConfig.url}/og-image.png`;
+const seo = resolvePageSeo(Astro.props, Astro.url);
 ---
 
 <!-- Global Metadata -->
@@ -58,38 +23,36 @@ const metaImage = ogImage || `${siteConfig.url}/og-image.png`;
 <meta name="generator" content={Astro.generator} />
 
 <!-- Canonical & Discovery -->
-<link rel="canonical" href={canonical} />
+<link rel="canonical" href={seo.canonical} />
 <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap-index.xml" />
 
 <!-- Primary Meta Tags -->
-<title>{fullTitle}</title>
-<meta name="title" content={fullTitle} />
-<meta name="description" content={description} />
-{noindex && <meta name="robots" content="noindex, follow" />}
-{!noindex && <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />}
+<title>{seo.title}</title>
+<meta name="title" content={seo.title} />
+<meta name="description" content={seo.description} />
+<meta name="robots" content={seo.robotsContent} />
 
 <!-- Open Graph / Facebook -->
-<meta property="og:type" content={type} />
-<meta property="og:url" content={canonical} />
-<meta property="og:title" content={fullTitle} />
-<meta property="og:description" content={description} />
+<meta property="og:type" content={seo.ogType} />
+<meta property="og:url" content={seo.ogUrl} />
+<meta property="og:title" content={seo.ogTitle} />
+<meta property="og:description" content={seo.ogDescription} />
 <meta property="og:site_name" content={siteConfig.brand} />
 <meta property="og:locale" content="en_US" />
-<meta property="og:image" content={metaImage} />
+<meta property="og:image" content={seo.ogImage} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content={`${fullTitle} - ${siteConfig.brand}`} />
+<meta property="og:image:alt" content={`${seo.title} - ${siteConfig.brand}`} />
 
 <!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:url" content={canonical} />
-<meta name="twitter:title" content={fullTitle} />
-<meta name="twitter:description" content={description} />
-<meta name="twitter:image" content={metaImage} />
-<meta name="twitter:image:alt" content={`${fullTitle} - ${siteConfig.brand}`} />
+<meta name="twitter:card" content={seo.twitterCard} />
+<meta name="twitter:url" content={seo.ogUrl} />
+<meta name="twitter:title" content={seo.twitterTitle} />
+<meta name="twitter:description" content={seo.twitterDescription} />
+<meta name="twitter:image" content={seo.twitterImage} />
+<meta name="twitter:image:alt" content={`${seo.title} - ${siteConfig.brand}`} />
 
-<!-- Verification -->
-<meta name="google-site-verification" content="googlefc307c410c314053" />
+<!-- Search Engine Ownership Verification (Clean Single Meta Tag) -->
 {siteConfig.searchConsoleMeta && (
   <meta name="google-site-verification" content={siteConfig.searchConsoleMeta} />
 )}
@@ -98,11 +61,11 @@ const metaImage = ogImage || `${siteConfig.url}/og-image.png`;
 )}
 
 <!-- Structured Data (JSON-LD) -->
-{jsonLd && (
+{seo.jsonLdScripts.length > 0 && (
   <script
     type="application/ld+json"
     is:inline
-    set:html={JSON.stringify(Array.isArray(jsonLd) ? jsonLd : [jsonLd])}
+    set:html={JSON.stringify(seo.jsonLdScripts)}
   />
 )}
 

@@ -18,6 +18,7 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "seo:lint": "tsx scripts/seo-lint.ts",
+    "seo:audit": "tsx scripts/yoast-seo-audit.ts",
     "indexnow": "tsx scripts/indexnow.ts",
     "google-indexing": "tsx scripts/google-indexing.ts",
     "indexing": "tsx scripts/google-indexing.ts",
