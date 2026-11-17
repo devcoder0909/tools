@@ -17,3 +17,5 @@ service-account*.json
 *service_account*.json
 *.pem
 *.key
+*.log
+scripts/*.log
