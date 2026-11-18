@@ -33,23 +33,25 @@ const breadcrumbs = [
       {formats.map((fmt) => (
         <a
           href={`/formats/${fmt.id}/`}
-          class="p-6 rounded-xl border border-gray-200 bg-white hover:border-green-500 hover:shadow-xs transition group"
+          class="p-6 rounded-2xl border border-slate-200 bg-white hover:border-emerald-500 hover:shadow-xs transition duration-200 group flex flex-col justify-between"
         >
-          <div class="flex items-center justify-between mb-3">
-            <span class="font-mono font-bold text-xl text-green-700">
-              {fmt.extension.toUpperCase()}
-            </span>
-            <span class="text-xs font-semibold px-2 py-0.5 rounded bg-gray-100 text-gray-700 uppercase">
-              {fmt.category}
-            </span>
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-mono font-bold text-xl text-emerald-700">
+                {fmt.extension.toUpperCase()}
+              </span>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 uppercase">
+                {fmt.category}
+              </span>
+            </div>
+            <h2 class="font-bold text-gray-900 group-hover:text-emerald-600 text-lg mb-2 transition-colors">
+              {fmt.name}
+            </h2>
+            <p class="text-xs text-gray-500 leading-relaxed mb-4">
+              {fmt.description}
+            </p>
           </div>
-          <h2 class="font-bold text-gray-900 group-hover:text-green-600 text-lg mb-2">
-            {fmt.name}
-          </h2>
-          <p class="text-xs text-gray-500 leading-relaxed mb-4">
-            {fmt.description}
-          </p>
-          <div class="text-xs text-gray-400 space-x-2">
+          <div class="text-xs text-gray-400 space-x-2 pt-3 border-t border-gray-100">
             <span>{fmt.lossy ? 'Lossy' : 'Lossless'}</span>
             <span>•</span>
             <span>{fmt.transparency ? 'Alpha Transparency' : 'No Transparency'}</span>

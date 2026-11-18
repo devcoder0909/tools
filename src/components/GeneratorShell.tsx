@@ -268,7 +268,7 @@ export default function GeneratorShell({ toolId }: GeneratorShellProps) {
   ];
 
   return (
-    <div class="bg-white border border-slate-200/80 rounded-3xl p-5 sm:p-8 shadow-xl shadow-slate-200/40 mb-10 transition-all">
+    <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-7 shadow-xs mb-8 transition-all">
       {/* 1. QR Code Generator */}
       {toolId === 'qr-code-generator' && (
         <div class="space-y-6">
@@ -277,7 +277,7 @@ export default function GeneratorShell({ toolId }: GeneratorShellProps) {
               <button
                 type="button"
                 onClick={() => setQrType(t)}
-                class={`px-4 py-2 text-xs font-semibold rounded-lg capitalize transition cursor-pointer ${qrType === t ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                class={`px-4 py-2 text-xs font-semibold rounded-lg capitalize transition cursor-pointer ${qrType === t ? 'bg-emerald-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
               >
                 {t === 'url' ? 'Website URL' : t === 'wifi' ? 'WiFi Network' : t}

@@ -328,11 +328,11 @@ export default function PdfShell({ toolId }: PdfShellProps) {
   };
 
   return (
-    <div class="bg-white border border-slate-200/80 rounded-3xl p-5 sm:p-8 shadow-xl shadow-slate-200/40 mb-10 transition-all">
+    <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-7 shadow-xs mb-8 transition-all">
       {/* Upload Zone */}
       <div
         onClick={() => fileInputRef.current?.click()}
-        class="border-2 border-dashed border-slate-200 hover:border-emerald-500/80 rounded-2xl sm:rounded-3xl p-8 sm:p-14 text-center bg-slate-50/40 hover:bg-emerald-50/20 transition cursor-pointer mb-6 group"
+        class="border-2 border-dashed border-slate-300 hover:border-emerald-500 rounded-xl sm:rounded-2xl p-8 sm:p-12 text-center bg-slate-50/50 hover:bg-emerald-50/10 transition cursor-pointer mb-6 group"
       >
         <input
           ref={fileInputRef}
@@ -344,8 +344,8 @@ export default function PdfShell({ toolId }: PdfShellProps) {
           }}
           class="hidden"
         />
-        <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center mx-auto mb-3.5 border border-emerald-100 text-emerald-600 group-hover:scale-105 group-hover:bg-slate-900 group-hover:text-white group-hover:border-slate-900 transition-all">
-          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center mx-auto mb-3.5 border border-emerald-100 text-emerald-600 group-hover:scale-105 group-hover:bg-emerald-600 group-hover:text-white group-hover:border-emerald-600 transition-all">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 4v16m8-8H4" />
           </svg>
         </div>
@@ -475,7 +475,7 @@ export default function PdfShell({ toolId }: PdfShellProps) {
             type="button"
             disabled={files.length < 2 || isProcessing}
             onClick={mergePdfs}
-            class="px-6 py-3 text-xs font-semibold rounded-xl bg-slate-900 text-white hover:bg-emerald-600 transition shadow-sm hover:shadow-md disabled:opacity-50 cursor-pointer active:scale-[0.99]"
+            class="px-6 py-3 text-xs font-semibold rounded-xl bg-emerald-600 text-white hover:bg-emerald-700 transition shadow-xs hover:shadow-sm disabled:opacity-50 cursor-pointer active:scale-[0.99]"
           >
             {isProcessing ? 'Merging...' : 'Merge PDFs Now'}
           </button>
@@ -486,7 +486,7 @@ export default function PdfShell({ toolId }: PdfShellProps) {
             type="button"
             disabled={files.length === 0 || isProcessing}
             onClick={imagesToPdf}
-            class="px-6 py-3 text-xs font-semibold rounded-xl bg-slate-900 text-white hover:bg-emerald-600 transition shadow-sm hover:shadow-md disabled:opacity-50 cursor-pointer active:scale-[0.99]"
+            class="px-6 py-3 text-xs font-semibold rounded-xl bg-emerald-600 text-white hover:bg-emerald-700 transition shadow-xs hover:shadow-sm disabled:opacity-50 cursor-pointer active:scale-[0.99]"
           >
             {isProcessing ? 'Converting...' : 'Convert to PDF Now'}
           </button>
@@ -497,7 +497,7 @@ export default function PdfShell({ toolId }: PdfShellProps) {
             type="button"
             disabled={files.length === 0 || isProcessing}
             onClick={splitPdf}
-            class="px-6 py-3 text-xs font-semibold rounded-xl bg-slate-900 text-white hover:bg-emerald-600 transition shadow-sm hover:shadow-md disabled:opacity-50 cursor-pointer active:scale-[0.99]"
+            class="px-6 py-3 text-xs font-semibold rounded-xl bg-emerald-600 text-white hover:bg-emerald-700 transition shadow-xs hover:shadow-sm disabled:opacity-50 cursor-pointer active:scale-[0.99]"
           >
             {isProcessing ? 'Extracting...' : 'Extract & Download Pages'}
           </button>
@@ -508,7 +508,7 @@ export default function PdfShell({ toolId }: PdfShellProps) {
             type="button"
             disabled={files.length === 0 || isProcessing}
             onClick={compressPdf}
-            class="px-6 py-3 text-xs font-semibold rounded-xl bg-slate-900 text-white hover:bg-emerald-600 transition shadow-sm hover:shadow-md disabled:opacity-50 cursor-pointer active:scale-[0.99]"
+            class="px-6 py-3 text-xs font-semibold rounded-xl bg-emerald-600 text-white hover:bg-emerald-700 transition shadow-xs hover:shadow-sm disabled:opacity-50 cursor-pointer active:scale-[0.99]"
           >
             {isProcessing ? 'Compressing...' : 'Compress PDF Now'}
           </button>
@@ -519,7 +519,7 @@ export default function PdfShell({ toolId }: PdfShellProps) {
             type="button"
             disabled={files.length === 0 || isProcessing}
             onClick={convertPdfToJpg}
-            class="px-6 py-3 text-xs font-semibold rounded-xl bg-slate-900 text-white hover:bg-emerald-600 transition shadow-sm hover:shadow-md disabled:opacity-50 cursor-pointer active:scale-[0.99]"
+            class="px-6 py-3 text-xs font-semibold rounded-xl bg-emerald-600 text-white hover:bg-emerald-700 transition shadow-xs hover:shadow-sm disabled:opacity-50 cursor-pointer active:scale-[0.99]"
           >
             {isProcessing ? 'Converting...' : 'Convert to JPG Now'}
           </button>
@@ -530,7 +530,7 @@ export default function PdfShell({ toolId }: PdfShellProps) {
             type="button"
             disabled={files.length === 0 || isProcessing}
             onClick={rotatePdf}
-            class="px-6 py-3 text-xs font-semibold rounded-xl bg-slate-900 text-white hover:bg-emerald-600 transition shadow-sm hover:shadow-md disabled:opacity-50 cursor-pointer active:scale-[0.99]"
+            class="px-6 py-3 text-xs font-semibold rounded-xl bg-emerald-600 text-white hover:bg-emerald-700 transition shadow-xs hover:shadow-sm disabled:opacity-50 cursor-pointer active:scale-[0.99]"
           >
             {isProcessing ? 'Rotating...' : `Rotate PDF (${rotateAngle}°) Now`}
           </button>

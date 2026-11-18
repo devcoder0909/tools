@@ -481,14 +481,10 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
   }, [csvJsonInput, csvAutoType]);
 
   return (
-    <div class="bg-white border border-slate-200/80 rounded-3xl p-5 sm:p-8 shadow-xl shadow-slate-200/40 mb-10 transition-all">
+    <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-7 shadow-xs mb-8 transition-all">
       {/* 1. JWT Decoder */}
       {toolId === 'jwt-decoder' && (
         <div class="space-y-6">
-          <div class="p-3 bg-green-50 border border-green-200 rounded-xl text-green-900 text-xs">
-            <strong>Client-Side Guarantee:</strong> Your JSON Web Tokens are decoded entirely in your browser using JavaScript. No tokens or payload secrets are ever logged or transmitted across the network.
-          </div>
-
           <div>
             <label class="block text-xs font-semibold text-gray-700 mb-1">Encoded JWT String</label>
             <textarea

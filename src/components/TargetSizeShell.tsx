@@ -289,7 +289,7 @@ export default function TargetSizeShell({
   const doneCount = useMemo(() => items.filter((i) => i.status === 'done').length, [items]);
 
   return (
-    <div class="target-size-shell bg-white border border-slate-200/80 rounded-3xl shadow-xl shadow-slate-200/40 p-5 sm:p-8 my-6 transition-all">
+    <div class="target-size-shell bg-white border border-slate-200 rounded-2xl shadow-xs p-5 sm:p-7 my-6 transition-all">
       {/* Target Size Controls Bar */}
       <div class="mb-6 p-4 sm:p-5 bg-slate-50/80 rounded-2xl border border-slate-200/80 flex flex-wrap items-center justify-between gap-4">
         <div class="flex items-center space-x-3 flex-wrap gap-2">
@@ -309,7 +309,7 @@ export default function TargetSizeShell({
                 onClick={() => setTargetKb(kb)}
                 class={`px-3 py-1.5 text-xs font-bold rounded-xl transition-all ${
                   targetKb === kb
-                    ? 'bg-slate-900 text-white shadow-xs'
+                    ? 'bg-emerald-600 text-white shadow-xs'
                     : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
                 }`}
               >
@@ -363,10 +363,10 @@ export default function TargetSizeShell({
         onDragLeave={onDragLeave}
         onDrop={onDrop}
         onClick={() => fileInputRef.current?.click()}
-        class={`border-2 border-dashed rounded-2xl sm:rounded-3xl p-8 sm:p-14 text-center cursor-pointer transition-all duration-200 group ${
+        class={`border-2 border-dashed rounded-xl sm:rounded-2xl p-8 sm:p-12 text-center cursor-pointer transition-all duration-200 group ${
           isDragging
-            ? 'border-emerald-500 bg-emerald-50/40 scale-[1.005] shadow-xl shadow-emerald-500/10'
-            : 'border-slate-200 hover:border-emerald-500/80 hover:bg-emerald-50/20 bg-slate-50/40'
+            ? 'border-emerald-500 bg-emerald-50/50 scale-[1.005] shadow-sm'
+            : 'border-slate-300 hover:border-emerald-500 hover:bg-emerald-50/10 bg-slate-50/50'
         }`}
       >
         <input
@@ -382,19 +382,19 @@ export default function TargetSizeShell({
         />
         <div class="max-w-md mx-auto space-y-4">
           <div
-            class={`mx-auto w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center transition-all duration-300 ${
+            class={`mx-auto w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center transition-all duration-300 ${
               isDragging
-                ? 'bg-emerald-600 text-white scale-105 shadow-md shadow-emerald-500/20'
-                : 'bg-emerald-50 text-emerald-600 border border-emerald-100 group-hover:scale-105 group-hover:bg-slate-900 group-hover:text-white group-hover:border-slate-900'
+                ? 'bg-emerald-600 text-white scale-105 shadow-sm'
+                : 'bg-emerald-50 text-emerald-600 border border-emerald-100 group-hover:scale-105 group-hover:bg-emerald-600 group-hover:text-white group-hover:border-emerald-600'
             }`}
           >
-            <svg class="w-7 h-7 sm:w-8 sm:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <svg class="w-6 h-6 sm:w-7 sm:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
               <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
             </svg>
           </div>
 
           <div>
-            <div class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-3.5 rounded-xl bg-slate-900 hover:bg-emerald-600 text-white font-medium text-sm sm:text-base shadow-sm hover:shadow-md transition-all active:scale-[0.99]">
+            <div class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm shadow-xs hover:shadow-sm transition-all active:scale-[0.99]">
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
               </svg>
@@ -502,7 +502,7 @@ export default function TargetSizeShell({
                       <a
                         href={item.resultUrl}
                         download={item.resultFileName}
-                        class="inline-flex items-center gap-1.5 px-4 py-2 bg-slate-900 hover:bg-emerald-600 text-white rounded-xl text-xs font-semibold shadow-xs hover:shadow-md transition-all active:scale-[0.99]"
+                        class="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold shadow-xs hover:shadow-sm transition-all active:scale-[0.99]"
                       >
                         <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -536,7 +536,7 @@ export default function TargetSizeShell({
                 <button
                   type="button"
                   onClick={downloadZip}
-                  class="flex-1 sm:flex-initial px-5 py-2.5 rounded-xl text-xs font-semibold bg-emerald-600 hover:bg-emerald-500 text-white shadow-sm transition-all active:scale-[0.99]"
+                  class="flex-1 sm:flex-initial px-5 py-2.5 rounded-xl text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition-all active:scale-[0.99]"
                 >
                   Download All as ZIP
                 </button>
@@ -546,7 +546,7 @@ export default function TargetSizeShell({
                   type="button"
                   onClick={runAll}
                   disabled={isProcessingAll}
-                  class="flex-1 sm:flex-initial px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-slate-900 hover:bg-emerald-600 text-white shadow-sm hover:shadow-md transition-all disabled:opacity-50 active:scale-[0.99]"
+                  class="flex-1 sm:flex-initial px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs hover:shadow-sm transition-all disabled:opacity-50 active:scale-[0.99]"
                 >
                   {isProcessingAll ? 'Compressing...' : `Compress All to ≤ ${targetKb}KB`}
                 </button>

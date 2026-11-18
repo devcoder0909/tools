@@ -222,7 +222,7 @@ export default function HomeConverterShell() {
   };
 
   return (
-    <div class="home-converter-shell bg-white border border-slate-200/80 rounded-2xl sm:rounded-3xl shadow-xl shadow-slate-200/40 p-5 sm:p-8 my-6 sm:my-8 max-w-4xl mx-auto transition-all">
+    <div class="home-converter-shell bg-white border border-slate-200 rounded-2xl shadow-xs p-5 sm:p-7 my-6 sm:my-8 max-w-4xl mx-auto transition-all">
       {/* Format & Optimization Controls Bar */}
       <div class="flex flex-wrap items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-100">
         <div class="flex items-center gap-2.5">
@@ -234,7 +234,7 @@ export default function HomeConverterShell() {
                 type="button"
                 onClick={() => setTargetFormat(fmt)}
                 class={`px-3 py-1.5 text-xs font-bold rounded-lg uppercase transition-all ${targetFormat === fmt
-                    ? 'bg-slate-900 text-white shadow-xs'
+                    ? 'bg-emerald-600 text-white shadow-xs'
                     : 'text-slate-600 hover:text-slate-900'
                   }`}
               >
@@ -336,9 +336,9 @@ export default function HomeConverterShell() {
         onDragLeave={onDragLeave}
         onDrop={onDrop}
         onClick={() => fileInputRef.current?.click()}
-        class={`border-2 border-dashed rounded-2xl sm:rounded-3xl p-6 sm:p-12 text-center cursor-pointer transition-all duration-300 group ${isDragging
-            ? 'border-emerald-500 bg-emerald-50/70 scale-[1.01] shadow-xl shadow-emerald-500/10'
-            : 'border-slate-200/90 hover:border-emerald-500/70 hover:bg-emerald-50/30 bg-slate-50/50'
+        class={`border-2 border-dashed rounded-xl sm:rounded-2xl p-6 sm:p-12 text-center cursor-pointer transition-all duration-200 group ${isDragging
+            ? 'border-emerald-500 bg-emerald-50/50 scale-[1.005] shadow-sm'
+            : 'border-slate-300 hover:border-emerald-500 hover:bg-emerald-50/10 bg-slate-50/50'
           }`}
       >
         <input
@@ -355,18 +355,18 @@ export default function HomeConverterShell() {
 
         <div class="max-w-md mx-auto space-y-3.5">
           <div
-            class={`mx-auto w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center transition-all duration-300 ${isDragging
-                ? 'bg-emerald-600 text-white scale-105'
-                : 'bg-emerald-50 text-emerald-700 group-hover:scale-105 group-hover:bg-slate-900 group-hover:text-white'
+            class={`mx-auto w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center transition-all duration-300 ${isDragging
+                ? 'bg-emerald-600 text-white scale-105 shadow-sm'
+                : 'bg-emerald-50 text-emerald-600 border border-emerald-100 group-hover:scale-105 group-hover:bg-emerald-600 group-hover:text-white group-hover:border-emerald-600'
               }`}
           >
-            <svg class="w-7 h-7 sm:w-8 sm:h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+            <svg class="w-6 h-6 sm:w-7 sm:h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
               <path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
             </svg>
           </div>
 
           <div>
-            <div class="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto px-7 py-3 rounded-xl bg-slate-900 hover:bg-emerald-600 text-white font-semibold text-sm sm:text-base shadow-sm hover:shadow-md transition-all duration-200">
+            <div class="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto px-7 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm shadow-xs hover:shadow-sm transition-all duration-200">
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
               </svg>
@@ -499,7 +499,7 @@ export default function HomeConverterShell() {
                 <button
                   type="button"
                   onClick={downloadZip}
-                  class="flex-1 sm:flex-initial px-5 py-2.5 rounded-xl text-xs font-bold bg-gray-900 text-white hover:bg-gray-800 transition"
+                  class="flex-1 sm:flex-initial px-5 py-2.5 rounded-xl text-xs font-semibold bg-emerald-600 text-white hover:bg-emerald-700 shadow-xs transition"
                 >
                   Download All (ZIP)
                 </button>
@@ -509,7 +509,7 @@ export default function HomeConverterShell() {
                   type="button"
                   onClick={runAll}
                   disabled={isProcessing}
-                  class="flex-1 sm:flex-initial px-6 py-2.5 rounded-xl text-xs font-bold bg-gradient-to-r from-emerald-600 to-green-600 text-white hover:from-emerald-700 hover:to-green-700 shadow-md transition disabled:opacity-50"
+                  class="flex-1 sm:flex-initial px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-emerald-600 text-white hover:bg-emerald-700 shadow-xs transition disabled:opacity-50"
                 >
                   {isProcessing ? 'Converting...' : `Convert All Files (${items.length - doneCount})`}
                 </button>

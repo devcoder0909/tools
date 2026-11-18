@@ -285,7 +285,7 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
   }, [billAmount, tipRate, splitCount]);
 
   return (
-    <div class="calculator-shell bg-white border border-slate-200/80 rounded-3xl shadow-xl shadow-slate-200/40 p-5 sm:p-8 my-6 transition-all">
+    <div class="calculator-shell bg-white border border-slate-200 rounded-2xl shadow-xs p-5 sm:p-7 my-6 transition-all">
       {/* Percentage Calculator */}
       {toolId === 'percentage-calculator' && (
         <div class="space-y-6">
@@ -295,7 +295,7 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
               onClick={() => setPercMode('calc')}
               class={`px-4 py-2 text-xs font-semibold rounded-xl transition-all ${
                 percMode === 'calc'
-                  ? 'bg-slate-900 text-white shadow-xs'
+                  ? 'bg-emerald-600 text-white shadow-xs'
                   : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
@@ -306,7 +306,7 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
               onClick={() => setPercMode('isWhat')}
               class={`px-4 py-2 text-xs font-semibold rounded-xl transition-all ${
                 percMode === 'isWhat'
-                  ? 'bg-slate-900 text-white shadow-xs'
+                  ? 'bg-emerald-600 text-white shadow-xs'
                   : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
@@ -317,7 +317,7 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
               onClick={() => setPercMode('change')}
               class={`px-4 py-2 text-xs font-semibold rounded-xl transition-all ${
                 percMode === 'change'
-                  ? 'bg-slate-900 text-white shadow-xs'
+                  ? 'bg-emerald-600 text-white shadow-xs'
                   : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
