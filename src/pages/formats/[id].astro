@@ -87,12 +87,27 @@ if (format.faq && format.faq.length > 0) {
           </span>
         </div>
         <h1 class="text-2xl sm:text-4xl font-extrabold text-gray-900 mb-3">
-          {format.name} File Format Guide
+          {format.name} ({format.id.toUpperCase()} File) Format Guide
         </h1>
         <p class="text-base text-gray-600 leading-relaxed">
-          {format.description}
+          {format.description} Learn how the {format.id.toUpperCase()} file format operates, its technical compression parameters, and how to convert {format.id.toUpperCase()} files in your browser.
         </p>
       </div>
+
+      <!-- Format Architectural Diagram -->
+      <figure class="my-6 p-5 rounded-2xl bg-white border border-slate-200 shadow-2xs text-center">
+        <img
+          src="/images/tools/png-vs-jpg-comparison.svg"
+          alt={`${format.id.toUpperCase()} File Format Structure & Specification Diagram`}
+          width="720"
+          height="360"
+          class="max-w-full h-auto mx-auto rounded-xl"
+          loading="lazy"
+        />
+        <figcaption class="mt-2.5 text-xs text-slate-500 font-medium">
+          <strong>Architecture Diagram:</strong> {format.name} ({format.id.toUpperCase()} File) structural encoding matrix and browser compatibility standards.
+        </figcaption>
+      </figure>
 
       <!-- Technical Specs Table -->
       <div class="my-8 bg-white border border-slate-200 rounded-2xl p-6 shadow-2xs">

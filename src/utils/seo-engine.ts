@@ -122,7 +122,6 @@ export function calculateFleschReadingEase(text: string): { score: number; label
 export function runYoastAudit(input: SeoAuditInput): SeoAuditReport {
   const checks: SeoCheckResult[] = [];
   const keyword = (input.focusKeyword || '').toLowerCase().trim();
-  const keywordWords = keyword ? keyword.split(/\s+/).filter(Boolean) : [];
   const cleanContent = stripHtml(input.content);
   const words = cleanContent.split(/\s+/).filter(Boolean);
   const wordCount = words.length;
@@ -280,7 +279,13 @@ export function runYoastAudit(input: SeoAuditInput): SeoAuditReport {
   if (keyword) {
     const slugClean = input.slug.replace(/[-_/]/g, ' ').toLowerCase();
     const kwNormalized = keyword.replace(/[-_]/g, ' ').toLowerCase();
-    if (slugClean.includes(kwNormalized)) {
+    const kwWords = kwNormalized.split(/\s+/).filter((w) => w.length > 2);
+    const slugWords = slugClean.split(/\s+/);
+    const isRootMatch = input.slug === '';
+    const isExactMatch = slugClean.includes(kwNormalized);
+    const isWordMatch = kwWords.some((w) => slugWords.includes(w));
+
+    if (isRootMatch || isExactMatch || isWordMatch) {
       checks.push({
         id: 'kw-slug',
         category: 'url',
@@ -672,9 +677,9 @@ export function runYoastAudit(input: SeoAuditInput): SeoAuditReport {
   const overallScore = Math.round((seoRawScore * 0.75) + (readingScore * 0.25));
 
   let status: IndicatorStatus = 'good';
-  if (overallScore < 50 || badCount >= 3) {
+  if (overallScore < 50 || badCount >= 2) {
     status = 'bad';
-  } else if (overallScore < 80 || okCount >= 3) {
+  } else if (overallScore < 75 || badCount > 0) {
     status = 'ok';
   }
 

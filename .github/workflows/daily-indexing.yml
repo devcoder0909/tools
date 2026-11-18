@@ -30,4 +30,7 @@ jobs:
       - name: Dispatch Multi-Engine Indexing (Google & IndexNow)
         env:
           GCP_SERVICE_ACCOUNT_KEY: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
-        run: pnpm run indexing
+        run: |
+          pnpm run indexing
+          pnpm run indexnow
+          curl -s -I "https://www.bing.com/ping?sitemap=https://zixtool.online/sitemap-index.xml" || true

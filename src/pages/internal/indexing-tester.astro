@@ -2,17 +2,44 @@
 import Layout from '../../layouts/Layout.astro';
 import { IndexingTesterShell } from '../../components/admin/IndexingTesterShell';
 import { siteConfig } from '../../config/site';
+import { getAllTools, getAllFormats } from '../../registry';
 
 const canonicalUrl = `${siteConfig.url}/internal/indexing-tester/`;
+
+const tools = getAllTools();
+const formats = getAllFormats().filter((f) => f.hub);
+
+const allPages = [
+  { url: `${siteConfig.url}/`, title: 'Homepage — Root Directory Index', category: 'Root', indexable: true },
+  { url: `${siteConfig.url}/tools/`, title: 'All Tools Hub Directory', category: 'Hub', indexable: true },
+  { url: `${siteConfig.url}/calculators/`, title: 'Financial & Math Calculators Hub', category: 'Hub', indexable: true },
+  { url: `${siteConfig.url}/formats/`, title: 'Format Encyclopedias Hub', category: 'Hub', indexable: true },
+  { url: `${siteConfig.url}/privacy-explained/`, title: 'Client-Side Architecture & Privacy Explained', category: 'Info', indexable: true },
+  { url: `${siteConfig.url}/about/`, title: 'About ZixTool Team & Engineering', category: 'Info', indexable: true },
+  { url: `${siteConfig.url}/contact/`, title: 'Contact & Security Inquiries', category: 'Info', indexable: true },
+  ...formats.map((f) => ({
+    url: `${siteConfig.url}/formats/${f.id}/`,
+    title: `${f.name} File Format Technical Guide`,
+    category: 'Format',
+    indexable: f.indexable !== false,
+  })),
+  ...tools.map((t) => ({
+    url: `${siteConfig.url}/${t.slug}/`,
+    title: t.name,
+    category: t.kind,
+    indexable: t.indexable,
+    reviewed: t.reviewed,
+  })),
+];
 ---
 
 <Layout
-  title="Instant Indexing API Live Tester"
+  title="Instant Indexing API Live Tester & URL Index"
   description="Internal administrative diagnostic interface for verifying Google Indexing API v3 and IndexNow notifications in real time."
   canonical={canonicalUrl}
   noindex={true}
 >
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
-    <IndexingTesterShell client:load />
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+    <IndexingTesterShell client:load allPages={allPages} />
   </div>
 </Layout>

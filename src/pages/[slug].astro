@@ -18,6 +18,7 @@ import RelatedTools from '../components/RelatedTools.astro';
 import { renderToolMarkdown } from '../utils/markdown';
 import { getAllTools, getRelatedTools, formatDisplayDate, formatIsoDate, type ToolDefinition } from '../registry';
 import { siteConfig } from '../config/site';
+import { getToolMedia } from '../config/tool-media';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -35,6 +36,7 @@ export interface Props {
 
 const { tool } = Astro.props;
 const related = getRelatedTools(tool);
+const toolMedia = getToolMedia(tool.slug);
 
 // Check if content file exists
 let contentHtml = '';
@@ -277,16 +279,32 @@ if (tool.targetBytes) {
         </div>
         <p class="leading-relaxed">
           {tool.from && tool.to ? (
-            <><strong>{tool.name}</strong> converts {tool.from.toUpperCase()} files to {tool.to.toUpperCase()} locally inside your browser. All decoding and re-encoding runs in device RAM with zero server uploads.</>
+            <>Use <strong>{tool.name}</strong> to convert {tool.from.toUpperCase()} to {tool.to.toUpperCase()} online for free directly in your browser. All decoding and re-encoding runs in device RAM with zero server uploads.</>
           ) : tool.slug.startsWith('compress-image-to-') || tool.engine === 'target-size' ? (
-            <><strong>{tool.name}</strong> compresses images to target size using client-side canvas processing without transmitting your photos to external servers.</>
+            <>Use <strong>{tool.name}</strong> to {tool.seo?.primary_kw || tool.name.toLowerCase()} online for free. All photo compression executes locally inside client memory without transmitting your images to external servers.</>
           ) : tool.kind === 'calculator' || tool.kind === 'finance' ? (
-            <><strong>{tool.name}</strong> provides real-time calculations directly in your browser with instant formula derivations and zero data logging.</>
+            <>Use <strong>{tool.name}</strong> to calculate {tool.seo?.primary_kw || tool.name.toLowerCase()} accurately and instantly. All mathematical formulas compute in real time in device memory with zero data tracking.</>
           ) : (
-            <><strong>{tool.name}</strong> runs client-side in your browser with zero server uploads and instant processing.</>
+            <>Use <strong>{tool.name}</strong> for {tool.seo?.primary_kw || tool.name.toLowerCase()} directly in your browser with zero server uploads, complete privacy, and instant results.</>
           )}
         </p>
       </div>
+
+      {toolMedia && (
+        <figure class="my-6 p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-2xs text-center">
+          <img
+            src={toolMedia.diagramUrl}
+            alt={`${tool.name} — ${tool.seo?.primary_kw || tool.name.toLowerCase()} architecture and processing workflow diagram`}
+            width="720"
+            height="360"
+            class="max-w-full h-auto mx-auto rounded-xl"
+            loading="lazy"
+          />
+          <figcaption class="mt-3 text-xs text-slate-500 font-medium">
+            <strong>Architecture Overview:</strong> {toolMedia.diagramCaption}
+          </figcaption>
+        </figure>
+      )}
 
       <!-- 6. How-to steps & custom notes -->
       <div id="guide" class="prose prose-gray max-w-none leading-relaxed">

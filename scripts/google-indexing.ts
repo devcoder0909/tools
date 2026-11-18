@@ -27,7 +27,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { siteConfig } from '../src/config/site';
 import { googleOAuthConfig } from '../src/config/google-oauth';
-import { getIndexableTools } from '../src/registry';
+import { getIndexableTools, getAllFormats } from '../src/registry';
 
 interface ServiceAccountKey {
   client_email: string;
@@ -229,10 +229,15 @@ function getActiveSiteUrls(): string[] {
     `${siteConfig.url}/formats/`,
     `${siteConfig.url}/privacy-explained/`,
     `${siteConfig.url}/about/`,
+    `${siteConfig.url}/contact/`,
   ];
 
+  const formatPages = getAllFormats()
+    .filter((f) => f.hub && f.indexable)
+    .map((f) => `${siteConfig.url}/formats/${f.id}/`);
+
   const toolPages = getIndexableTools().map((t) => `${siteConfig.url}/${t.slug}/`);
-  return Array.from(new Set([...staticPages, ...toolPages]));
+  return Array.from(new Set([...staticPages, ...formatPages, ...toolPages]));
 }
 
 async function runIndexingBatch(token: string | null, targetUrl?: string) {
@@ -280,7 +285,7 @@ async function runIndexingBatch(token: string | null, targetUrl?: string) {
 
 async function main() {
   console.log('\n======================================================');
-  console.log(' Gudmud Convert - Instant Multi-Engine Indexing Engine');
+  console.log(' ZixTool - Instant Multi-Engine Indexing Engine');
   console.log('======================================================');
   console.log(`Host: ${siteConfig.url}`);
   console.log(`GCP Project: ${googleOAuthConfig.projectId}`);
