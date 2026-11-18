@@ -394,8 +394,11 @@ export default function ToolShell({
       {showAdvanced && (
         <div class="mb-6 p-4 sm:p-5 bg-slate-50/80 border border-slate-200 rounded-2xl space-y-4 animate-[fadeIn_0.2s_ease-out]">
           <div class="flex items-center justify-between pb-2 border-b border-slate-200/80">
-            <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-1.5">
-              <span>⚡</span> Image Optimization Controls
+            <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
+              <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+              </svg>
+              <span>Optimization Controls</span>
             </h3>
             <span class="text-2xs text-slate-500">Fine-tune compression &amp; resolution</span>
           </div>
@@ -413,7 +416,7 @@ export default function ToolShell({
                     : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
                     }`}
                 >
-                  ⚡ Smallest (65%)
+                  Smallest (65%)
                 </button>
                 <button
                   type="button"
@@ -423,7 +426,7 @@ export default function ToolShell({
                     : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
                     }`}
                 >
-                  ⚖️ Balanced (82%)
+                  Balanced (82%)
                 </button>
                 <button
                   type="button"
@@ -433,7 +436,7 @@ export default function ToolShell({
                     : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
                     }`}
                 >
-                  💎 Crisp (92%)
+                  Crisp (92%)
                 </button>
               </div>
               <div class="flex items-center gap-2 pt-1">
@@ -821,7 +824,10 @@ export default function ToolShell({
                     </>
                   ) : (
                     <>
-                      <span>⚡ Convert All Files</span>
+                      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                      </svg>
+                      <span>Convert All Files</span>
                       <span class="px-2 py-0.5 rounded-full bg-white/20 text-xs font-mono">
                         {totalCount - doneCount}
                       </span>

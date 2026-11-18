@@ -574,8 +574,11 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
               </div>
 
               {/* Compounding Wisdom Insight */}
-              <div class="mt-6 pt-4 border-t border-emerald-100/70 text-2xs text-gray-600 leading-relaxed">
-                💡 <strong>The Power of Compounding:</strong> At {sipRate}% CAGR, your wealth doubles approximately every {(72 / Math.max(0.1, sipRate)).toFixed(1)} years under the Rule of 72.
+              <div class="mt-6 pt-4 border-t border-emerald-100/70 text-2xs text-gray-600 leading-relaxed flex items-start gap-1.5">
+                <svg class="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span><strong>The Power of Compounding:</strong> At {sipRate}% CAGR, your wealth doubles approximately every {(72 / Math.max(0.1, sipRate)).toFixed(1)} years under the Rule of 72.</span>
               </div>
             </div>
           </div>
@@ -903,8 +906,11 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                 </div>
               </div>
 
-              <div class="mt-6 pt-4 border-t border-gray-200 text-2xs text-gray-500 leading-relaxed">
-                💡 <strong>Prepayment Tip:</strong> Paying just 1 extra EMI per year can reduce a 20-year loan tenure by over 3 to 4 years and save thousands in total interest.
+              <div class="mt-6 pt-4 border-t border-gray-200 text-2xs text-gray-500 leading-relaxed flex items-start gap-1.5">
+                <svg class="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span><strong>Prepayment Tip:</strong> Paying just 1 extra EMI per year can reduce a 20-year loan tenure by over 3 to 4 years and save thousands in total interest.</span>
               </div>
             </div>
           </div>
@@ -1244,8 +1250,11 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                 </div>
               </div>
 
-              <div class="mt-6 pt-4 border-t border-emerald-100 text-2xs text-gray-500 leading-relaxed">
-                💡 Compounded interest pays interest on your interest, creating an exponential upward hockey-stick wealth curve.
+              <div class="mt-6 pt-4 border-t border-emerald-100 text-2xs text-gray-500 leading-relaxed flex items-start gap-1.5">
+                <svg class="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>Compounded interest pays interest on your interest, creating an exponential upward hockey-stick wealth curve.</span>
               </div>
             </div>
           </div>

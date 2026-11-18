@@ -376,10 +376,6 @@ export default function HomeConverterShell() {
               Drag & drop photos or paste from clipboard <kbd class="px-1.5 py-0.5 rounded bg-slate-100 text-2xs font-mono font-semibold text-slate-500 border border-slate-200">Ctrl+V</kbd>
             </p>
           </div>
-          <p class="text-2xs text-slate-400 pt-0.5 flex items-center justify-center gap-1.5">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-            <span>100% In-Memory Execution • Zero Server Latency</span>
-          </p>
         </div>
       </div>
 

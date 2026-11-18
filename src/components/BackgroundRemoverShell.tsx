@@ -167,14 +167,9 @@ export default function BackgroundRemoverShell({ toolName: _toolName = 'Backgrou
           <span class="text-base font-bold text-slate-900 mb-1 block group-hover:text-emerald-700">
             Upload an image to remove background
           </span>
-          <p class="text-xs text-slate-500 mb-4 max-w-sm mx-auto">
+          <p class="text-xs text-slate-500 mb-2 max-w-sm mx-auto">
             Drag &amp; drop or click to browse. Supports JPG, PNG, and WebP.
           </p>
-          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 text-slate-700 text-2xs font-semibold">
-            <span>🔒 100% In-Device Memory</span>
-            <span>•</span>
-            <span>Zero Cloud Uploads</span>
-          </div>
         </label>
       ) : (
         <div class="space-y-6">

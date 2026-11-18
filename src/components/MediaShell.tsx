@@ -624,7 +624,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
           {/* Clock Display */}
           <div class="p-8 rounded-3xl bg-gray-50 border border-gray-200">
             <span class="text-xs uppercase font-bold text-gray-500 tracking-wider">
-              {pomoMode === 'focus' ? '🎯 Work Focus Session' : pomoMode === 'short' ? '☕ 5-Minute Break' : '🌴 15-Minute Long Break'}
+              {pomoMode === 'focus' ? 'Work Focus Session' : pomoMode === 'short' ? '5-Minute Break' : '15-Minute Long Break'}
             </span>
             <div class="text-7xl font-extrabold font-mono text-gray-900 tracking-tight my-4">
               {formatTimer(pomoSecs)}

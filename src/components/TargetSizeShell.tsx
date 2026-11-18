@@ -294,7 +294,12 @@ export default function TargetSizeShell({
       <div class="mb-6 p-4 sm:p-5 bg-slate-50/80 rounded-2xl border border-slate-200/80 flex flex-wrap items-center justify-between gap-4">
         <div class="flex items-center space-x-3 flex-wrap gap-2">
           <label class="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
-            <span>🎯</span> Target Size:
+            <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <circle cx="12" cy="12" r="6" />
+              <circle cx="12" cy="12" r="2" />
+            </svg>
+            <span>Target Size:</span>
           </label>
           <div class="flex items-center space-x-1.5 flex-wrap gap-1">
             {[20, 50, 100, 200, 500, 1024].map((kb) => (
@@ -543,7 +548,7 @@ export default function TargetSizeShell({
                   disabled={isProcessingAll}
                   class="flex-1 sm:flex-initial px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-slate-900 hover:bg-emerald-600 text-white shadow-sm hover:shadow-md transition-all disabled:opacity-50 active:scale-[0.99]"
                 >
-                  {isProcessingAll ? 'Compressing...' : `⚡ Compress All to ≤ ${targetKb}KB`}
+                  {isProcessingAll ? 'Compressing...' : `Compress All to ≤ ${targetKb}KB`}
                 </button>
               )}
             </div>

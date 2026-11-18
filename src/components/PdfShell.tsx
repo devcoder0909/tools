@@ -477,7 +477,7 @@ export default function PdfShell({ toolId }: PdfShellProps) {
             onClick={mergePdfs}
             class="px-6 py-3 text-xs font-semibold rounded-xl bg-slate-900 text-white hover:bg-emerald-600 transition shadow-sm hover:shadow-md disabled:opacity-50 cursor-pointer active:scale-[0.99]"
           >
-            {isProcessing ? 'Merging...' : '⚡ Merge PDFs Now'}
+            {isProcessing ? 'Merging...' : 'Merge PDFs Now'}
           </button>
         )}
 
@@ -488,7 +488,7 @@ export default function PdfShell({ toolId }: PdfShellProps) {
             onClick={imagesToPdf}
             class="px-6 py-3 text-xs font-semibold rounded-xl bg-slate-900 text-white hover:bg-emerald-600 transition shadow-sm hover:shadow-md disabled:opacity-50 cursor-pointer active:scale-[0.99]"
           >
-            {isProcessing ? 'Converting...' : '⚡ Convert to PDF Now'}
+            {isProcessing ? 'Converting...' : 'Convert to PDF Now'}
           </button>
         )}
 
@@ -499,7 +499,7 @@ export default function PdfShell({ toolId }: PdfShellProps) {
             onClick={splitPdf}
             class="px-6 py-3 text-xs font-semibold rounded-xl bg-slate-900 text-white hover:bg-emerald-600 transition shadow-sm hover:shadow-md disabled:opacity-50 cursor-pointer active:scale-[0.99]"
           >
-            {isProcessing ? 'Extracting...' : '⚡ Extract & Download Pages'}
+            {isProcessing ? 'Extracting...' : 'Extract & Download Pages'}
           </button>
         )}
 
@@ -510,7 +510,7 @@ export default function PdfShell({ toolId }: PdfShellProps) {
             onClick={compressPdf}
             class="px-6 py-3 text-xs font-semibold rounded-xl bg-slate-900 text-white hover:bg-emerald-600 transition shadow-sm hover:shadow-md disabled:opacity-50 cursor-pointer active:scale-[0.99]"
           >
-            {isProcessing ? 'Compressing...' : '⚡ Compress PDF Now'}
+            {isProcessing ? 'Compressing...' : 'Compress PDF Now'}
           </button>
         )}
 
@@ -521,7 +521,7 @@ export default function PdfShell({ toolId }: PdfShellProps) {
             onClick={convertPdfToJpg}
             class="px-6 py-3 text-xs font-semibold rounded-xl bg-slate-900 text-white hover:bg-emerald-600 transition shadow-sm hover:shadow-md disabled:opacity-50 cursor-pointer active:scale-[0.99]"
           >
-            {isProcessing ? 'Converting...' : '⚡ Convert to JPG Now'}
+            {isProcessing ? 'Converting...' : 'Convert to JPG Now'}
           </button>
         )}
 
@@ -532,7 +532,7 @@ export default function PdfShell({ toolId }: PdfShellProps) {
             onClick={rotatePdf}
             class="px-6 py-3 text-xs font-semibold rounded-xl bg-slate-900 text-white hover:bg-emerald-600 transition shadow-sm hover:shadow-md disabled:opacity-50 cursor-pointer active:scale-[0.99]"
           >
-            {isProcessing ? 'Rotating...' : `⚡ Rotate PDF (${rotateAngle}°) Now`}
+            {isProcessing ? 'Rotating...' : `Rotate PDF (${rotateAngle}°) Now`}
           </button>
         )}
 
