@@ -24,33 +24,34 @@ const articleJsonLd = {
 ---
 
 <Layout
-  title={`In-Browser Privacy: How It Works | ${siteConfig.brand}`}
-  description={`Learn how ${siteConfig.brand} runs 100% in your browser. Verify with your Network tab that photos and files are never uploaded to any remote server.`}
+  title={`In-Browser Privacy Explained & Verified | ${siteConfig.brand}`}
+  description={`Zero-upload privacy explained: learn how ${siteConfig.brand} processes photos in browser memory. Verify in your Network tab that files never upload to servers.`}
   canonical={`${siteConfig.url}/privacy-explained/`}
   jsonLd={articleJsonLd}
 >
   <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
     <Breadcrumbs items={breadcrumbs} />
 
-    <header class="mb-10">
-      <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800 mb-3">
-        Technical Architecture & Proof
-      </div>
-      <h1 class="text-3xl sm:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
-        Zero-Upload In-Browser Privacy
-      </h1>
-      <p class="text-lg text-gray-600 leading-relaxed">
-        Why your photos and documents never leave your physical device, how our client-side engine executes in browser memory, and how you can independently verify it in 15 seconds.
-      </p>
-    </header>
-
-    <article class="prose prose-gray max-w-none space-y-8 text-gray-700 leading-relaxed text-base sm:text-lg">
-      <section class="bg-green-50/70 border border-green-200 rounded-2xl p-6 sm:p-8 not-prose">
-        <h2 class="text-xl font-bold text-green-950 mb-3">The Short Answer</h2>
-        <p class="text-green-900 leading-relaxed text-sm sm:text-base">
-          When you convert an image, reduce file size, or perform calculations on {siteConfig.brand}, <strong>zero file bytes are transmitted over the internet</strong>. All decompression, pixel rendering, format encoding, and mathematical calculations are executed by your device's CPU and GPU via standard JavaScript, Web Workers, and the HTML5 Canvas API.
+    <article>
+      <header class="mb-10">
+        <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800 mb-3">
+          Technical Architecture & Proof
+        </div>
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
+          Zero-Upload In-Browser Privacy Explained
+        </h1>
+        <p class="text-lg text-gray-600 leading-relaxed">
+          Welcome to our client-side privacy explained guide with step-by-step verification instructions. Learn why your photos and documents never leave your physical device, how our client-side engine executes in browser memory, and how you can independently verify it in 15 seconds.
         </p>
-      </section>
+      </header>
+
+      <div class="prose prose-gray max-w-none space-y-8 text-gray-700 leading-relaxed text-base sm:text-lg">
+        <section class="bg-green-50/70 border border-green-200 rounded-2xl p-6 sm:p-8 not-prose">
+          <h2 class="text-xl font-bold text-green-950 mb-3">The Short Answer</h2>
+          <p class="text-green-900 leading-relaxed text-sm sm:text-base">
+            With our zero-upload privacy explained, you can see why your data stays safe. When you convert an image, reduce file size, or perform calculations on {siteConfig.brand}, <strong>zero file bytes are transmitted over the internet</strong>. All decompression, pixel rendering, format encoding, and mathematical calculations are executed by your device's CPU and GPU via standard JavaScript, Web Workers, and the HTML5 Canvas API.
+          </p>
+        </section>
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900">How Server-Based Converters Work (The Risk)</h2>
@@ -121,7 +122,8 @@ const articleJsonLd = {
           Because our tools require no backend compute server, you can load the tool page while connected to Wi-Fi, turn on <strong>Airplane Mode</strong> (or unplug your Ethernet cable), and convert images or run calculations seamlessly offline.
         </p>
       </section>
-    </article>
+    </div>
+  </article>
 
     <div class="mt-12 pt-6 border-t border-gray-200 flex items-center justify-between text-xs text-gray-500">
       <span>Last reviewed: <time datetime="2026-11-16">16 Nov 2026</time></span>

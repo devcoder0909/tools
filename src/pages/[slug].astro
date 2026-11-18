@@ -43,7 +43,7 @@ const contentPath = path.resolve(process.cwd(), tool.content);
 
 if (fs.existsSync(contentPath)) {
   const raw = fs.readFileSync(contentPath, 'utf-8');
-  contentHtml = renderToolMarkdown(raw);
+  contentHtml = renderToolMarkdown(raw, tool.name);
   hasCustomContent = true;
 }
 
@@ -273,75 +273,76 @@ if (tool.targetBytes) {
       </div>
     </div>
 
-    <!-- Direct Answer & Search Intent Definition -->
-    <div id="how-to" class="my-6 p-4 sm:p-5 rounded-2xl bg-emerald-50/70 border border-emerald-200 text-xs sm:text-sm text-emerald-950">
-      <div class="flex items-center gap-2 font-bold text-emerald-800 uppercase tracking-wider text-2xs mb-1">
-        <svg class="w-4 h-4 text-emerald-600 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-        Overview & How It Works
+    <!-- Editorial Content Section (Semantic Article for Full Intent Fulfillment) -->
+    <article class="editorial-content my-8 space-y-8">
+      <!-- Direct Answer & Search Intent Definition -->
+      <div id="how-to" class="p-4 sm:p-5 rounded-2xl bg-emerald-50/70 border border-emerald-200 text-xs sm:text-sm text-emerald-950">
+        <div class="flex items-center gap-2 font-bold text-emerald-800 uppercase tracking-wider text-2xs mb-1">
+          <svg class="w-4 h-4 text-emerald-600 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Overview &amp; How It Works
+        </div>
+        <p class="leading-relaxed">
+          {tool.from && tool.to ? (
+            <><strong>{tool.name}</strong> converts {tool.from.toUpperCase()} files to {tool.to.toUpperCase()} locally inside your browser. All decoding and re-encoding runs in device RAM with zero server uploads.</>
+          ) : tool.slug.startsWith('compress-image-to-') || tool.engine === 'target-size' ? (
+            <><strong>{tool.name}</strong> compresses images to target size using client-side canvas processing without transmitting your photos to external servers.</>
+          ) : tool.kind === 'calculator' || tool.kind === 'finance' ? (
+            <><strong>{tool.name}</strong> provides real-time calculations directly in your browser with instant formula derivations and zero data logging.</>
+          ) : (
+            <><strong>{tool.name}</strong> runs client-side in your browser with zero server uploads and instant processing.</>
+          )}
+        </p>
       </div>
-      <p class="leading-relaxed">
-        {tool.from && tool.to ? (
-          <><strong>{tool.name}</strong> converts {tool.from.toUpperCase()} files to {tool.to.toUpperCase()} locally inside your browser. All decoding and re-encoding runs in device RAM with zero server uploads.</>
-        ) : tool.slug.startsWith('compress-image-to-') || tool.engine === 'target-size' ? (
-          <><strong>{tool.name}</strong> compresses images to target size using client-side canvas processing without transmitting your photos to external servers.</>
-        ) : tool.kind === 'calculator' || tool.kind === 'finance' ? (
-          <><strong>{tool.name}</strong> provides real-time calculations directly in your browser with instant formula derivations and zero data logging.</>
-        ) : (
-          <><strong>{tool.name}</strong> runs client-side in your browser with zero server uploads and instant processing.</>
-        )}
-      </p>
-    </div>
 
-    <!-- 6. How-to steps & custom notes -->
-    <div id="guide">
-      {hasCustomContent ? (
-        <article class="prose prose-gray max-w-none my-8 leading-relaxed">
+      <!-- 6. How-to steps & custom notes -->
+      <div id="guide" class="prose prose-gray max-w-none leading-relaxed">
+        {hasCustomContent ? (
           <div
             class="space-y-6 text-gray-700 leading-relaxed"
             set:html={contentHtml}
           />
-        </article>
-      ) : (
-        <article class="my-8 text-gray-700 space-y-6">
-          <h2 class="text-2xl font-bold text-gray-900">How to Use {tool.name}</h2>
-          {tool.kind === 'calculator' ? (
-            <ol class="list-decimal pl-5 space-y-2">
-              <li>Enter your numeric values into the corresponding input fields above.</li>
-              <li>Results and formula explanations update automatically in real time as you type.</li>
-              <li>Review the calculated totals or copy them directly for your calculations.</li>
-            </ol>
-          ) : tool.kind === 'text' ? (
-            <ol class="list-decimal pl-5 space-y-2">
-              <li>Paste or type your source text into the editor area above.</li>
-              <li>Select the desired formatting, casing style, or validation action.</li>
-              <li>Copy the converted output directly to your clipboard with one click.</li>
-            </ol>
-          ) : tool.engine === 'target-size' ? (
-            <ol class="list-decimal pl-5 space-y-2">
-              <li>Drop your JPG, PNG, or WebP photo into the compression zone above.</li>
-              <li>Our browser engine runs a binary search across quality and dimension steps to meet your target budget.</li>
-              <li>Download your compressed image instantly with verified byte size.</li>
-            </ol>
-          ) : (
-            <ol class="list-decimal pl-5 space-y-2">
-              <li>Select or drag your files into the designated drop area above.</li>
-              <li>Choose your preferred conversion parameters or quality options.</li>
-              <li>Process and save the resulting files directly to your device.</li>
-            </ol>
-          )}
-        </article>
+        ) : (
+          <div class="my-8 text-gray-700 space-y-6">
+            <h2 class="text-2xl font-bold text-gray-900">How to Use {tool.name}</h2>
+            {tool.kind === 'calculator' ? (
+              <ol class="list-decimal pl-5 space-y-2">
+                <li>Enter your numeric values into the corresponding input fields above.</li>
+                <li>Results and formula explanations update automatically in real time as you type.</li>
+                <li>Review the calculated totals or copy them directly for your calculations.</li>
+              </ol>
+            ) : tool.kind === 'text' ? (
+              <ol class="list-decimal pl-5 space-y-2">
+                <li>Paste or type your source text into the editor area above.</li>
+                <li>Select the desired formatting, casing style, or validation action.</li>
+                <li>Copy the converted output directly to your clipboard with one click.</li>
+              </ol>
+            ) : tool.engine === 'target-size' ? (
+              <ol class="list-decimal pl-5 space-y-2">
+                <li>Drop your JPG, PNG, or WebP photo into the compression zone above.</li>
+                <li>Our browser engine runs a binary search across quality and dimension steps to meet your target budget.</li>
+                <li>Download your compressed image instantly with verified byte size.</li>
+              </ol>
+            ) : (
+              <ol class="list-decimal pl-5 space-y-2">
+                <li>Select or drag your files into the designated drop area above.</li>
+                <li>Choose your preferred conversion parameters or quality options.</li>
+                <li>Process and save the resulting files directly to your device.</li>
+              </ol>
+            )}
+          </div>
+        )}
+      </div>
+
+      <!-- House promo slot after how-to block -->
+      <PromoSlot slotPosition="postHowTo" />
+
+      <!-- 7. Tool-specific FAQ -->
+      {tool.faq && tool.faq.length > 0 && (
+        <FAQ items={tool.faq} title={`${tool.name} Frequently Asked Questions`} />
       )}
-    </div>
-
-    <!-- House promo slot after how-to block -->
-    <PromoSlot slotPosition="postHowTo" />
-
-    <!-- 7. Tool-specific FAQ -->
-    {tool.faq && tool.faq.length > 0 && (
-      <FAQ items={tool.faq} title={`${tool.name} Frequently Asked Questions`} />
-    )}
+    </article>
 
     <!-- 8. Ad slot B (mid-content) -->
     <AdSlot slotPosition="midContent" />

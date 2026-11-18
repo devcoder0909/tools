@@ -76,7 +76,36 @@ for (const filePath of files) {
   });
 
   const toolDef = toolMap.get(slug);
-  const focusKeyword = toolDef?.seo?.primary_kw || toolDef?.name?.toLowerCase() || (slug ? slug.replace(/-/g, ' ') : 'online tools');
+  let focusKeyword = toolDef?.seo?.primary_kw || toolDef?.name?.toLowerCase();
+
+  if (!focusKeyword) {
+    if (slug.startsWith('formats/')) {
+      const fmtId = slug.replace('formats/', '');
+      focusKeyword = `${fmtId} file`;
+    } else if (slug === 'formats') {
+      focusKeyword = 'file formats';
+    } else if (slug === '') {
+      focusKeyword = 'free online file converters';
+    } else if (slug === 'tools') {
+      focusKeyword = 'online tools';
+    } else if (slug === 'calculators') {
+      focusKeyword = 'free online calculators';
+    } else if (slug === 'privacy-explained') {
+      focusKeyword = 'privacy explained';
+    } else if (slug === 'contact') {
+      focusKeyword = 'contact';
+    } else if (slug === 'about') {
+      focusKeyword = 'about';
+    } else if (slug === 'terms') {
+      focusKeyword = 'terms of service';
+    } else if (slug === 'cookies') {
+      focusKeyword = 'cookie policy';
+    } else if (slug === 'privacy') {
+      focusKeyword = 'privacy policy';
+    } else {
+      focusKeyword = slug.replace(/-/g, ' ');
+    }
+  }
 
   const report = runYoastAudit({
     url: siteConfig.url + urlPath,

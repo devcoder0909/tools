@@ -71,7 +71,7 @@
   slug: heic-to-png
   name: HEIC to PNG
   title: HEIC to PNG Converter - Lossless Alpha | ZixTool
-  description: Convert iPhone HEIC photos to lossless PNG format with transparency retention. Runs entirely in your browser without file uploads.
+  description: Convert HEIC to PNG format with transparency retention. Fast, 100% private in-browser conversion for iPhone photos with zero uploads.
   from: heic
   to: png
   engine: heic-decode+canvas
@@ -112,7 +112,7 @@
   slug: heic-to-pdf
   name: HEIC to PDF
   title: HEIC to PDF Converter - Secure Document | ZixTool
-  description: Convert iPhone HEIC camera photos into standard PDF documents in your browser. 100% private in-memory conversion with zero file uploads.
+  description: Convert HEIC to PDF documents directly in your browser. Fast, 100% private in-memory conversion for iPhone photos with zero server uploads.
   from: heic
   to: pdf
   engine: heic-decode+pdf
@@ -154,7 +154,7 @@
   slug: webp-to-jpg
   name: WebP to JPG Converter
   title: WebP to JPG Converter - Free & Private | ZixTool
-  description: Convert WebP images to JPG in your browser with zero server uploads. Batch convert files, control compression quality, and download instantly.
+  description: Convert WebP to JPG in your browser with zero server uploads. Batch convert image files, control compression quality, and download instantly.
   from: webp
   to: jpg
   engine: canvas
@@ -204,7 +204,7 @@
   slug: webp-to-png
   name: WebP to PNG
   title: WebP to PNG Converter - Keep Transparency | ZixTool
-  description: Convert WebP images to uncompressed PNG while retaining full alpha transparency. Runs client-side in browser RAM for absolute privacy.
+  description: Convert WebP to PNG while retaining full alpha transparency. Runs client-side in browser RAM for complete privacy with zero server uploads.
   from: webp
   to: png
   engine: canvas
@@ -245,7 +245,7 @@
   slug: png-to-webp
   name: PNG to WebP
   title: PNG to WebP Converter - Shrink Image Size | ZixTool
-  description: Convert PNG images to modern WebP format for faster web page load speeds. 100% client-side, free, and batch-enabled with zero uploads.
+  description: Convert PNG to WebP format for smaller file sizes and faster web page loading. 100% client-side, free, and batch-enabled with zero uploads.
   from: png
   to: webp
   engine: canvas
@@ -287,7 +287,7 @@
   slug: jpg-to-webp
   name: JPG to WebP
   title: JPG to WebP Converter - Optimize Size | ZixTool
-  description: Convert JPG photos to lightweight WebP files. Cut file sizes while maintaining sharp visual quality directly on your device.
+  description: Convert JPG to WebP images online free. Cut file sizes while maintaining sharp visual quality directly on your device with zero cloud uploads.
   from: jpg
   to: webp
   engine: canvas
@@ -409,7 +409,7 @@
   slug: png-to-jpg
   name: PNG to JPG Converter
   title: PNG to JPG Converter - Free & Private | ZixTool
-  description: Convert PNG images to JPG in your browser with zero uploads. Choose quality, reduce file sizes by up to 80%, and download single files or ZIP.
+  description: Convert PNG to JPG in your browser with zero uploads. Choose quality, reduce file sizes by up to 80%, and download single files or ZIP.
   from: png
   to: jpg
   engine: canvas
@@ -460,7 +460,7 @@
   slug: jpg-to-png
   name: JPG to PNG Converter
   title: JPG to PNG Converter - Free & Private | ZixTool
-  description: Convert JPG photos to PNG format free in your browser. Preserve pixel fidelity with 100% private in-browser conversion and batch export.
+  description: Convert JPG to PNG format free in your browser. Preserve pixel fidelity with 100% private in-browser image processing and instant download.
   from: jpg
   to: png
   engine: canvas
@@ -512,7 +512,7 @@
   slug: jfif-to-jpg
   name: JFIF to JPG
   title: JFIF to JPG Converter - Fix Download Format | ZixTool
-  description: Convert and rename stubborn JFIF image downloads to standard JPG files. Instant in-browser conversion with zero quality loss.
+  description: Convert JFIF to JPG files instantly in your browser. Universal image compatibility with zero quality loss and no remote server uploads.
   from: jfif
   to: jpg
   engine: canvas
@@ -552,7 +552,7 @@
   slug: svg-to-png
   name: SVG to PNG
   title: SVG to PNG Converter - High-Res Raster | ZixTool
-  description: Render and convert vector SVG graphics into transparent PNG raster images at any custom resolution directly in your browser without uploads.
+  description: Convert SVG to PNG raster images with transparent backgrounds at any custom resolution directly in your browser without server uploads.
   from: svg
   to: png
   engine: canvas
@@ -634,7 +634,7 @@
   slug: tiff-to-jpg
   name: TIFF to JPG
   title: TIFF to JPG Converter - Fast In-Browser | ZixTool
-  description: Convert print-ready TIFF images to web-ready JPG pictures. No server uploads, keeping your confidential scans completely private in browser.
+  description: Convert TIFF to JPG pictures online free. No server uploads, keeping your high-resolution scanned documents completely private in browser.
   from: tiff
   to: jpg
   engine: canvas
@@ -675,7 +675,7 @@
   slug: gif-to-png
   name: GIF to PNG
   title: GIF to PNG Converter - Extract Sharp Frames | ZixTool
-  description: Convert GIF images and animations to clean still PNG graphics. Safe, private, and instantaneous in your web browser with zero file uploads.
+  description: Convert GIF to PNG graphics cleanly in your browser. Extract still frames with zero quality degradation and complete client-side privacy.
   from: gif
   to: png
   engine: canvas
@@ -1052,7 +1052,7 @@
   name: Percentage Calculator
   title: Percentage Calculator - Free and Accurate | ZixTool
   subtitle: Calculate percentages, percentage increases, and differences instantly.
-  description: Calculate percentage of a number, percentage increase or decrease, and fractions instantly in your browser with step-by-step formulas and zero tracking.
+  description: Free online percentage calculator to find percent of a number, percentage change, and proportions instantly with clear step-by-step math.
   engine: calc-percentage
   options: []
   presets: []
@@ -1142,7 +1142,7 @@
   name: Date Difference Calculator
   title: Date Difference Calculator - Free & Fast | ZixTool
   subtitle: Calculate total days, workdays, and weeks between two calendar dates.
-  description: Calculate elapsed days, business workdays, weeks, and months between two dates. Works completely offline in your browser with zero tracking.
+  description: Accurate date difference calculator to find days, workdays, weeks, and months between two calendar dates offline with zero tracking.
   engine: calc-date
   options: []
   presets: []
@@ -1181,7 +1181,7 @@
   name: Discount Calculator
   title: Discount Calculator - Free and Accurate | ZixTool
   subtitle: Calculate final sale prices, total money saved, and sales tax.
-  description: Calculate sale prices, percentage discounts, and sales tax instantly in your browser. Find out how much you save with clear step-by-step math.
+  description: Free online discount calculator to find sale prices, savings amounts, and sales tax instantly with clear step-by-step calculation formulas.
   engine: calc-discount
   options: []
   presets: []
@@ -1220,7 +1220,7 @@
   name: Tip Calculator
   title: Tip Calculator - Free and Accurate | ZixTool
   subtitle: Calculate restaurant tips and split bills per person easily.
-  description: Calculate dining tips, total restaurant bills, and split per-person costs accurately in your browser. Fast tip percentages with zero intrusive ads.
+  description: Free online tip calculator to compute restaurant gratuities, bill totals, and split checks per person accurately with zero intrusive ads.
   engine: calc-tip
   options: []
   presets: []
@@ -1259,7 +1259,7 @@
   name: Word Counter
   title: Word Counter - Free Online Tool | ZixTool
   subtitle: Count words, characters, sentences, and estimated reading time.
-  description: Count words, characters with and without spaces, sentences, and reading time in real time. 100% private in-browser analysis with zero server logging.
+  description: Free online word counter to count words, characters, sentences, paragraphs, and reading time in real time with complete client privacy.
   engine: text-word-count
   options: []
   presets: []
@@ -1344,7 +1344,7 @@
   name: JSON Formatter & Validator
   title: JSON Formatter - Free Validator & Tool | ZixTool
   subtitle: Prettify, minify, and validate JSON data instantly in your browser.
-  description: Format, beautify, minify, and validate JSON data with clear syntax error alerts. Runs 100% locally in your browser without sending data to servers.
+  description: Free online JSON formatter to beautify, minify, and validate JSON data with clear syntax error highlighting and zero remote data storage.
   engine: text-json
   options: []
   presets: []
@@ -1855,7 +1855,7 @@
   name: Online Timer
   title: Online Timer - Free Countdown & Alarm | ZixTool
   subtitle: Accurate full-screen countdown timer with Pomodoro and audio alerts.
-  description: Free online countdown timer with audio alerts and Pomodoro study presets. Accurate, responsive, and easy to use directly in your browser.
+  description: Free online timer with audio alerts and customizable countdown presets. Accurate, responsive stopwatch and timer directly in your browser.
   engine: media
   options: []
   presets: []
@@ -2040,7 +2040,7 @@
   name: My IP & Client Diagnostic
   title: My IP Address & Browser Diagnostics | ZixTool
   subtitle: Check your browser network configuration, screen display, and user agent.
-  description: Free online browser and network diagnostic tool. Inspect your client screen resolution, color depth, system timezone, language, and user-agent string.
+  description: Check my IP address and browser diagnostics online. Inspect screen resolution, system timezone, user-agent string, and network parameters.
   engine: developer
   options: []
   presets: []
@@ -2832,7 +2832,7 @@
   name: Lorem Ipsum Generator
   title: Lorem Ipsum Generator - Free Dummy Text | ZixTool
   subtitle: Generate placeholder Latin dummy text for web development and UI mockups.
-  description: Generate custom Lorem Ipsum dummy text for mockups and web designs. Select paragraphs, sentences, or words with instant clipboard copy and clean formatting.
+  description: Free Lorem Ipsum generator for designers. Generate custom placeholder dummy paragraphs, sentences, or words with one-click clipboard copy.
   engine: text
   options: []
   content: src/content/tools/lorem-ipsum-generator.mdx
@@ -2911,7 +2911,7 @@
   name: PDF to JPG
   title: PDF to JPG Converter - Free & In-Browser | ZixTool
   subtitle: Extract PDF pages into crisp high-resolution JPEG photos without uploads.
-  description: Convert PDF files to JPG images free online. Extract PDF pages into high-resolution JPEG photos with zero file size paywalls and zero remote server uploads.
+  description: Convert PDF to JPG free online. Extract PDF document pages into high-resolution JPG images with zero file size limits and zero cloud uploads.
   engine: pdf
   options: []
   content: src/content/tools/pdf-to-jpg.mdx
@@ -3082,7 +3082,7 @@
   name: Compound Interest Calculator
   title: Compound Interest Calculator & Growth Chart | ZixTool
   subtitle: Calculate compound interest, future balance, and investment growth.
-  description: Calculate compound interest online for free. Forecast your savings and investment growth with customizable compounding intervals and breakdown schedules.
+  description: Free compound interest calculator to forecast savings growth and investment returns with custom compounding intervals and breakdowns.
   engine: finance
   options: []
   content: src/content/tools/compound-interest-calculator.mdx
@@ -3131,7 +3131,7 @@
   name: URL Encoder Decoder
   title: URL Encoder Decoder - Percent Encoding
   subtitle: Encode and decode URLs and query parameters online for free.
-  description: Encode or decode URLs online for free. Safely escape special query parameters and percent-encode URIs with instant client-side string processing.
+  description: Free URL encoder decoder to safely percent-encode query parameters and decode complex URI strings directly in your browser with zero logging.
   engine: developer
   options: []
   content: src/content/tools/url-encoder-decoder.mdx
@@ -3171,7 +3171,7 @@
   name: UUID Generator
   title: UUID Generator - Free Online v4 GUIDs
   subtitle: Generate random version 4 UUIDs and GUIDs in your browser.
-  description: Generate random v4 UUIDs and GUIDs instantly online. Free cryptographically secure identifier generator with bulk generation and one-click copy.
+  description: Free UUID generator to create random version-4 UUID and GUID tokens instantly. Cryptographically secure bulk generation with one-click copy.
   engine: developer
   options: []
   content: src/content/tools/uuid-generator.mdx
@@ -3211,7 +3211,7 @@
   name: Hash Generator
   title: Hash Generator - MD5, SHA-256 & SHA-512
   subtitle: Compute cryptographic checksums and hashes directly in browser.
-  description: Generate MD5, SHA-1, SHA-256, and SHA-512 hashes online for free. Secure cryptographic checksum calculation in your browser with zero remote logging.
+  description: Free online hash generator to calculate MD5, SHA-1, SHA-256, and SHA-512 checksums securely in browser memory with zero remote logging.
   engine: developer
   options: []
   content: src/content/tools/hash-generator.mdx
@@ -3251,7 +3251,7 @@
   name: Markdown to HTML
   title: Markdown to HTML Converter Online
   subtitle: Convert Markdown syntax to clean HTML markup with live preview.
-  description: Convert Markdown to clean HTML code online with real-time live preview. Free in-browser parser supports GitHub flavored markdown, tables, and code blocks.
+  description: Convert Markdown to HTML online with live side-by-side preview. Free in-browser parser supports GitHub flavored markdown, tables, and code.
   engine: text
   options: []
   content: src/content/tools/markdown-to-html.mdx
@@ -3291,7 +3291,7 @@
   name: JSON to CSV
   title: JSON to CSV Converter - Free Online
   subtitle: Convert JSON objects and arrays into downloadable CSV files.
-  description: Convert JSON data to CSV spreadsheets online for free. Fast in-memory parser handles nested objects, arrays, and custom delimiters with instant download.
+  description: Convert JSON to CSV spreadsheets online for free. Fast in-memory parser converts nested objects and arrays with instant file download.
   engine: developer
   options: []
   content: src/content/tools/json-to-csv.mdx
@@ -3331,7 +3331,7 @@
   name: CSV to JSON
   title: CSV to JSON Converter - Free Online
   subtitle: Convert CSV tabular records into structured JSON array format.
-  description: Convert CSV spreadsheets to structured JSON online for free. Instant client-side parser detects headers, delimiters, and numbers without server uploads.
+  description: Convert CSV to JSON online for free. Fast client-side parser detects headers, delimiters, and numbers without remote server uploads.
   engine: developer
   options: []
   content: src/content/tools/csv-to-json.mdx
@@ -3469,7 +3469,7 @@
   name: JPG Compressor
   title: JPG Compressor - Reduce JPG File Size | ZixTool
   subtitle: Compress JPG and JPEG photos online. Choose target KB limits or custom quality in browser RAM.
-  description: Compress JPG images online free. Reduce JPEG file size by up to 80% with adjustable quality and target KB limits in your browser. Zero server uploads.
+  description: Free online JPG compressor to reduce JPEG file size by up to 80% with adjustable quality and target KB limits. Zero server uploads.
   from: jpg
   to: jpg
   engine: target-size
@@ -3515,7 +3515,7 @@
   name: Passport Photo Resizer
   title: Passport Photo Resizer & Compressor | ZixTool
   subtitle: Resize and compress photos and signatures for passport portals, exams, and ID cards online.
-  description: Resize and compress passport size photos and signatures online free. Meet exact KB and dimension limits for government portals, exams, and ID cards.
+  description: Free passport photo resizer to resize and compress photos and signatures for exam portals and government IDs to exact KB and dimension rules.
   from: image
   to: jpg
   engine: target-size

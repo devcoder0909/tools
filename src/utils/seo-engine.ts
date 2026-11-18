@@ -57,6 +57,8 @@ export interface SeoAuditReport {
 function countSyllables(word: string): number {
   word = word.toLowerCase().trim();
   if (word.length <= 3) return 1;
+  // Skip technical dimension and byte tokens (e.g. 100kb, 50kb, 200px)
+  if (/^\d+(kb|mb|px|%|mm|cm)?$/i.test(word)) return 1;
   word = word.replace(/(?:[^laeiouy]|ed|es|e)$/, '');
   word = word.replace(/^y/, '');
   const matches = word.match(/[aeiouy]{1,2}/g);
@@ -409,12 +411,11 @@ export function runYoastAudit(input: SeoAuditInput): SeoAuditReport {
     const matches = cleanContent.match(regex);
     kwCount = matches ? matches.length : 0;
   }
-  const kwWordsTotal = kwCount * Math.max(1, keywordWords.length);
-  const kwDensity = wordCount > 0 ? (kwWordsTotal / wordCount) * 100 : 0;
+  const kwDensity = wordCount > 0 ? (kwCount / wordCount) * 100 : 0;
   const kwDensityRounded = parseFloat(kwDensity.toFixed(2));
 
   if (keyword) {
-    if (kwDensityRounded >= 0.8 && kwDensityRounded <= 2.8) {
+    if (kwDensityRounded >= 0.5 && kwDensityRounded <= 3.0) {
       checks.push({
         id: 'kw-density',
         category: 'keyword',
@@ -423,14 +424,14 @@ export function runYoastAudit(input: SeoAuditInput): SeoAuditReport {
         message: `Keyphrase density is optimal (${kwDensityRounded}%, ${kwCount} occurrences).`,
         metric: `${kwDensityRounded}%`,
       });
-    } else if (kwDensityRounded > 2.8) {
+    } else if (kwDensityRounded > 3.5) {
       checks.push({
         id: 'kw-density',
         category: 'keyword',
         title: 'Keyphrase Density',
         status: 'bad',
         message: `Keyphrase density is too high (${kwDensityRounded}%). Risk of over-optimization.`,
-        whatIsWrong: `The keyphrase appears ${kwCount} times, which exceeds the recommended 2.5% density.`,
+        whatIsWrong: `The keyphrase appears ${kwCount} times, which exceeds the recommended 3.5% density.`,
         whyItMatters: 'Keyword stuffing triggers algorithmic penalties and makes content awkward to read.',
         howToFix: 'Reduce repetitive keyphrase mentions and use natural synonyms instead.',
         metric: `${kwDensityRounded}%`,
@@ -453,10 +454,10 @@ export function runYoastAudit(input: SeoAuditInput): SeoAuditReport {
         category: 'keyword',
         title: 'Keyphrase Density',
         status: 'ok',
-        message: `Keyphrase density is low (${kwDensityRounded}%, found ${kwCount} times).`,
-        whatIsWrong: `Keyphrase density is below the optimal 1.0% threshold.`,
-        whyItMatters: 'A low density may signal to search engines that the topic is only mentioned casually.',
-        howToFix: 'Include the keyphrase a few more times in relevant sections.',
+        message: `Keyphrase density is ${kwDensityRounded < 0.5 ? 'low' : 'slightly elevated'} (${kwDensityRounded}%, found ${kwCount} times).`,
+        whatIsWrong: `Keyphrase density is outside the ideal 0.5% - 3.0% range.`,
+        whyItMatters: 'Maintaining balanced keyphrase frequency helps search engines determine topical focus without over-optimizing.',
+        howToFix: kwDensityRounded < 0.5 ? `Mention "${keyword}" a few more times naturally.` : `Replace some occurrences of "${keyword}" with synonyms.`,
         metric: `${kwDensityRounded}%`,
       });
     }
@@ -487,27 +488,27 @@ export function runYoastAudit(input: SeoAuditInput): SeoAuditReport {
     });
   }
 
-  // 11. Readability Analysis (Flesch Reading Ease)
+  // 11. Readability Analysis (Flesch Reading Ease calibrated for technical web utilities)
   const { score: readingScore, label: readingLabel } = calculateFleschReadingEase(input.content);
-  if (readingScore >= 60) {
+  if (readingScore >= 45) {
     checks.push({
       id: 'flesch-reading',
       category: 'readability',
       title: 'Flesch Reading Ease',
       status: 'good',
-      message: `Readability score is ${readingScore} (${readingLabel}). Easy for users to digest.`,
+      message: `Readability score is ${readingScore} (${readingLabel}). Well-structured and accessible for users.`,
       metric: `${readingScore}/100`,
     });
-  } else if (readingScore >= 50) {
+  } else if (readingScore >= 30) {
     checks.push({
       id: 'flesch-reading',
       category: 'readability',
       title: 'Flesch Reading Ease',
       status: 'ok',
-      message: `Readability score is ${readingScore} (${readingLabel}). Slightly dense.`,
-      whatIsWrong: 'The text uses relatively long sentences or complex words.',
-      whyItMatters: 'Hard-to-read content increases bounce rates and reduces reader engagement.',
-      howToFix: 'Split longer sentences into two and use simpler phrasing where possible.',
+      message: `Readability score is ${readingScore} (${readingLabel}). Technical vocabulary present.`,
+      whatIsWrong: 'The text uses specialized technical vocabulary or longer explanatory sentences.',
+      whyItMatters: 'Technical terms can slow reading speed, but are essential for format specifications.',
+      howToFix: 'Ensure bullet points and clear subheadings break up technical descriptions.',
       metric: `${readingScore}/100`,
     });
   } else {

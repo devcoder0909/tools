@@ -3,7 +3,7 @@
  * Renders tables, lists, images, headings, blockquotes, code, and links cleanly.
  */
 
-export function renderToolMarkdown(rawMarkdown: string): string {
+export function renderToolMarkdown(rawMarkdown: string, toolName?: string): string {
   // Strip YAML frontmatter
   let text = rawMarkdown.replace(/^---[\s\S]*?---\s*/, '');
   // Strip duplicate FAQ section if present in markdown (handled canonically by FAQ.astro)
@@ -129,8 +129,11 @@ export function renderToolMarkdown(rawMarkdown: string): string {
     const imgMatch = stripped.match(/^!\[(.*?)\]\((.*?)\)$/);
     if (imgMatch) {
       output.push(closeLists());
-      const alt = imgMatch[1];
+      let alt = imgMatch[1];
       const src = imgMatch[2];
+      if (toolName && !alt.toLowerCase().includes(toolName.toLowerCase())) {
+        alt = `${toolName} - ${alt}`;
+      }
       output.push(
         `<figure class="my-8">` +
         `<img src="${src}" alt="${alt}" width="800" height="450" class="rounded-2xl border border-gray-200 shadow-xs max-w-full h-auto mx-auto" loading="lazy" decoding="async" />` +

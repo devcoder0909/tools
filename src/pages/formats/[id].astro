@@ -76,90 +76,92 @@ if (format.faq && format.faq.length > 0) {
   <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
     <Breadcrumbs items={breadcrumbs} />
 
-    <div class="mb-8">
-      <div class="flex items-center space-x-3 mb-2">
-        <span class="font-mono text-2xl font-extrabold text-green-700">
-          {format.extension.toUpperCase()}
-        </span>
-        <span class="text-xs font-semibold px-2 py-0.5 rounded bg-gray-100 text-gray-700 uppercase">
-          {format.category}
-        </span>
-      </div>
-      <h1 class="text-2xl sm:text-4xl font-extrabold text-gray-900 mb-3">
-        {format.name} File Format Guide
-      </h1>
-      <p class="text-base text-gray-600 leading-relaxed">
-        {format.description}
-      </p>
-    </div>
-
-    <!-- Technical Specs Table -->
-    <div class="my-8 bg-gray-50 border border-gray-200 rounded-xl p-6">
-      <h2 class="text-lg font-bold text-gray-900 mb-4">Technical Characteristics</h2>
-      <dl class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
-        <div>
-          <dt class="text-xs text-gray-500 uppercase">MIME Type</dt>
-          <dd class="font-mono font-semibold text-gray-800 mt-1">{format.mime}</dd>
+    <article class="format-guide">
+      <div class="mb-8">
+        <div class="flex items-center space-x-3 mb-2">
+          <span class="font-mono text-2xl font-extrabold text-green-700">
+            {format.extension.toUpperCase()}
+          </span>
+          <span class="text-xs font-semibold px-2 py-0.5 rounded bg-gray-100 text-gray-700 uppercase">
+            {format.category}
+          </span>
         </div>
-        <div>
-          <dt class="text-xs text-gray-500 uppercase">Compression</dt>
-          <dd class="font-semibold text-gray-800 mt-1">{format.lossy ? 'Lossy' : 'Lossless'}</dd>
-        </div>
-        <div>
-          <dt class="text-xs text-gray-500 uppercase">Transparency</dt>
-          <dd class="font-semibold text-gray-800 mt-1">{format.transparency ? 'Supported' : 'No'}</dd>
-        </div>
-        <div>
-          <dt class="text-xs text-gray-500 uppercase">Animation</dt>
-          <dd class="font-semibold text-gray-800 mt-1">{format.animation ? 'Supported' : 'No'}</dd>
-        </div>
-      </dl>
-    </div>
-
-    <!-- Deep Guide Content -->
-    {format.content && (
-      <article class="prose prose-gray max-w-none my-8 leading-relaxed space-y-6 text-gray-700 [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-gray-900 [&>h2]:mt-8 [&>h2]:mb-4 [&>h3]:text-lg [&>h3]:font-semibold [&>h3]:text-gray-900 [&>h3]:mt-6 [&>h3]:mb-2 [&>ul]:list-disc [&>ul]:pl-5 [&>ol]:list-decimal [&>ol]:pl-5 [&>p]:mb-4"
-        set:html={format.content
-          .replace(/### (.*)/g, '<h3>$1</h3>')
-          .replace(/## (.*)/g, '<h2>$1</h2>')
-          .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-          .replace(/`([^`]+)`/g, '<code>$1</code>')
-          .replace(/\n\n/g, '<p></p>')}
-      />
-    )}
-
-    <!-- Converters Involving this Format -->
-    <section class="my-10 border-t border-gray-200 pt-8" aria-labelledby="tools-heading">
-      <h2 id="tools-heading" class="text-2xl font-bold text-gray-900 mb-6">
-        Online Converters for {format.name}
-      </h2>
-      {tools.length > 0 ? (
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {tools.map((t) => (
-            <a
-              href={`/${t.slug}/`}
-              class="p-4 rounded-lg border border-gray-200 bg-white hover:border-green-500 hover:shadow-xs transition group"
-            >
-              <h3 class="font-semibold text-gray-900 group-hover:text-green-600 mb-1">
-                {t.name}
-              </h3>
-              <p class="text-xs text-gray-500 line-clamp-2">
-                {t.description}
-              </p>
-            </a>
-          ))}
-        </div>
-      ) : (
-        <p class="text-sm text-gray-500">
-          More converters for {format.name} are added regularly.
+        <h1 class="text-2xl sm:text-4xl font-extrabold text-gray-900 mb-3">
+          {format.name} File Format Guide
+        </h1>
+        <p class="text-base text-gray-600 leading-relaxed">
+          {format.description}
         </p>
-      )}
-    </section>
+      </div>
 
-    <!-- FAQ Section -->
-    {format.faq && format.faq.length > 0 && (
-      <FAQ items={format.faq} title={`${format.name} Frequently Asked Questions`} />
-    )}
+      <!-- Technical Specs Table -->
+      <div class="my-8 bg-gray-50 border border-gray-200 rounded-xl p-6">
+        <h2 class="text-lg font-bold text-gray-900 mb-4">Technical Characteristics</h2>
+        <dl class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
+          <div>
+            <dt class="text-xs text-gray-500 uppercase">MIME Type</dt>
+            <dd class="font-mono font-semibold text-gray-800 mt-1">{format.mime}</dd>
+          </div>
+          <div>
+            <dt class="text-xs text-gray-500 uppercase">Compression</dt>
+            <dd class="font-semibold text-gray-800 mt-1">{format.lossy ? 'Lossy' : 'Lossless'}</dd>
+          </div>
+          <div>
+            <dt class="text-xs text-gray-500 uppercase">Transparency</dt>
+            <dd class="font-semibold text-gray-800 mt-1">{format.transparency ? 'Supported' : 'No'}</dd>
+          </div>
+          <div>
+            <dt class="text-xs text-gray-500 uppercase">Animation</dt>
+            <dd class="font-semibold text-gray-800 mt-1">{format.animation ? 'Supported' : 'No'}</dd>
+          </div>
+        </dl>
+      </div>
+
+      <!-- Deep Guide Content -->
+      {format.content && (
+        <div class="prose prose-gray max-w-none my-8 leading-relaxed space-y-6 text-gray-700 [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-gray-900 [&>h2]:mt-8 [&>h2]:mb-4 [&>h3]:text-lg [&>h3]:font-semibold [&>h3]:text-gray-900 [&>h3]:mt-6 [&>h3]:mb-2 [&>ul]:list-disc [&>ul]:pl-5 [&>ol]:list-decimal [&>ol]:pl-5 [&>p]:mb-4"
+          set:html={format.content
+            .replace(/### (.*)/g, '<h3>$1</h3>')
+            .replace(/## (.*)/g, '<h2>$1</h2>')
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/`([^`]+)`/g, '<code>$1</code>')
+            .replace(/\n\n/g, '<p></p>')}
+        />
+      )}
+
+      <!-- Converters Involving this Format -->
+      <section class="my-10 border-t border-gray-200 pt-8" aria-labelledby="tools-heading">
+        <h2 id="tools-heading" class="text-2xl font-bold text-gray-900 mb-6">
+          Online Converters for {format.name}
+        </h2>
+        {tools.length > 0 ? (
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {tools.map((t) => (
+              <a
+                href={`/${t.slug}/`}
+                class="p-4 rounded-lg border border-gray-200 bg-white hover:border-green-500 hover:shadow-xs transition group"
+              >
+                <h3 class="font-semibold text-gray-900 group-hover:text-green-600 mb-1">
+                  {t.name}
+                </h3>
+                <p class="text-xs text-gray-500 line-clamp-2">
+                  {t.description}
+                </p>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <p class="text-sm text-gray-500">
+            More converters for {format.name} are added regularly.
+          </p>
+        )}
+      </section>
+
+      <!-- FAQ Section -->
+      {format.faq && format.faq.length > 0 && (
+        <FAQ items={format.faq} title={`${format.name} Frequently Asked Questions`} />
+      )}
+    </article>
 
     <!-- Privacy Callout -->
     <div class="my-8 p-4 bg-gray-50 border border-gray-200 rounded-xl text-xs text-gray-600 flex flex-col sm:flex-row sm:items-center justify-between gap-2">

@@ -438,27 +438,24 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
               <button
                 type="button"
                 onClick={() => formatJson(2)}
-                class={`px-3 py-1.5 text-xs font-medium rounded-lg transition ${
-                  jsonIndent === 2 ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
+                class={`px-3 py-1.5 text-xs font-medium rounded-lg transition ${jsonIndent === 2 ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
               >
                 Beautify (2 Spaces)
               </button>
               <button
                 type="button"
                 onClick={() => formatJson(4)}
-                class={`px-3 py-1.5 text-xs font-medium rounded-lg transition ${
-                  jsonIndent === 4 ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
+                class={`px-3 py-1.5 text-xs font-medium rounded-lg transition ${jsonIndent === 4 ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
               >
                 Beautify (4 Spaces)
               </button>
               <button
                 type="button"
                 onClick={() => formatJson(0)}
-                class={`px-3 py-1.5 text-xs font-medium rounded-lg transition ${
-                  jsonIndent === 0 ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
+                class={`px-3 py-1.5 text-xs font-medium rounded-lg transition ${jsonIndent === 0 ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
               >
                 Minify (1 Line)
               </button>
@@ -641,22 +638,20 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
               {diffResult.diff.map((line, idx) => (
                 <div
                   key={idx}
-                  class={`flex items-start px-3 py-1.5 ${
-                    line.type === 'added'
-                      ? 'bg-green-50 text-green-900 font-medium'
-                      : line.type === 'removed'
+                  class={`flex items-start px-3 py-1.5 ${line.type === 'added'
+                    ? 'bg-green-50 text-green-900 font-medium'
+                    : line.type === 'removed'
                       ? 'bg-red-50 text-red-900 line-through'
                       : 'bg-white text-gray-700'
-                  }`}
+                    }`}
                 >
                   <span
-                    class={`w-6 text-center select-none font-bold mr-2 ${
-                      line.type === 'added'
-                        ? 'text-green-600'
-                        : line.type === 'removed'
+                    class={`w-6 text-center select-none font-bold mr-2 ${line.type === 'added'
+                      ? 'text-green-600'
+                      : line.type === 'removed'
                         ? 'text-red-500'
                         : 'text-gray-300'
-                    }`}
+                      }`}
                   >
                     {line.type === 'added' ? '+' : line.type === 'removed' ? '-' : ' '}
                   </span>
