@@ -83,12 +83,6 @@ const webAppJsonLd = {
     price: '0',
     priceCurrency: 'USD',
   },
-  featureList: [
-    '100% Client-Side Processing',
-    'Zero Server Uploads',
-    'Private in-memory calculation',
-    'In-browser RAM processing',
-  ],
   description: tool.description,
 };
 
@@ -127,10 +121,10 @@ const workflowDiagrams: Record<string, string> = {
 
 const diagramUrl = toolMedia?.diagramUrl || workflowDiagrams[tool.slug];
 
-const schemas: any[] = [webAppJsonLd];
-if (faqJsonLd) schemas.push(faqJsonLd);
+const schemas: any[] = isIndexable ? [webAppJsonLd] : [];
+if (faqJsonLd && isIndexable) schemas.push(faqJsonLd);
 
-if (diagramUrl) {
+if (diagramUrl && isIndexable) {
   schemas.push({
     '@context': 'https://schema.org',
     '@type': 'ImageObject',
@@ -170,6 +164,12 @@ if (tool.targetBytes) {
   ogImage={ogImageProp}
 >
   <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+    {tool.slug === 'pdf-to-jpg' && <p class="mb-6 p-4 border border-amber-300 rounded-xl bg-amber-50 text-amber-950">
+      This tool is not ready for PDF page conversion. The current output is a placeholder image, not a rendering of your document. Please keep your original PDF.
+    </p>}
+    {tool.slug === 'heic-to-pdf' && <p class="mb-6 p-4 border border-amber-300 rounded-xl bg-amber-50 text-amber-950">
+      HEIC-to-PDF conversion is not ready. The current download is not a valid PDF. Keep the original image and use a supported JPG or PNG source with the image-to-PDF tools.
+    </p>}
     <!-- 1. Breadcrumbs -->
     <Breadcrumbs items={breadcrumbs} />
 

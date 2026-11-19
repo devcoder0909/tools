@@ -200,7 +200,7 @@ export function runSeoLint() {
       if (h1Count !== 1) {
         errors.push(`Expected exactly 1 H1 tag, found ${h1Count}`);
       }
-      if (!canonical || !canonical.startsWith(siteConfig.url)) {
+      if (canonical !== `${siteConfig.url}${urlPath}` || $('link[rel="canonical"]').length !== 1) {
         errors.push(`Missing or invalid canonical URL: "${canonical}"`);
       }
       if (outboundLinks.length < 5) {
@@ -248,7 +248,7 @@ export function runSeoLint() {
     });
 
     // Record outbound links for inbound graph
-    for (const targetUrl of outboundLinks) {
+    for (const targetUrl of new Set(outboundLinks)) {
       inboundLinkCount.set(targetUrl, (inboundLinkCount.get(targetUrl) || 0) + 1);
     }
   }
@@ -343,6 +343,30 @@ export function runSeoLint() {
         hasFailed = true;
       }
     }
+  }
+
+  // Every indexable route, including editorial guides, must be discoverable.
+  const sitemapUrls = new Set<string>();
+  for (const shard of ['pages', 'tools', 'formats']) {
+    const file = path.join(DIST_DIR, `sitemap-${shard}.xml`);
+    if (!fs.existsSync(file)) {
+      console.error(`[FAIL] Missing sitemap shard: ${file}`);
+      hasFailed = true;
+      continue;
+    }
+    const $xml = cheerio.load(fs.readFileSync(file, 'utf-8'), { xmlMode: true });
+    $xml('url > loc').each((_, element) => {
+      const url = $xml(element).text().trim();
+      const page = audits.find(audit => `${siteConfig.url}${audit.urlPath}` === url);
+      if (sitemapUrls.has(url) || !page?.isIndexable || page.canonical !== url) {
+        console.error(`[FAIL] Duplicate, missing, noindex or noncanonical sitemap URL: ${url}`);
+        hasFailed = true;
+      }
+      sitemapUrls.add(url);
+    });
+  }
+  for (const page of audits.filter(audit => audit.isIndexable)) {
+    if (!sitemapUrls.has(page.canonical)) page.errors.push('Indexable page missing from primary sitemaps');
   }
 
   // 6. Aggregate results

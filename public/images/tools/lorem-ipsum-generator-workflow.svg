@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none" role="img" aria-labelledby="svg-title-lorem-ipsum-generator svg-desc-lorem-ipsum-generator">
+  <title id="svg-title-lorem-ipsum-generator">Lorem Ipsum Generator Workflow &amp; Architecture Diagram</title>
+  <desc id="svg-desc-lorem-ipsum-generator">Generating natural typographic dummy text for digital design and web layouts in local device RAM.</desc>
+  <defs>
+    <linearGradient id="bgGrad-lorem-ipsum-generator" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#f1f5f9" />
+    </linearGradient>
+    <filter id="shadow-lorem-ipsum-generator" x="-5%" y="-5%" width="110%" height="110%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.06" />
+    </filter>
+  </defs>
+
+  <rect width="800" height="450" rx="16" fill="url(#bgGrad-lorem-ipsum-generator)" stroke="#e2e8f0" stroke-width="2" />
+
+  <!-- Badge Header -->
+  <rect x="200" y="24" width="400" height="28" rx="14" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1" />
+  <text x="400" y="43" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#047857" letter-spacing="0.5">
+    PSEUDO-LATIN TYPESETTING TEXT GENERATOR
+  </text>
+  <text x="400" y="82" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="800" fill="#0f172a">
+    How Dummy Placeholder Text Generates Online
+  </text>
+  <text x="400" y="104" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#64748b">
+    Cicero De Finibus Standard • Paragraphs, Sentences, Words • 1-Click Copy
+  </text>
+
+  <!-- Step 1 -->
+  <g transform="translate(40, 130)" filter="url(#shadow-lorem-ipsum-generator)">
+    <rect width="210" height="250" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="15" y="15" width="32" height="32" rx="8" fill="#ecfdf5" />
+    <text x="31" y="37" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#059669">1</text>
+    <text x="58" y="37" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Select Quantity</text>
+    
+    <rect x="25" y="65" width="160" height="80" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="4 4" />
+    <text x="105" y="105" text-anchor="middle" font-size="28">📜</text>
+    <text x="105" y="132" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#475569">Paragraphs or Words</text>
+
+    <text x="25" y="170" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Choose paragraphs, sentences, words</text>
+    <text x="25" y="190" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Include traditional "Lorem ipsum..."</text>
+    <text x="25" y="210" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Set custom target length</text>
+    <rect x="25" y="222" width="160" height="20" rx="4" fill="#ecfdf5" />
+    <text x="105" y="236" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#047857">Instant local generation</text>
+  </g>
+
+  <!-- Flow 1 -->
+  <g transform="translate(262, 245)">
+    <circle cx="15" cy="0" r="14" fill="#10b981" />
+    <path d="M11 -4 L19 0 L11 4" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- Step 2 -->
+  <g transform="translate(295, 130)" filter="url(#shadow-lorem-ipsum-generator)">
+    <rect width="210" height="250" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="15" y="15" width="32" height="32" rx="8" fill="#eff6ff" />
+    <text x="31" y="37" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#2563eb">2</text>
+    <text x="58" y="37" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Lexical Sequencing</text>
+    
+    <rect x="25" y="65" width="160" height="80" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="4 4" />
+    <text x="105" y="105" text-anchor="middle" font-size="28">⚙️</text>
+    <text x="105" y="132" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#475569">Natural Word Distribution</text>
+
+    <text x="25" y="170" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Classical Latin vocabulary pool</text>
+    <text x="25" y="190" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Varying sentence length cadences</text>
+    <text x="25" y="210" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Realistic typographic texture</text>
+    <rect x="25" y="222" width="160" height="20" rx="4" fill="#eff6ff" />
+    <text x="105" y="236" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#1d4ed8">Professional typesetting</text>
+  </g>
+
+  <!-- Flow 2 -->
+  <g transform="translate(517, 245)">
+    <circle cx="15" cy="0" r="14" fill="#3b82f6" />
+    <path d="M11 -4 L19 0 L11 4" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- Step 3 -->
+  <g transform="translate(550, 130)" filter="url(#shadow-lorem-ipsum-generator)">
+    <rect width="210" height="250" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="15" y="15" width="32" height="32" rx="8" fill="#fdf2f8" />
+    <text x="31" y="37" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#db2777">3</text>
+    <text x="58" y="37" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Copy to Clipboard</text>
+    
+    <rect x="25" y="65" width="160" height="80" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="4 4" />
+    <text x="105" y="105" text-anchor="middle" font-size="28">📋</text>
+    <text x="105" y="132" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#475569">Design-Ready Copy</text>
+
+    <text x="25" y="170" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• One-click copy to clipboard</text>
+    <text x="25" y="190" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Wrap with HTML <p> tags option</text>
+    <text x="25" y="210" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Paste straight into Figma / Web</text>
+    <rect x="25" y="222" width="160" height="20" rx="4" fill="#fdf2f8" />
+    <text x="105" y="236" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#be185d">Ready for mockups</text>
+  </g>
+
+  <!-- Bottom Privacy Banner -->
+  <g transform="translate(180, 400)">
+    <rect width="440" height="28" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" />
+    <circle cx="20" cy="14" r="5" fill="#10b981" />
+    <text x="35" y="18" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#334155">
+      100% In-Browser Private Execution • Ephemeral Device RAM • Zero Server Uploads
+    </text>
+  </g>
+</svg>

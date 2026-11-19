@@ -103,13 +103,17 @@ export function getToolsForFormat(formatId: string): ToolDefinition[] {
 }
 
 export function getRelatedTools(tool: ToolDefinition): ToolDefinition[] {
-  const tools = getAllTools();
-  if (tool.related && tool.related.length > 0) {
-    return tools.filter((t) => tool.related?.includes(t.slug));
-  }
-  return tools
-    .filter((t) => t.slug !== tool.slug && (t.from === tool.from || t.to === tool.to || t.kind === tool.kind))
-    .slice(0, 4);
+  const candidates = getIndexableTools().filter(candidate => candidate.slug !== tool.slug);
+  const explicit = (tool.related || []).map(slug => candidates.find(candidate => candidate.slug === slug)).filter((candidate): candidate is ToolDefinition => !!candidate);
+  const score = (candidate: ToolDefinition) =>
+    (tool.from && candidate.from === tool.from ? 4 : 0)
+    + (tool.to && candidate.to === tool.to ? 3 : 0)
+    + (candidate.kind === tool.kind ? 2 : 0)
+    + (candidate.engine === tool.engine ? 1 : 0);
+  const fallback = candidates
+    .filter(candidate => !explicit.some(item => item.slug === candidate.slug) && score(candidate) > 0)
+    .sort((a, b) => score(b) - score(a) || a.slug.localeCompare(b.slug));
+  return [...explicit, ...fallback].slice(0, 6);
 }
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];

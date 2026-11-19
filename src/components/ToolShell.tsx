@@ -394,12 +394,12 @@ export default function ToolShell({
       {showAdvanced && (
         <div class="mb-6 p-4 sm:p-5 bg-slate-50/80 border border-slate-200 rounded-2xl space-y-4 animate-[fadeIn_0.2s_ease-out]">
           <div class="flex items-center justify-between pb-2 border-b border-slate-200/80">
-            <h3 class="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
+            <div class="text-xs font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2">
               <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
               </svg>
               <span>Optimization Controls</span>
-            </h3>
+            </div>
             <span class="text-2xs text-slate-500">Fine-tune compression &amp; resolution</span>
           </div>
 

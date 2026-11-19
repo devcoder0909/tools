@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none" role="img" aria-labelledby="svg-title-png-to-pdf svg-desc-png-to-pdf">
+  <title id="svg-title-png-to-pdf">PNG to PDF Converter Workflow &amp; Architecture Diagram</title>
+  <desc id="svg-desc-png-to-pdf">Packaging lossless PNG illustrations and screenshots into a high-fidelity PDF document in memory.</desc>
+  <defs>
+    <linearGradient id="bgGrad-png-to-pdf" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#f1f5f9" />
+    </linearGradient>
+    <filter id="shadow-png-to-pdf" x="-5%" y="-5%" width="110%" height="110%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.06" />
+    </filter>
+  </defs>
+
+  <rect width="800" height="450" rx="16" fill="url(#bgGrad-png-to-pdf)" stroke="#e2e8f0" stroke-width="2" />
+
+  <!-- Badge Header -->
+  <rect x="200" y="24" width="400" height="28" rx="14" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1" />
+  <text x="400" y="43" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#047857" letter-spacing="0.5">
+    LOSSLESS GRAPHIC PDF PACKAGING PIPELINE
+  </text>
+  <text x="400" y="82" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="800" fill="#0f172a">
+    How Lossless PNGs Assemble Into Clean PDF
+  </text>
+  <text x="400" y="104" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#64748b">
+    FlateDecode Stream Injection • Razor-Sharp Text • 100% Client-Side Privacy
+  </text>
+
+  <!-- Step 1 -->
+  <g transform="translate(40, 130)" filter="url(#shadow-png-to-pdf)">
+    <rect width="210" height="250" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="15" y="15" width="32" height="32" rx="8" fill="#ecfdf5" />
+    <text x="31" y="37" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#059669">1</text>
+    <text x="58" y="37" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Drop PNG Images</text>
+    
+    <rect x="25" y="65" width="160" height="80" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="4 4" />
+    <text x="105" y="105" text-anchor="middle" font-size="28">🖼️</text>
+    <text x="105" y="132" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#475569">Lossless UI / Diagrams</text>
+
+    <text x="25" y="170" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Drop charts, slides, receipts</text>
+    <text x="25" y="190" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Reorder page sequence</text>
+    <text x="25" y="210" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Choose fit or fill layout</text>
+    <rect x="25" y="222" width="160" height="20" rx="4" fill="#ecfdf5" />
+    <text x="105" y="236" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#047857">Instant local load</text>
+  </g>
+
+  <!-- Flow 1 -->
+  <g transform="translate(262, 245)">
+    <circle cx="15" cy="0" r="14" fill="#10b981" />
+    <path d="M11 -4 L19 0 L11 4" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- Step 2 -->
+  <g transform="translate(295, 130)" filter="url(#shadow-png-to-pdf)">
+    <rect width="210" height="250" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="15" y="15" width="32" height="32" rx="8" fill="#eff6ff" />
+    <text x="31" y="37" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#2563eb">2</text>
+    <text x="58" y="37" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Stream Embedding</text>
+    
+    <rect x="25" y="65" width="160" height="80" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="4 4" />
+    <text x="105" y="105" text-anchor="middle" font-size="28">📦</text>
+    <text x="105" y="132" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#475569">FlateDecode Compression</text>
+
+    <text x="25" y="170" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Preserve 32-bit pixel data</text>
+    <text x="25" y="190" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Embed lossless object stream</text>
+    <text x="25" y="210" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Build document catalog</text>
+    <rect x="25" y="222" width="160" height="20" rx="4" fill="#eff6ff" />
+    <text x="105" y="236" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#1d4ed8">Zero blur or noise</text>
+  </g>
+
+  <!-- Flow 2 -->
+  <g transform="translate(517, 245)">
+    <circle cx="15" cy="0" r="14" fill="#3b82f6" />
+    <path d="M11 -4 L19 0 L11 4" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- Step 3 -->
+  <g transform="translate(550, 130)" filter="url(#shadow-png-to-pdf)">
+    <rect width="210" height="250" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="15" y="15" width="32" height="32" rx="8" fill="#fdf2f8" />
+    <text x="31" y="37" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#db2777">3</text>
+    <text x="58" y="37" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Download Pristine PDF</text>
+    
+    <rect x="25" y="65" width="160" height="80" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="4 4" />
+    <text x="105" y="105" text-anchor="middle" font-size="28">📕</text>
+    <text x="105" y="132" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#475569">High-Fidelity Document</text>
+
+    <text x="25" y="170" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Vector-like typography</text>
+    <text x="25" y="190" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Print & presentation ready</text>
+    <text x="25" y="210" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Save directly to disk</text>
+    <rect x="25" y="222" width="160" height="20" rx="4" fill="#fdf2f8" />
+    <text x="105" y="236" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#be185d">Zero data retention</text>
+  </g>
+
+  <!-- Bottom Privacy Banner -->
+  <g transform="translate(180, 400)">
+    <rect width="440" height="28" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" />
+    <circle cx="20" cy="14" r="5" fill="#10b981" />
+    <text x="35" y="18" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#334155">
+      100% In-Browser Private Execution • Ephemeral Device RAM • Zero Server Uploads
+    </text>
+  </g>
+</svg>

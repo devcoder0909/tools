@@ -79,3 +79,60 @@ Convert camera roll JPEGs to PNG directly in Safari or Chrome without uploading 
 - **Batch Processing:** Convert photos locally without artificial paywalls or subscriptions.
 - **Works Offline:** Once the page loads, you can disconnect from Wi-Fi and continue converting files seamlessly.
 
+## The Computer Science of JPG to PNG: Halting Generational Quality Loss
+
+JPEG is inherently a lossy compression format standardized under ISO/IEC 10918-1. Every time a JPEG is opened, edited, and re-saved, the image undergoes repeated Discrete Cosine Transform (DCT) matrix quantization, introducing cumulative mathematical rounding errors known as generational loss. This manifests as blocky 8x8 pixel artifacts, mosquito noise around high-contrast edges, and smeared color gradients.
+
+Converting a JPEG into Portable Network Graphics (PNG) arrests this compression decay completely. Standardized under ISO/IEC 15948, PNG uses purely lossless Deflate compression (combining LZ77 sliding-window dictionary matching with Huffman entropy coding). When ZixTool converts JPG to PNG, it decodes the compressed DCT bitstream into raw 24-bit RGB pixel buffers in device RAM and stores them inside PNG IDAT chunks. While conversion cannot magically restore high frequencies previously discarded by JPEG, it guarantees that no further loss occurs during subsequent layer masking, cropping, or graphic design workflows.
+
+---
+
+## PNG Chunk Hierarchy and Pre-Compression Filtering
+
+PNG achieves exceptional lossless compression through a two-stage process: byte filtering followed by Deflate compression. Before compression, each horizontal scanline passes through one of five predictive filter types:
+- **Filter 0 (None):** The raw scanline bytes are transmitted without modification.
+- **Filter 1 (Sub):** Transmits the difference between each byte and the preceding pixel byte on the same line, flattening gradual color shifts.
+- **Filter 2 (Up):** Transmits the difference between each byte and the corresponding byte in the scanline directly above.
+- **Filter 3 (Average):** Predicts byte values using the arithmetic average of the left and upper pixels.
+- **Filter 4 (Paeth):** Evaluates a linear combination of the left, upper, and upper-left pixels to minimize predictive error.
+
+Filtering dramatically increases the frequency of repeated zeros and identical byte sequences, enabling the Deflate algorithm to achieve maximum compression efficiency on photographic and graphical assets.
+
+---
+
+## Technical Specifications Comparison Table
+
+The table below contrasts key architectural differences and capabilities:
+
+| Technical Parameter | Standard JPEG (.jpg) | Lossless PNG (.png) | Workflow Implication |
+| :--- | :--- | :--- | :--- |
+| Compression Type | Lossy (DCT Quantization) | Lossless (Deflate / LZ77) | PNG stops cumulative generational degradation |
+| Alpha Transparency | Unsupported (Solid Background) | Supported (8-bit / 16-bit Alpha) | PNG enables cutouts and transparent overlays |
+| Color Bit Depth | 8 bits per channel (sRGB) | Up to 16 bits per channel (RGBA) | PNG supports wide dynamic range design assets |
+| File Size Footprint | Small (50KB to 2MB typical) | Larger (1MB to 8MB typical) | JPEG is best for web; PNG is best for editing |
+| Artifact Vulnerability | Ringing noise, 8x8 blockiness | Zero artifacts; pixel-perfect | PNG preserves vector text and line art sharpness |
+
+---
+
+## 100% Client-Side Privacy: Complete Data Security
+
+When processing sensitive official paperwork, business transactions, candidate signatures, or personal records online, cloud conversion utilities pose serious confidentiality risks. Many web utilities monetize user traffic by harvesting documents, caching files on cloud servers, or mining metadata.
+
+ZixTool operates under an ironclad **zero-server privacy architecture**:
+- **Local Browser Execution:** All file decoding, re-encoding, and mathematical calculations run locally inside your browser's private memory heap using WebAssembly and HTML5 Canvas.
+- **Zero Cloud Network Uploads:** Your files and data never leave your device, traverse external networks, or touch remote cloud databases.
+- **Volatile RAM Storage:** Uploaded files exist only in volatile device RAM and are cleared immediately when you close or refresh the browser tab.
+- **Enterprise Regulatory Compliance:** Fully satisfies **GDPR**, **HIPAA**, and institutional security standards prohibiting the upload of confidential records to third-party web services.
+
+---
+
+## Comprehensive Frequently Asked Questions (FAQ)
+
+### Why is my converted PNG file size larger than the original JPG?
+JPEG uses lossy compression that selectively discards high-frequency color variations that the human visual system is insensitive to. PNG is a lossless format that records every single pixel value exactly using Deflate compression. Because continuous-tone photographs have millions of subtle color gradients, storing them losslessly naturally requires more storage bytes.
+
+### Does converting JPG to PNG make the background transparent?
+No. Converting formats changes how pixels are stored, but standard JPEG files have opaque pixels (often white or solid color). To make the background transparent, convert the image to PNG first, then open it in our Background Remover tool to erase the background color and generate a true transparent cutout.
+
+### Can I batch convert hundreds of JPG files to PNG simultaneously?
+Yes. ZixTool processes images in parallel using client-side Web Workers. You can select multiple images or drag entire folders into the tool, convert them concurrently in local device RAM, and download all converted PNGs bundled together in a single ZIP file.

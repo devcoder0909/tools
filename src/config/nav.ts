@@ -13,6 +13,7 @@ export const mainNav: NavItem[] = [
 ];
 
 export const footerLinks: NavItem[] = [
+  { label: 'Practical Guides', href: '/guides/' },
   { label: 'All Tools', href: '/tools/' },
   { label: 'Image Converters', href: '/tools/#converters' },
   { label: 'Calculators', href: '/calculators/' },

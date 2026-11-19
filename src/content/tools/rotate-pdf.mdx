@@ -85,3 +85,61 @@ Certain legacy mobile PDF viewers cache previously rendered page thumbnails. Cle
 ### Can I rotate password-protected PDF files?
 Encrypted PDFs restrict internal dictionary modification. You must enter the password to decrypt the file before applying permanent rotation.
 
+## The Internal Architecture of PDF Page Orientation: The /Rotate Matrix
+
+In an ISO 32000 compliant PDF document, page orientation is not stored by physically reordering raster pixels or rotating content streams. Instead, each page is governed by an indirect page object dictionary containing a specific structural entry: the `/Rotate` key.
+
+Under the PDF specification, the value of `/Rotate` must be an integer multiple of 90 degrees (specifically 0, 90, 180, or 270) representing clockwise rotation relative to the default orientation. When desktop publishing software or high-speed scanner feeders inadvertently capture a page upside-down or sideways, the internal coordinate matrix (`/MediaBox` and `/CropBox`) becomes misaligned with the intended visual presentation.
+
+ZixTool modifies these internal page dictionaries directly inside your browser's WebAssembly memory heap. Rather than rasterizing your document into blurry bitmap images (which destroys text searchability and balloons file sizes), our engine updates the `/Rotate` integers and recalculates viewport bounding boxes losslessly. The resulting PDF maintains 100% vector typography, searchable OCR text layers, and crystal-clear digital signatures.
+
+---
+
+## Official Court E-Filing & Visa Portal Page Orientation Standards
+
+Government portals, judicial e-filing systems, and academic institutions enforce strict page orientation rules:
+- **Judicial E-Filing Systems (PACER, LexisNexis, Court of Appeals):** Legal briefs, affidavits, and exhibit attachments must be properly oriented in portrait format. Pages submitted sideways or upside down are routinely rejected by court clerks, potentially causing missed filing deadlines.
+- **Immigration & Visa Portals (USCIS, CEAC DS-160, Schengen):** Identity document scans, marriage certificates, and bank statements must be readable without manual rotation by consular adjudicators. Automated facial recognition and OCR bots immediately reject rotated identity records.
+- **Staff Selection & Civil Service Commissions (SSC, UPSC):** Application portals reject multi-page educational transcripts and mark sheets if scanned sideways, failing automated validation scripts.
+
+---
+
+## Technical Specifications Comparison Table
+
+The table below contrasts key architectural differences and capabilities:
+
+| Orientation State | /Rotate Parameter | Typical Source Cause | Correction Strategy |
+| :--- | :--- | :--- | :--- |
+| Portrait (Standard) | /Rotate 0 | Properly scanned documents | Default viewing angle; zero transformation needed |
+| Landscape Clockwise | /Rotate 90 | Scanner sheet feeder rotated 90° right | Apply 270° clockwise rotation (or 90° counter-clockwise) |
+| Inverted / Upside-Down | /Rotate 180 | Document fed backwards into scanner | Apply 180° rotation to restore natural reading baseline |
+| Landscape Counter-Clockwise | /Rotate 270 | Scanner sheet feeder rotated 90° left | Apply 90° clockwise rotation to restore vertical alignment |
+
+---
+
+## 100% Client-Side Privacy: Complete Data Security
+
+When processing sensitive official paperwork, business transactions, candidate signatures, or personal records online, cloud conversion utilities pose serious confidentiality risks. Many web utilities monetize user traffic by harvesting documents, caching files on cloud servers, or mining metadata.
+
+ZixTool operates under an ironclad **zero-server privacy architecture**:
+- **Local Browser Execution:** All file decoding, re-encoding, and mathematical calculations run locally inside your browser's private memory heap using WebAssembly and HTML5 Canvas.
+- **Zero Cloud Network Uploads:** Your files and data never leave your device, traverse external networks, or touch remote cloud databases.
+- **Volatile RAM Storage:** Uploaded files exist only in volatile device RAM and are cleared immediately when you close or refresh the browser tab.
+- **Enterprise Regulatory Compliance:** Fully satisfies **GDPR**, **HIPAA**, and institutional security standards prohibiting the upload of confidential records to third-party web services.
+
+---
+
+## Comprehensive Frequently Asked Questions (FAQ)
+
+### Does rotating a PDF degrade the text quality or compress images?
+No. ZixTool does not re-encode or compress page content streams. It simply updates the internal /Rotate dictionary tag in the PDF object tree, preserving 100% of the original vector text sharpness, fonts, and image resolutions without any generational loss.
+
+### Can I rotate individual pages without rotating the entire PDF document?
+Yes. ZixTool displays visual page thumbnails for every page in your document. You can hover over any individual page and click the rotate icon to adjust only sideways pages while leaving the rest of the document untouched.
+
+### Will OCR text layers and digital signatures survive rotation?
+Yes. Because our engine operates at the structural object level rather than rasterizing pages into images, all embedded fonts, selectable text layers, hyperlinks, form fields, and cryptographic signatures remain fully intact.
+
+
+### Why is permanent rotation necessary for legal e-filing?
+Judicial court filing gateways require documents to render upright by default. Temporary viewer rotation does not persist in court archives, risking automatic rejection.

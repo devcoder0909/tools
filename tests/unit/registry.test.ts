@@ -10,7 +10,10 @@ describe('Registry Loader', () => {
 
   it('correctly filters indexable reviewed tools', () => {
     const indexable = getIndexableTools();
-    expect(indexable.length).toBe(85);
+    expect(indexable.length).toBeGreaterThan(0);
+    expect(indexable.every(tool => tool.indexable && tool.reviewed && !!tool.last_reviewed)).toBe(true);
+    expect(indexable.some(tool => tool.slug === 'pdf-to-jpg')).toBe(false);
+    expect(indexable.some(tool => tool.slug === 'heic-to-pdf')).toBe(false);
     const heic = indexable.find((t) => t.slug === 'heic-to-jpg');
     expect(heic).toBeDefined();
     expect(heic?.reviewed).toBe(true);

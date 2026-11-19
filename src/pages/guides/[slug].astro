@@ -1,0 +1,65 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { searchGuides, type SearchGuide } from '../../content/guides';
+import { renderToolMarkdown } from '../../utils/markdown';
+import { getToolBySlug } from '../../registry';
+import { siteConfig } from '../../config/site';
+
+export function getStaticPaths() {
+  return searchGuides.map(guide => ({ params: { slug: guide.slug }, props: { guide } }));
+}
+interface Props { guide: SearchGuide }
+const { guide } = Astro.props;
+const canonical = `${siteConfig.url}/guides/${guide.slug}/`;
+const breadcrumbs = [{ name: 'Home', href: '/' }, { name: 'Guides', href: '/guides/' }, { name: guide.title, href: `/guides/${guide.slug}/` }];
+const tools = guide.tools.map(getToolBySlug).filter(tool => tool?.indexable && tool.reviewed);
+const schema = {
+  '@context': 'https://schema.org', '@type': 'Article', '@id': `${canonical}#article`,
+  headline: guide.title, description: guide.description, mainEntityOfPage: canonical,
+  datePublished: `${guide.updated}T00:00:00+05:30`, dateModified: `${guide.updated}T00:00:00+05:30`,
+  inLanguage: 'en', author: { '@type': 'Organization', name: siteConfig.brand, url: `${siteConfig.url}/about/` },
+  publisher: { '@type': 'Organization', name: siteConfig.brand, url: siteConfig.url },
+  citation: guide.sources.map(source => source.url),
+};
+---
+<Layout title={guide.title} description={guide.description} canonical={canonical} type="article" jsonLd={schema}>
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 py-8 text-slate-700 leading-relaxed">
+    <Breadcrumbs items={breadcrumbs} />
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight mt-6 mb-4">{guide.title}</h1>
+    <p class="text-sm text-slate-500 mb-6">By <a class="underline" href="/about/">ZixTool</a> · Updated <time datetime={guide.updated}>{guide.updated}</time></p>
+    <p class="text-lg leading-relaxed border-l-4 border-emerald-600 pl-5 mb-8">{guide.answer}</p>
+    <nav aria-label="Guide contents" class="border-y border-slate-200 py-5 mb-8">
+      <p class="font-semibold text-slate-900 mb-2">In this guide</p>
+      <ol class="list-decimal pl-5 space-y-2">
+        {guide.sections.map(section => <li><a href={`#${section.id}`} class="text-emerald-800 underline underline-offset-4">{section.title}</a></li>)}
+      </ol>
+    </nav>
+    {guide.sections.map(section => (
+      <section id={section.id} class="scroll-mt-24 mb-10">
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-4">{section.title}</h2>
+        <div class="guide-body space-y-4" set:html={renderToolMarkdown(section.body)} />
+      </section>
+    ))}
+    <section class="border-t border-slate-200 pt-6 mb-8" aria-labelledby="guide-tools">
+      <h2 id="guide-tools" class="text-xl font-bold text-slate-900 mb-3">Tools for this task</h2>
+      <ul class="flex flex-wrap gap-x-6 gap-y-3">
+        {tools.map(tool => tool && <li><a class="text-emerald-800 underline" href={`/${tool.slug}/`}>{tool.name}</a></li>)}
+      </ul>
+    </section>
+    <section class="mb-8" aria-labelledby="guide-sources">
+      <h2 id="guide-sources" class="text-xl font-bold text-slate-900 mb-3">References and scope</h2>
+      <p class="mb-3">Format references are listed below. ZixTool-specific limitations describe the current implementation; destination websites set their own acceptance rules.</p>
+      <ul class="list-disc pl-5 space-y-2">
+        {guide.sources.map(source => <li><a class="text-emerald-800 underline" href={source.url}>{source.name}</a></li>)}
+      </ul>
+    </section>
+    <nav aria-label="More guides" class="border-t border-slate-200 pt-6">
+      <h2 class="text-xl font-bold text-slate-900 mb-3">Related troubleshooting guides</h2>
+      <ul class="space-y-3">
+        {searchGuides.filter(item => item.slug !== guide.slug).map(item => <li><a class="text-emerald-800 underline" href={`/guides/${item.slug}/`}>{item.title}</a></li>)}
+        <li><a class="text-emerald-800 underline" href="/guides/">Browse all practical guides</a></li>
+      </ul>
+    </nav>
+  </article>
+</Layout>

@@ -1,0 +1,33 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { searchGuides } from '../../content/guides';
+import { siteConfig } from '../../config/site';
+const title = 'File Conversion & Upload Troubleshooting Guides';
+const description = 'Solve image upload errors, PDF size limits and JSON-to-CSV import problems with practical guides, clear examples, and links to the right free tools.';
+const canonical = `${siteConfig.url}/guides/`;
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'CollectionPage', name: title, url: canonical, description,
+  mainEntity: { '@type': 'ItemList', itemListElement: searchGuides.map((guide, index) => ({ '@type': 'ListItem', position: index + 1, name: guide.title, url: `${canonical}${guide.slug}/` })) },
+};
+---
+<Layout title={title} description={description} canonical={canonical} jsonLd={jsonLd}>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8 text-slate-700 leading-relaxed">
+    <Breadcrumbs items={[{ name: 'Home', href: '/' }, { name: 'Guides', href: '/guides/' }]} />
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 my-6">File conversion and upload troubleshooting guides</h1>
+    <p class="text-lg mb-8">Choose a guide by the problem you need to solve. Each explains what to check, which tool can help, and how to verify the result before uploading or importing it.</p>
+    <div class="divide-y divide-slate-200 border-y border-slate-200">
+      {searchGuides.map(guide => <section class="py-6">
+        <h2 class="text-xl font-bold mb-3"><a href={`/guides/${guide.slug}/`} class="text-emerald-800 underline underline-offset-4">{guide.title}</a></h2>
+        <p>{guide.answer}</p>
+      </section>)}
+    </div>
+    <section class="mt-10 space-y-4">
+      <h2 class="text-2xl font-bold text-slate-900">Start with the failed requirement</h2>
+      <p>An upload error does not always mean your file needs more compression. A site may reject the format, pixel dimensions, number of attachments, or total size. Read the destination’s instructions and keep the original file before making a working copy.</p>
+      <p>For photos, the <a href="/image-compressor/" class="text-emerald-800 underline">image compressor</a> and <a href="/resize-image/" class="text-emerald-800 underline">image resizer</a> solve different problems. For documents, <a href="/merge-pdf/" class="text-emerald-800 underline">merging PDFs</a> combines pages; it does not guarantee a smaller file. For data, a <a href="/json-formatter/" class="text-emerald-800 underline">JSON formatter</a> helps inspect syntax, but application-specific field requirements still need a separate check.</p>
+      <p>The guides use concrete examples and link to format documentation where useful. They do not promise a fixed compression percentage, acceptance by a particular application portal, or recovery of detail lost in earlier conversions. Compare the downloaded result with the original and follow the current requirements of the receiving service.</p>
+      <p>If you already know the operation you need, browse the <a href="/tools/" class="text-emerald-800 underline">complete tool directory</a>. For format background, use the <a href="/formats/" class="text-emerald-800 underline">image and document format guides</a>.</p>
+    </section>
+  </div>
+</Layout>

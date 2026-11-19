@@ -4,6 +4,7 @@ import * as cheerio from 'cheerio';
 import { getAllTools, getAllFormats } from '../src/registry';
 import { siteConfig } from '../src/config/site';
 import { TOOL_MEDIA_REGISTRY } from '../src/config/tool-media';
+import { searchGuides } from '../src/content/guides';
 
 const DIST_DIR = path.resolve(process.cwd(), 'dist');
 
@@ -54,7 +55,7 @@ export function buildSitemaps() {
   ensureDist();
 
   // 1. Static Pages Sitemap
-  const staticPages = [
+  const staticPages: { url: string; priority: string; lastmod?: string }[] = [
     { url: `${siteConfig.url}/`, priority: '1.0' },
     { url: `${siteConfig.url}/tools/`, priority: '0.9' },
     { url: `${siteConfig.url}/calculators/`, priority: '0.9' },
@@ -65,11 +66,13 @@ export function buildSitemaps() {
     { url: `${siteConfig.url}/cookies/`, priority: '0.3' },
     { url: `${siteConfig.url}/terms/`, priority: '0.3' },
     { url: `${siteConfig.url}/contact/`, priority: '0.5' },
+    { url: `${siteConfig.url}/guides/`, priority: '0.7' },
+    ...searchGuides.map(guide => ({ url: `${siteConfig.url}/guides/${guide.slug}/`, priority: '0.7', lastmod: guide.updated })),
   ];
 
   const pagesXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${staticPages.map((p) => generateUrlXml(p.url, undefined, 'weekly', p.priority)).join('\n')}
+${staticPages.map((p) => generateUrlXml(p.url, p.lastmod, 'weekly', p.priority)).join('\n')}
 </urlset>`;
   fs.writeFileSync(path.join(DIST_DIR, 'sitemap-pages.xml'), pagesXml, 'utf-8');
 
@@ -91,8 +94,9 @@ ${indexableTools.map((t) => generateUrlXml(`${siteConfig.url}/${t.slug}/`, t.las
   fs.writeFileSync(path.join(DIST_DIR, 'sitemap-tools.xml'), toolsXml, 'utf-8');
 
   // 4. Dedicated Google Image Sitemap (genuine architectural diagrams & workflow infographics)
-  const imageEntriesXml = TOOL_MEDIA_REGISTRY
-    .filter((m) => indexableTools.some((t) => t.slug === m.slug) && isPublishedIndexable(`${siteConfig.url}/${m.slug}/`) && fs.existsSync(path.join(DIST_DIR, m.diagramUrl)))
+  const imageMedia = TOOL_MEDIA_REGISTRY
+    .filter((m) => indexableTools.some((t) => t.slug === m.slug) && isPublishedIndexable(`${siteConfig.url}/${m.slug}/`) && fs.existsSync(path.join(DIST_DIR, m.diagramUrl)));
+  const imageEntriesXml = imageMedia
     .map((m) => {
     const pageUrl = `${siteConfig.url}/${m.slug}/`;
     const diagramUrl = `${siteConfig.url}${m.diagramUrl}`;
@@ -137,7 +141,7 @@ ${imageEntriesXml}
   // Also write sitemap.xml as direct alias for crawlers requesting /sitemap.xml
   fs.writeFileSync(path.join(DIST_DIR, 'sitemap.xml'), sitemapIndex, 'utf-8');
 
-  console.log(`[Sitemap] Generated sitemap-index.xml, sitemap.xml, sitemap-image.xml (${TOOL_MEDIA_REGISTRY.length} images), and standard shards (${indexableTools.length} indexable tools listed).`);
+  console.log(`[Sitemap] Generated sitemap-index.xml, sitemap.xml, sitemap-image.xml (${imageMedia.length} images), and standard shards (${indexableTools.length} indexable tools listed).`);
 }
 
 // Execute when called directly

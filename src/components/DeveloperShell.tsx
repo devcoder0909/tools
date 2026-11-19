@@ -941,9 +941,9 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
           {/* Device & Client Diagnostics Table */}
           <div class="border border-slate-200 rounded-2xl overflow-hidden shadow-2xs">
             <div class="bg-slate-50 px-4 py-3 border-b border-slate-200 flex justify-between items-center">
-              <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider">
+              <div class="text-xs font-bold text-slate-800 uppercase tracking-wider">
                 Client Device &amp; Browser Diagnostics
-              </h3>
+              </div>
               <span class="text-2xs text-slate-500">Navigator APIs</span>
             </div>
             <div class="divide-y divide-slate-100 text-xs">

@@ -93,3 +93,65 @@ Yes. Page-level annotations, web URLs, vector drawings, and embedded fonts are c
 ### Can I split password-protected PDF documents?
 Encrypted PDFs restrict structural page copying. You must enter the document password to unlock the file before running page extraction.
 
+## Object Tree Pruning and Cross-Reference Table Reconstruction
+
+A Portable Document Format (PDF) file is a directed acyclic graph of indirect objects. Pages are organized in a balanced tree structure rooted at the Document Catalog's `/Pages` node. Each page object references shared resource dictionaries (`/Font`, `/XObject` images, color spaces) and binary content streams.
+
+When you split a heavy PDF into smaller documents or extract a specific range of pages, naive tools simply copy the entire file and delete unselected pages from the tree, leaving megabytes of unreferenced orphan objects, fonts, and images trapped inside the file. 
+
+ZixTool executes a sophisticated **client-side object tree pruning algorithm** using WebAssembly:
+1. **Dependency Traversal:** Traverses only the objects reachable from the selected page nodes.
+2. **Resource Pruning:** Strips unreferenced fonts, image XObjects, and metadata associated with excluded pages.
+3. **Cross-Reference Table Rebuilding:** Generates a clean, compact cross-reference table (`xref`) mapping the new object byte offsets with zero dead weight.
+4. **Isolated Document Catalog:** Constructs an independent, ISO 32000 compliant trailer and catalog for each extracted document.
+
+---
+
+## Practical Use Cases for PDF Splitting and Page Extraction
+
+Extracting specific pages is essential across professional and regulatory workflows:
+- **Submitting Relevant Contract Clauses:** Extract only the signature page, non-disclosure agreement (NDA), or specific annexure from a 100-page corporate master contract.
+- **Meeting Government File Size Budgets:** When an application portal allows only 2MB per upload, splitting a 30-page certificate into individual 2-page records ensures every upload passes without server timeouts.
+- **Separating Multi-Student or Multi-Employee Records:** Human resources and school administrators frequently receive bulk scan files containing dozens of individual employee paystubs or student grade sheets that must be separated into secure, individual documents.
+
+---
+
+## Technical Specifications Comparison Table
+
+The table below contrasts key architectural differences and capabilities:
+
+| Splitting Method | Input File Type | Output Delivery | Primary Benefit |
+| :--- | :--- | :--- | :--- |
+| Extract Specific Pages | Single heavy PDF | Custom single PDF with chosen pages | Isolates exact pages (e.g. pages 3, 5-7, 12) |
+| Split into Single Pages | Multi-page document | ZIP archive of individual 1-page PDFs | Ideal for digitizing archival records and receipts |
+| Split by Page Range | Large corporate report | Multiple PDFs divided into chapters | Keeps logical sections together (e.g. 1-10, 11-20) |
+| Delete Selected Pages | Draft document with errors | Clean PDF with blank pages removed | Purges unneeded pages without desktop software |
+
+---
+
+## 100% Client-Side Privacy: Complete Data Security
+
+When processing sensitive official paperwork, business transactions, candidate signatures, or personal records online, cloud conversion utilities pose serious confidentiality risks. Many web utilities monetize user traffic by harvesting documents, caching files on cloud servers, or mining metadata.
+
+ZixTool operates under an ironclad **zero-server privacy architecture**:
+- **Local Browser Execution:** All file decoding, re-encoding, and mathematical calculations run locally inside your browser's private memory heap using WebAssembly and HTML5 Canvas.
+- **Zero Cloud Network Uploads:** Your files and data never leave your device, traverse external networks, or touch remote cloud databases.
+- **Volatile RAM Storage:** Uploaded files exist only in volatile device RAM and are cleared immediately when you close or refresh the browser tab.
+- **Enterprise Regulatory Compliance:** Fully satisfies **GDPR**, **HIPAA**, and institutional security standards prohibiting the upload of confidential records to third-party web services.
+
+---
+
+## Comprehensive Frequently Asked Questions (FAQ)
+
+### Does splitting a PDF reduce document quality?
+No. Extracted pages are copied byte-for-byte from the original content streams. Vector typography, high-resolution scans, and embedded color profiles maintain 100% of their original visual fidelity.
+
+### How do I extract non-consecutive pages (e.g. pages 1, 4, and 7)?
+You can either click to select the specific page thumbnails in our visual grid or type a custom comma-separated range into the input box (such as "1, 4, 7-10"). ZixTool will bundle those exact pages into a single output file.
+
+### Can I split password-protected PDF files?
+If a PDF is encrypted, you must enter the authorized document password to unlock its internal object tree before our engine can extract pages. ZixTool handles decryption locally in your browser memory without uploading your password or files.
+
+
+### How does client-side PDF splitting protect my confidential records?
+Because ZixTool runs purely in browser RAM, your sensitive legal contracts and personal tax documents are never uploaded to remote servers or stored in third-party cloud queues.

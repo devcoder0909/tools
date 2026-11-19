@@ -11,7 +11,8 @@ export default {
     const url = new URL(request.url);
 
     // 1. 301 Permanent Redirect for any traffic hitting workers.dev or old domains
-    if (url.hostname.endsWith('workers.dev') || url.hostname === 'app.gudmud.in' || url.hostname === 'convert.gudmud.site') {
+    if (url.hostname.endsWith('workers.dev') || url.hostname === 'app.gudmud.in' || url.hostname === 'convert.gudmud.site'
+      || url.hostname === 'www.zixtool.online' || (url.hostname === 'zixtool.online' && url.protocol !== 'https:')) {
       const canonicalTarget = `https://zixtool.online${url.pathname}${url.search}`;
       return Response.redirect(canonicalTarget, 301);
     }

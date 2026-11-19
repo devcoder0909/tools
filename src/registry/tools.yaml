@@ -70,7 +70,7 @@
   kind: converter
   slug: heic-to-png
   name: HEIC to PNG
-  title: HEIC to PNG Converter - Lossless Alpha | ZixTool
+  title: HEIC to PNG Converter - Free, Lossless Alpha
   description: Convert HEIC to PNG format with transparency retention. Fast, 100% private in-browser conversion for iPhone photos with zero uploads.
   from: heic
   to: png
@@ -106,13 +106,13 @@
     intent: tool
     tier: 1
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: heic-to-pdf
   kind: converter
   slug: heic-to-pdf
   name: HEIC to PDF
-  title: HEIC to PDF Converter - Secure Document | ZixTool
-  description: Convert HEIC to PDF documents directly in your browser. Fast, 100% private in-memory conversion for iPhone photos with zero server uploads.
+  title: HEIC to PDF Converter - Free iPhone Document Creator
+  description: Convert HEIC to PDF online free with zero server uploads. Combine iPhone receipts and document scans into a clean PDF with custom page sizing.
   from: heic
   to: pdf
   engine: heic-decode+pdf
@@ -132,9 +132,9 @@
     - heic-to-jpg
     - jpg-to-pdf
     - png-to-pdf
-  indexable: true
+  indexable: false
   reviewed: true
-  last_reviewed: 2026-11-14T00:00:00.000Z
+  last_reviewed: 2026-11-19T00:00:00.000Z
   reviewer: ZixTool Document Engineering Team
   lang: en
   seo:
@@ -148,13 +148,13 @@
     intent: tool
     tier: 1
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: webp-to-jpg
   kind: converter
   slug: webp-to-jpg
   name: WebP to JPG Converter
   title: WebP to JPG Converter - Free & Private | ZixTool
-  description: Convert WebP to JPG in your browser with zero server uploads. Batch convert image files, control compression quality, and download instantly.
+  description: Convert WebP images to JPG in your browser with zero server uploads. Batch convert files, control compression quality, and download instantly.
   from: webp
   to: jpg
   engine: canvas
@@ -198,13 +198,13 @@
     intent: tool
     tier: 1
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: webp-to-png
   kind: converter
   slug: webp-to-png
   name: WebP to PNG
-  title: WebP to PNG Converter - Keep Transparency | ZixTool
-  description: Convert WebP to PNG while retaining full alpha transparency. Runs client-side in browser RAM for complete privacy with zero server uploads.
+  title: WebP to PNG Converter - Transparent Online | ZixTool
+  description: Convert WebP to PNG online for free while preserving full transparent backgrounds. Fast batch conversion in your browser memory with zero file uploads.
   from: webp
   to: png
   engine: canvas
@@ -239,13 +239,13 @@
     intent: tool
     tier: 1
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: png-to-webp
   kind: converter
   slug: png-to-webp
   name: PNG to WebP
-  title: PNG to WebP Converter - Shrink Image Size | ZixTool
-  description: Convert PNG to WebP format for smaller file sizes and faster web page loading. 100% client-side, free, and batch-enabled with zero uploads.
+  title: PNG to WebP Converter - Shrink Size by Up to 35%
+  description: Convert PNG to WebP online free with zero server uploads. Reduce file size up to 35%, retain alpha transparency, and boost Google Core Web Vitals.
   from: png
   to: webp
   engine: canvas
@@ -281,13 +281,13 @@
     intent: tool
     tier: 1
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: jpg-to-webp
   kind: converter
   slug: jpg-to-webp
   name: JPG to WebP
-  title: JPG to WebP Converter - Optimize Size | ZixTool
-  description: Convert JPG to WebP images online free. Cut file sizes while maintaining sharp visual quality directly on your device with zero cloud uploads.
+  title: JPG to WebP Converter - Optimize Image Storage
+  description: Convert JPG to WebP online free with zero server uploads. Reduce photo storage, speed up web loading, and batch download converted files instantly.
   from: jpg
   to: webp
   engine: canvas
@@ -323,13 +323,13 @@
     intent: tool
     tier: 1
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: avif-to-jpg
   kind: converter
   slug: avif-to-jpg
   name: AVIF to JPG
-  title: AVIF to JPG Converter - Universal Format | ZixTool
-  description: Convert AVIF to JPG online free. Quickly transform next-gen AVIF images to universal JPG format with zero cloud uploads and instant browser download.
+  title: AVIF to JPG Converter - Universal Compatibility
+  description: Convert avif to jpg free online with zero server uploads. Make next-gen AVIF files compatible with Photoshop, Windows Photos, and email attachments.
   from: avif
   to: jpg
   engine: canvas
@@ -365,13 +365,13 @@
     intent: tool
     tier: 2
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: avif-to-png
   kind: converter
   slug: avif-to-png
   name: AVIF to PNG
-  title: AVIF to PNG Converter - Lossless Alpha | ZixTool
-  description: Convert AVIF to PNG online free. Transform modern AVIF files into lossless PNG images with alpha transparency and zero server uploads in browser RAM.
+  title: AVIF to PNG Converter - Transparent & Lossless
+  description: Convert AVIF to PNG online free with zero server uploads. Retain transparent cutouts, lossless graphic detail, and batch download files instantly.
   from: avif
   to: png
   engine: canvas
@@ -403,13 +403,13 @@
     intent: tool
     tier: 2
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: png-to-jpg
   kind: converter
   slug: png-to-jpg
   name: PNG to JPG Converter
   title: PNG to JPG Converter - Free & Private | ZixTool
-  description: Convert PNG to JPG in your browser with zero uploads. Choose quality, reduce file sizes by up to 80%, and download single files or ZIP.
+  description: Convert PNG images to JPG in your browser with zero uploads. Choose quality, reduce file sizes by up to 80%, and download single files or ZIP.
   from: png
   to: jpg
   engine: canvas
@@ -454,13 +454,13 @@
     intent: tool
     tier: 1
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: jpg-to-png
   kind: converter
   slug: jpg-to-png
   name: JPG to PNG Converter
   title: JPG to PNG Converter - Free & Private | ZixTool
-  description: Convert JPG to PNG format free in your browser. Preserve pixel fidelity with 100% private in-browser image processing and instant download.
+  description: Convert JPG photos to PNG format free in your browser. Preserve pixel fidelity with 100% private in-browser conversion and batch export.
   from: jpg
   to: png
   engine: canvas
@@ -506,13 +506,13 @@
     intent: tool
     tier: 1
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: jfif-to-jpg
   kind: converter
   slug: jfif-to-jpg
   name: JFIF to JPG
   title: JFIF to JPG Converter - Fix Download Format | ZixTool
-  description: Convert JFIF to JPG files instantly in your browser. Universal image compatibility with zero quality loss and no remote server uploads.
+  description: Convert JFIF to JPG online free with zero server uploads. Fix Chrome and Windows photos downloaded as .jfif and make them universally compatible.
   from: jfif
   to: jpg
   engine: canvas
@@ -546,13 +546,13 @@
     intent: tool
     tier: 2
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: svg-to-png
   kind: converter
   slug: svg-to-png
   name: SVG to PNG
-  title: SVG to PNG Converter - High-Res Raster | ZixTool
-  description: Convert SVG to PNG raster images with transparent backgrounds at any custom resolution directly in your browser without server uploads.
+  title: SVG to PNG Converter - High Resolution Raster
+  description: Convert SVG to PNG online free with zero server uploads. Render vector artwork into high-DPI raster PNGs with transparent backgrounds instantly.
   from: svg
   to: png
   engine: canvas
@@ -587,13 +587,13 @@
     intent: tool
     tier: 2
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: bmp-to-jpg
   kind: converter
   slug: bmp-to-jpg
   name: BMP to JPG
-  title: BMP to JPG Converter - Compress Image Size | ZixTool
-  description: Convert BMP to JPG online free. Transform bulky Windows BMP files to highly compressed JPG photos with zero cloud uploads and instant browser download.
+  title: BMP to JPG Converter - Drastically Compress Size
+  description: Convert BMP to JPG online free with zero server uploads. Compress uncompressed Bitmap files up to 90%, save storage space, and batch download converted files.
   from: bmp
   to: jpg
   engine: canvas
@@ -628,13 +628,13 @@
     intent: tool
     tier: 2
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: tiff-to-jpg
   kind: converter
   slug: tiff-to-jpg
   name: TIFF to JPG
-  title: TIFF to JPG Converter - Fast In-Browser | ZixTool
-  description: Convert TIFF to JPG pictures online free. No server uploads, keeping your high-resolution scanned documents completely private in browser.
+  title: TIFF to JPG Converter - Fast Browser Conversion
+  description: Convert TIFF to JPG online free with zero server uploads. Shrink heavy document scans and camera files into universal JPG format instantly.
   from: tiff
   to: jpg
   engine: canvas
@@ -669,13 +669,13 @@
     intent: tool
     tier: 2
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: gif-to-png
   kind: converter
   slug: gif-to-png
   name: GIF to PNG
-  title: GIF to PNG Converter - Extract Sharp Frames | ZixTool
-  description: Convert GIF to PNG graphics cleanly in your browser. Extract still frames with zero quality degradation and complete client-side privacy.
+  title: GIF to PNG Converter - Extract Sharp Still Frames
+  description: Convert GIF to PNG online free with zero server uploads. Extract sharp still frames, preserve transparency, and expand color depth to 16.7 million colors.
   from: gif
   to: png
   engine: canvas
@@ -709,13 +709,13 @@
     intent: tool
     tier: 2
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: jpg-to-pdf
   kind: pdf
   slug: jpg-to-pdf
   name: JPG to PDF Converter
-  title: JPG to PDF Converter - Free & In-Browser | ZixTool
-  description: Convert JPG to PDF free in your browser. Combine multiple JPEG images into a single PDF document with custom margins, paper sizes, and zero uploads.
+  title: JPG to PDF Converter Online – Free, Private & Easy | ZixTool
+  description: Convert JPG images to PDF free online in your browser. Combine multiple photos into one document, customize page layout, and save with 100% privacy.
   from: jpg
   to: pdf
   engine: pdf
@@ -749,7 +749,7 @@
     intent: tool
     tier: 1
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: png-to-pdf
   kind: pdf
   slug: png-to-pdf
@@ -789,14 +789,14 @@
     intent: tool
     tier: 1
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: compress-image-to-50kb
   kind: converter
   slug: compress-image-to-50kb
   name: Compress Image to 50KB
-  title: Compress Image to 50KB - Free Online | ZixTool
+  title: Compress Image to 50KB - Photo Compressor | ZixTool
   subtitle: Reduce photo size to under 50KB for government forms and official portals.
-  description: Compress image to 50KB or less free in your browser. Perfect for government forms, ID cards, and job applications without uploading your sensitive photos.
+  description: Compress image to 50KB online for free. Shrink photos to 50KB or less for passport portals, visa forms, and job applications with full privacy in RAM.
   from: image
   to: jpg
   engine: target-size
@@ -839,9 +839,9 @@
   kind: converter
   slug: compress-image-to-100kb
   name: Compress Image to 100KB
-  title: Compress Image to 100KB - Free Online | ZixTool
+  title: Compress Image to 100KB - Photo Compressor | ZixTool
   subtitle: Shrink photos to 100KB or less for job portals and email attachments.
-  description: Compress image to 100KB free online. Reduce JPG, PNG, and WebP photos to exactly under 100KB with zero file uploads, instant download, and privacy preserved.
+  description: Compress image to 100KB online free. Reduce photo file size under 100KB for university admissions, job portals, and email with 100% in-browser privacy.
   from: image
   to: jpg
   engine: target-size
@@ -882,9 +882,9 @@
   kind: converter
   slug: compress-image-to-200kb
   name: Compress Image to 200KB
-  title: Compress Image to 200KB - Free Online | ZixTool
+  title: Compress Image to 200KB - Photo Compressor | ZixTool
   subtitle: Optimize photos to under 200KB. Perfect balance of sharpness and file size.
-  description: Compress image to 200KB free online in your browser. Balance crisp visual quality with compact size for email attachments and web forms with zero uploads.
+  description: Compress image to 200KB online for free. Reduce photo and document scan size strictly under 200KB for visa forms, KYC, and job portals in your browser.
   from: image
   to: jpg
   engine: target-size
@@ -927,7 +927,7 @@
   name: Compress Image to 500KB
   title: Compress Image to 500KB - Free Online | ZixTool
   subtitle: Shrink multi-megabyte camera photos to under 500KB with crystal clarity.
-  description: Compress image to 500KB or less free in your browser. Shrink large camera photos and high-res scans for email and job applications with zero uploads.
+  description: Compress image to 500KB free online in your browser. Shrink large camera photos and high-res scans for email and web forms with zero server uploads.
   from: image
   to: jpg
   engine: target-size
@@ -1007,8 +1007,8 @@
   kind: media
   slug: resize-image
   name: Resize Image
-  title: Resize Image Online - Exact Dimensions | ZixTool
-  description: Resize images online free in your browser. Scale photos to exact pixel width and height or percentage with aspect ratio lock and zero server uploads.
+  title: Resize Image Online - Free Image Resizer | ZixTool
+  description: Resize images online free by pixels or percentage while locking aspect ratio. Fast, client-side image resizing in your browser with zero uploads.
   from: image
   to: image
   engine: canvas-resize
@@ -1045,14 +1045,14 @@
     intent: tool
     tier: 1
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: percentage-calculator
   kind: calculator
   slug: percentage-calculator
   name: Percentage Calculator
   title: Percentage Calculator - Free and Accurate | ZixTool
   subtitle: Calculate percentages, percentage increases, and differences instantly.
-  description: Free online percentage calculator to find percent of a number, percentage change, and proportions instantly with clear step-by-step math.
+  description: Calculate percentage of a number, percentage increase or decrease, and fractions instantly in your browser with step-by-step formulas and zero tracking.
   engine: calc-percentage
   options: []
   presets: []
@@ -1096,14 +1096,14 @@
     intent: calculator
     tier: 1
     sources: Competitor teardown (UnitConverters) & SERP keyword map
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: age-calculator
   kind: calculator
   slug: age-calculator
   name: Age Calculator
   title: Age Calculator - Free and Accurate | ZixTool
   subtitle: Calculate exact age in years, months, days, weeks, and hours.
-  description: Free online age calculator. Calculate your exact age from date of birth in years, months, days, and hours. Fast, accurate, and completely private in your browser.
+  description: Free online age calculator. Calculate exact chronological age from date of birth in years, months, and days with 100% in-browser privacy.
   engine: calc-age
   options: []
   presets: []
@@ -1140,9 +1140,9 @@
   kind: calculator
   slug: date-difference-calculator
   name: Date Difference Calculator
-  title: Date Difference Calculator - Free & Fast | ZixTool
+  title: Date Difference Calculator - Days Between Dates
   subtitle: Calculate total days, workdays, and weeks between two calendar dates.
-  description: Accurate date difference calculator to find days, workdays, weeks, and months between two calendar dates offline with zero tracking.
+  description: Free online date difference calculator to count days between dates, business workdays, weeks, and weekends. Fast, accurate, and 100% private in browser.
   engine: calc-date
   options: []
   presets: []
@@ -1181,7 +1181,7 @@
   name: Discount Calculator
   title: Discount Calculator - Free and Accurate | ZixTool
   subtitle: Calculate final sale prices, total money saved, and sales tax.
-  description: Free online discount calculator to find sale prices, savings amounts, and sales tax instantly with clear step-by-step calculation formulas.
+  description: Free online discount calculator to find sale prices, percent off savings, stacked discounts, and sales tax. Fast, accurate, and 100% private in browser.
   engine: calc-discount
   options: []
   presets: []
@@ -1220,7 +1220,7 @@
   name: Tip Calculator
   title: Tip Calculator - Free and Accurate | ZixTool
   subtitle: Calculate restaurant tips and split bills per person easily.
-  description: Free online tip calculator to compute restaurant gratuities, bill totals, and split checks per person accurately with zero intrusive ads.
+  description: Free online tip calculator to split restaurant bills, compute gratuity percentages, and calculate per-person costs accurately in your browser.
   engine: calc-tip
   options: []
   presets: []
@@ -1259,7 +1259,7 @@
   name: Word Counter
   title: Word Counter - Free Online Tool | ZixTool
   subtitle: Count words, characters, sentences, and estimated reading time.
-  description: Free online word counter to count words, characters, sentences, paragraphs, and reading time in real time with complete client privacy.
+  description: Free online word counter to calculate word count, character count with spaces, reading time, and keyword density in real time with 100% privacy.
   engine: text-word-count
   options: []
   presets: []
@@ -1268,7 +1268,7 @@
     - q: How does this tool count words?
       a: Words are counted based on standard whitespace and punctuation boundaries across plain text.
     - q: Does character count include spaces?
-      a: 'Both metrics are displayed: total characters including spaces, and characters excluding whitespace.'
+      a: "Both metrics are displayed: total characters including spaces, and characters excluding whitespace."
     - q: How is reading time calculated?
       a: Reading time assumes a standard adult comprehension rate of 200 words per minute (WPM).
     - q: Is my pasted text stored or sent to a server?
@@ -1302,7 +1302,7 @@
   name: Case Converter
   title: Case Converter - Free Online Tool | ZixTool
   subtitle: Convert text to UPPERCASE, lowercase, Title Case, and camelCase.
-  description: Free online case converter. Convert text between UPPERCASE, lowercase, Title Case, camelCase, and snake_case in your browser instantly with zero server uploads.
+  description: Free online case converter to transform text between uppercase, lowercase, Title Case, camelCase, snake_case, and kebab-case instantly in your browser.
   engine: text-case
   options: []
   presets: []
@@ -1344,7 +1344,7 @@
   name: JSON Formatter & Validator
   title: JSON Formatter - Free Validator & Tool | ZixTool
   subtitle: Prettify, minify, and validate JSON data instantly in your browser.
-  description: Free online JSON formatter to beautify, minify, and validate JSON data with clear syntax error highlighting and zero remote data storage.
+  description: Format, beautify, minify, and validate JSON data with clear syntax error alerts. Runs 100% locally in your browser without sending data to servers.
   engine: text-json
   options: []
   presets: []
@@ -1373,7 +1373,7 @@
     - csv-to-json
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-16T00:00:00.000Z'
+  last_reviewed: "2026-11-16T00:00:00.000Z"
   reviewer: ZixTool Engineering Team
   lang: en
   seo:
@@ -1390,7 +1390,7 @@
     intent: tool
     tier: 1
     sources: Competitor teardown & SERP keyword map
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: qr-code-generator
   kind: generator
   slug: qr-code-generator
@@ -1422,7 +1422,7 @@
     - random-number-generator
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-16T00:00:00.000Z'
+  last_reviewed: "2026-11-16T00:00:00.000Z"
   reviewer: ZixTool Digital Imaging Team
   lang: en
   seo:
@@ -1439,7 +1439,7 @@
     intent: tool
     tier: 1
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: password-generator
   kind: generator
   slug: password-generator
@@ -1472,7 +1472,7 @@
     - hash-generator
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-16T00:00:00.000Z'
+  last_reviewed: "2026-11-16T00:00:00.000Z"
   reviewer: ZixTool Cybersecurity Engineering Team
   lang: en
   seo:
@@ -1489,12 +1489,12 @@
     intent: tool
     tier: 1
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: merge-pdf
   kind: pdf
   slug: merge-pdf
   name: Merge PDF
-  title: Merge PDF Online - Free & Private | ZixTool
+  title: Merge PDF Online - Free, In-Browser & Private
   subtitle: Combine multiple PDF documents into one file directly in browser memory.
   description: Merge PDF files free online in your browser. Combine multiple documents into one single PDF without file size limits and zero server uploads.
   engine: pdf
@@ -1540,7 +1540,7 @@
     intent: tool
     tier: 1
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: split-pdf
   kind: pdf
   slug: split-pdf
@@ -1590,7 +1590,7 @@
     intent: tool
     tier: 1
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: compress-pdf
   kind: pdf
   slug: compress-pdf
@@ -1603,18 +1603,16 @@
   presets: []
   content: src/content/tools/compress-pdf.mdx
   faq:
-    - q: Will compressing my PDF make the text or figures blurry?
-      a: No. ZixTool compresses structural PDF streams and resamples embedded photos without rasterizing vector text paths. Typography remains razor-sharp at high zoom levels.
-    - q: How do I compress a PDF to under 200KB or 1MB for portal uploads?
-      a: Upload your PDF to our tool. The compressor automatically optimizes font descriptors, strips unneeded metadata, and downsamples raster imagery to meet strict portal requirements.
-    - q: Is there a file size limit for PDF compression?
-      a: You can compress PDF files as large as your device's available browser memory (RAM) supports with zero artificial file caps or monthly subscription paywalls.
-    - q: Are my private PDF documents uploaded to external servers?
-      a: No. Processing executes 100% locally inside your device RAM using WebAssembly. Files are never transmitted across the network, stored, or inspected by third parties.
-    - q: Why did my PDF only shrink by a small percentage?
-      a: Digital PDFs that consist purely of vector text and fonts are already compressed using Deflate. Substantial size reductions (70% to 90%) occur primarily in documents containing scanned pages or photos.
-    - q: Does ZixTool add any watermarks to compressed PDFs?
-      a: Never. All compressed output files are clean, completely unwatermarked, and ready for official government, academic, or corporate submission.
+    - q: Can this tool guarantee a PDF under 200KB or 1MB?
+      a: No. It rewrites PDF object streams but does not search for a target byte size or resample scanned images. Check the actual output size.
+    - q: Why is my compressed PDF the same size or larger?
+      a: An already optimized PDF may have little structural overhead to remove. Embedded images are not recompressed by this operation. Keep the smaller valid copy.
+    - q: Are selected PDFs uploaded by the compression function?
+      a: No. The compression operation loads and saves your PDF in browser memory using the JavaScript pdf-lib library. Loading the website itself still requires network requests.
+    - q: Should I keep my original signed PDF?
+      a: Yes. Rewriting can affect signature validation and other document features. Preserve the original and inspect the output before submitting it.
+    - q: How should I check the output?
+      a: Compare actual byte size, page count, readability, orientation, signatures and any form fields in a PDF viewer before replacing the original.
   related:
     - pdf-to-jpg
     - merge-pdf
@@ -1623,7 +1621,7 @@
     - rotate-pdf
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-16T00:00:00.000Z
+  last_reviewed: 2026-11-19T00:00:00.000Z
   lang: en
   seo:
     primary_kw: compress pdf
@@ -1641,14 +1639,14 @@
     intent: tool
     tier: 1
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: emi-calculator
   kind: finance
   slug: emi-calculator
   name: EMI Calculator
-  title: EMI Calculator - Home, Car & Personal Loan | ZixTool
+  title: EMI Calculator Online – Home, Car & Personal Loan | ZixTool
   subtitle: Calculate monthly loan EMI payments with detailed amortization schedules.
-  description: Free online EMI calculator for home, car, and personal loans. Calculate monthly EMI, total interest, and view a complete monthly amortization schedule.
+  description: Free online EMI calculator. Estimate monthly loan payments, total interest costs, and full repayment schedules with 100% client-side privacy.
   engine: finance
   options: []
   presets: []
@@ -1690,7 +1688,7 @@
     intent: tool
     tier: 1
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: sip-calculator
   kind: finance
   slug: sip-calculator
@@ -1739,7 +1737,7 @@
     intent: tool
     tier: 1
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: bmi-calculator
   kind: finance
   slug: bmi-calculator
@@ -1775,7 +1773,7 @@
     intent: tool
     tier: 1
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: currency-converter
   kind: finance
   slug: currency-converter
@@ -1811,12 +1809,12 @@
     intent: tool
     tier: 1
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: scientific-calculator
   kind: calculator
   slug: scientific-calculator
   name: Scientific Calculator
-  title: Scientific Calculator - Free Online Math | ZixTool
+  title: Scientific Calculator - Free Online Math Tool
   subtitle: Compute trigonometry, powers, logarithms, and scientific math in browser.
   description: Free online scientific calculator. Perform trigonometric, logarithmic, square root, exponent, and parenthetical calculations directly in your browser.
   engine: calculator
@@ -1848,14 +1846,14 @@
     intent: tool
     tier: 1
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: online-timer
   kind: media
   slug: online-timer
   name: Online Timer
-  title: Online Timer - Free Countdown & Alarm | ZixTool
+  title: Online Timer & Stopwatch - Free & Accurate | ZixTool
   subtitle: Accurate full-screen countdown timer with Pomodoro and audio alerts.
-  description: Free online timer with audio alerts and customizable countdown presets. Accurate, responsive stopwatch and timer directly in your browser.
+  description: Free online timer and millisecond stopwatch. Use Pomodoro study presets, audio alerts, and accurate split lap tracking directly in your web browser.
   engine: media
   options: []
   presets: []
@@ -1886,12 +1884,12 @@
     intent: tool
     tier: 2
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: text-to-speech
   kind: media
   slug: text-to-speech
   name: Text to Speech
-  title: Text to Speech Online - Free Voice Reader | ZixTool
+  title: Text to Speech Online - Natural Voice Reader
   subtitle: Convert text to spoken voice audio directly in your browser without uploads.
   description: Free online text to speech converter. Listen to written articles, documents, and notes with customizable voice accents, speech rate, and pitch controls.
   engine: media
@@ -1922,7 +1920,7 @@
     intent: tool
     tier: 1
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: screen-recorder
   kind: media
   slug: screen-recorder
@@ -1958,7 +1956,7 @@
     intent: tool
     tier: 1
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: jwt-decoder
   kind: developer
   slug: jwt-decoder
@@ -1997,21 +1995,21 @@
     intent: tool
     tier: 1
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: unit-converter
   kind: developer
   slug: unit-converter
   name: Unit Converter
   title: Unit Converter - Length, Weight & Temp | ZixTool
   subtitle: Convert units of length, mass, temperature, and digital data storage.
-  description: Free online unit converter. Quickly convert metric and imperial measurements for length, weight, temperature, and digital data storage in your browser.
+  description: Free online unit converter. Convert metric and imperial measurements for length, weight, temperature, and digital data storage in your browser.
   engine: developer
   options: []
   presets: []
   content: src/content/tools/unit-converter.mdx
   faq:
     - q: How does the temperature conversion formula work?
-      a: 'To convert Celsius to Fahrenheit, multiply by 9/5 (or 1.8) and add 32: F = (C * 1.8) + 32.'
+      a: "To convert Celsius to Fahrenheit, multiply by 9/5 (or 1.8) and add 32: F = (C * 1.8) + 32."
     - q: Does the digital storage converter use binary or decimal units?
       a: This calculator uses binary measurement (1 KB = 1,024 Bytes and 1 MB = 1,024 KB) standard in computer operating systems.
   related:
@@ -2033,14 +2031,14 @@
     intent: tool
     tier: 2
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: my-ip-address
   kind: developer
   slug: my-ip-address
   name: My IP & Client Diagnostic
   title: My IP Address & Browser Diagnostics | ZixTool
   subtitle: Check your browser network configuration, screen display, and user agent.
-  description: Check my IP address and browser diagnostics online. Inspect screen resolution, system timezone, user-agent string, and network parameters.
+  description: Free online my IP address diagnostic tool. Check your public IP, screen resolution, WebGL GPU, timezone, and user agent with 100% in-browser privacy.
   engine: developer
   options: []
   presets: []
@@ -2069,14 +2067,14 @@
     intent: tool
     tier: 2
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: photo-editor
   kind: media
   slug: photo-editor
   name: Photo Editor
   title: Online Photo Editor - Filters & Color | ZixTool
   subtitle: Adjust brightness, contrast, grayscale, and color balance directly in browser.
-  description: Free online photo editor. Fine-tune image brightness, contrast, saturation, and filters with live canvas preview and zero server uploads.
+  description: Free online photo editor. Fine-tune image brightness, contrast, saturation, and filters with live canvas preview, zero watermarks, and 100% privacy.
   engine: media
   options: []
   presets: []
@@ -2108,7 +2106,7 @@
     intent: tool
     tier: 2
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: meme-generator
   kind: media
   slug: meme-generator
@@ -2145,7 +2143,7 @@
     intent: tool
     tier: 2
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: random-number-generator
   kind: generator
   slug: random-number-generator
@@ -2182,14 +2180,14 @@
     intent: tool
     tier: 2
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: fancy-text-generator
   kind: generator
   slug: fancy-text-generator
   name: Fancy Text Generator
-  title: Fancy Text Generator - Cool Font Styles | ZixTool
+  title: Fancy Text Generator - Stylish Fonts Online | ZixTool
   subtitle: Convert plain text into aesthetic Unicode fonts with one-click clipboard copy.
-  description: Free online fancy text generator. Convert normal text into stylish Unicode fonts including cursive, gothic, bold, bubble, and monospace with one-click copy.
+  description: Free online fancy text generator. Convert normal text into stylish Unicode fonts for Instagram bios, Discord, and TikTok with instant 1-click copy.
   engine: generator
   options: []
   presets: []
@@ -2218,7 +2216,7 @@
     intent: tool
     tier: 2
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: barcode-generator
   kind: generator
   slug: barcode-generator
@@ -2254,7 +2252,7 @@
     intent: tool
     tier: 2
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: typing-test
   kind: media
   slug: typing-test
@@ -2268,7 +2266,7 @@
   content: src/content/tools/typing-test.mdx
   faq:
     - q: How is Words Per Minute (WPM) calculated?
-      a: 'WPM is traditionally standardized as: WPM = (Total Characters Typed / 5) / Time Elapsed in Minutes.'
+      a: "WPM is traditionally standardized as: WPM = (Total Characters Typed / 5) / Time Elapsed in Minutes."
     - q: What is touch typing?
       a: Touch typing is typing without looking at the keyboard keys, relying on muscle memory and the tactile home row bumps (F and J).
   related:
@@ -2291,14 +2289,14 @@
     intent: tool
     tier: 2
     sources: Google Search Console, Keyword Planner & SERP Seed Analysis
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: compress-image-to-20kb
   kind: converter
   slug: compress-image-to-20kb
   name: Compress Image to 20KB
-  title: Compress Image to 20KB - Free Online | ZixTool
+  title: Compress Image to 20KB - Photo Compressor | ZixTool
   subtitle: Reduce photo and signature file size to under 20KB for online forms and portals.
-  description: Compress image to 20KB online free. Reduce photo and signature image sizes for online forms, job applications, and passport portals without quality loss.
+  description: Compress image to 20KB online for free. Reduce signature and photo sizes under 20KB for government forms, bank exams, and portals. Zero server uploads.
   from: image
   to: jpg
   engine: target-size
@@ -2321,7 +2319,7 @@
     - resize-image
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-15T00:00:00.000Z'
+  last_reviewed: "2026-11-15T00:00:00.000Z"
   reviewer: ZixTool Compression Engineering Team
   lang: en
   seo:
@@ -2336,20 +2334,20 @@
     intent: tool
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: loan-calculator
   kind: finance
   slug: loan-calculator
   name: Loan Calculator
-  title: Loan Calculator - Monthly Payment | ZixTool
+  title: Loan Calculator - Monthly Payment & Schedule
   subtitle: Estimate monthly loan payments, total interest, and complete payoff schedules.
-  description: Calculate monthly loan payments, total interest, and full repayment schedules with our free online loan calculator. Fast, accurate, and easy to use.
+  description: Free online loan calculator. Estimate monthly loan payments, total interest costs, and full amortization schedules with 100% in-browser privacy.
   engine: finance
   options: []
   content: src/content/tools/loan-calculator.mdx
   faq:
     - q: How is a monthly loan payment calculated?
-      a: 'Monthly payments are calculated using the standard amortization formula: M = P[r(1+r)^n] / [(1+r)^n - 1], where P is principal, r is monthly interest rate, and n is number of months.'
+      a: "Monthly payments are calculated using the standard amortization formula: M = P[r(1+r)^n] / [(1+r)^n - 1], where P is principal, r is monthly interest rate, and n is number of months."
     - q: Can I use this calculator for personal, auto, and student loans?
       a: Yes. The calculation applies universally to any fixed-rate amortizing loan including auto loans, personal loans, and student debt.
     - q: How does interest rate affect total repayment?
@@ -2362,7 +2360,7 @@
     - compound-interest-calculator
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-15T00:00:00.000Z'
+  last_reviewed: "2026-11-15T00:00:00.000Z"
   reviewer: ZixTool Financial Analytics Team
   lang: en
   seo:
@@ -2376,14 +2374,14 @@
     intent: tool
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: mortgage-calculator
   kind: finance
   slug: mortgage-calculator
   name: Mortgage Calculator
   title: Mortgage Calculator - Home Loan Payment | ZixTool
   subtitle: Estimate your monthly mortgage payments, interest breakdown, and amortization.
-  description: Free online mortgage calculator. Calculate your monthly home loan payments, interest breakdown, and complete amortization schedule in seconds.
+  description: Free online mortgage calculator to estimate monthly home loan payments, interest breakdown, and complete amortization schedule in seconds with zero ads.
   engine: finance
   options: []
   content: src/content/tools/mortgage-calculator.mdx
@@ -2401,7 +2399,7 @@
     - currency-converter
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-15T00:00:00.000Z'
+  last_reviewed: "2026-11-15T00:00:00.000Z"
   reviewer: ZixTool Financial Analytics Team
   lang: en
   seo:
@@ -2415,14 +2413,14 @@
     intent: tool
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: character-counter
   kind: text
   slug: character-counter
   name: Character Counter
-  title: Character Counter - Free Online Tool | ZixTool
+  title: Character Counter - Free Online Character Count
   subtitle: Count characters, words, sentences, and paragraphs in real time as you type.
-  description: Count characters, words, sentences, and paragraphs in real time with our free character counter. Fast, accurate, and perfect for social media posts.
+  description: Free online character counter to measure characters with spaces, letters, words, and SMS segments. Accurate, real-time, and 100% private in-browser analysis.
   engine: text
   options: []
   content: src/content/tools/character-counter.mdx
@@ -2441,7 +2439,7 @@
     - diff-checker
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-15T00:00:00.000Z'
+  last_reviewed: "2026-11-15T00:00:00.000Z"
   reviewer: ZixTool Content Analytics Team
   lang: en
   seo:
@@ -2455,14 +2453,14 @@
     intent: tool
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: celsius-to-fahrenheit
   kind: calculator
   slug: celsius-to-fahrenheit
   name: Celsius to Fahrenheit
-  title: Celsius to Fahrenheit Converter | ZixTool
+  title: Celsius to Fahrenheit - Temperature Converter
   subtitle: Convert Celsius to Fahrenheit (°C to °F) instantly with accurate formula.
-  description: Convert Celsius to Fahrenheit (°C to °F) instantly with our free online temperature converter. Includes conversion formula and reference chart.
+  description: Convert Celsius to Fahrenheit (°C to °F) online. Fast temperature conversion formula, physical reference points, and 100% in-browser privacy.
   engine: developer
   options: []
   content: src/content/tools/celsius-to-fahrenheit.mdx
@@ -2472,7 +2470,7 @@
     - q: What is 0 degrees Celsius in Fahrenheit?
       a: 0°C is equal to 32°F, which represents the freezing point of pure water at standard atmospheric pressure.
     - q: What temperature is the same in both Celsius and Fahrenheit?
-      a: '-40 degrees is identical in both scales: -40°C = -40°F.'
+      a: "-40 degrees is identical in both scales: -40°C = -40°F."
   related:
     - unit-converter
     - percentage-calculator
@@ -2480,7 +2478,7 @@
     - online-calculator
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-15T00:00:00.000Z'
+  last_reviewed: "2026-11-15T00:00:00.000Z"
   reviewer: ZixTool Mathematical Engineering Team
   lang: en
   seo:
@@ -2494,7 +2492,7 @@
     intent: tool
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: online-calculator
   kind: calculator
   slug: online-calculator
@@ -2519,7 +2517,7 @@
     - discount-calculator
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-15T00:00:00.000Z'
+  last_reviewed: "2026-11-15T00:00:00.000Z"
   reviewer: ZixTool Mathematical Engineering Team
   lang: en
   seo:
@@ -2533,7 +2531,7 @@
     intent: tool
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: online-stopwatch
   kind: media
   slug: online-stopwatch
@@ -2559,7 +2557,7 @@
     - text-to-speech
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-15T00:00:00.000Z'
+  last_reviewed: "2026-11-15T00:00:00.000Z"
   reviewer: ZixTool Product Engineering Team
   lang: en
   seo:
@@ -2573,14 +2571,14 @@
     intent: tool
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: image-compressor
   kind: converter
   slug: image-compressor
   name: Image Compressor
-  title: Image Compressor - Reduce Photo Size Free | ZixTool
+  title: Image Compressor - Reduce Image Size Online | ZixTool
   subtitle: Compress JPG, PNG, and WebP images online with customizable quality and size.
-  description: Free online image compressor. Reduce JPG, PNG, and WebP photo file sizes without losing quality. Fast batch compression and instant download.
+  description: Free online image compressor. Reduce JPG, PNG, and WebP file sizes with custom KB limits and quality controls in your browser with zero uploads.
   from: image
   to: jpg
   engine: target-size
@@ -2604,7 +2602,7 @@
     - compress-image-to-100kb
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-15T00:00:00.000Z'
+  last_reviewed: "2026-11-15T00:00:00.000Z"
   reviewer: ZixTool Compression Engineering Team
   lang: en
   seo:
@@ -2618,7 +2616,7 @@
     intent: tool
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
-    last_reviewed: '2026-11-15T00:00:00.000Z'
+    last_reviewed: "2026-11-15T00:00:00.000Z"
 - id: color-picker
   kind: developer
   slug: color-picker
@@ -2643,7 +2641,7 @@
     - unit-converter
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-16T00:00:00.000Z'
+  last_reviewed: "2026-11-16T00:00:00.000Z"
   reviewer: ZixTool Design Engineering Team
   lang: en
   seo:
@@ -2657,7 +2655,7 @@
     intent: tool
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: base64-encoder
   kind: developer
   slug: base64-encoder
@@ -2691,7 +2689,7 @@
     - hash-generator
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-16T00:00:00.000Z'
+  last_reviewed: "2026-11-16T00:00:00.000Z"
   reviewer: ZixTool Developer Tools Team
   lang: en
   seo:
@@ -2708,14 +2706,14 @@
     intent: tool
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: gpa-calculator
   kind: calculator
   slug: gpa-calculator
   name: GPA Calculator
   title: GPA Calculator - College & High School Tool | ZixTool
   subtitle: Calculate cumulative and semester grade point averages on a 4.0 scale.
-  description: Calculate your college or high school GPA quickly with our free online GPA calculator. Supports credit hours and letter grades on the standard 4.0 scale.
+  description: Free online GPA calculator to calculate college and high school semester and cumulative GPA on standard 4.0 and weighted 5.0 scales with 100% privacy.
   engine: calculator
   options: []
   content: src/content/tools/gpa-calculator.mdx
@@ -2733,7 +2731,7 @@
     - age-calculator
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-16T00:00:00.000Z'
+  last_reviewed: "2026-11-16T00:00:00.000Z"
   reviewer: ZixTool Education Analytics Team
   lang: en
   seo:
@@ -2747,7 +2745,7 @@
     intent: tool
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: gst-calculator
   kind: finance
   slug: gst-calculator
@@ -2772,7 +2770,7 @@
     - loan-calculator
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-16T00:00:00.000Z'
+  last_reviewed: "2026-11-16T00:00:00.000Z"
   reviewer: ZixTool Financial Engineering Team
   lang: en
   seo:
@@ -2786,7 +2784,7 @@
     intent: tool
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: aspect-ratio-calculator
   kind: calculator
   slug: aspect-ratio-calculator
@@ -2811,7 +2809,7 @@
     - online-calculator
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-16T00:00:00.000Z'
+  last_reviewed: "2026-11-16T00:00:00.000Z"
   reviewer: ZixTool Media Engineering Team
   lang: en
   seo:
@@ -2825,14 +2823,14 @@
     intent: tool
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: lorem-ipsum-generator
   kind: text
   slug: lorem-ipsum-generator
   name: Lorem Ipsum Generator
   title: Lorem Ipsum Generator - Free Dummy Text | ZixTool
   subtitle: Generate placeholder Latin dummy text for web development and UI mockups.
-  description: Free Lorem Ipsum generator for designers. Generate custom placeholder dummy paragraphs, sentences, or words with one-click clipboard copy.
+  description: Free online Lorem Ipsum generator. Create placeholder Latin dummy text, paragraphs, sentences, and words for UI mockups, Figma, and HTML with 100% privacy.
   engine: text
   options: []
   content: src/content/tools/lorem-ipsum-generator.mdx
@@ -2851,7 +2849,7 @@
     - markdown-to-html
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-16T00:00:00.000Z'
+  last_reviewed: "2026-11-16T00:00:00.000Z"
   reviewer: ZixTool Content Design Team
   lang: en
   seo:
@@ -2865,7 +2863,7 @@
     intent: tool
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: pomodoro-timer
   kind: media
   slug: pomodoro-timer
@@ -2890,7 +2888,7 @@
     - date-difference-calculator
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-16T00:00:00.000Z'
+  last_reviewed: "2026-11-16T00:00:00.000Z"
   reviewer: ZixTool Productivity Engineering Team
   lang: en
   seo:
@@ -2904,14 +2902,14 @@
     intent: tool
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: pdf-to-jpg
   kind: pdf
   slug: pdf-to-jpg
   name: PDF to JPG
-  title: PDF to JPG Converter - Free & In-Browser | ZixTool
+  title: PDF to JPG Converter - Free & High Quality | ZixTool
   subtitle: Extract PDF pages into crisp high-resolution JPEG photos without uploads.
-  description: Convert PDF to JPG free online. Extract PDF document pages into high-resolution JPG images with zero file size limits and zero cloud uploads.
+  description: Convert PDF to JPG online free in your browser with high quality. Extract PDF pages into crisp JPG photos and download as ZIP with zero server uploads.
   engine: pdf
   options: []
   content: src/content/tools/pdf-to-jpg.mdx
@@ -2928,9 +2926,9 @@
     - split-pdf
     - compress-pdf
     - rotate-pdf
-  indexable: true
+  indexable: false
   reviewed: true
-  last_reviewed: '2026-11-16T00:00:00.000Z'
+  last_reviewed: "2026-11-19T00:00:00.000Z"
   reviewer: ZixTool Standards Review
   lang: en
   seo:
@@ -2944,14 +2942,14 @@
     intent: tool
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: crop-image
   kind: media
   slug: crop-image
   name: Crop Image
-  title: Crop Image Online - Free Image Cropper
+  title: Crop Image Online - Free Image Cropper | ZixTool
   subtitle: Crop JPG, PNG, and WebP images online with custom aspect ratios.
-  description: Crop images online for free. Trim JPG, PNG, and WebP photos with custom aspect ratios, circular crops, and instant download without quality loss.
+  description: Free online crop image tool. Crop JPG, PNG, and WebP photos with custom aspect ratios, locked proportions, zero uploads, and 100% privacy.
   engine: media
   options: []
   content: src/content/tools/crop-image.mdx
@@ -2970,7 +2968,7 @@
     - jpg-to-png
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-16T00:00:00.000Z'
+  last_reviewed: "2026-11-16T00:00:00.000Z"
   reviewer: ZixTool Multimedia Engineering Team
   lang: en
   seo:
@@ -2984,7 +2982,7 @@
     intent: tool
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: rotate-pdf
   kind: pdf
   slug: rotate-pdf
@@ -3016,7 +3014,7 @@
     - jpg-to-pdf
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-16T00:00:00.000Z'
+  last_reviewed: "2026-11-16T00:00:00.000Z"
   reviewer: ZixTool Document Engineering Team
   lang: en
   seo:
@@ -3035,14 +3033,14 @@
     intent: tool
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: diff-checker
   kind: text
   slug: diff-checker
   name: Diff Checker
   title: Diff Checker - Text Difference Finder
   subtitle: Compare two text files side by side and highlight differences.
-  description: Compare text online and find differences instantly. Free diff checker highlights changes, added lines, and removed words side by side in browser.
+  description: Free online diff checker to compare text online and find differences instantly. Spot changes, added lines, and removed words side by side with 100% privacy.
   engine: text
   options: []
   content: src/content/tools/diff-checker.mdx
@@ -3061,7 +3059,7 @@
     - markdown-to-html
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-16T00:00:00.000Z'
+  last_reviewed: "2026-11-16T00:00:00.000Z"
   reviewer: ZixTool Text Utilities Engineering Team
   lang: en
   seo:
@@ -3075,14 +3073,14 @@
     intent: tool
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: compound-interest-calculator
   kind: finance
   slug: compound-interest-calculator
   name: Compound Interest Calculator
   title: Compound Interest Calculator & Growth Chart | ZixTool
   subtitle: Calculate compound interest, future balance, and investment growth.
-  description: Free compound interest calculator to forecast savings growth and investment returns with custom compounding intervals and breakdowns.
+  description: Free compound interest calculator. Forecast your savings and investment growth with customizable compounding intervals and complete payment schedules.
   engine: finance
   options: []
   content: src/content/tools/compound-interest-calculator.mdx
@@ -3107,7 +3105,7 @@
     - percentage-calculator
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-16T00:00:00.000Z'
+  last_reviewed: "2026-11-16T00:00:00.000Z"
   reviewer: ZixTool Financial Algorithms Team
   lang: en
   seo:
@@ -3124,14 +3122,14 @@
     intent: tool
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: url-encoder-decoder
   kind: developer
   slug: url-encoder-decoder
   name: URL Encoder Decoder
   title: URL Encoder Decoder - Percent Encoding
   subtitle: Encode and decode URLs and query parameters online for free.
-  description: Free URL encoder decoder to safely percent-encode query parameters and decode complex URI strings directly in your browser with zero logging.
+  description: Free online URL encoder decoder. Safely percent-encode query strings and decode encoded URIs with RFC 3986 compliance and 100% in-browser privacy.
   engine: developer
   options: []
   content: src/content/tools/url-encoder-decoder.mdx
@@ -3150,7 +3148,7 @@
     - uuid-generator
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-16T00:00:00.000Z'
+  last_reviewed: "2026-11-16T00:00:00.000Z"
   reviewer: ZixTool Web Developer Utilities Team
   lang: en
   seo:
@@ -3164,14 +3162,14 @@
     intent: tool
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: uuid-generator
   kind: developer
   slug: uuid-generator
   name: UUID Generator
   title: UUID Generator - Free Online v4 GUIDs
   subtitle: Generate random version 4 UUIDs and GUIDs in your browser.
-  description: Free UUID generator to create random version-4 UUID and GUID tokens instantly. Cryptographically secure bulk generation with one-click copy.
+  description: Free online UUID generator. Generate cryptographically secure v4 UUIDs and GUIDs with bulk export, custom hyphens, uppercase formatting, and 100% privacy.
   engine: developer
   options: []
   content: src/content/tools/uuid-generator.mdx
@@ -3190,7 +3188,7 @@
     - password-generator
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-16T00:00:00.000Z'
+  last_reviewed: "2026-11-16T00:00:00.000Z"
   reviewer: ZixTool Cryptography & DevTools Team
   lang: en
   seo:
@@ -3204,14 +3202,14 @@
     intent: tool
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: hash-generator
   kind: developer
   slug: hash-generator
   name: Hash Generator
   title: Hash Generator - MD5, SHA-256 & SHA-512
   subtitle: Compute cryptographic checksums and hashes directly in browser.
-  description: Free online hash generator to calculate MD5, SHA-1, SHA-256, and SHA-512 checksums securely in browser memory with zero remote logging.
+  description: Free online hash generator. Compute MD5, SHA-1, SHA-256, and SHA-512 cryptographic hashes and checksums instantly in your browser with 100% privacy.
   engine: developer
   options: []
   content: src/content/tools/hash-generator.mdx
@@ -3230,7 +3228,7 @@
     - url-encoder-decoder
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-16T00:00:00.000Z'
+  last_reviewed: "2026-11-16T00:00:00.000Z"
   reviewer: ZixTool Security Architecture Team
   lang: en
   seo:
@@ -3244,14 +3242,14 @@
     intent: tool
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: markdown-to-html
   kind: text
   slug: markdown-to-html
   name: Markdown to HTML
   title: Markdown to HTML Converter Online
   subtitle: Convert Markdown syntax to clean HTML markup with live preview.
-  description: Convert Markdown to HTML online with live side-by-side preview. Free in-browser parser supports GitHub flavored markdown, tables, and code.
+  description: Free online Markdown to HTML converter with real-time live preview. Converts GitHub Flavored Markdown (GFM), tables, math, and code blocks with 100% privacy.
   engine: text
   options: []
   content: src/content/tools/markdown-to-html.mdx
@@ -3270,7 +3268,7 @@
     - character-counter
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-16T00:00:00.000Z'
+  last_reviewed: "2026-11-16T00:00:00.000Z"
   reviewer: ZixTool Content Engineering Team
   lang: en
   seo:
@@ -3284,14 +3282,14 @@
     intent: tool
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: json-to-csv
   kind: developer
   slug: json-to-csv
   name: JSON to CSV
   title: JSON to CSV Converter - Free Online
   subtitle: Convert JSON objects and arrays into downloadable CSV files.
-  description: Convert JSON to CSV spreadsheets online for free. Fast in-memory parser converts nested objects and arrays with instant file download.
+  description: Free online JSON to CSV converter. Convert JSON array objects and API payloads to Excel-ready CSV spreadsheets with nested flattening and 100% privacy.
   engine: developer
   options: []
   content: src/content/tools/json-to-csv.mdx
@@ -3310,7 +3308,7 @@
     - diff-checker
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-16T00:00:00.000Z'
+  last_reviewed: "2026-11-16T00:00:00.000Z"
   reviewer: ZixTool Data Architecture Team
   lang: en
   seo:
@@ -3324,14 +3322,14 @@
     intent: tool
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: csv-to-json
   kind: developer
   slug: csv-to-json
   name: CSV to JSON
   title: CSV to JSON Converter - Free Online
   subtitle: Convert CSV tabular records into structured JSON array format.
-  description: Convert CSV to JSON online for free. Fast client-side parser detects headers, delimiters, and numbers without remote server uploads.
+  description: Free online CSV to JSON converter. Convert spreadsheets and CSV files into structured JSON objects with auto-type inference and 100% browser privacy.
   engine: developer
   options: []
   content: src/content/tools/csv-to-json.mdx
@@ -3350,7 +3348,7 @@
     - diff-checker
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-16T00:00:00.000Z'
+  last_reviewed: "2026-11-16T00:00:00.000Z"
   reviewer: ZixTool Data Architecture Team
   lang: en
   seo:
@@ -3364,7 +3362,7 @@
     intent: tool
     tier: 1
     sources: Google Search Console & High-Volume SERP Queries
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: jpeg-to-jpg
   kind: converter
   slug: jpeg-to-jpg
@@ -3397,7 +3395,7 @@
     - compress-image-to-50kb
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-16T00:00:00.000Z'
+  last_reviewed: "2026-11-16T00:00:00.000Z"
   reviewer: ZixTool Standards Review
   lang: en
   seo:
@@ -3413,7 +3411,7 @@
     intent: tool
     tier: 1
     sources: Researched keywords export & Google SERP seed analysis
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: photo-compressor
   kind: converter
   slug: photo-compressor
@@ -3446,7 +3444,7 @@
     - passport-photo-resizer
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-16T00:00:00.000Z'
+  last_reviewed: "2026-11-16T00:00:00.000Z"
   reviewer: ZixTool Standards Review
   lang: en
   seo:
@@ -3462,14 +3460,14 @@
     intent: tool
     tier: 1
     sources: Researched keywords export & Google SERP seed analysis
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: jpg-compressor
   kind: converter
   slug: jpg-compressor
   name: JPG Compressor
   title: JPG Compressor - Reduce JPG File Size | ZixTool
   subtitle: Compress JPG and JPEG photos online. Choose target KB limits or custom quality in browser RAM.
-  description: Free online JPG compressor to reduce JPEG file size by up to 80% with adjustable quality and target KB limits. Zero server uploads.
+  description: Free online JPG compressor. Reduce JPEG file size by up to 80% with adjustable quality and target KB limits in your browser. Zero server uploads.
   from: jpg
   to: jpg
   engine: target-size
@@ -3493,7 +3491,7 @@
     - jpeg-to-jpg
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-16T00:00:00.000Z'
+  last_reviewed: "2026-11-16T00:00:00.000Z"
   reviewer: ZixTool Standards Review
   lang: en
   seo:
@@ -3508,14 +3506,14 @@
     intent: tool
     tier: 1
     sources: Researched keywords export & Google SERP seed analysis
-    last_reviewed: '2026-11-16T00:00:00.000Z'
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: passport-photo-resizer
   kind: converter
   slug: passport-photo-resizer
   name: Passport Photo Resizer
   title: Passport Photo Resizer & Compressor | ZixTool
   subtitle: Resize and compress photos and signatures for passport portals, exams, and ID cards online.
-  description: Free passport photo resizer to resize and compress photos and signatures for exam portals and government IDs to exact KB and dimension rules.
+  description: Resize and compress passport size photos and signatures online free. Meet exact KB and dimension limits for government portals, exams, and ID cards.
   from: image
   to: jpg
   engine: target-size
@@ -3539,7 +3537,7 @@
     - image-compressor
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-16T00:00:00.000Z'
+  last_reviewed: "2026-11-16T00:00:00.000Z"
   reviewer: ZixTool Standards Review
   lang: en
   seo:
@@ -3554,15 +3552,14 @@
     intent: tool
     tier: 1
     sources: Researched keywords export & Google SERP seed analysis
-    last_reviewed: '2026-11-16T00:00:00.000Z'
-
+    last_reviewed: "2026-11-16T00:00:00.000Z"
 - id: background-remover
   kind: media
   slug: background-remover
   name: Background Remover
-  title: Background Remover - Free Online | ZixTool
+  title: Background Remover - Remove BG Online | ZixTool
   subtitle: Free online background remover to create transparent PNG cutouts in browser RAM.
-  description: Free online background remover. Remove backgrounds from images and create transparent PNG cutouts or clean white backgrounds in your browser instantly.
+  description: Free online background remover. Remove image backgrounds in your browser, create transparent PNG cutouts, and export with zero server uploads.
   from: image
   to: png
   engine: canvas
@@ -3587,7 +3584,7 @@
     - resize-image
   indexable: true
   reviewed: true
-  last_reviewed: '2026-11-17T00:00:00.000Z'
+  last_reviewed: "2026-11-17T00:00:00.000Z"
   reviewer: ZixTool Standards Review
   lang: en
   seo:
@@ -3602,4 +3599,4 @@
     intent: tool
     tier: 1
     sources: Researched keywords export & Google SERP seed analysis
-    last_reviewed: '2026-11-17T00:00:00.000Z'
+    last_reviewed: "2026-11-17T00:00:00.000Z"

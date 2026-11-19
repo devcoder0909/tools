@@ -91,3 +91,72 @@ Homeowners can dramatically reduce lifetime interest charges and shorten loan te
 Your home purchase price, savings, credit score assumptions, and mortgage financing budgets are sensitive personal financial data. Many loan portals harvest user inputs to sell mortgage leads to predatory telemarketers and loan brokers.
 
 ZixTool computes all mortgage calculations, compound interest models, and amortization schedules locally inside your web browser. No loan values, personal data, or session parameters are ever transmitted to external servers or logged in commercial databases.
+
+![Mortgage Calculator Workflow and Architecture Diagram](/images/tools/mortgage-calculator-workflow.svg)
+
+---
+
+## The Mathematics of Fixed-Rate Mortgage Amortization
+
+A fixed-rate mortgage is an amortizing financial loan where the borrower repays the borrowed principal balance along with accrued compound interest in equal monthly installments over a set duration (typically 15 or 30 years).
+
+The exact periodic monthly principal and interest payment ($M$) is calculated using the standard annuity formula:
+
+$$M = P \times \frac{r(1 + r)^n}{(1 + r)^n - 1}$$
+
+Where:
+- **$P$ (Loan Principal):** The total sum borrowed after deducting the cash down payment from the home purchase price.
+- **$r$ (Monthly Interest Rate):** The nominal annual interest rate divided by 12 billing cycles ($r = \text{Annual Rate} / 12$).
+- **$n$ (Total Number of Payments):** The total monthly periods over the loan tenure ($n = \text{Loan Term in Years} \times 12$).
+
+In the early years of a 30-year mortgage, the vast majority of each monthly payment is allocated toward interest charges, while only a small fraction reduces the principal balance. As the balance decreases over time, the interest portion shrinks and principal reduction accelerates.
+
+---
+
+## The Components of PITI: Understanding Escrow Payments
+
+When buying a home, your monthly housing expenditure rarely consists of principal and interest alone. Lenders typically collect an all-inclusive monthly escrow payment known by the acronym **PITI**:
+- **Principal ($P$):** The portion of your payment that directly pays down the borrowed loan balance, building home equity.
+- **Interest ($I$):** The lending fee charged by the mortgage bank for borrowing capital.
+- **Taxes ($T$):** Local municipal and county property taxes, held in an escrow account and disbursed annually to the taxing authority.
+- **Insurance ($I$):** Homeowners hazard insurance protecting the dwelling against fire and storm damage, plus mandatory Private Mortgage Insurance (PMI) if your cash down payment was under 20%.
+
+ZixTool computes both the pure P&I amortization curve and the complete PITI escrow expenditure, giving home buyers an honest, transparent breakdown of their true monthly obligations.
+
+---
+
+## Technical Specifications Comparison Table
+
+The table below contrasts key architectural differences and capabilities:
+
+| Loan Tenure | Interest Rate | Monthly P&I Payment | Total Lifetime Interest Cost |
+| :--- | :--- | :--- | :--- |
+| 15-Year Fixed ($400,000 Loan) | 6.25% APR | $3,428 / month | $217,112 total interest |
+| 20-Year Fixed ($400,000 Loan) | 6.50% APR | $2,982 / month | $315,690 total interest |
+| 30-Year Fixed ($400,000 Loan) | 6.75% APR | $2,594 / month | $533,968 total interest |
+| 30-Year with $200/mo Extra Principal | 6.75% APR | $2,794 / month | $428,124 ($105,844 saved; 4.8 years cut) |
+
+---
+
+## 100% Client-Side Privacy: Complete Data Security
+
+When processing sensitive official paperwork, business transactions, candidate signatures, or personal records online, cloud conversion utilities pose serious confidentiality risks. Many web utilities monetize user traffic by harvesting documents, caching files on cloud servers, or mining metadata.
+
+ZixTool operates under an ironclad **zero-server privacy architecture**:
+- **Local Browser Execution:** All file decoding, re-encoding, and mathematical calculations run locally inside your browser's private memory heap using WebAssembly and HTML5 Canvas.
+- **Zero Cloud Network Uploads:** Your files and data never leave your device, traverse external networks, or touch remote cloud databases.
+- **Volatile RAM Storage:** Uploaded files exist only in volatile device RAM and are cleared immediately when you close or refresh the browser tab.
+- **Enterprise Regulatory Compliance:** Fully satisfies **GDPR**, **HIPAA**, and institutional security standards prohibiting the upload of confidential records to third-party web services.
+
+---
+
+## Comprehensive Frequently Asked Questions (FAQ)
+
+### What is Private Mortgage Insurance (PMI) and how do I avoid it?
+Private Mortgage Insurance is a lender protection policy required on conventional loans when the down payment is less than 20% of the home purchase price. PMI typically costs between 0.3% and 1.5% of the original loan balance annually. You can avoid PMI by putting down at least 20% cash, or request cancellation once your loan-to-value (LTV) ratio drops to 80%.
+
+### How much money does making one extra mortgage payment a year save?
+Making one additional monthly payment each year (or switching to bi-weekly payments) applies funds directly to principal reduction. On a standard $400,000 30-year fixed loan at 6.75%, this simple strategy cuts your loan payoff term by over 4 years and saves more than $85,000 in total lifetime interest.
+
+### Are mortgage calculation inputs stored or shared with credit bureaus?
+No. ZixTool runs 100% locally in your device browser RAM. Your home price, income numbers, interest rates, and loan budgets are never transmitted over the internet or logged in commercial databases.

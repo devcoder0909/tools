@@ -113,6 +113,11 @@ export function runFullYoastAudit() {
         focusKeyword = `${fmtId} file`;
       } else if (slug === 'formats') {
         focusKeyword = 'file formats';
+      } else if (slug.startsWith('guides/')) {
+        const guideSlug = slug.replace('guides/', '');
+        focusKeyword = guideSlug.replace(/-/g, ' ');
+      } else if (slug === 'guides') {
+        focusKeyword = 'troubleshooting guides';
       } else if (slug === '') {
         focusKeyword = 'free online file converters';
       } else if (slug === 'tools') {
@@ -166,7 +171,7 @@ export function runFullYoastAudit() {
   let yellowPages = 0;
   let redPages = 0;
 
-  for (const { report } of indexableReports) {
+  for (const { report, urlPath } of indexableReports) {
     totalScoreSum += report.overallScore;
     totalReadabilitySum += report.readabilityScore;
     if (report.status === 'good') greenPages++;
@@ -185,6 +190,19 @@ export function runFullYoastAudit() {
   console.log(`🟡 ORANGE (Good)    : ${yellowPages} pages (${Math.round((yellowPages / totalIndexable) * 100)}%)`);
   console.log(`🔴 RED (Needs Work) : ${redPages} pages (${Math.round((redPages / totalIndexable) * 100)}%)`);
   console.log('------------------------------------------------------\n');
+
+  // Display any pages with Red status
+  const redPagesList = indexableReports.filter((r) => r.report.status === 'bad');
+  if (redPagesList.length > 0) {
+    console.log(`🚨 ${redPagesList.length} Page(s) have RED status:\n`);
+    for (const { urlPath, report } of redPagesList) {
+      console.log(`[RED PAGE] ${urlPath} (Score: ${report.overallScore}, badCount: ${report.badCount})`);
+      for (const check of report.checks.filter((c) => c.status === 'bad')) {
+        console.log(`  🔴 ${check.title}: ${check.message}`);
+      }
+      console.log('');
+    }
+  }
 
   // Display any pages with Red issues
   const pagesWithErrors = indexableReports.filter((r) => r.report.badCount > 0);
