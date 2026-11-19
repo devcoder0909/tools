@@ -17,15 +17,15 @@ const breadcrumbs = [
   <div class="max-w-3xl mx-auto px-4 sm:px-6 py-8">
     <Breadcrumbs items={breadcrumbs} />
 
-    <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">
       About {siteConfig.brand}
     </h1>
-    <p class="text-base text-gray-600 mb-8 leading-relaxed">
+    <p class="text-base text-slate-600 mb-8 leading-relaxed">
       Learn all about {siteConfig.brand}: a digital utilities project by {siteConfig.company} focused on privacy, speed, and simple file conversions.
     </p>
 
-    <div class="prose max-w-none text-gray-700 space-y-6 text-sm sm:text-base leading-relaxed">
-      <h2 class="text-xl font-bold text-gray-900">Why Most Online Converters Are Risky</h2>
+    <div class="prose max-w-none text-slate-700 space-y-6 text-sm sm:text-base leading-relaxed">
+      <h2 class="text-xl font-bold text-slate-900">Why Most Online Converters Are Risky</h2>
       <p>
         Most file converters make you upload files to remote servers. You wait in slow queues while their cloud processes your data. Then you download the file back.
       </p>
@@ -44,7 +44,7 @@ const breadcrumbs = [
         </li>
       </ul>
 
-      <h2 class="text-xl font-bold text-gray-900">How ZixTool Runs in Your Browser</h2>
+      <h2 class="text-xl font-bold text-slate-900">How ZixTool Runs in Your Browser</h2>
       <p>
         Modern web browsers are fast and capable. They come with tools like HTML5 Canvas and WebAssembly. We built {siteConfig.brand} to do all work directly on your own device.
       </p>
@@ -55,7 +55,7 @@ const breadcrumbs = [
         We do not run expensive backend servers. We only serve fast web pages. That is why our tools stay free, private, and unlimited for everyone.
       </p>
 
-      <h2 class="text-xl font-bold text-gray-900">Our Core Values</h2>
+      <h2 class="text-xl font-bold text-slate-900">Our Core Values</h2>
       <p>
         Every tool on {siteConfig.brand} follows four simple rules:
       </p>
@@ -66,14 +66,14 @@ const breadcrumbs = [
         <li><strong>Open & Easy to Verify:</strong> You can check your browser Network tab at any time.</li>
       </ol>
 
-      <div class="mt-8 p-6 bg-gray-50 border border-gray-200 rounded-xl">
-        <h3 class="text-base font-bold text-gray-900 mb-2">Need to reach our engineering team?</h3>
-        <p class="text-sm text-gray-600 mb-3">
+      <div class="mt-8 p-6 bg-slate-50 border border-slate-200/90 rounded-2xl shadow-card">
+        <h3 class="text-base font-bold text-slate-900 mb-2">Need to reach our engineering team?</h3>
+        <p class="text-sm text-slate-600 mb-4">
           We welcome bug reports, format suggestions, and developer feedback from the community.
         </p>
         <a
           href={`mailto:${siteConfig.contactEmail}`}
-          class="inline-block px-4 py-2 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold rounded-lg transition"
+          class="inline-block px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold rounded-xl shadow-xs transition cursor-pointer"
         >
           Email {siteConfig.contactEmail}
         </a>

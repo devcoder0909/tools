@@ -17,46 +17,46 @@ const breadcrumbs = [
   <div class="max-w-3xl mx-auto px-4 sm:px-6 py-8">
     <Breadcrumbs items={breadcrumbs} />
 
-    <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4">
       Privacy Policy
     </h1>
-    <p class="text-xs text-gray-500 mb-8">
+    <p class="text-xs text-slate-500 mb-8">
       Last modified: November 12, 2026 • Editorial Draft (Requires Legal Review)
     </p>
 
-    <div class="prose max-w-none text-gray-700 space-y-6 text-sm leading-relaxed">
-      <div class="p-4 bg-green-50 border border-green-200 rounded-xl text-green-900 font-medium">
+    <div class="prose max-w-none text-slate-700 space-y-6 text-sm leading-relaxed">
+      <div class="p-4 bg-emerald-50 border border-emerald-200/80 rounded-2xl text-emerald-950 font-medium shadow-2xs">
         <strong>Core Privacy Promise:</strong> Your files never leave your device. All image conversions, compression tasks, and calculations run entirely within your web browser using HTML5 Canvas and JavaScript. We do not operate conversion servers, nor do we store, log, or inspect your file contents or filenames.
       </div>
 
-      <h2 class="text-xl font-bold text-gray-900">1. Verification in Your Browser</h2>
+      <h2 class="text-xl font-bold text-slate-900">1. Verification in Your Browser</h2>
       <p>
         You can independently verify that your files are never transmitted to external servers. Open your browser's Developer Tools (press F12 on Windows or Option+Cmd+I on Mac), switch to the <strong>Network</strong> tab, and drag a file into any converter on {siteConfig.brand}. You will observe that no HTTP POST, PUT, or WebSocket requests containing your file payload are dispatched across the network.
       </p>
 
-      <h2 class="text-xl font-bold text-gray-900">2. Device Memory & Data Retention</h2>
+      <h2 class="text-xl font-bold text-slate-900">2. Device Memory & Data Retention</h2>
       <p>
         Because all file processing occurs inside your browser memory (RAM), files are stored in temporary object URLs that are strictly isolated to your current tab session. When you click "Clear", start over, or close your browser tab, the temporary memory pointers are instantly garbage-collected by your browser engine. We have zero backend databases, zero file buckets, and zero persistent storage mechanisms.
       </p>
 
-      <h2 class="text-xl font-bold text-gray-900">3. Analytics and Measurement</h2>
+      <h2 class="text-xl font-bold text-slate-900">3. Analytics and Measurement</h2>
       <p>
         To measure aggregate site traffic, detect broken tool links, and ensure web application stability, we utilize privacy-focused, cookieless measurement technologies (such as Cloudflare Web Analytics). These diagnostic tools do not track individual users across browsing sessions, do not profile visitors across third-party websites, do not store persistent cookies on your computer, and record only high-level aggregate data such as total page views and country of origin.
       </p>
 
-      <h2 class="text-xl font-bold text-gray-900">4. Advertising & Google AdSense</h2>
+      <h2 class="text-xl font-bold text-slate-900">4. Advertising & Google AdSense</h2>
       <p>
         We may display advertisements served by Google AdSense to fund site hosting and domain maintenance. Google and its advertising partners may use cookies to serve non-intrusive ads based on prior visits to this or other websites. Visitors from the European Economic Area (EEA), United Kingdom, and Switzerland are presented with a certified Consent Management Platform (CMP) dialog compliant with IAB Europe TCF standards before personalized advertising cookies are set.
       </p>
 
-      <h2 class="text-xl font-bold text-gray-900">5. Third-Party Links & Cross-Promotion</h2>
+      <h2 class="text-xl font-bold text-slate-900">5. Third-Party Links & Cross-Promotion</h2>
       <p>
         Our website may contain links to external web applications, developer resources, or services operated by {siteConfig.company}. We are not responsible for the privacy practices, tracking methods, or content of third-party platforms. We encourage users to read the individual privacy policies of external sites.
       </p>
 
-      <h2 class="text-xl font-bold text-gray-900">6. Contact Information</h2>
+      <h2 class="text-xl font-bold text-slate-900">6. Contact Information</h2>
       <p>
-        For inquiries regarding this Privacy Policy or data privacy compliance, please email our engineering team directly at <a href={`mailto:${siteConfig.contactEmail}`} class="text-green-600 underline font-medium">{siteConfig.contactEmail}</a>.
+        For inquiries regarding this Privacy Policy or data privacy compliance, please email our engineering team directly at <a href={`mailto:${siteConfig.contactEmail}`} class="text-emerald-700 underline font-medium hover:text-emerald-800">{siteConfig.contactEmail}</a>.
       </p>
     </div>
   </div>

@@ -86,10 +86,10 @@ if (format.faq && format.faq.length > 0) {
             {format.category}
           </span>
         </div>
-        <h1 class="text-2xl sm:text-4xl font-extrabold text-gray-900 mb-3">
+        <h1 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mb-3">
           {format.name} ({format.id.toUpperCase()} File) Format Guide
         </h1>
-        <p class="text-base text-gray-600 leading-relaxed">
+        <p class="text-base text-slate-600 leading-relaxed">
           {format.description} Learn how the {format.id.toUpperCase()} file format operates, its technical compression parameters, and how to convert {format.id.toUpperCase()} files in your browser.
         </p>
       </div>
@@ -111,30 +111,30 @@ if (format.faq && format.faq.length > 0) {
 
       <!-- Technical Specs Table -->
       <div class="my-8 bg-white border border-slate-200 rounded-2xl p-6 shadow-2xs">
-        <h2 class="text-lg font-bold text-gray-900 mb-4">Technical Characteristics</h2>
+        <h2 class="text-lg font-bold text-slate-900 mb-4">Technical Characteristics</h2>
         <dl class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
           <div>
-            <dt class="text-xs text-gray-500 uppercase">MIME Type</dt>
-            <dd class="font-mono font-semibold text-gray-800 mt-1">{format.mime}</dd>
+            <dt class="text-xs text-slate-500 uppercase">MIME Type</dt>
+            <dd class="font-mono font-semibold text-slate-800 mt-1">{format.mime}</dd>
           </div>
           <div>
-            <dt class="text-xs text-gray-500 uppercase">Compression</dt>
-            <dd class="font-semibold text-gray-800 mt-1">{format.lossy ? 'Lossy' : 'Lossless'}</dd>
+            <dt class="text-xs text-slate-500 uppercase">Compression</dt>
+            <dd class="font-semibold text-slate-800 mt-1">{format.lossy ? 'Lossy' : 'Lossless'}</dd>
           </div>
           <div>
-            <dt class="text-xs text-gray-500 uppercase">Transparency</dt>
-            <dd class="font-semibold text-gray-800 mt-1">{format.transparency ? 'Supported' : 'No'}</dd>
+            <dt class="text-xs text-slate-500 uppercase">Transparency</dt>
+            <dd class="font-semibold text-slate-800 mt-1">{format.transparency ? 'Supported' : 'No'}</dd>
           </div>
           <div>
-            <dt class="text-xs text-gray-500 uppercase">Animation</dt>
-            <dd class="font-semibold text-gray-800 mt-1">{format.animation ? 'Supported' : 'No'}</dd>
+            <dt class="text-xs text-slate-500 uppercase">Animation</dt>
+            <dd class="font-semibold text-slate-800 mt-1">{format.animation ? 'Supported' : 'No'}</dd>
           </div>
         </dl>
       </div>
 
       <!-- Deep Guide Content -->
       {format.content && (
-        <div class="prose prose-gray max-w-none my-8 leading-relaxed space-y-6 text-gray-700 [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-gray-900 [&>h2]:mt-8 [&>h2]:mb-4 [&>h3]:text-lg [&>h3]:font-semibold [&>h3]:text-gray-900 [&>h3]:mt-6 [&>h3]:mb-2 [&>ul]:list-disc [&>ul]:pl-5 [&>ol]:list-decimal [&>ol]:pl-5 [&>p]:mb-4"
+        <div class="prose prose-gray max-w-none my-8 leading-relaxed space-y-6 text-slate-700 [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-slate-900 [&>h2]:mt-8 [&>h2]:mb-4 [&>h3]:text-lg [&>h3]:font-semibold [&>h3]:text-slate-900 [&>h3]:mt-6 [&>h3]:mb-2 [&>ul]:list-disc [&>ul]:pl-5 [&>ol]:list-decimal [&>ol]:pl-5 [&>p]:mb-4"
           set:html={format.content
             .replace(/### (.*)/g, '<h3>$1</h3>')
             .replace(/## (.*)/g, '<h2>$1</h2>')
@@ -145,8 +145,8 @@ if (format.faq && format.faq.length > 0) {
       )}
 
       <!-- Converters Involving this Format -->
-      <section class="my-10 border-t border-gray-200 pt-8" aria-labelledby="tools-heading">
-        <h2 id="tools-heading" class="text-2xl font-bold text-gray-900 mb-6">
+      <section class="my-10 border-t border-slate-200 pt-8" aria-labelledby="tools-heading">
+        <h2 id="tools-heading" class="text-2xl font-bold text-slate-900 mb-6">
           Online Converters for {format.name}
         </h2>
         {tools.length > 0 ? (
@@ -156,17 +156,17 @@ if (format.faq && format.faq.length > 0) {
                 href={`/${t.slug}/`}
                 class="p-4 sm:p-5 rounded-2xl border border-slate-200 bg-white hover:border-emerald-500 hover:shadow-xs transition duration-200 group"
               >
-                <h3 class="font-semibold text-gray-900 group-hover:text-emerald-600 mb-1 transition-colors">
+                <h3 class="font-semibold text-slate-900 group-hover:text-emerald-600 mb-1 transition-colors">
                   {t.name}
                 </h3>
-                <p class="text-xs text-gray-500 line-clamp-2 leading-relaxed">
+                <p class="text-xs text-slate-500 line-clamp-2 leading-relaxed">
                   {t.description}
                 </p>
               </a>
             ))}
           </div>
         ) : (
-          <p class="text-sm text-gray-500">
+          <p class="text-sm text-slate-500">
             More converters for {format.name} are added regularly.
           </p>
         )}
@@ -189,13 +189,13 @@ if (format.faq && format.faq.length > 0) {
     </div>
 
     <!-- Reviewer & Date -->
-    <div class="mt-12 pt-6 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between text-xs text-gray-500 gap-2">
+    <div class="mt-12 pt-6 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between text-xs text-slate-500 gap-2">
       <span>
         Last reviewed: <time datetime={formatIsoDate(format.last_reviewed)}>{formatDisplayDate(format.last_reviewed)}</time>
       </span>
       {format.reviewer && !format.reviewer.toLowerCase().includes('team') && !format.reviewer.toLowerCase().includes('converter') && (
         <span>
-          Reviewed by: <strong class="text-gray-700">{format.reviewer}</strong>
+          Reviewed by: <strong class="text-slate-700">{format.reviewer}</strong>
         </span>
       )}
     </div>

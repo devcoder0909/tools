@@ -17,15 +17,15 @@ const breadcrumbs = [
   <div class="max-w-2xl mx-auto px-4 sm:px-6 py-8">
     <Breadcrumbs items={breadcrumbs} />
 
-    <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">
       Contact Our Engineering & Support Team
     </h1>
-    <p class="text-gray-600 mb-8 leading-relaxed">
+    <p class="text-slate-600 mb-8 leading-relaxed">
       Have a question about a conversion format, noticed an unexpected issue on your device, or want to suggest a new tool? We value feedback from our community.
     </p>
 
-    <div class="bg-gray-50 border border-gray-200 rounded-2xl p-6 sm:p-8 space-y-6">
-      <figure class="mb-4 p-4 rounded-xl bg-white border border-slate-200 shadow-2xs text-center">
+    <div class="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 space-y-6 shadow-card">
+      <figure class="mb-4 p-4 rounded-xl bg-slate-50 border border-slate-200/80 shadow-2xs text-center">
         <img
           src="/images/brand/logo.webp"
           alt="Contact ZixTool Engineering and Technical Support"
@@ -40,42 +40,42 @@ const breadcrumbs = [
       </figure>
 
       <div>
-        <h2 class="text-base font-semibold text-gray-900 mb-1">Direct Email Support</h2>
-        <p class="text-sm text-gray-600 mb-3">
+        <h2 class="text-base font-bold text-slate-900 mb-1">Direct Email Support</h2>
+        <p class="text-sm text-slate-600 mb-3">
           To maintain strict privacy and prevent third-party database harvesting, we do not operate a contact form backend. Please write to us directly at our dedicated support address:
         </p>
         <a
           href={`mailto:${siteConfig.contactEmail}`}
-          class="text-lg font-bold text-green-700 hover:underline inline-flex items-center"
+          class="text-lg font-bold text-emerald-700 hover:text-emerald-800 hover:underline inline-flex items-center"
         >
           {siteConfig.contactEmail} &rarr;
         </a>
       </div>
 
-      <div class="border-t border-gray-200 pt-6 space-y-4 text-sm text-gray-600 leading-relaxed">
-        <h3 class="font-bold text-gray-900 text-base">How to Report a Bug Effectively</h3>
+      <div class="border-t border-slate-200/80 pt-6 space-y-4 text-sm text-slate-600 leading-relaxed">
+        <h3 class="font-bold text-slate-900 text-base">How to Report a Bug Effectively</h3>
         <p>
           Because all tools on {siteConfig.brand} run locally on your hardware, discrepancies are usually related to specific browser versions, operating system memory limits, or non-standard file codecs. When submitting a bug report, please include:
         </p>
-        <ul class="list-disc pl-5 space-y-1 text-xs text-gray-500">
+        <ul class="list-disc pl-5 space-y-1 text-xs text-slate-500">
           <li>The tool or converter URL you were using (e.g., /heic-to-jpg/).</li>
           <li>Your operating system and browser version (e.g., Chrome 122 on macOS Ventura).</li>
           <li>The approximate size and format of the input file causing the issue.</li>
           <li>Any error messages displayed in the tool status area or browser Developer Console.</li>
         </ul>
 
-        <h3 class="font-bold text-gray-900 text-base pt-2">Feature & Format Requests</h3>
+        <h3 class="font-bold text-slate-900 text-base pt-2">Feature & Format Requests</h3>
         <p>
           Need a specific image conversion pair or custom byte compressor for a university portal or government application? Let us know the target specifications and we will evaluate adding it to our weekly development sprint.
         </p>
 
-        <h3 class="font-bold text-gray-900 text-base pt-2">Corporate Inquiries & Partnerships</h3>
+        <h3 class="font-bold text-slate-900 text-base pt-2">Corporate Inquiries & Partnerships</h3>
         <p>
           If your educational institution, public library, or corporate enterprise utilizes {siteConfig.brand} tools and requires specific browser deployment configurations, offline progressive web app (PWA) guidelines, or volume integration information, feel free to contact our administrative team via email.
         </p>
       </div>
 
-      <div class="border-t border-gray-200 pt-6 text-xs text-gray-500 space-y-2">
+      <div class="border-t border-slate-200/80 pt-6 text-xs text-slate-500 space-y-2">
         <p><strong>Publisher & Organization:</strong> {siteConfig.company}</p>
         <p><strong>Response SLA:</strong> We typically respond to technical and support inquiries within 1 to 2 business days.</p>
         <p><strong>Security Inquiries:</strong> If you discover a vulnerability or issue relating to client data handling, please flag your message as urgent in the subject line.</p>

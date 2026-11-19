@@ -16,11 +16,11 @@ const isEnabled = ads.enabled && !!ads.publisherId && !!ads.slots[slotPosition];
     data-ad-position={slotPosition}
     aria-label="Advertisement"
   >
-    <span class="text-[10px] uppercase tracking-wider text-gray-400 mb-1 select-none">
+    <span class="text-[10px] uppercase tracking-wider text-slate-400 mb-1 select-none">
       Advertisement
     </span>
     <div
-      class="ad-container w-full max-w-[728px] min-h-[90px] md:min-h-[250px] bg-gray-50 border border-gray-100 rounded flex items-center justify-center text-xs text-gray-400"
+      class="ad-container w-full max-w-[728px] min-h-[90px] md:min-h-[250px] bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-center text-xs text-slate-400 shadow-2xs"
       data-ad-client={ads.publisherId}
       data-ad-slot={ads.slots[slotPosition]}
     >

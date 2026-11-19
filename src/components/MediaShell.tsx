@@ -365,23 +365,23 @@ export default function MediaShell({ toolId }: MediaShellProps) {
       {toolId === 'text-to-speech' && (
         <div class="space-y-6 max-w-xl mx-auto">
           <div>
-            <label class="block text-xs font-semibold text-gray-700 mb-1">Text to Speak</label>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Text to Speak</label>
             <textarea
               rows={4}
               value={ttsText}
               onInput={(e) => setTtsText((e.target as HTMLTextAreaElement).value)}
               placeholder="Type or paste any text to hear it spoken aloud..."
-              class="w-full text-sm p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
+              class="w-full text-sm p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
             />
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
-              <label class="block text-2xs font-semibold text-gray-600 mb-1">Voice</label>
+              <label class="block text-2xs font-semibold text-slate-600 mb-1">Voice</label>
               <select
                 value={selectedVoice}
                 onChange={(e) => setSelectedVoice((e.target as HTMLSelectElement).value)}
-                class="w-full text-xs p-2 border border-gray-300 rounded-lg bg-white"
+                class="w-full text-xs p-2 border border-slate-300 rounded-lg bg-white"
               >
                 {ttsVoices.map((v) => (
                   <option value={v.name}>{v.name} ({v.lang})</option>
@@ -389,7 +389,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
               </select>
             </div>
             <div>
-              <label class="block text-2xs font-semibold text-gray-600 mb-1">Speed Rate ({ttsRate}x)</label>
+              <label class="block text-2xs font-semibold text-slate-600 mb-1">Speed Rate ({ttsRate}x)</label>
               <input
                 type="range"
                 min="0.5"
@@ -401,7 +401,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
               />
             </div>
             <div>
-              <label class="block text-2xs font-semibold text-gray-600 mb-1">Pitch ({ttsPitch})</label>
+              <label class="block text-2xs font-semibold text-slate-600 mb-1">Pitch ({ttsPitch})</label>
               <input
                 type="range"
                 min="0.5"
@@ -425,7 +425,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
             <button
               type="button"
               onClick={handleStopTts}
-              class="px-5 py-3 text-xs font-semibold rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition cursor-pointer"
+              class="px-5 py-3 text-xs font-semibold rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition cursor-pointer"
             >
               Stop
             </button>
@@ -436,12 +436,12 @@ export default function MediaShell({ toolId }: MediaShellProps) {
       {/* 2. Screen Recorder */}
       {toolId === 'screen-recorder' && (
         <div class="space-y-6 max-w-xl mx-auto text-center">
-          <div class="p-8 bg-gray-50 border border-gray-200 rounded-2xl">
+          <div class="p-8 bg-slate-50 border border-slate-200 rounded-2xl">
             <div class="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
               <span class={`w-4 h-4 rounded-full ${isRecording ? 'bg-red-600 animate-ping' : 'bg-red-600'}`} />
             </div>
-            <h2 class="text-xl font-bold text-gray-900 mb-2">Browser Screen & Audio Recorder</h2>
-            <p class="text-xs text-gray-500 max-w-md mx-auto mb-6">
+            <h2 class="text-xl font-bold text-slate-900 mb-2">Browser Screen & Audio Recorder</h2>
+            <p class="text-xs text-slate-500 max-w-md mx-auto mb-6">
               Record full desktop screen, specific app windows, or Chrome tabs with microphone audio in browser memory.
             </p>
 
@@ -457,7 +457,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
               <button
                 type="button"
                 onClick={stopScreenRecord}
-                class="px-8 py-3 text-sm font-bold rounded-xl bg-gray-900 text-white hover:bg-black transition shadow-xs cursor-pointer"
+                class="px-8 py-3 text-sm font-bold rounded-xl bg-slate-900 text-white hover:bg-black transition shadow-xs cursor-pointer"
               >
                 Stop Recording & Save
               </button>
@@ -482,18 +482,18 @@ export default function MediaShell({ toolId }: MediaShellProps) {
       {/* 3. Online Timer & Stopwatch */}
       {(toolId === 'online-timer' || toolId === 'online-stopwatch') && (
         <div class="space-y-6 max-w-md mx-auto text-center">
-          <div class="flex justify-center gap-2 border-b border-gray-200 pb-3">
+          <div class="flex justify-center gap-2 border-b border-slate-200 pb-3">
             <button
               type="button"
               onClick={() => setTimerMode('timer')}
-              class={`px-4 py-1.5 text-xs font-semibold rounded-lg ${timerMode === 'timer' ? 'bg-emerald-600 text-white' : 'bg-gray-100 text-gray-700'}`}
+              class={`px-4 py-1.5 text-xs font-semibold rounded-lg ${timerMode === 'timer' ? 'bg-emerald-600 text-white' : 'bg-slate-100 text-slate-700'}`}
             >
               Countdown Timer
             </button>
             <button
               type="button"
               onClick={() => setTimerMode('stopwatch')}
-              class={`px-4 py-1.5 text-xs font-semibold rounded-lg ${timerMode === 'stopwatch' ? 'bg-emerald-600 text-white' : 'bg-gray-100 text-gray-700'}`}
+              class={`px-4 py-1.5 text-xs font-semibold rounded-lg ${timerMode === 'stopwatch' ? 'bg-emerald-600 text-white' : 'bg-slate-100 text-slate-700'}`}
             >
               Stopwatch
             </button>
@@ -501,7 +501,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
 
           {timerMode === 'timer' ? (
             <div class="space-y-6">
-              <div class="text-6xl font-extrabold font-mono text-gray-900 tracking-tight">
+              <div class="text-6xl font-extrabold font-mono text-slate-900 tracking-tight">
                 {formatTimer(timerSecondsLeft)}
               </div>
 
@@ -515,7 +515,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                       setTimerSecondsLeft(m * 60);
                       setIsTimerRunning(false);
                     }}
-                    class={`px-3 py-1 text-xs font-semibold rounded-lg border ${timerMinutes === m ? 'border-emerald-600 text-emerald-700 bg-emerald-50/70' : 'border-gray-200 text-gray-600 hover:bg-gray-50'}`}
+                    class={`px-3 py-1 text-xs font-semibold rounded-lg border ${timerMinutes === m ? 'border-emerald-600 text-emerald-700 bg-emerald-50/70' : 'border-slate-200 text-slate-600 hover:bg-slate-50'}`}
                   >
                     {m}m
                   </button>
@@ -536,7 +536,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                     setIsTimerRunning(false);
                     setTimerSecondsLeft(timerMinutes * 60);
                   }}
-                  class="px-4 py-2.5 text-xs font-semibold rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50"
+                  class="px-4 py-2.5 text-xs font-semibold rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-50"
                 >
                   Reset
                 </button>
@@ -544,7 +544,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
             </div>
           ) : (
             <div class="space-y-6">
-              <div class="text-6xl font-extrabold font-mono text-gray-900 tracking-tight">
+              <div class="text-6xl font-extrabold font-mono text-slate-900 tracking-tight">
                 {formatStopwatch(stopwatchMs)}
               </div>
 
@@ -560,7 +560,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                   type="button"
                   disabled={!isStopwatchRunning}
                   onClick={() => setLaps((prev) => [...prev, stopwatchMs])}
-                  class="px-4 py-2.5 text-xs font-semibold rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 disabled:opacity-40"
+                  class="px-4 py-2.5 text-xs font-semibold rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-50 disabled:opacity-40"
                 >
                   Lap
                 </button>
@@ -571,14 +571,14 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                     setStopwatchMs(0);
                     setLaps([]);
                   }}
-                  class="px-4 py-2.5 text-xs font-semibold rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50"
+                  class="px-4 py-2.5 text-xs font-semibold rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-50"
                 >
                   Reset
                 </button>
               </div>
 
               {laps.length > 0 && (
-                <div class="max-h-40 overflow-y-auto divide-y divide-gray-200 border border-gray-200 rounded-lg text-xs">
+                <div class="max-h-40 overflow-y-auto divide-y divide-slate-200 border border-slate-200 rounded-lg text-xs">
                   {laps.map((lap, idx) => (
                     <div class="flex justify-between p-2 font-mono">
                       <span>Lap {idx + 1}</span>
@@ -596,7 +596,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
       {toolId === 'pomodoro-timer' && (
         <div class="space-y-6 max-w-md mx-auto text-center">
           {/* Mode Switcher */}
-          <div class="flex justify-center gap-2 border-b border-gray-200 pb-3">
+          <div class="flex justify-center gap-2 border-b border-slate-200 pb-3">
             {[
               { id: 'focus', label: 'Focus (25m)', sec: 25 * 60 },
               { id: 'short', label: 'Short Break (5m)', sec: 5 * 60 },
@@ -613,7 +613,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                 class={`px-3 py-1.5 text-xs font-bold rounded-lg transition ${
                   pomoMode === m.id
                     ? 'bg-emerald-600 text-white shadow-xs'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                 }`}
               >
                 {m.label}
@@ -622,14 +622,14 @@ export default function MediaShell({ toolId }: MediaShellProps) {
           </div>
 
           {/* Clock Display */}
-          <div class="p-8 rounded-3xl bg-gray-50 border border-gray-200">
-            <span class="text-xs uppercase font-bold text-gray-500 tracking-wider">
+          <div class="p-8 rounded-3xl bg-slate-50 border border-slate-200">
+            <span class="text-xs uppercase font-bold text-slate-500 tracking-wider">
               {pomoMode === 'focus' ? 'Work Focus Session' : pomoMode === 'short' ? '5-Minute Break' : '15-Minute Long Break'}
             </span>
-            <div class="text-7xl font-extrabold font-mono text-gray-900 tracking-tight my-4">
+            <div class="text-7xl font-extrabold font-mono text-slate-900 tracking-tight my-4">
               {formatTimer(pomoSecs)}
             </div>
-            <p class="text-xs text-gray-500">
+            <p class="text-xs text-slate-500">
               Completed Pomodoro Cycles Today: <strong class="text-emerald-700 font-bold">{pomoCount}</strong>
             </p>
           </div>
@@ -649,7 +649,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                 setIsPomoActive(false);
                 setPomoSecs(pomoMode === 'focus' ? 25 * 60 : pomoMode === 'short' ? 5 * 60 : 15 * 60);
               }}
-              class="px-5 py-3 text-sm font-semibold rounded-xl border border-gray-300 text-gray-700 hover:bg-gray-50 transition"
+              class="px-5 py-3 text-sm font-semibold rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-50 transition"
             >
               Reset
             </button>
@@ -660,7 +660,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
       {/* 4. Typing Test */}
       {toolId === 'typing-test' && (
         <div class="space-y-6 max-w-xl mx-auto">
-          <div class="p-4 bg-gray-50 border border-gray-200 rounded-xl text-xs sm:text-sm font-mono text-gray-700 leading-relaxed select-none">
+          <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl text-xs sm:text-sm font-mono text-slate-700 leading-relaxed select-none">
             {testSample}
           </div>
 
@@ -674,16 +674,16 @@ export default function MediaShell({ toolId }: MediaShellProps) {
               if (val.length >= testSample.length) setTypingEndTime(Date.now());
             }}
             placeholder="Start typing the text above to begin test..."
-            class="w-full text-sm font-mono p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
+            class="w-full text-sm font-mono p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
           />
 
           <div class="grid grid-cols-2 gap-4 text-center">
             <div class="p-4 bg-emerald-50/70 border border-emerald-200/80 rounded-xl">
-              <span class="text-xs uppercase font-semibold text-gray-500">Speed (WPM)</span>
+              <span class="text-xs uppercase font-semibold text-slate-500">Speed (WPM)</span>
               <p class="text-3xl font-extrabold text-emerald-700">{typingStats().wpm}</p>
             </div>
             <div class="p-4 bg-blue-50 border border-blue-200 rounded-xl">
-              <span class="text-xs uppercase font-semibold text-gray-500">Accuracy</span>
+              <span class="text-xs uppercase font-semibold text-slate-500">Accuracy</span>
               <p class="text-3xl font-extrabold text-blue-700">{typingStats().accuracy}%</p>
             </div>
           </div>
@@ -695,7 +695,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
               setTypingStartTime(null);
               setTypingEndTime(null);
             }}
-            class="w-full py-2 text-xs font-semibold border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50"
+            class="w-full py-2 text-xs font-semibold border border-slate-300 rounded-lg text-slate-700 hover:bg-slate-50"
           >
             Reset Typing Test
           </button>
@@ -706,7 +706,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
       {(toolId === 'image-resizer' || toolId === 'photo-editor') && (
         <div class="space-y-6">
           {!imageSrc ? (
-            <label class="border-2 border-dashed border-gray-300 hover:border-emerald-500 rounded-xl p-8 block text-center bg-gray-50 cursor-pointer">
+            <label class="border-2 border-dashed border-slate-300 hover:border-emerald-500 rounded-xl p-8 block text-center bg-slate-50 cursor-pointer">
               <input
                 type="file"
                 accept="image/*"
@@ -715,8 +715,8 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                 }}
                 class="hidden"
               />
-              <p class="text-sm font-bold text-gray-900 mb-1">Click to select an image</p>
-              <p class="text-xs text-gray-500">Supports JPG, PNG, and WebP.</p>
+              <p class="text-sm font-bold text-slate-900 mb-1">Click to select an image</p>
+              <p class="text-xs text-slate-500">Supports JPG, PNG, and WebP.</p>
             </label>
           ) : (
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
@@ -725,7 +725,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                   <div class="space-y-3">
                     <div class="grid grid-cols-2 gap-3">
                       <div>
-                        <label class="block text-2xs font-semibold text-gray-600 mb-1">Target Width (px)</label>
+                        <label class="block text-2xs font-semibold text-slate-600 mb-1">Target Width (px)</label>
                         <input
                           type="number"
                           value={targetWidth}
@@ -734,11 +734,11 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                             setTargetWidth(w);
                             if (lockAspect && aspectRatio) setTargetHeight(Math.round(w / aspectRatio));
                           }}
-                          class="w-full text-xs p-2 border border-gray-300 rounded-lg"
+                          class="w-full text-xs p-2 border border-slate-300 rounded-lg"
                         />
                       </div>
                       <div>
-                        <label class="block text-2xs font-semibold text-gray-600 mb-1">Target Height (px)</label>
+                        <label class="block text-2xs font-semibold text-slate-600 mb-1">Target Height (px)</label>
                         <input
                           type="number"
                           value={targetHeight}
@@ -747,11 +747,11 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                             setTargetHeight(h);
                             if (lockAspect && aspectRatio) setTargetWidth(Math.round(h * aspectRatio));
                           }}
-                          class="w-full text-xs p-2 border border-gray-300 rounded-lg"
+                          class="w-full text-xs p-2 border border-slate-300 rounded-lg"
                         />
                       </div>
                     </div>
-                    <label class="flex items-center gap-2 cursor-pointer text-xs text-gray-700">
+                    <label class="flex items-center gap-2 cursor-pointer text-xs text-slate-700">
                       <input
                         type="checkbox"
                         checked={lockAspect}
@@ -766,7 +766,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                 {toolId === 'photo-editor' && (
                   <div class="space-y-3">
                     <div>
-                      <div class="flex justify-between text-2xs font-semibold text-gray-600 mb-1">
+                      <div class="flex justify-between text-2xs font-semibold text-slate-600 mb-1">
                         <span>Brightness</span>
                         <span>{brightness}%</span>
                       </div>
@@ -780,7 +780,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                       />
                     </div>
                     <div>
-                      <div class="flex justify-between text-2xs font-semibold text-gray-600 mb-1">
+                      <div class="flex justify-between text-2xs font-semibold text-slate-600 mb-1">
                         <span>Contrast</span>
                         <span>{contrast}%</span>
                       </div>
@@ -794,7 +794,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                       />
                     </div>
                     <div>
-                      <div class="flex justify-between text-2xs font-semibold text-gray-600 mb-1">
+                      <div class="flex justify-between text-2xs font-semibold text-slate-600 mb-1">
                         <span>Saturation</span>
                         <span>{saturation}%</span>
                       </div>
@@ -808,7 +808,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                       />
                     </div>
                     <div>
-                      <div class="flex justify-between text-2xs font-semibold text-gray-600 mb-1">
+                      <div class="flex justify-between text-2xs font-semibold text-slate-600 mb-1">
                         <span>Sepia</span>
                         <span>{sepia}%</span>
                       </div>
@@ -822,7 +822,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                       />
                     </div>
                     <div>
-                      <div class="flex justify-between text-2xs font-semibold text-gray-600 mb-1">
+                      <div class="flex justify-between text-2xs font-semibold text-slate-600 mb-1">
                         <span>Grayscale</span>
                         <span>{grayscale}%</span>
                       </div>
@@ -852,14 +852,14 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                       setImageSrc(null);
                       setProcessedUrl(null);
                     }}
-                    class="px-4 py-2 text-xs font-semibold border border-gray-300 rounded-lg hover:bg-gray-50"
+                    class="px-4 py-2 text-xs font-semibold border border-slate-300 rounded-lg hover:bg-slate-50"
                   >
                     Change
                   </button>
                 </div>
               </div>
 
-              <div class="flex flex-col items-center justify-center p-4 bg-gray-50 rounded-xl border border-gray-200">
+              <div class="flex flex-col items-center justify-center p-4 bg-slate-50 rounded-xl border border-slate-200">
                 <canvas ref={canvasRef} class="max-w-full max-h-72 rounded-lg shadow-xs bg-white" />
               </div>
             </div>
@@ -872,28 +872,28 @@ export default function MediaShell({ toolId }: MediaShellProps) {
         <div class="space-y-6 max-w-xl mx-auto">
           <div class="grid grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-semibold text-gray-700 mb-1">Top Caption</label>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Top Caption</label>
               <input
                 type="text"
                 value={topText}
                 onInput={(e) => setTopText((e.target as HTMLInputElement).value)}
                 placeholder="TOP CAPTION"
-                class="w-full text-xs p-2 border border-gray-300 rounded-lg"
+                class="w-full text-xs p-2 border border-slate-300 rounded-lg"
               />
             </div>
             <div>
-              <label class="block text-xs font-semibold text-gray-700 mb-1">Bottom Caption</label>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Bottom Caption</label>
               <input
                 type="text"
                 value={bottomText}
                 onInput={(e) => setBottomText((e.target as HTMLInputElement).value)}
                 placeholder="BOTTOM CAPTION"
-                class="w-full text-xs p-2 border border-gray-300 rounded-lg"
+                class="w-full text-xs p-2 border border-slate-300 rounded-lg"
               />
             </div>
           </div>
 
-          <div class="flex flex-col items-center justify-center p-4 bg-gray-50 rounded-xl border border-gray-200">
+          <div class="flex flex-col items-center justify-center p-4 bg-slate-50 rounded-xl border border-slate-200">
             <canvas ref={memeCanvasRef} class="max-w-full rounded-lg shadow-xs mb-4" />
             <a
               href={memeUrl || ''}
@@ -910,7 +910,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
       {toolId === 'crop-image' && (
         <div class="space-y-6">
           {!imageSrc ? (
-            <label class="border-2 border-dashed border-gray-300 hover:border-emerald-500 rounded-xl p-8 block text-center bg-gray-50 cursor-pointer">
+            <label class="border-2 border-dashed border-slate-300 hover:border-emerald-500 rounded-xl p-8 block text-center bg-slate-50 cursor-pointer">
               <input
                 type="file"
                 accept="image/*"
@@ -919,21 +919,21 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                 }}
                 class="hidden"
               />
-              <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-xs border border-gray-200 text-emerald-600">
+              <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-xs border border-slate-200 text-emerald-600">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
               </div>
-              <p class="text-sm font-bold text-gray-900 mb-1">Click to select an image to crop</p>
-              <p class="text-xs text-gray-500">Supports JPG, PNG, and WebP.</p>
+              <p class="text-sm font-bold text-slate-900 mb-1">Click to select an image to crop</p>
+              <p class="text-xs text-slate-500">Supports JPG, PNG, and WebP.</p>
             </label>
           ) : (
             <div class="space-y-6">
-              <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 space-y-3">
+              <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
                 <div class="flex items-center justify-between">
-                  <label class="text-xs font-bold text-gray-700 uppercase tracking-wider">Aspect Ratio Preset</label>
+                  <label class="text-xs font-bold text-slate-700 uppercase tracking-wider">Aspect Ratio Preset</label>
                   {cropDims.w > 0 && (
-                    <span class="text-xs font-mono font-bold text-gray-500">
+                    <span class="text-xs font-mono font-bold text-slate-500">
                       Output: {cropDims.w} × {cropDims.h} px
                     </span>
                   )}
@@ -954,7 +954,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                       class={`px-3 py-1.5 text-xs font-bold rounded-lg border transition cursor-pointer ${
                         cropAspect === preset.id
                           ? 'bg-emerald-600 text-white border-emerald-600 shadow-xs'
-                          : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
+                          : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-100'
                       }`}
                     >
                       {preset.label}
@@ -963,7 +963,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                 </div>
               </div>
 
-              <div class="flex flex-col items-center justify-center p-4 bg-gray-50 rounded-xl border border-gray-200">
+              <div class="flex flex-col items-center justify-center p-4 bg-slate-50 rounded-xl border border-slate-200">
                 <canvas ref={cropCanvasRef} class="max-w-full max-h-80 rounded-lg shadow-xs bg-white mb-4" />
                 <div class="flex gap-3">
                   <a
@@ -979,7 +979,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                       setImageSrc(null);
                       setCropUrl(null);
                     }}
-                    class="px-4 py-2.5 text-xs font-semibold rounded-xl border border-gray-300 text-gray-700 hover:bg-gray-100 transition cursor-pointer"
+                    class="px-4 py-2.5 text-xs font-semibold rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-100 transition cursor-pointer"
                   >
                     Select Another Image
                   </button>

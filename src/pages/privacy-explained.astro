@@ -34,27 +34,27 @@ const articleJsonLd = {
 
     <article>
       <header class="mb-10">
-        <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-800 mb-3">
+        <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-200/80 mb-3">
           Technical Architecture & Proof
         </div>
-        <h1 class="text-3xl sm:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
           Zero-Upload In-Browser Privacy Explained
         </h1>
-        <p class="text-lg text-gray-600 leading-relaxed">
+        <p class="text-lg text-slate-600 leading-relaxed">
           Welcome to our client-side privacy explained guide with step-by-step verification instructions. Learn why your photos and documents never leave your physical device, how our client-side engine executes in browser memory, and how you can independently verify it in 15 seconds.
         </p>
       </header>
 
-      <div class="prose prose-gray max-w-none space-y-8 text-gray-700 leading-relaxed text-base sm:text-lg">
-        <section class="bg-green-50/70 border border-green-200 rounded-2xl p-6 sm:p-8 not-prose">
-          <h2 class="text-xl font-bold text-green-950 mb-3">The Short Answer</h2>
-          <p class="text-green-900 leading-relaxed text-sm sm:text-base">
+      <div class="prose prose-slate max-w-none space-y-8 text-slate-700 leading-relaxed text-base sm:text-lg">
+        <section class="bg-emerald-50/70 border border-emerald-200/80 rounded-2xl p-6 sm:p-8 shadow-card not-prose">
+          <h2 class="text-xl font-bold text-emerald-950 mb-3">The Short Answer</h2>
+          <p class="text-emerald-900 leading-relaxed text-sm sm:text-base">
             With our zero-upload privacy explained, you can see why your data stays safe. When you convert an image, reduce file size, or perform calculations on {siteConfig.brand}, <strong>zero file bytes are transmitted over the internet</strong>. All decompression, pixel rendering, format encoding, and mathematical calculations are executed by your device's CPU and GPU via standard JavaScript, Web Workers, and the HTML5 Canvas API.
           </p>
         </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-gray-900">How Server-Based Converters Work (The Risk)</h2>
+        <h2 class="text-2xl font-bold text-slate-900">How Server-Based Converters Work (The Risk)</h2>
         <p>
           Traditional online file converters—such as CloudConvert, FreeConvert, and TinyPNG—operate using backend server farms. When you drag a file into their drop zone:
         </p>
@@ -70,26 +70,26 @@ const articleJsonLd = {
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-gray-900">How {siteConfig.brand} Eliminates Server Uploads</h2>
+        <h2 class="text-2xl font-bold text-slate-900">How {siteConfig.brand} Eliminates Server Uploads</h2>
         <p>
           Modern web browsers are full-featured operating environments capable of high-performance multimedia computing. {siteConfig.brand} eliminates server intermediaries completely:
         </p>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 not-prose my-6">
-          <div class="p-5 bg-white border border-gray-200 rounded-xl shadow-xs">
-            <h3 class="font-bold text-gray-900 mb-2">1. Local Decoding</h3>
-            <p class="text-xs text-gray-600 leading-relaxed">
+          <div class="p-5 bg-white border border-slate-200 rounded-xl shadow-xs">
+            <h3 class="font-bold text-slate-900 mb-2">1. Local Decoding</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
               Files selected via file input or drag-and-drop are loaded as in-memory <code>Blob</code> and <code>ArrayBuffer</code> objects directly within your browser process.
             </p>
           </div>
-          <div class="p-5 bg-white border border-gray-200 rounded-xl shadow-xs">
-            <h3 class="font-bold text-gray-900 mb-2">2. In-Memory Canvas</h3>
-            <p class="text-xs text-gray-600 leading-relaxed">
+          <div class="p-5 bg-white border border-slate-200 rounded-xl shadow-xs">
+            <h3 class="font-bold text-slate-900 mb-2">2. In-Memory Canvas</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
               Pixels are drawn into an off-screen HTML5 Canvas. Image re-encoding (e.g. to JPG or WebP) is performed client-side by browser native codecs.
             </p>
           </div>
-          <div class="p-5 bg-white border border-gray-200 rounded-xl shadow-xs">
-            <h3 class="font-bold text-gray-900 mb-2">3. Blob URL Download</h3>
-            <p class="text-xs text-gray-600 leading-relaxed">
+          <div class="p-5 bg-white border border-slate-200 rounded-xl shadow-xs">
+            <h3 class="font-bold text-slate-900 mb-2">3. Blob URL Download</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">
               Output files are served via <code>blob:</code> URLs referencing local RAM. Saving the file writes straight from browser memory to your disk.
             </p>
           </div>
@@ -111,17 +111,17 @@ const articleJsonLd = {
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-gray-900">Step-by-Step: Verify It in Your Own Browser</h2>
+        <h2 class="text-2xl font-bold text-slate-900">Step-by-Step: Verify It in Your Own Browser</h2>
         <p>
           You do not need to take our word for it. You can independently confirm that zero bytes are transmitted by inspecting your browser's built-in developer network monitor:
         </p>
-        <div class="bg-gray-900 text-gray-100 rounded-xl p-6 not-prose space-y-4 text-sm font-mono">
-          <div class="flex items-center space-x-2 text-green-400 font-bold border-b border-gray-800 pb-2">
+        <div class="bg-slate-900 text-slate-100 rounded-2xl p-6 not-prose space-y-4 text-sm font-mono shadow-card">
+          <div class="flex items-center space-x-2 text-emerald-400 font-bold border-b border-slate-800 pb-2">
             <span>&gt; Verification Protocol (15-Second Test)</span>
           </div>
-          <ol class="list-decimal pl-5 space-y-2 text-xs sm:text-sm text-gray-300">
-            <li>Open any converter on {siteConfig.domain} (e.g., <a href="/heic-to-jpg/" class="text-green-400 underline">HEIC to JPG</a>).</li>
-            <li>Press <kbd class="px-1.5 py-0.5 bg-gray-800 rounded text-gray-200">F12</kbd> (or right-click anywhere and select <strong>Inspect</strong>).</li>
+          <ol class="list-decimal pl-5 space-y-2 text-xs sm:text-sm text-slate-300">
+            <li>Open any converter on {siteConfig.domain} (e.g., <a href="/heic-to-jpg/" class="text-emerald-400 underline hover:text-emerald-300">HEIC to JPG</a>).</li>
+            <li>Press <kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-200">F12</kbd> (or right-click anywhere and select <strong>Inspect</strong>).</li>
             <li>Click on the <strong>Network</strong> tab in Developer Tools.</li>
             <li>Check the <strong>Fetch/XHR</strong> filter to see all background HTTP requests.</li>
             <li>Drop a 5MB or 10MB photo into the tool and click <strong>Convert</strong>.</li>
@@ -131,7 +131,7 @@ const articleJsonLd = {
       </section>
 
       <section>
-        <h2 class="text-2xl font-bold text-gray-900">Offline & Airplane Mode Compatibility</h2>
+        <h2 class="text-2xl font-bold text-slate-900">Offline & Airplane Mode Compatibility</h2>
         <p>
           Because our tools require no backend compute server, you can load the tool page while connected to Wi-Fi, turn on <strong>Airplane Mode</strong> (or unplug your Ethernet cable), and convert images or run calculations seamlessly offline.
         </p>
@@ -139,7 +139,7 @@ const articleJsonLd = {
     </div>
   </article>
 
-    <div class="mt-12 pt-6 border-t border-gray-200 flex items-center justify-between text-xs text-gray-500">
+    <div class="mt-12 pt-6 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
       <span>Last reviewed: <time datetime="2026-11-16">16 Nov 2026</time></span>
       <span>Published by: {siteConfig.brand} Engineering Team</span>
     </div>

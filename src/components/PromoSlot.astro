@@ -11,22 +11,22 @@ const { slotPosition: _slotPosition = 'postHowTo', className = '' } = Astro.prop
 
 {promoConfig.enabled && (
   <aside
-    class={`bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-xl p-5 sm:p-6 my-8 ${className}`}
+    class={`bg-gradient-to-r from-emerald-50/70 to-teal-50/40 border border-emerald-200/80 rounded-2xl p-5 sm:p-6 my-8 shadow-card ${className}`}
     aria-label="Partner Recommendation"
   >
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
       <div class="space-y-1">
-        <span class="inline-block text-[11px] font-semibold uppercase tracking-wider text-green-700 bg-green-100 px-2 py-0.5 rounded">
+        <span class="inline-block text-[11px] font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-full">
           {promoConfig.badge}
         </span>
-        <h4 class="text-base font-semibold text-gray-900">{promoConfig.title}</h4>
-        <p class="text-sm text-gray-600">{promoConfig.description}</p>
+        <h4 class="text-base font-bold text-slate-900">{promoConfig.title}</h4>
+        <p class="text-sm text-slate-600">{promoConfig.description}</p>
       </div>
       <a
         href={promoConfig.targetUrl}
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-green-600 hover:bg-green-700 rounded-lg shadow-sm transition-colors whitespace-nowrap self-start sm:self-auto"
+        class="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-emerald-600 hover:bg-emerald-700 rounded-xl shadow-xs transition-colors whitespace-nowrap self-start sm:self-auto cursor-pointer"
       >
         {promoConfig.ctaText} &rarr;
       </a>

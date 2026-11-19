@@ -315,15 +315,15 @@ if (tool.targetBytes) {
       )}
 
       <!-- 6. How-to steps & custom notes -->
-      <div id="guide" class="prose prose-gray max-w-none leading-relaxed">
+      <div id="guide" class="prose prose-slate max-w-none leading-relaxed">
         {hasCustomContent ? (
           <div
-            class="space-y-6 text-gray-700 leading-relaxed"
+            class="space-y-6 text-slate-700 leading-relaxed"
             set:html={contentHtml}
           />
         ) : (
-          <div class="my-8 text-gray-700 space-y-6">
-            <h2 class="text-2xl font-bold text-gray-900">How to Use {tool.name}</h2>
+          <div class="my-8 text-slate-700 space-y-6">
+            <h2 class="text-2xl font-bold text-slate-900">How to Use {tool.name}</h2>
             {tool.kind === 'calculator' ? (
               <ol class="list-decimal pl-5 space-y-2">
                 <li>Enter your numeric values into the corresponding input fields above.</li>
@@ -369,13 +369,13 @@ if (tool.targetBytes) {
     <RelatedTools currentTool={tool} relatedTools={related} />
 
     <!-- 9. Last-reviewed date -->
-    <div class="mt-12 pt-6 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between text-xs text-gray-500 gap-2">
+    <div class="mt-12 pt-6 border-t border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between text-xs text-slate-500 gap-2">
       <span>
         Last reviewed: <time datetime={formatIsoDate(tool.last_reviewed)}>{formatDisplayDate(tool.last_reviewed)}</time>
       </span>
       {tool.reviewer && !tool.reviewer.toLowerCase().includes('team') && !tool.reviewer.toLowerCase().includes('converter') && (
         <span>
-          Reviewed by: <strong class="text-gray-700">{tool.reviewer}</strong>
+          Reviewed by: <strong class="text-slate-700">{tool.reviewer}</strong>
         </span>
       )}
     </div>

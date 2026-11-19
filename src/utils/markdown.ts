@@ -58,17 +58,17 @@ export function renderToolMarkdown(rawMarkdown: string, toolName?: string): stri
     const headers = tableRows[0];
     const dataRows = tableRows.slice(1);
     
-    let html = '<div class="my-6 overflow-x-auto rounded-2xl border border-gray-200 shadow-2xs">\n';
+    let html = '<div class="my-6 overflow-x-auto rounded-2xl border border-slate-200/90 shadow-card">\n';
     html += '  <table class="w-full text-left text-xs sm:text-sm border-collapse bg-white">\n';
-    html += '    <thead>\n      <tr class="bg-gray-50 border-b border-gray-200 text-gray-900 font-bold">\n';
+    html += '    <thead>\n      <tr class="bg-slate-50 border-b border-slate-200 text-slate-900 font-bold">\n';
     for (const h of headers) {
       html += `        <th class="p-3 sm:p-4">${formatInline(h)}</th>\n`;
     }
     html += '      </tr>\n    </thead>\n    <tbody>\n';
     for (const row of dataRows) {
-      html += '      <tr class="border-b border-gray-100 hover:bg-gray-50/50 transition">\n';
+      html += '      <tr class="border-b border-slate-100 hover:bg-slate-50/50 transition">\n';
       for (const cell of row) {
-        html += `        <td class="p-3 sm:p-4 text-gray-700">${formatInline(cell)}</td>\n`;
+        html += `        <td class="p-3 sm:p-4 text-slate-700">${formatInline(cell)}</td>\n`;
       }
       html += '      </tr>\n';
     }
@@ -85,8 +85,8 @@ export function renderToolMarkdown(rawMarkdown: string, toolName?: string): stri
       .replace(/"/g, '&quot;')
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
       .replace(/\*(.*?)\*/g, '<em>$1</em>')
-      .replace(/`([^`]+)`/g, '<code class="px-1.5 py-0.5 rounded bg-gray-100 text-gray-800 text-xs font-mono">$1</code>')
-      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-emerald-600 hover:underline font-medium">$1</a>');
+      .replace(/`([^`]+)`/g, '<code class="px-1.5 py-0.5 rounded-md bg-slate-100 text-slate-800 text-xs font-mono border border-slate-200/60">$1</code>')
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-emerald-700 hover:text-emerald-800 hover:underline font-medium">$1</a>');
   }
 
   for (let i = 0; i < lines.length; i++) {
@@ -121,7 +121,7 @@ export function renderToolMarkdown(rawMarkdown: string, toolName?: string): stri
 
     if (stripped === '---') {
       output.push(closeLists());
-      output.push('<hr class="my-8 border-gray-200" />');
+      output.push('<hr class="my-8 border-slate-200" />');
       continue;
     }
 
@@ -136,8 +136,8 @@ export function renderToolMarkdown(rawMarkdown: string, toolName?: string): stri
       }
       output.push(
         `<figure class="my-8">` +
-        `<img src="${src}" alt="${alt}" width="800" height="450" class="rounded-2xl border border-gray-200 shadow-xs max-w-full h-auto mx-auto" loading="lazy" decoding="async" />` +
-        `<figcaption class="text-xs text-gray-500 mt-2 text-center font-medium">${alt}</figcaption>` +
+        `<img src="${src}" alt="${alt}" width="800" height="450" class="rounded-2xl border border-slate-200 shadow-card max-w-full h-auto mx-auto" loading="lazy" decoding="async" />` +
+        `<figcaption class="text-xs text-slate-500 mt-2.5 text-center font-medium">${alt}</figcaption>` +
         `</figure>`
       );
       continue;
@@ -146,14 +146,14 @@ export function renderToolMarkdown(rawMarkdown: string, toolName?: string): stri
     // Headings (ensure no H1 inside content body for strict 1-H1 quality gate)
     if (stripped.startsWith('#### ')) {
       output.push(closeLists());
-      output.push(`<h4 class="text-base font-semibold text-gray-900 mt-6 mb-2">${formatInline(stripped.slice(5))}</h4>`);
+      output.push(`<h4 class="text-base font-bold text-slate-900 mt-6 mb-2">${formatInline(stripped.slice(5))}</h4>`);
       continue;
     }
     if (stripped.startsWith('### ')) {
       output.push(closeLists());
       output.push(closeTable());
       output.push(startSection());
-      output.push(`<h3 class="text-lg sm:text-xl font-bold text-gray-900 mt-8 mb-3">${formatInline(stripped.slice(4))}</h3>`);
+      output.push(`<h3 class="text-lg sm:text-xl font-bold text-slate-900 mt-8 mb-3 tracking-tight">${formatInline(stripped.slice(4))}</h3>`);
       continue;
     }
     if (stripped.startsWith('## ') || stripped.startsWith('# ')) {
@@ -161,7 +161,7 @@ export function renderToolMarkdown(rawMarkdown: string, toolName?: string): stri
       output.push(closeTable());
       output.push(startSection());
       const heading = stripped.startsWith('## ') ? stripped.slice(3) : stripped.slice(2);
-      output.push(`<h2 class="text-xl sm:text-2xl font-bold text-gray-900 mt-10 mb-4">${formatInline(heading)}</h2>`);
+      output.push(`<h2 class="text-xl sm:text-2xl font-bold text-slate-900 mt-10 mb-4 tracking-tight">${formatInline(heading)}</h2>`);
       continue;
     }
 
@@ -172,7 +172,7 @@ export function renderToolMarkdown(rawMarkdown: string, toolName?: string): stri
     // Blockquote
     if (stripped.startsWith('> ')) {
       output.push(closeLists());
-      output.push(`<blockquote class="p-4 my-4 border-l-4 border-emerald-500 bg-emerald-50/50 rounded-r-xl text-gray-700 italic text-sm">${formatInline(stripped.slice(2))}</blockquote>`);
+      output.push(`<blockquote class="p-4 my-4 border-l-4 border-emerald-500 bg-emerald-50/50 rounded-r-2xl text-slate-700 italic text-sm shadow-2xs">${formatInline(stripped.slice(2))}</blockquote>`);
       continue;
     }
 
@@ -180,7 +180,7 @@ export function renderToolMarkdown(rawMarkdown: string, toolName?: string): stri
     if (stripped.startsWith('- ') || stripped.startsWith('* ')) {
       if (inOl) output.push(closeLists());
       if (!inUl) {
-        output.push('<ul class="list-disc pl-5 space-y-2 my-4 text-gray-700 leading-relaxed">');
+        output.push('<ul class="list-disc pl-5 space-y-2 my-4 text-slate-700 leading-relaxed">');
         inUl = true;
       }
       output.push(`  <li>${formatInline(stripped.slice(2))}</li>`);
@@ -192,7 +192,7 @@ export function renderToolMarkdown(rawMarkdown: string, toolName?: string): stri
     if (olMatch) {
       if (inUl) output.push(closeLists());
       if (!inOl) {
-        output.push('<ol class="list-decimal pl-5 space-y-2 my-4 text-gray-700 leading-relaxed">');
+        output.push('<ol class="list-decimal pl-5 space-y-2 my-4 text-slate-700 leading-relaxed">');
         inOl = true;
       }
       output.push(`  <li>${formatInline(olMatch[2])}</li>`);
@@ -201,7 +201,7 @@ export function renderToolMarkdown(rawMarkdown: string, toolName?: string): stri
 
     // Regular paragraph
     output.push(closeLists());
-    output.push(`<p class="mb-4 text-gray-700 leading-relaxed">${formatInline(stripped)}</p>`);
+    output.push(`<p class="mb-4 text-slate-700 leading-relaxed">${formatInline(stripped)}</p>`);
   }
 
   output.push(closeAll());

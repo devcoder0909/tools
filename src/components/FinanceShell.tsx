@@ -274,21 +274,21 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
       {toolId === 'sip-calculator' && (
         <div class="space-y-8">
           {/* Header & Currency Switcher */}
-          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-gray-100 pb-4">
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
             <div>
-              <h2 class="text-base sm:text-lg font-bold text-gray-900">
+              <h2 class="text-base sm:text-lg font-bold text-slate-900">
                 Systematic Investment Plan (SIP) Calculator
               </h2>
-              <p class="text-xs text-gray-500">
+              <p class="text-xs text-slate-500">
                 Calculate compounding wealth growth with dual numeric inputs &amp; synchronized sliders.
               </p>
             </div>
-            <div class="flex items-center gap-1 bg-gray-100 p-1 rounded-xl border border-gray-200">
+            <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200">
               <button
                 type="button"
                 onClick={() => setCurrency('INR')}
                 class={`px-3 py-1.5 text-xs font-bold rounded-lg transition ${
-                  currency === 'INR' ? 'bg-white text-emerald-700 shadow-xs' : 'text-gray-600 hover:text-gray-900'
+                  currency === 'INR' ? 'bg-white text-emerald-700 shadow-xs' : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
                 ₹ INR
@@ -297,7 +297,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                 type="button"
                 onClick={() => setCurrency('USD')}
                 class={`px-3 py-1.5 text-xs font-bold rounded-lg transition ${
-                  currency === 'USD' ? 'bg-white text-emerald-700 shadow-xs' : 'text-gray-600 hover:text-gray-900'
+                  currency === 'USD' ? 'bg-white text-emerald-700 shadow-xs' : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
                 $ USD
@@ -309,15 +309,15 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
             {/* Left Column: Direct Inputs + Sliders + Quick Chips */}
             <div class="lg:col-span-7 space-y-6">
               {/* Field 1: Monthly Investment */}
-              <div class="p-4 sm:p-5 rounded-2xl bg-gray-50/70 border border-gray-200 space-y-3">
+              <div class="p-4 sm:p-5 rounded-2xl bg-slate-50/70 border border-slate-200 space-y-3">
                 <div class="flex items-center justify-between gap-3">
-                  <label for="sip-monthly-input" class="text-xs sm:text-sm font-bold text-gray-800 flex items-center gap-1.5">
+                  <label for="sip-monthly-input" class="text-xs sm:text-sm font-bold text-slate-800 flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span>
                     Monthly Investment
                   </label>
                   {/* Direct Numeric Input Box */}
                   <div class="relative w-36 sm:w-44">
-                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-sm font-bold text-gray-500 select-none">
+                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-sm font-bold text-slate-500 select-none">
                       {currSym}
                     </span>
                     <input
@@ -331,7 +331,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                         const val = parseFloat((e.target as HTMLInputElement).value);
                         setSipMonthly(isNaN(val) ? 0 : val);
                       }}
-                      class="w-full pl-7 pr-3 py-2 text-right text-sm sm:text-base font-bold font-mono text-gray-900 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                      class="w-full pl-7 pr-3 py-2 text-right text-sm sm:text-base font-bold font-mono text-slate-900 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                     />
                   </div>
                 </div>
@@ -344,12 +344,12 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                   step="500"
                   value={Math.min(100000, sipMonthly)}
                   onInput={(e) => setSipMonthly(Number((e.target as HTMLInputElement).value))}
-                  class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+                  class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
                 />
 
                 {/* Quick Presets (Including ₹42,000 as requested) */}
                 <div class="flex flex-wrap items-center gap-1.5 pt-1">
-                  <span class="text-2xs font-bold uppercase text-gray-400 mr-1">Presets:</span>
+                  <span class="text-2xs font-bold uppercase text-slate-400 mr-1">Presets:</span>
                   {(currency === 'INR'
                     ? [
                         { label: '₹5,000', val: 5000 },
@@ -375,7 +375,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                       class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition ${
                         sipMonthly === p.val
                           ? 'bg-emerald-600 text-white border-emerald-600 shadow-2xs'
-                          : 'bg-white text-gray-700 border-gray-200 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-800'
+                          : 'bg-white text-slate-700 border-slate-200 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-800'
                       }`}
                     >
                       {p.label}
@@ -385,9 +385,9 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
               </div>
 
               {/* Field 2: Expected Annual Return Rate (%) */}
-              <div class="p-4 sm:p-5 rounded-2xl bg-gray-50/70 border border-gray-200 space-y-3">
+              <div class="p-4 sm:p-5 rounded-2xl bg-slate-50/70 border border-slate-200 space-y-3">
                 <div class="flex items-center justify-between gap-3">
-                  <label for="sip-rate-input" class="text-xs sm:text-sm font-bold text-gray-800 flex items-center gap-1.5">
+                  <label for="sip-rate-input" class="text-xs sm:text-sm font-bold text-slate-800 flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span>
                     Expected Annual Return Rate (%)
                   </label>
@@ -404,9 +404,9 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                         const val = parseFloat((e.target as HTMLInputElement).value);
                         setSipRate(isNaN(val) ? 0 : val);
                       }}
-                      class="w-full pl-3 pr-7 py-2 text-right text-sm sm:text-base font-bold font-mono text-gray-900 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                      class="w-full pl-3 pr-7 py-2 text-right text-sm sm:text-base font-bold font-mono text-slate-900 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                     />
-                    <span class="absolute right-3 top-1/2 -translate-y-1/2 text-sm font-bold text-gray-500 select-none">
+                    <span class="absolute right-3 top-1/2 -translate-y-1/2 text-sm font-bold text-slate-500 select-none">
                       %
                     </span>
                   </div>
@@ -420,12 +420,12 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                   step="0.5"
                   value={sipRate}
                   onInput={(e) => setSipRate(Number((e.target as HTMLInputElement).value))}
-                  class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+                  class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
                 />
 
                 {/* Rate Presets */}
                 <div class="flex flex-wrap items-center gap-1.5 pt-1">
-                  <span class="text-2xs font-bold uppercase text-gray-400 mr-1">Benchmarks:</span>
+                  <span class="text-2xs font-bold uppercase text-slate-400 mr-1">Benchmarks:</span>
                   {[
                     { label: '8% (FD/Debt)', val: 8 },
                     { label: '10% (Hybrid)', val: 10 },
@@ -440,7 +440,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                       class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition ${
                         sipRate === p.val
                           ? 'bg-emerald-600 text-white border-emerald-600 shadow-2xs'
-                          : 'bg-white text-gray-700 border-gray-200 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-800'
+                          : 'bg-white text-slate-700 border-slate-200 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-800'
                       }`}
                     >
                       {p.label}
@@ -450,9 +450,9 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
               </div>
 
               {/* Field 3: Investment Time Period (Years) */}
-              <div class="p-4 sm:p-5 rounded-2xl bg-gray-50/70 border border-gray-200 space-y-3">
+              <div class="p-4 sm:p-5 rounded-2xl bg-slate-50/70 border border-slate-200 space-y-3">
                 <div class="flex items-center justify-between gap-3">
-                  <label for="sip-years-input" class="text-xs sm:text-sm font-bold text-gray-800 flex items-center gap-1.5">
+                  <label for="sip-years-input" class="text-xs sm:text-sm font-bold text-slate-800 flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span>
                     Investment Time Period
                   </label>
@@ -469,9 +469,9 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                         const val = parseInt((e.target as HTMLInputElement).value, 10);
                         setSipYears(isNaN(val) ? 0 : val);
                       }}
-                      class="w-full pl-3 pr-8 py-2 text-right text-sm sm:text-base font-bold font-mono text-gray-900 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                      class="w-full pl-3 pr-8 py-2 text-right text-sm sm:text-base font-bold font-mono text-slate-900 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                     />
-                    <span class="absolute right-2.5 top-1/2 -translate-y-1/2 text-2xs font-bold text-gray-500 uppercase select-none">
+                    <span class="absolute right-2.5 top-1/2 -translate-y-1/2 text-2xs font-bold text-slate-500 uppercase select-none">
                       Yrs
                     </span>
                   </div>
@@ -485,12 +485,12 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                   step="1"
                   value={sipYears}
                   onInput={(e) => setSipYears(Number((e.target as HTMLInputElement).value))}
-                  class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+                  class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
                 />
 
                 {/* Tenure Presets */}
                 <div class="flex flex-wrap items-center gap-1.5 pt-1">
-                  <span class="text-2xs font-bold uppercase text-gray-400 mr-1">Horizons:</span>
+                  <span class="text-2xs font-bold uppercase text-slate-400 mr-1">Horizons:</span>
                   {[3, 5, 10, 15, 20, 25, 30].map((yr) => (
                     <button
                       key={yr}
@@ -499,7 +499,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                       class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition ${
                         sipYears === yr
                           ? 'bg-emerald-600 text-white border-emerald-600 shadow-2xs'
-                          : 'bg-white text-gray-700 border-gray-200 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-800'
+                          : 'bg-white text-slate-700 border-slate-200 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-800'
                       }`}
                     >
                       {yr} Yrs
@@ -510,7 +510,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
             </div>
 
             {/* Right Column: Visual Maturity Summary & Ratio Bar */}
-            <div class="lg:col-span-5 bg-gradient-to-br from-gray-50 via-emerald-50/30 to-teal-50/30 border border-emerald-100 rounded-3xl p-6 flex flex-col justify-between shadow-2xs">
+            <div class="lg:col-span-5 bg-gradient-to-br from-slate-50 via-emerald-50/30 to-teal-50/30 border border-emerald-100 rounded-3xl p-6 flex flex-col justify-between shadow-2xs">
               <div>
                 <div class="flex items-center justify-between text-2xs font-bold uppercase tracking-wider text-emerald-800 mb-2">
                   <span>Total Maturity Value</span>
@@ -521,13 +521,13 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                 <p class="text-3xl sm:text-4xl font-black text-emerald-950 font-mono tracking-tight my-1">
                   {formatMoney(sipCalc.total)}
                 </p>
-                <p class="text-xs text-gray-500 mb-6">
+                <p class="text-xs text-slate-500 mb-6">
                   Calculated after {sipYears} years ({sipYears * 12} installments) at {sipRate}% annual compounding.
                 </p>
 
                 {/* Visual Ratio Progress Split Bar */}
                 <div class="space-y-1.5 mb-6">
-                  <div class="flex justify-between text-2xs font-semibold text-gray-600">
+                  <div class="flex justify-between text-2xs font-semibold text-slate-600">
                     <span class="flex items-center gap-1">
                       <span class="w-2.5 h-2.5 rounded-xs bg-slate-700 inline-block"></span>
                       Invested ({sipCalc.investedRatio}%)
@@ -537,7 +537,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                       Est. Returns ({sipCalc.returnsRatio}%)
                     </span>
                   </div>
-                  <div class="w-full h-3 rounded-full bg-gray-200 overflow-hidden flex shadow-inner">
+                  <div class="w-full h-3 rounded-full bg-slate-200 overflow-hidden flex shadow-inner">
                     <div
                       style={{ width: `${sipCalc.investedRatio}%` }}
                       class="bg-slate-700 h-full transition-all duration-300"
@@ -551,12 +551,12 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
 
                 {/* Financial Breakdown Cards */}
                 <div class="space-y-2.5 text-xs">
-                  <div class="p-3 bg-white rounded-xl border border-gray-200 flex items-center justify-between">
-                    <div class="flex items-center gap-2 text-gray-600">
+                  <div class="p-3 bg-white rounded-xl border border-slate-200 flex items-center justify-between">
+                    <div class="flex items-center gap-2 text-slate-600">
                       <span class="w-2 h-2 rounded-full bg-slate-600"></span>
                       <span>Invested Amount:</span>
                     </div>
-                    <span class="font-bold font-mono text-gray-900 text-sm">
+                    <span class="font-bold font-mono text-slate-900 text-sm">
                       {formatMoney(sipCalc.invested)}
                     </span>
                   </div>
@@ -574,7 +574,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
               </div>
 
               {/* Compounding Wisdom Insight */}
-              <div class="mt-6 pt-4 border-t border-emerald-100/70 text-2xs text-gray-600 leading-relaxed flex items-start gap-1.5">
+              <div class="mt-6 pt-4 border-t border-emerald-100/70 text-2xs text-slate-600 leading-relaxed flex items-start gap-1.5">
                 <svg class="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -585,18 +585,18 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
 
           {/* Accumulation Milestones Table */}
           {sipCalc.milestones.length > 0 && (
-            <div class="border-t border-gray-200 pt-6">
+            <div class="border-t border-slate-200 pt-6">
               <div class="flex items-center justify-between mb-3">
-                <h3 class="text-xs sm:text-sm font-bold text-gray-900 uppercase tracking-wider">
+                <h3 class="text-xs sm:text-sm font-bold text-slate-900 uppercase tracking-wider">
                   Wealth Accumulation Timeline
                 </h3>
-                <span class="text-2xs text-gray-500">
+                <span class="text-2xs text-slate-500">
                   {formatMoney(sipMonthly)} / month @ {sipRate}% p.a.
                 </span>
               </div>
-              <div class="overflow-x-auto border border-gray-200 rounded-2xl shadow-2xs">
+              <div class="overflow-x-auto border border-slate-200 rounded-2xl shadow-2xs">
                 <table class="w-full text-left text-xs">
-                  <thead class="bg-gray-50 text-gray-600 font-semibold border-b border-gray-200">
+                  <thead class="bg-slate-50 text-slate-600 font-semibold border-b border-slate-200">
                     <tr>
                       <th class="p-3">Horizon</th>
                       <th class="p-3">Invested Principal</th>
@@ -604,15 +604,15 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                       <th class="p-3">Total Corpus Value</th>
                     </tr>
                   </thead>
-                  <tbody class="divide-y divide-gray-100 font-mono">
+                  <tbody class="divide-y divide-slate-100 font-mono">
                     {sipCalc.milestones.map((m) => (
                       <tr key={m.year} class="hover:bg-emerald-50/40 transition">
-                        <td class="p-3 font-sans font-bold text-gray-900">
+                        <td class="p-3 font-sans font-bold text-slate-900">
                           {m.year} {m.year === 1 ? 'Year' : 'Years'}
                         </td>
-                        <td class="p-3 text-gray-600">{formatMoney(m.invested)}</td>
+                        <td class="p-3 text-slate-600">{formatMoney(m.invested)}</td>
                         <td class="p-3 text-emerald-700 font-semibold">+{formatMoney(m.returns)}</td>
-                        <td class="p-3 text-gray-900 font-bold">{formatMoney(m.total)}</td>
+                        <td class="p-3 text-slate-900 font-bold">{formatMoney(m.total)}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -629,23 +629,23 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
       {(toolId === 'emi-calculator' || toolId === 'loan-calculator' || toolId === 'mortgage-calculator') && (
         <div class="space-y-8">
           {/* Header & Currency Switcher */}
-          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-gray-100 pb-4">
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
             <div>
-              <h2 class="text-base sm:text-lg font-bold text-gray-900">
+              <h2 class="text-base sm:text-lg font-bold text-slate-900">
                 {toolId === 'mortgage-calculator'
                   ? 'Mortgage Payment & Amortization Calculator'
                   : 'Equated Monthly Installment (EMI) Calculator'}
               </h2>
-              <p class="text-xs text-gray-500">
+              <p class="text-xs text-slate-500">
                 Dual numeric inputs, synchronized sliders, and complete reducing balance amortization schedule.
               </p>
             </div>
-            <div class="flex items-center gap-1 bg-gray-100 p-1 rounded-xl border border-gray-200">
+            <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200">
               <button
                 type="button"
                 onClick={() => setCurrency('INR')}
                 class={`px-3 py-1.5 text-xs font-bold rounded-lg transition ${
-                  currency === 'INR' ? 'bg-white text-emerald-700 shadow-xs' : 'text-gray-600 hover:text-gray-900'
+                  currency === 'INR' ? 'bg-white text-emerald-700 shadow-xs' : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
                 ₹ INR
@@ -654,7 +654,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                 type="button"
                 onClick={() => setCurrency('USD')}
                 class={`px-3 py-1.5 text-xs font-bold rounded-lg transition ${
-                  currency === 'USD' ? 'bg-white text-emerald-700 shadow-xs' : 'text-gray-600 hover:text-gray-900'
+                  currency === 'USD' ? 'bg-white text-emerald-700 shadow-xs' : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
                 $ USD
@@ -666,14 +666,14 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
             {/* Left Column: Direct Inputs + Sliders */}
             <div class="lg:col-span-7 space-y-6">
               {/* Field 1: Principal Loan Amount */}
-              <div class="p-4 sm:p-5 rounded-2xl bg-gray-50/70 border border-gray-200 space-y-3">
+              <div class="p-4 sm:p-5 rounded-2xl bg-slate-50/70 border border-slate-200 space-y-3">
                 <div class="flex items-center justify-between gap-3">
-                  <label for="emi-principal-input" class="text-xs sm:text-sm font-bold text-gray-800 flex items-center gap-1.5">
+                  <label for="emi-principal-input" class="text-xs sm:text-sm font-bold text-slate-800 flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span>
                     {toolId === 'mortgage-calculator' ? 'Mortgage Loan Principal' : 'Loan Principal Amount'}
                   </label>
                   <div class="relative w-40 sm:w-48">
-                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-sm font-bold text-gray-500 select-none">
+                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-sm font-bold text-slate-500 select-none">
                       {currSym}
                     </span>
                     <input
@@ -687,7 +687,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                         const val = parseFloat((e.target as HTMLInputElement).value);
                         setLoanAmount(isNaN(val) ? 0 : val);
                       }}
-                      class="w-full pl-7 pr-3 py-2 text-right text-sm sm:text-base font-bold font-mono text-gray-900 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                      class="w-full pl-7 pr-3 py-2 text-right text-sm sm:text-base font-bold font-mono text-slate-900 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                     />
                   </div>
                 </div>
@@ -699,12 +699,12 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                   step="50000"
                   value={Math.min(10000000, loanAmount)}
                   onInput={(e) => setLoanAmount(Number((e.target as HTMLInputElement).value))}
-                  class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+                  class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
                 />
 
                 {/* Loan Amount Presets */}
                 <div class="flex flex-wrap items-center gap-1.5 pt-1">
-                  <span class="text-2xs font-bold uppercase text-gray-400 mr-1">Presets:</span>
+                  <span class="text-2xs font-bold uppercase text-slate-400 mr-1">Presets:</span>
                   {(currency === 'INR'
                     ? [
                         { label: '₹10 Lakh', val: 1000000 },
@@ -728,7 +728,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                       class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition ${
                         loanAmount === p.val
                           ? 'bg-emerald-600 text-white border-emerald-600 shadow-2xs'
-                          : 'bg-white text-gray-700 border-gray-200 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-800'
+                          : 'bg-white text-slate-700 border-slate-200 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-800'
                       }`}
                     >
                       {p.label}
@@ -738,9 +738,9 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
               </div>
 
               {/* Field 2: Annual Interest Rate (%) */}
-              <div class="p-4 sm:p-5 rounded-2xl bg-gray-50/70 border border-gray-200 space-y-3">
+              <div class="p-4 sm:p-5 rounded-2xl bg-slate-50/70 border border-slate-200 space-y-3">
                 <div class="flex items-center justify-between gap-3">
-                  <label for="emi-rate-input" class="text-xs sm:text-sm font-bold text-gray-800 flex items-center gap-1.5">
+                  <label for="emi-rate-input" class="text-xs sm:text-sm font-bold text-slate-800 flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span>
                     Annual Interest Rate (%)
                   </label>
@@ -756,9 +756,9 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                         const val = parseFloat((e.target as HTMLInputElement).value);
                         setInterestRate(isNaN(val) ? 0 : val);
                       }}
-                      class="w-full pl-3 pr-7 py-2 text-right text-sm sm:text-base font-bold font-mono text-gray-900 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                      class="w-full pl-3 pr-7 py-2 text-right text-sm sm:text-base font-bold font-mono text-slate-900 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                     />
-                    <span class="absolute right-3 top-1/2 -translate-y-1/2 text-sm font-bold text-gray-500 select-none">
+                    <span class="absolute right-3 top-1/2 -translate-y-1/2 text-sm font-bold text-slate-500 select-none">
                       %
                     </span>
                   </div>
@@ -771,12 +771,12 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                   step="0.1"
                   value={interestRate}
                   onInput={(e) => setInterestRate(Number((e.target as HTMLInputElement).value))}
-                  class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+                  class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
                 />
 
                 {/* Interest Rate Presets */}
                 <div class="flex flex-wrap items-center gap-1.5 pt-1">
-                  <span class="text-2xs font-bold uppercase text-gray-400 mr-1">Rates:</span>
+                  <span class="text-2xs font-bold uppercase text-slate-400 mr-1">Rates:</span>
                   {[6.5, 7.5, 8.5, 9.5, 10.5, 12.0].map((rate) => (
                     <button
                       key={rate}
@@ -785,7 +785,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                       class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition ${
                         interestRate === rate
                           ? 'bg-emerald-600 text-white border-emerald-600 shadow-2xs'
-                          : 'bg-white text-gray-700 border-gray-200 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-800'
+                          : 'bg-white text-slate-700 border-slate-200 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-800'
                       }`}
                     >
                       {rate}%
@@ -795,9 +795,9 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
               </div>
 
               {/* Field 3: Loan Term / Tenure */}
-              <div class="p-4 sm:p-5 rounded-2xl bg-gray-50/70 border border-gray-200 space-y-3">
+              <div class="p-4 sm:p-5 rounded-2xl bg-slate-50/70 border border-slate-200 space-y-3">
                 <div class="flex items-center justify-between gap-3">
-                  <label for="emi-tenure-input" class="text-xs sm:text-sm font-bold text-gray-800 flex items-center gap-1.5">
+                  <label for="emi-tenure-input" class="text-xs sm:text-sm font-bold text-slate-800 flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span>
                     Loan Duration / Tenure
                   </label>
@@ -813,9 +813,9 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                         const val = parseInt((e.target as HTMLInputElement).value, 10);
                         setLoanTenureYears(isNaN(val) ? 0 : val);
                       }}
-                      class="w-full pl-3 pr-8 py-2 text-right text-sm sm:text-base font-bold font-mono text-gray-900 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                      class="w-full pl-3 pr-8 py-2 text-right text-sm sm:text-base font-bold font-mono text-slate-900 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                     />
-                    <span class="absolute right-2.5 top-1/2 -translate-y-1/2 text-2xs font-bold text-gray-500 uppercase select-none">
+                    <span class="absolute right-2.5 top-1/2 -translate-y-1/2 text-2xs font-bold text-slate-500 uppercase select-none">
                       Yrs
                     </span>
                   </div>
@@ -828,12 +828,12 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                   step="1"
                   value={loanTenureYears}
                   onInput={(e) => setLoanTenureYears(Number((e.target as HTMLInputElement).value))}
-                  class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+                  class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
                 />
 
                 {/* Tenure Presets */}
                 <div class="flex flex-wrap items-center gap-1.5 pt-1">
-                  <span class="text-2xs font-bold uppercase text-gray-400 mr-1">Terms:</span>
+                  <span class="text-2xs font-bold uppercase text-slate-400 mr-1">Terms:</span>
                   {[5, 10, 15, 20, 25, 30].map((yr) => (
                     <button
                       key={yr}
@@ -842,7 +842,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                       class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition ${
                         loanTenureYears === yr
                           ? 'bg-emerald-600 text-white border-emerald-600 shadow-2xs'
-                          : 'bg-white text-gray-700 border-gray-200 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-800'
+                          : 'bg-white text-slate-700 border-slate-200 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-800'
                       }`}
                     >
                       {yr} Yrs ({yr * 12} Mos)
@@ -853,21 +853,21 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
             </div>
 
             {/* Right Column: Monthly Payment & Cost Breakdown */}
-            <div class="lg:col-span-5 bg-gradient-to-br from-gray-50 via-emerald-50/20 to-slate-50 border border-gray-200 rounded-3xl p-6 flex flex-col justify-between shadow-2xs">
+            <div class="lg:col-span-5 bg-gradient-to-br from-slate-50 via-emerald-50/20 to-slate-50 border border-slate-200 rounded-3xl p-6 flex flex-col justify-between shadow-2xs">
               <div>
-                <span class="text-2xs uppercase font-bold text-gray-500 tracking-wider block">
+                <span class="text-2xs uppercase font-bold text-slate-500 tracking-wider block">
                   {toolId === 'mortgage-calculator' ? 'Monthly Mortgage Payment' : 'Monthly Payment (EMI)'}
                 </span>
                 <p class="text-3xl sm:text-4xl font-black text-emerald-800 font-mono tracking-tight my-1">
-                  {formatMoney(emiCalc.monthlyEmi)} <span class="text-xs font-semibold text-gray-500">/ mo</span>
+                  {formatMoney(emiCalc.monthlyEmi)} <span class="text-xs font-semibold text-slate-500">/ mo</span>
                 </p>
-                <p class="text-xs text-gray-500 mb-6">
+                <p class="text-xs text-slate-500 mb-6">
                   Fixed monthly reducing balance installment for {loanTenureYears * 12} payment cycles.
                 </p>
 
                 {/* Split Progress Bar */}
                 <div class="space-y-1.5 mb-6">
-                  <div class="flex justify-between text-2xs font-semibold text-gray-600">
+                  <div class="flex justify-between text-2xs font-semibold text-slate-600">
                     <span class="flex items-center gap-1 text-slate-700">
                       <span class="w-2.5 h-2.5 rounded-xs bg-slate-700 inline-block"></span>
                       Principal ({emiCalc.principalRatio}%)
@@ -877,7 +877,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                       Total Interest ({emiCalc.interestRatio}%)
                     </span>
                   </div>
-                  <div class="w-full h-3 rounded-full bg-gray-200 overflow-hidden flex shadow-inner">
+                  <div class="w-full h-3 rounded-full bg-slate-200 overflow-hidden flex shadow-inner">
                     <div
                       style={{ width: `${emiCalc.principalRatio}%` }}
                       class="bg-slate-700 h-full transition-all duration-300"
@@ -891,9 +891,9 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
 
                 {/* Breakdown Summary */}
                 <div class="space-y-2 text-xs">
-                  <div class="p-3 bg-white rounded-xl border border-gray-200 flex justify-between">
-                    <span class="text-gray-600">Principal Borrowed:</span>
-                    <span class="font-bold font-mono text-gray-900">{formatMoney(loanAmount)}</span>
+                  <div class="p-3 bg-white rounded-xl border border-slate-200 flex justify-between">
+                    <span class="text-slate-600">Principal Borrowed:</span>
+                    <span class="font-bold font-mono text-slate-900">{formatMoney(loanAmount)}</span>
                   </div>
                   <div class="p-3 bg-white rounded-xl border border-amber-200 flex justify-between">
                     <span class="text-amber-800 font-medium">Total Interest Payable:</span>
@@ -906,7 +906,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                 </div>
               </div>
 
-              <div class="mt-6 pt-4 border-t border-gray-200 text-2xs text-gray-500 leading-relaxed flex items-start gap-1.5">
+              <div class="mt-6 pt-4 border-t border-slate-200 text-2xs text-slate-500 leading-relaxed flex items-start gap-1.5">
                 <svg class="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -917,16 +917,16 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
 
           {/* Amortization Table */}
           {emiCalc.schedule.length > 0 && (
-            <div class="border-t border-gray-200 pt-6">
+            <div class="border-t border-slate-200 pt-6">
               <div class="flex items-center justify-between mb-3">
-                <h3 class="text-xs sm:text-sm font-bold text-gray-900 uppercase tracking-wider">
+                <h3 class="text-xs sm:text-sm font-bold text-slate-900 uppercase tracking-wider">
                   Initial Amortization Schedule (First 24 Months)
                 </h3>
-                <span class="text-2xs text-gray-500">Reducing Balance Compounding</span>
+                <span class="text-2xs text-slate-500">Reducing Balance Compounding</span>
               </div>
-              <div class="overflow-x-auto border border-gray-200 rounded-2xl shadow-2xs max-h-80">
+              <div class="overflow-x-auto border border-slate-200 rounded-2xl shadow-2xs max-h-80">
                 <table class="w-full text-left text-xs">
-                  <thead class="bg-gray-50 text-gray-600 font-semibold border-b border-gray-200 sticky top-0">
+                  <thead class="bg-slate-50 text-slate-600 font-semibold border-b border-slate-200 sticky top-0">
                     <tr>
                       <th class="p-3">Payment #</th>
                       <th class="p-3">Principal Paid</th>
@@ -934,13 +934,13 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                       <th class="p-3">Outstanding Balance</th>
                     </tr>
                   </thead>
-                  <tbody class="divide-y divide-gray-100 font-mono">
+                  <tbody class="divide-y divide-slate-100 font-mono">
                     {emiCalc.schedule.map((row) => (
-                      <tr key={row.month} class="hover:bg-gray-50 transition">
-                        <td class="p-3 font-sans text-gray-600">Month {row.month}</td>
+                      <tr key={row.month} class="hover:bg-slate-50 transition">
+                        <td class="p-3 font-sans text-slate-600">Month {row.month}</td>
                         <td class="p-3 text-emerald-700 font-semibold">{formatMoney(row.principal)}</td>
                         <td class="p-3 text-amber-700">{formatMoney(row.interest)}</td>
-                        <td class="p-3 text-gray-900 font-bold">{formatMoney(row.balance)}</td>
+                        <td class="p-3 text-slate-900 font-bold">{formatMoney(row.balance)}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -956,21 +956,21 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
       {/* ======================================================== */}
       {toolId === 'compound-interest-calculator' && (
         <div class="space-y-8">
-          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-gray-100 pb-4">
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
             <div>
-              <h2 class="text-base sm:text-lg font-bold text-gray-900">
+              <h2 class="text-base sm:text-lg font-bold text-slate-900">
                 Compound Interest Future Value Calculator
               </h2>
-              <p class="text-xs text-gray-500">
+              <p class="text-xs text-slate-500">
                 Direct numeric inputs, compounding frequency switchers, and annual growth schedules.
               </p>
             </div>
-            <div class="flex items-center gap-1 bg-gray-100 p-1 rounded-xl border border-gray-200">
+            <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200">
               <button
                 type="button"
                 onClick={() => setCurrency('INR')}
                 class={`px-3 py-1.5 text-xs font-bold rounded-lg transition ${
-                  currency === 'INR' ? 'bg-white text-emerald-700 shadow-xs' : 'text-gray-600 hover:text-gray-900'
+                  currency === 'INR' ? 'bg-white text-emerald-700 shadow-xs' : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
                 ₹ INR
@@ -979,7 +979,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                 type="button"
                 onClick={() => setCurrency('USD')}
                 class={`px-3 py-1.5 text-xs font-bold rounded-lg transition ${
-                  currency === 'USD' ? 'bg-white text-emerald-700 shadow-xs' : 'text-gray-600 hover:text-gray-900'
+                  currency === 'USD' ? 'bg-white text-emerald-700 shadow-xs' : 'text-slate-600 hover:text-slate-900'
                 }`}
               >
                 $ USD
@@ -990,14 +990,14 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             <div class="lg:col-span-7 space-y-6">
               {/* Field 1: Initial Principal Deposit */}
-              <div class="p-4 sm:p-5 rounded-2xl bg-gray-50/70 border border-gray-200 space-y-3">
+              <div class="p-4 sm:p-5 rounded-2xl bg-slate-50/70 border border-slate-200 space-y-3">
                 <div class="flex items-center justify-between gap-3">
-                  <label for="ci-principal-input" class="text-xs sm:text-sm font-bold text-gray-800 flex items-center gap-1.5">
+                  <label for="ci-principal-input" class="text-xs sm:text-sm font-bold text-slate-800 flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span>
                     Initial Principal Deposit
                   </label>
                   <div class="relative w-36 sm:w-44">
-                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-sm font-bold text-gray-500 select-none">
+                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-sm font-bold text-slate-500 select-none">
                       {currSym}
                     </span>
                     <input
@@ -1011,7 +1011,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                         const val = parseFloat((e.target as HTMLInputElement).value);
                         setCiPrincipal(isNaN(val) ? 0 : val);
                       }}
-                      class="w-full pl-7 pr-3 py-2 text-right text-sm sm:text-base font-bold font-mono text-gray-900 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                      class="w-full pl-7 pr-3 py-2 text-right text-sm sm:text-base font-bold font-mono text-slate-900 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                     />
                   </div>
                 </div>
@@ -1023,11 +1023,11 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                   step="5000"
                   value={Math.min(1000000, ciPrincipal)}
                   onInput={(e) => setCiPrincipal(Number((e.target as HTMLInputElement).value))}
-                  class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+                  class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
                 />
 
                 <div class="flex flex-wrap items-center gap-1.5 pt-1">
-                  <span class="text-2xs font-bold uppercase text-gray-400 mr-1">Presets:</span>
+                  <span class="text-2xs font-bold uppercase text-slate-400 mr-1">Presets:</span>
                   {(currency === 'INR'
                     ? [
                         { label: '₹10,000', val: 10000 },
@@ -1051,7 +1051,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                       class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition ${
                         ciPrincipal === p.val
                           ? 'bg-emerald-600 text-white border-emerald-600 shadow-2xs'
-                          : 'bg-white text-gray-700 border-gray-200 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-800'
+                          : 'bg-white text-slate-700 border-slate-200 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-800'
                       }`}
                     >
                       {p.label}
@@ -1061,9 +1061,9 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
               </div>
 
               {/* Field 2: Annual Interest Rate */}
-              <div class="p-4 sm:p-5 rounded-2xl bg-gray-50/70 border border-gray-200 space-y-3">
+              <div class="p-4 sm:p-5 rounded-2xl bg-slate-50/70 border border-slate-200 space-y-3">
                 <div class="flex items-center justify-between gap-3">
-                  <label for="ci-rate-input" class="text-xs sm:text-sm font-bold text-gray-800 flex items-center gap-1.5">
+                  <label for="ci-rate-input" class="text-xs sm:text-sm font-bold text-slate-800 flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span>
                     Annual Interest Rate (%)
                   </label>
@@ -1079,9 +1079,9 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                         const val = parseFloat((e.target as HTMLInputElement).value);
                         setCiRate(isNaN(val) ? 0 : val);
                       }}
-                      class="w-full pl-3 pr-7 py-2 text-right text-sm sm:text-base font-bold font-mono text-gray-900 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                      class="w-full pl-3 pr-7 py-2 text-right text-sm sm:text-base font-bold font-mono text-slate-900 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                     />
-                    <span class="absolute right-3 top-1/2 -translate-y-1/2 text-sm font-bold text-gray-500 select-none">
+                    <span class="absolute right-3 top-1/2 -translate-y-1/2 text-sm font-bold text-slate-500 select-none">
                       %
                     </span>
                   </div>
@@ -1094,11 +1094,11 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                   step="0.5"
                   value={ciRate}
                   onInput={(e) => setCiRate(Number((e.target as HTMLInputElement).value))}
-                  class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+                  class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
                 />
 
                 <div class="flex flex-wrap items-center gap-1.5 pt-1">
-                  <span class="text-2xs font-bold uppercase text-gray-400 mr-1">Benchmarks:</span>
+                  <span class="text-2xs font-bold uppercase text-slate-400 mr-1">Benchmarks:</span>
                   {[5, 7, 8, 10, 12, 15].map((rate) => (
                     <button
                       key={rate}
@@ -1107,7 +1107,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                       class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition ${
                         ciRate === rate
                           ? 'bg-emerald-600 text-white border-emerald-600 shadow-2xs'
-                          : 'bg-white text-gray-700 border-gray-200 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-800'
+                          : 'bg-white text-slate-700 border-slate-200 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-800'
                       }`}
                     >
                       {rate}%
@@ -1117,9 +1117,9 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
               </div>
 
               {/* Field 3: Investment Tenure (Years) */}
-              <div class="p-4 sm:p-5 rounded-2xl bg-gray-50/70 border border-gray-200 space-y-3">
+              <div class="p-4 sm:p-5 rounded-2xl bg-slate-50/70 border border-slate-200 space-y-3">
                 <div class="flex items-center justify-between gap-3">
-                  <label for="ci-years-input" class="text-xs sm:text-sm font-bold text-gray-800 flex items-center gap-1.5">
+                  <label for="ci-years-input" class="text-xs sm:text-sm font-bold text-slate-800 flex items-center gap-1.5">
                     <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span>
                     Investment Tenure (Years)
                   </label>
@@ -1135,9 +1135,9 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                         const val = parseInt((e.target as HTMLInputElement).value, 10);
                         setCiYears(isNaN(val) ? 0 : val);
                       }}
-                      class="w-full pl-3 pr-8 py-2 text-right text-sm sm:text-base font-bold font-mono text-gray-900 bg-white border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                      class="w-full pl-3 pr-8 py-2 text-right text-sm sm:text-base font-bold font-mono text-slate-900 bg-white border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                     />
-                    <span class="absolute right-2.5 top-1/2 -translate-y-1/2 text-2xs font-bold text-gray-500 uppercase select-none">
+                    <span class="absolute right-2.5 top-1/2 -translate-y-1/2 text-2xs font-bold text-slate-500 uppercase select-none">
                       Yrs
                     </span>
                   </div>
@@ -1150,11 +1150,11 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                   step="1"
                   value={ciYears}
                   onInput={(e) => setCiYears(Number((e.target as HTMLInputElement).value))}
-                  class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
+                  class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600"
                 />
 
                 <div class="flex flex-wrap items-center gap-1.5 pt-1">
-                  <span class="text-2xs font-bold uppercase text-gray-400 mr-1">Horizons:</span>
+                  <span class="text-2xs font-bold uppercase text-slate-400 mr-1">Horizons:</span>
                   {[3, 5, 10, 15, 20, 25, 30].map((yr) => (
                     <button
                       key={yr}
@@ -1163,7 +1163,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                       class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition ${
                         ciYears === yr
                           ? 'bg-emerald-600 text-white border-emerald-600 shadow-2xs'
-                          : 'bg-white text-gray-700 border-gray-200 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-800'
+                          : 'bg-white text-slate-700 border-slate-200 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-800'
                       }`}
                     >
                       {yr} Yrs
@@ -1173,8 +1173,8 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
               </div>
 
               {/* Field 4: Compounding Frequency */}
-              <div class="p-4 sm:p-5 rounded-2xl bg-gray-50/70 border border-gray-200 space-y-2">
-                <label class="text-xs sm:text-sm font-bold text-gray-800 block">
+              <div class="p-4 sm:p-5 rounded-2xl bg-slate-50/70 border border-slate-200 space-y-2">
+                <label class="text-xs sm:text-sm font-bold text-slate-800 block">
                   Compounding Frequency
                 </label>
                 <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
@@ -1192,7 +1192,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                       class={`py-2 px-2 text-xs font-bold rounded-xl border transition ${
                         ciFrequency === item.freq
                           ? 'bg-emerald-600 text-white border-emerald-600 shadow-xs'
-                          : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
+                          : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-100'
                       }`}
                     >
                       {item.label}
@@ -1203,20 +1203,20 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
             </div>
 
             {/* Right Column: Maturity Card */}
-            <div class="lg:col-span-5 bg-gradient-to-br from-gray-50 via-emerald-50/20 to-teal-50 border border-emerald-100 rounded-3xl p-6 flex flex-col justify-between shadow-2xs">
+            <div class="lg:col-span-5 bg-gradient-to-br from-slate-50 via-emerald-50/20 to-teal-50 border border-emerald-100 rounded-3xl p-6 flex flex-col justify-between shadow-2xs">
               <div>
-                <span class="text-2xs uppercase font-bold text-gray-500 tracking-wider block">
+                <span class="text-2xs uppercase font-bold text-slate-500 tracking-wider block">
                   Future Maturity Balance
                 </span>
                 <p class="text-3xl sm:text-4xl font-black text-emerald-900 font-mono tracking-tight my-1">
                   {formatMoney(ciCalc.futureValue)}
                 </p>
-                <p class="text-xs text-gray-500 mb-6">
+                <p class="text-xs text-slate-500 mb-6">
                   Initial deposit grew by {ciPrincipal > 0 ? (ciCalc.futureValue / ciPrincipal).toFixed(2) : '1.00'}x over {ciYears} years.
                 </p>
 
                 <div class="space-y-1.5 mb-6">
-                  <div class="flex justify-between text-2xs font-semibold text-gray-600">
+                  <div class="flex justify-between text-2xs font-semibold text-slate-600">
                     <span class="flex items-center gap-1 text-slate-700">
                       <span class="w-2.5 h-2.5 rounded-xs bg-slate-700 inline-block"></span>
                       Principal ({ciCalc.principalRatio}%)
@@ -1226,7 +1226,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                       Accrued Interest ({ciCalc.interestRatio}%)
                     </span>
                   </div>
-                  <div class="w-full h-3 rounded-full bg-gray-200 overflow-hidden flex shadow-inner">
+                  <div class="w-full h-3 rounded-full bg-slate-200 overflow-hidden flex shadow-inner">
                     <div
                       style={{ width: `${ciCalc.principalRatio}%` }}
                       class="bg-slate-700 h-full transition-all duration-300"
@@ -1239,9 +1239,9 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                 </div>
 
                 <div class="space-y-2 text-xs">
-                  <div class="p-3 bg-white rounded-xl border border-gray-200 flex justify-between">
-                    <span class="text-gray-600">Initial Principal:</span>
-                    <span class="font-bold font-mono text-gray-900">{formatMoney(ciPrincipal)}</span>
+                  <div class="p-3 bg-white rounded-xl border border-slate-200 flex justify-between">
+                    <span class="text-slate-600">Initial Principal:</span>
+                    <span class="font-bold font-mono text-slate-900">{formatMoney(ciPrincipal)}</span>
                   </div>
                   <div class="p-3 bg-white rounded-xl border border-emerald-200 flex justify-between">
                     <span class="text-emerald-800 font-medium">Total Interest Earned:</span>
@@ -1250,7 +1250,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                 </div>
               </div>
 
-              <div class="mt-6 pt-4 border-t border-emerald-100 text-2xs text-gray-500 leading-relaxed flex items-start gap-1.5">
+              <div class="mt-6 pt-4 border-t border-emerald-100 text-2xs text-slate-500 leading-relaxed flex items-start gap-1.5">
                 <svg class="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -1261,25 +1261,25 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
 
           {/* Schedule Table */}
           {ciCalc.schedule.length > 0 && (
-            <div class="border-t border-gray-200 pt-6">
-              <h3 class="text-xs sm:text-sm font-bold text-gray-900 uppercase tracking-wider mb-3">
+            <div class="border-t border-slate-200 pt-6">
+              <h3 class="text-xs sm:text-sm font-bold text-slate-900 uppercase tracking-wider mb-3">
                 Year-by-Year Compound Growth Schedule
               </h3>
-              <div class="overflow-x-auto max-h-72 border border-gray-200 rounded-2xl shadow-2xs">
+              <div class="overflow-x-auto max-h-72 border border-slate-200 rounded-2xl shadow-2xs">
                 <table class="w-full text-xs text-left">
-                  <thead class="bg-gray-50 text-gray-600 font-semibold sticky top-0 border-b border-gray-200">
+                  <thead class="bg-slate-50 text-slate-600 font-semibold sticky top-0 border-b border-slate-200">
                     <tr>
                       <th class="p-3">Year</th>
                       <th class="p-3">Annual Interest Earned</th>
                       <th class="p-3">Cumulative Balance</th>
                     </tr>
                   </thead>
-                  <tbody class="divide-y divide-gray-100 font-mono">
+                  <tbody class="divide-y divide-slate-100 font-mono">
                     {ciCalc.schedule.map((row) => (
                       <tr key={row.year} class="hover:bg-emerald-50/40 transition">
-                        <td class="p-3 font-sans font-bold text-gray-900">Year {row.year}</td>
+                        <td class="p-3 font-sans font-bold text-slate-900">Year {row.year}</td>
                         <td class="p-3 text-emerald-700 font-semibold">+{formatMoney(row.interestEarned)}</td>
-                        <td class="p-3 text-gray-900 font-bold">{formatMoney(row.balance)}</td>
+                        <td class="p-3 text-slate-900 font-bold">{formatMoney(row.balance)}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -1296,12 +1296,12 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
       {toolId === 'gst-calculator' && (
         <div class="space-y-6 max-w-2xl mx-auto">
           {/* Inclusive / Exclusive Toggle */}
-          <div class="flex items-center justify-center gap-2 p-1 bg-gray-100 rounded-2xl w-fit mx-auto border border-gray-200">
+          <div class="flex items-center justify-center gap-2 p-1 bg-slate-100 rounded-2xl w-fit mx-auto border border-slate-200">
             <button
               type="button"
               onClick={() => setGstType('exclusive')}
               class={`px-4 py-2 text-xs font-bold rounded-xl transition ${
-                gstType === 'exclusive' ? 'bg-white text-emerald-800 shadow-xs' : 'text-gray-600 hover:text-gray-900'
+                gstType === 'exclusive' ? 'bg-white text-emerald-800 shadow-xs' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               GST Exclusive (Add GST)
@@ -1310,7 +1310,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
               type="button"
               onClick={() => setGstType('inclusive')}
               class={`px-4 py-2 text-xs font-bold rounded-xl transition ${
-                gstType === 'inclusive' ? 'bg-white text-emerald-800 shadow-xs' : 'text-gray-600 hover:text-gray-900'
+                gstType === 'inclusive' ? 'bg-white text-emerald-800 shadow-xs' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               GST Inclusive (Remove GST)
@@ -1319,11 +1319,11 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label for="gst-amount-input" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
+              <label for="gst-amount-input" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
                 {gstType === 'exclusive' ? 'Net Initial Amount (₹)' : 'Gross Total Amount (₹)'}
               </label>
               <div class="relative">
-                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-sm font-bold text-gray-500">₹</span>
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-sm font-bold text-slate-500">₹</span>
                 <input
                   id="gst-amount-input"
                   type="number"
@@ -1331,7 +1331,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                   step="any"
                   value={gstAmount}
                   onInput={(e) => setGstAmount(Number((e.target as HTMLInputElement).value))}
-                  class="w-full pl-7 pr-3 py-2 text-sm font-bold font-mono border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500"
+                  class="w-full pl-7 pr-3 py-2 text-sm font-bold font-mono border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500"
                 />
               </div>
 
@@ -1345,7 +1345,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                     class={`px-2 py-0.5 text-2xs font-semibold rounded-md border ${
                       gstAmount === amt
                         ? 'bg-emerald-600 text-white border-emerald-600'
-                        : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
+                        : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
                     }`}
                   >
                     ₹{amt.toLocaleString('en-IN')}
@@ -1355,7 +1355,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
             </div>
 
             <div>
-              <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
                 GST Tax Slab (%)
               </label>
               <div class="grid grid-cols-5 gap-1">
@@ -1367,41 +1367,41 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                     class={`py-2 text-xs font-bold rounded-xl border transition ${
                       gstRate === rate
                         ? 'bg-emerald-600 text-white border-emerald-600 shadow-xs'
-                        : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
+                        : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-100'
                     }`}
                   >
                     {rate}%
                   </button>
                 ))}
               </div>
-              <p class="text-2xs text-gray-500 mt-2">
+              <p class="text-2xs text-slate-500 mt-2">
                 Standard GST Slabs: 5% (essentials), 12% (processed foods), 18% (services/electronics), 28% (luxury).
               </p>
             </div>
           </div>
 
-          <div class="bg-gray-50 border border-gray-200 rounded-3xl p-6 text-center">
-            <span class="text-xs uppercase font-bold text-gray-500">
+          <div class="bg-slate-50 border border-slate-200 rounded-3xl p-6 text-center">
+            <span class="text-xs uppercase font-bold text-slate-500">
               Total Payable Gross Amount
             </span>
             <p class="text-3xl sm:text-4xl font-black text-emerald-800 my-2 font-mono">
               ₹{gstCalc.grossTotal.toLocaleString('en-IN')}
             </p>
 
-            <div class="divide-y divide-gray-200 border-t border-gray-200 mt-4 pt-2 text-xs text-left">
-              <div class="flex justify-between py-2 text-gray-600">
+            <div class="divide-y divide-slate-200 border-t border-slate-200 mt-4 pt-2 text-xs text-left">
+              <div class="flex justify-between py-2 text-slate-600">
                 <span>Net Pre-Tax Base Amount:</span>
-                <span class="font-bold text-gray-900 font-mono">₹{gstCalc.netAmount.toLocaleString('en-IN')}</span>
+                <span class="font-bold text-slate-900 font-mono">₹{gstCalc.netAmount.toLocaleString('en-IN')}</span>
               </div>
-              <div class="flex justify-between py-2 text-gray-600">
+              <div class="flex justify-between py-2 text-slate-600">
                 <span>Total GST Component ({gstRate}%):</span>
                 <span class="font-bold text-emerald-700 font-mono">+₹{gstCalc.totalGst.toLocaleString('en-IN')}</span>
               </div>
-              <div class="flex justify-between py-2 text-gray-500">
+              <div class="flex justify-between py-2 text-slate-500">
                 <span>CGST (Central Tax {gstRate / 2}%):</span>
                 <span class="font-mono">₹{gstCalc.cgst.toLocaleString('en-IN')}</span>
               </div>
-              <div class="flex justify-between py-2 text-gray-500">
+              <div class="flex justify-between py-2 text-slate-500">
                 <span>SGST / UTGST (State Tax {gstRate / 2}%):</span>
                 <span class="font-mono">₹{gstCalc.sgst.toLocaleString('en-IN')}</span>
               </div>
@@ -1420,7 +1420,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
               type="button"
               onClick={() => setBmiUnit('metric')}
               class={`px-4 py-2 text-xs font-bold rounded-xl transition ${
-                bmiUnit === 'metric' ? 'bg-emerald-600 text-white shadow-xs' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                bmiUnit === 'metric' ? 'bg-emerald-600 text-white shadow-xs' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
               Metric (kg, cm)
@@ -1429,7 +1429,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
               type="button"
               onClick={() => setBmiUnit('imperial')}
               class={`px-4 py-2 text-xs font-bold rounded-xl transition ${
-                bmiUnit === 'imperial' ? 'bg-emerald-600 text-white shadow-xs' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                bmiUnit === 'imperial' ? 'bg-emerald-600 text-white shadow-xs' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
               Imperial (lbs, ft-in)
@@ -1439,7 +1439,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
           {bmiUnit === 'metric' ? (
             <div class="grid grid-cols-2 gap-4">
               <div>
-                <label for="bmi-weight-kg" class="block text-xs font-bold text-gray-700 mb-1">Weight (kg)</label>
+                <label for="bmi-weight-kg" class="block text-xs font-bold text-slate-700 mb-1">Weight (kg)</label>
                 <input
                   id="bmi-weight-kg"
                   type="number"
@@ -1447,11 +1447,11 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                   max="300"
                   value={bmiWeightKg}
                   onInput={(e) => setBmiWeightKg(Number((e.target as HTMLInputElement).value))}
-                  class="w-full px-3 py-2 text-sm font-bold border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500"
+                  class="w-full px-3 py-2 text-sm font-bold border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500"
                 />
               </div>
               <div>
-                <label for="bmi-height-cm" class="block text-xs font-bold text-gray-700 mb-1">Height (cm)</label>
+                <label for="bmi-height-cm" class="block text-xs font-bold text-slate-700 mb-1">Height (cm)</label>
                 <input
                   id="bmi-height-cm"
                   type="number"
@@ -1459,14 +1459,14 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                   max="250"
                   value={bmiHeightCm}
                   onInput={(e) => setBmiHeightCm(Number((e.target as HTMLInputElement).value))}
-                  class="w-full px-3 py-2 text-sm font-bold border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500"
+                  class="w-full px-3 py-2 text-sm font-bold border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500"
                 />
               </div>
             </div>
           ) : (
             <div class="grid grid-cols-3 gap-3">
               <div>
-                <label for="bmi-weight-lbs" class="block text-xs font-bold text-gray-700 mb-1">Weight (lbs)</label>
+                <label for="bmi-weight-lbs" class="block text-xs font-bold text-slate-700 mb-1">Weight (lbs)</label>
                 <input
                   id="bmi-weight-lbs"
                   type="number"
@@ -1474,11 +1474,11 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                   max="600"
                   value={bmiWeightLbs}
                   onInput={(e) => setBmiWeightLbs(Number((e.target as HTMLInputElement).value))}
-                  class="w-full px-3 py-2 text-sm font-bold border border-gray-300 rounded-xl"
+                  class="w-full px-3 py-2 text-sm font-bold border border-slate-300 rounded-xl"
                 />
               </div>
               <div>
-                <label for="bmi-height-ft" class="block text-xs font-bold text-gray-700 mb-1">Feet (ft)</label>
+                <label for="bmi-height-ft" class="block text-xs font-bold text-slate-700 mb-1">Feet (ft)</label>
                 <input
                   id="bmi-height-ft"
                   type="number"
@@ -1486,11 +1486,11 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                   max="8"
                   value={bmiHeightFt}
                   onInput={(e) => setBmiHeightFt(Number((e.target as HTMLInputElement).value))}
-                  class="w-full px-3 py-2 text-sm font-bold border border-gray-300 rounded-xl"
+                  class="w-full px-3 py-2 text-sm font-bold border border-slate-300 rounded-xl"
                 />
               </div>
               <div>
-                <label for="bmi-height-in" class="block text-xs font-bold text-gray-700 mb-1">Inches (in)</label>
+                <label for="bmi-height-in" class="block text-xs font-bold text-slate-700 mb-1">Inches (in)</label>
                 <input
                   id="bmi-height-in"
                   type="number"
@@ -1498,19 +1498,19 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                   max="11"
                   value={bmiHeightIn}
                   onInput={(e) => setBmiHeightIn(Number((e.target as HTMLInputElement).value))}
-                  class="w-full px-3 py-2 text-sm font-bold border border-gray-300 rounded-xl"
+                  class="w-full px-3 py-2 text-sm font-bold border border-slate-300 rounded-xl"
                 />
               </div>
             </div>
           )}
 
           <div class={`p-6 rounded-3xl border text-center ${bmiCalc.color}`}>
-            <span class="text-xs uppercase font-bold text-gray-500">Your Body Mass Index (BMI)</span>
-            <p class="text-4xl sm:text-5xl font-black text-gray-900 my-2">{bmiCalc.bmi}</p>
+            <span class="text-xs uppercase font-bold text-slate-500">Your Body Mass Index (BMI)</span>
+            <p class="text-4xl sm:text-5xl font-black text-slate-900 my-2">{bmiCalc.bmi}</p>
             <div class="inline-block px-3 py-1 rounded-full text-xs font-bold mb-2 shadow-2xs">
               {bmiCalc.category}
             </div>
-            <p class="text-xs text-gray-600">Standard WHO healthy adult range: 18.5 – 24.9 kg/m²</p>
+            <p class="text-xs text-slate-600">Standard WHO healthy adult range: 18.5 – 24.9 kg/m²</p>
           </div>
         </div>
       )}
@@ -1522,23 +1522,23 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
         <div class="space-y-6 max-w-xl mx-auto">
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-end">
             <div>
-              <label for="curr-amount-input" class="block text-xs font-bold text-gray-700 mb-1">Amount</label>
+              <label for="curr-amount-input" class="block text-xs font-bold text-slate-700 mb-1">Amount</label>
               <input
                 id="curr-amount-input"
                 type="number"
                 min="1"
                 value={currAmount}
                 onInput={(e) => setCurrAmount(Number((e.target as HTMLInputElement).value))}
-                class="w-full px-3 py-2 text-sm border border-gray-300 rounded-xl font-bold font-mono focus:ring-2 focus:ring-emerald-500"
+                class="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl font-bold font-mono focus:ring-2 focus:ring-emerald-500"
               />
             </div>
             <div>
-              <label for="curr-from-select" class="block text-xs font-bold text-gray-700 mb-1">From Currency</label>
+              <label for="curr-from-select" class="block text-xs font-bold text-slate-700 mb-1">From Currency</label>
               <select
                 id="curr-from-select"
                 value={currFrom}
                 onChange={(e) => setCurrFrom((e.target as HTMLSelectElement).value)}
-                class="w-full px-3 py-2 text-sm border border-gray-300 rounded-xl font-medium"
+                class="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl font-medium"
               >
                 {Object.keys(currencyRates).map((cur) => (
                   <option key={cur} value={cur}>{cur} - {currencyRates[cur].name}</option>
@@ -1546,12 +1546,12 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
               </select>
             </div>
             <div>
-              <label for="curr-to-select" class="block text-xs font-bold text-gray-700 mb-1">To Currency</label>
+              <label for="curr-to-select" class="block text-xs font-bold text-slate-700 mb-1">To Currency</label>
               <select
                 id="curr-to-select"
                 value={currTo}
                 onChange={(e) => setCurrTo((e.target as HTMLSelectElement).value)}
-                class="w-full px-3 py-2 text-sm border border-gray-300 rounded-xl font-medium"
+                class="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl font-medium"
               >
                 {Object.keys(currencyRates).map((cur) => (
                   <option key={cur} value={cur}>{cur} - {currencyRates[cur].name}</option>
@@ -1567,7 +1567,7 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
                 type="button"
                 onClick={() => setCurrAmount(amt)}
                 class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border ${
-                  currAmount === amt ? 'bg-emerald-600 text-white border-emerald-600' : 'bg-white text-gray-600 border-gray-200'
+                  currAmount === amt ? 'bg-emerald-600 text-white border-emerald-600' : 'bg-white text-slate-600 border-slate-200'
                 }`}
               >
                 {currencyRates[currFrom]?.symbol}{amt}
@@ -1575,12 +1575,12 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
             ))}
           </div>
 
-          <div class="bg-gray-50 border border-gray-200 rounded-3xl p-6 text-center">
-            <span class="text-xs uppercase font-bold text-gray-500">Converted Amount</span>
+          <div class="bg-slate-50 border border-slate-200 rounded-3xl p-6 text-center">
+            <span class="text-xs uppercase font-bold text-slate-500">Converted Amount</span>
             <p class="text-3xl sm:text-4xl font-black text-emerald-800 my-2 font-mono">
               {currencyRates[currTo]?.symbol} {convertedCurrency.toLocaleString('en-US')} {currTo}
             </p>
-            <p class="text-xs text-gray-500">
+            <p class="text-xs text-slate-500">
               1 {currFrom} = {(currencyRates[currTo].rate / currencyRates[currFrom].rate).toFixed(4)} {currTo} • Reference benchmark
             </p>
           </div>

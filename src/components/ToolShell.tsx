@@ -411,8 +411,8 @@ export default function ToolShell({
                 <button
                   type="button"
                   onClick={() => applyQualityPreset('max')}
-                  class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition-all ${qualityPreset === 'max'
-                    ? 'bg-slate-900 text-white border-slate-900 shadow-xs'
+                  class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition-all cursor-pointer ${qualityPreset === 'max'
+                    ? 'bg-emerald-600 text-white border-emerald-600 shadow-2xs'
                     : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
                     }`}
                 >
@@ -421,8 +421,8 @@ export default function ToolShell({
                 <button
                   type="button"
                   onClick={() => applyQualityPreset('balanced')}
-                  class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition-all ${qualityPreset === 'balanced'
-                    ? 'bg-slate-900 text-white border-slate-900 shadow-xs'
+                  class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition-all cursor-pointer ${qualityPreset === 'balanced'
+                    ? 'bg-emerald-600 text-white border-emerald-600 shadow-2xs'
                     : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
                     }`}
                 >
@@ -431,8 +431,8 @@ export default function ToolShell({
                 <button
                   type="button"
                   onClick={() => applyQualityPreset('high')}
-                  class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition-all ${qualityPreset === 'high'
-                    ? 'bg-slate-900 text-white border-slate-900 shadow-xs'
+                  class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition-all cursor-pointer ${qualityPreset === 'high'
+                    ? 'bg-emerald-600 text-white border-emerald-600 shadow-2xs'
                     : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
                     }`}
                 >
@@ -449,7 +449,7 @@ export default function ToolShell({
                     setQuality(Number((e.target as HTMLInputElement).value));
                     setQualityPreset('custom');
                   }}
-                  class="w-full accent-slate-900"
+                  class="w-full accent-emerald-600"
                 />
                 <span class="text-xs font-mono font-bold text-slate-900 w-9 text-right">{quality}%</span>
               </div>
@@ -469,8 +469,8 @@ export default function ToolShell({
                     key={s.val}
                     type="button"
                     onClick={() => setScalePreset(s.val)}
-                    class={`py-1 text-2xs font-semibold rounded-lg border text-center transition-all ${scalePreset === s.val
-                      ? 'bg-slate-900 text-white border-slate-900 shadow-xs'
+                    class={`py-1 text-2xs font-semibold rounded-lg border text-center transition-all cursor-pointer ${scalePreset === s.val
+                      ? 'bg-emerald-600 text-white border-emerald-600 shadow-2xs'
                       : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
                       }`}
                   >
@@ -498,8 +498,8 @@ export default function ToolShell({
                     key={t.val}
                     type="button"
                     onClick={() => setTargetSizeLimitKb(t.val)}
-                    class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition-all ${targetSizeLimitKb === t.val
-                      ? 'bg-slate-900 text-white border-slate-900 shadow-xs'
+                    class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition-all cursor-pointer ${targetSizeLimitKb === t.val
+                      ? 'bg-emerald-600 text-white border-emerald-600 shadow-2xs'
                       : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
                       }`}
                   >
@@ -521,7 +521,7 @@ export default function ToolShell({
                 type="checkbox"
                 checked={stripMetadata}
                 onChange={(e) => setStripMetadata((e.target as HTMLInputElement).checked)}
-                class="rounded border-slate-300 text-slate-900 focus:ring-slate-900"
+                class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500 cursor-pointer"
               />
               <span>Strip EXIF / Camera metadata (removes GPS &amp; saves ~15KB)</span>
             </label>
@@ -531,7 +531,7 @@ export default function ToolShell({
                 type="checkbox"
                 checked={autoConvert}
                 onChange={(e) => setAutoConvert((e.target as HTMLInputElement).checked)}
-                class="rounded border-slate-300 text-slate-900 focus:ring-slate-900"
+                class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500 cursor-pointer"
               />
               <span>Auto-convert upon file drop</span>
             </label>
@@ -758,7 +758,7 @@ export default function ToolShell({
                             setItems([...updated]);
                           }
                         }}
-                        class="px-3.5 py-1.5 bg-slate-100 hover:bg-slate-900 hover:text-white text-slate-700 rounded-xl text-xs font-semibold transition-all border border-slate-200"
+                        class="px-3.5 py-1.5 bg-emerald-50 hover:bg-emerald-600 hover:text-white text-emerald-800 rounded-xl text-xs font-semibold transition-all border border-emerald-200/80 cursor-pointer"
                       >
                         Convert
                       </button>

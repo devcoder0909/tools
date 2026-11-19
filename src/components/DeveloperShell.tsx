@@ -486,39 +486,39 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
       {toolId === 'jwt-decoder' && (
         <div class="space-y-6">
           <div>
-            <label class="block text-xs font-semibold text-gray-700 mb-1">Encoded JWT String</label>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Encoded JWT String</label>
             <textarea
               rows={3}
               value={jwtInput}
               onInput={(e) => setJwtInput((e.target as HTMLTextAreaElement).value)}
               placeholder="Paste eyJhbGciOi..."
-              class="w-full font-mono text-xs p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
+              class="w-full font-mono text-xs p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
             />
           </div>
 
           {decodedJwt?.valid ? (
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <span class="text-xs font-bold text-gray-500 uppercase tracking-wider block mb-2">Header (Algorithm & Token Type)</span>
-                <pre class="bg-gray-50 border border-gray-200 p-4 rounded-xl text-xs font-mono text-purple-800 overflow-x-auto">
+                <span class="text-xs font-bold text-slate-500 uppercase tracking-wider block mb-2">Header (Algorithm & Token Type)</span>
+                <pre class="bg-slate-50 border border-slate-200 p-4 rounded-xl text-xs font-mono text-purple-800 overflow-x-auto">
                   {JSON.stringify(decodedJwt.header, null, 2)}
                 </pre>
               </div>
 
               <div>
                 <div class="flex items-center justify-between mb-2">
-                  <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Payload (Claims)</span>
+                  <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Payload (Claims)</span>
                   {decodedJwt.expDate && (
                     <span class={`text-2xs font-bold px-2 py-0.5 rounded ${decodedJwt.isExpired ? 'bg-red-100 text-red-800' : 'bg-emerald-100 text-emerald-800'}`}>
                       {decodedJwt.isExpired ? 'Expired' : 'Active'}
                     </span>
                   )}
                 </div>
-                <pre class="bg-gray-50 border border-gray-200 p-4 rounded-xl text-xs font-mono text-blue-900 overflow-x-auto">
+                <pre class="bg-slate-50 border border-slate-200 p-4 rounded-xl text-xs font-mono text-blue-900 overflow-x-auto">
                   {JSON.stringify(decodedJwt.payload, null, 2)}
                 </pre>
                 {decodedJwt.expDate && (
-                  <p class="text-xs text-gray-500 mt-2">Expiration: <strong>{decodedJwt.expDate}</strong></p>
+                  <p class="text-xs text-slate-500 mt-2">Expiration: <strong>{decodedJwt.expDate}</strong></p>
                 )}
               </div>
             </div>
@@ -533,7 +533,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
       {/* 2. Unit & Temperature Converter */}
       {(toolId === 'unit-converter' || toolId === 'celsius-to-fahrenheit') && (
         <div class="space-y-6 max-w-xl mx-auto">
-          <div class="flex flex-wrap gap-2 justify-center border-b border-gray-200 pb-3">
+          <div class="flex flex-wrap gap-2 justify-center border-b border-slate-200 pb-3">
             {(['length', 'weight', 'temperature', 'digital'] as const).map((cat) => (
               <button
                 type="button"
@@ -544,7 +544,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
                   if (cat === 'temperature') { setUnitFrom('C'); setUnitTo('F'); }
                   if (cat === 'digital') { setUnitFrom('MB'); setUnitTo('GB'); }
                 }}
-                class={`px-4 py-1.5 text-xs font-semibold rounded-lg capitalize ${unitCategory === cat ? 'bg-emerald-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
+                class={`px-4 py-1.5 text-xs font-semibold rounded-lg capitalize ${unitCategory === cat ? 'bg-emerald-600 text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}`}
               >
                 {cat}
               </button>
@@ -553,21 +553,21 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
 
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-end">
             <div>
-              <label class="block text-xs font-medium text-gray-700 mb-1">Value</label>
+              <label class="block text-xs font-medium text-slate-700 mb-1">Value</label>
               <input
                 type="number"
                 value={unitVal}
                 onInput={(e) => setUnitVal(Number((e.target as HTMLInputElement).value))}
-                class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg font-bold"
+                class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg font-bold"
               />
             </div>
 
             <div>
-              <label class="block text-xs font-medium text-gray-700 mb-1">From</label>
+              <label class="block text-xs font-medium text-slate-700 mb-1">From</label>
               <select
                 value={unitFrom}
                 onChange={(e) => setUnitFrom((e.target as HTMLSelectElement).value)}
-                class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg"
+                class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg"
               >
                 {unitCategory === 'temperature' ? (
                   <>
@@ -584,11 +584,11 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
             </div>
 
             <div>
-              <label class="block text-xs font-medium text-gray-700 mb-1">To</label>
+              <label class="block text-xs font-medium text-slate-700 mb-1">To</label>
               <select
                 value={unitTo}
                 onChange={(e) => setUnitTo((e.target as HTMLSelectElement).value)}
-                class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg"
+                class="w-full px-3 py-2 text-sm border border-slate-300 rounded-lg"
               >
                 {unitCategory === 'temperature' ? (
                   <>
@@ -605,12 +605,12 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
             </div>
           </div>
 
-          <div class="bg-gray-50 border border-gray-200 rounded-2xl p-6 text-center">
-            <span class="text-xs uppercase font-semibold text-gray-500">Converted Value</span>
+          <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 text-center">
+            <span class="text-xs uppercase font-semibold text-slate-500">Converted Value</span>
             <p class="text-3xl sm:text-4xl font-extrabold text-emerald-700 my-2 font-mono">
               {convertedUnit} {unitTo}
             </p>
-            <p class="text-xs text-gray-500">
+            <p class="text-xs text-slate-500">
               {unitVal} {unitFrom} = {convertedUnit} {unitTo}
             </p>
           </div>
@@ -622,7 +622,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
         <div class="space-y-6 max-w-2xl mx-auto">
           {/* Main Color Preview Box */}
           <div
-            class="h-36 sm:h-44 rounded-2xl flex flex-col items-center justify-center p-6 shadow-sm border border-gray-200 transition-colors"
+            class="h-36 sm:h-44 rounded-2xl flex flex-col items-center justify-center p-6 shadow-sm border border-slate-200 transition-colors"
             style={{ backgroundColor: colorValues.hex }}
           >
             <span
@@ -638,8 +638,8 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
 
           {/* Color Input Controls */}
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div class="p-4 bg-gray-50 rounded-xl border border-gray-200 space-y-3">
-              <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider">
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
                 Color Palette & Eyedropper
               </label>
               <div class="flex items-center gap-3">
@@ -647,21 +647,21 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
                   type="color"
                   value={colorValues.hex}
                   onInput={(e) => setHexColor((e.target as HTMLInputElement).value)}
-                  class="w-14 h-12 rounded-lg cursor-pointer border border-gray-300 bg-white p-1"
+                  class="w-14 h-12 rounded-lg cursor-pointer border border-slate-300 bg-white p-1"
                 />
                 <input
                   type="text"
                   value={hexColor}
                   onInput={(e) => setHexColor((e.target as HTMLInputElement).value)}
                   placeholder="#16a34a"
-                  class="flex-1 px-3 py-2 text-sm font-mono border border-gray-300 rounded-lg bg-white text-gray-900"
+                  class="flex-1 px-3 py-2 text-sm font-mono border border-slate-300 rounded-lg bg-white text-slate-900"
                 />
               </div>
             </div>
 
             {/* Quick Palettes */}
-            <div class="p-4 bg-gray-50 rounded-xl border border-gray-200 space-y-2">
-              <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider">
+            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
                 Popular Color Swatches
               </label>
               <div class="flex flex-wrap gap-2">
@@ -686,10 +686,10 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
               { label: 'RGB', val: colorValues.rgbStr },
               { label: 'HSL', val: colorValues.hslStr },
             ].map(({ label, val }) => (
-              <div key={label} class="p-3 bg-white border border-gray-200 rounded-xl flex items-center justify-between">
+              <div key={label} class="p-3 bg-white border border-slate-200 rounded-xl flex items-center justify-between">
                 <div>
-                  <span class="text-2xs font-bold text-gray-500 uppercase">{label}</span>
-                  <p class="font-mono text-xs font-bold text-gray-800 truncate">{val}</p>
+                  <span class="text-2xs font-bold text-slate-500 uppercase">{label}</span>
+                  <p class="font-mono text-xs font-bold text-slate-800 truncate">{val}</p>
                 </div>
                 <button
                   type="button"
@@ -698,7 +698,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
                     setCopiedColor(val);
                     setTimeout(() => setCopiedColor(null), 1800);
                   }}
-                  class="px-2.5 py-1 text-xs font-semibold bg-gray-100 hover:bg-emerald-100 hover:text-emerald-700 text-gray-700 rounded-lg transition"
+                  class="px-2.5 py-1 text-xs font-semibold bg-slate-100 hover:bg-emerald-100 hover:text-emerald-700 text-slate-700 rounded-lg transition"
                 >
                   {copiedColor === val ? '✓ Copied' : 'Copy'}
                 </button>
@@ -712,12 +712,12 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
       {toolId === 'base64-encoder' && (
         <div class="space-y-6 max-w-2xl mx-auto">
           {/* Mode Switcher */}
-          <div class="flex items-center justify-center gap-2 p-1 bg-gray-100 rounded-xl w-fit mx-auto border border-gray-200">
+          <div class="flex items-center justify-center gap-2 p-1 bg-slate-100 rounded-xl w-fit mx-auto border border-slate-200">
             <button
               type="button"
               onClick={() => setB64Mode('encode')}
               class={`px-4 py-2 text-xs font-bold rounded-lg transition ${
-                b64Mode === 'encode' ? 'bg-white text-emerald-700 shadow-xs' : 'text-gray-600 hover:text-gray-900'
+                b64Mode === 'encode' ? 'bg-white text-emerald-700 shadow-xs' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               Text &rarr; Base64 (Encode)
@@ -726,7 +726,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
               type="button"
               onClick={() => setB64Mode('decode')}
               class={`px-4 py-2 text-xs font-bold rounded-lg transition ${
-                b64Mode === 'decode' ? 'bg-white text-emerald-700 shadow-xs' : 'text-gray-600 hover:text-gray-900'
+                b64Mode === 'decode' ? 'bg-white text-emerald-700 shadow-xs' : 'text-slate-600 hover:text-slate-900'
               }`}
             >
               Base64 &rarr; Text (Decode)
@@ -735,7 +735,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
 
           {/* Input Box */}
           <div class="space-y-2">
-            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider">
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
               {b64Mode === 'encode' ? 'Source Text to Encode:' : 'Base64 String to Decode:'}
             </label>
             <textarea
@@ -743,14 +743,14 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
               value={b64Input}
               onInput={(e) => setB64Input((e.target as HTMLTextAreaElement).value)}
               placeholder={b64Mode === 'encode' ? 'Type or paste plain text here...' : 'Paste Base64 encoded string here...'}
-              class="w-full p-3 text-xs font-mono border border-gray-300 rounded-xl bg-white text-gray-900 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
+              class="w-full p-3 text-xs font-mono border border-slate-300 rounded-xl bg-white text-slate-900 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
             />
           </div>
 
           {/* Output Box */}
           <div class="space-y-2">
             <div class="flex items-center justify-between">
-              <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider">
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider">
                 {b64Mode === 'encode' ? 'Base64 Encoded Output:' : 'Decoded Plain Text:'}
               </label>
               <button
@@ -769,7 +769,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
               rows={4}
               readOnly
               value={b64Output}
-              class="w-full p-3 text-xs font-mono border border-gray-200 rounded-xl bg-gray-50 text-gray-800"
+              class="w-full p-3 text-xs font-mono border border-slate-200 rounded-xl bg-slate-50 text-slate-800"
             />
           </div>
         </div>
@@ -778,36 +778,36 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
       {/* 3. My IP & Network Info */}
       {toolId === 'my-ip-address' && (
         <div class="space-y-6 max-w-xl mx-auto">
-          <div class="bg-gray-50 border border-gray-200 rounded-2xl p-6 text-center">
-            <span class="text-xs uppercase font-semibold text-gray-500">Your Browser Client Diagnostic</span>
-            <h2 class="text-2xl font-extrabold text-gray-900 my-2">Client Device & Network Profile</h2>
-            <p class="text-xs text-gray-500">Detected safely via browser navigator parameters.</p>
+          <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 text-center">
+            <span class="text-xs uppercase font-semibold text-slate-500">Your Browser Client Diagnostic</span>
+            <h2 class="text-2xl font-extrabold text-slate-900 my-2">Client Device & Network Profile</h2>
+            <p class="text-xs text-slate-500">Detected safely via browser navigator parameters.</p>
           </div>
 
-          <div class="divide-y divide-gray-200 border border-gray-200 rounded-xl overflow-hidden text-xs">
+          <div class="divide-y divide-slate-200 border border-slate-200 rounded-xl overflow-hidden text-xs">
             <div class="flex justify-between p-3 bg-white">
-              <span class="font-medium text-gray-600">Screen Resolution</span>
-              <span class="font-bold text-gray-900">{clientInfo.screenRes}</span>
+              <span class="font-medium text-slate-600">Screen Resolution</span>
+              <span class="font-bold text-slate-900">{clientInfo.screenRes}</span>
             </div>
-            <div class="flex justify-between p-3 bg-gray-50">
-              <span class="font-medium text-gray-600">Color Depth</span>
-              <span class="font-bold text-gray-900">{clientInfo.colorDepth}</span>
-            </div>
-            <div class="flex justify-between p-3 bg-white">
-              <span class="font-medium text-gray-600">Browser Language</span>
-              <span class="font-bold text-gray-900">{clientInfo.language}</span>
-            </div>
-            <div class="flex justify-between p-3 bg-gray-50">
-              <span class="font-medium text-gray-600">System Timezone</span>
-              <span class="font-bold text-gray-900">{clientInfo.timeZone}</span>
+            <div class="flex justify-between p-3 bg-slate-50">
+              <span class="font-medium text-slate-600">Color Depth</span>
+              <span class="font-bold text-slate-900">{clientInfo.colorDepth}</span>
             </div>
             <div class="flex justify-between p-3 bg-white">
-              <span class="font-medium text-gray-600">Cookies Enabled</span>
+              <span class="font-medium text-slate-600">Browser Language</span>
+              <span class="font-bold text-slate-900">{clientInfo.language}</span>
+            </div>
+            <div class="flex justify-between p-3 bg-slate-50">
+              <span class="font-medium text-slate-600">System Timezone</span>
+              <span class="font-bold text-slate-900">{clientInfo.timeZone}</span>
+            </div>
+            <div class="flex justify-between p-3 bg-white">
+              <span class="font-medium text-slate-600">Cookies Enabled</span>
               <span class="font-bold text-emerald-600">{clientInfo.cookiesEnabled}</span>
             </div>
-            <div class="p-3 bg-gray-50">
-              <span class="font-medium text-gray-600 block mb-1">User Agent</span>
-              <span class="font-mono text-3xs text-gray-800 break-all">{clientInfo.userAgent}</span>
+            <div class="p-3 bg-slate-50">
+              <span class="font-medium text-slate-600 block mb-1">User Agent</span>
+              <span class="font-mono text-3xs text-slate-800 break-all">{clientInfo.userAgent}</span>
             </div>
           </div>
         </div>
@@ -816,14 +816,14 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
       {/* 4. URL Encoder / Decoder */}
       {toolId === 'url-encoder-decoder' && (
         <div class="space-y-6">
-          <div class="flex items-center gap-2 border-b border-gray-200 pb-3">
+          <div class="flex items-center gap-2 border-b border-slate-200 pb-3">
             <button
               type="button"
               onClick={() => setUrlMode('encode')}
               class={`px-4 py-2 text-xs font-bold rounded-lg transition cursor-pointer ${
                 urlMode === 'encode'
                   ? 'bg-emerald-600 text-white shadow-xs'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
               Encode URL
@@ -834,7 +834,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
               class={`px-4 py-2 text-xs font-bold rounded-lg transition cursor-pointer ${
                 urlMode === 'decode'
                   ? 'bg-emerald-600 text-white shadow-xs'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
               }`}
             >
               Decode URL
@@ -842,20 +842,20 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
           </div>
 
           <div>
-            <label class="block text-xs font-semibold text-gray-700 mb-1">
+            <label class="block text-xs font-semibold text-slate-700 mb-1">
               {urlMode === 'encode' ? 'Raw URL or String to Encode' : 'Percent-Encoded URL to Decode'}
             </label>
             <textarea
               rows={4}
               value={urlInput}
               onInput={(e) => setUrlInput((e.target as HTMLTextAreaElement).value)}
-              class="w-full p-3 text-xs font-mono border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
+              class="w-full p-3 text-xs font-mono border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
             />
           </div>
 
           <div>
             <div class="flex items-center justify-between mb-1">
-              <label class="text-xs font-semibold text-gray-700">Result Output</label>
+              <label class="text-xs font-semibold text-slate-700">Result Output</label>
               <button
                 type="button"
                 onClick={() => {
@@ -872,7 +872,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
               rows={4}
               readOnly
               value={urlOutput}
-              class="w-full p-3 text-xs font-mono border border-gray-200 rounded-xl bg-gray-50 text-gray-800"
+              class="w-full p-3 text-xs font-mono border border-slate-200 rounded-xl bg-slate-50 text-slate-800"
             />
           </div>
         </div>
@@ -881,9 +881,9 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
       {/* 5. UUID Generator */}
       {toolId === 'uuid-generator' && (
         <div class="space-y-6">
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-gray-50 p-4 rounded-xl border border-gray-200">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-slate-50 p-4 rounded-xl border border-slate-200">
             <div>
-              <label class="block text-xs font-semibold text-gray-700 mb-1">Quantity ({uuidCount})</label>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Quantity ({uuidCount})</label>
               <input
                 type="range"
                 min="1"
@@ -901,7 +901,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
                 onChange={(e) => setUuidHyphens((e.target as HTMLInputElement).checked)}
                 class="rounded text-emerald-600"
               />
-              <label for="uuidHyphens" class="text-xs font-semibold text-gray-700 cursor-pointer">
+              <label for="uuidHyphens" class="text-xs font-semibold text-slate-700 cursor-pointer">
                 Include Hyphens
               </label>
             </div>
@@ -913,7 +913,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
                 onChange={(e) => setUuidUppercase((e.target as HTMLInputElement).checked)}
                 class="rounded text-emerald-600"
               />
-              <label for="uuidUpper" class="text-xs font-semibold text-gray-700 cursor-pointer">
+              <label for="uuidUpper" class="text-xs font-semibold text-slate-700 cursor-pointer">
                 Uppercase Output
               </label>
             </div>
@@ -940,14 +940,14 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
             </button>
           </div>
 
-          <div class="border border-gray-200 rounded-xl divide-y divide-gray-100 max-h-72 overflow-y-auto">
+          <div class="border border-slate-200 rounded-xl divide-y divide-slate-100 max-h-72 overflow-y-auto">
             {uuidList.map((id, idx) => (
-              <div key={idx} class="flex items-center justify-between p-3 bg-white hover:bg-gray-50 text-xs font-mono">
-                <span class="text-gray-900 select-all">{id}</span>
+              <div key={idx} class="flex items-center justify-between p-3 bg-white hover:bg-slate-50 text-xs font-mono">
+                <span class="text-slate-900 select-all">{id}</span>
                 <button
                   type="button"
                   onClick={() => navigator.clipboard.writeText(id)}
-                  class="text-gray-400 hover:text-emerald-600 text-3xs uppercase font-bold"
+                  class="text-slate-400 hover:text-emerald-600 text-3xs uppercase font-bold"
                 >
                   Copy
                 </button>
@@ -961,13 +961,13 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
       {toolId === 'hash-generator' && (
         <div class="space-y-6">
           <div>
-            <label class="block text-xs font-semibold text-gray-700 mb-1">Input Text String</label>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Input Text String</label>
             <textarea
               rows={3}
               value={hashInput}
               onInput={(e) => setHashInput((e.target as HTMLTextAreaElement).value)}
               placeholder="Enter text to hash..."
-              class="w-full p-3 text-xs font-mono border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
+              class="w-full p-3 text-xs font-mono border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
             />
           </div>
 
@@ -979,8 +979,8 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
               { name: 'SHA-1', val: hashes.sha1, bits: 160 },
               { name: 'SHA-384', val: hashes.sha384, bits: 384 },
             ].map((item) => (
-              <div key={item.name} class="p-3 bg-gray-50 border border-gray-200 rounded-xl">
-                <div class="flex items-center justify-between mb-1 text-2xs font-bold text-gray-500 uppercase">
+              <div key={item.name} class="p-3 bg-slate-50 border border-slate-200 rounded-xl">
+                <div class="flex items-center justify-between mb-1 text-2xs font-bold text-slate-500 uppercase">
                   <span>{item.name} ({item.bits} bits)</span>
                   <button
                     type="button"
@@ -990,7 +990,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
                     Copy Hash
                   </button>
                 </div>
-                <div class="font-mono text-xs text-gray-900 break-all select-all bg-white p-2 rounded-lg border border-gray-200">
+                <div class="font-mono text-xs text-slate-900 break-all select-all bg-white p-2 rounded-lg border border-slate-200">
                   {item.val || 'Computing...'}
                 </div>
               </div>
@@ -1004,7 +1004,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
         <div class="space-y-6">
           <div class="flex items-center justify-between">
             <div class="flex items-center gap-2">
-              <label class="text-xs font-semibold text-gray-700">Delimiter:</label>
+              <label class="text-xs font-semibold text-slate-700">Delimiter:</label>
               {[
                 { label: 'Comma (,)', val: ',' as const },
                 { label: 'Semicolon (;)', val: ';' as const },
@@ -1017,7 +1017,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
                   class={`px-2.5 py-1 text-xs font-bold rounded-lg border transition cursor-pointer ${
                     jsonCsvDelimiter === d.val
                       ? 'bg-emerald-600 text-white border-emerald-600'
-                      : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-100'
+                      : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
                   }`}
                 >
                   {d.label}
@@ -1031,17 +1031,17 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-semibold text-gray-700 mb-1">JSON Input (Array of Objects)</label>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">JSON Input (Array of Objects)</label>
               <textarea
                 rows={10}
                 value={jsonCsvInput}
                 onInput={(e) => setJsonCsvInput((e.target as HTMLTextAreaElement).value)}
-                class="w-full p-3 text-xs font-mono border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
+                class="w-full p-3 text-xs font-mono border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
               />
             </div>
             <div>
               <div class="flex justify-between items-center mb-1">
-                <label class="text-xs font-semibold text-gray-700">CSV Output</label>
+                <label class="text-xs font-semibold text-slate-700">CSV Output</label>
                 <div class="flex gap-2">
                   <button
                     type="button"
@@ -1060,7 +1060,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
                       a.download = 'export.csv';
                       a.click();
                     }}
-                    class="text-2xs font-bold text-gray-900 hover:underline cursor-pointer"
+                    class="text-2xs font-bold text-slate-900 hover:underline cursor-pointer"
                   >
                     Download CSV
                   </button>
@@ -1070,7 +1070,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
                 rows={10}
                 readOnly
                 value={jsonCsvOutput}
-                class="w-full p-3 text-xs font-mono border border-gray-200 rounded-xl bg-gray-50 text-gray-800"
+                class="w-full p-3 text-xs font-mono border border-slate-200 rounded-xl bg-slate-50 text-slate-800"
               />
             </div>
           </div>
@@ -1088,24 +1088,24 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
               onChange={(e) => setCsvAutoType((e.target as HTMLInputElement).checked)}
               class="rounded text-emerald-600"
             />
-            <label for="csvAutoType" class="text-xs font-semibold text-gray-700 cursor-pointer">
+            <label for="csvAutoType" class="text-xs font-semibold text-slate-700 cursor-pointer">
               Auto-parse Numbers & Booleans
             </label>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-semibold text-gray-700 mb-1">CSV Input Data</label>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">CSV Input Data</label>
               <textarea
                 rows={10}
                 value={csvJsonInput}
                 onInput={(e) => setCsvJsonInput((e.target as HTMLTextAreaElement).value)}
-                class="w-full p-3 text-xs font-mono border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
+                class="w-full p-3 text-xs font-mono border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
               />
             </div>
             <div>
               <div class="flex justify-between items-center mb-1">
-                <label class="text-xs font-semibold text-gray-700">JSON Output</label>
+                <label class="text-xs font-semibold text-slate-700">JSON Output</label>
                 <div class="flex gap-2">
                   <button
                     type="button"
@@ -1124,7 +1124,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
                       a.download = 'data.json';
                       a.click();
                     }}
-                    class="text-2xs font-bold text-gray-900 hover:underline cursor-pointer"
+                    class="text-2xs font-bold text-slate-900 hover:underline cursor-pointer"
                   >
                     Download JSON
                   </button>
@@ -1134,7 +1134,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
                 rows={10}
                 readOnly
                 value={csvJsonOutput}
-                class="w-full p-3 text-xs font-mono border border-gray-200 rounded-xl bg-gray-50 text-gray-800"
+                class="w-full p-3 text-xs font-mono border border-slate-200 rounded-xl bg-slate-50 text-slate-800"
               />
             </div>
           </div>
