@@ -289,9 +289,9 @@ export default function TargetSizeShell({
   const doneCount = useMemo(() => items.filter((i) => i.status === 'done').length, [items]);
 
   return (
-    <div class="target-size-shell bg-white border border-slate-200 rounded-2xl shadow-xs p-5 sm:p-7 my-6 transition-all">
+    <div class="target-size-shell bg-white border border-slate-200/90 rounded-2xl shadow-card p-5 sm:p-7 my-6 transition-all">
       {/* Target Size Controls Bar */}
-      <div class="mb-6 p-4 sm:p-5 bg-slate-50/80 rounded-2xl border border-slate-200/80 flex flex-wrap items-center justify-between gap-4">
+      <div class="mb-6 p-4 sm:p-5 bg-slate-50/80 rounded-xl border border-slate-200/80 flex flex-wrap items-center justify-between gap-4">
         <div class="flex items-center space-x-3 flex-wrap gap-2">
           <label class="text-xs font-bold text-slate-700 uppercase tracking-wider flex items-center gap-1.5">
             <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -301,15 +301,15 @@ export default function TargetSizeShell({
             </svg>
             <span>Target Size:</span>
           </label>
-          <div class="flex items-center space-x-1.5 flex-wrap gap-1">
+          <div class="flex items-center space-x-1 flex-wrap gap-1">
             {[20, 50, 100, 200, 500, 1024].map((kb) => (
               <button
                 key={kb}
                 type="button"
                 onClick={() => setTargetKb(kb)}
-                class={`px-3 py-1.5 text-xs font-bold rounded-xl transition-all ${
+                class={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all cursor-pointer ${
                   targetKb === kb
-                    ? 'bg-emerald-600 text-white shadow-xs'
+                    ? 'bg-emerald-600 text-white shadow-2xs'
                     : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
                 }`}
               >
@@ -326,9 +326,9 @@ export default function TargetSizeShell({
                   const val = parseInt((e.target as HTMLInputElement).value, 10);
                   if (val > 0) setTargetKb(val);
                 }}
-                class="w-16 px-2.5 py-1.5 text-xs font-mono font-bold border border-slate-200 rounded-l-xl bg-white text-slate-900 focus:ring-1 focus:ring-slate-900"
+                class="w-16 px-2.5 py-1.5 text-xs font-mono font-bold border border-slate-200 rounded-l-lg bg-white text-slate-900 focus:outline-none focus:ring-1 focus:ring-emerald-500"
               />
-              <span class="px-2.5 py-1.5 text-xs bg-slate-100 border border-l-0 border-slate-200 rounded-r-xl text-slate-600 font-bold">
+              <span class="px-2.5 py-1.5 text-xs bg-slate-100 border border-l-0 border-slate-200 rounded-r-lg text-slate-600 font-bold">
                 KB
               </span>
             </div>
@@ -340,7 +340,7 @@ export default function TargetSizeShell({
           <select
             value={outputFormat}
             onChange={(e) => setOutputFormat((e.target as HTMLSelectElement).value as any)}
-            class="text-xs font-bold px-3 py-1.5 rounded-xl border border-slate-200 bg-white text-slate-800 focus:ring-2 focus:ring-slate-900 shadow-2xs"
+            class="text-xs font-semibold px-3 py-1.5 rounded-lg border border-slate-200 bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 shadow-2xs cursor-pointer"
           >
             <option value="jpg">JPG (Universal format)</option>
             <option value="webp">WebP (High efficiency)</option>

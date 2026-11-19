@@ -79,6 +79,7 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
       generateLorem();
     }
   }, [toolId, loremType, loremCount, startWithLorem]);
+
   const [text, setText] = useState<string>(
     toolId === 'json-formatter'
       ? '{"name":"ZixTool","type":"client-side","features":["privacy","speed","zero-upload"],"active":true}'
@@ -278,46 +279,47 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
   };
 
   return (
-    <div class="text-shell bg-white border border-slate-200 rounded-2xl shadow-xs p-5 sm:p-7 my-6 transition-all">
+    <div class="text-shell bg-white border border-slate-200/90 rounded-2xl shadow-card p-5 sm:p-7 my-6 transition-all">
       {/* Word & Character Counter */}
       {(toolId === 'word-counter' || toolId === 'character-counter') && (
         <div class="space-y-6">
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
-            <div class="p-3 rounded-xl bg-green-50 border border-green-200">
-              <span class="block text-2xl sm:text-3xl font-extrabold text-green-900">{stats.words}</span>
-              <span class="text-xs font-semibold text-green-700 uppercase">Words</span>
+          {/* SaaS KPI Metric Cards */}
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div class="p-4 rounded-xl bg-emerald-50/70 border border-emerald-200/80 text-center">
+              <span class="block text-2xl sm:text-3xl font-extrabold text-emerald-900 tracking-tight">{stats.words}</span>
+              <span class="text-2xs font-bold text-emerald-700 uppercase tracking-wider mt-0.5">Words</span>
             </div>
-            <div class="p-3 rounded-xl bg-gray-50 border border-gray-200">
-              <span class="block text-2xl sm:text-3xl font-extrabold text-gray-900">{stats.chars}</span>
-              <span class="text-xs font-semibold text-gray-500 uppercase">Characters</span>
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 text-center">
+              <span class="block text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">{stats.chars}</span>
+              <span class="text-2xs font-bold text-slate-500 uppercase tracking-wider mt-0.5">Characters</span>
             </div>
-            <div class="p-3 rounded-xl bg-gray-50 border border-gray-200">
-              <span class="block text-2xl sm:text-3xl font-extrabold text-gray-900">{stats.charsNoSpaces}</span>
-              <span class="text-xs font-semibold text-gray-500 uppercase">Without Spaces</span>
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 text-center">
+              <span class="block text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">{stats.charsNoSpaces}</span>
+              <span class="text-2xs font-bold text-slate-500 uppercase tracking-wider mt-0.5">No Spaces</span>
             </div>
-            <div class="p-3 rounded-xl bg-gray-50 border border-gray-200">
-              <span class="block text-2xl sm:text-3xl font-extrabold text-gray-900">{stats.sentences}</span>
-              <span class="text-xs font-semibold text-gray-500 uppercase">Sentences</span>
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 text-center">
+              <span class="block text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">{stats.sentences}</span>
+              <span class="text-2xs font-bold text-slate-500 uppercase tracking-wider mt-0.5">Sentences</span>
             </div>
           </div>
 
           <div>
             <div class="flex justify-between items-center mb-2">
-              <label class="text-xs font-bold text-gray-700 uppercase tracking-wider">Your Text</label>
-              <div class="space-x-2">
+              <label class="text-xs font-semibold text-slate-700 uppercase tracking-wider">Source Content</label>
+              <div class="flex items-center gap-2">
                 <button
                   type="button"
                   onClick={() => setText('')}
-                  class="text-xs text-gray-500 hover:text-red-600 transition"
+                  class="text-xs font-medium text-slate-400 hover:text-rose-600 transition cursor-pointer px-2 py-1 rounded-md"
                 >
                   Clear
                 </button>
                 <button
                   type="button"
                   onClick={copyToClipboard}
-                  class="text-xs font-semibold text-green-600 hover:text-green-700 transition"
+                  class="text-xs font-semibold text-emerald-600 hover:text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/60 px-3 py-1 rounded-lg transition cursor-pointer"
                 >
-                  {copied ? '✓ Copied!' : 'Copy Text'}
+                  {copied ? '✓ Copied' : 'Copy Text'}
                 </button>
               </div>
             </div>
@@ -326,19 +328,19 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
               value={text}
               onInput={(e) => setText((e.target as HTMLTextAreaElement).value)}
               placeholder="Paste or type your text here for instant live analysis..."
-              class="w-full p-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 font-sans text-sm leading-relaxed"
+              class="w-full p-4 rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-sans text-sm leading-relaxed text-slate-900 transition"
             />
           </div>
 
-          <div class="flex flex-wrap items-center justify-between text-xs text-gray-500 gap-4 pt-2 border-t border-gray-100">
-            <div>
-              <span>Paragraphs: <strong class="text-gray-800">{stats.paragraphs}</strong></span>
-              <span class="mx-2">•</span>
-              <span>Estimated Reading: <strong class="text-gray-800">{stats.readingTime}</strong></span>
-              <span class="mx-2">•</span>
-              <span>Speaking: <strong class="text-gray-800">{stats.speakingTime}</strong></span>
+          <div class="flex flex-wrap items-center justify-between text-xs text-slate-500 gap-4 pt-3 border-t border-slate-100">
+            <div class="flex items-center gap-4 flex-wrap">
+              <span>Paragraphs: <strong class="text-slate-800">{stats.paragraphs}</strong></span>
+              <span class="text-slate-300">•</span>
+              <span>Reading: <strong class="text-slate-800">{stats.readingTime}</strong></span>
+              <span class="text-slate-300">•</span>
+              <span>Speaking: <strong class="text-slate-800">{stats.speakingTime}</strong></span>
             </div>
-            <div class="text-gray-400 text-xs">Local in-browser processing</div>
+            <div class="text-slate-400 text-2xs font-mono">100% In-Browser Execution</div>
           </div>
         </div>
       )}
@@ -346,56 +348,25 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
       {/* Case Converter */}
       {toolId === 'case-converter' && (
         <div class="space-y-6">
-          <div class="flex flex-wrap gap-2">
-            <button
-              type="button"
-              onClick={toSentenceCase}
-              class="px-3.5 py-1.5 text-xs font-medium bg-gray-100 text-gray-800 rounded-lg hover:bg-gray-200 transition"
-            >
-              Sentence case
-            </button>
-            <button
-              type="button"
-              onClick={toLowercase}
-              class="px-3.5 py-1.5 text-xs font-medium bg-gray-100 text-gray-800 rounded-lg hover:bg-gray-200 transition"
-            >
-              lower case
-            </button>
-            <button
-              type="button"
-              onClick={toUppercase}
-              class="px-3.5 py-1.5 text-xs font-medium bg-gray-100 text-gray-800 rounded-lg hover:bg-gray-200 transition"
-            >
-              UPPER CASE
-            </button>
-            <button
-              type="button"
-              onClick={toTitleCase}
-              class="px-3.5 py-1.5 text-xs font-medium bg-gray-100 text-gray-800 rounded-lg hover:bg-gray-200 transition"
-            >
-              Title Case
-            </button>
-            <button
-              type="button"
-              onClick={toCamelCase}
-              class="px-3.5 py-1.5 text-xs font-medium bg-gray-100 text-gray-800 rounded-lg hover:bg-gray-200 transition"
-            >
-              camelCase
-            </button>
-            <button
-              type="button"
-              onClick={toKebabCase}
-              class="px-3.5 py-1.5 text-xs font-medium bg-gray-100 text-gray-800 rounded-lg hover:bg-gray-200 transition"
-            >
-              kebab-case
-            </button>
-            <button
-              type="button"
-              onClick={toSnakeCase}
-              class="px-3.5 py-1.5 text-xs font-medium bg-gray-100 text-gray-800 rounded-lg hover:bg-gray-200 transition"
-            >
-              snake_case
-            </button>
+          <div class="flex flex-wrap gap-1.5 p-1.5 bg-slate-100/80 rounded-xl border border-slate-200/80">
+            {[
+              { label: 'Sentence case', fn: toSentenceCase },
+              { label: 'lower case', fn: toLowercase },
+              { label: 'UPPER CASE', fn: toUppercase },
+              { label: 'Title Case', fn: toTitleCase },
+              { label: 'camelCase', fn: toCamelCase },
+              { label: 'kebab-case', fn: toKebabCase },
+              { label: 'snake_case', fn: toSnakeCase },
+            ].map((btn) => (
+              <button
+                key={btn.label}
+                type="button"
+                onClick={btn.fn}
+                class="px-3 py-1.5 text-xs font-semibold bg-white text-slate-700 hover:text-emerald-700 hover:bg-emerald-50/50 rounded-lg border border-slate-200/60 shadow-2xs transition-all cursor-pointer"
+              >
+                {btn.label}
+              </button>
+            ))}
           </div>
 
           <div>
@@ -404,26 +375,26 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
               value={text}
               onInput={(e) => setText((e.target as HTMLTextAreaElement).value)}
               placeholder="Paste or type text to convert case..."
-              class="w-full p-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-green-500 font-sans text-sm leading-relaxed"
+              class="w-full p-4 rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-sans text-sm leading-relaxed text-slate-900 transition"
             />
           </div>
 
-          <div class="flex justify-between items-center text-xs text-gray-500">
+          <div class="flex justify-between items-center text-xs text-slate-500">
             <span>{stats.words} words • {stats.chars} characters</span>
-            <div class="space-x-3">
+            <div class="flex items-center gap-2">
               <button
                 type="button"
                 onClick={() => setText('')}
-                class="hover:text-red-600 transition"
+                class="text-xs font-medium text-slate-400 hover:text-rose-600 transition cursor-pointer px-2 py-1"
               >
                 Clear
               </button>
               <button
                 type="button"
                 onClick={copyToClipboard}
-                class="font-semibold text-green-600 hover:text-green-700 transition"
+                class="text-xs font-semibold text-emerald-600 hover:text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/60 px-3.5 py-1.5 rounded-lg transition cursor-pointer"
               >
-                {copied ? '✓ Copied!' : 'Copy to Clipboard'}
+                {copied ? '✓ Copied' : 'Copy Result'}
               </button>
             </div>
           </div>
@@ -432,13 +403,13 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
 
       {/* JSON Formatter */}
       {toolId === 'json-formatter' && (
-        <div class="space-y-6">
-          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-gray-200 pb-3">
-            <div class="flex items-center space-x-2">
+        <div class="space-y-5">
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-3">
+            <div class="flex items-center gap-1.5 flex-wrap">
               <button
                 type="button"
                 onClick={() => formatJson(2)}
-                class={`px-3 py-1.5 text-xs font-medium rounded-lg transition ${jsonIndent === 2 ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                class={`px-3 py-1.5 text-xs font-semibold rounded-lg transition cursor-pointer ${jsonIndent === 2 ? 'bg-emerald-600 text-white shadow-2xs' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                   }`}
               >
                 Beautify (2 Spaces)
@@ -446,7 +417,7 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
               <button
                 type="button"
                 onClick={() => formatJson(4)}
-                class={`px-3 py-1.5 text-xs font-medium rounded-lg transition ${jsonIndent === 4 ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                class={`px-3 py-1.5 text-xs font-semibold rounded-lg transition cursor-pointer ${jsonIndent === 4 ? 'bg-emerald-600 text-white shadow-2xs' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                   }`}
               >
                 Beautify (4 Spaces)
@@ -454,7 +425,7 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
               <button
                 type="button"
                 onClick={() => formatJson(0)}
-                class={`px-3 py-1.5 text-xs font-medium rounded-lg transition ${jsonIndent === 0 ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                class={`px-3 py-1.5 text-xs font-semibold rounded-lg transition cursor-pointer ${jsonIndent === 0 ? 'bg-emerald-600 text-white shadow-2xs' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                   }`}
               >
                 Minify (1 Line)
@@ -462,33 +433,33 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
               <button
                 type="button"
                 onClick={validateJson}
-                class="px-3 py-1.5 text-xs font-medium rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition"
+                class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition cursor-pointer"
               >
-                Validate
+                Validate JSON
               </button>
             </div>
-            <div class="space-x-2">
+            <div class="flex items-center gap-2">
               <button
                 type="button"
                 onClick={() => setText('')}
-                class="text-xs text-gray-500 hover:text-red-600"
+                class="text-xs font-medium text-slate-400 hover:text-rose-600 cursor-pointer px-2 py-1"
               >
                 Clear
               </button>
               <button
                 type="button"
                 onClick={copyToClipboard}
-                class="text-xs font-semibold text-green-600 hover:text-green-700"
+                class="text-xs font-semibold text-emerald-600 hover:text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/60 px-3.5 py-1.5 rounded-lg transition cursor-pointer"
               >
-                {copied ? '✓ Copied!' : 'Copy JSON'}
+                {copied ? '✓ Copied' : 'Copy JSON'}
               </button>
             </div>
           </div>
 
           {jsonError && (
-            <div class="p-3 bg-red-50 border border-red-200 rounded-lg text-xs text-red-700 flex items-center justify-between">
+            <div class="p-3 bg-rose-50 border border-rose-200 rounded-xl text-xs text-rose-700 flex items-center justify-between">
               <span><strong>JSON Error:</strong> {jsonError}</span>
-              <button onClick={() => setJsonError(null)} class="text-red-500 hover:text-red-800">×</button>
+              <button onClick={() => setJsonError(null)} class="text-rose-500 hover:text-rose-800 font-bold ml-2">×</button>
             </div>
           )}
 
@@ -501,13 +472,13 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
                 setJsonError(null);
               }}
               placeholder="Paste raw JSON here..."
-              class="w-full p-4 rounded-xl border border-gray-300 focus:ring-2 focus:ring-green-500 font-mono text-xs sm:text-sm leading-normal bg-gray-50"
+              class="w-full p-4 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-mono text-xs sm:text-sm leading-relaxed bg-slate-50/50 text-slate-900 transition"
             />
           </div>
 
-          <div class="flex justify-between items-center text-xs text-gray-500">
-            <span>Size: {(new Blob([text]).size / 1024).toFixed(2)} KB</span>
-            <span class="text-gray-400 text-xs">RFC 8259 syntax validation</span>
+          <div class="flex justify-between items-center text-xs text-slate-500">
+            <span>Size: <strong class="text-slate-700">{(new Blob([text]).size / 1024).toFixed(2)} KB</strong></span>
+            <span class="text-slate-400 text-2xs font-mono">RFC 8259 Standard Syntax</span>
           </div>
         </div>
       )}
@@ -516,21 +487,21 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
       {toolId === 'lorem-ipsum-generator' && (
         <div class="space-y-6 max-w-2xl mx-auto">
           {/* Controls */}
-          <div class="p-4 bg-gray-50 rounded-xl border border-gray-200 flex flex-wrap items-center justify-between gap-4">
+          <div class="p-4 bg-slate-50/80 rounded-xl border border-slate-200/80 flex flex-wrap items-center justify-between gap-4">
             <div class="flex items-center gap-3">
-              <label class="text-xs font-bold text-gray-700 uppercase tracking-wider">Generate:</label>
+              <label class="text-xs font-bold text-slate-700 uppercase tracking-wider">Generate:</label>
               <input
                 type="number"
                 min="1"
                 max="50"
                 value={loremCount}
                 onInput={(e) => setLoremCount(Math.max(1, Number((e.target as HTMLInputElement).value)))}
-                class="w-16 px-2 py-1 text-xs font-bold font-mono border border-gray-300 rounded-lg text-center"
+                class="w-16 px-2.5 py-1 text-xs font-bold font-mono border border-slate-200 rounded-lg text-center bg-white text-slate-900"
               />
               <select
                 value={loremType}
                 onChange={(e) => setLoremType((e.target as HTMLSelectElement).value as any)}
-                class="px-3 py-1 text-xs font-semibold border border-gray-300 rounded-lg bg-white"
+                class="px-3 py-1.5 text-xs font-semibold border border-slate-200 rounded-lg bg-white text-slate-800"
               >
                 <option value="paragraphs">Paragraphs</option>
                 <option value="sentences">Sentences</option>
@@ -539,12 +510,12 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
             </div>
 
             <div class="flex items-center gap-3">
-              <label class="flex items-center gap-2 cursor-pointer text-xs font-medium text-gray-700 select-none">
+              <label class="flex items-center gap-2 cursor-pointer text-xs font-medium text-slate-700 select-none">
                 <input
                   type="checkbox"
                   checked={startWithLorem}
                   onChange={(e) => setStartWithLorem((e.target as HTMLInputElement).checked)}
-                  class="rounded text-green-600 focus:ring-green-500"
+                  class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
                 />
                 Start with "Lorem ipsum"
               </label>
@@ -552,7 +523,7 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
               <button
                 type="button"
                 onClick={generateLorem}
-                class="px-4 py-1.5 bg-green-600 hover:bg-green-700 text-white rounded-lg text-xs font-bold transition shadow-xs"
+                class="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-semibold transition shadow-2xs active:scale-[0.99] cursor-pointer"
               >
                 Regenerate
               </button>
@@ -562,7 +533,7 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
           {/* Output Display */}
           <div class="space-y-2">
             <div class="flex justify-between items-center">
-              <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Generated Text</span>
+              <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Generated Text</span>
               <button
                 type="button"
                 onClick={() => {
@@ -570,9 +541,9 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
                   setCopied(true);
                   setTimeout(() => setCopied(false), 1800);
                 }}
-                class="px-3 py-1 text-xs font-semibold rounded-lg bg-green-50 hover:bg-green-100 text-green-700 border border-green-200 transition"
+                class="px-3 py-1 text-xs font-semibold rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200/60 transition cursor-pointer"
               >
-                {copied ? '✓ Copied to Clipboard' : 'Copy Text'}
+                {copied ? '✓ Copied' : 'Copy Text'}
               </button>
             </div>
 
@@ -580,7 +551,7 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
               rows={10}
               readOnly
               value={loremOutput}
-              class="w-full p-4 rounded-xl border border-gray-300 bg-white font-serif text-sm leading-relaxed text-gray-800 focus:ring-2 focus:ring-green-500"
+              class="w-full p-4 rounded-xl border border-slate-200 bg-white font-serif text-sm leading-relaxed text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
             />
           </div>
         </div>
@@ -589,23 +560,23 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
       {/* Diff Checker */}
       {toolId === 'diff-checker' && (
         <div class="space-y-6">
-          <div class="flex items-center justify-between p-3 bg-gray-50 border border-gray-200 rounded-xl text-xs font-semibold">
-            <div class="flex items-center gap-3">
-              <span class="inline-flex items-center gap-1 text-green-700 bg-green-100 px-2.5 py-0.5 rounded-full font-bold">
+          <div class="flex items-center justify-between p-3.5 bg-slate-50 border border-slate-200/80 rounded-xl text-xs font-semibold">
+            <div class="flex items-center gap-2.5">
+              <span class="inline-flex items-center gap-1 text-emerald-700 bg-emerald-100/70 border border-emerald-200/60 px-2.5 py-0.5 rounded-md font-semibold text-2xs">
                 +{diffResult.addedCount} Added
               </span>
-              <span class="inline-flex items-center gap-1 text-red-700 bg-red-100 px-2.5 py-0.5 rounded-full font-bold">
+              <span class="inline-flex items-center gap-1 text-rose-700 bg-rose-100/70 border border-rose-200/60 px-2.5 py-0.5 rounded-md font-semibold text-2xs">
                 -{diffResult.removedCount} Removed
               </span>
             </div>
-            <div class="text-gray-400 text-2xs">
-              Inline comparison
+            <div class="text-slate-400 text-2xs font-mono">
+              In-Memory Diff Algorithm
             </div>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
                 Original Text (Baseline)
               </label>
               <textarea
@@ -613,11 +584,11 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
                 value={diffOriginal}
                 onInput={(e) => setDiffOriginal((e.target as HTMLTextAreaElement).value)}
                 placeholder="Paste original text here..."
-                class="w-full p-3 font-mono text-xs border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500"
+                class="w-full p-3 font-mono text-xs border border-slate-200 rounded-xl bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 leading-normal"
               />
             </div>
             <div>
-              <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
                 Modified Text (Updated)
               </label>
               <textarea
@@ -625,32 +596,32 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
                 value={diffModified}
                 onInput={(e) => setDiffModified((e.target as HTMLTextAreaElement).value)}
                 placeholder="Paste modified text here..."
-                class="w-full p-3 font-mono text-xs border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500"
+                class="w-full p-3 font-mono text-xs border border-slate-200 rounded-xl bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 leading-normal"
               />
             </div>
           </div>
 
-          <div class="border border-gray-200 rounded-xl overflow-hidden">
-            <div class="p-2.5 bg-gray-100 border-b border-gray-200 text-xs font-bold text-gray-700">
+          <div class="border border-slate-200 rounded-xl overflow-hidden shadow-2xs">
+            <div class="p-2.5 bg-slate-50 border-b border-slate-200 text-xs font-bold text-slate-700">
               Highlighted Line Differences
             </div>
-            <div class="font-mono text-xs divide-y divide-gray-100 max-h-80 overflow-y-auto">
+            <div class="font-mono text-xs divide-y divide-slate-100 max-h-80 overflow-y-auto">
               {diffResult.diff.map((line, idx) => (
                 <div
                   key={idx}
                   class={`flex items-start px-3 py-1.5 ${line.type === 'added'
-                    ? 'bg-green-50 text-green-900 font-medium'
+                    ? 'bg-emerald-50/70 text-emerald-900 font-medium'
                     : line.type === 'removed'
-                      ? 'bg-red-50 text-red-900 line-through'
-                      : 'bg-white text-gray-700'
+                      ? 'bg-rose-50/70 text-rose-900 line-through'
+                      : 'bg-white text-slate-700'
                     }`}
                 >
                   <span
                     class={`w-6 text-center select-none font-bold mr-2 ${line.type === 'added'
-                      ? 'text-green-600'
+                      ? 'text-emerald-600'
                       : line.type === 'removed'
-                        ? 'text-red-500'
-                        : 'text-gray-300'
+                        ? 'text-rose-500'
+                        : 'text-slate-300'
                       }`}
                   >
                     {line.type === 'added' ? '+' : line.type === 'removed' ? '-' : ' '}
@@ -668,8 +639,8 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
         <div class="space-y-6">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <div class="flex justify-between items-center mb-1">
-                <label class="text-xs font-bold text-gray-700 uppercase tracking-wider">Markdown Editor</label>
+              <div class="flex justify-between items-center mb-1.5">
+                <label class="text-xs font-bold text-slate-700 uppercase tracking-wider">Markdown Editor</label>
                 <button
                   type="button"
                   onClick={() =>
@@ -677,7 +648,7 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
                       '# Live Heading\n\n- Free & Instant\n- Pure In-Browser Client\n\n**Bold Text** and *italic* styling.'
                     )
                   }
-                  class="text-2xs text-gray-500 hover:text-green-600 cursor-pointer"
+                  class="text-2xs text-slate-400 hover:text-emerald-600 cursor-pointer"
                 >
                   Load Sample
                 </button>
@@ -687,25 +658,25 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
                 value={mdInput}
                 onInput={(e) => setMdInput((e.target as HTMLTextAreaElement).value)}
                 placeholder="Type or paste markdown here..."
-                class="w-full p-3 font-mono text-xs border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500"
+                class="w-full p-3 font-mono text-xs border border-slate-200 rounded-xl bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 leading-normal"
               />
             </div>
 
             <div>
-              <div class="flex justify-between items-center mb-1">
-                <label class="text-xs font-bold text-gray-700 uppercase tracking-wider">Live Visual Preview</label>
-                <span class="text-2xs font-semibold text-green-700">Instant Real-Time</span>
+              <div class="flex justify-between items-center mb-1.5">
+                <label class="text-xs font-bold text-slate-700 uppercase tracking-wider">Live Visual Preview</label>
+                <span class="text-2xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200/60 px-2 py-0.5 rounded">Instant Preview</span>
               </div>
               <div
-                class="p-4 border border-gray-200 rounded-xl bg-gray-50 max-h-[300px] overflow-y-auto prose prose-sm leading-relaxed"
+                class="p-4 border border-slate-200 rounded-xl bg-slate-50/50 max-h-[300px] overflow-y-auto prose prose-sm leading-relaxed text-slate-800"
                 dangerouslySetInnerHTML={{ __html: htmlOutput }}
               />
             </div>
           </div>
 
           <div>
-            <div class="flex justify-between items-center mb-1">
-              <label class="text-xs font-bold text-gray-700 uppercase tracking-wider">Generated HTML Markup</label>
+            <div class="flex justify-between items-center mb-1.5">
+              <label class="text-xs font-bold text-slate-700 uppercase tracking-wider">Generated HTML Markup</label>
               <button
                 type="button"
                 onClick={() => {
@@ -713,7 +684,7 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
                   setMdCopied(true);
                   setTimeout(() => setMdCopied(false), 2000);
                 }}
-                class="text-xs font-bold text-green-700 hover:underline cursor-pointer"
+                class="text-xs font-bold text-emerald-700 hover:underline cursor-pointer"
               >
                 {mdCopied ? '✓ Copied HTML!' : 'Copy HTML Code'}
               </button>
@@ -722,7 +693,7 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
               rows={5}
               readOnly
               value={htmlOutput}
-              class="w-full p-3 font-mono text-xs border border-gray-200 rounded-xl bg-gray-50 text-gray-800"
+              class="w-full p-3 font-mono text-xs border border-slate-200 rounded-xl bg-slate-50 text-slate-800"
             />
           </div>
         </div>

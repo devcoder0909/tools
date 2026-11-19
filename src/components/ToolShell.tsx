@@ -340,7 +340,7 @@ export default function ToolShell({
   };
 
   return (
-    <div class="tool-shell bg-white border border-slate-200 rounded-2xl shadow-xs p-5 sm:p-7 my-6 transition-all">
+    <div class="tool-shell bg-white border border-slate-200/90 rounded-2xl shadow-card p-5 sm:p-7 my-6 transition-all">
       {deviceWarning && (
         <div class="mb-4 p-3 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-800 flex items-center">
           <span class="mr-2 font-bold">Device Notice:</span> {deviceWarning}

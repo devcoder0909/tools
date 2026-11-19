@@ -222,7 +222,7 @@ export default function HomeConverterShell() {
   };
 
   return (
-    <div class="home-converter-shell bg-white border border-slate-200 rounded-2xl shadow-xs p-5 sm:p-7 my-6 sm:my-8 max-w-4xl mx-auto transition-all">
+    <div class="home-converter-shell bg-white border border-slate-200/90 rounded-2xl shadow-card p-5 sm:p-7 my-6 sm:my-8 max-w-4xl mx-auto transition-all">
       {/* Format & Optimization Controls Bar */}
       <div class="flex flex-wrap items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-100">
         <div class="flex items-center gap-2.5">

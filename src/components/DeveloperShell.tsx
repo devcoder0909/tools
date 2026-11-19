@@ -481,7 +481,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
   }, [csvJsonInput, csvAutoType]);
 
   return (
-    <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-7 shadow-xs mb-8 transition-all">
+    <div class="bg-white border border-slate-200/90 rounded-2xl p-5 sm:p-7 shadow-card mb-8 transition-all">
       {/* 1. JWT Decoder */}
       {toolId === 'jwt-decoder' && (
         <div class="space-y-6">
@@ -492,7 +492,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
               value={jwtInput}
               onInput={(e) => setJwtInput((e.target as HTMLTextAreaElement).value)}
               placeholder="Paste eyJhbGciOi..."
-              class="w-full font-mono text-xs p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+              class="w-full font-mono text-xs p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
             />
           </div>
 
@@ -509,7 +509,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
                 <div class="flex items-center justify-between mb-2">
                   <span class="text-xs font-bold text-gray-500 uppercase tracking-wider">Payload (Claims)</span>
                   {decodedJwt.expDate && (
-                    <span class={`text-2xs font-bold px-2 py-0.5 rounded ${decodedJwt.isExpired ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'}`}>
+                    <span class={`text-2xs font-bold px-2 py-0.5 rounded ${decodedJwt.isExpired ? 'bg-red-100 text-red-800' : 'bg-emerald-100 text-emerald-800'}`}>
                       {decodedJwt.isExpired ? 'Expired' : 'Active'}
                     </span>
                   )}
@@ -544,7 +544,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
                   if (cat === 'temperature') { setUnitFrom('C'); setUnitTo('F'); }
                   if (cat === 'digital') { setUnitFrom('MB'); setUnitTo('GB'); }
                 }}
-                class={`px-4 py-1.5 text-xs font-semibold rounded-lg capitalize ${unitCategory === cat ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
+                class={`px-4 py-1.5 text-xs font-semibold rounded-lg capitalize ${unitCategory === cat ? 'bg-emerald-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}
               >
                 {cat}
               </button>
@@ -607,7 +607,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
 
           <div class="bg-gray-50 border border-gray-200 rounded-2xl p-6 text-center">
             <span class="text-xs uppercase font-semibold text-gray-500">Converted Value</span>
-            <p class="text-3xl sm:text-4xl font-extrabold text-green-700 my-2 font-mono">
+            <p class="text-3xl sm:text-4xl font-extrabold text-emerald-700 my-2 font-mono">
               {convertedUnit} {unitTo}
             </p>
             <p class="text-xs text-gray-500">
@@ -698,7 +698,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
                     setCopiedColor(val);
                     setTimeout(() => setCopiedColor(null), 1800);
                   }}
-                  class="px-2.5 py-1 text-xs font-semibold bg-gray-100 hover:bg-green-100 hover:text-green-700 text-gray-700 rounded-lg transition"
+                  class="px-2.5 py-1 text-xs font-semibold bg-gray-100 hover:bg-emerald-100 hover:text-emerald-700 text-gray-700 rounded-lg transition"
                 >
                   {copiedColor === val ? '✓ Copied' : 'Copy'}
                 </button>
@@ -717,7 +717,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
               type="button"
               onClick={() => setB64Mode('encode')}
               class={`px-4 py-2 text-xs font-bold rounded-lg transition ${
-                b64Mode === 'encode' ? 'bg-white text-green-700 shadow-xs' : 'text-gray-600 hover:text-gray-900'
+                b64Mode === 'encode' ? 'bg-white text-emerald-700 shadow-xs' : 'text-gray-600 hover:text-gray-900'
               }`}
             >
               Text &rarr; Base64 (Encode)
@@ -726,7 +726,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
               type="button"
               onClick={() => setB64Mode('decode')}
               class={`px-4 py-2 text-xs font-bold rounded-lg transition ${
-                b64Mode === 'decode' ? 'bg-white text-green-700 shadow-xs' : 'text-gray-600 hover:text-gray-900'
+                b64Mode === 'decode' ? 'bg-white text-emerald-700 shadow-xs' : 'text-gray-600 hover:text-gray-900'
               }`}
             >
               Base64 &rarr; Text (Decode)
@@ -743,7 +743,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
               value={b64Input}
               onInput={(e) => setB64Input((e.target as HTMLTextAreaElement).value)}
               placeholder={b64Mode === 'encode' ? 'Type or paste plain text here...' : 'Paste Base64 encoded string here...'}
-              class="w-full p-3 text-xs font-mono border border-gray-300 rounded-xl bg-white text-gray-900 focus:ring-2 focus:ring-green-500"
+              class="w-full p-3 text-xs font-mono border border-gray-300 rounded-xl bg-white text-gray-900 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
             />
           </div>
 
@@ -760,7 +760,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
                   setB64Copied(true);
                   setTimeout(() => setB64Copied(false), 1800);
                 }}
-                class="px-3 py-1 text-xs font-semibold rounded-lg bg-green-50 hover:bg-green-100 text-green-700 border border-green-200 transition"
+                class="px-3 py-1 text-xs font-semibold rounded-lg bg-emerald-50/70 hover:bg-emerald-100 text-emerald-700 border border-emerald-200/80 transition"
               >
                 {b64Copied ? '✓ Copied to Clipboard' : 'Copy Output'}
               </button>
@@ -803,7 +803,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
             </div>
             <div class="flex justify-between p-3 bg-white">
               <span class="font-medium text-gray-600">Cookies Enabled</span>
-              <span class="font-bold text-green-600">{clientInfo.cookiesEnabled}</span>
+              <span class="font-bold text-emerald-600">{clientInfo.cookiesEnabled}</span>
             </div>
             <div class="p-3 bg-gray-50">
               <span class="font-medium text-gray-600 block mb-1">User Agent</span>
@@ -822,7 +822,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
               onClick={() => setUrlMode('encode')}
               class={`px-4 py-2 text-xs font-bold rounded-lg transition cursor-pointer ${
                 urlMode === 'encode'
-                  ? 'bg-green-600 text-white shadow-xs'
+                  ? 'bg-emerald-600 text-white shadow-xs'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
@@ -833,7 +833,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
               onClick={() => setUrlMode('decode')}
               class={`px-4 py-2 text-xs font-bold rounded-lg transition cursor-pointer ${
                 urlMode === 'decode'
-                  ? 'bg-green-600 text-white shadow-xs'
+                  ? 'bg-emerald-600 text-white shadow-xs'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
@@ -849,7 +849,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
               rows={4}
               value={urlInput}
               onInput={(e) => setUrlInput((e.target as HTMLTextAreaElement).value)}
-              class="w-full p-3 text-xs font-mono border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500"
+              class="w-full p-3 text-xs font-mono border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
             />
           </div>
 
@@ -863,7 +863,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
                   setUrlCopied(true);
                   setTimeout(() => setUrlCopied(false), 2000);
                 }}
-                class="text-xs font-bold text-green-700 hover:underline cursor-pointer"
+                class="text-xs font-bold text-emerald-700 hover:underline cursor-pointer"
               >
                 {urlCopied ? '✓ Copied!' : 'Copy to Clipboard'}
               </button>
@@ -890,7 +890,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
                 max="50"
                 value={uuidCount}
                 onInput={(e) => setUuidCount(Number((e.target as HTMLInputElement).value))}
-                class="w-full accent-green-600"
+                class="w-full accent-emerald-600"
               />
             </div>
             <div class="flex items-center gap-2">
@@ -899,7 +899,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
                 id="uuidHyphens"
                 checked={uuidHyphens}
                 onChange={(e) => setUuidHyphens((e.target as HTMLInputElement).checked)}
-                class="rounded text-green-600"
+                class="rounded text-emerald-600"
               />
               <label for="uuidHyphens" class="text-xs font-semibold text-gray-700 cursor-pointer">
                 Include Hyphens
@@ -911,7 +911,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
                 id="uuidUpper"
                 checked={uuidUppercase}
                 onChange={(e) => setUuidUppercase((e.target as HTMLInputElement).checked)}
-                class="rounded text-green-600"
+                class="rounded text-emerald-600"
               />
               <label for="uuidUpper" class="text-xs font-semibold text-gray-700 cursor-pointer">
                 Uppercase Output
@@ -923,7 +923,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
             <button
               type="button"
               onClick={generateUuids}
-              class="px-5 py-2 text-xs font-bold rounded-xl bg-green-600 text-white hover:bg-green-700 transition cursor-pointer"
+              class="px-5 py-2 text-xs font-bold rounded-xl bg-emerald-600 text-white hover:bg-emerald-700 transition cursor-pointer"
             >
               Generate New Batch
             </button>
@@ -934,7 +934,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
                 setUuidCopied(true);
                 setTimeout(() => setUuidCopied(false), 2000);
               }}
-              class="text-xs font-bold text-green-700 hover:underline cursor-pointer"
+              class="text-xs font-bold text-emerald-700 hover:underline cursor-pointer"
             >
               {uuidCopied ? '✓ Copied All!' : 'Copy All to Clipboard'}
             </button>
@@ -947,7 +947,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
                 <button
                   type="button"
                   onClick={() => navigator.clipboard.writeText(id)}
-                  class="text-gray-400 hover:text-green-600 text-3xs uppercase font-bold"
+                  class="text-gray-400 hover:text-emerald-600 text-3xs uppercase font-bold"
                 >
                   Copy
                 </button>
@@ -967,7 +967,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
               value={hashInput}
               onInput={(e) => setHashInput((e.target as HTMLTextAreaElement).value)}
               placeholder="Enter text to hash..."
-              class="w-full p-3 text-xs font-mono border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500"
+              class="w-full p-3 text-xs font-mono border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
             />
           </div>
 
@@ -985,7 +985,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
                   <button
                     type="button"
                     onClick={() => navigator.clipboard.writeText(item.val)}
-                    class="text-green-700 hover:underline cursor-pointer"
+                    class="text-emerald-700 hover:underline cursor-pointer"
                   >
                     Copy Hash
                   </button>
@@ -1016,7 +1016,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
                   onClick={() => setJsonCsvDelimiter(d.val)}
                   class={`px-2.5 py-1 text-xs font-bold rounded-lg border transition cursor-pointer ${
                     jsonCsvDelimiter === d.val
-                      ? 'bg-green-600 text-white border-green-600'
+                      ? 'bg-emerald-600 text-white border-emerald-600'
                       : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-100'
                   }`}
                 >
@@ -1036,7 +1036,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
                 rows={10}
                 value={jsonCsvInput}
                 onInput={(e) => setJsonCsvInput((e.target as HTMLTextAreaElement).value)}
-                class="w-full p-3 text-xs font-mono border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500"
+                class="w-full p-3 text-xs font-mono border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
               />
             </div>
             <div>
@@ -1046,7 +1046,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
                   <button
                     type="button"
                     onClick={() => navigator.clipboard.writeText(jsonCsvOutput)}
-                    class="text-2xs font-bold text-green-700 hover:underline cursor-pointer"
+                    class="text-2xs font-bold text-emerald-700 hover:underline cursor-pointer"
                   >
                     Copy
                   </button>
@@ -1086,7 +1086,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
               id="csvAutoType"
               checked={csvAutoType}
               onChange={(e) => setCsvAutoType((e.target as HTMLInputElement).checked)}
-              class="rounded text-green-600"
+              class="rounded text-emerald-600"
             />
             <label for="csvAutoType" class="text-xs font-semibold text-gray-700 cursor-pointer">
               Auto-parse Numbers & Booleans
@@ -1100,7 +1100,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
                 rows={10}
                 value={csvJsonInput}
                 onInput={(e) => setCsvJsonInput((e.target as HTMLTextAreaElement).value)}
-                class="w-full p-3 text-xs font-mono border border-gray-300 rounded-xl focus:ring-2 focus:ring-green-500"
+                class="w-full p-3 text-xs font-mono border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
               />
             </div>
             <div>
@@ -1110,7 +1110,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
                   <button
                     type="button"
                     onClick={() => navigator.clipboard.writeText(csvJsonOutput)}
-                    class="text-2xs font-bold text-green-700 hover:underline cursor-pointer"
+                    class="text-2xs font-bold text-emerald-700 hover:underline cursor-pointer"
                   >
                     Copy JSON
                   </button>

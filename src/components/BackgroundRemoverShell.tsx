@@ -148,7 +148,7 @@ export default function BackgroundRemoverShell({ toolName: _toolName = 'Backgrou
   };
 
   return (
-    <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-7 shadow-xs mb-8 transition-all">
+    <div class="bg-white border border-slate-200/90 rounded-2xl p-5 sm:p-7 shadow-card mb-8 transition-all">
       {!imageSrc ? (
         <label class="border-2 border-dashed border-slate-300 hover:border-emerald-500 rounded-2xl p-10 sm:p-14 block text-center bg-slate-50/50 hover:bg-emerald-50/20 transition-all cursor-pointer group">
           <input

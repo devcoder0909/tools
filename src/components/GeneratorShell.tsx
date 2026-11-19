@@ -268,17 +268,20 @@ export default function GeneratorShell({ toolId }: GeneratorShellProps) {
   ];
 
   return (
-    <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-7 shadow-xs mb-8 transition-all">
+    <div class="bg-white border border-slate-200/90 rounded-2xl p-5 sm:p-7 shadow-card mb-8 transition-all">
       {/* 1. QR Code Generator */}
       {toolId === 'qr-code-generator' && (
         <div class="space-y-6">
-          <div class="flex flex-wrap gap-2 border-b border-gray-200 pb-3">
+          <div class="flex flex-wrap gap-1.5 p-1.5 bg-slate-100/80 rounded-xl border border-slate-200/80">
             {(['url', 'text', 'wifi', 'email'] as const).map((t) => (
               <button
                 type="button"
                 onClick={() => setQrType(t)}
-                class={`px-4 py-2 text-xs font-semibold rounded-lg capitalize transition cursor-pointer ${qrType === t ? 'bg-emerald-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
+                class={`px-3.5 py-1.5 text-xs font-semibold rounded-lg capitalize transition cursor-pointer ${
+                  qrType === t
+                    ? 'bg-emerald-600 text-white shadow-2xs'
+                    : 'bg-white text-slate-700 hover:bg-slate-50 border border-slate-200/60'
+                }`}
               >
                 {t === 'url' ? 'Website URL' : t === 'wifi' ? 'WiFi Network' : t}
               </button>
@@ -289,26 +292,26 @@ export default function GeneratorShell({ toolId }: GeneratorShellProps) {
             <div class="space-y-4">
               {qrType === 'url' && (
                 <div>
-                  <label class="block text-xs font-medium text-gray-700 mb-1">Target Website URL</label>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1.5">Target Website URL</label>
                   <input
                     type="url"
                     value={qrText}
                     onInput={(e) => setQrText((e.target as HTMLInputElement).value)}
                     placeholder="https://example.com"
-                    class="w-full px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                    class="w-full px-3.5 py-2 text-sm border border-slate-200 rounded-lg bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
                   />
                 </div>
               )}
 
               {qrType === 'text' && (
                 <div>
-                  <label class="block text-xs font-medium text-gray-700 mb-1">Plain Text Message</label>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1.5">Plain Text Message</label>
                   <textarea
                     rows={4}
                     value={qrText}
                     onInput={(e) => setQrText((e.target as HTMLTextAreaElement).value)}
                     placeholder="Enter plain text, secret note, or promo code..."
-                    class="w-full px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+                    class="w-full px-3.5 py-2 text-sm border border-slate-200 rounded-lg bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
                   />
                 </div>
               )}
@@ -316,31 +319,31 @@ export default function GeneratorShell({ toolId }: GeneratorShellProps) {
               {qrType === 'wifi' && (
                 <div class="space-y-3">
                   <div>
-                    <label class="block text-xs font-medium text-gray-700 mb-1">Network Name (SSID)</label>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1.5">Network Name (SSID)</label>
                     <input
                       type="text"
                       value={wifiSsid}
                       onInput={(e) => setWifiSsid((e.target as HTMLInputElement).value)}
                       placeholder="MyHomeWiFi"
-                      class="w-full px-4 py-2 text-sm border border-gray-300 rounded-lg"
+                      class="w-full px-3.5 py-2 text-sm border border-slate-200 rounded-lg bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
                     />
                   </div>
                   <div>
-                    <label class="block text-xs font-medium text-gray-700 mb-1">Password</label>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1.5">Password</label>
                     <input
                       type="text"
                       value={wifiPassword}
                       onInput={(e) => setWifiPassword((e.target as HTMLInputElement).value)}
                       placeholder="SecretWiFiKey"
-                      class="w-full px-4 py-2 text-sm border border-gray-300 rounded-lg"
+                      class="w-full px-3.5 py-2 text-sm border border-slate-200 rounded-lg bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
                     />
                   </div>
                   <div>
-                    <label class="block text-xs font-medium text-gray-700 mb-1">Encryption Mode</label>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1.5">Encryption Mode</label>
                     <select
                       value={wifiAuth}
                       onChange={(e) => setWifiAuth((e.target as HTMLSelectElement).value)}
-                      class="w-full px-4 py-2 text-sm border border-gray-300 rounded-lg"
+                      class="w-full px-3.5 py-2 text-sm border border-slate-200 rounded-lg bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
                     >
                       <option value="WPA">WPA / WPA2 / WPA3</option>
                       <option value="WEP">WEP</option>
@@ -353,23 +356,23 @@ export default function GeneratorShell({ toolId }: GeneratorShellProps) {
               {qrType === 'email' && (
                 <div class="space-y-3">
                   <div>
-                    <label class="block text-xs font-medium text-gray-700 mb-1">Recipient Email</label>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1.5">Recipient Email</label>
                     <input
                       type="email"
                       value={emailTo}
                       onInput={(e) => setEmailTo((e.target as HTMLInputElement).value)}
                       placeholder="support@example.com"
-                      class="w-full px-4 py-2 text-sm border border-gray-300 rounded-lg"
+                      class="w-full px-3.5 py-2 text-sm border border-slate-200 rounded-lg bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
                     />
                   </div>
                   <div>
-                    <label class="block text-xs font-medium text-gray-700 mb-1">Subject</label>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1.5">Subject</label>
                     <input
                       type="text"
                       value={emailSubject}
                       onInput={(e) => setEmailSubject((e.target as HTMLInputElement).value)}
                       placeholder="Inquiry from QR code"
-                      class="w-full px-4 py-2 text-sm border border-gray-300 rounded-lg"
+                      class="w-full px-3.5 py-2 text-sm border border-slate-200 rounded-lg bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
                     />
                   </div>
                 </div>
@@ -377,29 +380,29 @@ export default function GeneratorShell({ toolId }: GeneratorShellProps) {
 
               <div class="grid grid-cols-3 gap-3 pt-2">
                 <div>
-                  <label class="block text-xs font-medium text-gray-700 mb-1">QR Color</label>
+                  <label class="block text-xs font-medium text-slate-700 mb-1">QR Color</label>
                   <input
                     type="color"
                     value={qrColorDark}
                     onInput={(e) => setQrColorDark((e.target as HTMLInputElement).value)}
-                    class="w-full h-9 rounded cursor-pointer border border-gray-300 p-1"
+                    class="w-full h-9 rounded-lg cursor-pointer border border-slate-200 p-1 bg-white"
                   />
                 </div>
                 <div>
-                  <label class="block text-xs font-medium text-gray-700 mb-1">Background</label>
+                  <label class="block text-xs font-medium text-slate-700 mb-1">Background</label>
                   <input
                     type="color"
                     value={qrColorLight}
                     onInput={(e) => setQrColorLight((e.target as HTMLInputElement).value)}
-                    class="w-full h-9 rounded cursor-pointer border border-gray-300 p-1"
+                    class="w-full h-9 rounded-lg cursor-pointer border border-slate-200 p-1 bg-white"
                   />
                 </div>
                 <div>
-                  <label class="block text-xs font-medium text-gray-700 mb-1">Size</label>
+                  <label class="block text-xs font-medium text-slate-700 mb-1">Size</label>
                   <select
                     value={qrSize}
                     onChange={(e) => setQrSize(Number((e.target as HTMLSelectElement).value))}
-                    class="w-full h-9 px-2 text-xs border border-gray-300 rounded bg-white"
+                    class="w-full h-9 px-2 text-xs border border-slate-200 rounded-lg bg-white text-slate-800"
                   >
                     <option value={200}>200 x 200 px</option>
                     <option value={300}>300 x 300 px</option>
@@ -410,20 +413,20 @@ export default function GeneratorShell({ toolId }: GeneratorShellProps) {
               </div>
             </div>
 
-            <div class="flex flex-col items-center justify-center p-6 bg-gray-50 rounded-xl border border-gray-200">
+            <div class="flex flex-col items-center justify-center p-6 bg-slate-50/80 rounded-xl border border-slate-200/80">
               {qrDataUrl ? (
-                <img src={qrDataUrl} alt="Generated QR code preview" class="w-64 h-64 rounded-lg shadow-xs mb-4 bg-white" />
+                <img src={qrDataUrl} alt="Generated QR code preview" class="w-64 h-64 rounded-xl shadow-card mb-4 bg-white p-2 border border-slate-100" />
               ) : (
-                <div class="w-64 h-64 flex items-center justify-center bg-gray-100 text-gray-400 rounded-lg mb-4 text-xs">
+                <div class="w-64 h-64 flex items-center justify-center bg-white border border-dashed border-slate-200 text-slate-400 rounded-xl mb-4 text-xs">
                   Enter data to preview QR
                 </div>
               )}
 
-              <div class="flex flex-wrap gap-3 w-full justify-center">
+              <div class="flex flex-wrap gap-2.5 w-full justify-center">
                 <a
                   href={qrDataUrl}
                   download="qrcode.png"
-                  class="px-5 py-2 text-xs font-semibold rounded-lg bg-green-600 text-white hover:bg-green-700 transition"
+                  class="px-5 py-2 text-xs font-semibold rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 shadow-2xs hover:shadow-xs transition cursor-pointer active:scale-[0.99]"
                 >
                   Download PNG
                 </a>
@@ -434,7 +437,7 @@ export default function GeneratorShell({ toolId }: GeneratorShellProps) {
                     setQrCopied(true);
                     setTimeout(() => setQrCopied(false), 2000);
                   }}
-                  class="px-4 py-2 text-xs font-medium rounded-lg border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 transition cursor-pointer"
+                  class="px-4 py-2 text-xs font-semibold rounded-lg border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 transition cursor-pointer"
                 >
                   {qrCopied ? 'Copied Data!' : 'Copy Base64'}
                 </button>
@@ -447,14 +450,14 @@ export default function GeneratorShell({ toolId }: GeneratorShellProps) {
       {/* 2. Password Generator */}
       {toolId === 'password-generator' && (
         <div class="space-y-6">
-          <div class="bg-gray-50 p-6 rounded-xl border border-gray-200 text-center">
-            <span class="text-xs uppercase font-semibold text-gray-500 tracking-wider">Generated Secure Password</span>
-            <div class="flex items-center justify-center gap-3 my-3">
+          <div class="bg-slate-50/80 p-6 rounded-xl border border-slate-200/80 text-center">
+            <span class="text-xs uppercase font-bold text-slate-500 tracking-wider">Generated Secure Password</span>
+            <div class="flex items-center justify-center gap-2.5 my-3 max-w-lg mx-auto">
               <input
                 type="text"
                 readOnly
                 value={passResult}
-                class="text-xl sm:text-2xl font-mono text-center font-bold text-gray-900 bg-white border border-gray-300 rounded-lg py-2 px-4 w-full max-w-md shadow-xs select-all"
+                class="text-xl sm:text-2xl font-mono text-center font-bold text-slate-900 bg-white border border-slate-200 rounded-lg py-2.5 px-4 w-full shadow-2xs select-all focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
               />
               <button
                 type="button"
@@ -463,24 +466,25 @@ export default function GeneratorShell({ toolId }: GeneratorShellProps) {
                   setPassCopied(true);
                   setTimeout(() => setPassCopied(false), 2000);
                 }}
-                class="px-5 py-3 text-xs font-bold rounded-lg bg-green-600 text-white hover:bg-green-700 transition cursor-pointer"
+                class="px-5 py-3 text-xs font-bold rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 transition cursor-pointer shrink-0 shadow-2xs active:scale-[0.99]"
               >
                 {passCopied ? 'Copied!' : 'Copy'}
               </button>
             </div>
 
-            <div class="flex items-center justify-center gap-4 text-xs text-gray-600 flex-wrap">
-              <span>Entropy: <strong>{calcEntropy(passResult)} bits</strong></span>
-              <span>Strength: <strong class="text-emerald-600">{calcEntropy(passResult) > 75 ? 'Very Strong' : calcEntropy(passResult) > 50 ? 'Strong' : 'Moderate'}</strong></span>
-              <span>Standard: <strong>NIST SP 800-63B</strong></span>
+            <div class="flex items-center justify-center gap-4 text-xs text-slate-600 flex-wrap">
+              <span>Entropy: <strong class="text-slate-800">{calcEntropy(passResult)} bits</strong></span>
+              <span>Strength: <strong class="text-emerald-700">{calcEntropy(passResult) > 75 ? 'Very Strong' : calcEntropy(passResult) > 50 ? 'Strong' : 'Moderate'}</strong></span>
+              <span class="text-slate-400">•</span>
+              <span class="text-slate-500">NIST SP 800-63B Compliant</span>
             </div>
           </div>
 
           <div class="space-y-4 max-w-xl mx-auto">
             <div>
-              <div class="flex justify-between text-xs font-semibold text-gray-700 mb-1">
+              <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1.5">
                 <span>Password Length</span>
-                <span>{passLength} characters</span>
+                <span class="font-mono font-bold text-slate-900">{passLength} characters</span>
               </div>
               <input
                 type="range"
@@ -488,44 +492,44 @@ export default function GeneratorShell({ toolId }: GeneratorShellProps) {
                 max="64"
                 value={passLength}
                 onInput={(e) => setPassLength(Number((e.target as HTMLInputElement).value))}
-                class="w-full accent-green-600"
+                class="w-full accent-emerald-600"
               />
             </div>
 
             <div class="grid grid-cols-2 gap-3 pt-2">
-              <label class="flex items-center gap-2 text-xs font-medium text-gray-700 cursor-pointer">
+              <label class="flex items-center gap-2 text-xs font-medium text-slate-700 cursor-pointer select-none">
                 <input
                   type="checkbox"
                   checked={incUpper}
                   onChange={(e) => setIncUpper((e.target as HTMLInputElement).checked)}
-                  class="rounded text-green-600 focus:ring-green-500"
+                  class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
                 />
                 Include Uppercase (A-Z)
               </label>
-              <label class="flex items-center gap-2 text-xs font-medium text-gray-700 cursor-pointer">
+              <label class="flex items-center gap-2 text-xs font-medium text-slate-700 cursor-pointer select-none">
                 <input
                   type="checkbox"
                   checked={incLower}
                   onChange={(e) => setIncLower((e.target as HTMLInputElement).checked)}
-                  class="rounded text-green-600 focus:ring-green-500"
+                  class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
                 />
                 Include Lowercase (a-z)
               </label>
-              <label class="flex items-center gap-2 text-xs font-medium text-gray-700 cursor-pointer">
+              <label class="flex items-center gap-2 text-xs font-medium text-slate-700 cursor-pointer select-none">
                 <input
                   type="checkbox"
                   checked={incNumbers}
                   onChange={(e) => setIncNumbers((e.target as HTMLInputElement).checked)}
-                  class="rounded text-green-600 focus:ring-green-500"
+                  class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
                 />
                 Include Numbers (0-9)
               </label>
-              <label class="flex items-center gap-2 text-xs font-medium text-gray-700 cursor-pointer">
+              <label class="flex items-center gap-2 text-xs font-medium text-slate-700 cursor-pointer select-none">
                 <input
                   type="checkbox"
                   checked={incSymbols}
                   onChange={(e) => setIncSymbols((e.target as HTMLInputElement).checked)}
-                  class="rounded text-green-600 focus:ring-green-500"
+                  class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
                 />
                 Include Symbols (!@#$%)
               </label>
@@ -534,7 +538,7 @@ export default function GeneratorShell({ toolId }: GeneratorShellProps) {
             <button
               type="button"
               onClick={generatePassword}
-              class="w-full py-2.5 text-xs font-semibold rounded-lg border border-gray-300 bg-white text-gray-800 hover:bg-gray-50 transition cursor-pointer shadow-xs"
+              class="w-full py-2.5 text-xs font-semibold rounded-lg border border-slate-200 bg-white text-slate-800 hover:bg-slate-50 transition cursor-pointer shadow-2xs"
             >
               Generate New Password
             </button>
@@ -546,22 +550,22 @@ export default function GeneratorShell({ toolId }: GeneratorShellProps) {
       {toolId === 'barcode-generator' && (
         <div class="space-y-6 max-w-lg mx-auto">
           <div>
-            <label class="block text-xs font-medium text-gray-700 mb-1">Barcode Value / Data</label>
+            <label class="block text-xs font-semibold text-slate-700 mb-1.5">Barcode Value / Data</label>
             <input
               type="text"
               value={barcodeText}
               onInput={(e) => setBarcodeText((e.target as HTMLInputElement).value)}
               placeholder="123456789012"
-              class="w-full px-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+              class="w-full px-3.5 py-2 text-sm border border-slate-200 rounded-lg bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
             />
           </div>
 
-          <div class="flex flex-col items-center justify-center p-6 bg-gray-50 rounded-xl border border-gray-200">
-            <canvas ref={barcodeCanvasRef} class="rounded shadow-xs mb-4 bg-white" />
+          <div class="flex flex-col items-center justify-center p-6 bg-slate-50/80 rounded-xl border border-slate-200/80">
+            <canvas ref={barcodeCanvasRef} class="rounded-lg shadow-card mb-4 bg-white p-2" />
             <a
               href={barcodeCanvasUrl}
               download={`barcode-${barcodeText}.png`}
-              class="px-5 py-2 text-xs font-semibold rounded-lg bg-green-600 text-white hover:bg-green-700 transition"
+              class="px-5 py-2 text-xs font-semibold rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 transition cursor-pointer shadow-2xs active:scale-[0.99]"
             >
               Download Barcode PNG
             </a>
@@ -574,44 +578,44 @@ export default function GeneratorShell({ toolId }: GeneratorShellProps) {
         <div class="space-y-6 max-w-lg mx-auto">
           <div class="grid grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-medium text-gray-700 mb-1">Minimum Value</label>
+              <label class="block text-xs font-semibold text-slate-700 mb-1.5">Minimum Value</label>
               <input
                 type="number"
                 value={randMin}
                 onInput={(e) => setRandMin(Number((e.target as HTMLInputElement).value))}
-                class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg"
+                class="w-full px-3 py-2 text-sm border border-slate-200 rounded-lg bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
               />
             </div>
             <div>
-              <label class="block text-xs font-medium text-gray-700 mb-1">Maximum Value</label>
+              <label class="block text-xs font-semibold text-slate-700 mb-1.5">Maximum Value</label>
               <input
                 type="number"
                 value={randMax}
                 onInput={(e) => setRandMax(Number((e.target as HTMLInputElement).value))}
-                class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg"
+                class="w-full px-3 py-2 text-sm border border-slate-200 rounded-lg bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
               />
             </div>
           </div>
 
           <div class="grid grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-medium text-gray-700 mb-1">Number Count</label>
+              <label class="block text-xs font-semibold text-slate-700 mb-1.5">Number Count</label>
               <input
                 type="number"
                 min="1"
                 max="100"
                 value={randCount}
                 onInput={(e) => setRandCount(Number((e.target as HTMLInputElement).value))}
-                class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg"
+                class="w-full px-3 py-2 text-sm border border-slate-200 rounded-lg bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
               />
             </div>
             <div class="flex items-center pt-5">
-              <label class="flex items-center gap-2 text-xs font-medium text-gray-700 cursor-pointer">
+              <label class="flex items-center gap-2 text-xs font-medium text-slate-700 cursor-pointer select-none">
                 <input
                   type="checkbox"
                   checked={randUnique}
                   onChange={(e) => setRandUnique((e.target as HTMLInputElement).checked)}
-                  class="rounded text-green-600"
+                  class="rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
                 />
                 Unique Numbers Only
               </label>
@@ -621,17 +625,17 @@ export default function GeneratorShell({ toolId }: GeneratorShellProps) {
           <button
             type="button"
             onClick={generateRandom}
-            class="w-full py-2.5 text-xs font-bold rounded-lg bg-green-600 text-white hover:bg-green-700 transition cursor-pointer"
+            class="w-full py-2.5 text-xs font-semibold rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 transition cursor-pointer shadow-2xs active:scale-[0.99]"
           >
             Generate Random Numbers
           </button>
 
           {randResult.length > 0 && (
-            <div class="bg-gray-50 p-6 rounded-xl border border-gray-200 text-center">
-              <span class="text-xs uppercase font-semibold text-gray-500 mb-3 block">Result</span>
+            <div class="bg-slate-50/80 p-6 rounded-xl border border-slate-200/80 text-center">
+              <span class="text-xs uppercase font-bold text-slate-500 mb-3 block">Generated Output</span>
               <div class="flex flex-wrap gap-2 justify-center">
                 {randResult.map((num) => (
-                  <span class="px-3 py-1.5 bg-white border border-gray-300 rounded-lg font-mono font-bold text-gray-900 shadow-xs text-base">
+                  <span class="px-3.5 py-1.5 bg-white border border-slate-200 rounded-lg font-mono font-bold text-slate-900 shadow-2xs text-base">
                     {num}
                   </span>
                 ))}
@@ -645,24 +649,24 @@ export default function GeneratorShell({ toolId }: GeneratorShellProps) {
       {toolId === 'fancy-text-generator' && (
         <div class="space-y-6">
           <div>
-            <label class="block text-xs font-medium text-gray-700 mb-1">Enter Text to Convert</label>
+            <label class="block text-xs font-semibold text-slate-700 mb-1.5">Enter Text to Convert</label>
             <input
               type="text"
               value={fancyInput}
               onInput={(e) => setFancyInput((e.target as HTMLInputElement).value)}
               placeholder="Type your text..."
-              class="w-full px-4 py-2.5 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+              class="w-full px-4 py-2.5 text-base border border-slate-200 rounded-lg bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
             />
           </div>
 
-          <div class="space-y-3">
+          <div class="space-y-2.5">
             {fancyStyles.map((style, idx) => {
               const styled = style.convert(fancyInput);
               return (
-                <div class="flex items-center justify-between p-3.5 rounded-xl border border-gray-200 bg-gray-50 hover:bg-white transition group">
+                <div class="flex items-center justify-between p-3.5 rounded-xl border border-slate-200/80 bg-slate-50/60 hover:bg-white hover:border-slate-300 transition-all group">
                   <div>
-                    <span class="text-2xs font-semibold text-gray-400 uppercase tracking-wider block">{style.name}</span>
-                    <span class="text-base text-gray-900 select-all font-medium">{styled}</span>
+                    <span class="text-2xs font-semibold text-slate-400 uppercase tracking-wider block">{style.name}</span>
+                    <span class="text-base text-slate-900 select-all font-medium">{styled}</span>
                   </div>
                   <button
                     type="button"
@@ -671,9 +675,9 @@ export default function GeneratorShell({ toolId }: GeneratorShellProps) {
                       setCopiedIndex(idx);
                       setTimeout(() => setCopiedIndex(null), 1500);
                     }}
-                    class="px-3 py-1.5 text-xs font-semibold rounded-lg bg-white border border-gray-300 text-gray-700 hover:bg-green-50 hover:text-green-700 hover:border-green-300 transition cursor-pointer"
+                    class="px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-300 transition cursor-pointer shadow-2xs"
                   >
-                    {copiedIndex === idx ? 'Copied!' : 'Copy'}
+                    {copiedIndex === idx ? '✓ Copied' : 'Copy'}
                   </button>
                 </div>
               );

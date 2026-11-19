@@ -285,7 +285,7 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
   }, [billAmount, tipRate, splitCount]);
 
   return (
-    <div class="calculator-shell bg-white border border-slate-200 rounded-2xl shadow-xs p-5 sm:p-7 my-6 transition-all">
+    <div class="calculator-shell bg-white border border-slate-200/90 rounded-2xl shadow-card p-5 sm:p-7 my-6 transition-all">
       {/* Percentage Calculator */}
       {toolId === 'percentage-calculator' && (
         <div class="space-y-6">
@@ -499,13 +499,13 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
           </div>
 
           {percentageResult && (
-            <div class="mt-6 p-5 bg-green-50 border border-green-200 rounded-xl">
-              <span class="text-xs uppercase font-bold tracking-wider text-green-700">Calculation Result</span>
-              <div class="text-3xl sm:text-4xl font-extrabold text-green-900 mt-1 mb-2">
+            <div class="mt-6 p-5 bg-emerald-50/70 border border-emerald-200/80 rounded-xl">
+              <span class="text-xs uppercase font-bold tracking-wider text-emerald-700">Calculation Result</span>
+              <div class="text-3xl sm:text-4xl font-extrabold text-emerald-950 mt-1 mb-2">
                 {percentageResult.main}
               </div>
               {percentageResult.formula && (
-                <div class="text-xs font-mono text-green-800 bg-white/70 px-3 py-1.5 rounded inline-block">
+                <div class="text-xs font-mono text-emerald-800 bg-white/70 px-3 py-1.5 rounded inline-block">
                   Formula: {percentageResult.formula}
                 </div>
               )}
@@ -524,7 +524,7 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
                 type="date"
                 value={birthDate}
                 onChange={(e) => setBirthDate((e.target as HTMLInputElement).value)}
-                class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 font-medium"
+                class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 focus:border-emerald-500 font-medium"
               />
             </div>
             <div>
@@ -533,20 +533,20 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
                 type="date"
                 value={targetDate}
                 onChange={(e) => setTargetDate((e.target as HTMLInputElement).value)}
-                class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500 font-medium"
+                class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 focus:border-emerald-500 font-medium"
               />
             </div>
           </div>
 
           {ageResult && !('error' in ageResult) && (
-            <div class="p-6 bg-green-50 border border-green-200 rounded-xl space-y-4">
+            <div class="p-6 bg-emerald-50/70 border border-emerald-200/80 rounded-xl space-y-4">
               <div>
-                <span class="text-xs uppercase font-bold tracking-wider text-green-700">Exact Chronological Age</span>
-                <div class="text-2xl sm:text-3xl font-extrabold text-green-900 mt-1">
+                <span class="text-xs uppercase font-bold tracking-wider text-emerald-700">Exact Chronological Age</span>
+                <div class="text-2xl sm:text-3xl font-extrabold text-emerald-950 mt-1">
                   {ageResult.years} years, {ageResult.months} months, {ageResult.days} days
                 </div>
               </div>
-              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-green-200/60 text-sm">
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-emerald-200/80/60 text-sm">
                 <div class="bg-white/80 p-3 rounded-lg">
                   <div class="text-xs text-gray-500">Total Weeks</div>
                   <div class="font-bold text-gray-900">{ageResult.totalWeeks.toLocaleString()}</div>
@@ -561,7 +561,7 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
                 </div>
                 <div class="bg-white/80 p-3 rounded-lg">
                   <div class="text-xs text-gray-500">Next Birthday</div>
-                  <div class="font-bold text-green-700">In {ageResult.daysToBirthday} days</div>
+                  <div class="font-bold text-emerald-700">In {ageResult.daysToBirthday} days</div>
                 </div>
               </div>
             </div>
@@ -579,7 +579,7 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
                 type="date"
                 value={startDate}
                 onChange={(e) => setStartDate((e.target as HTMLInputElement).value)}
-                class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 font-medium"
+                class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-medium"
               />
             </div>
             <div>
@@ -588,7 +588,7 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
                 type="date"
                 value={endDate}
                 onChange={(e) => setEndDate((e.target as HTMLInputElement).value)}
-                class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 font-medium"
+                class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-medium"
               />
             </div>
           </div>
@@ -598,23 +598,23 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
               type="checkbox"
               checked={includeEndDay}
               onChange={(e) => setIncludeEndDay((e.target as HTMLInputElement).checked)}
-              class="w-4 h-4 text-green-600 rounded focus:ring-green-500"
+              class="w-4 h-4 text-emerald-600 rounded focus:ring-emerald-500/20 focus:border-emerald-500"
             />
             <span>Include end day in count (adds 1 calendar day)</span>
           </label>
 
           {dateDiffResult && (
-            <div class="p-6 bg-green-50 border border-green-200 rounded-xl space-y-4">
+            <div class="p-6 bg-emerald-50/70 border border-emerald-200/80 rounded-xl space-y-4">
               <div>
-                <span class="text-xs uppercase font-bold tracking-wider text-green-700">Elapsed Calendar Time</span>
-                <div class="text-3xl sm:text-4xl font-extrabold text-green-900 mt-1">
+                <span class="text-xs uppercase font-bold tracking-wider text-emerald-700">Elapsed Calendar Time</span>
+                <div class="text-3xl sm:text-4xl font-extrabold text-emerald-950 mt-1">
                   {dateDiffResult.totalDays.toLocaleString()} Days
                 </div>
-                <div class="text-sm text-green-800 mt-1">
+                <div class="text-sm text-emerald-800 mt-1">
                   Equivalent to {dateDiffResult.weeks} weeks and {dateDiffResult.remDays} days
                 </div>
               </div>
-              <div class="grid grid-cols-2 gap-3 pt-4 border-t border-green-200/60 text-sm">
+              <div class="grid grid-cols-2 gap-3 pt-4 border-t border-emerald-200/80/60 text-sm">
                 <div class="bg-white/80 p-3 rounded-lg">
                   <div class="text-xs text-gray-500">Workdays (Mon–Fri)</div>
                   <div class="font-bold text-gray-900">{dateDiffResult.weekdays} days</div>
@@ -639,7 +639,7 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
                 type="number"
                 value={origPrice}
                 onInput={(e) => setOrigPrice((e.target as HTMLInputElement).value)}
-                class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 font-mono text-lg"
+                class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-mono text-lg"
                 placeholder="100"
               />
             </div>
@@ -649,7 +649,7 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
                 type="number"
                 value={discountPercent}
                 onInput={(e) => setDiscountPercent((e.target as HTMLInputElement).value)}
-                class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 font-mono text-lg"
+                class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-mono text-lg"
                 placeholder="20"
               />
               <div class="flex flex-wrap gap-1 mt-1.5">
@@ -675,21 +675,21 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
                 type="number"
                 value={salesTaxPercent}
                 onInput={(e) => setSalesTaxPercent((e.target as HTMLInputElement).value)}
-                class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 font-mono text-lg"
+                class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-mono text-lg"
                 placeholder="0"
               />
             </div>
           </div>
 
           {discountResult && (
-            <div class="p-6 bg-green-50 border border-green-200 rounded-xl space-y-4">
+            <div class="p-6 bg-emerald-50/70 border border-emerald-200/80 rounded-xl space-y-4">
               <div>
-                <span class="text-xs uppercase font-bold tracking-wider text-green-700">Final Discounted Price</span>
-                <div class="text-3xl sm:text-4xl font-extrabold text-green-900 mt-1">
+                <span class="text-xs uppercase font-bold tracking-wider text-emerald-700">Final Discounted Price</span>
+                <div class="text-3xl sm:text-4xl font-extrabold text-emerald-950 mt-1">
                   ${discountResult.finalPrice}
                 </div>
               </div>
-              <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-green-200/60 text-sm">
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-4 border-t border-emerald-200/80/60 text-sm">
                 <div class="bg-white/80 p-3 rounded-lg">
                   <div class="text-xs text-gray-500">Total Savings</div>
                   <div class="font-bold text-emerald-700">${discountResult.savings}</div>
@@ -718,7 +718,7 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
                 type="number"
                 value={billAmount}
                 onInput={(e) => setBillAmount((e.target as HTMLInputElement).value)}
-                class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 font-mono text-lg"
+                class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-mono text-lg"
                 placeholder="50"
               />
             </div>
@@ -731,7 +731,7 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
                     type="button"
                     onClick={() => setTipRate(rate)}
                     class={`flex-1 py-1 text-xs font-medium rounded ${
-                      tipRate === rate ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      tipRate === rate ? 'bg-emerald-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
                     {rate}%
@@ -742,7 +742,7 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
                 type="number"
                 value={tipRate}
                 onInput={(e) => setTipRate((e.target as HTMLInputElement).value)}
-                class="w-full px-4 py-1.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 font-mono text-sm"
+                class="w-full px-4 py-1.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-mono text-sm"
               />
             </div>
             <div>
@@ -752,17 +752,17 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
                 min="1"
                 value={splitCount}
                 onInput={(e) => setSplitCount((e.target as HTMLInputElement).value)}
-                class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 font-mono text-lg"
+                class="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-mono text-lg"
               />
             </div>
           </div>
 
           {tipResult && (
-            <div class="p-6 bg-green-50 border border-green-200 rounded-xl space-y-4">
+            <div class="p-6 bg-emerald-50/70 border border-emerald-200/80 rounded-xl space-y-4">
               <div class="flex justify-between items-end">
                 <div>
-                  <span class="text-xs uppercase font-bold tracking-wider text-green-700">Per Person Share</span>
-                  <div class="text-3xl sm:text-4xl font-extrabold text-green-900 mt-1">
+                  <span class="text-xs uppercase font-bold tracking-wider text-emerald-700">Per Person Share</span>
+                  <div class="text-3xl sm:text-4xl font-extrabold text-emerald-950 mt-1">
                     ${tipResult.perPersonTotal}
                   </div>
                 </div>
@@ -770,7 +770,7 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
                   Includes ${tipResult.perPersonTip} tip / person
                 </div>
               </div>
-              <div class="grid grid-cols-2 gap-3 pt-4 border-t border-green-200/60 text-sm">
+              <div class="grid grid-cols-2 gap-3 pt-4 border-t border-emerald-200/80/60 text-sm">
                 <div class="bg-white/80 p-3 rounded-lg">
                   <div class="text-xs text-gray-500">Total Tip Amount</div>
                   <div class="font-bold text-gray-900">${tipResult.tip}</div>
@@ -820,7 +820,7 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
                 onClick={() => handleCalcBtn(btn)}
                 class={`py-3 text-xs sm:text-sm font-bold rounded-xl transition cursor-pointer shadow-2xs ${
                   btn === '='
-                    ? 'bg-green-600 text-white hover:bg-green-700 col-span-1 text-base'
+                    ? 'bg-emerald-600 text-white hover:bg-emerald-700 col-span-1 text-base'
                     : btn === 'C' || btn === 'DEL'
                     ? 'bg-red-50 text-red-700 hover:bg-red-100'
                     : ['÷', '×', '-', '+'].includes(btn)
@@ -841,15 +841,15 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
       {toolId === 'gpa-calculator' && (
         <div class="space-y-6 max-w-2xl mx-auto">
           {/* GPA Score Card */}
-          <div class="bg-gradient-to-br from-green-50 to-emerald-50 border border-green-200 rounded-2xl p-6 text-center">
-            <span class="text-xs uppercase font-bold text-green-700 tracking-wider">
+          <div class="bg-gradient-to-br from-green-50 to-emerald-50 border border-emerald-200/80 rounded-2xl p-6 text-center">
+            <span class="text-xs uppercase font-bold text-emerald-700 tracking-wider">
               Cumulative Grade Point Average (GPA)
             </span>
-            <p class="text-4xl sm:text-5xl font-extrabold text-green-800 my-2 font-mono">
+            <p class="text-4xl sm:text-5xl font-extrabold text-emerald-800 my-2 font-mono">
               {gpaResult.gpa} <span class="text-xl text-gray-400">/ 4.0</span>
             </p>
-            <p class="text-xs font-semibold text-green-700">{gpaResult.standing}</p>
-            <div class="flex justify-center gap-6 mt-4 pt-3 border-t border-green-200/60 text-xs text-gray-600">
+            <p class="text-xs font-semibold text-emerald-700">{gpaResult.standing}</p>
+            <div class="flex justify-center gap-6 mt-4 pt-3 border-t border-emerald-200/80/60 text-xs text-gray-600">
               <span>Total Credits: <strong>{gpaResult.totalCredits}</strong></span>
               <span>Total Grade Points: <strong>{gpaResult.totalPoints}</strong></span>
             </div>
@@ -959,7 +959,7 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
                   setArNewWidth(p.w);
                   setArNewHeight(p.h);
                 }}
-                class="px-2.5 py-1 text-xs bg-gray-100 hover:bg-green-100 hover:text-green-700 rounded-lg border border-gray-200 transition"
+                class="px-2.5 py-1 text-xs bg-gray-100 hover:bg-emerald-100 hover:text-emerald-700 rounded-lg border border-gray-200 transition"
               >
                 {p.label}
               </button>
@@ -1003,7 +1003,7 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
                   placeholder="Height"
                 />
               </div>
-              <p class="text-xs text-gray-500">Calculated Aspect Ratio: <strong class="text-green-700 font-mono">{arRatio}</strong></p>
+              <p class="text-xs text-gray-500">Calculated Aspect Ratio: <strong class="text-emerald-700 font-mono">{arRatio}</strong></p>
             </div>
 
             {/* Resize Calculation */}
@@ -1023,7 +1023,7 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
                       setArNewHeight(Math.round((nw * arHeight) / arWidth));
                     }
                   }}
-                  class="flex-1 px-3 py-2 text-sm font-mono border border-gray-300 rounded-lg font-bold text-green-700"
+                  class="flex-1 px-3 py-2 text-sm font-mono border border-gray-300 rounded-lg font-bold text-emerald-700"
                   placeholder="New Width"
                 />
                 <span class="text-gray-400 font-bold">×</span>
@@ -1038,7 +1038,7 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
                       setArNewWidth(Math.round((nh * arWidth) / arHeight));
                     }
                   }}
-                  class="flex-1 px-3 py-2 text-sm font-mono border border-gray-300 rounded-lg font-bold text-green-700"
+                  class="flex-1 px-3 py-2 text-sm font-mono border border-gray-300 rounded-lg font-bold text-emerald-700"
                   placeholder="New Height"
                 />
               </div>

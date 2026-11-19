@@ -328,7 +328,7 @@ export default function PdfShell({ toolId }: PdfShellProps) {
   };
 
   return (
-    <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-7 shadow-xs mb-8 transition-all">
+    <div class="bg-white border border-slate-200/90 rounded-2xl p-5 sm:p-7 shadow-card mb-8 transition-all">
       {/* Upload Zone */}
       <div
         onClick={() => fileInputRef.current?.click()}
@@ -359,13 +359,13 @@ export default function PdfShell({ toolId }: PdfShellProps) {
 
       {/* Options for JPG to PDF */}
       {isJpgToPdf && files.length > 0 && (
-        <div class="grid grid-cols-2 gap-4 bg-slate-50/80 p-4 rounded-2xl border border-slate-200/80 mb-6">
+        <div class="grid grid-cols-2 gap-4 bg-slate-50/80 p-4 rounded-xl border border-slate-200/80 mb-6">
           <div>
             <label class="block text-xs font-semibold text-slate-700 mb-1.5">Page Size</label>
             <select
               value={pageSize}
               onChange={(e) => setPageSize((e.target as HTMLSelectElement).value as any)}
-              class="w-full px-3 py-2 text-xs font-medium border border-slate-200 rounded-xl bg-white text-slate-800 focus:ring-2 focus:ring-slate-900"
+              class="w-full px-3 py-2 text-xs font-medium border border-slate-200 rounded-lg bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
             >
               <option value="a4">Standard A4</option>
               <option value="letter">US Letter</option>
@@ -377,7 +377,7 @@ export default function PdfShell({ toolId }: PdfShellProps) {
             <select
               value={orientation}
               onChange={(e) => setOrientation((e.target as HTMLSelectElement).value as any)}
-              class="w-full px-3 py-2 text-xs font-medium border border-slate-200 rounded-xl bg-white text-slate-800 focus:ring-2 focus:ring-slate-900"
+              class="w-full px-3 py-2 text-xs font-medium border border-slate-200 rounded-lg bg-white text-slate-800 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
             >
               <option value="portrait">Portrait</option>
               <option value="landscape">Landscape</option>
@@ -388,21 +388,21 @@ export default function PdfShell({ toolId }: PdfShellProps) {
 
       {/* Options for Split PDF */}
       {isSplit && files.length > 0 && (
-        <div class="bg-slate-50/80 p-4 rounded-2xl border border-slate-200/80 mb-6">
+        <div class="bg-slate-50/80 p-4 rounded-xl border border-slate-200/80 mb-6">
           <label class="block text-xs font-semibold text-slate-700 mb-1.5">Page Range to Extract (e.g. 1-3, 5)</label>
           <input
             type="text"
             value={splitRange}
             onInput={(e) => setSplitRange((e.target as HTMLInputElement).value)}
             placeholder="1-2"
-            class="w-full px-3 py-2 text-sm border border-slate-200 rounded-xl bg-white text-slate-900 focus:ring-2 focus:ring-slate-900"
+            class="w-full px-3 py-2 text-sm border border-slate-200 rounded-lg bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
           />
         </div>
       )}
 
       {/* Options for Rotate PDF */}
       {isRotate && files.length > 0 && (
-        <div class="bg-slate-50/80 p-4 rounded-2xl border border-slate-200/80 mb-6">
+        <div class="bg-slate-50/80 p-4 rounded-xl border border-slate-200/80 mb-6">
           <label class="block text-xs font-semibold text-slate-700 mb-2">Select Rotation Angle</label>
           <div class="grid grid-cols-3 gap-2">
             {[
@@ -414,9 +414,9 @@ export default function PdfShell({ toolId }: PdfShellProps) {
                 key={opt.angle}
                 type="button"
                 onClick={() => setRotateAngle(opt.angle)}
-                class={`px-3 py-2 rounded-xl text-xs font-semibold border transition-all cursor-pointer ${
+                class={`px-3 py-2 rounded-lg text-xs font-semibold border transition-all cursor-pointer ${
                   rotateAngle === opt.angle
-                    ? 'bg-slate-900 text-white border-slate-900 shadow-xs'
+                    ? 'bg-emerald-600 text-white border-emerald-600 shadow-2xs'
                     : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-100'
                 }`}
               >
@@ -475,7 +475,7 @@ export default function PdfShell({ toolId }: PdfShellProps) {
             type="button"
             disabled={files.length < 2 || isProcessing}
             onClick={mergePdfs}
-            class="px-6 py-3 text-xs font-semibold rounded-xl bg-emerald-600 text-white hover:bg-emerald-700 transition shadow-xs hover:shadow-sm disabled:opacity-50 cursor-pointer active:scale-[0.99]"
+            class="px-5 py-2.5 text-xs sm:text-sm font-semibold rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 transition shadow-2xs hover:shadow-xs disabled:opacity-50 cursor-pointer active:scale-[0.99]"
           >
             {isProcessing ? 'Merging...' : 'Merge PDFs Now'}
           </button>
@@ -486,7 +486,7 @@ export default function PdfShell({ toolId }: PdfShellProps) {
             type="button"
             disabled={files.length === 0 || isProcessing}
             onClick={imagesToPdf}
-            class="px-6 py-3 text-xs font-semibold rounded-xl bg-emerald-600 text-white hover:bg-emerald-700 transition shadow-xs hover:shadow-sm disabled:opacity-50 cursor-pointer active:scale-[0.99]"
+            class="px-5 py-2.5 text-xs sm:text-sm font-semibold rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 transition shadow-2xs hover:shadow-xs disabled:opacity-50 cursor-pointer active:scale-[0.99]"
           >
             {isProcessing ? 'Converting...' : 'Convert to PDF Now'}
           </button>
@@ -497,7 +497,7 @@ export default function PdfShell({ toolId }: PdfShellProps) {
             type="button"
             disabled={files.length === 0 || isProcessing}
             onClick={splitPdf}
-            class="px-6 py-3 text-xs font-semibold rounded-xl bg-emerald-600 text-white hover:bg-emerald-700 transition shadow-xs hover:shadow-sm disabled:opacity-50 cursor-pointer active:scale-[0.99]"
+            class="px-5 py-2.5 text-xs sm:text-sm font-semibold rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 transition shadow-2xs hover:shadow-xs disabled:opacity-50 cursor-pointer active:scale-[0.99]"
           >
             {isProcessing ? 'Extracting...' : 'Extract & Download Pages'}
           </button>
@@ -508,7 +508,7 @@ export default function PdfShell({ toolId }: PdfShellProps) {
             type="button"
             disabled={files.length === 0 || isProcessing}
             onClick={compressPdf}
-            class="px-6 py-3 text-xs font-semibold rounded-xl bg-emerald-600 text-white hover:bg-emerald-700 transition shadow-xs hover:shadow-sm disabled:opacity-50 cursor-pointer active:scale-[0.99]"
+            class="px-5 py-2.5 text-xs sm:text-sm font-semibold rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 transition shadow-2xs hover:shadow-xs disabled:opacity-50 cursor-pointer active:scale-[0.99]"
           >
             {isProcessing ? 'Compressing...' : 'Compress PDF Now'}
           </button>
@@ -519,7 +519,7 @@ export default function PdfShell({ toolId }: PdfShellProps) {
             type="button"
             disabled={files.length === 0 || isProcessing}
             onClick={convertPdfToJpg}
-            class="px-6 py-3 text-xs font-semibold rounded-xl bg-emerald-600 text-white hover:bg-emerald-700 transition shadow-xs hover:shadow-sm disabled:opacity-50 cursor-pointer active:scale-[0.99]"
+            class="px-5 py-2.5 text-xs sm:text-sm font-semibold rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 transition shadow-2xs hover:shadow-xs disabled:opacity-50 cursor-pointer active:scale-[0.99]"
           >
             {isProcessing ? 'Converting...' : 'Convert to JPG Now'}
           </button>
@@ -530,7 +530,7 @@ export default function PdfShell({ toolId }: PdfShellProps) {
             type="button"
             disabled={files.length === 0 || isProcessing}
             onClick={rotatePdf}
-            class="px-6 py-3 text-xs font-semibold rounded-xl bg-emerald-600 text-white hover:bg-emerald-700 transition shadow-xs hover:shadow-sm disabled:opacity-50 cursor-pointer active:scale-[0.99]"
+            class="px-5 py-2.5 text-xs sm:text-sm font-semibold rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 transition shadow-2xs hover:shadow-xs disabled:opacity-50 cursor-pointer active:scale-[0.99]"
           >
             {isProcessing ? 'Rotating...' : `Rotate PDF (${rotateAngle}°) Now`}
           </button>
@@ -540,7 +540,7 @@ export default function PdfShell({ toolId }: PdfShellProps) {
           <a
             href={downloadUrl}
             download={downloadFilename}
-            class="px-6 py-3 text-xs font-semibold rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white transition shadow-sm hover:shadow-md active:scale-[0.99] flex items-center gap-1.5"
+            class="px-5 py-2.5 text-xs sm:text-sm font-semibold rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white transition shadow-2xs hover:shadow-xs active:scale-[0.99] flex items-center gap-1.5 cursor-pointer"
           >
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />

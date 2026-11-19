@@ -26,17 +26,21 @@ const breadcrumbListJsonLd = {
 };
 ---
 
-<nav aria-label="Breadcrumb" class="mb-4 text-xs sm:text-sm text-gray-500">
-  <ol class="flex items-center space-x-2 flex-wrap">
+<nav aria-label="Breadcrumb" class="mb-4 text-xs font-medium text-slate-500">
+  <ol class="flex items-center space-x-1.5 flex-wrap">
     {items.map((item, idx) => (
       <li class="flex items-center">
-        {idx > 0 && <span class="mx-2 text-gray-400">/</span>}
+        {idx > 0 && (
+          <svg class="w-3.5 h-3.5 mx-1 text-slate-300 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        )}
         {idx === items.length - 1 ? (
-          <span class="font-medium text-gray-800" aria-current="page">
+          <span class="text-slate-900 font-semibold truncate max-w-[200px] sm:max-w-none" aria-current="page">
             {item.name}
           </span>
         ) : (
-          <a href={item.href} class="hover:text-green-600 transition-colors">
+          <a href={item.href} class="hover:text-emerald-600 transition-colors">
             {item.name}
           </a>
         )}

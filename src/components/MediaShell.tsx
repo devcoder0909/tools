@@ -360,7 +360,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
   }, [toolId, imageSrc, topText, bottomText]);
 
   return (
-    <div class="bg-white border border-slate-200 rounded-2xl p-5 sm:p-7 shadow-xs mb-8 transition-all">
+    <div class="bg-white border border-slate-200/90 rounded-2xl p-5 sm:p-7 shadow-card mb-8 transition-all">
       {/* 1. Text to Speech */}
       {toolId === 'text-to-speech' && (
         <div class="space-y-6 max-w-xl mx-auto">
@@ -371,7 +371,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
               value={ttsText}
               onInput={(e) => setTtsText((e.target as HTMLTextAreaElement).value)}
               placeholder="Type or paste any text to hear it spoken aloud..."
-              class="w-full text-sm p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+              class="w-full text-sm p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
             />
           </div>
 
@@ -397,7 +397,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                 step="0.1"
                 value={ttsRate}
                 onInput={(e) => setTtsRate(Number((e.target as HTMLInputElement).value))}
-                class="w-full accent-green-600"
+                class="w-full accent-emerald-600"
               />
             </div>
             <div>
@@ -409,7 +409,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                 step="0.1"
                 value={ttsPitch}
                 onInput={(e) => setTtsPitch(Number((e.target as HTMLInputElement).value))}
-                class="w-full accent-green-600"
+                class="w-full accent-emerald-600"
               />
             </div>
           </div>
@@ -418,7 +418,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
             <button
               type="button"
               onClick={handleSpeak}
-              class="flex-1 py-3 text-xs font-bold rounded-lg bg-green-600 text-white hover:bg-green-700 transition cursor-pointer"
+              class="flex-1 py-3 text-xs font-bold rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 transition cursor-pointer"
             >
               {isSpeaking ? 'Restarting Speech...' : 'Play Audio Voice'}
             </button>
@@ -465,12 +465,12 @@ export default function MediaShell({ toolId }: MediaShellProps) {
           </div>
 
           {recordedVideoUrl && (
-            <div class="p-4 bg-green-50 border border-green-200 rounded-xl space-y-3">
+            <div class="p-4 bg-emerald-50/70 border border-emerald-200/80 rounded-xl space-y-3">
               <video src={recordedVideoUrl} controls class="w-full max-h-72 rounded-lg bg-black" />
               <a
                 href={recordedVideoUrl}
                 download={`screen-record-${Date.now()}.webm`}
-                class="inline-block px-6 py-2.5 text-xs font-bold rounded-lg bg-green-600 text-white hover:bg-green-700 transition shadow-xs"
+                class="inline-block px-6 py-2.5 text-xs font-bold rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 transition shadow-xs"
               >
                 Download Recording (WebM)
               </a>
@@ -486,14 +486,14 @@ export default function MediaShell({ toolId }: MediaShellProps) {
             <button
               type="button"
               onClick={() => setTimerMode('timer')}
-              class={`px-4 py-1.5 text-xs font-semibold rounded-lg ${timerMode === 'timer' ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700'}`}
+              class={`px-4 py-1.5 text-xs font-semibold rounded-lg ${timerMode === 'timer' ? 'bg-emerald-600 text-white' : 'bg-gray-100 text-gray-700'}`}
             >
               Countdown Timer
             </button>
             <button
               type="button"
               onClick={() => setTimerMode('stopwatch')}
-              class={`px-4 py-1.5 text-xs font-semibold rounded-lg ${timerMode === 'stopwatch' ? 'bg-green-600 text-white' : 'bg-gray-100 text-gray-700'}`}
+              class={`px-4 py-1.5 text-xs font-semibold rounded-lg ${timerMode === 'stopwatch' ? 'bg-emerald-600 text-white' : 'bg-gray-100 text-gray-700'}`}
             >
               Stopwatch
             </button>
@@ -515,7 +515,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                       setTimerSecondsLeft(m * 60);
                       setIsTimerRunning(false);
                     }}
-                    class={`px-3 py-1 text-xs font-semibold rounded-lg border ${timerMinutes === m ? 'border-green-600 text-green-700 bg-green-50' : 'border-gray-200 text-gray-600 hover:bg-gray-50'}`}
+                    class={`px-3 py-1 text-xs font-semibold rounded-lg border ${timerMinutes === m ? 'border-emerald-600 text-emerald-700 bg-emerald-50/70' : 'border-gray-200 text-gray-600 hover:bg-gray-50'}`}
                   >
                     {m}m
                   </button>
@@ -526,7 +526,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                 <button
                   type="button"
                   onClick={() => setIsTimerRunning(!isTimerRunning)}
-                  class="px-6 py-2.5 text-xs font-bold rounded-lg bg-green-600 text-white hover:bg-green-700 transition"
+                  class="px-6 py-2.5 text-xs font-bold rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 transition"
                 >
                   {isTimerRunning ? 'Pause' : 'Start'}
                 </button>
@@ -552,7 +552,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                 <button
                   type="button"
                   onClick={() => setIsStopwatchRunning(!isStopwatchRunning)}
-                  class="px-6 py-2.5 text-xs font-bold rounded-lg bg-green-600 text-white hover:bg-green-700 transition"
+                  class="px-6 py-2.5 text-xs font-bold rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 transition"
                 >
                   {isStopwatchRunning ? 'Stop' : 'Start'}
                 </button>
@@ -612,7 +612,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                 }}
                 class={`px-3 py-1.5 text-xs font-bold rounded-lg transition ${
                   pomoMode === m.id
-                    ? 'bg-green-600 text-white shadow-xs'
+                    ? 'bg-emerald-600 text-white shadow-xs'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
@@ -630,7 +630,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
               {formatTimer(pomoSecs)}
             </div>
             <p class="text-xs text-gray-500">
-              Completed Pomodoro Cycles Today: <strong class="text-green-700 font-bold">{pomoCount}</strong>
+              Completed Pomodoro Cycles Today: <strong class="text-emerald-700 font-bold">{pomoCount}</strong>
             </p>
           </div>
 
@@ -639,7 +639,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
             <button
               type="button"
               onClick={() => setIsPomoActive(!isPomoActive)}
-              class="px-8 py-3 text-sm font-bold rounded-xl bg-green-600 text-white hover:bg-green-700 transition shadow-xs"
+              class="px-8 py-3 text-sm font-bold rounded-xl bg-emerald-600 text-white hover:bg-emerald-700 transition shadow-xs"
             >
               {isPomoActive ? 'Pause' : 'Start Focus'}
             </button>
@@ -674,13 +674,13 @@ export default function MediaShell({ toolId }: MediaShellProps) {
               if (val.length >= testSample.length) setTypingEndTime(Date.now());
             }}
             placeholder="Start typing the text above to begin test..."
-            class="w-full text-sm font-mono p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500"
+            class="w-full text-sm font-mono p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
           />
 
           <div class="grid grid-cols-2 gap-4 text-center">
-            <div class="p-4 bg-green-50 border border-green-200 rounded-xl">
+            <div class="p-4 bg-emerald-50/70 border border-emerald-200/80 rounded-xl">
               <span class="text-xs uppercase font-semibold text-gray-500">Speed (WPM)</span>
-              <p class="text-3xl font-extrabold text-green-700">{typingStats().wpm}</p>
+              <p class="text-3xl font-extrabold text-emerald-700">{typingStats().wpm}</p>
             </div>
             <div class="p-4 bg-blue-50 border border-blue-200 rounded-xl">
               <span class="text-xs uppercase font-semibold text-gray-500">Accuracy</span>
@@ -706,7 +706,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
       {(toolId === 'image-resizer' || toolId === 'photo-editor') && (
         <div class="space-y-6">
           {!imageSrc ? (
-            <label class="border-2 border-dashed border-gray-300 hover:border-green-500 rounded-xl p-8 block text-center bg-gray-50 cursor-pointer">
+            <label class="border-2 border-dashed border-gray-300 hover:border-emerald-500 rounded-xl p-8 block text-center bg-gray-50 cursor-pointer">
               <input
                 type="file"
                 accept="image/*"
@@ -756,7 +756,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                         type="checkbox"
                         checked={lockAspect}
                         onChange={(e) => setLockAspect((e.target as HTMLInputElement).checked)}
-                        class="rounded text-green-600 focus:ring-green-500"
+                        class="rounded text-emerald-600 focus:ring-emerald-500/20 focus:border-emerald-500"
                       />
                       <span>Lock aspect ratio</span>
                     </label>
@@ -776,7 +776,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                         max="200"
                         value={brightness}
                         onInput={(e) => setBrightness(Number((e.target as HTMLInputElement).value))}
-                        class="w-full accent-green-600"
+                        class="w-full accent-emerald-600"
                       />
                     </div>
                     <div>
@@ -790,7 +790,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                         max="200"
                         value={contrast}
                         onInput={(e) => setContrast(Number((e.target as HTMLInputElement).value))}
-                        class="w-full accent-green-600"
+                        class="w-full accent-emerald-600"
                       />
                     </div>
                     <div>
@@ -804,7 +804,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                         max="200"
                         value={saturation}
                         onInput={(e) => setSaturation(Number((e.target as HTMLInputElement).value))}
-                        class="w-full accent-green-600"
+                        class="w-full accent-emerald-600"
                       />
                     </div>
                     <div>
@@ -818,7 +818,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                         max="100"
                         value={sepia}
                         onInput={(e) => setSepia(Number((e.target as HTMLInputElement).value))}
-                        class="w-full accent-green-600"
+                        class="w-full accent-emerald-600"
                       />
                     </div>
                     <div>
@@ -832,7 +832,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                         max="100"
                         value={grayscale}
                         onInput={(e) => setGrayscale(Number((e.target as HTMLInputElement).value))}
-                        class="w-full accent-green-600"
+                        class="w-full accent-emerald-600"
                       />
                     </div>
                   </div>
@@ -842,7 +842,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                   <a
                     href={processedUrl || ''}
                     download={`edited-image.jpg`}
-                    class="flex-1 py-2 text-center text-xs font-bold rounded-lg bg-green-600 text-white hover:bg-green-700 transition"
+                    class="flex-1 py-2 text-center text-xs font-bold rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 transition"
                   >
                     Download Image
                   </a>
@@ -898,7 +898,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
             <a
               href={memeUrl || ''}
               download="custom-meme.png"
-              class="px-6 py-2.5 text-xs font-bold rounded-xl bg-green-600 text-white hover:bg-green-700 transition"
+              class="px-6 py-2.5 text-xs font-bold rounded-xl bg-emerald-600 text-white hover:bg-emerald-700 transition"
             >
               Download Meme PNG
             </a>
@@ -910,7 +910,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
       {toolId === 'crop-image' && (
         <div class="space-y-6">
           {!imageSrc ? (
-            <label class="border-2 border-dashed border-gray-300 hover:border-green-500 rounded-xl p-8 block text-center bg-gray-50 cursor-pointer">
+            <label class="border-2 border-dashed border-gray-300 hover:border-emerald-500 rounded-xl p-8 block text-center bg-gray-50 cursor-pointer">
               <input
                 type="file"
                 accept="image/*"
@@ -919,7 +919,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                 }}
                 class="hidden"
               />
-              <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-xs border border-gray-200 text-green-600">
+              <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center mx-auto mb-3 shadow-xs border border-gray-200 text-emerald-600">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
@@ -953,7 +953,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                       onClick={() => setCropAspect(preset.id as any)}
                       class={`px-3 py-1.5 text-xs font-bold rounded-lg border transition cursor-pointer ${
                         cropAspect === preset.id
-                          ? 'bg-green-600 text-white border-green-600 shadow-xs'
+                          ? 'bg-emerald-600 text-white border-emerald-600 shadow-xs'
                           : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-100'
                       }`}
                     >
@@ -969,7 +969,7 @@ export default function MediaShell({ toolId }: MediaShellProps) {
                   <a
                     href={cropUrl || ''}
                     download="cropped-image.png"
-                    class="px-6 py-2.5 text-xs font-bold rounded-xl bg-green-600 text-white hover:bg-green-700 transition shadow-xs cursor-pointer"
+                    class="px-6 py-2.5 text-xs font-bold rounded-xl bg-emerald-600 text-white hover:bg-emerald-700 transition shadow-xs cursor-pointer"
                   >
                     Crop & Download PNG
                   </a>

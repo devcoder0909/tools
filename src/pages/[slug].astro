@@ -199,10 +199,18 @@ if (tool.targetBytes) {
 
     <!-- 2. H1 & One-line unique promise -->
     <div class="mb-6">
-      <h1 class="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-2">
+      <div class="flex items-center gap-2 mb-2.5 flex-wrap">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-2xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200/60 uppercase tracking-wide">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+          {tool.kind === 'calculator' ? 'Calculator' : tool.kind === 'finance' ? 'Financial Tool' : tool.kind === 'pdf' ? 'PDF Utility' : 'Online Utility'}
+        </span>
+        <span class="text-2xs font-medium text-slate-400">•</span>
+        <span class="text-2xs font-medium text-slate-500">100% Private In-Browser RAM</span>
+      </div>
+      <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight mb-2">
         {tool.name}
       </h1>
-      <p class="text-sm sm:text-base text-gray-600">
+      <p class="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-2xl">
         {tool.subtitle || tool.description}
       </p>
     </div>
@@ -241,24 +249,24 @@ if (tool.targetBytes) {
     <AdSlot slotPosition="belowResult" />
 
     <!-- Content Hub Navigation Tabs -->
-    <div class="mt-10 mb-6 border-b border-gray-200">
-      <div class="flex items-center space-x-2 sm:space-x-3 overflow-x-auto pb-3 text-xs sm:text-sm font-semibold text-gray-600">
-        <a href="#how-to" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200 whitespace-nowrap hover:bg-emerald-100 transition">
+    <div class="mt-10 mb-6 border-b border-slate-200">
+      <div class="flex items-center space-x-2 sm:space-x-3 overflow-x-auto pb-3 text-xs sm:text-sm font-semibold text-slate-600">
+        <a href="#how-to" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200/80 whitespace-nowrap hover:bg-emerald-100 transition">
           <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
           </svg>
           <span>How to Use</span>
         </a>
-        <a href="#guide" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gray-50 text-gray-700 border border-gray-200 whitespace-nowrap hover:bg-gray-100 transition">
-          <svg class="w-3.5 h-3.5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <a href="#guide" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-white text-slate-700 border border-slate-200 whitespace-nowrap hover:bg-slate-50 transition">
+          <svg class="w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
             <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
           <span>Technical Guide</span>
         </a>
         {tool.faq && tool.faq.length > 0 && (
-          <a href="#faq" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gray-50 text-gray-700 border border-gray-200 whitespace-nowrap hover:bg-gray-100 transition">
-            <svg class="w-3.5 h-3.5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <a href="#faq" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-white text-slate-700 border border-slate-200 whitespace-nowrap hover:bg-slate-50 transition">
+            <svg class="w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <span>FAQ</span>
@@ -270,8 +278,8 @@ if (tool.targetBytes) {
     <!-- Editorial Content Section (Semantic Article for Full Intent Fulfillment) -->
     <article class="editorial-content my-8 space-y-8">
       <!-- Direct Answer & Search Intent Definition -->
-      <div id="how-to" class="p-5 rounded-2xl bg-white border border-slate-200 text-xs sm:text-sm text-slate-700 shadow-2xs">
-        <div class="flex items-center gap-2 font-bold text-emerald-700 uppercase tracking-wider text-2xs mb-1">
+      <div id="how-to" class="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200/90 text-xs sm:text-sm text-slate-700 shadow-card">
+        <div class="flex items-center gap-2 font-bold text-emerald-700 uppercase tracking-wider text-2xs mb-2">
           <svg class="w-4 h-4 text-emerald-600 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
@@ -291,17 +299,17 @@ if (tool.targetBytes) {
       </div>
 
       {toolMedia && (
-        <figure class="my-6 p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-2xs text-center">
+        <figure class="my-6 p-5 sm:p-6 rounded-2xl bg-white border border-slate-200/90 shadow-card text-center">
           <img
             src={toolMedia.diagramUrl}
             alt={`${tool.name} — ${tool.seo?.primary_kw || tool.name.toLowerCase()} architecture and processing workflow diagram`}
             width="720"
             height="360"
-            class="max-w-full h-auto mx-auto rounded-xl"
+            class="max-w-full h-auto mx-auto rounded-xl border border-slate-100"
             loading="lazy"
           />
           <figcaption class="mt-3 text-xs text-slate-500 font-medium">
-            <strong>Architecture Overview:</strong> {toolMedia.diagramCaption}
+            <strong class="text-slate-700">Architecture Overview:</strong> {toolMedia.diagramCaption}
           </figcaption>
         </figure>
       )}
