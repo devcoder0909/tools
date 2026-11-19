@@ -7,6 +7,14 @@ reviewer: "ZixTool Image Standards Review"
 reviewed: true
 ---
 
+## WebP to PNG with transparency: choosing the right output
+
+PNG is useful when an editor or upload service cannot read WebP, particularly for logos and graphics with transparent backgrounds. Converting a lossy WebP to PNG does not restore detail removed by earlier compression. The PNG stores the decoded pixels, including any existing artifacts.
+
+Expect some PNG files to be larger than the WebP original. PNG uses lossless compression, and a photo that was compact in WebP may need substantially more storage as PNG. If the destination accepts JPEG and transparency is unnecessary, compare [WebP to JPG](/webp-to-jpg/) instead.
+
+Check the output in an editor that displays transparency with a checkerboard. A white preview alone does not prove that the background is opaque. Animated WebP also needs special attention: a still-image conversion should not be assumed to preserve all frames or playback timing.
+
 ## How to Convert WebP to PNG in 3 Steps
 
 Transform modern Google WebP graphics into universally compatible lossless PNG files in seconds:

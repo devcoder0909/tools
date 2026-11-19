@@ -7,6 +7,14 @@ reviewer: "ZixTool Engineering Team"
 reviewed: true
 ---
 
+## Format JSON and troubleshoot invalid syntax
+
+A JSON formatter makes nested objects and arrays easier to read. Formatting does not prove that a document meets an application's schema: syntactically valid JSON may still have missing fields, incorrect value types, or unexpected property names.
+
+For parsing errors, check double quotes around property names and strings, remove trailing commas, and match each opening brace or bracket with a closing one. JSON does not allow comments or JavaScript values such as `undefined`. A JavaScript object literal is therefore not always valid JSON.
+
+Before formatting identifiers, check whether large numbers should be strings. JavaScript number parsing can lose precision for integers beyond its safe range. Keep the original input when exact numeric representation matters. To work with tabular records after validation, use [JSON to CSV](/json-to-csv/); for the reverse direction, use [CSV to JSON](/csv-to-json/).
+
 ![RFC 8259 JSON Structure and AST Hierarchy](/images/tools/json-formatter-structure.svg)
 
 ## How to Format, Beautify & Validate JSON Online in 3 Steps

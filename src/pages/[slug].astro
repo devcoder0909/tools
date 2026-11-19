@@ -69,11 +69,14 @@ const keywordsString = allKeywords.join(', ');
 const webAppJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
-  name: tool.title,
+  '@id': `${siteConfig.url}/${tool.slug}/#application`,
+  name: tool.name,
   url: `${siteConfig.url}/${tool.slug}/`,
   applicationCategory: tool.kind === 'finance' ? 'FinanceApplication' : tool.kind === 'media' ? 'MultimediaApplication' : 'UtilitiesApplication',
   operatingSystem: 'All',
-  browserRequirements: 'Requires JavaScript and HTML5 Canvas support',
+  browserRequirements: 'Requires a modern browser with JavaScript enabled',
+  isAccessibleForFree: true,
+  inLanguage: tool.lang || 'en',
   keywords: keywordsString,
   offers: {
     '@type': 'Offer',
@@ -87,33 +90,6 @@ const webAppJsonLd = {
     'In-browser RAM processing',
   ],
   description: tool.description,
-};
-
-const howToJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'HowTo',
-  name: `How to Use ${tool.name} Online`,
-  description: tool.description,
-  step: [
-    {
-      '@type': 'HowToStep',
-      name: 'Select Input',
-      text: `Open ${tool.name} and provide your file or numeric inputs in the interface above.`,
-      position: 1,
-    },
-    {
-      '@type': 'HowToStep',
-      name: 'Local In-Browser Processing',
-      text: 'The conversion or calculation runs instantly in your local browser RAM without sending data to external servers.',
-      position: 2,
-    },
-    {
-      '@type': 'HowToStep',
-      name: 'Download Result',
-      text: 'Save your processed output directly to your device or copy the calculated totals.',
-      position: 3,
-    },
-  ],
 };
 
 const faqJsonLd = tool.faq && tool.faq.length > 0 ? {
@@ -151,7 +127,7 @@ const workflowDiagrams: Record<string, string> = {
 
 const diagramUrl = workflowDiagrams[tool.slug];
 
-const schemas: any[] = [webAppJsonLd, howToJsonLd];
+const schemas: any[] = [webAppJsonLd];
 if (faqJsonLd) schemas.push(faqJsonLd);
 
 if (diagramUrl) {

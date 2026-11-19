@@ -1,45 +1,22 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { IndexingTesterShell } from '../../components/admin/IndexingTesterShell';
 import { siteConfig } from '../../config/site';
-import { getAllTools, getAllFormats } from '../../registry';
-
-const canonicalUrl = `${siteConfig.url}/internal/indexing-tester/`;
-
-const tools = getAllTools();
-const formats = getAllFormats().filter((f) => f.hub);
-
-const allPages = [
-  { url: `${siteConfig.url}/`, title: 'Homepage — Root Directory Index', category: 'Root', indexable: true },
-  { url: `${siteConfig.url}/tools/`, title: 'All Tools Hub Directory', category: 'Hub', indexable: true },
-  { url: `${siteConfig.url}/calculators/`, title: 'Financial & Math Calculators Hub', category: 'Hub', indexable: true },
-  { url: `${siteConfig.url}/formats/`, title: 'Format Encyclopedias Hub', category: 'Hub', indexable: true },
-  { url: `${siteConfig.url}/privacy-explained/`, title: 'Client-Side Architecture & Privacy Explained', category: 'Info', indexable: true },
-  { url: `${siteConfig.url}/about/`, title: 'About ZixTool Team & Engineering', category: 'Info', indexable: true },
-  { url: `${siteConfig.url}/contact/`, title: 'Contact & Security Inquiries', category: 'Info', indexable: true },
-  ...formats.map((f) => ({
-    url: `${siteConfig.url}/formats/${f.id}/`,
-    title: `${f.name} File Format Technical Guide`,
-    category: 'Format',
-    indexable: f.indexable !== false,
-  })),
-  ...tools.map((t) => ({
-    url: `${siteConfig.url}/${t.slug}/`,
-    title: t.name,
-    category: t.kind,
-    indexable: t.indexable,
-    reviewed: t.reviewed,
-  })),
-];
 ---
-
 <Layout
-  title="Instant Indexing API Live Tester & URL Index"
-  description="Internal administrative diagnostic interface for verifying Google Indexing API v3 and IndexNow notifications in real time."
-  canonical={canonicalUrl}
+  title="Search Indexing Diagnostics | ZixTool"
+  description="Check search discovery using the published sitemap and Google Search Console. IndexNow notifications do not confirm indexing."
+  canonical={`${siteConfig.url}/internal/indexing-tester/`}
   noindex={true}
 >
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
-    <IndexingTesterShell client:load allPages={allPages} />
+  <div class="max-w-4xl mx-auto px-4 py-8 space-y-4">
+    <h1 class="text-2xl font-bold">Search indexing diagnostics</h1>
+    <p>Tool pages are not eligible for Google's Indexing API. That API supports job postings and livestream pages; a successful notification is not proof that a URL is indexed.</p>
+    <p>Submit the sitemap in Google Search Console, then use URL Inspection to check a specific URL's indexing status, selected canonical, and crawl results.</p>
+    <ul>
+      <li><a href="/sitemap-index.xml">View the published XML sitemap</a></li>
+      <li><a href="https://search.google.com/search-console">Open Google Search Console</a></li>
+      <li><a href="https://developers.google.com/search/apis/indexing-api/v3/quickstart">Read Google's Indexing API eligibility rules</a></li>
+    </ul>
+    <p>IndexNow notifications run after deployment through the existing deployment workflow. Check the workflow logs for delivery results. HTTP 200 confirms submission; HTTP 202 means key validation is pending. Neither response guarantees indexing or ranking.</p>
   </div>
 </Layout>

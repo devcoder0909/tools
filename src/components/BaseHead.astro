@@ -70,7 +70,7 @@ const seo = resolvePageSeo(Astro.props, Astro.url);
   <script
     type="application/ld+json"
     is:inline
-    set:html={JSON.stringify(seo.jsonLdScripts)}
+    set:html={JSON.stringify(seo.jsonLdScripts).replace(/</g, '\\u003c')}
   />
 )}
 

@@ -1,0 +1,53 @@
+User-agent: *
+Allow: /
+Disallow: /embed/
+Disallow: /internal/
+Disallow: /_internal/
+
+# Google Media Crawlers (Images & Videos)
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /images/
+Allow: /
+
+# General Google & Bing Crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# AI Search & Answer Engine Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Agentic Search Signal
+Content-Signal: search=yes, ai-train=yes
+
+Sitemap: https://zixtool.online/sitemap-index.xml
+Sitemap: https://zixtool.online/sitemap.xml
+Sitemap: https://zixtool.online/sitemap-tools.xml
+Sitemap: https://zixtool.online/sitemap-image.xml
+Sitemap: https://zixtool.online/sitemap-pages.xml
+Sitemap: https://zixtool.online/sitemap-formats.xml

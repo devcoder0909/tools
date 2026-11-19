@@ -1,14 +1,13 @@
-name: Daily Automated Search Engine Indexing
+name: Manual Search Discovery Notification
 
+# Notifications normally run after deployment in deploy.yml.
+# Manual recovery only: repeated unchanged submissions do not force indexing.
 on:
-  schedule:
-    # Runs twice every day at 03:00 UTC and 15:00 UTC (08:30 AM and 08:30 PM IST)
-    - cron: '0 3,15 * * *'
-  workflow_dispatch: # Allows manual trigger from GitHub Actions dashboard anytime
+  workflow_dispatch:
 
 jobs:
   index:
-    name: Google & IndexNow Daily Discovery
+    name: IndexNow Discovery
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -27,10 +26,10 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Dispatch Multi-Engine Indexing (Google & IndexNow)
+      - name: Build and validate sitemap URLs
+        run: pnpm run build
+
+      - name: Notify IndexNow after verifying the published key
         env:
-          GCP_SERVICE_ACCOUNT_KEY: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
-        run: |
-          pnpm run indexing
-          pnpm run indexnow
-          curl -s -I "https://www.bing.com/ping?sitemap=https://zixtool.online/sitemap-index.xml" || true
+          INDEXNOW_KEY: ${{ secrets.INDEXNOW_KEY }}
+        run: pnpm run indexing

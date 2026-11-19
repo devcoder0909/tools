@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import * as cheerio from 'cheerio';
 import { getAllTools, getAllFormats } from '../src/registry';
 import { siteConfig } from '../src/config/site';
 import { TOOL_MEDIA_REGISTRY } from '../src/config/tool-media';
@@ -19,7 +20,7 @@ function formatIsoDate(dateVal: any): string {
       return d.toISOString().split('T')[0];
     }
   } catch {}
-  return new Date().toISOString().split('T')[0];
+  return '';
 }
 
 function escapeXml(str: string): string {
@@ -31,20 +32,26 @@ function escapeXml(str: string): string {
     .replace(/'/g, '&apos;');
 }
 
-function generateUrlXml(loc: string, lastmod: any, changefreq: string = 'weekly', priority: string = '0.8') {
-  const formattedDate = formatIsoDate(lastmod);
+function isPublishedIndexable(loc: string): boolean {
+  const url = new URL(loc);
+  const file = path.join(DIST_DIR, url.pathname, 'index.html');
+  if (!fs.existsSync(file)) throw new Error(`Missing built sitemap page: ${url.pathname}`);
+  const $ = cheerio.load(fs.readFileSync(file, 'utf-8'));
+  return !/noindex/i.test($('meta[name="robots"]').attr('content') || '')
+    && $('link[rel="canonical"]').attr('href') === loc;
+}
+
+function generateUrlXml(loc: string, lastmod?: unknown, _changefreq?: string, _priority?: string) {
+  if (!isPublishedIndexable(loc)) return '';
+  const formattedDate = lastmod ? formatIsoDate(lastmod) : '';
   return `  <url>
-    <loc>${loc}</loc>
-    <lastmod>${formattedDate}</lastmod>
-    <changefreq>${changefreq}</changefreq>
-    <priority>${priority}</priority>
+    <loc>${escapeXml(loc)}</loc>${formattedDate ? `\n    <lastmod>${formattedDate}</lastmod>` : ''}
   </url>`;
 }
 
 // buildSitemaps exports
 export function buildSitemaps() {
   ensureDist();
-  const today = new Date().toISOString().split('T')[0];
 
   // 1. Static Pages Sitemap
   const staticPages = [
@@ -62,7 +69,7 @@ export function buildSitemaps() {
 
   const pagesXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${staticPages.map((p) => generateUrlXml(p.url, today, 'weekly', p.priority)).join('\n')}
+${staticPages.map((p) => generateUrlXml(p.url, undefined, 'weekly', p.priority)).join('\n')}
 </urlset>`;
   fs.writeFileSync(path.join(DIST_DIR, 'sitemap-pages.xml'), pagesXml, 'utf-8');
 
@@ -70,7 +77,7 @@ ${staticPages.map((p) => generateUrlXml(p.url, today, 'weekly', p.priority)).joi
   const formats = getAllFormats().filter((f) => f.hub && f.indexable);
   const formatsXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${formats.map((f) => generateUrlXml(`${siteConfig.url}/formats/${f.id}/`, f.last_reviewed || today, 'monthly', '0.7')).join('\n')}
+${formats.map((f) => generateUrlXml(`${siteConfig.url}/formats/${f.id}/`, f.last_reviewed, 'monthly', '0.7')).join('\n')}
 </urlset>`;
   fs.writeFileSync(path.join(DIST_DIR, 'sitemap-formats.xml'), formatsXml, 'utf-8');
 
@@ -85,20 +92,16 @@ ${indexableTools.map((t) => generateUrlXml(`${siteConfig.url}/${t.slug}/`, t.las
 
   // 4. Dedicated Google Image Sitemap (genuine architectural diagrams & workflow infographics)
   const imageEntriesXml = TOOL_MEDIA_REGISTRY
-    .filter((m) => indexableTools.some((t) => t.slug === m.slug))
+    .filter((m) => indexableTools.some((t) => t.slug === m.slug) && isPublishedIndexable(`${siteConfig.url}/${m.slug}/`) && fs.existsSync(path.join(DIST_DIR, m.diagramUrl)))
     .map((m) => {
     const pageUrl = `${siteConfig.url}/${m.slug}/`;
     const diagramUrl = `${siteConfig.url}${m.diagramUrl}`;
 
     return `  <url>
     <loc>${pageUrl}</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+
     <image:image>
       <image:loc>${diagramUrl}</image:loc>
-      <image:title>${escapeXml(m.diagramTitle)}</image:title>
-      <image:caption>${escapeXml(m.diagramCaption)}</image:caption>
     </image:image>
   </url>`;
   }).join('\n');
@@ -115,19 +118,19 @@ ${imageEntriesXml}
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
     <loc>${siteConfig.url}/sitemap-tools.xml</loc>
-    <lastmod>${today}</lastmod>
+
   </sitemap>
   <sitemap>
     <loc>${siteConfig.url}/sitemap-image.xml</loc>
-    <lastmod>${today}</lastmod>
+
   </sitemap>
   <sitemap>
     <loc>${siteConfig.url}/sitemap-pages.xml</loc>
-    <lastmod>${today}</lastmod>
+
   </sitemap>
   <sitemap>
     <loc>${siteConfig.url}/sitemap-formats.xml</loc>
-    <lastmod>${today}</lastmod>
+
   </sitemap>
 </sitemapindex>`;
   fs.writeFileSync(path.join(DIST_DIR, 'sitemap-index.xml'), sitemapIndex, 'utf-8');

@@ -2,42 +2,85 @@
 title: "Random Number Generator - Custom Ranges | ZixTool"
 subtitle: "Generate cryptographically fair random numbers, dice rolls, and lottery picks."
 description: "Free online random number generator. Generate true random numbers within custom ranges, unique non-repeating lists, and lottery numbers in your browser."
-last_reviewed: "2026-11-13"
+last_reviewed: "2026-11-19"
 reviewer: "ZixTool Math Engineering Team"
 reviewed: true
 ---
 
+Use our free **random number generator** to generate cryptographically unbiased random numbers, fair raffle ticket winners, polyhedral dice rolls, and unique non-repeating lottery picks in seconds. Powered by the W3C Web Cryptography API running directly in your browser, ZixTool harnesses hardware-level system entropy to guarantee statistically uniform distribution and complete cryptographic unpredictability with zero server roundtrips.
+
 ## How to Generate Random Numbers in 3 Steps
 
-Produce unbiased random numbers for contests, games, and sampling in seconds:
+Generating unbiased numbers across custom minimum and maximum ranges takes only moments:
 
-1. **Set Numerical Range:** Define the minimum and maximum boundaries for your numbers (for example: 1 to 100).
-2. **Specify Quantity & Uniqueness:** Choose how many numbers to generate and check whether duplicate numbers should be disallowed.
-3. **Generate Instantly:** Click **Generate Random Numbers** to calculate your randomized results using high-entropy client-side algorithms.
-
-### Common Use Cases for Random Numbers
-
-- **Giveaways & Raffles:** Select winning ticket numbers or contest participants fairly without bias.
-- **Tabletop Gaming & Dice Rolls:** Generate polyhedral dice roll results for board games and RPG campaigns.
-- **Statistical Research & Sampling:** Pick random sample IDs from datasets for auditing and scientific polling.
+1. **Set Custom Range Boundaries:** Enter your minimum and maximum values (e.g., $1$ to $100$, $1$ to $1,000$, or custom negative integers).
+2. **Specify Quantity & Toggle Duplicates:** Choose how many numbers to generate and check the **Unique Numbers Only (No Duplicates)** toggle if you are drawing raffle winners or card hands.
+3. **Generate & Copy Results:** Click **Generate Random Numbers** to calculate results instantly. Copy individual values, export comma-separated lists, or sort results in ascending order.
 
 ---
 
-## Technical Specifications Comparison
+## The Computer Science of Randomness: PRNG vs CSPRNG vs Modulo Bias
 
-| Feature / Setting | ZixTool Random Engine | Standard Online Generators |
-| :--- | :--- | :--- |
-| **Server Upload Required** | No (Processed 100% in local memory) | Yes (Requests sent to remote servers) |
-| **Duplicate Filtering** | Instant unique non-repeating option | Frequently requires manual deduping |
-| **Generation Speed** | Instantaneous zero-latency rendering | Slow network roundtrips |
+Understanding the difference between basic pseudo-randomness and cryptographic entropy is essential when selecting winners, running scientific simulations, or conducting research:
+
+### 1. Pseudo-Random Number Generators (PRNG) & `Math.random()`
+Most standard web utilities utilize basic JavaScript `Math.random()`. In modern V8 engines (Chrome and Node.js), `Math.random()` implements the **xorshift128+** algorithm. While computationally fast, standard PRNGs possess major limitations:
+- **Deterministic Periodicity:** If an observer captures a sequence of consecutive outputs, the internal mathematical state can be reverse-engineered, allowing future "random" numbers to be predicted with $100\%$ certainty.
+- **Unsuitable for Financial Contests:** Never use basic `Math.random()` for cash raffles, cryptographic token generation, or security-sensitive lotteries.
+
+### 2. Cryptographically Secure PRNG (CSPRNG) via Web Crypto API
+ZixTool leverages the native browser Web Cryptography API (`window.crypto.getRandomValues()`):
+
+$$\text{Entropy Source} \to \text{Hardware Ring Oscillator / CPU RDRAND} \to \text{Kernel Pool} \to \text{Browser CSPRNG}$$
+
+The Web Crypto API harvests physical entropy from the underlying operating system kernel (such as `/dev/urandom` on Linux/macOS and Windows CNG `BCryptGenRandom`). Sources of environmental entropy include CPU thermal fluctuations, hardware timing jitter, and hardware random number generators (TRNG). The output satisfies **NIST SP 800-90A** statistical randomness benchmarks.
+
+### 3. Eliminating Modulo Bias via Rejection Sampling
+A widespread flaw in poorly coded number generators is **modulo bias**. When mapping a 32-bit unsigned integer ($0$ to $2^{32}-1$) to an arbitrary range $[0, R-1]$ using basic modulo arithmetic:
+
+$$\text{Biased Number} = \text{Uint32} \pmod R$$
+
+If $2^{32}$ ($4,294,967,296$) is not evenly divisible by $R$, smaller numbers have a slightly higher probability of selection than larger numbers, introducing subtle mathematical bias. ZixTool implements **rejection sampling**: any random integers falling within the fractional remainder zone are discarded and re-drawn, guaranteeing that every integer in your target range has an identical, mathematically uniform probability:
+
+$$P(X = k) = \frac{1}{\text{Max} - \text{Min} + 1}$$
 
 ---
 
-## Frequently Asked Questions
+## Generating Unique Non-Repeating Numbers: The Fisher-Yates Shuffle
 
-### Are the generated numbers truly unbiased?
-Yes. Calculations leverage high-entropy pseudo-random distribution algorithms to ensure statistically uniform distribution.
+When drawing multiple unique numbers (such as picking 5 distinct winners from a pool of 100 contestants), naive algorithms generate numbers and loop repeatedly until a non-duplicate is found. As the number of drawn values approaches the total pool size, this approach degrades into severe performance lag.
 
-### Can I generate multiple unique numbers at once?
-Yes. Check the **Unique Numbers Only** box and select any quantity within your designated numerical range.
+ZixTool utilizes the **Fisher-Yates (Knuth) modern shuffle algorithm**, operating in linear $O(n)$ time complexity:
 
+```
+For i from n - 1 down to 1 do:
+    j = random integer such that 0 <= j <= i
+    swap array[i] and array[j]
+```
+
+This guarantees an unbiased permutation where every possible combination of winners has equal mathematical likelihood, executing in sub-millisecond time.
+
+---
+
+## Common Use Cases & Numerical Ranges Reference Table
+
+The table below outlines standard numerical ranges, sampling configurations, and applications:
+
+| Random Generation Scenario | Range Boundaries | Quantity & Uniqueness | Standard Application / Rules |
+| :--- | :--- | :--- | :--- |
+| **Standard Percentage / Scale** | $1 \text{ to } 100$ | 1 Single Value | Daily decisions, statistical percentiles |
+| **Giveaways & Ticket Raffles** | $1 \text{ to } 1,000$ (Custom) | 1 to 10 (Unique Only) | Fair prize giveaways, door prizes |
+| **Standard 6-Sided Die (d6)** | $1 \text{ to } 6$ | 1 or 2 Values | Monopoly, Yahtzee, tabletop board games |
+| **Polyhedral RPG Dice (d20)** | $1 \text{ to } 20$ | 1 Single Value | Dungeons & Dragons attack / skill checks |
+| **US Powerball Lottery** | $1 \text{ to } 69$ (White), $1 \text{ to } 26$ (Red) | 5 Unique + 1 Powerball | Quick-pick lottery ticket simulation |
+| **US Mega Millions Lottery** | $1 \text{ to } 70$ (White), $1 \text{ to } 25$ (Gold) | 5 Unique + 1 Mega Ball | Mega Millions number selection |
+| **Binary Coin Flip (Heads/Tails)**| $0 \text{ to } 1$ | 1 Single Value | $0 = \text{Tails}, 1 = \text{Heads}$ fair coin toss |
+| **Scientific Monte Carlo Sampling**| $1 \text{ to } 1,000,000$ | Hundreds (Batch) | Statistical distribution modeling & physics |
+
+---
+
+## 100% Client-Side Privacy & Zero Server Logging
+
+When conducting company raffles, selecting confidential prize winners, drawing lottery numbers, or testing statistical algorithms, data privacy and fairness must be unquestioned.
+
+ZixTool generates all random numbers locally within your device's browser runtime. No range parameters, generated sequences, or user interactions are ever transmitted over the network or recorded on external servers.

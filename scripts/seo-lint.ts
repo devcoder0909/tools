@@ -139,7 +139,8 @@ export function runSeoLint() {
       if (href.startsWith('/') || href.startsWith(siteConfig.url)) {
         const cleanHref = href.replace(siteConfig.url, '').split('#')[0].split('?')[0];
         if (cleanHref && !cleanHref.startsWith('/embed/') && !cleanHref.startsWith('/_')) {
-          outboundLinks.push(cleanHref.endsWith('/') ? cleanHref : cleanHref + '/');
+          const isFile = /\.[^/]+$/.test(cleanHref);
+          outboundLinks.push(cleanHref.endsWith('/') || isFile ? cleanHref : cleanHref + '/');
         }
       }
     });
@@ -271,7 +272,10 @@ export function runSeoLint() {
   // Broken internal link validation
   for (const page of audits) {
     for (const targetUrl of page.outboundInternalLinks) {
-      if (!validBuiltPaths.has(targetUrl)) {
+      const targetFile = path.resolve(DIST_DIR, '.' + targetUrl);
+      const isBuiltAsset = targetFile.startsWith(DIST_DIR + path.sep)
+        && fs.existsSync(targetFile) && fs.statSync(targetFile).isFile();
+      if (!validBuiltPaths.has(targetUrl) && !isBuiltAsset) {
         page.errors.push(`Broken internal link target: "${targetUrl}"`);
       }
     }

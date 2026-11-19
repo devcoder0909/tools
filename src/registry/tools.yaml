@@ -1420,7 +1420,7 @@
     - password-generator
     - fancy-text-generator
     - random-number-generator
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
   reviewer: ZixTool Digital Imaging Team
@@ -1470,7 +1470,7 @@
     - random-number-generator
     - uuid-generator
     - hash-generator
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
   reviewer: ZixTool Cybersecurity Engineering Team
@@ -1520,7 +1520,7 @@
     - compress-pdf
     - jpg-to-pdf
     - rotate-pdf
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: 2026-11-16T00:00:00.000Z
   lang: en
@@ -1571,7 +1571,7 @@
     - compress-pdf
     - jpg-to-pdf
     - rotate-pdf
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: 2026-11-16T00:00:00.000Z
   lang: en
@@ -1621,7 +1621,7 @@
     - split-pdf
     - compress-image-to-200kb
     - rotate-pdf
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: 2026-11-16T00:00:00.000Z
   lang: en
@@ -1671,7 +1671,7 @@
     - currency-converter
     - percentage-calculator
     - compound-interest-calculator
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: 2026-11-16T00:00:00.000Z
   reviewer: ZixTool Financial Engineering Team
@@ -1720,7 +1720,7 @@
     - currency-converter
     - percentage-calculator
     - compound-interest-calculator
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: 2026-11-16T00:00:00.000Z
   reviewer: ZixTool Financial Engineering Team
@@ -1760,7 +1760,7 @@
     - age-calculator
     - percentage-calculator
     - unit-converter
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
@@ -1833,7 +1833,7 @@
     - age-calculator
     - unit-converter
     - random-number-generator
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
@@ -1871,7 +1871,7 @@
     - typing-test
     - date-difference-calculator
     - screen-recorder
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
@@ -1907,7 +1907,7 @@
     - word-counter
     - case-converter
     - typing-test
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
@@ -1943,7 +1943,7 @@
     - photo-editor
     - resize-image
     - meme-generator
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
@@ -1982,7 +1982,7 @@
     - my-ip-address
     - url-encoder-decoder
     - hash-generator
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
@@ -2018,7 +2018,7 @@
     - currency-converter
     - scientific-calculator
     - percentage-calculator
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
@@ -2093,7 +2093,7 @@
     - meme-generator
     - compress-image-to-200kb
     - crop-image
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
@@ -2130,7 +2130,7 @@
     - resize-image
     - qr-code-generator
     - crop-image
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
@@ -2167,7 +2167,7 @@
     - scientific-calculator
     - percentage-calculator
     - uuid-generator
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
@@ -2203,7 +2203,7 @@
     - case-converter
     - word-counter
     - barcode-generator
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
@@ -2239,7 +2239,7 @@
     - qr-code-generator
     - password-generator
     - fancy-text-generator
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
@@ -2259,7 +2259,7 @@
   kind: media
   slug: typing-test
   name: Typing Speed Test
-  title: Typing Speed Test - Free 60s WPM Check | ZixTool
+  title: Typing Test - Free 60s WPM Speed Test | ZixTool
   subtitle: Test your keyboard typing speed, words per minute (WPM), and accuracy.
   description: Free online typing test. Measure your keyboard typing speed in words per minute (WPM) and accuracy percentage with instant real-time feedback in your browser.
   engine: media
@@ -2276,7 +2276,7 @@
     - online-timer
     - word-counter
     - case-converter
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
   lang: en
@@ -2360,7 +2360,7 @@
     - sip-calculator
     - percentage-calculator
     - compound-interest-calculator
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: '2026-11-15T00:00:00.000Z'
   reviewer: ZixTool Financial Analytics Team
@@ -2399,7 +2399,7 @@
     - emi-calculator
     - sip-calculator
     - currency-converter
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: '2026-11-15T00:00:00.000Z'
   reviewer: ZixTool Financial Analytics Team
@@ -2439,7 +2439,7 @@
     - json-formatter
     - fancy-text-generator
     - diff-checker
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: '2026-11-15T00:00:00.000Z'
   reviewer: ZixTool Content Analytics Team
@@ -2478,7 +2478,7 @@
     - percentage-calculator
     - scientific-calculator
     - online-calculator
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: '2026-11-15T00:00:00.000Z'
   reviewer: ZixTool Mathematical Engineering Team
@@ -2517,7 +2517,7 @@
     - percentage-calculator
     - celsius-to-fahrenheit
     - discount-calculator
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: '2026-11-15T00:00:00.000Z'
   reviewer: ZixTool Mathematical Engineering Team
@@ -2557,7 +2557,7 @@
     - typing-test
     - screen-recorder
     - text-to-speech
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: '2026-11-15T00:00:00.000Z'
   reviewer: ZixTool Product Engineering Team
@@ -2641,7 +2641,7 @@
     - json-formatter
     - photo-editor
     - unit-converter
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
   reviewer: ZixTool Design Engineering Team
@@ -2689,7 +2689,7 @@
     - url-encoder-decoder
     - uuid-generator
     - hash-generator
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
   reviewer: ZixTool Developer Tools Team
@@ -2731,7 +2731,7 @@
     - online-calculator
     - scientific-calculator
     - age-calculator
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
   reviewer: ZixTool Education Analytics Team
@@ -2770,7 +2770,7 @@
     - percentage-calculator
     - tip-calculator
     - loan-calculator
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
   reviewer: ZixTool Financial Engineering Team
@@ -2809,7 +2809,7 @@
     - photo-editor
     - image-compressor
     - online-calculator
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
   reviewer: ZixTool Media Engineering Team
@@ -2849,7 +2849,7 @@
     - case-converter
     - fancy-text-generator
     - markdown-to-html
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
   reviewer: ZixTool Content Design Team
@@ -2888,7 +2888,7 @@
     - online-stopwatch
     - typing-test
     - date-difference-calculator
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
   reviewer: ZixTool Productivity Engineering Team
@@ -2968,7 +2968,7 @@
     - meme-generator
     - compress-image-to-50kb
     - jpg-to-png
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
   reviewer: ZixTool Multimedia Engineering Team
@@ -3014,7 +3014,7 @@
     - compress-pdf
     - pdf-to-jpg
     - jpg-to-pdf
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
   reviewer: ZixTool Document Engineering Team
@@ -3059,7 +3059,7 @@
     - case-converter
     - character-counter
     - markdown-to-html
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
   reviewer: ZixTool Text Utilities Engineering Team
@@ -3105,7 +3105,7 @@
     - loan-calculator
     - mortgage-calculator
     - percentage-calculator
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
   reviewer: ZixTool Financial Algorithms Team
@@ -3148,7 +3148,7 @@
     - json-formatter
     - hash-generator
     - uuid-generator
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
   reviewer: ZixTool Web Developer Utilities Team
@@ -3188,7 +3188,7 @@
     - url-encoder-decoder
     - jwt-decoder
     - password-generator
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
   reviewer: ZixTool Cryptography & DevTools Team
@@ -3228,7 +3228,7 @@
     - jwt-decoder
     - password-generator
     - url-encoder-decoder
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
   reviewer: ZixTool Security Architecture Team
@@ -3268,7 +3268,7 @@
     - json-formatter
     - case-converter
     - character-counter
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
   reviewer: ZixTool Content Engineering Team
@@ -3308,7 +3308,7 @@
     - base64-encoder
     - url-encoder-decoder
     - diff-checker
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
   reviewer: ZixTool Data Architecture Team
@@ -3348,7 +3348,7 @@
     - base64-encoder
     - url-encoder-decoder
     - diff-checker
-  indexable: false
+  indexable: true
   reviewed: true
   last_reviewed: '2026-11-16T00:00:00.000Z'
   reviewer: ZixTool Data Architecture Team

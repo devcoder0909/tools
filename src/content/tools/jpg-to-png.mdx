@@ -7,6 +7,14 @@ reviewer: "ZixTool Image Standards Review"
 reviewed: true
 ---
 
+## Does converting JPG to PNG improve image quality?
+
+Converting JPG to PNG changes the file format, but it cannot recover detail already discarded by JPEG compression. Existing blur, halos, or block patterns remain in the decoded image. PNG can avoid additional lossy encoding when saving those pixels, which is useful when a workflow specifically requires PNG.
+
+A JPEG photo usually becomes larger when saved as PNG. Use [JPG compression](/jpg-compressor/) if your goal is a smaller photo attachment. Choose PNG when the receiving application requires it or when you need to continue working in a lossless format.
+
+Conversion also does not automatically remove a background. Although PNG supports transparency, a rectangular JPG remains opaque unless you edit its pixels. For that separate task, use the [background remover](/background-remover/) and inspect the edges before saving.
+
 ## How to Convert JPG to PNG in 3 Simple Steps
 
 Convert standard JPEG images into lossless, editing-ready PNG graphics in seconds with complete privacy:

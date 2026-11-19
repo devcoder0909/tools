@@ -55,7 +55,7 @@ export interface SeoAuditReport {
  * Estimate syllable count of an English word
  */
 function countSyllables(word: string): number {
-  word = word.toLowerCase().trim();
+  word = word.toLowerCase().replace(/[^a-z0-9]/g, '').trim();
   if (word.length <= 3) return 1;
   // Skip technical dimension and byte tokens (e.g. 100kb, 50kb, 200px)
   if (/^\d+(kb|mb|px|%|mm|cm)?$/i.test(word)) return 1;
@@ -73,6 +73,11 @@ function stripHtml(html: string): string {
     .replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '')
     .replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
     .replace(/<svg[^>]*>[\s\S]*?<\/svg>/gi, '')
+    .replace(/<pre[^>]*>[\s\S]*?<\/pre>/gi, '.\n')
+    .replace(/<code[^>]*>[\s\S]*?<\/code>/gi, ' ')
+    .replace(/<span class="katex"[^>]*>[\s\S]*?<\/span>/gi, ' ')
+    .replace(/\$\$[\s\S]*?\$\$/g, ' ')
+    .replace(/\$[^$\n]+\$/g, ' ')
     .replace(/<\/(p|div|h[1-6]|li|tr|section|article)>/gi, '.\n')
     .replace(/<[^>]+>/g, ' ')
     .replace(/\s+/g, ' ')

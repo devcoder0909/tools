@@ -7,6 +7,14 @@ reviewer: "ZixTool Image Standards Review"
 reviewed: true
 ---
 
+## PNG to JPG for upload forms: what to check
+
+Convert PNG to JPG when a website accepts JPEG photos but rejects PNG files. Changing a filename from `.png` to `.jpg` is not conversion: the image must be decoded and saved using JPEG encoding. Both `.jpg` and `.jpeg` identify JPEG images.
+
+JPEG uses lossy compression, so conversion cannot promise mathematically lossless output. Review fine text and sharp edges after saving. Transparent areas also need a solid background because JPEG cannot store transparency. If transparent output is essential, choose [PNG to WebP](/png-to-webp/) instead.
+
+For a form that also sets a byte limit, convert first and then use [compress image to 200KB](/compress-image-to-200kb/) or the limit requested by the form. Check the final file's dimensions and actual size before uploading; a new extension alone does not satisfy those requirements.
+
 ## How to Convert PNG to JPG in 3 Simple Steps
 
 Transform heavy PNG graphics into lightweight, universally compatible JPEG images in seconds with zero file size limits and complete privacy:

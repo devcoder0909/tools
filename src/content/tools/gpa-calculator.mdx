@@ -1,52 +1,106 @@
 ---
 title: "GPA Calculator - College & High School Tool | ZixTool"
 subtitle: "Calculate cumulative and semester grade point averages on a 4.0 scale."
-description: "Calculate your college or high school GPA quickly with our free online GPA calculator. Supports credit hours and letter grades on the standard 4.0 scale."
-last_reviewed: "2026-11-16"
+description: "Free online GPA calculator to calculate college and high school semester and cumulative GPA on standard 4.0 and weighted 5.0 scales with 100% privacy."
+last_reviewed: "2026-11-19"
 reviewer: "ZixTool Education Analytics Team"
 reviewed: true
 ---
 
-## How to Calculate Your College or High School GPA
+Use our free **gpa calculator** to calculate your semester and cumulative Grade Point Average (GPA) on the standard 4.0 unweighted scale and 5.0 weighted scale in seconds. Whether you are a college undergraduate planning dean's list eligibility, a high school senior auditing AP/IB weighted honors for university admissions, or a graduate school applicant calibrating LSAC or AMCAS GPA requirements, ZixTool delivers instant, mathematically exact academic metrics directly in your browser.
 
-Keeping track of your semester and cumulative Grade Point Average (GPA) is essential for graduation requirements, scholarships, and graduate school applications:
+## How to Calculate Your GPA in 3 Steps
 
-1. **Add Your Courses:** Enter the course names or course codes for your semester.
-2. **Select Letter Grades:** Choose the letter grade earned in each class from the dropdown menu (e.g., A, A-, B+, B).
-3. **Set Credit Hours:** Input the credit weight for each class (typically 3 or 4 credits for lecture courses, 1 credit for labs).
-4. **View Instant GPA:** Your cumulative Grade Point Average, total credit hours, and academic honors status update immediately.
+Determining your semester grade point average or cumulative GPA takes only moments:
 
----
-
-## Standard 4.0 GPA Grading Scale Formula
-
-Colleges and universities calculate GPA by dividing total quality points by total credit hours attempted:
-
-```
-GPA = Total Quality Points / Total Credit Hours Attempted
-```
-
-Quality points for each course are calculated by multiplying the numerical grade point value by the course credit hours:
-
-```
-Course Quality Points = Grade Point Value * Course Credits
-```
+1. **Add Your Courses & Letter Grades:** Enter course titles and select the letter grade received for each class (e.g., $A, A-, B+, B$).
+2. **Assign Course Credit Hours:** Enter the credit weighting for each class (typically 3 or 4 credit hours for major lecture courses, 1 credit hour for laboratory or recitation sections).
+3. **Inspect Real-Time Academic Metrics:** The calculator instantly computes your total attempted credit hours, earned quality points, semester GPA, and Latin honors graduation standing.
 
 ---
 
-## Letter Grade to 4.0 Scale Conversion Reference
+## The Mathematics of GPA: Quality Points & Weighted Formulas
 
-| Letter Grade | Percentage Equivalent | Standard 4.0 Grade Points | Academic Standing |
-| :--- | :--- | :--- | :--- |
-| **A+ / A** | 93% – 100% | `4.00` | Excellent / Superior |
-| **A-** | 90% – 92% | `3.70` | Outstanding |
-| **B+** | 87% – 89% | `3.30` | Very Good |
-| **B** | 83% – 86% | `3.00` | Good / Above Average |
-| **B-** | 80% – 82% | `2.70` | Satisfactory |
-| **C+** | 77% – 79% | `2.30` | Fair |
-| **C** | 73% – 76% | `2.00` | Average Passing |
-| **D** | 60% – 69% | `1.00` | Minimum Passing |
-| **F** | Below 60% | `0.00` | Failing / No Credit |
+Colleges and universities evaluate academic standing by dividing total accumulated quality points by the total number of credit hours attempted:
 
-Our GPA calculator operates completely offline inside your browser with no registration or student data tracking.
+$$\text{Quality Points}_i = \text{Grade Point Value}_i \times \text{Credit Hours}_i$$
 
+$$\text{Semester GPA} = \frac{\sum_{i=1}^{n} (\text{Grade Point Value}_i \times \text{Credit Hours}_i)}{\sum_{i=1}^{n} \text{Credit Hours}_i} = \frac{\text{Total Quality Points}}{\text{Total Credit Hours Attempted}}$$
+
+*Worked Example:* Consider an undergraduate semester with four classes:
+- Organic Chemistry (4 Credits, Grade: $B$ = $3.00$): $4 \times 3.00 = 12.00$ Quality Points
+- Calculus II (4 Credits, Grade: $A-$ = $3.70$): $4 \times 3.70 = 14.80$ Quality Points
+- English Literature (3 Credits, Grade: $A$ = $4.00$): $3 \times 4.00 = 12.00$ Quality Points
+- Biology Laboratory (1 Credit, Grade: $A$ = $4.00$): $1 \times 4.00 = 4.00$ Quality Points
+
+**Total Credit Hours:** $4 + 4 + 3 + 1 = \mathbf{12 \text{ Credits}}$  
+**Total Quality Points:** $12.00 + 14.80 + 12.00 + 4.00 = \mathbf{42.80 \text{ Points}}$  
+$$\text{Semester GPA} = \frac{42.80}{12} \approx \mathbf{3.567 \text{ (Dean's List Standing)}}$$
+
+---
+
+## How to Calculate Cumulative GPA (Avoiding the Average of Averages Trap)
+
+A frequent mathematical error made by students is attempting to compute their cumulative GPA by taking the simple average of individual semester GPAs:
+
+$$\text{Incorrect Method: } \text{Cumulative GPA} \neq \frac{\text{Semester 1 GPA} + \text{Semester 2 GPA}}{2}$$
+
+If Semester 1 comprised 18 credit hours with a $3.80$ GPA and Semester 2 comprised only 12 credit hours with a $3.20$ GPA, a simple average treats both terms equally ($3.50$). Because Semester 1 carried $50\%$ more credit hours, it carries greater mathematical weight.
+
+The mathematically correct cumulative GPA formula sums all historical quality points over all attempted credits:
+
+$$\text{New Cumulative GPA} = \frac{(\text{Prior Cumulative GPA} \times \text{Prior Credit Hours}) + \text{New Semester Quality Points}}{\text{Prior Credit Hours} + \text{New Semester Credit Hours}}$$
+
+*Worked Example:* A student enters the spring term with a prior $3.40$ cumulative GPA over $60$ completed credit hours. In the spring term, they earn $42.80$ quality points across $12$ credit hours:
+$$\text{Prior Quality Points} = 3.40 \times 60 = 204.00$$
+$$\text{Combined Quality Points} = 204.00 + 42.80 = 246.80$$
+$$\text{Combined Total Credits} = 60 + 12 = 72$$
+$$\text{New Cumulative GPA} = \frac{246.80}{72} \approx \mathbf{3.428}$$
+
+---
+
+## Standard 4.0 Scale vs Weighted 5.0 High School Scales
+
+The reference table below contrasts standard unweighted college grading scales against weighted high school honors, Advanced Placement (AP), and International Baccalaureate (IB) scales:
+
+| Letter Grade | Percentage Range | Standard 4.0 Scale (College / Regular) | Honors Course (Weighted +0.5) | AP / IB / Dual Enrollment (+1.0) |
+| :--- | :--- | :--- | :--- | :--- |
+| **A+ / A** | $93\% - 100\%$ | $4.00$ | $4.50$ | $5.00$ |
+| **A-** | $90\% - 92\%$ | $3.70$ | $4.20$ | $4.70$ |
+| **B+** | $87\% - 89\%$ | $3.30$ | $3.80$ | $4.30$ |
+| **B** | $83\% - 86\%$ | $3.00$ | $3.50$ | $4.00$ |
+| **B-** | $80\% - 82\%$ | $2.70$ | $3.20$ | $3.70$ |
+| **C+** | $77\% - 79\%$ | $2.30$ | $2.80$ | $3.30$ |
+| **C** | $73\% - 76\%$ | $2.00$ | $2.50$ | $3.00$ |
+| **C-** | $70\%$ - $72\%$ | $1.70$ | $2.20$ | $2.70$ |
+| **D+** | $67\% - 69\%$ | $1.30$ | $1.30$ | $1.30$ |
+| **D** | $60\% - 66\%$ | $1.00$ | $1.00$ | $1.00$ |
+| **F** | Below $60\%$ | $0.00$ | $0.00$ | $0.00$ |
+
+---
+
+## College Latin Honors & Academic Standing Thresholds
+
+Colleges and universities confer traditional Latin honors at graduation based on cumulative grade point average cutoffs:
+
+- **Dean's List:** Typically awarded at the close of each full semester to matriculated students earning a semester GPA of **$3.50$ or higher** across at least 12 graded credit hours (excluding Pass/Fail courses).
+- **Cum Laude ("With Praise"):** Conferred to graduating seniors typically ranking in the top $15\% - 20\%$ of their graduating class (standard benchmark: **$3.50 - 3.69$ cumulative GPA**).
+- **Magna Cum Laude ("With Great Praise"):** Conferred to graduating seniors typically in the top $5\% - 10\%$ of their academic division (standard benchmark: **$3.70 - 3.89$ cumulative GPA**).
+- **Summa Cum Laude ("With Highest Praise"):** The university's highest academic distinction, awarded to seniors typically in the top $1\% - 3\%$ of the class (standard benchmark: **$3.90 - 4.00$ cumulative GPA**).
+
+---
+
+## Graduate School Admissions: LSAC and AMCAS Recalculation Rules
+
+When applying to law school (via the Law School Admission Council - LSAC) or medical school (via the American Medical College Application Service - AMCAS), admissions clearinghouses recalibrate institutional transcripts into standardized GPAs:
+
+- **Course Forgiveness / Retake Policies Disregarded:** If your undergraduate institution allowed you to retake a course and replaced an initial failing grade ($F$) with an $A$, LSAC and AMCAS calculate **both grades**, including the original $F$, significantly lowering the reported application GPA.
+- **Strict Credit Weighting:** All post-secondary coursework completed prior to the conferral of your first bachelor's degree—including dual-enrollment community college courses taken during high school—is factored into the standardized calculation.
+
+---
+
+## 100% Student Data Privacy: Zero Cloud Tracking
+
+Your academic grades, semester transcripts, course names, and personal GPA targets are sensitive educational records protected under privacy principles like FERPA.
+
+ZixTool computes all GPA quality points, weighted averages, and cumulative totals locally inside your browser's JavaScript runtime. No grades, transcripts, or personal student identifiers are ever transmitted to external servers or logged in commercial databases.

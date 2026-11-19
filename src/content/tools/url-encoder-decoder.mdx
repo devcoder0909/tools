@@ -1,45 +1,119 @@
 ---
 title: "URL Encoder Decoder - Percent Encoding"
 subtitle: "Encode and decode URLs and query parameters online for free."
-description: "Encode or decode URLs online for free. Safely escape special query parameters and percent-encode URIs with instant client-side string processing."
-last_reviewed: "2026-11-16"
+description: "Free online URL encoder decoder. Safely percent-encode query strings and decode encoded URIs with RFC 3986 compliance and 100% in-browser privacy."
+last_reviewed: "2026-11-19"
 reviewer: "ZixTool Web Developer Utilities Team"
 reviewed: true
 ---
 
-## How to Encode or Decode URLs and Query Strings Online
+Use our free **url encoder decoder** to percent-encode query strings, sanitize REST API parameters, and decode obfuscated URLs in seconds. Whether you are debugging OAuth redirect URIs, escaping dynamic search queries for HTTP GET requests, formatting deep links, or converting percent-encoded character triplets (`%20`, `%2F`, `%3D`) into human-readable text, ZixTool delivers instant RFC 3986-compliant string manipulation directly in your browser with zero server roundtrips and 100% privacy.
 
-Escaping unsafe ASCII characters and decoding percent-encoded URL parameters is fast and secure:
+## How to Encode or Decode URLs Online in 3 Steps
 
-1. **Paste URL String:** Enter your raw URL, REST API endpoint, or query parameter string into the text box above.
-2. **Choose Mode:** Select **Encode URL** to convert reserved characters like spaces, ampersands, and slashes into percent-encoded entities (`%20`, `%26`, `%2F`), or choose **Decode URL** to restore human-readable UTF-8 text.
-3. **Copy Result:** Use the **Copy Result** button to immediately copy the sanitized string to your clipboard for use in curl requests, frontend state, or web routing.
+Escaping special characters or decoding percent-encoded URL parameters takes only moments:
 
----
-
-## Why Percent-Encoding is Critical for Web Infrastructure
-
-The Uniform Resource Identifier (URI) specification (RFC 3986) designates specific reserved and unreserved character ranges:
-
-- **Reserved Characters:** Characters such as `:`, `/`, `?`, `#`, `[`, `]`, `@`, `!`, `$`, `&`, `'`, `(`, `)`, `*`, `+`, `,`, `;`, and `=` serve syntactic functions within a URI delimiter tree.
-- **Unreserved Characters:** Standard alphanumeric characters (`A-Z`, `a-z`, `0-9`), hyphens (`-`), underscores (`_`), periods (`.`), and tildes (`~`) are universally safe and never require escaping.
-- **Query Parameter Safety:** When passing search queries containing characters like `&` or `=`, failing to percent-encode them causes HTTP servers to interpret them as separate parameter delimiters, corrupting server payloads.
+1. **Paste URL String or Query Parameter:** Enter your target URL, endpoint path, or query string into the input workspace above.
+2. **Select Operation (Encode or Decode):** Choose **Encode URL** to convert reserved delimiters, spaces, and non-ASCII characters into safe percent-encoded triplets, or select **Decode URL** to restore human-readable UTF-8 strings.
+3. **Copy Sanitized Output:** Click **Copy Result** to copy the encoded or decoded string to your clipboard for instant use in `curl` scripts, API clients, or frontend code.
 
 ---
 
-## Common ASCII Characters and Their Percent-Encoded Representations
+## The Computer Science of URL Percent-Encoding: RFC 3986 Standards
 
-| Character | Description | Percent-Encoded Hex Code |
-| :--- | :--- | :--- |
-| **Space (` `)** | White space separator | `%20` or `+` |
-| **Exclamation (`!`)** | Exclamation mark | `%21` |
-| **Quotes (`"`)** | Double quote symbol | `%22` |
-| **Hash (`#`)** | URI fragment anchor | `%23` |
-| **Ampersand (`&`)** | Parameter query delimiter | `%26` |
-| **Slash (`/`)** | Path hierarchy separator | `%2F` |
-| **Colon (`:`)** | Protocol / port delimiter | `%3A` |
-| **Equal (`=`)** | Key-value separator | `%3D` |
-| **Question (`?`)** | Query string initiator | `%3F` |
+A Uniform Resource Identifier (URI) is constrained by international networking standards to a limited subset of US-ASCII characters. When transmitting text containing spaces, international accents, non-Latin scripts, or reserved syntactic delimiters over HTTP, the characters must be **percent-encoded** according to **IETF RFC 3986**:
 
-Our URL encoder and decoder runs entirely on client-side ECMAScript routines (`encodeURIComponent` and `decodeURIComponent`). Your private tokens, session identifiers, and API keys are never leaked to external telemetry endpoints.
+### 1. The Percent-Encoding Triplet Mechanism
+Every non-allowed byte is converted into a three-character sequence consisting of the percent symbol (`%`) followed by two uppercase hexadecimal digits representing the 8-bit byte value:
 
+$$\text{ASCII Character ' '} (32_{10} = 20_{16}) \implies \mathbf{\%20}$$
+
+$$\text{ASCII Character '&'} (38_{10} = 26_{16}) \implies \mathbf{\%26}$$
+
+### 2. Multi-Byte UTF-8 Percent-Encoding
+When dealing with international characters outside the 7-bit ASCII range (such as accented Latin, Cyrillic, Arabic, or Chinese characters), the character is first encoded into its multi-byte UTF-8 binary representation, and each individual byte is percent-encoded sequentially:
+- The French character `é` is represented in UTF-8 by two bytes: `0xC3 0xA9` $\implies \mathbf{\%C3\%A9}$
+- The German character `ü` is represented by two bytes: `0xC3 0xBC` $\implies \mathbf{\%C3\%BC}$
+- The Chinese character `中` is represented by three bytes: `0xE4 0xB8 0xAD` $\implies \mathbf{\%E4\%B8\%AD}$
+- The Rocket emoji 🚀 is represented by four bytes: `0xF0 0x9F 0x9A 0x80` $\implies \mathbf{\%F0\%9F\%9A\%80}$
+
+---
+
+## Reserved vs Unreserved Characters: The RFC 3986 Classification
+
+The RFC 3986 specification strictly categorizes characters into two distinct classes:
+
+### 1. Unreserved Characters (Never Encoded)
+Characters that carry no syntactic meaning within a URI structure are unreserved. These characters should never be percent-encoded:
+- Uppercase Letters: `A-Z`
+- Lowercase Letters: `a-z`
+- Decimal Digits: `0-9`
+- Special Punctuation: `-` (Hyphen), `_` (Underscore), `.` (Period), and `~` (Tilde)
+
+### 2. Reserved Characters (Syntactic Delimiters)
+Characters that serve as structural delimiters within the URI grammar tree:
+- **General Delimiters (gen-delims):** `:` (Scheme / port), `/` (Path separator), `?` (Query initiator), `#` (Fragment anchor), `[` and `]` (IPv6 host bounding), `@` (Userinfo delimiter).
+- **Sub-Delimiters (sub-delims):** `!` (Negation), `$` (Sub-path), `&` (Query parameter separator), `'` (Quote), `(` and `)` (Grouping), `*` (Wildcard), `+` (Plus / space), `,` (List separator), `;` (Matrix parameter), `=` (Key-value assignment).
+
+If a parameter value contains a reserved character—such as a user searching for `"C++ & Python"`—failing to encode the `&` causes the web server to interpret `& Python` as an entirely separate parameter key rather than part of the search query.
+
+---
+
+## JavaScript API Differences: `encodeURI()` vs `encodeURIComponent()`
+
+Frontend software engineers frequently trigger subtle routing bugs by selecting the wrong encoding function in JavaScript:
+
+### `encodeURI()` (Full URL Encoding)
+Designed to encode a complete, intact URL. It preserves structural delimiters so the browser can navigate properly:
+- **Preserves:** `:`, `/`, `?`, `#`, `&`, `=`, `+`, `@`
+- **Encodes:** Spaces, quotes, non-ASCII characters, and angle brackets (`<`, `>`).
+- *Example:* `encodeURI("https://example.com/search?q=hello world")` $\implies$ `"https://example.com/search?q=hello%20world"`
+
+### `encodeURIComponent()` (Query Parameter Value Encoding)
+Designed to encode an individual parameter *value* intended to be inserted inside a query string. It aggressively escapes all structural delimiters:
+- **Encodes:** `:`, `/`, `?`, `#`, `&`, `=`, `+`, `@`, and all non-alphanumeric characters.
+- *Example:* `encodeURIComponent("https://example.com")` $\implies$ `"https%3A%2F%2Fexample.com"`
+- *Critical Use Case:* Mandatory for OAuth redirect URLs, webhook target parameters, and callback endpoints.
+
+---
+
+## Common ASCII Characters & Percent-Encoded Hex Reference Table
+
+The reference table below contrasts standard ASCII symbols against their percent-encoded representations:
+
+| Visible Character | Typographic Name | ASCII Decimal | ASCII Hex | Percent-Encoded Hex Code | Primary Syntactic Role |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Space (` `)** | Spacebar Separator | $32$ | `0x20` | `%20` or `+` | Whitespace separation |
+| **Exclamation (`!`)**| Exclamation Mark | $33$ | `0x21` | `%21` | Sub-delimiter |
+| **Double Quote (`"`)**| Quotation Mark | $34$ | `0x22` | `%22` | String enclosure |
+| **Hash (`#`)** | Octothorpe / Hash | $35$ | `0x23` | `%23` | URI fragment identifier |
+| **Dollar (`$`)** | Dollar Sign | $36$ | `0x24` | `%24` | Variable / sub-delimiter |
+| **Percent (`%`)** | Percent Symbol | $37$ | `0x25` | `%25` | Encoding escape initiator |
+| **Ampersand (`&`)** | Ampersand | $38$ | `0x26` | `%26` | Query parameter delimiter |
+| **Plus (`+`)** | Plus Symbol | $43$ | `0x2B` | `%2B` | Form-encoded space or math |
+| **Slash (`/`)** | Forward Slash | $47$ | `0x2F` | `%2F` | Path segment separator |
+| **Colon (`:`)** | Colon | $58$ | `0x3A` | `%3A` | Protocol & port delimiter |
+| **Semicolon (`;`)** | Semicolon | $59$ | `0x3B` | `%3B` | Matrix parameter delimiter |
+| **Equal (`=`)** | Equals Sign | $61$ | `0x3D` | `%3D` | Key-value separator |
+| **Question (`?`)** | Question Mark | $63$ | `0x3F` | `%3F` | Query string initiator |
+| **At (`@`)** | At Symbol | $64$ | `0x40` | `%40` | Userinfo authority delimiter |
+
+---
+
+## The Double-Encoding Bug & Server-Side Security (SSRF)
+
+Two major software engineering challenges arise from improper percent-encoding:
+
+### The Double-Encoding Bug (`%2520`)
+When a string that has already been encoded is passed into an encoder a second time, the literal `%` character (`%25`) is re-encoded. A space (`%20`) transforms into `%2520`. When the server performs a single decode pass, it produces `%20` instead of a space, resulting in broken URLs and failed database lookups.
+
+### Server-Side Request Forgery (SSRF) Prevention
+In cloud microservices, unvalidated or improperly decoded URL parameters can be exploited by attackers to bypass internal firewalls. If an attacker inputs an unescaped or double-encoded path (`%2F..%2F..%2Fadmin`), vulnerable backend proxy servers may forward requests to internal cloud metadata services (`http://169.254.169.254/`). Rigorous percent-encoding validation mitigates injection vectors.
+
+---
+
+## 100% In-Browser Privacy: Complete API Token Security
+
+Pasting sensitive OAuth bearer tokens, API secret keys, user session identifiers, or database credentials into cloud URL encoding websites exposes your application to credential leaks. Many third-party utilities record query strings in server access logs.
+
+ZixTool executes 100% of its encoding and decoding logic locally within your web browser's JavaScript engine. No URLs, query strings, or sensitive API parameters are ever transmitted over the network or logged on external servers.

@@ -1,58 +1,46 @@
-import { getAllTools, getAllFormats } from '../src/registry';
+import fs from 'node:fs';
+import path from 'node:path';
+import * as cheerio from 'cheerio';
 import { siteConfig } from '../src/config/site';
 
-async function pingIndexNow() {
-  const apiKey = process.env.INDEXNOW_KEY || 'fbfbc05b9070df2dcd6684c6d12c7a0b';
-
-  const tools = getAllTools().filter((t) => t.indexable && t.reviewed && t.last_reviewed);
-  const formats = getAllFormats().filter((f) => f.hub && f.indexable);
-
-  const urlList = [
-    `${siteConfig.url}/`,
-    `${siteConfig.url}/tools/`,
-    `${siteConfig.url}/calculators/`,
-    `${siteConfig.url}/formats/`,
-    `${siteConfig.url}/privacy-explained/`,
-    `${siteConfig.url}/about/`,
-    `${siteConfig.url}/contact/`,
-    ...formats.map((f) => `${siteConfig.url}/formats/${f.id}/`),
-    ...tools.map((t) => `${siteConfig.url}/${t.slug}/`),
-  ];
-
-  const payload = {
-    host: siteConfig.domain,
-    key: apiKey,
-    keyLocation: `${siteConfig.url}/${apiKey}.txt`,
-    urlList,
-  };
-
-  console.log(`[IndexNow] Preparing notification for ${urlList.length} URLs on ${siteConfig.domain}...`);
-
-  const endpoints = [
-    'https://api.indexnow.org/indexnow',
-    'https://www.bing.com/indexnow',
-  ];
-
-  for (const endpoint of endpoints) {
-    try {
-      const res = await fetch(endpoint, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json; charset=utf-8',
-        },
-        body: JSON.stringify(payload),
-      });
-
-      if (res.ok || res.status === 200 || res.status === 202) {
-        console.log(`[IndexNow] Successfully notified ${new URL(endpoint).hostname} for ${urlList.length} URLs (Status: ${res.status}).`);
-      } else {
-        const errorText = await res.text();
-        console.warn(`[IndexNow] ${new URL(endpoint).hostname} returned status ${res.status}: ${errorText}`);
-      }
-    } catch (err: any) {
-      console.warn(`[IndexNow] Notice: Could not reach ${endpoint} (${err.message}).`);
-    }
+async function main() {
+  if (!process.argv.includes('--submit')) {
+    console.log('[IndexNow] Build only. After deployment run: pnpm exec tsx scripts/indexnow.ts --submit');
+    return;
+  }
+  const key = process.env.INDEXNOW_KEY || 'fbfbc05b9070df2dcd6684c6d12c7a0b';
+  if (!/^[a-zA-Z0-9-]{8,128}$/.test(key)) throw new Error('Invalid IndexNow key.');
+  const keyLocation = `${siteConfig.url}/${key}.txt`;
+  const keyResponse = await fetch(keyLocation, { signal: AbortSignal.timeout(15000) });
+  if (!keyResponse.ok || (await keyResponse.text()).trim() !== key) {
+    throw new Error('Deploy the matching IndexNow key file before submitting URLs.');
+  }
+  const urls = new Set<string>();
+  for (const shard of ['pages', 'tools', 'formats']) {
+    const xml = fs.readFileSync(path.resolve('dist', `sitemap-${shard}.xml`), 'utf-8');
+    const $ = cheerio.load(xml, { xmlMode: true });
+    $('url > loc').each((_, element) => {
+      const url = new URL($(element).text());
+      if (url.origin !== siteConfig.url || url.search || url.hash) throw new Error('Invalid sitemap URL.');
+      urls.add(url.href);
+    });
+  }
+  const urlList = [...urls];
+  if (!urlList.length) throw new Error('No sitemap URLs. Build first.');
+  // Participating engines share notifications; one endpoint is sufficient.
+  for (let offset = 0; offset < urlList.length; offset += 10000) {
+    const batch = urlList.slice(offset, offset + 10000);
+    const response = await fetch('https://api.indexnow.org/indexnow', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
+      body: JSON.stringify({ host: siteConfig.domain, key, keyLocation, urlList: batch }),
+      signal: AbortSignal.timeout(30000),
+    });
+    if (response.status !== 200 && response.status !== 202) throw new Error(`IndexNow HTTP ${response.status}`);
+    console.log(`[IndexNow] ${batch.length} notifications accepted (HTTP ${response.status}). This does not confirm indexing. Google does not use IndexNow.`);
   }
 }
-
-pingIndexNow();
+main().catch((error) => {
+  console.error(`[IndexNow] ${error.message}`);
+  process.exitCode = 1;
+});

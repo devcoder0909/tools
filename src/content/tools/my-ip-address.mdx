@@ -1,46 +1,96 @@
 ---
 title: "My IP Address & Browser Diagnostics | ZixTool"
 subtitle: "Check your browser network configuration, screen display, and user agent."
-description: "Free online browser and network diagnostic tool. Inspect your client screen resolution, color depth, system timezone, language, and user-agent string."
-last_reviewed: "2026-11-13"
+description: "Free online browser and network diagnostic tool. Check your public IP address, screen resolution, WebGL GPU, timezone, and user-agent string with 100% privacy."
+last_reviewed: "2026-11-19"
 reviewer: "ZixTool Network Engineering Team"
 reviewed: true
 ---
 
-## How to Check Your Browser Profile in 3 Steps
+Use our free **my ip address** and browser diagnostic tool to inspect your public IP address, examine network routing configurations, check screen resolution and color depth, audit browser fingerprint parameters, and evaluate your HTTP user-agent string in seconds. Whether you are debugging remote SSH firewalls, testing VPN connection integrity, verifying web development responsive breakpoints, or auditing what metadata web trackers can harvest from your device, ZixTool delivers instant, transparent diagnostics directly in your browser.
 
-Inspect your device and browser diagnostic fingerprint in seconds:
+## How to Check Your Public IP and Browser Diagnostics in 3 Steps
 
-1. **Open Diagnostic Page:** Simply load this page on any computer, tablet, or smartphone.
-2. **Review Screen & Client Properties:** Check your screen resolution, color depth, browser language, and active system timezone.
-3. **Inspect User Agent:** View your complete HTTP User-Agent string, which web servers use to identify your browser version and operating system.
+Inspecting your network address and client hardware configuration takes only moments:
 
-### Why Network Diagnostics Matter
-
-- **Web Development & QA Testing:** Verify how your browser identifies itself when testing responsive layouts across high-DPI displays.
-- **Privacy & Fingerprint Auditing:** Inspect what hardware parameters and device metrics are visible to public websites you visit.
-- **Troubleshooting Connection Issues:** Confirm whether cookies, local storage, and proper system timezones are enabled in your browser.
+1. **Load Diagnostic Dashboard:** Simply navigate to this tool in any desktop or mobile web browser.
+2. **Review Network & IP Information:** Inspect your public IPv4 and IPv6 network identifiers, ISP routing information, and active geographic location data.
+3. **Audit Hardware & Client Fingerprint Metrics:** Examine physical screen resolution, device pixel ratios (Retina/High-DPI), WebGL GPU rendering engines, system timezone, and navigator user-agent strings.
 
 ---
 
-## Client Diagnostic Properties Explained
+## Internet Protocol Architecture: IPv4 vs IPv6 Standards
 
-The table below explains what each client diagnostic parameter indicates:
+An Internet Protocol (IP) address is a numerical label assigned to every connected device on a computer network. IP addresses govern routing across the global internet:
 
-| Property | Typical Value | What It Measures |
-| :--- | :--- | :--- |
-| **Screen Resolution** | 1920x1080, 2560x1440 | Physical monitor pixel width and height |
-| **Color Depth** | 24-bit or 32-bit | Maximum color dynamic range supported by display |
-| **System Timezone** | UTC, America/New_York | Local timezone configured on operating system |
-| **User Agent** | Mozilla/5.0... | Browser engine, operating system, and build version |
+### 1. IPv4 (32-Bit Numerical Addressing)
+Standardized in 1981 under RFC 791, IPv4 addresses are 32-bit binary integers formatted as four decimal octets ($0 - 255$) separated by periods (e.g., `203.0.113.195`). IPv4 provides a theoretical ceiling of $2^{32} \approx \mathbf{4.29 \text{ billion addresses}}$. 
+
+Due to the explosion of smartphones, cloud servers, and IoT devices, the Internet Assigned Numbers Authority (IANA) officially exhausted the global unallocated IPv4 address pool in February 2011.
+
+### 2. IPv6 (128-Bit Hexadecimal Addressing)
+Standardized under RFC 8200 to solve IPv4 exhaustion, IPv6 allocates 128 bits per address, represented as eight groups of four hexadecimal digits separated by colons (e.g., `2001:0db8:85a3:0000:0000:8a2e:0370:7334`). IPv6 accommodates $2^{128}$ unique addresses:
+
+$$2^{128} \approx \mathbf{3.4 \times 10^{38} \text{ Unique Addresses}}$$
+
+This astronomical capacity provides trillions of unique public IP addresses for every square millimeter of Earth's surface, eliminating the need for NAT routing workarounds.
+
+### 3. Public vs Private IP Addresses & NAT (RFC 1918)
+- **Public IP Address:** A globally unique address routed across the public internet, assigned to your residential modem or cellular connection by your Internet Service Provider (ISP).
+- **Private IP Address:** Internal addresses reserved under RFC 1918 for local area networks (LANs):
+  - Class A: `10.0.0.0` to `10.255.255.255`
+  - Class B: `172.16.0.0` to `172.31.255.255`
+  - Class C: `192.168.0.0` to `192.168.255.255`
+- **Network Address Translation (NAT):** Your home Wi-Fi router uses NAT to translate dozens of private internal devices (laptops, phones, smart TVs) through a single shared public IPv4 address.
 
 ---
 
-## Frequently Asked Questions
+## Client Hardware Diagnostics & Browser Fingerprinting Metrics
 
-### Is my private browsing information shared with third parties?
-No. All diagnostics on ZixTool are read client-side via JavaScript navigator APIs without logging or selling your information.
+Modern web browsers expose rich hardware and system capabilities via native JavaScript APIs. Understanding what websites see allows you to audit your online tracking surface:
 
-### What is a User Agent string?
-A user agent is a text string your browser includes with every web request so web servers know whether you are using Chrome, Safari, Firefox, Windows, Mac, or mobile.
+### 1. Screen Resolution & Device Pixel Ratio (DPR)
+- **Physical Monitor Resolution:** `window.screen.width` and `window.screen.height` report your monitor's display dimensions (e.g., $1920 \times 1080$ or $3840 \times 2160$).
+- **Device Pixel Ratio (DPR):** High-DPI screens (such as Apple Retina displays or 4K monitors) use a pixel ratio of $2.0$ or $3.0$, rendering crisp vector typography by mapping multiple physical pixels to a single CSS reference pixel.
 
+### 2. WebGL GPU Graphics Acceleration
+The WebGL API allows web browsers to execute 3D graphics on your physical graphics card. By querying the `WEBGL_debug_renderer_info` extension, websites can identify your exact GPU model (e.g., *"NVIDIA GeForce RTX 4080"* or *"Apple M3 Pro"*), creating a persistent hardware fingerprint across browsing sessions.
+
+### 3. User-Agent String & Client Hints
+Historically, the `User-Agent` HTTP header transmitted detailed operating system build numbers and browser versions. Modern browsers are transitioning to **User-Agent Client Hints (`navigator.userAgentData`)**, providing high-entropy hardware metrics strictly on request to protect user privacy.
+
+---
+
+## Client Diagnostic Properties Reference Table
+
+The table below outlines key hardware, browser, and network parameters evaluated by ZixTool:
+
+| Diagnostic Parameter | API Source / Detection Layer | Typical Output Example | Purpose / Privacy Implication |
+| :--- | :--- | :--- | :--- |
+| **Public IPv4 Address** | External STUN / Edge Resolver | `198.51.100.42` | Geographic routing and server access logging |
+| **Public IPv6 Address** | Dual-Stack Socket Handshake | `2600:1700:...:0001` | Modern end-to-end routing without NAT |
+| **Operating System** | `navigator.userAgentData` | Windows 11, macOS, Android | OS compatibility and native app targeting |
+| **Browser Engine** | `navigator.userAgent` | Blink (Chrome 128.0) | Rendering engine feature detection |
+| **Screen Resolution** | `window.screen.width/height` | $2560 \times 1440$ (1440p QHD) | Responsive layout breakpoint testing |
+| **Device Pixel Ratio** | `window.devicePixelRatio` | `2.0` (Retina / High-DPI) | Image asset resolution scaling |
+| **Color Depth** | `window.screen.colorDepth` | $24\text{-bit}$ Truecolor | Display HDR and color gamut capabilities |
+| **System Timezone** | `Intl.DateTimeFormat()` | `America/New_York (UTC-5)` | Clock synchronization and local scheduling |
+| **Hardware Threads** | `navigator.hardwareConcurrency`| `8` or `16` CPU Cores | Web Worker thread pool sizing |
+| **Device Memory** | `navigator.deviceMemory` | `8` or `16` Gigabytes RAM | In-memory buffering and video decoding |
+
+---
+
+## VPNs, Proxies, and WebRTC IP Leak Prevention
+
+When browsing through a Virtual Private Network (VPN) or encrypted proxy, your public IP address is masked and replaced with the IP address of the VPN exit node. However, subtle browser mechanisms can inadvertently leak your true identity:
+
+- **WebRTC IP Leak Vulnerability:** WebRTC (Web Real-Time Communication) is built into modern browsers to enable peer-to-peer video chat and audio calls. WebRTC sends STUN (Session Traversal Utilities for NAT) requests to discover candidate IP addresses. Misconfigured browsers can leak your real residential IP address through WebRTC candidates even while an encrypted VPN tunnel is active.
+- **DNS Leakage:** If your computer forwards domain lookups (DNS queries) to your local ISP's servers rather than the VPN provider's encrypted DNS resolver, your internet provider continues logging every website you visit.
+
+---
+
+## 100% In-Browser Privacy: No Commercial Fingerprint Logging
+
+Many free IP lookup websites monetize user traffic by selling IP geolocation databases, logging visitor behavioral telemetry, or selling fingerprint profiles to data brokers.
+
+ZixTool operates strictly as an in-browser diagnostic utility. All screen parameters, WebGL GPU metrics, color depths, and user-agent evaluations execute locally inside your browser's JavaScript memory heap. No personal identities, IP histories, or device fingerprints are ever stored in commercial tracking databases.

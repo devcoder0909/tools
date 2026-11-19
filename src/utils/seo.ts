@@ -111,13 +111,26 @@ export function formatSeoDescription(rawDesc: string, fallback: string = siteCon
  * Resolve full centralized SEO metadata with automatic sensible defaults
  */
 export function resolvePageSeo(input: PageSeoInput, currentUrl?: URL | string): ResolvedSeoMetadata {
-  const canonicalUrl = input.canonical
+  const canonicalSource = input.canonical
     ? input.canonical
     : currentUrl
       ? typeof currentUrl === 'string'
         ? currentUrl
         : currentUrl.href
       : siteConfig.url;
+  const normalizedUrl = new URL(canonicalSource, siteConfig.url);
+  // Preview hosts and tracking parameters must not become canonical URLs.
+  if (!input.canonical) {
+    normalizedUrl.protocol = new URL(siteConfig.url).protocol;
+    normalizedUrl.host = new URL(siteConfig.url).host;
+    normalizedUrl.port = new URL(siteConfig.url).port;
+  }
+  normalizedUrl.search = '';
+  normalizedUrl.hash = '';
+  if (!normalizedUrl.pathname.endsWith('/') && !/\.[^/]+$/.test(normalizedUrl.pathname)) {
+    normalizedUrl.pathname += '/';
+  }
+  const canonicalUrl = normalizedUrl.href;
 
   const title = formatSeoTitle(input.title);
   const description = formatSeoDescription(input.description);
