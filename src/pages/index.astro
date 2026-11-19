@@ -11,25 +11,24 @@ const calculators = allTools.filter((t) => t.kind === 'finance' || t.kind === 'c
 const generatorsAndMedia = allTools.filter((t) => t.kind === 'generator' || t.kind === 'media' || t.kind === 'developer' || t.kind === 'text');
 const formatHubs = getFormatHubs();
 
-// Flagship Tier 1 featured tools
+// Flagship Tier 1 featured tools (Top 16 across Image, PDF, Finance & Dev utilities)
 const featuredSlugs = [
   'background-remover',
   'image-compressor',
   'passport-photo-resizer',
   'compress-image-to-50kb',
-  'compress-image-to-20kb',
   'heic-to-jpg',
   'pdf-to-jpg',
   'merge-pdf',
   'compress-pdf',
   'jpg-compressor',
   'photo-compressor',
-  'jpeg-to-jpg',
-  'webp-to-png',
-  'png-to-jpg',
+  'currency-converter',
+  'my-ip-address',
+  'loan-calculator',
   'emi-calculator',
-  'qr-code-generator',
-  'json-formatter',
+  'uuid-generator',
+  'unit-converter',
 ];
 const featuredTools = featuredSlugs
   .map((slug) => allTools.find((t) => t.slug === slug))

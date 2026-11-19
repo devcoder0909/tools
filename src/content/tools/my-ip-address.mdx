@@ -1,7 +1,7 @@
 ---
 title: "My IP Address & Browser Diagnostics | ZixTool"
 subtitle: "Check your browser network configuration, screen display, and user agent."
-description: "Free online browser and network diagnostic tool. Check your public IP address, screen resolution, WebGL GPU, timezone, and user-agent string with 100% privacy."
+description: "Free online network diagnostic tool. Check your public IP address, screen resolution, WebGL GPU, timezone, and user agent with 100% in-browser privacy."
 last_reviewed: "2026-11-19"
 reviewer: "ZixTool Network Engineering Team"
 reviewed: true
@@ -16,6 +16,8 @@ Inspecting your network address and client hardware configuration takes only mom
 1. **Load Diagnostic Dashboard:** Simply navigate to this tool in any desktop or mobile web browser.
 2. **Review Network & IP Information:** Inspect your public IPv4 and IPv6 network identifiers, ISP routing information, and active geographic location data.
 3. **Audit Hardware & Client Fingerprint Metrics:** Examine physical screen resolution, device pixel ratios (Retina/High-DPI), WebGL GPU rendering engines, system timezone, and navigator user-agent strings.
+
+![Client-Side Dual-Stack Network Diagnostics and Hardware Fingerprinting Pipeline](/images/tools/my-ip-network-diagnostics.svg)
 
 ---
 
@@ -45,6 +47,21 @@ This astronomical capacity provides trillions of unique public IP addresses for 
 
 ---
 
+## Autonomous Systems, BGP Routing & IP Geolocation Mechanics
+
+When your device communicates across the internet, data packets are routed through a series of interconnected networks known as **Autonomous Systems (AS)**:
+
+### 1. Border Gateway Protocol (BGP) & Autonomous System Numbers (ASN)
+The global internet is composed of over 100,000 Autonomous Systems operated by Internet Service Providers (ISPs), telecommunications carriers, and cloud providers (e.g., Comcast, Vodafone, AWS, Cloudflare). Each network is assigned a unique **Autonomous System Number (ASN)**. Border Gateway Protocol (BGP) dynamically determines the shortest, most reliable path of AS hops between your home connection and destination web servers.
+
+### 2. How IP Geolocation Works (Database Lookups vs Real Physical GPS)
+Many users assume their IP address directly transmits their exact GPS home coordinates. In reality, **IP geolocation is an indirect statistical estimate**:
+- **Regional Internet Registries (RIRs):** Organizations like ARIN (North America), RIPE NCC (Europe), and APNIC (Asia-Pacific) allocate IP blocks to ISPs and record their registered headquarters city.
+- **Commercial GeoIP Databases:** Vendors like MaxMind, IP2Location, and Digital Element aggregate ISP routing tables, BGP announcements, and reverse DNS records (e.g., `cpe-74-68-12-3.nyc.res.rr.com`) to map IP subnets to approximate cities or postal codes.
+- **Accuracy Limits:** City-level geolocation is accurate approximately $75\%$ to $85\%$ of the time, but country-level resolution is over $99\%$ reliable. An IP address will almost never reveal your exact street address or apartment number.
+
+---
+
 ## Client Hardware Diagnostics & Browser Fingerprinting Metrics
 
 Modern web browsers expose rich hardware and system capabilities via native JavaScript APIs. Understanding what websites see allows you to audit your online tracking surface:
@@ -59,6 +76,9 @@ The WebGL API allows web browsers to execute 3D graphics on your physical graphi
 ### 3. User-Agent String & Client Hints
 Historically, the `User-Agent` HTTP header transmitted detailed operating system build numbers and browser versions. Modern browsers are transitioning to **User-Agent Client Hints (`navigator.userAgentData`)**, providing high-entropy hardware metrics strictly on request to protect user privacy.
 
+### 4. Canvas & AudioContext Fingerprinting
+Advanced tracking scripts generate an invisible HTML5 canvas element and draw complex text strings and 3D shapes. Because different graphics cards, OS font rasterization engines, and display drivers render subpixels with microscopic variances, the resulting canvas hash creates a unique identifier. Similarly, the Web Audio API can measure the audio buffer decay rate of an oscillator node to fingerprint your machine's audio processing architecture.
+
 ---
 
 ## Client Diagnostic Properties Reference Table
@@ -69,6 +89,7 @@ The table below outlines key hardware, browser, and network parameters evaluated
 | :--- | :--- | :--- | :--- |
 | **Public IPv4 Address** | External STUN / Edge Resolver | `198.51.100.42` | Geographic routing and server access logging |
 | **Public IPv6 Address** | Dual-Stack Socket Handshake | `2600:1700:...:0001` | Modern end-to-end routing without NAT |
+| **Autonomous System (ASN)** | BGP Routing Lookup | `AS7922 (Comcast)` | Identifies upstream network carrier |
 | **Operating System** | `navigator.userAgentData` | Windows 11, macOS, Android | OS compatibility and native app targeting |
 | **Browser Engine** | `navigator.userAgent` | Blink (Chrome 128.0) | Rendering engine feature detection |
 | **Screen Resolution** | `window.screen.width/height` | $2560 \times 1440$ (1440p QHD) | Responsive layout breakpoint testing |
@@ -86,6 +107,7 @@ When browsing through a Virtual Private Network (VPN) or encrypted proxy, your p
 
 - **WebRTC IP Leak Vulnerability:** WebRTC (Web Real-Time Communication) is built into modern browsers to enable peer-to-peer video chat and audio calls. WebRTC sends STUN (Session Traversal Utilities for NAT) requests to discover candidate IP addresses. Misconfigured browsers can leak your real residential IP address through WebRTC candidates even while an encrypted VPN tunnel is active.
 - **DNS Leakage:** If your computer forwards domain lookups (DNS queries) to your local ISP's servers rather than the VPN provider's encrypted DNS resolver, your internet provider continues logging every website you visit.
+- **IPv6 Leaks:** Some VPN providers only tunnel IPv4 traffic. If your ISP assigns a dual-stack IPv6 connection, IPv6 packets may bypass the encrypted VPN tunnel entirely, exposing your true location.
 
 ---
 
@@ -93,4 +115,35 @@ When browsing through a Virtual Private Network (VPN) or encrypted proxy, your p
 
 Many free IP lookup websites monetize user traffic by selling IP geolocation databases, logging visitor behavioral telemetry, or selling fingerprint profiles to data brokers.
 
-ZixTool operates strictly as an in-browser diagnostic utility. All screen parameters, WebGL GPU metrics, color depths, and user-agent evaluations execute locally inside your browser's JavaScript memory heap. No personal identities, IP histories, or device fingerprints are ever stored in commercial tracking databases.
+ZixTool operates strictly as an in-browser diagnostic utility:
+- **Zero Fingerprint Logging:** All screen parameters, WebGL GPU metrics, color depths, and user-agent evaluations execute locally inside your browser's JavaScript memory heap.
+- **No Third-Party Trackers:** ZixTool loads zero commercial ad networks or third-party behavioral profiling scripts.
+- **No IP History Storage:** No personal identities, IP histories, or device fingerprints are ever recorded in commercial tracking databases.
+
+---
+
+## Frequently Asked Questions (FAQ)
+
+### What is the difference between a public and private IP address?
+A public IP address is a globally unique numerical identifier assigned to your network by your ISP that allows devices on the public internet to route data to you. A private IP address (such as `192.168.1.1` or `10.0.0.2`) is assigned by your local Wi-Fi router to distinguish devices within your home or office network and is not accessible from the outside internet.
+
+### Can someone find my exact home address from my public IP?
+No. An IP address only identifies your ISP and the approximate geographic region (city or metropolitan area) where your traffic enters the provider's routing infrastructure. Only your ISP has the private customer billing records mapping an IP address to a physical street address, and they can only disclose that under a lawful court subpoena.
+
+### What is a WebRTC leak, and how do I prevent it?
+A WebRTC leak occurs when your browser's WebRealTimeCommunication API broadcasts your true residential IP address to external STUN servers while an encrypted VPN is running. You can prevent this by enabling WebRTC leak protection in your VPN application or disabling WebRTC in browser privacy settings.
+
+### What is the difference between IPv4 and IPv6?
+IPv4 uses 32-bit addresses providing roughly 4.3 billion unique combinations, which have been virtually exhausted globally. IPv6 uses 128-bit addresses providing $3.4 \times 10^{38}$ unique addresses, ensuring virtually limitless connectivity without relying on NAT routers.
+
+### What is browser fingerprinting?
+Browser fingerprinting is an advanced tracking technique that collects hardware specifications, display resolution, installed fonts, WebGL rendering characteristics, and audio latency from your browser to create a unique mathematical identifier. Unlike cookies, fingerprints cannot be cleared by clearing your browsing history.
+
+### Does ZixTool store or share my IP address?
+No. ZixTool operates under an uncompromising zero-logging privacy policy. Diagnostics are displayed purely in your browser window for your personal inspection and are never logged, tracked, or sold to third-party data brokers.
+
+### Why does my IP geolocation show a different city than where I live?
+IP geolocation estimates location based on the physical routing hub of your Internet Service Provider. If your ISP routes traffic through a central datacenter in an adjacent city, GeoIP databases will report that datacenter's location rather than your neighborhood.
+
+### How can I change my public IP address?
+You can change your public IP address by restarting your home Wi-Fi modem to request a new dynamic lease from your ISP, connecting through a Virtual Private Network (VPN), using an encrypted proxy, or connecting via a mobile cellular hotspot.

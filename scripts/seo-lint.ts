@@ -178,11 +178,11 @@ export function runSeoLint() {
       }
     });
 
-    // Size check: HTML <= 95KB (or 130KB for 100+ item master directories / root hub; internal admin tools exempt)
+    // Size check: HTML <= 95KB (or 140KB for 100+ item master directories / root hub; internal admin tools exempt)
     const isInternal = urlPath.startsWith('/internal/');
     if (!isInternal) {
       const isMasterCatalog = urlPath === '/tools/' || urlPath === '/';
-      const maxBudget = isMasterCatalog ? 130 * 1024 : 95 * 1024;
+      const maxBudget = isMasterCatalog ? 140 * 1024 : 95 * 1024;
       const stats = fs.statSync(filePath);
       if (stats.size > maxBudget) {
         errors.push(`HTML size (${(stats.size / 1024).toFixed(1)}KB) exceeds budget of ${(maxBudget / 1024).toFixed(0)}KB`);

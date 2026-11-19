@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none" role="img" aria-labelledby="svg-title-unit svg-desc-unit">
+  <title id="svg-title-unit">Metric, Imperial &amp; SI Unit Conversion Matrix Diagram</title>
+  <desc id="svg-desc-unit">Technical flowchart showing SI base unit normalization, factor ratio multiplication, and client-side floating-point conversion.</desc>
+  <defs>
+    <linearGradient id="bgGradUnit" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#f1f5f9" />
+    </linearGradient>
+    <filter id="shadowUnit" x="-5%" y="-5%" width="110%" height="110%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.06" />
+    </filter>
+  </defs>
+
+  <rect width="800" height="450" rx="16" fill="url(#bgGradUnit)" stroke="#e2e8f0" stroke-width="2" />
+
+  <!-- Badge Header -->
+  <rect x="230" y="24" width="340" height="28" rx="14" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1" />
+  <text x="400" y="43" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#047857" letter-spacing="0.5">
+    SCIENTIFIC SI &amp; IMPERIAL CONVERSION PIPELINE
+  </text>
+  <text x="400" y="82" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="800" fill="#0f172a">
+    How Multi-Category Unit Conversion Calculates
+  </text>
+  <text x="400" y="104" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#64748b">
+    SI Base Normalization • High-Precision Floating Point • Length, Weight, Area, Data &amp; Temp
+  </text>
+
+  <!-- Step 1 -->
+  <g transform="translate(40, 130)" filter="url(#shadowUnit)">
+    <rect width="210" height="250" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="15" y="15" width="32" height="32" rx="8" fill="#ecfdf5" />
+    <text x="31" y="37" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#059669">1</text>
+    <text x="58" y="37" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Select Category</text>
+    
+    <rect x="25" y="65" width="160" height="80" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="4 4" />
+    <text x="105" y="100" text-anchor="middle" font-size="24">📏</text>
+    <text x="105" y="125" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#475569">Unit Systems</text>
+
+    <text x="25" y="170" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Length, Weight, Area, Volume</text>
+    <text x="25" y="190" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Digital storage bytes/KB/MB</text>
+    <text x="25" y="210" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Temperature (°C, °F, K)</text>
+    <rect x="25" y="222" width="160" height="20" rx="4" fill="#ecfdf5" />
+    <text x="105" y="236" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#047857">Dynamic unit presets</text>
+  </g>
+
+  <!-- Flow 1 -->
+  <g transform="translate(262, 245)">
+    <circle cx="15" cy="0" r="14" fill="#10b981" />
+    <path d="M11 -4 L19 0 L11 4" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- Step 2 -->
+  <g transform="translate(295, 130)" filter="url(#shadowUnit)">
+    <rect width="210" height="250" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="15" y="15" width="32" height="32" rx="8" fill="#ecfdf5" />
+    <text x="31" y="37" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#059669">2</text>
+    <text x="58" y="37" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">SI Normalization</text>
+    
+    <rect x="25" y="65" width="160" height="80" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="4 4" />
+    <text x="105" y="100" text-anchor="middle" font-size="24">⚖️</text>
+    <text x="105" y="125" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#475569">Base Pivot Standard</text>
+
+    <text x="25" y="170" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Input converted to SI pivot</text>
+    <text x="25" y="190" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Meters, kg, bytes, Kelvin</text>
+    <text x="25" y="210" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Eliminates $O(N^2)$ table explosion</text>
+    <rect x="25" y="222" width="160" height="20" rx="4" fill="#ecfdf5" />
+    <text x="105" y="236" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#047857">Precise ratio normalization</text>
+  </g>
+
+  <!-- Flow 2 -->
+  <g transform="translate(517, 245)">
+    <circle cx="15" cy="0" r="14" fill="#10b981" />
+    <path d="M11 -4 L19 0 L11 4" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- Step 3 -->
+  <g transform="translate(550, 130)" filter="url(#shadowUnit)">
+    <rect width="210" height="250" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="15" y="15" width="32" height="32" rx="8" fill="#ecfdf5" />
+    <text x="31" y="37" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#059669">3</text>
+    <text x="58" y="37" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Target Scale Output</text>
+    
+    <rect x="25" y="65" width="160" height="80" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="4 4" />
+    <text x="105" y="100" text-anchor="middle" font-size="24">🎯</text>
+    <text x="105" y="125" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#475569">Target Ratio Math</text>
+
+    <text x="25" y="170" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Pivot multiplied by target factor</text>
+    <text x="25" y="190" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• 6-decimal floating accuracy</text>
+    <text x="25" y="210" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Bidirectional swap support</text>
+    <rect x="25" y="222" width="160" height="20" rx="4" fill="#ecfdf5" />
+    <text x="105" y="236" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#047857">100% In-Browser Execution</text>
+  </g>
+</svg>

@@ -13,9 +13,9 @@ Use our free **jpg compressor** to reduce JPG and JPEG file size by up to 80% wh
 
 Shrinking heavy JPEG photographs and screenshots without quality loss takes only moments:
 
-1. **Select or Drop JPG Files:** Click the upload area above to choose single or multiple `.jpg` or `.jpeg` images from your computer or smartphone, or drag and drop files directly onto the browser workspace.
-2. **Choose Target Size or Adjust Quality Slider:** Select a preset byte limit (**20KB**, **50KB**, **100KB**, **200KB**, or **500KB**) or manually set the JPEG quality slider between 10% and 95%.
-3. **Convert and Download:** Click **Convert All Files** to execute the local canvas re-encoding in browser RAM. Download individual images or click **Download All as ZIP** to save the entire collection in one compressed archive.
+1. **Select or Drop JPG Files:** Click the upload area above to choose single or multiple `.jpg` or `.jpeg` images from your computer or smartphone, or drag and drop files directly onto the browser workspace. You can also paste copied images straight from your clipboard (`Ctrl+V` or `Cmd+V`).
+2. **Choose Target Size or Adjust Quality Slider:** Select a preset byte limit (**20KB**, **50KB**, **100KB**, **200KB**, or **500KB**) to trigger our automated binary search engine, or manually set the JPEG quality slider between 10% and 95%.
+3. **Convert and Download:** Click **Convert All Files** to execute local canvas re-encoding in browser RAM. Download individual images or click **Download All as ZIP** to save the entire collection in one compressed archive.
 
 ![JPG DCT Matrix Quantization and In-Browser Compression Architecture](/images/tools/jpg-compressor-workflow.svg)
 
@@ -45,6 +45,14 @@ Each frequency coefficient is divided by a value from a standardized **Quantizat
 $$F_Q(u,v) = \text{round}\left( \frac{F(u,v)}{Q(u,v)} \right)$$
 
 When you set the quality slider to $80\%$ or $85\%$, the high-frequency coefficients round off to zeros. A zigzag scanning order groups long sequences of consecutive zeros, which are compressed losslessly using Run-Length Encoding (RLE) and Huffman entropy coding.
+
+### 4. Baseline Sequential vs Progressive JPEG
+Standard JPEG images encode data in a **baseline sequential format**, rendering the image line-by-line from top to bottom as data streams across the network. 
+
+In contrast, **Progressive JPEG** organizes coefficients into multiple structural scans:
+- **Scan 1 (DC Coefficients):** Displays an immediate, low-resolution rough preview of the entire image across the screen in milliseconds.
+- **Scans 2 to 5 (AC Coefficients):** Incrementally refines high-frequency details, sharpness, and textures until the complete high-resolution picture is fully displayed.
+- **Compression Efficiency Advantage:** Progressive JPEGs typically achieve **2% to 8% smaller file sizes** than baseline JPEGs because grouping similar frequency coefficients across all blocks enhances Huffman entropy compression.
 
 ---
 
@@ -102,8 +110,58 @@ The table below details standard application limits and portal requirements acro
 
 ---
 
+## Step-by-Step Optimization Across Operating Systems
+
+ZixTool runs smoothly across modern operating systems and web browsers without requiring software installations or Adobe Creative Cloud subscriptions:
+
+### 1. Windows 11 & Windows 10 (Chrome, Edge, Firefox)
+Drag JPG photos directly from Windows File Explorer into the drop zone. Choose your target byte preset or adjust the quality slider, then download optimized files instantly for desktop software or web uploads.
+
+### 2. Apple macOS (Safari, Chrome, Arc)
+Drop high-resolution DSLR camera exports or screenshots into your browser. ZixTool automatically handles wide-gamut Display P3 colors and exports standard sRGB JPEGs with zero color shifting.
+
+### 3. Apple iOS (iPhone & iPad)
+Open Safari, tap the upload dropzone, select photos from your Photos library, and tap Convert. Long-press the resulting image or tap Download to save it straight to your device Files or Photos app.
+
+### 4. Google Android
+Access ZixTool in Chrome or Firefox for Android. Select images from your Gallery or Downloads folder, compress heavy camera pictures to under 50KB or 100KB, and save them directly.
+
+---
+
 ## 100% Client-Side Privacy: Complete Photograph Protection
 
 Uploading personal family photographs, scanned passports, national identity cards, legal deeds, and private selfie headshots to third-party cloud compressors creates severe privacy risks. Many commercial conversion portals upload images to centralized cloud servers where photos are indexed, cached, or analyzed by third-party vision models.
 
-ZixTool operates under an unyielding zero-server privacy architecture. All image decoding, Discrete Cosine Transform quantization, and JPEG encoding execute locally inside your browser's private memory heap using WebAssembly and HTML5 Canvas. Your photos never leave your device, traverse external networks, or touch remote cloud databases.
+ZixTool operates under an unyielding **zero-server privacy architecture**:
+- **Local Browser Execution:** All image decoding, Discrete Cosine Transform quantization, and JPEG encoding execute locally inside your browser's private memory heap using WebAssembly and HTML5 Canvas.
+- **Zero Cloud Network Uploads:** Your photos never leave your device, traverse external networks, or touch remote cloud databases.
+- **Volatile RAM Storage:** Uploaded files exist only in volatile device RAM and are cleared immediately when you close or refresh the browser tab.
+- **Enterprise Regulatory Compliance:** Fully satisfies **GDPR**, **HIPAA**, and institutional security standards that prohibit employee upload of confidential records to consumer cloud web services.
+
+---
+
+## Frequently Asked Questions (FAQ)
+
+### How does this online JPG compressor work without uploading my files?
+ZixTool executes entirely on your device's local CPU using HTML5 Canvas and client-side JavaScript. When you select an image, your browser decodes the binary JPEG into raw RGBA pixel buffers in local RAM, applies quantization matrix scaling, and exports the optimized JPEG directly to your local storage without transmitting data across the internet.
+
+### What is the ideal JPEG quality setting for web images?
+For website publication and e-commerce listings, a quality setting between **80% and 85%** offers the optimal balance between visual fidelity and file size reduction. At this level, images shed 70% to 80% of their raw weight while appearing visually indistinguishable from uncompressed originals on standard displays.
+
+### How do I compress a JPG to under 50KB for passport or visa applications?
+Upload your photo and click the **50KB** preset button. Our automated binary search engine evaluates multiple quantization levels in milliseconds to find the highest possible image quality that stays strictly beneath $51,200\text{ bytes}$.
+
+### Does compressing a JPG multiple times degrade quality (generational loss)?
+Yes. Because JPEG uses lossy DCT compression, re-encoding an already compressed JPEG introduces cumulative rounding errors (generational loss), creating visible blockiness and mosquito noise around high-contrast edges. Always compress from the original uncompressed or high-quality master photograph.
+
+### Can I batch compress multiple JPG photos at the same time?
+Yes. You can select multiple images or drag an entire folder into ZixTool. Each image is compressed concurrently in local RAM, and you can download all compressed files individually or packaged together in a single ZIP archive.
+
+### Does ZixTool strip private EXIF camera metadata?
+Yes. When re-encoding images, our engine automatically strips sensitive EXIF metadata—including GPS geolocation coordinates, camera serial numbers, and capture timestamps—protecting your personal privacy when sharing photos online.
+
+### Why is my JPG file larger than expected after converting from PNG?
+If the original PNG contains flat vector logos, solid color backgrounds, or simple line art, PNG's lossless Deflate algorithm is more efficient than JPEG. For photographs and continuous-tone scenes, however, JPEG will almost always achieve much smaller file sizes.
+
+### Can I use this JPG compressor offline without internet access?
+Yes. Once the page is loaded in your browser, all scripts and styling are cached locally. You can disconnect from Wi-Fi or turn on Airplane Mode and continue compressing JPG photos offline.

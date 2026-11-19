@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none" role="img" aria-labelledby="svg-title-w2p svg-desc-w2p">
+  <title id="svg-title-w2p">WebP to PNG Client-Side Decoding &amp; Transparency Pipeline Diagram</title>
+  <desc id="svg-desc-w2p">Technical flowchart demonstrating WebP container decoding, alpha channel preservation, and lossless PNG generation in local browser RAM.</desc>
+  <defs>
+    <linearGradient id="bgGradW2p" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#f1f5f9" />
+    </linearGradient>
+    <filter id="shadowW2p" x="-5%" y="-5%" width="110%" height="110%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.06" />
+    </filter>
+  </defs>
+
+  <rect width="800" height="450" rx="16" fill="url(#bgGradW2p)" stroke="#e2e8f0" stroke-width="2" />
+
+  <!-- Badge Header -->
+  <rect x="230" y="24" width="340" height="28" rx="14" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1" />
+  <text x="400" y="43" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#047857" letter-spacing="0.5">
+    CLIENT-SIDE GRAPHICS TRANSCODING ENGINE
+  </text>
+  <text x="400" y="82" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="800" fill="#0f172a">
+    How WebP to PNG Conversion Works
+  </text>
+  <text x="400" y="104" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#64748b">
+    Full 32-Bit RGBA Transparency • Hardware Canvas Decoding • Zero Server Transfers
+  </text>
+
+  <!-- Step 1 -->
+  <g transform="translate(40, 130)" filter="url(#shadowW2p)">
+    <rect width="210" height="250" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="15" y="15" width="32" height="32" rx="8" fill="#ecfdf5" />
+    <text x="31" y="37" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#059669">1</text>
+    <text x="58" y="37" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Unpack WebP</text>
+    
+    <rect x="25" y="65" width="160" height="80" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="4 4" />
+    <text x="105" y="100" text-anchor="middle" font-size="24">🖼️</text>
+    <text x="105" y="125" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#475569">RIFF WEBP Bitstream</text>
+
+    <text x="25" y="170" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• VP8 lossy or VP8L lossless</text>
+    <text x="25" y="190" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• 8-bit discrete alpha channel</text>
+    <text x="25" y="210" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Read locally via File API</text>
+    <rect x="25" y="222" width="160" height="20" rx="4" fill="#ecfdf5" />
+    <text x="105" y="236" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#047857">Secure client buffer</text>
+  </g>
+
+  <!-- Flow 1 -->
+  <g transform="translate(262, 245)">
+    <circle cx="15" cy="0" r="14" fill="#10b981" />
+    <path d="M11 -4 L19 0 L11 4" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- Step 2 -->
+  <g transform="translate(295, 130)" filter="url(#shadowW2p)">
+    <rect width="210" height="250" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="15" y="15" width="32" height="32" rx="8" fill="#ecfdf5" />
+    <text x="31" y="37" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#059669">2</text>
+    <text x="58" y="37" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Canvas Rasterize</text>
+    
+    <rect x="25" y="65" width="160" height="80" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="4 4" />
+    <text x="105" y="100" text-anchor="middle" font-size="24">⚙️</text>
+    <text x="105" y="125" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#475569">32-Bit RGBA Matrix</text>
+
+    <text x="25" y="170" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Hardware GPU decoding</text>
+    <text x="25" y="190" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Transparent alpha preserved</text>
+    <text x="25" y="210" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Exact pixel-for-pixel match</text>
+    <rect x="25" y="222" width="160" height="20" rx="4" fill="#ecfdf5" />
+    <text x="105" y="236" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#047857">In-memory pixel array</text>
+  </g>
+
+  <!-- Flow 2 -->
+  <g transform="translate(517, 245)">
+    <circle cx="15" cy="0" r="14" fill="#10b981" />
+    <path d="M11 -4 L19 0 L11 4" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- Step 3 -->
+  <g transform="translate(550, 130)" filter="url(#shadowW2p)">
+    <rect width="210" height="250" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="15" y="15" width="32" height="32" rx="8" fill="#ecfdf5" />
+    <text x="31" y="37" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#059669">3</text>
+    <text x="58" y="37" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Lossless PNG</text>
+    
+    <rect x="25" y="65" width="160" height="80" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="4 4" />
+    <text x="105" y="100" text-anchor="middle" font-size="24">✨</text>
+    <text x="105" y="125" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#475569">Deflate Compression</text>
+
+    <text x="25" y="170" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Universal PNG compatibility</text>
+    <text x="25" y="190" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Photoshop &amp; Figma ready</text>
+    <text x="25" y="210" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Zero generational degradation</text>
+    <rect x="25" y="222" width="160" height="20" rx="4" fill="#ecfdf5" />
+    <text x="105" y="236" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#047857">Instant File Download</text>
+  </g>
+</svg>

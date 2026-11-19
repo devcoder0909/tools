@@ -125,7 +125,7 @@ const workflowDiagrams: Record<string, string> = {
   'password-generator': '/images/tools/password-entropy-infographic.svg',
 };
 
-const diagramUrl = workflowDiagrams[tool.slug];
+const diagramUrl = toolMedia?.diagramUrl || workflowDiagrams[tool.slug];
 
 const schemas: any[] = [webAppJsonLd];
 if (faqJsonLd) schemas.push(faqJsonLd);

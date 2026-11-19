@@ -17,11 +17,13 @@ Calculating foreign exchange values and reciprocal currency rates takes only mom
 2. **Select Base Currency:** Choose the currency you currently hold (for example: USD, EUR, or GBP).
 3. **Select Destination Currency & View Conversion:** Choose the target foreign currency you want to receive (such as INR, JPY, or CAD). The converted total, current mid-market exchange rate, and reciprocal rate update in real time.
 
+![Global Foreign Exchange Interbank Architecture and Currency Conversion Pipeline](/images/tools/currency-converter-workflow.svg)
+
 ---
 
 ## Mechanics of the Foreign Exchange Market: Mid-Market Rates vs Bank Spreads
 
-Understanding how foreign exchange (Forex) markets price currency prevents travelers and businesses from losing money to hidden markups:
+Understanding how foreign exchange (Forex) markets price currency prevents travelers, businesses, and expatriates from losing money to hidden markups:
 
 ### 1. The Interbank Mid-Market Rate Explained
 The foreign exchange market is a decentralized, over-the-counter (OTC) global network where central banks, multinational commercial banks, and institutional liquidity providers trade currencies 24 hours a day. In the interbank market, currency is quoted with two prices:
@@ -76,15 +78,44 @@ $$\text{EUR/INR} = 1.0700 \times 84.2000 = \mathbf{90.0940 \text{ INR per } 1 \t
 To find the reciprocal rate (how many Euros are purchased by 1 Indian Rupee):
 $$\text{Reciprocal Rate} = \frac{1}{90.0940} \approx \mathbf{0.0111 \text{ EUR per } 1 \text{ INR}}$$
 
+### Triangular Arbitrage Mechanics
+In high-frequency foreign exchange markets, automated institutional algorithms continuously evaluate exchange cross-rates across currency triangles (e.g., USD $\to$ EUR $\to$ GBP $\to$ USD). If discrepancies arise where:
+
+$$S_{\text{EUR/USD}} \times S_{\text{GBP/EUR}} \times S_{\text{USD/GBP}} \neq 1$$
+
+Arbitrageurs immediately execute triangular trades to exploit the fractional difference. These high-volume trades restore equilibrium within milliseconds, ensuring that cross-rates across global financial hubs remain harmonized.
+
 ---
 
 ## Key Drivers of Foreign Exchange Rate Movements
 
-Currency exchange rates fluctuate dynamically based on macroeconomic fundamentals and international capital flows:
+Currency exchange rates fluctuate dynamically based on macroeconomic fundamentals, central bank monetary policy, and international trade flows:
 
-1. **Central Bank Interest Rate Differentials:** Higher sovereign benchmark interest rates (e.g., set by the US Federal Reserve, European Central Bank, or Bank of England) attract foreign institutional capital seeking higher yields on government debt, appreciating the domestic currency.
-2. **Purchasing Power Parity (PPP) & Inflation:** Countries experiencing persistently higher consumer price inflation see their currencies depreciate relative to nations with low, stable inflation to restore international purchasing parity.
-3. **Current Account & Trade Balances:** A country with a large commercial trade surplus (exports exceeding imports) experiences steady demand for its currency to settle export invoices, bolstering its foreign exchange valuation.
+### 1. Central Bank Interest Rate Differentials
+Higher benchmark interest rates set by sovereign central banks (such as the US Federal Reserve, European Central Bank, or Bank of England) attract foreign institutional capital seeking higher yields on government debt. This capital inflow increases demand for the domestic currency, driving appreciation. This relationship is formalized by **Covered Interest Rate Parity**:
+
+$$F = S \times \frac{1 + r_d}{1 + r_f}$$
+
+Where $F$ is the forward exchange rate, $S$ is the spot rate, $r_d$ is the domestic interest rate, and $r_f$ is the foreign interest rate.
+
+### 2. Purchasing Power Parity (PPP) and Inflation
+According to the law of one price, identical goods in different countries should cost the same when priced in a common currency. Persistent consumer price inflation erodes the domestic purchasing power of a currency, causing it to depreciate relative to currencies with stable inflation rates over the medium to long term.
+
+### 3. Current Account & Balance of Trade
+A country with a sustained commercial trade surplus (exports exceeding imports) experiences strong international demand for its currency to settle export invoices, supporting currency strength. Conversely, nations running persistent trade deficits must sell domestic currency to buy foreign goods, exerting downward pressure on foreign exchange rates.
+
+---
+
+## Optimizing International Money Transfers & Remittances
+
+Whether you are sending money to family abroad, paying international tuition, or receiving freelance revenue, choosing the right transfer rail makes a dramatic financial difference:
+
+| Remittance Method | Typical Foreign Exchange Markup | Fixed Transfer Fee | Speed of Delivery | Best Use Case |
+| :--- | :--- | :--- | :--- | :--- |
+| **Traditional SWIFT Wire** | $3.0\% - 5.0\%$ spread | $\$25 - \$50$ plus intermediary fees | $1 - 4$ business days | Large enterprise transactions ($>\$50,000$) |
+| **Fintech Transfer (Wise / Revolut)** | $0.3\% - 0.7\%$ (Real mid-market rate) | Low transparent fee ($1 - \$5$) | Minutes to 24 hours | Personal remittances, freelance payments |
+| **Airport Currency Kiosk** | $7.0\% - 12.0\%$ hidden spread | "Zero commission" misleading claim | Immediate cash | Emergency physical cash only |
+| **Crypto Stablecoins (USDC / USDT)**| $0.1\% - 0.3\%$ network spread | Gas / network fees ($\$0.05 - \$2$) | Under 5 minutes | Cross-border B2B and Web3 developer payroll |
 
 ---
 
@@ -93,3 +124,31 @@ Currency exchange rates fluctuate dynamically based on macroeconomic fundamental
 Your international remittance budgets, travel expenditures, freelance contracts, and overseas investments are private personal matters.
 
 ZixTool computes all foreign exchange conversions and cross-rate calculations locally inside your browser runtime. No entered currency amounts, transaction histories, or user IP addresses are ever transmitted across the network or logged in commercial databases.
+
+---
+
+## Frequently Asked Questions (FAQ)
+
+### What is the mid-market exchange rate?
+The mid-market rate (also known as the interbank rate) is the exact midpoint between the global bid (buy) and ask (sell) prices in institutional foreign exchange markets. It represents the true, unbiased exchange rate of a currency before banks or brokers add profit margins or retail markups.
+
+### Why does my bank give me a worse exchange rate than ZixTool?
+Commercial banks and currency kiosks rarely convert money at the true mid-market rate. Instead, they widen the exchange rate spread by $2\%$ to $8\%$, pocketing the difference as an invisible conversion fee while often claiming "zero commission."
+
+### What is Dynamic Currency Conversion (DCC), and why should I decline it?
+Dynamic Currency Conversion occurs when an overseas card reader or ATM asks if you want to be billed in your home currency instead of the local currency. Always choose the local currency; accepting DCC allows the merchant's bank to apply an exorbitant foreign exchange markup (often $5\%$ to $10\%$).
+
+### How often are exchange rates updated?
+Foreign exchange markets trade 24 hours a day, five days a week (from Sunday evening New York time through Friday evening). Interbank benchmark rates update continuously during active global trading hours.
+
+### What is the difference between a direct and indirect currency quote?
+In a direct quotation, the price of one unit of foreign currency is expressed in terms of the domestic currency (e.g., $1\text{ USD} = 84.2\text{ INR}$). In an indirect quote, the domestic currency is the base currency (e.g., $1\text{ EUR} = 1.07\text{ USD}$).
+
+### Can I calculate conversions between any two currencies?
+Yes. ZixTool supports over 150 international fiat currencies and calculates cross-currency rates instantly using triangular cross-rate math through liquid reserve currency pairs.
+
+### What is the most heavily traded currency pair in the world?
+The EUR/USD (Euro to US Dollar) pair is the most liquid and heavily traded currency pair globally, accounting for nearly a quarter of all daily foreign exchange turnover in international markets.
+
+### Can I use this currency converter while traveling offline?
+Yes. Once the currency benchmark rates are loaded in your browser session, you can disconnect from Wi-Fi or cellular networks and continue calculating conversions offline using the cached rate tables.
