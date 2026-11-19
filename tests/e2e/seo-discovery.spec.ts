@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-for (const slug of ['uuid-generator', 'merge-pdf', 'online-timer', 'loan-calculator', 'qr-code-generator']) {
+for (const slug of ['uuid-generator', 'merge-pdf', 'online-timer', 'loan-calculator', 'qr-code-generator', 'currency-converter', 'my-ip-address']) {
   test(`${slug} is indexable and renders a working tool interface`, async ({ page }) => {
     const errors: string[] = [];
     page.on('pageerror', error => errors.push(error.message));

@@ -1796,9 +1796,9 @@
     - emi-calculator
     - sip-calculator
     - unit-converter
-  indexable: false
+  indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13T00:00:00.000Z
+  last_reviewed: 2026-11-19T00:00:00.000Z
   lang: en
   seo:
     primary_kw: currency converter
@@ -2054,9 +2054,9 @@
     - jwt-decoder
     - password-generator
     - json-formatter
-  indexable: false
+  indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13T00:00:00.000Z
+  last_reviewed: 2026-11-19T00:00:00.000Z
   lang: en
   seo:
     primary_kw: my ip address

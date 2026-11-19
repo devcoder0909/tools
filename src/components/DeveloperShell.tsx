@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'preact/hooks';
+import { useState, useMemo, useEffect, useCallback } from 'preact/hooks';
 
 interface DeveloperShellProps {
   toolId: string;
@@ -171,7 +171,7 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
     return Number(result.toFixed(6));
   }, [unitCategory, unitVal, unitFrom, unitTo]);
 
-  // --- My IP State ---
+  // --- My IP State & Discovery Engine ---
   const [clientInfo] = useState(() => {
     if (typeof window === 'undefined') return {};
     return {
@@ -183,6 +183,73 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
       cookiesEnabled: navigator.cookieEnabled ? 'Yes' : 'No',
     };
   });
+
+  const [ipData, setIpData] = useState<{
+    ip: string;
+    version: 'IPv4' | 'IPv6' | '';
+    loading: boolean;
+    error: string | null;
+  }>({
+    ip: '',
+    version: '',
+    loading: true,
+    error: null,
+  });
+  const [ipCopied, setIpCopied] = useState(false);
+
+  const detectPublicIp = useCallback(async () => {
+    setIpData((prev) => ({ ...prev, loading: true, error: null }));
+    try {
+      const res = await fetch('https://api64.ipify.org?format=json', { signal: AbortSignal.timeout(6000) });
+      if (!res.ok) throw new Error('Primary IP endpoint error');
+      const data = await res.json();
+      if (data && data.ip) {
+        const isV6 = data.ip.includes(':');
+        setIpData({
+          ip: data.ip,
+          version: isV6 ? 'IPv6' : 'IPv4',
+          loading: false,
+          error: null,
+        });
+        return;
+      }
+    } catch {
+      try {
+        const res2 = await fetch('https://api.ipify.org?format=json', { signal: AbortSignal.timeout(6000) });
+        if (!res2.ok) throw new Error('Secondary IP endpoint error');
+        const data2 = await res2.json();
+        if (data2 && data2.ip) {
+          setIpData({
+            ip: data2.ip,
+            version: 'IPv4',
+            loading: false,
+            error: null,
+          });
+          return;
+        }
+      } catch {
+        setIpData({
+          ip: '',
+          version: '',
+          loading: false,
+          error: 'Could not detect public IP. Check ad blocker or network connectivity.',
+        });
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (toolId === 'my-ip-address') {
+      detectPublicIp();
+    }
+  }, [toolId, detectPublicIp]);
+
+  const copyIpToClipboard = () => {
+    if (!ipData.ip) return;
+    navigator.clipboard.writeText(ipData.ip);
+    setIpCopied(true);
+    setTimeout(() => setIpCopied(false), 2000);
+  };
 
   // --- URL Encoder / Decoder State ---
   const [urlMode, setUrlMode] = useState<'encode' | 'decode'>('encode');
@@ -777,37 +844,156 @@ export default function DeveloperShell({ toolId }: DeveloperShellProps) {
 
       {/* 3. My IP & Network Info */}
       {toolId === 'my-ip-address' && (
-        <div class="space-y-6 max-w-xl mx-auto">
-          <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 text-center">
-            <span class="text-xs uppercase font-semibold text-slate-500">Your Browser Client Diagnostic</span>
-            <h2 class="text-2xl font-extrabold text-slate-900 my-2">Client Device & Network Profile</h2>
-            <p class="text-xs text-slate-500">Detected safely via browser navigator parameters.</p>
+        <div class="space-y-6 max-w-2xl mx-auto">
+          {/* Main Hero Card displaying Public IP */}
+          <div class="bg-gradient-to-br from-slate-50 via-emerald-50/30 to-slate-50 border border-emerald-100 rounded-3xl p-6 sm:p-8 text-center shadow-card relative overflow-hidden">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-2xs font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 mb-3 border border-emerald-200">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              Live Public Internet Protocol Address
+            </div>
+
+            <div class="my-4">
+              {ipData.loading ? (
+                <div class="py-6 flex flex-col items-center justify-center gap-2">
+                  <div class="w-8 h-8 border-3 border-emerald-600 border-t-transparent rounded-full animate-spin"></div>
+                  <span class="text-xs font-semibold text-slate-500">Discovering public network IP address...</span>
+                </div>
+              ) : ipData.error ? (
+                <div class="py-4 text-red-600 text-sm font-semibold">
+                  <p>{ipData.error}</p>
+                  <button
+                    type="button"
+                    onClick={detectPublicIp}
+                    class="mt-3 px-3 py-1.5 text-xs font-bold rounded-lg bg-red-100 hover:bg-red-200 text-red-800 transition cursor-pointer"
+                  >
+                    Retry Discovery
+                  </button>
+                </div>
+              ) : (
+                <div>
+                  <div class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 font-mono tracking-tight break-all select-all">
+                    {ipData.ip}
+                  </div>
+                  <div class="flex flex-wrap items-center justify-center gap-2 mt-4">
+                    <span class="px-2.5 py-1 text-2xs font-bold rounded-md bg-slate-900 text-white font-mono">
+                      {ipData.version}
+                    </span>
+                    <span class="px-2.5 py-1 text-2xs font-semibold rounded-md bg-emerald-100 text-emerald-800">
+                      Public Address
+                    </span>
+                    <span class="px-2.5 py-1 text-2xs font-semibold rounded-md bg-slate-100 text-slate-700">
+                      Direct Client Request
+                    </span>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Action Bar */}
+            {!ipData.loading && !ipData.error && (
+              <div class="flex flex-wrap items-center justify-center gap-2.5 mt-6 pt-5 border-t border-slate-200/60">
+                <button
+                  type="button"
+                  onClick={copyIpToClipboard}
+                  class="inline-flex items-center gap-2 px-4 py-2 text-xs font-bold rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition cursor-pointer"
+                >
+                  {ipCopied ? (
+                    <>
+                      <svg class="w-4 h-4 text-emerald-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Copied IP to Clipboard!
+                    </>
+                  ) : (
+                    <>
+                      <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                      </svg>
+                      Copy IP Address
+                    </>
+                  )}
+                </button>
+                <button
+                  type="button"
+                  onClick={detectPublicIp}
+                  class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold rounded-xl bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 transition cursor-pointer shadow-2xs"
+                  title="Re-run network discovery"
+                >
+                  <svg class="w-3.5 h-3.5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  </svg>
+                  Re-check IP
+                </button>
+              </div>
+            )}
           </div>
 
-          <div class="divide-y divide-slate-200 border border-slate-200 rounded-xl overflow-hidden text-xs">
-            <div class="flex justify-between p-3 bg-white">
-              <span class="font-medium text-slate-600">Screen Resolution</span>
-              <span class="font-bold text-slate-900">{clientInfo.screenRes}</span>
+          {/* Privacy & Zero-Log Guarantee */}
+          <div class="p-3.5 bg-emerald-50/70 border border-emerald-200 rounded-2xl flex items-start gap-2.5 text-xs text-emerald-950">
+            <svg class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+            <div class="text-2xs sm:text-xs leading-relaxed text-slate-600">
+              <strong class="text-slate-900">Zero Server Logging:</strong> Your IP address is queried directly from your browser client using encrypted HTTPS requests. ZixTool servers never record, log, or store your IP address or browsing diagnostics.
             </div>
-            <div class="flex justify-between p-3 bg-slate-50">
-              <span class="font-medium text-slate-600">Color Depth</span>
-              <span class="font-bold text-slate-900">{clientInfo.colorDepth}</span>
+          </div>
+
+          {/* Device & Client Diagnostics Table */}
+          <div class="border border-slate-200 rounded-2xl overflow-hidden shadow-2xs">
+            <div class="bg-slate-50 px-4 py-3 border-b border-slate-200 flex justify-between items-center">
+              <h3 class="text-xs font-bold text-slate-800 uppercase tracking-wider">
+                Client Device &amp; Browser Diagnostics
+              </h3>
+              <span class="text-2xs text-slate-500">Navigator APIs</span>
             </div>
-            <div class="flex justify-between p-3 bg-white">
-              <span class="font-medium text-slate-600">Browser Language</span>
-              <span class="font-bold text-slate-900">{clientInfo.language}</span>
-            </div>
-            <div class="flex justify-between p-3 bg-slate-50">
-              <span class="font-medium text-slate-600">System Timezone</span>
-              <span class="font-bold text-slate-900">{clientInfo.timeZone}</span>
-            </div>
-            <div class="flex justify-between p-3 bg-white">
-              <span class="font-medium text-slate-600">Cookies Enabled</span>
-              <span class="font-bold text-emerald-600">{clientInfo.cookiesEnabled}</span>
-            </div>
-            <div class="p-3 bg-slate-50">
-              <span class="font-medium text-slate-600 block mb-1">User Agent</span>
-              <span class="font-mono text-3xs text-slate-800 break-all">{clientInfo.userAgent}</span>
+            <div class="divide-y divide-slate-100 text-xs">
+              <div class="flex justify-between items-center p-3.5 bg-white">
+                <span class="font-medium text-slate-600">Public IP Identifier</span>
+                <span class="font-bold font-mono text-slate-900">{ipData.ip || 'Detecting...'}</span>
+              </div>
+              <div class="flex justify-between items-center p-3.5 bg-slate-50/50">
+                <span class="font-medium text-slate-600">Protocol Family</span>
+                <span class="font-bold font-mono text-slate-900">{ipData.version || 'Auto-detect'}</span>
+              </div>
+              <div class="flex justify-between items-center p-3.5 bg-white">
+                <span class="font-medium text-slate-600">Screen Resolution</span>
+                <span class="font-bold font-mono text-slate-900">{clientInfo.screenRes}</span>
+              </div>
+              <div class="flex justify-between items-center p-3.5 bg-slate-50/50">
+                <span class="font-medium text-slate-600">Color Depth</span>
+                <span class="font-bold font-mono text-slate-900">{clientInfo.colorDepth}</span>
+              </div>
+              <div class="flex justify-between items-center p-3.5 bg-white">
+                <span class="font-medium text-slate-600">Browser Language</span>
+                <span class="font-bold text-slate-900">{clientInfo.language}</span>
+              </div>
+              <div class="flex justify-between items-center p-3.5 bg-slate-50/50">
+                <span class="font-medium text-slate-600">System Timezone</span>
+                <span class="font-bold text-slate-900">{clientInfo.timeZone}</span>
+              </div>
+              <div class="flex justify-between items-center p-3.5 bg-white">
+                <span class="font-medium text-slate-600">Cookies Enabled</span>
+                <span class="font-bold text-emerald-600">{clientInfo.cookiesEnabled}</span>
+              </div>
+              <div class="p-3.5 bg-slate-50/50">
+                <div class="flex justify-between items-center mb-1">
+                  <span class="font-medium text-slate-600">User Agent String</span>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (clientInfo.userAgent) {
+                        navigator.clipboard.writeText(clientInfo.userAgent);
+                      }
+                    }}
+                    class="text-3xs text-emerald-600 hover:text-emerald-700 font-semibold cursor-pointer"
+                  >
+                    Copy User Agent
+                  </button>
+                </div>
+                <div class="p-2.5 bg-white rounded-lg border border-slate-200 font-mono text-3xs text-slate-800 break-all select-all">
+                  {clientInfo.userAgent}
+                </div>
+              </div>
             </div>
           </div>
         </div>

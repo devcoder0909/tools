@@ -10,11 +10,19 @@ describe('Registry Loader', () => {
 
   it('correctly filters indexable reviewed tools', () => {
     const indexable = getIndexableTools();
-    expect(indexable.length).toBeGreaterThanOrEqual(1);
+    expect(indexable.length).toBe(85);
     const heic = indexable.find((t) => t.slug === 'heic-to-jpg');
     expect(heic).toBeDefined();
     expect(heic?.reviewed).toBe(true);
     expect(heic?.last_reviewed).toBeDefined();
+
+    const currency = indexable.find((t) => t.slug === 'currency-converter');
+    expect(currency).toBeDefined();
+    expect(currency?.indexable).toBe(true);
+
+    const ip = indexable.find((t) => t.slug === 'my-ip-address');
+    expect(ip).toBeDefined();
+    expect(ip?.indexable).toBe(true);
   });
 
   it('loads all format guides and hubs', () => {

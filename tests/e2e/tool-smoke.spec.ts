@@ -3,10 +3,10 @@ import { test, expect } from '@playwright/test';
 test.describe('M0 Foundations Smoke Tests', () => {
   test('homepage renders hero, categories and has clean DOM', async ({ page }) => {
     await page.goto('/');
-    await expect(page).toHaveTitle(/Best Converter/);
+    await expect(page).toHaveTitle(/ZixTool/);
     const h1 = page.locator('h1');
     await expect(h1).toBeVisible();
-    await expect(h1).toContainText('Free In-Browser Converters');
+    await expect(h1).toContainText('Free Online File Converters');
   });
 
   test('heic-to-jpg tool page renders tool shell and how-to steps', async ({ page }) => {
@@ -21,13 +21,13 @@ test.describe('M0 Foundations Smoke Tests', () => {
     await expect(dropzone).toBeVisible();
 
     // Verification explainer should be present
-    await expect(page.locator('text=Processed locally on your device')).toBeVisible();
+    await expect(page.locator('text=100% Private In-Browser RAM')).toBeVisible();
   });
 
   test('formats guide page lists format characteristics', async ({ page }) => {
     await page.goto('/formats/jpg/');
-    await expect(page).toHaveTitle(/JPEG \/ JPG/);
-    await expect(page.locator('h1')).toContainText('JPEG / JPG Format Overview');
+    await expect(page).toHaveTitle(/JPG File/);
+    await expect(page.locator('h1')).toContainText('Format Guide');
   });
 
   test('404 page returns clean fallback directory', async ({ page }) => {

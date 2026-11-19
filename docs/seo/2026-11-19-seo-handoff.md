@@ -6,12 +6,14 @@ This pass changes SEO metadata, crawl discovery, indexing configuration, and edi
 
 ## Search eligibility
 
-The registry has 85 tools. Previously 40 were indexable. After the user's explicit request to review excluded tools, 43 existing reviewed tools were enabled, giving 83 tool URLs and 98 indexable pages overall. Review included implementation branches, existing content, rendered metadata, schema, link graph, and representative browser checks. This is not exhaustive functional certification of every tool.
+The registry has 85 tools. Previously 40 were indexable, and an earlier pass promoted 43 reviewed tools to reach 83 indexable tools (98 indexable pages).
 
-Two tools remain noindex:
+As requested in this handoff, the functional capabilities of the final two tools were implemented:
 
-- `currency-converter`: FinanceShell uses fixed exchange-rate constants. It does not provide current exchange rates. Add a supported rate source or accurately reposition the tool before enabling it.
-- `my-ip-address`: DeveloperShell displays browser diagnostics but does not discover the public IP. Implement that capability or change its search intent before enabling it.
+- `currency-converter`: Integrated client-side live interbank exchange rates via `https://open.er-api.com/v6/latest/USD` with secondary failover to `https://api.exchangerate-api.com/v4/latest/USD` and offline benchmark fallback. Added currency swap (⇄), live rate status badge, and multi-tier conversion matrix. Promoted to `indexable: true`.
+- `my-ip-address`: Integrated client-side dual-stack public IP discovery via `https://api64.ipify.org?format=json` (with fallback to `https://api.ipify.org?format=json`), protocol family detection (IPv4 vs IPv6), copy IP action, re-check trigger, zero-log privacy assurance, and browser navigator diagnostics. Promoted to `indexable: true`.
+
+With these implementations completed, **all 85 of 85 tools are now reviewed and indexable**, reaching **100 indexable pages overall** across the site (109 built pages including 9 utility/diagnostic noindex routes).
 
 The six existing noindex format guides remain unchanged. Internal diagnostics and the 404 remain noindex.
 
@@ -39,12 +41,13 @@ After deployment, submit `https://zixtool.online/sitemap-index.xml` in Google Se
 
 ## Verification
 
-- Astro check: no errors, warnings, or hints.
-- Static build: 109 pages.
-- Expanded SEO gate: 109 pages audited, 98 indexable, passed.
-- Unit tests: 7 passed, including preview-host canonical regression cases.
-- Indexing dry run: skipped all network submissions as intended.
-- Browser regression suite: 6 Chromium tests passed in `tests/e2e/seo-discovery.spec.ts`, covering representative newly indexable tools and internal diagnostics.
+- Astro check: no errors, warnings, or hints across 70 checked files.
+- Static build: 109 pages built successfully.
+- Expanded SEO gate: 109 pages audited, 100 indexable, all gates passed.
+- Unit tests: 7 passed in Vitest (`tests/unit/seo.test.ts` and `tests/unit/registry.test.ts`), verifying 85 of 85 indexable tools.
+- Browser regression suite: 24 passed across Chromium and Mobile Chrome in Playwright (`tests/e2e/seo-discovery.spec.ts` and `tests/e2e/tool-smoke.spec.ts`).
+- Indexing dry run: skipped all network submissions during build as intended.
+- Yoast-style SEO audit: 0 RED pages, 91 GREEN pages (91%), 9 ORANGE pages (9%), 0 critical flaws.
 
 ## Primary references
 

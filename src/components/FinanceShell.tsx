@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'preact/hooks';
+import { useState, useMemo, useEffect } from 'preact/hooks';
 
 interface FinanceShellProps {
   toolId: string;
@@ -239,23 +239,100 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
     return { bmi: rounded, category, color, badgeColor };
   }, [bmiUnit, bmiWeightKg, bmiHeightCm, bmiWeightLbs, bmiHeightFt, bmiHeightIn]);
 
-  // --- 6. Currency Converter State ---
-  const [currAmount, setCurrAmount] = useState<number>(1000);
-  const [currFrom, setCurrFrom] = useState<string>('USD');
-  const [currTo, setCurrTo] = useState<string>('INR');
-
-  const currencyRates: Record<string, { name: string; rate: number; symbol: string }> = {
+  // --- 6. Currency Converter State & Dynamic Rate Engine ---
+  const DEFAULT_CURRENCY_RATES: Record<string, { name: string; rate: number; symbol: string }> = {
     USD: { name: 'US Dollar', rate: 1.0, symbol: '$' },
-    INR: { name: 'Indian Rupee', rate: 84.4, symbol: '₹' },
     EUR: { name: 'Euro', rate: 0.95, symbol: '€' },
     GBP: { name: 'British Pound', rate: 0.79, symbol: '£' },
+    INR: { name: 'Indian Rupee', rate: 84.4, symbol: '₹' },
     JPY: { name: 'Japanese Yen', rate: 154.2, symbol: '¥' },
-    CAD: { name: 'Canadian Dollar', rate: 1.4, symbol: 'CA$' },
+    CAD: { name: 'Canadian Dollar', rate: 1.40, symbol: 'CA$' },
     AUD: { name: 'Australian Dollar', rate: 1.54, symbol: 'AU$' },
     CHF: { name: 'Swiss Franc', rate: 0.88, symbol: 'CHF' },
     CNY: { name: 'Chinese Yuan', rate: 7.23, symbol: '¥' },
     SGD: { name: 'Singapore Dollar', rate: 1.34, symbol: 'S$' },
     AED: { name: 'UAE Dirham', rate: 3.67, symbol: 'AED' },
+    SAR: { name: 'Saudi Riyal', rate: 3.75, symbol: 'SAR' },
+    NZD: { name: 'New Zealand Dollar', rate: 1.71, symbol: 'NZ$' },
+    HKD: { name: 'Hong Kong Dollar', rate: 7.78, symbol: 'HK$' },
+    KRW: { name: 'South Korean Won', rate: 1395.0, symbol: '₩' },
+    BRL: { name: 'Brazilian Real', rate: 5.75, symbol: 'R$' },
+    MXN: { name: 'Mexican Peso', rate: 20.3, symbol: 'Mex$' },
+    SEK: { name: 'Swedish Krona', rate: 10.9, symbol: 'kr' },
+    NOK: { name: 'Norwegian Krone', rate: 11.0, symbol: 'kr' },
+    ZAR: { name: 'South African Rand', rate: 18.1, symbol: 'R' },
+  };
+
+  const [currAmount, setCurrAmount] = useState<number>(1000);
+  const [currFrom, setCurrFrom] = useState<string>('USD');
+  const [currTo, setCurrTo] = useState<string>('INR');
+  const [currencyRates, setCurrencyRates] = useState<Record<string, { name: string; rate: number; symbol: string }>>(DEFAULT_CURRENCY_RATES);
+  const [rateSourceStatus, setRateSourceStatus] = useState<'loading' | 'live' | 'fallback'>('loading');
+  const [rateLastUpdated, setRateLastUpdated] = useState<string>('');
+
+  useEffect(() => {
+    if (toolId !== 'currency-converter') return;
+    let isCancelled = false;
+
+    async function loadRates() {
+      try {
+        const res = await fetch('https://open.er-api.com/v6/latest/USD', { signal: AbortSignal.timeout(5000) });
+        if (!res.ok) throw new Error('Primary rate provider unreachable');
+        const data = await res.json();
+        if (data && data.rates && !isCancelled) {
+          setCurrencyRates((prev) => {
+            const updated = { ...prev };
+            for (const key of Object.keys(updated)) {
+              if (typeof data.rates[key] === 'number') {
+                updated[key] = { ...updated[key], rate: data.rates[key] };
+              }
+            }
+            return updated;
+          });
+          const updateDate = data.time_last_update_utc
+            ? new Date(data.time_last_update_utc).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+            : new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+          setRateLastUpdated(updateDate);
+          setRateSourceStatus('live');
+          return;
+        }
+      } catch {
+        try {
+          const res2 = await fetch('https://api.exchangerate-api.com/v4/latest/USD', { signal: AbortSignal.timeout(5000) });
+          if (!res2.ok) throw new Error('Secondary rate provider unreachable');
+          const data2 = await res2.json();
+          if (data2 && data2.rates && !isCancelled) {
+            setCurrencyRates((prev) => {
+              const updated = { ...prev };
+              for (const key of Object.keys(updated)) {
+                if (typeof data2.rates[key] === 'number') {
+                  updated[key] = { ...updated[key], rate: data2.rates[key] };
+                }
+              }
+              return updated;
+            });
+            const updateDate = data2.date || new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            setRateLastUpdated(updateDate);
+            setRateSourceStatus('live');
+            return;
+          }
+        } catch {
+          if (!isCancelled) {
+            setRateSourceStatus('fallback');
+            setRateLastUpdated('Benchmark Fallback');
+          }
+        }
+      }
+    }
+
+    loadRates();
+    return () => { isCancelled = true; };
+  }, [toolId]);
+
+  const handleSwapCurrencies = () => {
+    const temp = currFrom;
+    setCurrFrom(currTo);
+    setCurrTo(temp);
   };
 
   const convertedCurrency = useMemo(() => {
@@ -264,7 +341,13 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
     const inUsd = currAmount / fromRate;
     const result = inUsd * toRate;
     return Number(result.toFixed(2));
-  }, [currAmount, currFrom, currTo]);
+  }, [currAmount, currFrom, currTo, currencyRates]);
+
+  const unitRate = useMemo(() => {
+    const fromRate = currencyRates[currFrom]?.rate || 1.0;
+    const toRate = currencyRates[currTo]?.rate || 1.0;
+    return toRate / fromRate;
+  }, [currFrom, currTo, currencyRates]);
 
   return (
     <div class="bg-white border border-slate-200/90 rounded-2xl p-5 sm:p-7 shadow-card mb-8 transition-all">
@@ -1519,70 +1602,185 @@ export default function FinanceShell({ toolId }: FinanceShellProps) {
       {/* 6. CURRENCY CONVERTER                                    */}
       {/* ======================================================== */}
       {toolId === 'currency-converter' && (
-        <div class="space-y-6 max-w-xl mx-auto">
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-end">
+        <div class="space-y-6 max-w-2xl mx-auto">
+          {/* Header & Live Rate Status Badge */}
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
             <div>
-              <label for="curr-amount-input" class="block text-xs font-bold text-slate-700 mb-1">Amount</label>
-              <input
-                id="curr-amount-input"
-                type="number"
-                min="1"
-                value={currAmount}
-                onInput={(e) => setCurrAmount(Number((e.target as HTMLInputElement).value))}
-                class="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl font-bold font-mono focus:ring-2 focus:ring-emerald-500"
-              />
+              <h2 class="text-base sm:text-lg font-bold text-slate-900">
+                Foreign Exchange Currency Converter
+              </h2>
+              <p class="text-xs text-slate-500">
+                Live interbank mid-market exchange rates without retail banking markup spreads.
+              </p>
             </div>
             <div>
-              <label for="curr-from-select" class="block text-xs font-bold text-slate-700 mb-1">From Currency</label>
+              {rateSourceStatus === 'live' ? (
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-2xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                  <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  Live Rates ({rateLastUpdated})
+                </span>
+              ) : rateSourceStatus === 'loading' ? (
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-2xs font-semibold bg-blue-50 text-blue-700 border border-blue-200">
+                  <span class="w-2 h-2 rounded-full bg-blue-500 animate-ping"></span>
+                  Connecting Forex Feed...
+                </span>
+              ) : (
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-2xs font-semibold bg-amber-50 text-amber-700 border border-amber-200">
+                  <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                  Benchmark Rates (Offline Mode)
+                </span>
+              )}
+            </div>
+          </div>
+
+          {/* Input Controls */}
+          <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-end">
+            <div class="sm:col-span-4">
+              <label for="curr-amount-input" class="block text-xs font-bold text-slate-700 mb-1">
+                Amount to Convert
+              </label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-sm font-bold text-slate-400">
+                  {currencyRates[currFrom]?.symbol || '$'}
+                </span>
+                <input
+                  id="curr-amount-input"
+                  type="number"
+                  min="0.01"
+                  step="any"
+                  value={currAmount}
+                  onInput={(e) => setCurrAmount(Math.max(0, Number((e.target as HTMLInputElement).value)))}
+                  class="w-full pl-8 pr-3 py-2.5 text-sm border border-slate-300 rounded-xl font-bold font-mono focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition"
+                  placeholder="1000"
+                />
+              </div>
+            </div>
+
+            <div class="sm:col-span-3">
+              <label for="curr-from-select" class="block text-xs font-bold text-slate-700 mb-1">
+                From
+              </label>
               <select
                 id="curr-from-select"
                 value={currFrom}
                 onChange={(e) => setCurrFrom((e.target as HTMLSelectElement).value)}
-                class="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl font-medium"
+                class="w-full px-3 py-2.5 text-sm border border-slate-300 rounded-xl font-medium focus:ring-2 focus:ring-emerald-500 bg-white"
               >
                 {Object.keys(currencyRates).map((cur) => (
-                  <option key={cur} value={cur}>{cur} - {currencyRates[cur].name}</option>
+                  <option key={cur} value={cur}>
+                    {cur} - {currencyRates[cur].name}
+                  </option>
                 ))}
               </select>
             </div>
-            <div>
-              <label for="curr-to-select" class="block text-xs font-bold text-slate-700 mb-1">To Currency</label>
+
+            {/* Swap Button */}
+            <div class="sm:col-span-2 flex justify-center pb-0.5">
+              <button
+                type="button"
+                onClick={handleSwapCurrencies}
+                title="Swap base and target currencies"
+                class="w-full sm:w-11 h-11 flex items-center justify-center rounded-xl border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-300 text-slate-700 hover:text-emerald-700 transition cursor-pointer shadow-2xs font-bold"
+              >
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                </svg>
+              </button>
+            </div>
+
+            <div class="sm:col-span-3">
+              <label for="curr-to-select" class="block text-xs font-bold text-slate-700 mb-1">
+                To
+              </label>
               <select
                 id="curr-to-select"
                 value={currTo}
                 onChange={(e) => setCurrTo((e.target as HTMLSelectElement).value)}
-                class="w-full px-3 py-2 text-sm border border-slate-300 rounded-xl font-medium"
+                class="w-full px-3 py-2.5 text-sm border border-slate-300 rounded-xl font-medium focus:ring-2 focus:ring-emerald-500 bg-white"
               >
                 {Object.keys(currencyRates).map((cur) => (
-                  <option key={cur} value={cur}>{cur} - {currencyRates[cur].name}</option>
+                  <option key={cur} value={cur}>
+                    {cur} - {currencyRates[cur].name}
+                  </option>
                 ))}
               </select>
             </div>
           </div>
 
-          <div class="flex justify-center gap-1.5">
-            {[100, 500, 1000, 5000, 10000].map((amt) => (
+          {/* Quick Amount Presets */}
+          <div class="flex flex-wrap items-center justify-center gap-1.5 pt-1">
+            <span class="text-2xs font-semibold text-slate-400 mr-1">Quick Select:</span>
+            {[50, 100, 500, 1000, 5000, 10000].map((amt) => (
               <button
                 key={amt}
                 type="button"
                 onClick={() => setCurrAmount(amt)}
-                class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border ${
-                  currAmount === amt ? 'bg-emerald-600 text-white border-emerald-600' : 'bg-white text-slate-600 border-slate-200'
+                class={`px-2.5 py-1 text-2xs font-semibold rounded-lg border transition cursor-pointer ${
+                  currAmount === amt
+                    ? 'bg-emerald-600 text-white border-emerald-600 shadow-2xs'
+                    : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50'
                 }`}
               >
-                {currencyRates[currFrom]?.symbol}{amt}
+                {currencyRates[currFrom]?.symbol}{amt.toLocaleString()}
               </button>
             ))}
           </div>
 
-          <div class="bg-slate-50 border border-slate-200 rounded-3xl p-6 text-center">
-            <span class="text-xs uppercase font-bold text-slate-500">Converted Amount</span>
-            <p class="text-3xl sm:text-4xl font-black text-emerald-800 my-2 font-mono">
-              {currencyRates[currTo]?.symbol} {convertedCurrency.toLocaleString('en-US')} {currTo}
+          {/* Prominent Conversion Result Card */}
+          <div class="bg-gradient-to-br from-slate-50 via-emerald-50/25 to-slate-50 border border-emerald-100 rounded-3xl p-6 text-center shadow-2xs">
+            <span class="text-2xs uppercase font-bold text-slate-500 tracking-wider">
+              {currAmount.toLocaleString()} {currFrom} Equals
+            </span>
+            <p class="text-3xl sm:text-4xl lg:text-5xl font-black text-emerald-800 my-2 font-mono tracking-tight">
+              {currencyRates[currTo]?.symbol} {convertedCurrency.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} <span class="text-lg font-bold text-emerald-700">{currTo}</span>
             </p>
-            <p class="text-xs text-slate-500">
-              1 {currFrom} = {(currencyRates[currTo].rate / currencyRates[currFrom].rate).toFixed(4)} {currTo} • Reference benchmark
-            </p>
+            <div class="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-600 font-medium mt-3 pt-3 border-t border-slate-200/60">
+              <div class="flex items-center gap-1.5">
+                <span class="text-slate-400">Direct Rate:</span>
+                <span class="font-mono font-bold text-slate-800">
+                  1 {currFrom} = {unitRate.toFixed(4)} {currTo}
+                </span>
+              </div>
+              <span class="text-slate-300">•</span>
+              <div class="flex items-center gap-1.5">
+                <span class="text-slate-400">Inverse Rate:</span>
+                <span class="font-mono font-bold text-slate-800">
+                  1 {currTo} = {(1 / unitRate).toFixed(4)} {currFrom}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Quick Conversion Reference Grid */}
+          <div class="border border-slate-200 rounded-2xl overflow-hidden shadow-2xs">
+            <div class="bg-slate-50 px-4 py-2.5 border-b border-slate-200 flex justify-between items-center">
+              <span class="text-xs font-bold text-slate-800">
+                Popular {currFrom} to {currTo} Conversion Values
+              </span>
+              <span class="text-2xs text-slate-500">Zero spread benchmark</span>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y sm:divide-y-0 divide-slate-100 text-xs">
+              {[1, 10, 100, 1000].map((tier) => (
+                <div key={tier} class="p-3 bg-white text-center">
+                  <div class="font-bold text-slate-900">
+                    {tier} {currFrom}
+                  </div>
+                  <div class="text-emerald-700 font-mono font-semibold text-2xs mt-0.5">
+                    {currencyRates[currTo]?.symbol} {(tier * unitRate).toFixed(2)} {currTo}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Disclaimers & Trust Notice */}
+          <div class="p-3.5 bg-slate-50/80 rounded-xl border border-slate-200 text-2xs text-slate-500 flex items-start gap-2 leading-relaxed">
+            <svg class="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+            <span>
+              <strong>Zero Server Storage &amp; Independent Benchmark:</strong> Calculations execute client-side in your browser RAM without tracking or logging personal transaction amounts. Mid-market rates serve as financial benchmarks; commercial banks and money transfer providers may apply additional retail margins.
+            </span>
           </div>
         </div>
       )}
