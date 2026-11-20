@@ -1,10 +1,15 @@
 import { test, expect } from '@playwright/test';
 
+// These checks cover first-party SEO behavior, not third-party font availability.
+test.beforeEach(async ({ page }) => {
+  await page.route(/^https:\/\/fonts\.(googleapis|gstatic)\.com\//, route => route.abort());
+});
+
 test.use({ javaScriptEnabled: false });
 
 for (const slug of ['image-upload-requirements', 'pdf-file-size-limits', 'json-to-csv-data-checklist']) {
   test(`${slug} is complete and crawlable without JavaScript`, async ({ page }) => {
-    await page.goto(`/guides/${slug}/`);
+    await page.goto(`/guides/${slug}/`, { waitUntil: 'domcontentloaded' });
     await expect(page.locator('h1')).toHaveCount(1);
     await expect(page.locator('meta[name="robots"]')).not.toHaveAttribute('content', /noindex/);
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', `https://zixtool.online/guides/${slug}/`);
@@ -23,15 +28,15 @@ for (const slug of ['image-upload-requirements', 'pdf-file-size-limits', 'json-t
 }
 
 test('tool pages link to relevant guides in initial HTML', async ({ page }) => {
-  await page.goto('/compress-image-to-20kb/');
+  await page.goto('/compress-image-to-20kb/', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('a[href="/guides/image-upload-requirements/"]').first()).toBeVisible();
-  await page.goto('/guides/');
+  await page.goto('/guides/', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('h1')).toHaveCount(1);
   await expect(page.locator('a[href="/guides/pdf-file-size-limits/"]')).toBeVisible();
 });
 
 test('unimplemented PDF rendering is excluded and explained', async ({ page }) => {
-  await page.goto('/pdf-to-jpg/');
+  await page.goto('/pdf-to-jpg/', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
   await expect(page.locator('main')).toContainText('not ready for PDF page conversion');
 });

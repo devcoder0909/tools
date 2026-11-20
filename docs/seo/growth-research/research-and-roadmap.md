@@ -63,7 +63,7 @@ These findings refer to source snapshots inspected during research and may be re
 - Passport and exam copy includes institution-specific dimensions and file sizes. Each needs a current official source and review date; never imply that meeting a byte target guarantees application acceptance.
 - Password, finance and health pages require careful authoritative sourcing. A technical title or generic ?engineering team? byline is not proof of credentials. Do not invent expert review, certification or endorsements.
 
-Current indexability differs from the earlier handoff: the parallel Google AI work implemented live currency/IP functionality. The primary agent reports 84 indexable tools with `/pdf-to-jpg/` excluded because its current interface is a placeholder. The CSV captures registry state at export; re-read the registry after parallel edits before publishing counts.
+Current indexability differs from the earlier handoff: the parallel Google AI work implemented live currency/IP functionality. Verification on 20 November confirms 83 indexable tools. `/pdf-to-jpg/` and `/heic-to-pdf/` are excluded because their current outputs do not perform the claimed PDF conversion. Currency and IP lookup remain indexable after the parallel functionality fixes. The CSV captures registry state at export; re-read the registry after parallel edits before publishing counts.
 
 ## SEO execution roadmap
 

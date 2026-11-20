@@ -1,44 +1,25 @@
 {
-  "capturedAt": "2026-11-19T16:32:41.501Z",
+  "capturedAt": "2026-11-20T07:25:54.766Z",
   "results": [
     {
       "url": "http://zixtool.online/",
-      "status": 200,
-      "location": null,
-      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
-      "canonical": "https://zixtool.online/",
-      "server": "cloudflare"
+      "error": "TimeoutError: The operation was aborted due to timeout"
     },
     {
       "url": "https://www.zixtool.online/",
-      "status": 522,
-      "location": null,
-      "robots": "noindex, nofollow",
-      "server": "cloudflare",
-      "bodyPreview": "<!DOCTYPE html>\n<!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 7]>    <html class=\"no-js ie7 oldie\" lang=\"en-US\"> <![endi"
+      "error": "TypeError: fetch failed"
     },
     {
       "url": "https://zixtool.online/uuid-generator/",
-      "status": 200,
-      "location": null,
-      "robots": "noindex, follow",
-      "canonical": "https://zixtool.online/uuid-generator/",
-      "server": "cloudflare"
+      "error": "TypeError: fetch failed"
     },
     {
       "url": "https://zixtool.online/currency-converter/",
-      "status": 200,
-      "location": null,
-      "robots": "noindex, follow",
-      "canonical": "https://zixtool.online/currency-converter/",
-      "server": "cloudflare"
+      "error": "TypeError: fetch failed"
     },
     {
       "url": "https://zixtool.online/this-page-does-not-exist-growth-audit/",
-      "status": 503,
-      "location": null,
-      "server": "cloudflare",
-      "bodyPreview": "Resource temporarily unavailable"
+      "error": "TypeError: fetch failed"
     }
   ]
 }

@@ -36,7 +36,7 @@ Use `curl.exe -I https://zixtool.online/`, `curl.exe -I http://zixtool.online/`,
 - `live-audit.json`: per-page statuses, titles, descriptions, canonicals, robots, schema types, link list, image metadata, byte sizes and request durations.
 - `live-robots.txt`: the deployed robots body at crawl time.
 - `live-sitemap-index.xml`: the deployed sitemap index body at crawl time.
-- `live-routing-probes.json`: timestamped repeat routing and indexability probes.
+- `live-routing-probes-2026-11-19.json`: timestamped repeat routing and indexability probes from the successful baseline. `live-routing-probes.json` contains the latest attempt.
 
 ## Official interpretation references
 
@@ -47,3 +47,7 @@ Use `curl.exe -I https://zixtool.online/`, `curl.exe -I http://zixtool.online/`,
 - Cloudflare Pages redirect limits and syntax: https://developers.cloudflare.com/pages/configuration/redirects/
 
 These references explain the observations; they are not evidence that the working-tree fixes have deployed.
+
+## Recheck on 20 November 2026
+
+A fresh probe at 2026-11-20T07:25:54.766Z failed from the execution environment (HTTP timeout and HTTPS fetch failures). It does not establish a production outage or confirm whether the baseline issues have been fixed. Retain the successful 19 November evidence separately and recheck from a working network after release.
