@@ -48,6 +48,33 @@ Use `curl.exe -I https://zixtool.online/`, `curl.exe -I http://zixtool.online/`,
 
 These references explain the observations; they are not evidence that the working-tree fixes have deployed.
 
-## Recheck on 20 November 2026
+## Production Verification — 20 November 2026
 
-A fresh probe at 2026-11-20T07:25:54.766Z failed from the execution environment (HTTP timeout and HTTPS fetch failures). It does not establish a production outage or confirm whether the baseline issues have been fixed. Retain the successful 19 November evidence separately and recheck from a working network after release.
+A comprehensive production crawl and routing probe was executed on 20 November 2026 at `2026-11-20T07:43:05Z` using `scripts/verify-live-seo.ts` and automated HTTP fetch probes:
+
+### 1. Verified Live Deployments
+- **Sitemap & Tool Expansion:** `https://zixtool.online/sitemap-tools.xml` contains all **83 eligible tools** (successfully deployed from previous 40). `sitemap-pages.xml` contains 14 pages including `/guides/` and all 3 diagnostic guides. `sitemap-image.xml` contains 83 images.
+- **Indexability & Directives:** Every single one of the 102 sitemap-listed pages returned HTTP 200, exactly 1 H1, valid title and meta description, and self-referential canonical URL matching `https://zixtool.online/...`.
+- **Targeted Tool State:**
+  - `https://zixtool.online/uuid-generator/` returns 200 with `robots: index, follow`.
+  - `https://zixtool.online/currency-converter/` returns 200 with `robots: index, follow`.
+  - `https://zixtool.online/heic-to-pdf/` and `https://zixtool.online/pdf-to-jpg/` return 200 with `robots: noindex, follow` (correctly excluded from search due to incomplete client PDF conversion).
+- **Service Worker & 404 Routing:**
+  - `https://zixtool.online/sw.js` returns `Cache-Control: no-cache, max-age=0, must-revalidate` (resolved).
+  - Deliberately nonexistent paths (e.g. `/nonexistent-route-probe-404-check`) cleanly return **HTTP 404 Not Found** (resolved from 503).
+- **Public Link Graph:** Home page, navigation, and footer contain zero public links to `/internal/indexing-tester/`.
+
+### 2. Actions Requiring Cloudflare Account Access (Cannot Be Fixed in Local Code)
+Local repository files cannot alter edge network routing for requests that Cloudflare intercepts before reaching the Pages static origin. The domain owner/operator must complete these two settings in the Cloudflare Dashboard:
+
+1. **HTTP to HTTPS Redirection (Plain HTTP returns 200 OK):**
+   - **Path in Dashboard:** Cloudflare Dashboard -> select `zixtool.online` zone -> **SSL/TLS** -> **Edge Certificates** -> scroll to **Always Use HTTPS** and toggle to **On**.
+   - **Verification:** `curl.exe -I http://zixtool.online/` must return `HTTP/1.1 301 Moved Permanently` (or 308) with `Location: https://zixtool.online/`.
+2. **`www` Subdomain 522 Connection Timeout:**
+   - **Path in Dashboard:**
+     - Step A (DNS): **DNS** -> **Records** -> verify CNAME record: Name `www`, Target `zixtool.online` (or the Cloudflare Pages custom domain), Proxy Status: **Proxied** (Orange Cloud).
+     - Step B (Redirect Rule): **Rules** -> **Redirect Rules** -> **Create Rule**:
+       - Rule Name: `Redirect www to apex`
+       - When incoming requests match: Custom filter expression: `(http.host eq "www.zixtool.online")`
+       - Then: Type `Dynamic`, Expression: `concat("https://zixtool.online", http.request.uri.path)`, Status code: `301`, Preserve query string: Checked.
+   - **Verification:** `curl.exe -I https://www.zixtool.online/` must return `HTTP/2 301` with `Location: https://zixtool.online/`.

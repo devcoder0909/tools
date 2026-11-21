@@ -65,13 +65,25 @@ No search-volume, difficulty, traffic or ranking numbers were invented. `../grow
 
 Verification results are recorded after the final local checks; these do not establish production indexing or rankings.
 
+## Live verification follow-up — 20 November 2026
 
-## Final local verification ? 20 November
+The new `pnpm run seo:verify-live` command successfully checked all 102 sitemap-listed pages on `https://zixtool.online` with zero issues. This supersedes the earlier reachability failure below for the checks covered by this command. It verifies HTTP 200 without redirects, one expected canonical, title, description, one H1, HTML/HTTP indexing directives, and published sitemap location parity with the build. It does not query Google's index, validate robots.txt rules, measure rankings, or measure Core Web Vitals.
 
-- `pnpm test`: 14 unit tests passed.
-- `pnpm run build`: passed; Astro reported zero errors and zero warnings (one existing unused-variable hint in the separate Yoast audit script).
+The deploy workflow now runs this check after deployment and before IndexNow notifications, and saves its JSON report as an Actions artifact. Failure prevents indexing notifications; it does not roll back the deployed site. Network failures are identified separately from confirmed response defects. Run against an already-built local preview with `SEO_CHECK_ORIGIN` set to its origin; production canonicals remain expected. Reports are written to `.seo-reports/live-release.json`.
+
+Validation: 17 unit tests passed, full build passed (113 pages, 102 indexable), and the verifier passed against both local preview and production. No deployment was performed during this follow-up.
+
+Separate live routing probes still found two hosting issues: `http://zixtool.online/` returned 200 without an HTTPS redirect; `https://www.zixtool.online/` returned 522. Configure the Cloudflare zone's HTTPS redirect and www-to-apex redirect/DNS, then recheck both. These require hosting configuration and were not fixed by repository edits. A deliberately nonexistent URL correctly returned 404 in this recheck.
+
+
+## Final local verification — 20 November 2026
+
+- `pnpm test`: 17 unit tests passed across 5 test suites (search performance, SEO architecture, registry, unit SEO, and deployed SEO verification).
+- `pnpm run build`: passed; Astro reported zero errors and zero warnings.
 - Build output: 113 pages, with 102 indexable pages and 83 eligible tool URLs in the tools sitemap.
-- SEO hard gate: passed exact canonical checks, distinct-source link checks, content gates and complete primary sitemap coverage.
-- `pnpm exec playwright test tests/e2e/seo-guides.spec.ts tests/e2e/seo-discovery.spec.ts --reporter line --workers 3`: 26 tests passed across desktop Chromium and Mobile Chrome. Guide tests disable JavaScript. Third-party Google font requests are blocked in these tests so results measure first-party markup and navigation, not external font availability. These are not Core Web Vitals measurements.
-- Public recheck: the execution environment could not reach the live URLs on 20 November. Production changes remain unverified; see the timestamped routing evidence.
+- SEO hard gate: passed exact canonical checks, distinct-source link checks, content gates, and complete primary sitemap coverage.
+- Content trust and capability audit: updated `json-formatter.mdx`, `heic-to-jpg.mdx`, `passport-photo-resizer.mdx`, `compress-image-to-20kb.mdx`, `compress-image-to-50kb.mdx`, `compress-image-to-100kb.mdx`, `json-to-csv.mdx`, `csv-to-json.mdx`, `split-pdf.mdx`, and `png-to-jpg.mdx`. Removed unsupported promises regarding HIPAA/GDPR certifications, exact line highlights without parser backing, fixed codec pricing, and recursive flattening. Contextual internal links added connecting tools with `/guides/image-upload-requirements/`, `/guides/pdf-file-size-limits/`, and `/guides/json-to-csv-data-checklist/`.
+- `pnpm exec playwright test tests/e2e/seo-guides.spec.ts tests/e2e/seo-discovery.spec.ts --reporter line --workers 3`: 26 tests passed across desktop Chromium and Mobile Chrome. Guide tests disable JavaScript. Third-party Google font requests are blocked in these tests so results measure first-party markup and navigation, not external font availability.
+- `pnpm run seo:verify-live`: checked all 102 sitemap URLs on `https://zixtool.online`; 0 errors or metadata defects found.
+- Public routing status: `http://zixtool.online/` returns 200 without redirect, and `https://www.zixtool.online/` returns 522; both documented with exact Cloudflare Dashboard resolution steps.
 - No deployment, Search Console submission, analytics activation, or outreach was performed by this pass.
