@@ -2,7 +2,7 @@
   kind: converter
   slug: heic-to-jpg
   name: HEIC to JPG Converter
-  title: HEIC to JPG Converter - Free, No Upload | ZixTool
+  title: "HEIC to JPG Converter for iPhone Photos"
   subtitle: Open iPhone photos anywhere. Drop HEIC files, get JPGs, nothing uploaded.
   description: Convert HEIC to JPG free in your browser. Photos never leave your device, no sign-up, no file limits, and you can batch convert and download as ZIP.
   from: heic
@@ -70,7 +70,7 @@
   kind: converter
   slug: heic-to-png
   name: HEIC to PNG
-  title: HEIC to PNG Converter - Free, Lossless Alpha
+  title: "HEIC to PNG Converter for iPhone Images"
   description: Convert HEIC to PNG format with transparency retention. Fast, 100% private in-browser conversion for iPhone photos with zero uploads.
   from: heic
   to: png
@@ -111,7 +111,7 @@
   kind: converter
   slug: heic-to-pdf
   name: HEIC to PDF
-  title: HEIC to PDF Converter - Free iPhone Document Creator
+  title: "HEIC to PDF Conversion Availability and Alternatives"
   description: Convert HEIC to PDF online free with zero server uploads. Combine iPhone receipts and document scans into a clean PDF with custom page sizing.
   from: heic
   to: pdf
@@ -153,7 +153,7 @@
   kind: converter
   slug: webp-to-jpg
   name: WebP to JPG Converter
-  title: WebP to JPG Converter - Free & Private | ZixTool
+  title: "WebP to JPG Converter for JPEG Uploads"
   description: Convert WebP images to JPG in your browser with zero server uploads. Batch convert files, control compression quality, and download instantly.
   from: webp
   to: jpg
@@ -203,7 +203,7 @@
   kind: converter
   slug: webp-to-png
   name: WebP to PNG
-  title: WebP to PNG Converter - Transparent Online | ZixTool
+  title: "WebP to PNG Converter for Transparent Images"
   description: Convert WebP to PNG online for free while preserving full transparent backgrounds. Fast batch conversion in your browser memory with zero file uploads.
   from: webp
   to: png
@@ -244,7 +244,7 @@
   kind: converter
   slug: png-to-webp
   name: PNG to WebP
-  title: PNG to WebP Converter - Shrink Size by Up to 35%
+  title: "PNG to WebP Converter for Smaller Web Images"
   description: Convert PNG to WebP online free with zero server uploads. Reduce file size up to 35%, retain alpha transparency, and boost Google Core Web Vitals.
   from: png
   to: webp
@@ -286,7 +286,7 @@
   kind: converter
   slug: jpg-to-webp
   name: JPG to WebP
-  title: JPG to WebP Converter - Optimize Image Storage
+  title: "JPG to WebP Converter for Website Photos"
   description: Convert JPG to WebP online free with zero server uploads. Reduce photo storage, speed up web loading, and batch download converted files instantly.
   from: jpg
   to: webp
@@ -328,7 +328,7 @@
   kind: converter
   slug: avif-to-jpg
   name: AVIF to JPG
-  title: AVIF to JPG Converter - Universal Compatibility
+  title: "AVIF to JPG Converter for JPEG-Compatible Photos"
   description: Convert avif to jpg free online with zero server uploads. Make next-gen AVIF files compatible with Photoshop, Windows Photos, and email attachments.
   from: avif
   to: jpg
@@ -370,7 +370,7 @@
   kind: converter
   slug: avif-to-png
   name: AVIF to PNG
-  title: AVIF to PNG Converter - Transparent & Lossless
+  title: "AVIF to PNG Converter for Image Editing"
   description: Convert AVIF to PNG online free with zero server uploads. Retain transparent cutouts, lossless graphic detail, and batch download files instantly.
   from: avif
   to: png
@@ -408,7 +408,7 @@
   kind: converter
   slug: png-to-jpg
   name: PNG to JPG Converter
-  title: PNG to JPG Converter - Free & Private | ZixTool
+  title: "PNG to JPG Converter for Photos and Uploads"
   description: Convert PNG images to JPG in your browser with zero uploads. Choose quality, reduce file sizes by up to 80%, and download single files or ZIP.
   from: png
   to: jpg
@@ -459,7 +459,7 @@
   kind: converter
   slug: jpg-to-png
   name: JPG to PNG Converter
-  title: JPG to PNG Converter - Free & Private | ZixTool
+  title: "JPG to PNG Converter for Editing JPEG Images"
   description: Convert JPG photos to PNG format free in your browser. Preserve pixel fidelity with 100% private in-browser conversion and batch export.
   from: jpg
   to: png
@@ -511,7 +511,7 @@
   kind: converter
   slug: jfif-to-jpg
   name: JFIF to JPG
-  title: JFIF to JPG Converter - Fix Download Format | ZixTool
+  title: "JFIF to JPG Converter for Downloaded Photos"
   description: Convert JFIF to JPG online free with zero server uploads. Fix Chrome and Windows photos downloaded as .jfif and make them universally compatible.
   from: jfif
   to: jpg
@@ -551,7 +551,7 @@
   kind: converter
   slug: svg-to-png
   name: SVG to PNG
-  title: SVG to PNG Converter - High Resolution Raster
+  title: "SVG to PNG Converter for Logos and Graphics"
   description: Convert SVG to PNG online free with zero server uploads. Render vector artwork into high-DPI raster PNGs with transparent backgrounds instantly.
   from: svg
   to: png
@@ -592,7 +592,7 @@
   kind: converter
   slug: bmp-to-jpg
   name: BMP to JPG
-  title: BMP to JPG Converter - Drastically Compress Size
+  title: "BMP to JPG Converter for Bitmap Photos"
   description: Convert BMP to JPG online free with zero server uploads. Compress uncompressed Bitmap files up to 90%, save storage space, and batch download converted files.
   from: bmp
   to: jpg
@@ -633,7 +633,7 @@
   kind: converter
   slug: tiff-to-jpg
   name: TIFF to JPG
-  title: TIFF to JPG Converter - Fast Browser Conversion
+  title: "TIFF to JPG Converter for Scans and Photos"
   description: Convert TIFF to JPG online free with zero server uploads. Shrink heavy document scans and camera files into universal JPG format instantly.
   from: tiff
   to: jpg
@@ -674,7 +674,7 @@
   kind: converter
   slug: gif-to-png
   name: GIF to PNG
-  title: GIF to PNG Converter - Extract Sharp Still Frames
+  title: "GIF to PNG Converter for Still Images"
   description: Convert GIF to PNG online free with zero server uploads. Extract sharp still frames, preserve transparency, and expand color depth to 16.7 million colors.
   from: gif
   to: png
@@ -714,7 +714,7 @@
   kind: pdf
   slug: jpg-to-pdf
   name: JPG to PDF Converter
-  title: JPG to PDF Converter Online – Free, Private & Easy | ZixTool
+  title: "JPG to PDF Converter for Photos and Scans"
   description: Convert JPG images to PDF free online in your browser. Combine multiple photos into one document, customize page layout, and save with 100% privacy.
   from: jpg
   to: pdf
@@ -754,7 +754,7 @@
   kind: pdf
   slug: png-to-pdf
   name: PNG to PDF Converter
-  title: PNG to PDF Converter - Free & In-Browser | ZixTool
+  title: "PNG to PDF Converter for Screenshots and Images"
   description: Convert PNG to PDF free in your browser. Combine PNG images and screenshots into a single multi-page PDF document with zero server uploads.
   from: png
   to: pdf
@@ -794,7 +794,7 @@
   kind: converter
   slug: compress-image-to-50kb
   name: Compress Image to 50KB
-  title: Compress Image to 50KB - Photo Compressor | ZixTool
+  title: "Compress Image to 50KB for Photo Uploads"
   subtitle: Reduce photo size to under 50KB for government forms and official portals.
   description: Compress image to 50KB online for free. Shrink photos to 50KB or less for passport portals, visa forms, and job applications with full privacy in RAM.
   from: image
@@ -839,7 +839,7 @@
   kind: converter
   slug: compress-image-to-100kb
   name: Compress Image to 100KB
-  title: Compress Image to 100KB - Photo Compressor | ZixTool
+  title: "Compress Image to 100KB for Online Forms"
   subtitle: Shrink photos to 100KB or less for job portals and email attachments.
   description: Compress image to 100KB online free. Reduce photo file size under 100KB for university admissions, job portals, and email with 100% in-browser privacy.
   from: image
@@ -882,7 +882,7 @@
   kind: converter
   slug: compress-image-to-200kb
   name: Compress Image to 200KB
-  title: Compress Image to 200KB - Photo Compressor | ZixTool
+  title: "Compress Image to 200KB for File Uploads"
   subtitle: Optimize photos to under 200KB. Perfect balance of sharpness and file size.
   description: Compress image to 200KB online for free. Reduce photo and document scan size strictly under 200KB for visa forms, KYC, and job portals in your browser.
   from: image
@@ -925,7 +925,7 @@
   kind: converter
   slug: compress-image-to-500kb
   name: Compress Image to 500KB
-  title: Compress Image to 500KB - Free Online | ZixTool
+  title: "Compress Image to 500KB for Attachments"
   subtitle: Shrink multi-megabyte camera photos to under 500KB with crystal clarity.
   description: Compress image to 500KB free online in your browser. Shrink large camera photos and high-res scans for email and web forms with zero server uploads.
   from: image
@@ -966,7 +966,7 @@
   kind: converter
   slug: compress-image-to-1mb
   name: Compress Image to 1MB
-  title: Compress Image to 1MB - Free Online | ZixTool
+  title: "Compress Image to 1MB for Photo Sharing"
   subtitle: Compress large DSLR and camera photos to 1MB with zero detail loss.
   description: Compress image to 1MB free in your browser. Reduce DSLR and phone photos under 1MB while keeping rich details with zero server uploads and fast download.
   from: image
@@ -1007,7 +1007,7 @@
   kind: media
   slug: resize-image
   name: Resize Image
-  title: Resize Image Online - Free Image Resizer | ZixTool
+  title: "Resize Image Online by Width and Height in Pixels"
   description: Resize images online free by pixels or percentage while locking aspect ratio. Fast, client-side image resizing in your browser with zero uploads.
   from: image
   to: image
@@ -1050,7 +1050,7 @@
   kind: calculator
   slug: percentage-calculator
   name: Percentage Calculator
-  title: Percentage Calculator - Free and Accurate | ZixTool
+  title: "Percentage Calculator for Marks, Ratios and Change"
   subtitle: Calculate percentages, percentage increases, and differences instantly.
   description: Calculate percentage of a number, percentage increase or decrease, and fractions instantly in your browser with step-by-step formulas and zero tracking.
   engine: calc-percentage
@@ -1101,7 +1101,7 @@
   kind: calculator
   slug: age-calculator
   name: Age Calculator
-  title: Age Calculator - Free and Accurate | ZixTool
+  title: "Age Calculator by Date of Birth"
   subtitle: Calculate exact age in years, months, days, weeks, and hours.
   description: Free online age calculator. Calculate exact chronological age from date of birth in years, months, and days with 100% in-browser privacy.
   engine: calc-age
@@ -1140,7 +1140,7 @@
   kind: calculator
   slug: date-difference-calculator
   name: Date Difference Calculator
-  title: Date Difference Calculator - Days Between Dates
+  title: "Date Difference Calculator for Days Between Two Dates"
   subtitle: Calculate total days, workdays, and weeks between two calendar dates.
   description: Free online date difference calculator to count days between dates, business workdays, weeks, and weekends. Fast, accurate, and 100% private in browser.
   engine: calc-date
@@ -1179,7 +1179,7 @@
   kind: calculator
   slug: discount-calculator
   name: Discount Calculator
-  title: Discount Calculator - Free and Accurate | ZixTool
+  title: "Discount Calculator for Sale Price and Savings"
   subtitle: Calculate final sale prices, total money saved, and sales tax.
   description: Free online discount calculator to find sale prices, percent off savings, stacked discounts, and sales tax. Fast, accurate, and 100% private in browser.
   engine: calc-discount
@@ -1218,7 +1218,7 @@
   kind: calculator
   slug: tip-calculator
   name: Tip Calculator
-  title: Tip Calculator - Free and Accurate | ZixTool
+  title: "Tip Calculator for Tips and Split Bills"
   subtitle: Calculate restaurant tips and split bills per person easily.
   description: Free online tip calculator to split restaurant bills, compute gratuity percentages, and calculate per-person costs accurately in your browser.
   engine: calc-tip
@@ -1257,7 +1257,7 @@
   kind: text
   slug: word-counter
   name: Word Counter
-  title: Word Counter - Free Online Tool | ZixTool
+  title: "Word Counter Online with Character Count and Reading Time"
   subtitle: Count words, characters, sentences, and estimated reading time.
   description: Count words and characters as you type. Compare totals with and without whitespace, and estimate how long a draft takes to read or speak aloud.
   engine: text-word-count
@@ -1300,7 +1300,7 @@
   kind: text
   slug: case-converter
   name: Case Converter
-  title: Case Converter - Free Online Tool | ZixTool
+  title: "Case Converter for Uppercase and Lowercase Text"
   subtitle: Convert text to UPPERCASE, lowercase, Title Case, and camelCase.
   description: Free online case converter to transform text between uppercase, lowercase, Title Case, camelCase, snake_case, and kebab-case instantly in your browser.
   engine: text-case
@@ -1342,7 +1342,7 @@
   kind: text
   slug: json-formatter
   name: JSON Formatter & Validator
-  title: JSON Formatter - Free Validator & Tool | ZixTool
+  title: "JSON Formatter Online for Readable JSON"
   subtitle: Prettify, minify, and validate JSON data instantly in your browser.
   description: Format, beautify, minify, and validate JSON data with clear syntax error alerts. Runs 100% locally in your browser without sending data to servers.
   engine: text-json
@@ -1395,7 +1395,7 @@
   kind: generator
   slug: qr-code-generator
   name: QR Code Generator
-  title: Free QR Code Generator - Custom & Private | ZixTool
+  title: "Free QR Code Generator for Links and Text"
   subtitle: Generate custom QR codes for websites, WiFi, and text instantly in browser.
   description: Free online QR code generator. Create custom QR codes for URLs, WiFi networks, and text with custom colors and instant PNG download.
   engine: generator
@@ -1444,7 +1444,7 @@
   kind: generator
   slug: password-generator
   name: Password Generator
-  title: Secure Password Generator - Fast Crypto | ZixTool
+  title: "Password Generator with Adjustable Length"
   subtitle: Generate cryptographically strong passwords locally. Zero server transmission.
   description: Free online secure password generator. Create strong passwords with custom length, symbols, and entropy calculation using browser crypto API.
   engine: generator
@@ -1494,7 +1494,7 @@
   kind: pdf
   slug: merge-pdf
   name: Merge PDF
-  title: Merge PDF Online - Free, In-Browser & Private
+  title: "Merge PDF Files Online into One Document"
   subtitle: Combine multiple PDF documents into one file directly in browser memory.
   description: Merge PDF files free online in your browser. Combine multiple documents into one single PDF without file size limits and zero server uploads.
   engine: pdf
@@ -1545,7 +1545,7 @@
   kind: pdf
   slug: split-pdf
   name: Split PDF
-  title: Split PDF Online - Extract Pages Free | ZixTool
+  title: "Split PDF Online and Extract Selected Pages"
   subtitle: Extract specific page ranges from any PDF document without server uploads.
   description: Split PDF files free online in your browser. Extract individual pages or custom page ranges into a separate PDF with zero server uploads.
   engine: pdf
@@ -1595,7 +1595,7 @@
   kind: pdf
   slug: compress-pdf
   name: Compress PDF
-  title: Compress PDF Online - Reduce File Size | ZixTool
+  title: "Compress PDF Online and Compare File Sizes"
   subtitle: Optimize and compress PDF document size locally in browser memory.
   description: Compress PDF files free online in your browser. Reduce PDF document file size for email and portal uploads without uploading to third-party servers.
   engine: pdf
@@ -1644,7 +1644,7 @@
   kind: finance
   slug: emi-calculator
   name: EMI Calculator
-  title: EMI Calculator Online – Home, Car & Personal Loan | ZixTool
+  title: "EMI Calculator for Home, Car and Personal Loans"
   subtitle: Calculate monthly loan EMI payments with detailed amortization schedules.
   description: Free online EMI calculator. Estimate monthly loan payments, total interest costs, and full repayment schedules with 100% client-side privacy.
   engine: finance
@@ -1693,7 +1693,7 @@
   kind: finance
   slug: sip-calculator
   name: SIP Calculator
-  title: SIP Calculator - Mutual Fund Investment | ZixTool
+  title: "SIP Calculator for Monthly Investment Estimates"
   subtitle: Calculate wealth returns on systematic investment plans with compounding.
   description: Free online SIP calculator. Calculate mutual fund maturity values, total invested capital, and estimated wealth gain with compound interest projections.
   engine: finance
@@ -1742,7 +1742,7 @@
   kind: finance
   slug: bmi-calculator
   name: BMI Calculator
-  title: BMI Calculator - Free Body Mass Index Check | ZixTool
+  title: "BMI Calculator for Body Mass Index"
   subtitle: Calculate your Body Mass Index with Metric and Imperial unit support.
   description: Free online BMI calculator. Check your Body Mass Index using kg/cm or lbs/ft-in with official WHO weight categories and healthy weight targets.
   engine: finance
@@ -1778,7 +1778,7 @@
   kind: finance
   slug: currency-converter
   name: Currency Converter
-  title: Currency Converter - Live Exchange Rates | ZixTool
+  title: "Currency Converter for Exchange Rate Calculations"
   subtitle: Convert money between international currencies with live benchmark rates.
   description: Free online currency converter. Convert exchange rates between USD, EUR, GBP, INR, JPY, CAD, AUD and more with instant in-browser calculation.
   engine: finance
@@ -1814,7 +1814,7 @@
   kind: calculator
   slug: scientific-calculator
   name: Scientific Calculator
-  title: Scientific Calculator - Free Online Math Tool
+  title: "Scientific Calculator for Powers and Trigonometry"
   subtitle: Compute trigonometry, powers, logarithms, and scientific math in browser.
   description: Free online scientific calculator. Perform trigonometric, logarithmic, square root, exponent, and parenthetical calculations directly in your browser.
   engine: calculator
@@ -1851,7 +1851,7 @@
   kind: media
   slug: online-timer
   name: Online Timer
-  title: Online Timer & Stopwatch - Free & Accurate | ZixTool
+  title: "Online Timer for a Countdown in Minutes and Seconds"
   subtitle: Accurate full-screen countdown timer with Pomodoro and audio alerts.
   description: Free online timer and millisecond stopwatch. Use Pomodoro study presets, audio alerts, and accurate split lap tracking directly in your web browser.
   engine: media
@@ -1889,7 +1889,7 @@
   kind: media
   slug: text-to-speech
   name: Text to Speech
-  title: Text to Speech Online - Natural Voice Reader
+  title: "Text to Speech Online for Reading Text Aloud"
   subtitle: Convert text to spoken voice audio directly in your browser without uploads.
   description: Free online text to speech converter. Listen to written articles, documents, and notes with customizable voice accents, speech rate, and pitch controls.
   engine: media
@@ -1925,7 +1925,7 @@
   kind: media
   slug: screen-recorder
   name: Screen Recorder
-  title: Online Screen Recorder - Free, No Watermark | ZixTool
+  title: "Online Screen Recorder for Browser Screen Capture"
   subtitle: Record full screen, app windows, and browser tabs with audio in browser.
   description: Free online screen recorder with audio. Capture desktop screens, browser tabs, or app windows without watermarks, plugins, or third-party server uploads.
   engine: media
@@ -1961,7 +1961,7 @@
   kind: developer
   slug: jwt-decoder
   name: JWT Decoder
-  title: JWT Decoder Online - Safe In-Browser Tool | ZixTool
+  title: "JWT Decoder Online for Token Headers and Payloads"
   subtitle: Decode JSON Web Tokens locally. Secrets and tokens never leave your device.
   description: Free online JWT decoder. Inspect JSON Web Token headers, payload claims, and expiration timestamps with complete privacy and zero server transmission.
   engine: developer
@@ -2000,7 +2000,7 @@
   kind: developer
   slug: unit-converter
   name: Unit Converter
-  title: Unit Converter - Length, Weight & Temp | ZixTool
+  title: "Unit Converter for Length, Weight and Temperature"
   subtitle: Convert units of length, mass, temperature, and digital data storage.
   description: Free online unit converter. Convert metric and imperial measurements for length, weight, temperature, and digital data storage in your browser.
   engine: developer
@@ -2036,7 +2036,7 @@
   kind: developer
   slug: my-ip-address
   name: My IP & Client Diagnostic
-  title: My IP Address & Browser Diagnostics | ZixTool
+  title: "What Is My IP Address? Public IP Lookup"
   subtitle: Check your browser network configuration, screen display, and user agent.
   description: Free online my IP address diagnostic tool. Check your public IP, screen resolution, WebGL GPU, timezone, and user agent with 100% in-browser privacy.
   engine: developer
@@ -2072,7 +2072,7 @@
   kind: media
   slug: photo-editor
   name: Photo Editor
-  title: Online Photo Editor - Filters & Color | ZixTool
+  title: "Online Photo Editor for Image Filters and Adjustments"
   subtitle: Adjust brightness, contrast, grayscale, and color balance directly in browser.
   description: Free online photo editor. Fine-tune image brightness, contrast, saturation, and filters with live canvas preview, zero watermarks, and 100% privacy.
   engine: media
@@ -2111,7 +2111,7 @@
   kind: media
   slug: meme-generator
   name: Meme Generator
-  title: Free Meme Generator - Custom Captions | ZixTool
+  title: "Meme Generator for Photos and Custom Captions"
   subtitle: Create viral memes with custom top and bottom captions directly in browser.
   description: Free online meme generator. Add classic Impact font captions with black outlines to your photos and create custom memes with zero watermarks or uploads.
   engine: media
@@ -2148,7 +2148,7 @@
   kind: generator
   slug: random-number-generator
   name: Random Number Generator
-  title: Random Number Generator - Custom Ranges | ZixTool
+  title: "Random Number Generator with Minimum and Maximum"
   subtitle: Generate cryptographically fair random numbers, dice rolls, and lottery picks.
   description: Free online random number generator. Generate true random numbers within custom ranges, unique non-repeating lists, and lottery numbers in your browser.
   engine: generator
@@ -2185,7 +2185,7 @@
   kind: generator
   slug: fancy-text-generator
   name: Fancy Text Generator
-  title: Fancy Text Generator - Stylish Fonts Online | ZixTool
+  title: "Fancy Text Generator for Names and Social Profiles"
   subtitle: Convert plain text into aesthetic Unicode fonts with one-click clipboard copy.
   description: Free online fancy text generator. Convert normal text into stylish Unicode fonts for Instagram bios, Discord, and TikTok with instant 1-click copy.
   engine: generator
@@ -2221,7 +2221,7 @@
   kind: generator
   slug: barcode-generator
   name: Barcode Generator
-  title: Barcode Generator Online - Free & Custom | ZixTool
+  title: "Barcode Generator Online for Scannable Labels"
   subtitle: Generate high-resolution optical barcodes directly in your web browser.
   description: Free online barcode generator. Create scannable linear barcodes for inventory, retail packaging, and book tracking with instant high-resolution PNG download.
   engine: generator
@@ -2257,7 +2257,7 @@
   kind: media
   slug: typing-test
   name: Typing Speed Test
-  title: Typing Test - Free 60s WPM Speed Test | ZixTool
+  title: "Typing Test Online for WPM and Accuracy"
   subtitle: Test your keyboard typing speed, words per minute (WPM), and accuracy.
   description: Free online typing test. Measure your keyboard typing speed in words per minute (WPM) and accuracy percentage with instant real-time feedback in your browser.
   engine: media
@@ -2294,7 +2294,7 @@
   kind: converter
   slug: compress-image-to-20kb
   name: Compress Image to 20KB
-  title: Compress Image to 20KB - Photo Compressor | ZixTool
+  title: "Compress Image to 20KB for Signature Uploads"
   subtitle: Reduce photo and signature file size to under 20KB for online forms and portals.
   description: Compress image to 20KB online for free. Reduce signature and photo sizes under 20KB for government forms, bank exams, and portals. Zero server uploads.
   from: image
@@ -2339,7 +2339,7 @@
   kind: finance
   slug: loan-calculator
   name: Loan Calculator
-  title: Loan Calculator - Monthly Payment & Schedule
+  title: "Loan Calculator for Monthly Payments and Interest"
   subtitle: Estimate monthly loan payments, total interest, and complete payoff schedules.
   description: Free online loan calculator. Estimate monthly loan payments, total interest costs, and full amortization schedules with 100% in-browser privacy.
   engine: finance
@@ -2379,7 +2379,7 @@
   kind: finance
   slug: mortgage-calculator
   name: Mortgage Calculator
-  title: Mortgage Calculator - Home Loan Payment | ZixTool
+  title: "Mortgage Calculator for Monthly Home Loan Payments"
   subtitle: Estimate your monthly mortgage payments, interest breakdown, and amortization.
   description: Free online mortgage calculator to estimate monthly home loan payments, interest breakdown, and complete amortization schedule in seconds with zero ads.
   engine: finance
@@ -2418,7 +2418,7 @@
   kind: text
   slug: character-counter
   name: Character Counter
-  title: Character Counter - Free Online Character Count
+  title: "Character Counter with and without Spaces"
   subtitle: Count characters, words, sentences, and paragraphs in real time as you type.
   description: Free online character counter to measure characters with spaces, letters, words, and SMS segments. Accurate, real-time, and 100% private in-browser analysis.
   engine: text
@@ -2458,7 +2458,7 @@
   kind: calculator
   slug: celsius-to-fahrenheit
   name: Celsius to Fahrenheit
-  title: Celsius to Fahrenheit - Temperature Converter
+  title: "Celsius to Fahrenheit Calculator and Conversion Formula"
   subtitle: Convert Celsius to Fahrenheit (°C to °F) instantly with accurate formula.
   description: Convert Celsius to Fahrenheit (°C to °F) online. Fast temperature conversion formula, physical reference points, and 100% in-browser privacy.
   engine: developer
@@ -2497,7 +2497,7 @@
   kind: calculator
   slug: online-calculator
   name: Online Calculator
-  title: Online Calculator - Free Quick Math Tool | ZixTool
+  title: "Online Calculator for Everyday Arithmetic"
   subtitle: Free full-featured desktop calculator for quick math, addition, and division.
   description: Free online calculator for quick math, addition, subtraction, multiplication, and division. Fast, responsive, and easy to use on mobile and desktop.
   engine: calculator
@@ -2536,7 +2536,7 @@
   kind: media
   slug: online-stopwatch
   name: Online Stopwatch
-  title: Online Stopwatch - Free Full Screen Timer | ZixTool
+  title: "Online Stopwatch for Timing Elapsed Time"
   subtitle: Precise digital stopwatch with lap times, split intervals, and clean display.
   description: Free online stopwatch with lap times, split intervals, and clean digital display. Accurate to milliseconds, perfect for sports, study, and workouts.
   engine: media
@@ -2576,7 +2576,7 @@
   kind: converter
   slug: image-compressor
   name: Image Compressor
-  title: Image Compressor - Reduce Image Size Online | ZixTool
+  title: "Image Compressor Online for KB and MB Size Targets"
   subtitle: Compress JPG, PNG, and WebP images online with customizable quality and size.
   description: Free online image compressor. Reduce JPG, PNG, and WebP file sizes with custom KB limits and quality controls in your browser with zero uploads.
   from: image
@@ -2621,7 +2621,7 @@
   kind: developer
   slug: color-picker
   name: Color Picker
-  title: Color Picker - Hex, RGB & HSL Code Finder | ZixTool
+  title: "Color Picker for HEX and RGB Color Codes"
   subtitle: Interactive color wheel, palette swatches, and CSS code converter.
   description: Free online color picker. Pick colors from palette, convert HEX, RGB, and HSL codes, and copy clean CSS color values with one click in your browser.
   engine: developer
@@ -2660,7 +2660,7 @@
   kind: developer
   slug: base64-encoder
   name: Base64 Encode & Decode
-  title: Base64 Encode & Decode - Free Online Tool | ZixTool
+  title: "Base64 Encoder and Decoder for Text"
   subtitle: Convert plain text and strings to Base64 or decode Base64 data instantly.
   description: Free online Base64 encoder and decoder. Convert text and files to Base64 or decode Base64 data back to original text instantly with zero server uploads.
   engine: developer
@@ -2711,7 +2711,7 @@
   kind: calculator
   slug: gpa-calculator
   name: GPA Calculator
-  title: GPA Calculator - College & High School Tool | ZixTool
+  title: "GPA Calculator for Grades and Course Credits"
   subtitle: Calculate cumulative and semester grade point averages on a 4.0 scale.
   description: Free online GPA calculator to calculate college and high school semester and cumulative GPA on standard 4.0 and weighted 5.0 scales with 100% privacy.
   engine: calculator
@@ -2750,7 +2750,7 @@
   kind: finance
   slug: gst-calculator
   name: GST Calculator
-  title: GST Calculator - Online Tax Calculator Free | ZixTool
+  title: "GST Calculator for Tax-Inclusive and Exclusive Prices"
   subtitle: Calculate GST inclusive and exclusive amounts with CGST and SGST splits.
   description: Free online GST calculator. Calculate GST inclusive and exclusive amounts, SGST, CGST rates (5%, 12%, 18%, 28%) with instant net and gross tax breakdowns.
   engine: finance
@@ -2789,7 +2789,7 @@
   kind: calculator
   slug: aspect-ratio-calculator
   name: Aspect Ratio Calculator
-  title: Aspect Ratio Calculator - 16:9 & 4:3 Tool | ZixTool
+  title: "Aspect Ratio Calculator for Pixel Dimensions"
   subtitle: Calculate missing photo, video, and screen dimensions with live visual preview.
   description: Free online aspect ratio calculator. Calculate dimensions for 16:9, 4:3, 1:1, 21:9 screen resolutions, photos, and video formats with live visual preview.
   engine: calculator
@@ -2828,7 +2828,7 @@
   kind: text
   slug: lorem-ipsum-generator
   name: Lorem Ipsum Generator
-  title: Lorem Ipsum Generator - Free Dummy Text | ZixTool
+  title: "Lorem Ipsum Generator for Placeholder Text"
   subtitle: Generate placeholder Latin dummy text for web development and UI mockups.
   description: Free online Lorem Ipsum generator. Create placeholder Latin dummy text, paragraphs, sentences, and words for UI mockups, Figma, and HTML with 100% privacy.
   engine: text
@@ -2868,7 +2868,7 @@
   kind: media
   slug: pomodoro-timer
   name: Pomodoro Timer
-  title: Pomodoro Timer - 25 Minute Study Timer | ZixTool
+  title: "Pomodoro Timer Online for Focus Sessions and Breaks"
   subtitle: 25-minute focus intervals and 5-minute breaks for study productivity.
   description: Free online Pomodoro timer for study and focus. Features 25-minute intervals, 5-minute breaks, audio notifications, and clean full-screen countdown clock.
   engine: media
@@ -2907,7 +2907,7 @@
   kind: pdf
   slug: pdf-to-jpg
   name: PDF to JPG
-  title: PDF to JPG Converter - Free & High Quality | ZixTool
+  title: "PDF to JPG Conversion Availability and Alternatives"
   subtitle: Extract PDF pages into crisp high-resolution JPEG photos without uploads.
   description: Convert PDF to JPG online free in your browser with high quality. Extract PDF pages into crisp JPG photos and download as ZIP with zero server uploads.
   engine: pdf
@@ -2947,7 +2947,7 @@
   kind: media
   slug: crop-image
   name: Crop Image
-  title: Crop Image Online - Free Image Cropper | ZixTool
+  title: "Crop Image Online for Square and Rectangular Photos"
   subtitle: Crop JPG, PNG, and WebP images online with custom aspect ratios.
   description: Free online crop image tool. Crop JPG, PNG, and WebP photos with custom aspect ratios, locked proportions, zero uploads, and 100% privacy.
   engine: media
@@ -2987,7 +2987,7 @@
   kind: pdf
   slug: rotate-pdf
   name: Rotate PDF
-  title: Rotate PDF Online - Free & Permanent | ZixTool
+  title: "Rotate PDF Pages Online and Save the Result"
   subtitle: Rotate PDF pages 90, 180, or 270 degrees permanently online.
   description: Rotate PDF pages online for free. Permanently change PDF page orientation clockwise or counterclockwise in your browser with zero server uploads.
   engine: pdf
@@ -3038,7 +3038,7 @@
   kind: text
   slug: diff-checker
   name: Diff Checker
-  title: Diff Checker - Text Difference Finder
+  title: "Text Diff Checker to Compare Two Versions"
   subtitle: Compare two text files side by side and highlight differences.
   description: Free online diff checker to compare text online and find differences instantly. Spot changes, added lines, and removed words side by side with 100% privacy.
   engine: text
@@ -3078,7 +3078,7 @@
   kind: finance
   slug: compound-interest-calculator
   name: Compound Interest Calculator
-  title: Compound Interest Calculator & Growth Chart | ZixTool
+  title: "Compound Interest Calculator for Investment Growth"
   subtitle: Calculate compound interest, future balance, and investment growth.
   description: Free compound interest calculator. Forecast your savings and investment growth with customizable compounding intervals and complete payment schedules.
   engine: finance
@@ -3127,7 +3127,7 @@
   kind: developer
   slug: url-encoder-decoder
   name: URL Encoder Decoder
-  title: URL Encoder Decoder - Percent Encoding
+  title: "URL Encoder and Decoder for Query Parameters"
   subtitle: Encode and decode URLs and query parameters online for free.
   description: Free online URL encoder decoder. Safely percent-encode query strings and decode encoded URIs with RFC 3986 compliance and 100% in-browser privacy.
   engine: developer
@@ -3167,7 +3167,7 @@
   kind: developer
   slug: uuid-generator
   name: UUID Generator
-  title: UUID Generator - Free Online v4 GUIDs
+  title: "UUID Generator Online for Version 4 Identifiers"
   subtitle: Generate random version 4 UUIDs and GUIDs in your browser.
   description: Free online UUID generator. Generate cryptographically secure v4 UUIDs and GUIDs with bulk export, custom hyphens, uppercase formatting, and 100% privacy.
   engine: developer
@@ -3207,7 +3207,7 @@
   kind: developer
   slug: hash-generator
   name: Hash Generator
-  title: Hash Generator - MD5, SHA-256 & SHA-512
+  title: "Hash Generator Online for Text Checksums"
   subtitle: Compute cryptographic checksums and hashes directly in browser.
   description: Free online hash generator. Compute MD5, SHA-1, SHA-256, and SHA-512 cryptographic hashes and checksums instantly in your browser with 100% privacy.
   engine: developer
@@ -3247,7 +3247,7 @@
   kind: text
   slug: markdown-to-html
   name: Markdown to HTML
-  title: Markdown to HTML Converter Online
+  title: "Markdown to HTML Converter for Formatted Text"
   subtitle: Convert Markdown syntax to clean HTML markup with live preview.
   description: Free online Markdown to HTML converter with real-time live preview. Converts GitHub Flavored Markdown (GFM), tables, math, and code blocks with 100% privacy.
   engine: text
@@ -3287,7 +3287,7 @@
   kind: developer
   slug: json-to-csv
   name: JSON to CSV
-  title: JSON to CSV Converter - Free Online
+  title: "JSON to CSV Converter for Spreadsheet Imports"
   subtitle: Convert JSON objects and arrays into downloadable CSV files.
   description: Free online JSON to CSV converter. Convert JSON array objects and API payloads to Excel-ready CSV spreadsheets with nested flattening and 100% privacy.
   engine: developer
@@ -3327,7 +3327,7 @@
   kind: developer
   slug: csv-to-json
   name: CSV to JSON
-  title: CSV to JSON Converter - Free Online
+  title: "CSV to JSON Converter for Rows and Records"
   subtitle: Convert CSV tabular records into structured JSON array format.
   description: Free online CSV to JSON converter. Convert spreadsheets and CSV files into structured JSON objects with auto-type inference and 100% browser privacy.
   engine: developer
@@ -3367,7 +3367,7 @@
   kind: converter
   slug: jpeg-to-jpg
   name: JPEG to JPG Converter
-  title: JPEG to JPG Converter - Free & Instant | ZixTool
+  title: "JPEG to JPG Converter for File Extension Compatibility"
   subtitle: Convert .jpeg photos to universal .jpg format in your browser. Zero uploads.
   description: Convert JPEG to JPG free online in your browser. Batch convert .jpeg images to .jpg format with original quality preserved and zero server uploads.
   from: jpeg
@@ -3416,7 +3416,7 @@
   kind: converter
   slug: photo-compressor
   name: Photo Compressor
-  title: Photo Compressor - Reduce Photo Size | ZixTool
+  title: "Photo Compressor Online for Smaller Photo Files"
   subtitle: Compress photos and reduce file sizes online in your browser. 100% private in RAM.
   description: Free online photo compressor and size reducer. Shrink JPG, PNG, and WebP photo file sizes below 20KB, 50KB, or 100KB with zero uploads and full privacy.
   from: image
@@ -3465,7 +3465,7 @@
   kind: converter
   slug: jpg-compressor
   name: JPG Compressor
-  title: JPG Compressor - Reduce JPG File Size | ZixTool
+  title: "JPG Compressor for Reducing JPEG File Size"
   subtitle: Compress JPG and JPEG photos online. Choose target KB limits or custom quality in browser RAM.
   description: Free online JPG compressor. Reduce JPEG file size by up to 80% with adjustable quality and target KB limits in your browser. Zero server uploads.
   from: jpg
@@ -3511,7 +3511,7 @@
   kind: converter
   slug: passport-photo-resizer
   name: Passport Photo Resizer
-  title: Passport Photo Resizer & Compressor | ZixTool
+  title: "Passport Photo Resizer for Photo Dimensions"
   subtitle: Resize and compress photos and signatures for passport portals, exams, and ID cards online.
   description: Resize and compress passport size photos and signatures online free. Meet exact KB and dimension limits for government portals, exams, and ID cards.
   from: image
@@ -3557,7 +3557,7 @@
   kind: media
   slug: background-remover
   name: Background Remover
-  title: Background Remover - Remove BG Online | ZixTool
+  title: "Image Background Remover for Transparent Cutouts"
   subtitle: Free online background remover to create transparent PNG cutouts in browser RAM.
   description: Free online background remover. Remove image backgrounds in your browser, create transparent PNG cutouts, and export with zero server uploads.
   from: image
