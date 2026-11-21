@@ -19,7 +19,7 @@ jobs:
           node-version: 24
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+        run: npm install --global "$(node -p 'require("./package.json").packageManager')"
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
