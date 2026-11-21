@@ -1259,14 +1259,14 @@
   name: Word Counter
   title: Word Counter - Free Online Tool | ZixTool
   subtitle: Count words, characters, sentences, and estimated reading time.
-  description: Free online word counter to calculate word count, character count with spaces, reading time, and keyword density in real time with 100% privacy.
+  description: Count words and characters as you type. Compare totals with and without whitespace, and estimate how long a draft takes to read or speak aloud.
   engine: text-word-count
   options: []
   presets: []
   content: src/content/tools/word-counter.mdx
   faq:
     - q: How does this tool count words?
-      a: Words are counted based on standard whitespace and punctuation boundaries across plain text.
+      a: Whitespace separates words. Hyphenated terms count as one item when there are no spaces around the hyphen.
     - q: Does character count include spaces?
       a: "Both metrics are displayed: total characters including spaces, and characters excluding whitespace."
     - q: How is reading time calculated?

@@ -1,128 +1,26 @@
 ---
 title: "Word Counter - Free Online Tool | ZixTool"
 subtitle: "Count words, characters, sentences, and estimated reading time."
-description: "Free online word counter to calculate word count, character count with spaces, reading time, and keyword density in real time with 100% privacy."
+description: "Count words and characters as you type. Compare totals with and without whitespace, and estimate how long a draft takes to read or speak aloud."
 last_reviewed: "2026-11-19"
 reviewer: "ZixTool Editorial Team"
 reviewed: true
 ---
 
-Use our free **word counter** to calculate precise word count online, character count with spaces, sentence frequency, syllable density, Flesch reading ease scores, and estimated speaking/reading durations as you type. Whether you are drafting a university master's thesis, optimizing Google SEO meta descriptions and title tags, pacing a keynote speech or video script, or fitting copy into strict social media character limits, ZixTool delivers instant, zero-latency text metrics directly in your web browser with complete client-side data privacy.
+## How many words are in my draft?
 
-## How to Check Your Word Count Online in 3 Steps
+Paste the text you plan to submit. Include a heading, caption or reference list only if your publisher counts it toward the limit. The totals update as you edit, so you can remove a sentence and see how much space you recover.
 
-Analyzing your text with our in-browser counter requires zero software downloads or account registrations:
+The counter splits on whitespace. Spaces, tabs and line breaks separate words. Multiple spaces between two words still give a total of two. Try ice cream and then ice-cream. The first has two words and the second has one. A standalone dash surrounded by spaces counts as a separate item. For languages that do not separate words with spaces, this method can undercount the words in a passage.
 
-1. **Type or Paste Your Document:** Paste your text into the interactive editor above using `Ctrl+V` (or `Cmd+V` on macOS), or begin typing your draft directly into the workspace.
-2. **Review Real-Time Metrics:** Observe immediate updates to total word count, characters with spaces, characters excluding whitespace, sentence count, paragraphs, and reading duration.
-3. **Inspect Density & Pacing:** Review keyword frequency percentages, psychometric readability indices, and speaking time projections to ensure your content meets strict submission requirements and optimal SEO thresholds.
+## Characters with and without spaces
 
-![Word Counter & Psychometric Readability Pipeline Diagram](/images/tools/word-counter-metrics.svg)
+For the phrase red fox, the total is seven characters including the space and six excluding it. A line break also counts toward the total. The count excluding whitespace removes it. The character total uses JavaScript string length, so some emoji contribute more than one unit. When a form enforces a strict limit, confirm the final count in the destination field.
 
----
+## Estimate a reading or speaking time
 
-## The Mechanics of Accurate Word Counting: UAX #29 vs Regex Splitting
+The reading estimate divides the word total by 200. The speaking estimate uses 130 words per minute. Each rounds up to whole minutes. For a 400-word script, the estimates are two minutes to read and four minutes to speak. Pause lengths and delivery speed vary, so time a rehearsal for a scheduled talk.
 
-Most basic online counting tools rely on simplistic regular expression splits such as `text.split(/\s+/)`. While functional for basic English prose, this naive approach fails across numerous real-world typographic scenarios:
+## Why two editors can disagree
 
-- **Hyphenated Compounds:** Words like *"state-of-the-art"*, *"end-to-end"*, or *"cost-effective"* are treated differently across publishing houses. Standard academic guidelines count hyphenated compounds as single lexical units unless separated by spaces or em dashes (`—`).
-- **Apostrophes and Contractions:** Contractions like *"don't"*, *"we've"*, or possessives like *"O'Connor's"* contain internal punctuation that basic counters mistakenly fragment into multiple words.
-- **CJK Characters (Chinese, Japanese, Korean):** Ideographic writing systems do not use whitespace delimiters between words. In Mandarin Chinese or Japanese Kanji, every ideographic character conveys distinct semantic meaning. Advanced text analysis implements Unicode Standard Annex #29 (UAX #29) word boundary rules to accurately segment multi-lingual text.
-- **Emoji Sequences and Zero-Width Joiners (ZWJ):** In JavaScript, standard `.length` counts UTF-16 code units rather than visual characters. A complex family emoji like 👨‍👩‍👧‍👦 consists of four distinct Unicode character points joined by invisible Zero-Width Joiners (`U+200D`), reporting up to 11 code units in naive counters. ZixTool leverages the ECMAScript `Intl.Segmenter` API to ensure grapheme clusters and emojis are counted with typographic precision.
-
----
-
-## Publishing, Academic, and Social Media Limits Table
-
-The comprehensive reference table below details strict character and word boundaries across digital platforms, academic admissions, and professional publishers:
-
-| Publishing Medium / Platform | Hard Metric Limit | Optimal Recommended Length | Purpose & Audience Impact |
-| :--- | :--- | :--- | :--- |
-| **Google Search Title Tag** | ~60 Characters (600px) | 50 to 58 Characters | Prevents SERP snippet truncation on desktop and mobile |
-| **Google Meta Description** | ~160 Characters (960px) | 120 to 155 Characters | Maximizes organic click-through rate (CTR) in search results |
-| **X (Twitter) Standard Post** | 280 Characters | 120 to 200 Characters | Encourages retweets, quote shares, and user replies |
-| **LinkedIn Feed Post** | 3,000 Characters | 150 to 300 Words (~1,200 chars) | Expands above the "see more" cutoff for higher dwell time |
-| **Instagram Post Caption** | 2,200 Characters | 125 to 150 Characters | Keeps primary call-to-action visible before fold truncation |
-| **Common App College Essay** | 650 Words (Hard Cap) | 500 to 650 Words | Standard undergraduate admissions personal statement |
-| **Standard Press Release** | 400 to 800 Words | 450 to 550 Words | Standard format for wire distribution (PR Newswire, BusinessWire) |
-| **Short Story / Fiction Chapter** | 2,000 to 5,000 Words | 2,500 to 3,500 Words | Optimal narrative pacing and reader engagement |
-| **B2B Authority Blog Post** | No Hard Limit | 1,500 to 2,500 Words | Balances comprehensive search intent coverage and readability |
-
----
-
-## Readability Mathematics: Flesch Reading Ease & Grade Level
-
-Writing clear, engaging copy requires balancing sentence length and vocabulary complexity. ZixTool evaluates your prose using standard psychometric readability formulas developed for the United States Navy and modern publishing houses:
-
-### 1. Flesch Reading Ease (FRE)
-Developed in 1948 by Rudolf Flesch, this formula measures how easily an adult reader can comprehend a written passage on a $0 - 100$ scale:
-
-$$\text{FRE} = 206.835 - 1.015 \left(\frac{\text{Total Words}}{\text{Total Sentences}}\right) - 84.6 \left(\frac{\text{Total Syllables}}{\text{Total Words}}\right)$$
-
-- **Score 90–100:** Very Easy to Read (5th-grade level; conversational prose, children's books).
-- **Score 60–70:** Standard Plain English (8th to 9th-grade level; recommended for consumer web content, marketing copy, and news journalism).
-- **Score 30–50:** Difficult (College level; academic papers, technical documentation, business whitepapers).
-- **Score 0–29:** Very Confusing / Dense (Graduate research, legal contracts, regulatory filings).
-
-### 2. Flesch-Kincaid Grade Level (FKGL)
-Standardized by the US Military under MIL-STD-1472, this formula converts readability directly into United States educational schooling grade levels:
-
-$$\text{FKGL} = 0.39 \left(\frac{\text{Total Words}}{\text{Total Sentences}}\right) + 11.8 \left(\frac{\text{Total Syllables}}{\text{Total Words}}\right) - 15.59$$
-
-A score of $8.2$, for example, indicates that an eighth-grade student ($13 - 14\text{ years old}$) can comfortably understand the passage without dictionary lookups. Major media publications (such as *The New York Times*, *The Wall Street Journal*, and *BBC News*) deliberately calibrate editorial prose between grades $7$ and $9$ to maximize audience reach.
-
----
-
-## Speech & Audio Pacing: Word Count to Time Conversion
-
-Whether rehearsing a TED talk, recording a podcast intro, producing YouTube voiceovers, or scripting a corporate presentation, translating written word count into spoken elapsed time is critical:
-
-| Speaking Pacing Category | Average Speed (WPM) | Duration for 500 Words | Recommended Application |
-| :--- | :--- | :--- | :--- |
-| **Slow & Deliberate Pacing** | $110 - 120\text{ WPM}$ | 4 min 15 sec | Technical training, complex statistics, ceremonial speeches |
-| **Keynote & TED Talk Pacing** | $130 - 140\text{ WPM}$ | 3 min 45 sec | Engaging public presentations, storytelling, investor pitches |
-| **Audiobooks & Commercials** | $150 - 160\text{ WPM}$ | 3 min 15 sec | Professional narration, radio spots, explanatory video voiceovers |
-| **Conversational Podcasting** | $160 - 180\text{ WPM}$ | 2 min 50 sec | Casual interviews, YouTube commentary, sports broadcasting |
-| **Rapid Reading (Silent)** | $230 - 260\text{ WPM}$ | 1 min 55 sec | Average adult silent reading comprehension of blog posts |
-
-ZixTool automatically calculates both **Silent Reading Time** (calibrated at $250\text{ WPM}$) and **Speaking Duration** (calibrated at $130\text{ WPM}$) so you can time your rehearsals with precision.
-
----
-
-## Keyword Density & Search Engine Optimization (SEO) Analysis
-
-Search engines like Google rely on Natural Language Processing (NLP) and vector embeddings to understand the topical authority of web pages. Tracking keyword density ensures your copy hits optimal semantic frequencies without crossing into spam penalties:
-
-$$\text{Keyword Density (\%)} = \left(\frac{\text{Frequency of Target Term}}{\text{Total Word Count}}\right) \times 100$$
-
-- **Optimal Keyword Threshold ($1.0\% - 2.5\%$):** Mentioning your primary keyphrase naturally 2 to 3 times per 500 words reinforces topical relevance without triggering algorithmic penalties.
-- **The Keyword Stuffing Hazard ($>3.5\%$):** Repeating phrases artificially produces unnatural cadence, degrades reader dwell time, and risks Google Search spam policy penalties.
-- **Topical Clustering & LSI Keywords:** Rather than obsessively repeating a single phrase, incorporate semantically related synonyms and co-occurring entity terms across your headings and body paragraphs.
-
----
-
-## 100% Client-Side Privacy: Your Private Writing Stays on Your Device
-
-Unpublished book manuscripts, legal contracts, confidential corporate memos, and academic essays represent proprietary creative intellectual property. Uploading your drafts to unverified cloud counters risks plagiarism, corporate data leaks, or unconsented AI training scraping.
-
-ZixTool operates under an ironclad **100% Client-Side Security Model**:
-- All text processing, regular expressions, syllable counting, and readability indices execute exclusively in your browser's private memory sandbox.
-- Your writing is never transmitted across the network, stored on remote databases, or logged on servers.
-- Zero server logs, zero text caching, and zero third-party tracking.
-- Works entirely offline—you can disconnect your internet and the word counter continues to function flawlessly in real time.
-
----
-
-## Frequently Asked Questions
-
-### Does ZixTool count hyphenated words as one word or two?
-ZixTool treats standard hyphenated compound terms (such as *"state-of-the-art"* or *"well-known"*) as single words, conforming to the modern Chicago Manual of Style and MLA academic publishing guidelines. If a space or em dash (`—`) separates the terms, they are counted as separate words.
-
-### Are numbers and currency symbols counted as words?
-Standalone digits and numbers (e.g., `2026`, `100`, `$45.00`) are counted as individual words because they convey distinct lexical value in spoken language. Isolated punctuation marks (such as commas, periods, and question marks) are excluded from the word count.
-
-### How is the estimated reading time calculated?
-Silent reading time is calculated using the scientifically validated benchmark of $250\text{ words per minute}$ ($4.16\text{ words per second}$), reflecting the average comprehension speed of an adult reader. Spoken duration is calculated at $130\text{ words per minute}$, the standard pacing for clear, unhurried public presentations.
-
-### Is there a character or word limit in this tool?
-No. ZixTool handles lengthy documents containing over $100,000\text{ words}$ (including full-length fiction book manuscripts and PhD dissertations) without lag or browser freezing, thanks to optimized single-pass tokenization algorithms.
+A difference of a few words often comes from hyphens, headings or punctuation. Copy the same paragraph into both editors, then compare one sentence at a time. For a character limit, check whether each editor includes trailing spaces and line breaks. When comparing revisions, use the [text diff checker](/diff-checker/) to locate the words that changed.
