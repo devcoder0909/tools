@@ -9,6 +9,7 @@ import GeneratorShell from '../components/GeneratorShell';
 import PdfShell from '../components/PdfShell';
 import FinanceShell from '../components/FinanceShell';
 import MediaShell from '../components/MediaShell';
+import WhatsAppMediaSaver from '../components/WhatsAppMediaSaver';
 import DeveloperShell from '../components/DeveloperShell';
 import BackgroundRemoverShell from '../components/BackgroundRemoverShell';
 import AdSlot from '../components/AdSlot.astro';
@@ -192,7 +193,9 @@ if (tool.targetBytes) {
     </div>
 
     <!-- 3. The working tool above the fold -->
-    {tool.id === 'background-remover' ? (
+    {tool.id === 'whatsapp-dp-status-downloader' ? (
+      <WhatsAppMediaSaver client:load />
+    ) : tool.id === 'background-remover' ? (
       <BackgroundRemoverShell client:load toolId={tool.id} toolName={tool.name} />
     ) : tool.kind === 'generator' || ['qr-code-generator', 'password-generator', 'barcode-generator', 'random-number-generator', 'fancy-text-generator'].includes(tool.id) ? (
       <GeneratorShell client:load toolId={tool.id} toolName={tool.name} />

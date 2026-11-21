@@ -2085,6 +2085,7 @@
     - q: Can I edit photos without an internet connection?
       a: Yes. The photo editor runs entirely in client-side JavaScript and operates seamlessly offline.
   related:
+    - whatsapp-dp-status-downloader
     - color-picker
     - aspect-ratio-calculator
     - resize-image
@@ -2961,6 +2962,7 @@
     - q: Are my photos uploaded to a remote server?
       a: No. All cropping transformations occur locally inside your browser memory using HTML5 Canvas.
   related:
+    - whatsapp-dp-status-downloader
     - resize-image
     - photo-editor
     - meme-generator
@@ -3600,3 +3602,27 @@
     tier: 1
     sources: Researched keywords export & Google SERP seed analysis
     last_reviewed: "2026-11-17T00:00:00.000Z"
+
+- id: whatsapp-dp-status-downloader
+  slug: whatsapp-dp-status-downloader
+  kind: media
+  name: WhatsApp DP and Status Downloader
+  title: WhatsApp DP and Status Downloader for Photos and Videos
+  subtitle: Save a profile picture or status from a direct media link or a file you already have. No phone number or WhatsApp login is needed.
+  description: Save a WhatsApp DP, status photo or status video from a direct media link or local file. Preview the media and download a copy in its original format.
+  engine: media-saver
+  content: src/content/tools/whatsapp-dp-status-downloader.mdx
+  related: [crop-image, resize-image, photo-editor, image-compressor]
+  faq:
+    - q: Can I download a WhatsApp DP by phone number?
+      a: This tool accepts an image file or direct image URL. A phone number or chat invite does not supply the photo.
+    - q: Does the status saver keep video quality?
+      a: The download contains the same bytes as the supplied video. It preserves the available quality and cannot recover detail lost before sharing.
+  indexable: true
+  reviewed: true
+  last_reviewed: "2026-11-21"
+  lang: en
+  seo:
+    primary_kw: whatsapp status downloader
+    secondary_kws: [whatsapp dp download, whatsapp profile picture downloader, whatsapp status video saver, save status photo]
+    intent: tool
