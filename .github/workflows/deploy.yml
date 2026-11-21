@@ -1,4 +1,4 @@
-name: Deploy to Cloudflare Worker
+name: Verify Cloudflare release
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   deploy:
-    name: Build & Deploy
+    name: Build and verify production
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -29,15 +29,14 @@ jobs:
       - name: Build Static Site
         run: pnpm run build
 
-      - name: Deploy to Cloudflare Worker
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy --config wrangler.json
-
-      - name: Verify Published SEO Before Indexing Notifications
-        run: pnpm run seo:verify-live
+      # Cloudflare Workers Builds publishes main through its GitHub integration.
+      - name: Verify published URLs after Cloudflare deployment
+        run: |
+          for attempt in 1 2 3 4 5; do
+            if pnpm run seo:verify-live; then exit 0; fi
+            if [ "$attempt" -lt 5 ]; then sleep 30; fi
+          done
+          exit 1
 
       - name: Save Live SEO Report
         if: always()
