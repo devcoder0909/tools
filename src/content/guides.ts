@@ -128,6 +128,77 @@ Do not paste access tokens or unnecessary personal data into examples you intend
       { name: 'RFC 4180: common CSV format conventions', url: 'https://www.rfc-editor.org/rfc/rfc4180' },
     ],
   },
+  {
+    slug: 'restaurant-tipping-and-bill-splitting',
+    title: 'Restaurant Tipping and Bill Splitting Guide: Etiquette & Math',
+    description: 'Master restaurant tipping etiquette, pre-tax gratuity math, and fair bill splitting for groups. Learn standard tip percentages and avoid double-tipping.',
+    answer: 'Calculate tips on the pre-tax food subtotal using standard percentages (15% standard, 18% good, 20% exceptional). For groups, check for auto-gratuity before adding a tip, and split total cost evenly unless alcohol or orders vary substantially.',
+    updated: '2026-11-21',
+    tools: ['tip-calculator', 'percentage-calculator', 'discount-calculator'],
+    sections: [
+      {
+        id: 'pre-tax-standard',
+        title: 'Always calculate gratuity on the pre-tax food subtotal',
+        body: `When dining out, calculating gratuity on the correct baseline figure prevents overpaying while treating service staff fairly. Standard etiquette rules established by hospitality associations and etiquette authorities advise tipping on the **pre-tax subtotal** of food and beverage services. Sales tax is an obligatory municipal or state levy assessed by the government, not hospitality work performed by your server.
+
+Modern touchscreen point-of-sale terminals (such as Toast, Square, and Clover) frequently default their preset tip options ($18\%$, $20\%$, $25\%$) against the post-tax grand total. In metropolitan dining destinations where municipal sales taxes, hospitality fees, and liquor surcharges combine to exceed $10\%$, tipping on the post-tax sum increases your effective tip rate by an extra $2\%$ to $3\%$.
+
+To verify your tip baseline, locate the itemized line labeled *Subtotal* or *Food & Beverage* on your paper check. Use our free [Tip Calculator](/tip-calculator/) to compute exact pre-tax gratuities, or turn to our [Percentage Calculator](/percentage-calculator/) when calculating promotional percentages or non-standard dining discounts.`
+      },
+      {
+        id: 'standard-percentages',
+        title: 'Standard gratuity benchmarks by dining setting',
+        body: `Tipping expectations vary across service formats. While tipping remains voluntary in legal terms across North America, waitstaff in tipped occupations earn statutory sub-minimum base wages and rely on gratuities to earn a living wage:
+
+1. **Sit-Down Table Service:** $15\%$ represents standard baseline service, $18\%$ indicates attentive, prompt dining care, and $20\%$ to $25\%$ rewards exceptional hospitality, complex table maintenance, or fine dining course pacing.
+2. **Buffet Dining:** $10\%$ is customary when waitstaff clear plates, refill beverage carafes, and deliver bread baskets.
+3. **Food Delivery Couriers:** $15\%$ to $20\%$ of the food subtotal, with a minimum tip of $3.00 to $5.00 for inclement weather, long distances, or high-floor apartment deliveries.
+4. **Bartenders & Taprooms:** $1.00 to $2.00 per draft beer or glass of wine, and $2.00 to $3.00 (or $18\%$ to $20\%$ of the open tab) for handcrafted craft cocktails.
+5. **Takeout & Counter Service:** Tipping on counter pickup orders is entirely optional. Leaving loose change or $5\%$ to $10\%$ for large, intricate party orders shows courteous appreciation to back-of-house staging crews.
+
+If you are tracking promotional shopping savings or calculating coupon markdowns alongside your dining budget, our [Discount Calculator](/discount-calculator/) and full catalog of [online calculators](/calculators/) provide fast mathematical validation.`
+      },
+      {
+        id: 'mental-math-methods',
+        title: 'Fast mental math shortcuts to compute tips without a phone',
+        body: `You do not need a smartphone or calculator app to determine exact restaurant gratuities at the table. Three simple mental arithmetic tricks make tipping quick:
+
+- **The 10% Foundation Rule:** Shift the decimal point one position to the left. On an $\$84.00$ dining check, $10\%$ is immediately $\$8.40$.
+- **Doubling for 20% (Great Hospitality):** Multiply your $10\%$ number by $2$. For an $\$84.00$ subtotal, $\$8.40 \\times 2 = \\$16.80$.
+- **Splitting the Difference for 15% (Standard Care):** Take your $10\%$ baseline ($\$8.40$), cut it in half ($\$4.20$), and add both pieces together ($\$8.40 + \\$4.20 = \\$12.60$).
+- **The $18\%$ Shortcut:** Calculate $20\%$ first, then deduct approximately one-tenth of that figure (for $\$84.00$, take $\$16.80 - \\$1.70 \\approx \\$15.10$).
+
+Our browser-based [tip calculator](/tip-calculator/) automates this arithmetic to the exact cent, with options to round totals up to the nearest whole dollar so cash settlements and digital peer-to-peer transfers remain clean.`
+      },
+      {
+        id: 'group-splitting',
+        title: 'Fair bill splitting rules: equal division vs itemized checks',
+        body: `Splitting restaurant checks among group diners can create social awkwardness if expectations are not aligned early in the meal. Follow these practical etiquette guidelines:
+
+- **Equal Per-Person Splits:** Dividing the grand total equally works best when all dining guests ordered meals of comparable value (such as family-style dining, shared tapas, or similar entrees). Entering your guest count into our [Tip Calculator](/tip-calculator/) splits both the meal subtotal and gratuity evenly in one click.
+- **Itemized Splits for Unequal Tabs:** If one guest ordered multiple premium cocktails and expensive appetizers while another ordered a single salad and iced water, equal division forces light diners to subsidize heavy spenders. In these scenarios, ask the server for separate itemized checks at the start of service, or have each companion calculate their meal plus $20\%$ tip on their individual subtotal.
+- **Rounding for Peer-to-Peer Transfers:** When paying via Venmo, Zelle, or Cash App, rounding per-person shares up to the nearest dollar avoids awkward cent transactions and leaves an extra dollar of appreciation for dining staff.
+
+Explore our comprehensive [tools directory](/tools/) for additional productivity and math utilities.`
+      },
+      {
+        id: 'auto-gratuity-service-charges',
+        title: 'Examine receipts for auto-gratuity before leaving a tip',
+        body: `One of the most frequent tipping mistakes is paying gratuity twice on large party tabs. Many restaurants automatically apply an **automatic gratuity** (typically $18\%$ or $20\%$, designated on the receipt as *Auto-Gratuity*, *Service Charge*, or *Large Party Fee*) on tables of 5, 6, or more guests.
+
+Before writing a figure on the *Tip* or *Gratuity* line of your credit card slip, carefully inspect every line item above the total:
+1. If an automatic gratuity is already included in the printed balance, adding an additional $20\%$ results in a $40\%$ total tip.
+2. If service was truly outstanding and you wish to reward the team further, you can add a supplemental tip on the *Additional Tip* line, but doing so should be a conscious choice.
+3. If an obligatory service fee is charged by the restaurant, check whether the receipt notes that service charges are retained by management rather than distributed to waitstaff. In jurisdictions where service charges do not go to servers, you may choose to leave a modest direct cash tip for your server.
+
+For broader technical workflows, explore our [image upload guide](/guides/image-upload-requirements/), [PDF size guide](/guides/pdf-file-size-limits/), or [JSON to CSV checklist](/guides/json-to-csv-data-checklist/).`
+      }
+    ],
+    sources: [
+      { name: 'Emily Post Institute: General Dining & Tipping Etiquette', url: 'https://emilypost.com/advice/general-tipping-guide' },
+      { name: 'Cornell Center for Hospitality Research: Restaurant Tipping Analysis', url: 'https://www.hotelschool.cornell.edu/research/chr/' }
+    ]
+  },
 ];
 
 export function getGuidesForTool(slug: string) {

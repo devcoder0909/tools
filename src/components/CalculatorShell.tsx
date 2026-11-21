@@ -31,6 +31,10 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
   const [billAmount, setBillAmount] = useState<string>('65');
   const [tipRate, setTipRate] = useState<string>('18');
   const [splitCount, setSplitCount] = useState<string>('2');
+  const [tipTaxPercent, setTipTaxPercent] = useState<string>('0');
+  const [tipPreTax, setTipPreTax] = useState<boolean>(true);
+  const [tipRounding, setTipRounding] = useState<'none' | 'round-total' | 'round-person'>('none');
+  const [tipCopied, setTipCopied] = useState<boolean>(false);
 
   // GPA Calculator State
   const [courses, setCourses] = useState([
@@ -269,20 +273,61 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
     const bill = parseFloat(billAmount);
     const rate = parseFloat(tipRate);
     const count = parseInt(splitCount, 10) || 1;
+    const taxRate = parseFloat(tipTaxPercent) || 0;
     if (isNaN(bill) || isNaN(rate) || bill < 0 || rate < 0 || count < 1) return null;
 
-    const tip = (bill * rate) / 100;
-    const total = bill + tip;
-    const perPersonTotal = total / count;
-    const perPersonTip = tip / count;
+    const taxAmount = (bill * Math.max(0, taxRate)) / 100;
+    const baseForTip = tipPreTax ? bill : bill + taxAmount;
+    let rawTip = (baseForTip * rate) / 100;
+    let grandTotal = bill + taxAmount + rawTip;
+    let perPersonTotal = grandTotal / count;
+
+    if (tipRounding === 'round-total') {
+      const roundedTotal = Math.ceil(grandTotal);
+      rawTip = Math.max(0, roundedTotal - bill - taxAmount);
+      grandTotal = roundedTotal;
+      perPersonTotal = grandTotal / count;
+    } else if (tipRounding === 'round-person') {
+      const roundedPerPerson = Math.ceil(perPersonTotal);
+      perPersonTotal = roundedPerPerson;
+      grandTotal = perPersonTotal * count;
+      rawTip = Math.max(0, grandTotal - bill - taxAmount);
+    }
+
+    const perPersonTip = rawTip / count;
+    const perPersonFoodAndTax = (bill + taxAmount) / count;
 
     return {
-      tip: tip.toFixed(2),
-      total: total.toFixed(2),
+      bill: bill.toFixed(2),
+      taxAmount: taxAmount.toFixed(2),
+      tip: rawTip.toFixed(2),
+      total: grandTotal.toFixed(2),
       perPersonTotal: perPersonTotal.toFixed(2),
       perPersonTip: perPersonTip.toFixed(2),
+      perPersonFoodAndTax: perPersonFoodAndTax.toFixed(2),
+      effectiveTipPercent: baseForTip > 0 ? ((rawTip / baseForTip) * 100).toFixed(1) : rate.toFixed(1),
     };
-  }, [billAmount, tipRate, splitCount]);
+  }, [billAmount, tipRate, splitCount, tipTaxPercent, tipPreTax, tipRounding]);
+
+  const handleCopyTipSummary = () => {
+    if (!tipResult) return;
+    const count = parseInt(splitCount, 10) || 1;
+    const summary = [
+      `🧾 Restaurant Bill Split Summary:`,
+      `• Food Subtotal: $${tipResult.bill}`,
+      parseFloat(tipResult.taxAmount) > 0 ? `• Tax: $${tipResult.taxAmount}` : null,
+      `• Gratuity (${tipRate}%): $${tipResult.tip}`,
+      `• Grand Total: $${tipResult.total}`,
+      `• Split between ${count} guests: $${tipResult.perPersonTotal} each ($${tipResult.perPersonTip} tip/person)`,
+      `Calculated via ZixTool (https://zixtool.online/tip-calculator/)`
+    ].filter(Boolean).join('\n');
+
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      navigator.clipboard.writeText(summary);
+      setTipCopied(true);
+      setTimeout(() => setTipCopied(false), 2200);
+    }
+  };
 
   return (
     <div class="calculator-shell bg-white border border-slate-200/90 rounded-2xl shadow-card p-5 sm:p-7 my-6 transition-all">
@@ -713,72 +758,208 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
         <div class="space-y-6">
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
-              <label class="block text-xs font-semibold text-slate-700 mb-1">Bill Amount ($)</label>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Bill Subtotal ($)</label>
               <input
                 type="number"
+                min="0"
+                step="0.01"
                 value={billAmount}
                 onInput={(e) => setBillAmount((e.target as HTMLInputElement).value)}
                 class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-mono text-lg"
-                placeholder="50"
+                placeholder="65.00"
               />
             </div>
             <div>
               <label class="block text-xs font-semibold text-slate-700 mb-1">Tip Percentage (%)</label>
               <div class="flex space-x-1 mb-2">
-                {['10', '15', '18', '20'].map((rate) => (
+                {['10', '15', '18', '20', '25'].map((rate) => (
                   <button
                     key={rate}
                     type="button"
                     onClick={() => setTipRate(rate)}
-                    class={`flex-1 py-1 text-xs font-medium rounded ${
-                      tipRate === rate ? 'bg-emerald-600 text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                    class={`flex-1 py-1 text-xs font-medium rounded transition-colors ${
+                      tipRate === rate ? 'bg-emerald-600 text-white shadow-xs' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                     }`}
                   >
                     {rate}%
                   </button>
                 ))}
               </div>
-              <input
-                type="number"
-                value={tipRate}
-                onInput={(e) => setTipRate((e.target as HTMLInputElement).value)}
-                class="w-full px-4 py-1.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-mono text-sm"
-              />
+              <div class="relative">
+                <input
+                  type="number"
+                  min="0"
+                  step="0.5"
+                  value={tipRate}
+                  onInput={(e) => setTipRate((e.target as HTMLInputElement).value)}
+                  class="w-full px-4 py-1.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-mono text-sm"
+                  placeholder="Custom %"
+                />
+                <span class="absolute right-3 top-1.5 text-xs text-slate-400 font-mono">%</span>
+              </div>
             </div>
             <div>
-              <label class="block text-xs font-semibold text-slate-700 mb-1">Number of People (Split)</label>
-              <input
-                type="number"
-                min="1"
-                value={splitCount}
-                onInput={(e) => setSplitCount((e.target as HTMLInputElement).value)}
-                class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-mono text-lg"
-              />
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Split Between (Guests)</label>
+              <div class="flex items-center space-x-1.5">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const cur = parseInt(splitCount, 10) || 1;
+                    if (cur > 1) setSplitCount(String(cur - 1));
+                  }}
+                  class="px-3 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-sm font-bold transition"
+                  title="Decrease diners"
+                >
+                  -
+                </button>
+                <input
+                  type="number"
+                  min="1"
+                  value={splitCount}
+                  onInput={(e) => setSplitCount((e.target as HTMLInputElement).value)}
+                  class="flex-1 px-3 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-mono text-lg text-center"
+                />
+                <button
+                  type="button"
+                  onClick={() => {
+                    const cur = parseInt(splitCount, 10) || 1;
+                    setSplitCount(String(cur + 1));
+                  }}
+                  class="px-3 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-sm font-bold transition"
+                  title="Increase diners"
+                >
+                  +
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Advanced Tipping Controls: Tax & Rounding */}
+          <div class="p-4 bg-slate-50 border border-slate-200/80 rounded-xl space-y-3 text-xs">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+              <div class="flex items-center gap-2">
+                <label class="font-semibold text-slate-700">Optional Sales Tax (%):</label>
+                <input
+                  type="number"
+                  min="0"
+                  step="0.1"
+                  value={tipTaxPercent}
+                  onInput={(e) => setTipTaxPercent((e.target as HTMLInputElement).value)}
+                  class="w-16 px-2 py-1 rounded border border-slate-300 focus:border-emerald-500 font-mono"
+                  placeholder="0"
+                />
+              </div>
+              {parseFloat(tipTaxPercent) > 0 && (
+                <div class="flex items-center gap-2">
+                  <span class="text-slate-600">Calculate tip on:</span>
+                  <button
+                    type="button"
+                    onClick={() => setTipPreTax(true)}
+                    class={`px-2.5 py-1 rounded font-medium transition ${
+                      tipPreTax ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-700 hover:bg-slate-300'
+                    }`}
+                  >
+                    Pre-tax Subtotal (Recommended)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setTipPreTax(false)}
+                    class={`px-2.5 py-1 rounded font-medium transition ${
+                      !tipPreTax ? 'bg-emerald-600 text-white' : 'bg-slate-200 text-slate-700 hover:bg-slate-300'
+                    }`}
+                  >
+                    Post-tax Total
+                  </button>
+                </div>
+              )}
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-200/60">
+              <span class="font-semibold text-slate-700">Rounding Options:</span>
+              <button
+                type="button"
+                onClick={() => setTipRounding('none')}
+                class={`px-2.5 py-1 rounded font-medium transition ${
+                  tipRounding === 'none' ? 'bg-emerald-600 text-white' : 'bg-white border border-slate-300 text-slate-700 hover:bg-slate-100'
+                }`}
+              >
+                Exact Cents
+              </button>
+              <button
+                type="button"
+                onClick={() => setTipRounding('round-total')}
+                class={`px-2.5 py-1 rounded font-medium transition ${
+                  tipRounding === 'round-total' ? 'bg-emerald-600 text-white' : 'bg-white border border-slate-300 text-slate-700 hover:bg-slate-100'
+                }`}
+              >
+                Round Up Total Bill ($)
+              </button>
+              <button
+                type="button"
+                onClick={() => setTipRounding('round-person')}
+                class={`px-2.5 py-1 rounded font-medium transition ${
+                  tipRounding === 'round-person' ? 'bg-emerald-600 text-white' : 'bg-white border border-slate-300 text-slate-700 hover:bg-slate-100'
+                }`}
+              >
+                Round Up Per Person ($)
+              </button>
             </div>
           </div>
 
           {tipResult && (
-            <div class="p-6 bg-emerald-50/70 border border-emerald-200/80 rounded-xl space-y-4">
-              <div class="flex justify-between items-end">
+            <div class="p-6 bg-emerald-50/70 border border-emerald-200/80 rounded-xl space-y-5">
+              <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-3">
                 <div>
-                  <span class="text-xs uppercase font-bold tracking-wider text-emerald-700">Per Person Share</span>
+                  <span class="text-xs uppercase font-bold tracking-wider text-emerald-700">
+                    Per Person Share ({splitCount} {parseInt(splitCount, 10) === 1 ? 'Guest' : 'Guests'})
+                  </span>
                   <div class="text-3xl sm:text-4xl font-extrabold text-emerald-950 mt-1">
                     ${tipResult.perPersonTotal}
                   </div>
                 </div>
-                <div class="text-right text-xs text-slate-500">
-                  Includes ${tipResult.perPersonTip} tip / person
+                <div class="sm:text-right text-xs text-slate-600 space-y-0.5">
+                  <div>Food &amp; Tax: <strong>${tipResult.perPersonFoodAndTax}</strong> / person</div>
+                  <div>Gratuity: <strong>${tipResult.perPersonTip}</strong> / person</div>
                 </div>
               </div>
-              <div class="grid grid-cols-2 gap-3 pt-4 border-t border-emerald-200/80/60 text-sm">
-                <div class="bg-white/80 p-3 rounded-lg">
-                  <div class="text-xs text-slate-500">Total Tip Amount</div>
-                  <div class="font-bold text-slate-900">${tipResult.tip}</div>
+
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-emerald-200/80/60 text-sm">
+                <div class="bg-white/80 p-3 rounded-lg border border-emerald-100">
+                  <div class="text-2xs text-slate-500 uppercase font-bold">Food Subtotal</div>
+                  <div class="font-bold text-slate-900 mt-0.5">${tipResult.bill}</div>
                 </div>
-                <div class="bg-white/80 p-3 rounded-lg">
-                  <div class="text-xs text-slate-500">Total Bill (with Tip)</div>
-                  <div class="font-bold text-slate-900">${tipResult.total}</div>
+                {parseFloat(tipResult.taxAmount) > 0 && (
+                  <div class="bg-white/80 p-3 rounded-lg border border-emerald-100">
+                    <div class="text-2xs text-slate-500 uppercase font-bold">Sales Tax ({tipTaxPercent}%)</div>
+                    <div class="font-bold text-slate-900 mt-0.5">${tipResult.taxAmount}</div>
+                  </div>
+                )}
+                <div class="bg-white/80 p-3 rounded-lg border border-emerald-100">
+                  <div class="text-2xs text-slate-500 uppercase font-bold">Total Gratuity ({tipRate}%)</div>
+                  <div class="font-bold text-emerald-700 mt-0.5">${tipResult.tip}</div>
                 </div>
+                <div class="bg-white/80 p-3 rounded-lg border border-emerald-100">
+                  <div class="text-2xs text-slate-500 uppercase font-bold">Grand Total (Bill + Tip)</div>
+                  <div class="font-bold text-slate-900 mt-0.5">${tipResult.total}</div>
+                </div>
+              </div>
+
+              <div class="pt-2 flex flex-wrap items-center justify-between gap-3">
+                <span class="text-2xs text-emerald-800/80">
+                  {tipRounding !== 'none'
+                    ? `* Rounded up: effective gratuity rate ${tipResult.effectiveTipPercent}%`
+                    : `* Exact calculation: 100% computed locally in browser memory`}
+                </span>
+                <button
+                  type="button"
+                  onClick={handleCopyTipSummary}
+                  class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold shadow-xs transition"
+                >
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                  </svg>
+                  <span>{tipCopied ? 'Copied Breakdown!' : 'Copy Split Summary'}</span>
+                </button>
               </div>
             </div>
           )}

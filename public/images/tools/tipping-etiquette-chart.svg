@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 540" width="840" height="540" fill="none" role="img" aria-labelledby="svg-tip-chart-title svg-tip-chart-desc">
+  <title id="svg-tip-chart-title">Restaurant Tipping Standards and Bill Splitting Infographic</title>
+  <desc id="svg-tip-chart-desc">Visual guide illustrating standard tip percentages, pre-tax calculation etiquette, mental math shortcuts, and large group bill splitting.</desc>
+  <defs>
+    <linearGradient id="chartBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f8fafc" />
+    </linearGradient>
+    <filter id="chartCardShadow" x="-3%" y="-3%" width="106%" height="108%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.05" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="840" height="540" rx="16" fill="url(#chartBgGrad)" stroke="#e2e8f0" stroke-width="1.5" />
+
+  <!-- Top Header Banner -->
+  <rect x="30" y="24" width="780" height="58" rx="12" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1" />
+  <text x="50" y="50" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="800" fill="#047857" letter-spacing="1">ETIQUETTE &amp; MATH GUIDE</text>
+  <text x="50" y="70" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="800" fill="#064e3b">Restaurant Tipping Standards &amp; Bill Splitting Principles</text>
+
+  <!-- 4 Feature Cards -->
+  <!-- Card 1: Standard Rates -->
+  <g transform="translate(30, 96)" filter="url(#chartCardShadow)">
+    <rect width="375" height="195" rx="10" fill="#ffffff" stroke="#e2e8f0" />
+    <rect x="16" y="16" width="30" height="30" rx="6" fill="#f0fdf4" />
+    <text x="31" y="36" text-anchor="middle" font-size="16">🍽️</text>
+    <text x="56" y="36" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Standard Gratuity Benchmarks</text>
+    
+    <g transform="translate(16, 58)" font-family="system-ui, -apple-system, sans-serif" font-size="11.5">
+      <rect x="0" y="0" width="343" height="26" rx="4" fill="#f8fafc" />
+      <text x="10" y="18" font-weight="600" fill="#334155">Casual Sit-Down Dining</text>
+      <text x="333" y="18" text-anchor="end" font-weight="700" fill="#059669">15% – 18%</text>
+
+      <rect x="0" y="32" width="343" height="26" rx="4" fill="#ffffff" />
+      <text x="10" y="50" font-weight="600" fill="#334155">Fine Dining &amp; Evening Service</text>
+      <text x="333" y="50" text-anchor="end" font-weight="700" fill="#059669">20% – 25%</text>
+
+      <rect x="0" y="64" width="343" height="26" rx="4" fill="#f8fafc" />
+      <text x="10" y="82" font-weight="600" fill="#334155">Food Delivery Couriers</text>
+      <text x="333" y="82" text-anchor="end" font-weight="700" fill="#059669">15% – 20% ($3–$5 min)</text>
+
+      <rect x="0" y="96" width="343" height="26" rx="4" fill="#ffffff" />
+      <text x="10" y="114" font-weight="600" fill="#334155">Bartenders</text>
+      <text x="333" y="114" text-anchor="end" font-weight="700" fill="#059669">$1–$2 / drink or 20%</text>
+    </g>
+  </g>
+
+  <!-- Card 2: Pre-Tax vs Post-Tax -->
+  <g transform="translate(435, 96)" filter="url(#chartCardShadow)">
+    <rect width="375" height="195" rx="10" fill="#ffffff" stroke="#e2e8f0" />
+    <rect x="16" y="16" width="30" height="30" rx="6" fill="#fef3c7" />
+    <text x="31" y="36" text-anchor="middle" font-size="16">⚖️</text>
+    <text x="56" y="36" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Pre-Tax vs Post-Tax Tipping</text>
+
+    <g transform="translate(16, 58)" font-family="system-ui, -apple-system, sans-serif" font-size="11.5">
+      <rect x="0" y="0" width="343" height="56" rx="6" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="0.75" />
+      <text x="10" y="20" font-weight="700" fill="#065f46">✓ Pre-Tax Subtotal (Etiquette Standard)</text>
+      <text x="10" y="40" fill="#047857">Tip on food &amp; drinks rendered by staff. Sales tax is a</text>
+      <text x="10" y="52" fill="#047857">government assessment, not hospitality labor.</text>
+
+      <rect x="0" y="66" width="343" height="56" rx="6" fill="#fef2f2" stroke="#fecaca" stroke-width="0.75" />
+      <text x="10" y="86" font-weight="700" fill="#991b1b">⚠️ Post-Tax Total (POS Terminal Trap)</text>
+      <text x="10" y="106" fill="#b91c1c">Default touchscreens tip on taxes + city fees, adding</text>
+      <text x="10" y="118" fill="#b91c1c">an unneeded 2% to 3% to your effective tip rate.</text>
+    </g>
+  </g>
+
+  <!-- Card 3: 3-Step Mental Math -->
+  <g transform="translate(30, 310)" filter="url(#chartCardShadow)">
+    <rect width="375" height="200" rx="10" fill="#ffffff" stroke="#e2e8f0" />
+    <rect x="16" y="16" width="30" height="30" rx="6" fill="#eff6ff" />
+    <text x="31" y="36" text-anchor="middle" font-size="16">🧠</text>
+    <text x="56" y="36" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Fast Mental Math Tipping Tricks</text>
+
+    <g transform="translate(16, 58)" font-family="system-ui, -apple-system, sans-serif" font-size="11.5">
+      <text x="0" y="16" font-weight="700" fill="#1e40af">1. Find 10% in One Second:</text>
+      <text x="0" y="32" fill="#475569">Move the decimal point one digit left ($75.40 → $7.54).</text>
+
+      <text x="0" y="60" font-weight="700" fill="#1e40af">2. For 20% (Great Service):</text>
+      <text x="0" y="76" fill="#475569">Double the 10% figure ($7.54 × 2 = $15.08, or ~$15.00).</text>
+
+      <text x="0" y="104" font-weight="700" fill="#1e40af">3. For 15% (Standard Service):</text>
+      <text x="0" y="120" fill="#475569">Take 10% ($7.54), add half ($3.77) = $11.31.</text>
+    </g>
+  </g>
+
+  <!-- Card 4: Group Splitting Rules -->
+  <g transform="translate(435, 310)" filter="url(#chartCardShadow)">
+    <rect width="375" height="200" rx="10" fill="#ffffff" stroke="#e2e8f0" />
+    <rect x="16" y="16" width="30" height="30" rx="6" fill="#f5f3ff" />
+    <text x="31" y="36" text-anchor="middle" font-size="16">👥</text>
+    <text x="56" y="36" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Group Bill Splitting Etiquette</text>
+
+    <g transform="translate(16, 58)" font-family="system-ui, -apple-system, sans-serif" font-size="11.5">
+      <text x="0" y="16" font-weight="700" fill="#5b21b6">• Check for Auto-Gratuity First:</text>
+      <text x="0" y="32" fill="#475569">Parties of 6+ often include 18% automatically. Never</text>
+      <text x="0" y="46" fill="#475569">add another tip without checking the receipt lines.</text>
+
+      <text x="0" y="74" font-weight="700" fill="#5b21b6">• Equal vs Itemized Split Rule:</text>
+      <text x="0" y="90" fill="#475569">Split equally when meals are comparable in cost. Itemize</text>
+      <text x="0" y="104" fill="#475569">separately if specific diners ordered alcohol or premium dishes.</text>
+
+      <text x="0" y="132" font-weight="700" fill="#5b21b6">• Round Up to Whole Dollars:</text>
+      <text x="0" y="146" fill="#475569">Simplifies Venmo/Zelle transfers and leaves staff a small bonus.</text>
+    </g>
+  </g>
+</svg>

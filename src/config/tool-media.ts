@@ -679,7 +679,7 @@ export const TOOL_MEDIA_REGISTRY: ToolMediaDef[] = [
     title: 'How Gratuity and Group Bill Splitting Computes',
     description: 'Custom Gratuity % • Round-Up Options • Equal Per-Person Allocation',
     durationSecs: 60,
-    thumbnailUrl: '/images/tools/tip-calculator-workflow.svg',
+    thumbnailUrl: '/images/tools/tip-calculator-video-thumb.svg',
     diagramUrl: '/images/tools/tip-calculator-workflow.svg',
     diagramTitle: 'Tip Calculator Workflow & Architecture Diagram',
     diagramCaption: 'Splitting restaurant bills and calculating custom tip percentages evenly among group diners.',

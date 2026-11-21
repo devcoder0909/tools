@@ -21,7 +21,7 @@ test.describe('M0 Foundations Smoke Tests', () => {
     await expect(dropzone).toBeVisible();
 
     // Verification explainer should be present
-    await expect(page.locator('text=100% Private In-Browser RAM')).toBeVisible();
+    await expect(page.getByRole('heading', { name: /100% In-Browser Privacy/i })).toBeVisible();
   });
 
   test('formats guide page lists format characteristics', async ({ page }) => {

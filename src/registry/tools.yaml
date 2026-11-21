@@ -1123,8 +1123,8 @@
     - discount-calculator
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13T00:00:00.000Z
-  reviewer: ZixTool Team
+  last_reviewed: 2026-11-21T00:00:00.000Z
+  reviewer: ZixTool Editorial Team
   lang: en
   seo:
     primary_kw: age calculator
@@ -1218,7 +1218,7 @@
   kind: calculator
   slug: tip-calculator
   name: Tip Calculator
-  title: "Tip Calculator for Tips and Split Bills"
+  title: "Tip Calculator: Split Bills and Calculate Gratuity Online"
   subtitle: Calculate restaurant tips and split bills per person easily.
   description: Free online tip calculator to split restaurant bills, compute gratuity percentages, and calculate per-person costs accurately in your browser.
   engine: calc-tip
@@ -1234,10 +1234,14 @@
       a: Etiquette guides traditionally recommend tipping on the food and beverage subtotal prior to sales tax.
     - q: How do you calculate an 18% tip quickly in your head?
       a: Find 10% (move decimal one place left), double it to get 20%, and subtract a small amount. Our calculator computes it to the exact cent.
+    - q: How should groups handle unequal orders when splitting a bill?
+      a: When guests order similarly priced meals, split equally. If one or two diners ordered expensive entrees or multiple cocktails, itemize those charges separately before dividing the shared tab.
+    - q: What should you check on the receipt to avoid double-tipping?
+      a: For parties of 5 to 6 or more, look for an auto-gratuity or service charge line. If an 18% or 20% tip is already included in the total, do not add another full tip.
   related:
     - discount-calculator
     - percentage-calculator
-    - word-counter
+    - gst-calculator
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
