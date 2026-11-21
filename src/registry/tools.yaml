@@ -1278,6 +1278,7 @@
     - q: Is my pasted text stored or sent to a server?
       a: No. All analysis executes locally in browser JavaScript memory. Your text never leaves your device.
   related:
+    - image-to-text
     - character-counter
     - case-converter
     - lorem-ipsum-generator
@@ -2966,6 +2967,7 @@
     - q: Are my photos uploaded to a remote server?
       a: No. All cropping transformations occur locally inside your browser memory using HTML5 Canvas.
   related:
+    - image-to-text
     - whatsapp-dp-status-downloader
     - resize-image
     - photo-editor
@@ -3629,4 +3631,23 @@
   seo:
     primary_kw: whatsapp status downloader
     secondary_kws: [whatsapp dp download, whatsapp profile picture downloader, whatsapp status video saver, save status photo]
+    intent: tool
+
+- id: image-to-text
+  slug: image-to-text
+  kind: converter
+  name: Image to Text Converter
+  title: Image to Text Converter - Extract and Copy Text with OCR
+  subtitle: Extract printed text from a screenshot, scan or photo and edit the result before copying it.
+  description: Convert an image to editable text with browser OCR. Extract and copy English, Spanish, Portuguese, Hindi or Arabic text from a JPG, PNG or WebP image.
+  engine: browser-ocr
+  content: src/content/tools/image-to-text.mdx
+  related: [crop-image, word-counter, character-counter]
+  indexable: true
+  reviewed: true
+  last_reviewed: "2026-11-21"
+  lang: en
+  seo:
+    primary_kw: image to text
+    secondary_kws: [image to text converter, copy text from image, screenshot to text, photo to text online]
     intent: tool
