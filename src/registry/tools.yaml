@@ -1421,6 +1421,7 @@
     - q: How do I create a Wi-Fi QR code for guests?
       a: Format your payload using the standard Wi-Fi protocol (WIFI:S:SSID;T:WPA;P:password;;), allowing smartphones to connect instantly upon scanning.
   related:
+    - qr-code-scanner
     - barcode-generator
     - password-generator
     - fancy-text-generator
@@ -3642,7 +3643,7 @@
   description: Convert an image to editable text with browser OCR. Extract and copy English, Spanish, Portuguese, Hindi or Arabic text from a JPG, PNG or WebP image.
   engine: browser-ocr
   content: src/content/tools/image-to-text.mdx
-  related: [crop-image, word-counter, character-counter]
+  related: [qr-code-scanner, crop-image, word-counter, character-counter]
   indexable: true
   reviewed: true
   last_reviewed: "2026-11-21"
@@ -3650,4 +3651,23 @@
   seo:
     primary_kw: image to text
     secondary_kws: [image to text converter, copy text from image, screenshot to text, photo to text online]
+    intent: tool
+
+- id: qr-code-scanner
+  slug: qr-code-scanner
+  kind: media
+  name: QR Code Scanner from Image
+  title: QR Code Scanner Online - Scan a Screenshot or Photo
+  subtitle: Choose a QR code image from your phone or computer to read its contents. Review the text or link before opening it.
+  description: Scan a QR code from a screenshot or photo on the same phone. Read the decoded text, check the destination and copy the result directly in your browser.
+  engine: qr-image-decoder
+  content: src/content/tools/qr-code-scanner.mdx
+  related: [qr-code-generator, crop-image, image-to-text]
+  indexable: true
+  reviewed: true
+  last_reviewed: "2026-11-21"
+  lang: en
+  seo:
+    primary_kw: qr code scanner
+    secondary_kws: [scan qr code from image, qr code scanner online, read qr code from screenshot]
     intent: tool
