@@ -42,6 +42,11 @@ export interface ResolvedSeoMetadata {
  */
 export function formatSeoTitle(rawTitle: string, brand: string = siteConfig.brand): string {
   let title = (rawTitle || '').trim();
+  const trimTitle = (value: string) => {
+    const prefix = value.slice(0, 60);
+    const boundary = prefix.lastIndexOf(' ');
+    return (boundary >= 30 ? prefix.slice(0, boundary) : prefix).replace(/[\s|,:;\-–—]+$/, '');
+  };
 
   // If already includes brand, ensure it doesn't exceed 60 chars
   if (title.includes(brand)) {
@@ -51,7 +56,7 @@ export function formatSeoTitle(rawTitle: string, brand: string = siteConfig.bran
         title = title.slice(0, pipeIndex).trim();
       }
       if (title.length > 60) {
-        title = title.slice(0, 60).trim();
+        title = trimTitle(title);
       }
     }
     return title;
@@ -70,7 +75,7 @@ export function formatSeoTitle(rawTitle: string, brand: string = siteConfig.bran
 
   // If title is longer than 60 chars, trim it
   if (title.length > 60) {
-    return title.slice(0, 60).trim();
+    return trimTitle(title);
   }
 
   // If title is shorter than 30 chars, expand with a descriptive suffix
@@ -94,14 +99,6 @@ export function formatSeoDescription(rawDesc: string, fallback: string = siteCon
     const truncated = desc.slice(0, 160);
     const lastSpace = truncated.lastIndexOf(' ');
     desc = lastSpace > 120 ? truncated.slice(0, lastSpace) + '...' : truncated + '...';
-  }
-
-  // Ensure minimum length
-  if (desc.length < 115) {
-    const supplement = ' Fast, 100% private in-browser tool with zero server uploads.';
-    if (desc.length + supplement.length <= 165) {
-      desc = `${desc}${supplement}`;
-    }
   }
 
   return desc;

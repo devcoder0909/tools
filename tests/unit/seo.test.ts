@@ -1,7 +1,18 @@
 import { describe, expect, it } from 'vitest';
-import { resolvePageSeo } from '../../src/utils/seo';
+import { formatSeoDescription, formatSeoTitle, resolvePageSeo } from '../../src/utils/seo';
 
 const page = { title: 'PNG to JPG Converter', description: 'Convert PNG images to JPG.' };
+
+describe('metadata accuracy', () => {
+  it('does not invent privacy claims for short descriptions', () => {
+    expect(formatSeoDescription('Look up the current exchange rate.')).toBe('Look up the current exchange rate.');
+  });
+  it('ends long titles at a word boundary', () => {
+    const title = formatSeoTitle('Compare image compression options for file uploads and photographs worldwide');
+    expect(title.length).toBeLessThanOrEqual(60);
+    expect('Compare image compression options for file uploads and photographs worldwide'.slice(title.length, title.length + 1)).toBe(' ');
+  });
+});
 
 describe('canonical URL resolution', () => {
   it('uses the production origin for preview URLs and removes tracking and fragments', () => {

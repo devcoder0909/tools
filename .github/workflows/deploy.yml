@@ -1,4 +1,4 @@
-name: Deploy to Cloudflare Pages
+name: Deploy to Cloudflare Worker
 
 on:
   push:
@@ -18,12 +18,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 12
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
@@ -31,12 +29,23 @@ jobs:
       - name: Build Static Site
         run: pnpm run build
 
-      - name: Deploy to Cloudflare Pages
+      - name: Deploy to Cloudflare Worker
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=best-converter
+          command: deploy --config wrangler.json
+
+      - name: Verify Published SEO Before Indexing Notifications
+        run: pnpm run seo:verify-live
+
+      - name: Save Live SEO Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: live-seo-report
+          path: .seo-reports/live-release.json
+          if-no-files-found: ignore
 
       - name: Notify IndexNow of Published URLs
         env:

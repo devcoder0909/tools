@@ -5,6 +5,7 @@ import { getAllTools, getAllFormats } from '../src/registry';
 import { siteConfig } from '../src/config/site';
 import { TOOL_MEDIA_REGISTRY } from '../src/config/tool-media';
 import { searchGuides } from '../src/content/guides';
+import { topicHubs } from '../src/content/topic-hubs';
 
 const DIST_DIR = path.resolve(process.cwd(), 'dist');
 
@@ -68,6 +69,7 @@ export function buildSitemaps() {
     { url: `${siteConfig.url}/contact/`, priority: '0.5' },
     { url: `${siteConfig.url}/guides/`, priority: '0.7' },
     ...searchGuides.map(guide => ({ url: `${siteConfig.url}/guides/${guide.slug}/`, priority: '0.7', lastmod: guide.updated })),
+    ...topicHubs.map(hub => ({ url: `${siteConfig.url}/topics/${hub.slug}/`, priority: '0.7' })),
   ];
 
   const pagesXml = `<?xml version="1.0" encoding="UTF-8"?>

@@ -1,6 +1,7 @@
 ---
 import { getFormatById, type ToolDefinition } from '../registry';
 import { getGuidesForTool } from '../content/guides';
+import { topicHubs } from '../content/topic-hubs';
 
 export interface Props {
   currentTool: ToolDefinition;
@@ -9,12 +10,14 @@ export interface Props {
 
 const { currentTool, relatedTools } = Astro.props;
 const guides = getGuidesForTool(currentTool.slug);
+const hubs = topicHubs.filter(hub => hub.tools.includes(currentTool.slug));
 const fromFormat = currentTool.from && currentTool.from !== 'image' && currentTool.from !== 'all'
   ? getFormatById(currentTool.from)
   : undefined;
 ---
 
 <section class="my-12 border-t border-slate-200/80 pt-8" aria-labelledby="related-tools-heading">
+  {hubs.map(hub => <p class="mb-4"><a class="text-emerald-800 underline" href={`/topics/${hub.slug}/`}>{hub.title}</a></p>)}
   {guides.length > 0 && <div class="mb-8">
     <h2 class="text-xl font-bold text-slate-900 mb-3">Troubleshooting and practical guidance</h2>
     <ul class="space-y-3">{guides.map(guide => <li><a class="text-emerald-800 underline underline-offset-4" href={`/guides/${guide.slug}/`}>{guide.title}</a></li>)}</ul>
@@ -23,7 +26,7 @@ const fromFormat = currentTool.from && currentTool.from !== 'image' && currentTo
     <h2 id="related-tools-heading" class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
       Related File Converters &amp; Tools
     </h2>
-    <p class="text-xs sm:text-sm text-slate-500 mt-1">Explore companion client-side tools with identical zero-upload privacy.</p>
+    <p class="text-xs sm:text-sm text-slate-500 mt-1">Explore related converters and tools for your next task.</p>
   </div>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
     {relatedTools.map((tool) => (

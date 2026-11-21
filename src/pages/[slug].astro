@@ -15,6 +15,7 @@ import AdSlot from '../components/AdSlot.astro';
 import PromoSlot from '../components/PromoSlot.astro';
 import FAQ from '../components/FAQ.astro';
 import RelatedTools from '../components/RelatedTools.astro';
+import { toolExamples } from '../content/tool-examples';
 import { renderToolMarkdown } from '../utils/markdown';
 import { getAllTools, getRelatedTools, formatDisplayDate, formatIsoDate, type ToolDefinition } from '../registry';
 import { siteConfig } from '../config/site';
@@ -36,6 +37,7 @@ export interface Props {
 
 const { tool } = Astro.props;
 const related = getRelatedTools(tool);
+const example = toolExamples[tool.slug];
 const toolMedia = getToolMedia(tool.slug);
 
 // Check if content file exists
@@ -180,8 +182,6 @@ if (tool.targetBytes) {
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
           {tool.kind === 'calculator' ? 'Calculator' : tool.kind === 'finance' ? 'Financial Tool' : tool.kind === 'pdf' ? 'PDF Utility' : 'Online Utility'}
         </span>
-        <span class="text-2xs font-medium text-slate-400">•</span>
-        <span class="text-2xs font-medium text-slate-500">100% Private In-Browser RAM</span>
       </div>
       <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight mb-2">
         {tool.name}
@@ -342,6 +342,10 @@ if (tool.targetBytes) {
     <AdSlot slotPosition="midContent" />
 
     <!-- Related tools & format hub links -->
+    {example && <section class="my-8 max-w-3xl">
+      <h2 class="text-xl font-bold text-slate-900 mb-2">{example.heading}</h2>
+      <p class="leading-relaxed text-slate-700">{example.text}</p>
+    </section>}
     <RelatedTools currentTool={tool} relatedTools={related} />
 
     <!-- 9. Last-reviewed date -->

@@ -1,9 +1,16 @@
 import { describe, expect, it, vi } from 'vitest';
 import worker from '../../src/worker';
-import { getAllTools, getRelatedTools } from '../../src/registry';
+import { getAllTools, getRelatedTools, getToolsForFormat } from '../../src/registry';
 import { searchGuides } from '../../src/content/guides';
+import wrangler from '../../wrangler.json';
 
 describe('search architecture', () => {
+  it('recommends only reviewed and indexable tools from format guides', () => {
+    const pdfTools = getToolsForFormat('pdf');
+    expect(pdfTools.some(tool => tool.slug === 'pdf-to-jpg')).toBe(false);
+    expect(pdfTools.some(tool => tool.slug === 'heic-to-pdf')).toBe(false);
+    expect(pdfTools.every(tool => tool.indexable && tool.reviewed && tool.last_reviewed)).toBe(true);
+  });
   it('links related pages by real attributes, excludes current and noindex pages', () => {
     for (const tool of getAllTools()) {
       const related = getRelatedTools(tool);
@@ -27,6 +34,7 @@ describe('search architecture', () => {
     }
   });
   it('redirects noncanonical worker hosts and HTTP while preserving path and query', async () => {
+    expect(wrangler.assets.run_worker_first).toBe(true);
     const fetch = vi.fn();
     for (const origin of ['http://zixtool.online', 'https://www.zixtool.online', 'https://tools.example.workers.dev']) {
       const response = await worker.fetch(new Request(`${origin}/merge-pdf/?source=test`), { ASSETS: { fetch } });
@@ -34,5 +42,12 @@ describe('search architecture', () => {
       expect(response.headers.get('location')).toBe('https://zixtool.online/merge-pdf/?source=test');
     }
     expect(fetch).not.toHaveBeenCalled();
+  });
+  it('serves canonical HTTPS assets without a redirect loop', async () => {
+    const request = new Request('https://zixtool.online/merge-pdf/?source=test');
+    const assetResponse = new Response('Tool page');
+    const fetch = vi.fn().mockResolvedValue(assetResponse);
+    expect(await worker.fetch(request, { ASSETS: { fetch } })).toBe(assetResponse);
+    expect(fetch).toHaveBeenCalledWith(request);
   });
 });

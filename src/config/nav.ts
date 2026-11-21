@@ -13,6 +13,8 @@ export const mainNav: NavItem[] = [
 ];
 
 export const footerLinks: NavItem[] = [
+  { label: 'Image Compression Tools', href: '/topics/image-compression-tools/' },
+  { label: 'JSON and CSV Tools', href: '/topics/json-csv-tools/' },
   { label: 'Practical Guides', href: '/guides/' },
   { label: 'All Tools', href: '/tools/' },
   { label: 'Image Converters', href: '/tools/#converters' },

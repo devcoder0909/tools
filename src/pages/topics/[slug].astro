@@ -1,0 +1,21 @@
+﻿---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { topicHubs } from '../../content/topic-hubs';
+import { getToolBySlug } from '../../registry';
+import { siteConfig } from '../../config/site';
+export function getStaticPaths() { return topicHubs.map(hub => ({ params: { slug: hub.slug }, props: { hub } })); }
+const { hub } = Astro.props;
+const tools = hub.tools.map(getToolBySlug).filter(tool => tool && tool.indexable && tool.reviewed && tool.last_reviewed);
+---
+<Layout title={hub.title} description={hub.description} canonical={`${siteConfig.url}/topics/${hub.slug}/`}>
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 py-8 text-slate-700 leading-relaxed">
+    <Breadcrumbs items={[{name:'Home',href:'/'},{name:'All Tools',href:'/tools/'},{name:hub.title,href:`/topics/${hub.slug}/`}]} />
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-6 mb-4">{hub.title}</h1>
+    <p class="text-lg mb-8">{hub.intro}</p>
+    <h2 class="text-xl font-bold text-slate-900 mb-3">Choose a tool</h2>
+    <ul class="space-y-3 mb-10">{tools.map(tool => <li><a class="text-emerald-800 underline" href={`/${tool!.slug}/`}>{tool!.name}</a> — {tool!.description}</li>)}</ul>
+    {hub.sections.map(section => <section class="mb-8"><h2 class="text-xl font-bold text-slate-900 mb-3">{section.title}</h2><p>{section.text}</p></section>)}
+    <p>For more troubleshooting, read the <a class="text-emerald-800 underline" href={`/guides/${hub.guide}/`}>related practical guide</a>, or <a class="text-emerald-800 underline" href="/tools/">browse all tools</a>.</p>
+  </article>
+</Layout>

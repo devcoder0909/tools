@@ -1,10 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import { getAllTools } from '../../registry';
+import { getIndexableTools } from '../../registry';
 import { siteConfig } from '../../config/site';
 
-const tools = getAllTools();
+const tools = getIndexableTools();
 const pdfTools = tools.filter((t) => t.kind === 'pdf');
 const imageConverters = tools.filter((t) => t.kind === 'converter');
 const calculators = tools.filter((t) => t.kind === 'finance' || t.kind === 'calculator');
@@ -20,7 +20,7 @@ const breadcrumbs = [
 
 <Layout
   title={`All Free Online Tools & Converters | ${siteConfig.brand}`}
-  description="Browse our directory of free online tools: in-browser file converters, image compressors, PDF utilities, and calculators with 100% private zero-upload processing."
+  description="Find a free tool for your task. Convert photos, reduce image sizes, merge or split PDFs, format JSON, and calculate dates, percentages or loan payments."
   canonical={`${siteConfig.url}/tools/`}
 >
   <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
@@ -31,22 +31,10 @@ const breadcrumbs = [
         All Free Online Tools &amp; File Converters
       </h1>
       <p class="text-base text-slate-600 max-w-3xl leading-relaxed">
-        Browse our comprehensive suite of free online tools, file converters, image compressors, and calculators. Every single tool operates entirely within your browser memory (RAM), ensuring zero server uploads and instant processing across all online tools.
+        Choose from {tools.length} tools by task. Start with the file type you have, the result you need, or a calculation such as a percentage change.
       </p>
 
-      <figure class="my-6 p-5 rounded-2xl bg-white border border-slate-200 shadow-2xs text-center max-w-3xl">
-        <img
-          src="/images/tools/png-to-jpg-workflow.svg"
-          alt="Free Online Tools Client-Side Processing Architecture Diagram"
-          width="720"
-          height="360"
-          class="max-w-full h-auto mx-auto rounded-xl"
-          loading="lazy"
-        />
-        <figcaption class="mt-2 text-xs text-slate-500 font-medium">
-          <strong>Architecture Diagram:</strong> Hardware-accelerated client-side memory pipeline powering all ZixTool online tools.
-        </figcaption>
-      </figure>
+
     </div>
 
     <!-- Real-time Interactive Tool Search -->
@@ -55,7 +43,8 @@ const breadcrumbs = [
         <input
           type="text"
           id="tool-search-input"
-          placeholder="Search 70+ tools (e.g. color picker, base64, gpa, gst, merge pdf, qr code)..."
+          aria-label="Search tools"
+          placeholder={`Search ${tools.length} tools, e.g. merge PDF or JSON formatter`}
           class="w-full pl-11 pr-14 py-3 border border-slate-200/90 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 shadow-xs bg-white text-slate-900 transition"
         />
         <svg class="w-5 h-5 text-slate-400 absolute left-3.5 top-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -236,7 +225,6 @@ const breadcrumbs = [
         <h2 class="text-2xl font-bold text-slate-900">
           Developer Utilities &amp; Text Transformers
         </h2>
-        <span class="text-xs font-semibold text-slate-500">Zero Server Logging • Offline Capable</span>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {developerTools.map((tool) => (
@@ -261,18 +249,11 @@ const breadcrumbs = [
       </div>
     </section>
 
-    <!-- Comprehensive Explainer Section for SEO Word Count and User Trust -->
-    <section class="prose max-w-none text-slate-700 space-y-4 my-8 text-sm sm:text-base leading-relaxed bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-8">
-      <h2 class="text-xl font-bold text-slate-900">Why Modern Web Utilities Must Run Client-Side</h2>
-      <p>
-        The online utility software market has historically required users to upload confidential files to centralized cloud servers. Every time a consumer converts an iPhone HEIC photo, combines confidential business invoices into a PDF, decodes an authentication JWT token, or enters financial loan details into an online calculator, that sensitive data is dispatched over the public internet to third-party data centers.
-      </p>
-      <p>
-        ZixTool completely changes this paradigm by engineering modern browser technologies—such as the HTML5 File API, Web Workers, Canvas 2D rendering, PDF-lib binary manipulation, and Web Cryptography (SubtleCrypto)—directly into lightweight client-side applications. Because execution occurs exclusively inside your device memory, you benefit from instantaneous zero-latency responses, zero monthly subscription paywalls, and uncompromising privacy compliance (GDPR, CCPA, and HIPAA friendly).
-      </p>
-      <p>
-        Our algorithms operate completely offline once the page has loaded. Whether you are generating high-density vector QR codes for marketing campaigns, extracting specific pages from large multi-gigabyte PDF contracts, computing complex amortization schedules for mortgage planning, or testing typing speed, your data remains safely in your hands. You can verify this architecture in real time by opening your browser Network inspector (press F12) and observing that zero file payloads leave your computer.
-      </p>
+    <section class="space-y-3 my-8 text-slate-700">
+      <h2 class="text-xl font-bold text-slate-900">Which tool fits your task?</h2>
+      <p>If an upload rejects your photo, check the error first. Use the <a class="underline" href="/resize-image/">image resizer</a> for pixel dimensions or compare <a class="underline" href="/topics/image-compression-tools/">image compression tools by file size</a> for a KB limit.</p>
+      <p>To combine documents in reading order, <a class="underline" href="/merge-pdf/">merge PDF files</a>. To extract a smaller selection, <a class="underline" href="/split-pdf/">split a PDF by page</a>.</p>
+      <p>For an API response, <a class="underline" href="/json-formatter/">format JSON for inspection</a>. For a spreadsheet import, compare the <a class="underline" href="/topics/json-csv-tools/">JSON and CSV conversion tools</a>.</p>
     </section>
   </div>
 

@@ -35,8 +35,7 @@ const formatJsonLd: any[] = [
     description: format.description,
     url: `${siteConfig.url}/formats/${format.id}/`,
     inLanguage: 'en-US',
-    datePublished: formatIsoDate(format.last_reviewed),
-    dateModified: formatIsoDate(format.last_reviewed),
+    ...(format.last_reviewed ? { dateModified: formatIsoDate(format.last_reviewed) } : {}),
     publisher: {
       '@type': 'Organization',
       name: siteConfig.brand,

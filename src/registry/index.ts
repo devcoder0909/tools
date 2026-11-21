@@ -99,7 +99,7 @@ export function getFormatHubs(): FormatDefinition[] {
 }
 
 export function getToolsForFormat(formatId: string): ToolDefinition[] {
-  return getAllTools().filter((t) => t.from === formatId || t.to === formatId);
+  return getIndexableTools().filter((t) => t.from === formatId || t.to === formatId);
 }
 
 export function getRelatedTools(tool: ToolDefinition): ToolDefinition[] {
