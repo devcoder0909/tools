@@ -1,9 +1,10 @@
-﻿import { test, expect } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import QRCode from 'qrcode';
 
 test('reads QR images and offers a link only for web addresses', async ({page}) => {
   await page.route(/fonts\.(googleapis|gstatic)\.com/, route=>route.abort());
   await page.goto('/qr-code-scanner/', {waitUntil:'domcontentloaded'});
+  await page.locator('section[data-hydrated="true"]').waitFor({ timeout: 15000 });
   const file = page.getByLabel('QR code image');
   for (const value of ['https://example.com/menu?table=2','WIFI:T:WPA;S:Example;P:sample;;','javascript:alert(1)']) {
     await file.setInputFiles({name:'qr.png',mimeType:'image/png',buffer:await QRCode.toBuffer(value)});

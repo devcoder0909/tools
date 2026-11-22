@@ -1,4 +1,4 @@
-import { useState, useRef } from 'preact/hooks';
+import { useState, useRef, useEffect } from 'preact/hooks';
 import { PDFDocument, degrees } from 'pdf-lib';
 
 interface PdfShellProps {
@@ -14,6 +14,7 @@ interface PdfItem {
 }
 
 export default function PdfShell({ toolId }: PdfShellProps) {
+  const [hydrated, setHydrated] = useState(false);
   const [files, setFiles] = useState<PdfItem[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
@@ -24,6 +25,10 @@ export default function PdfShell({ toolId }: PdfShellProps) {
   const [orientation, setOrientation] = useState<'portrait' | 'landscape'>('portrait');
   const [rotateAngle, setRotateAngle] = useState<number>(90);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
 
   const handleFiles = (incoming: FileList | File[]) => {
     const list = Array.from(incoming).map((file, idx) => ({
@@ -99,8 +104,23 @@ export default function PdfShell({ toolId }: PdfShellProps) {
         let image;
         if (item.file.type === 'image/png' || item.name.toLowerCase().endsWith('.png')) {
           image = await pdfDoc.embedPng(arrayBuffer);
-        } else {
+        } else if (item.file.type === 'image/jpeg' || item.name.toLowerCase().endsWith('.jpg') || item.name.toLowerCase().endsWith('.jpeg')) {
           image = await pdfDoc.embedJpg(arrayBuffer);
+        } else {
+          const img = new Image();
+          const blobUrl = URL.createObjectURL(item.file);
+          img.src = blobUrl;
+          await img.decode();
+          const canvas = document.createElement('canvas');
+          canvas.width = img.naturalWidth || img.width;
+          canvas.height = img.naturalHeight || img.height;
+          const ctx = canvas.getContext('2d');
+          if (!ctx) throw Error('Canvas 2D unavailable');
+          ctx.drawImage(img, 0, 0);
+          URL.revokeObjectURL(blobUrl);
+          const pngBlob = await new Promise<Blob | null>(res => canvas.toBlob(res, 'image/png'));
+          if (!pngBlob) throw Error('Image decode error');
+          image = await pdfDoc.embedPng(await pngBlob.arrayBuffer());
         }
 
         const dims = image.scale(1);
@@ -234,7 +254,7 @@ export default function PdfShell({ toolId }: PdfShellProps) {
   };
 
   const isMerge = toolId === 'merge-pdf';
-  const isJpgToPdf = toolId === 'jpg-to-pdf' || toolId === 'png-to-pdf';
+  const isJpgToPdf = toolId === 'jpg-to-pdf' || toolId === 'png-to-pdf' || toolId === 'images-to-pdf';
   const isSplit = toolId === 'split-pdf';
   const isCompress = toolId === 'compress-pdf';
   const isPdfToJpg = toolId === 'pdf-to-jpg';
@@ -328,7 +348,10 @@ export default function PdfShell({ toolId }: PdfShellProps) {
   };
 
   return (
-    <div class="bg-white border border-slate-200/90 rounded-2xl p-5 sm:p-7 shadow-card mb-8 transition-all">
+    <div
+      data-hydrated={hydrated ? 'true' : undefined}
+      class="bg-white border border-slate-200/90 rounded-2xl p-5 sm:p-7 shadow-card mb-8 transition-all"
+    >
       {/* Upload Zone */}
       <div
         onClick={() => fileInputRef.current?.click()}
@@ -338,7 +361,7 @@ export default function PdfShell({ toolId }: PdfShellProps) {
           ref={fileInputRef}
           type="file"
           multiple={isMerge || isJpgToPdf}
-          accept={isJpgToPdf ? 'image/jpeg,image/png,image/webp' : 'application/pdf'}
+          accept={isJpgToPdf ? 'image/jpeg,image/png,image/webp,image/avif' : 'application/pdf'}
           onChange={(e) => {
             if (e.currentTarget.files) handleFiles(e.currentTarget.files);
           }}
@@ -350,7 +373,7 @@ export default function PdfShell({ toolId }: PdfShellProps) {
           </svg>
         </div>
         <p class="text-sm sm:text-base font-bold text-slate-900 mb-1">
-          {isJpgToPdf ? 'Click to select JPG / PNG images' : 'Click to select PDF document(s)'}
+          {isJpgToPdf ? 'Click to select JPG, PNG, or WebP images' : 'Click to select PDF document(s)'}
         </p>
         <p class="text-xs text-slate-500">
           Drag &amp; drop files here or browse from device

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" fill="none">
+  <rect width="1200" height="675" rx="20" fill="#090d16" stroke="#1e293b" stroke-width="3" />
+  <text x="600" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="900" fill="#ffffff">
+    GTA 6 Leonida Map Size vs GTA 5 Los Santos
+  </text>
+  <text x="600" y="95" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" fill="#94a3b8">
+    Geodesic Landmass Comparison: ~78 sq mi (180 km²) vs 29.3 sq mi (75.8 km²) • 2.6x Scale Expansion
+  </text>
+
+  <!-- Left: GTA 5 Box -->
+  <g transform="translate(80, 140)">
+    <rect width="450" height="460" rx="16" fill="#131c2e" stroke="#334155" />
+    <text x="225" y="45" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" font-weight="800" fill="#38bdf8">GTA 5: Los Santos &amp; Blaine County</text>
+    <rect x="75" y="80" width="300" height="240" rx="12" fill="#0f172a" stroke="#0284c7" stroke-width="2" />
+    <text x="225" y="190" text-anchor="middle" font-family="system-ui, sans-serif" font-size="32" font-weight="900" fill="#e0f2fe">29.3 sq mi</text>
+    <text x="225" y="225" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#7dd3fc">(75.84 km² Total Bounds)</text>
+    <text x="40" y="360" font-family="system-ui, sans-serif" font-size="13" fill="#94a3b8">• Playable landmass: ~18.6 sq mi (48.15 km²)</text>
+    <text x="40" y="390" font-family="system-ui, sans-serif" font-size="13" fill="#94a3b8">• Mount Chiliad highway loop: ~12.5 mins</text>
+    <text x="40" y="420" font-family="system-ui, sans-serif" font-size="13" fill="#94a3b8">• Less than 10% enterable building interiors</text>
+  </g>
+
+  <!-- Right: GTA 6 Box -->
+  <g transform="translate(570, 140)">
+    <rect width="550" height="460" rx="16" fill="#1e1b4b" stroke="#7c3aed" stroke-width="2" />
+    <text x="275" y="45" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" font-weight="800" fill="#c084fc">GTA 6: State of Leonida</text>
+    <rect x="50" y="80" width="450" height="240" rx="12" fill="#2e1065" stroke="#a855f7" stroke-width="2" />
+    <text x="275" y="190" text-anchor="middle" font-family="system-ui, sans-serif" font-size="44" font-weight="900" fill="#f5d0fe">78.0 sq mi</text>
+    <text x="275" y="225" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#e879f9">(180+ km² Total Landmass • 2.6x Larger)</text>
+    <text x="40" y="360" font-family="system-ui, sans-serif" font-size="13" fill="#e9d5ff">• 3 Major regions: Vice City, Grassrivers, Leonida Keys</text>
+    <text x="40" y="390" font-family="system-ui, sans-serif" font-size="13" fill="#e9d5ff">• Perimeter highway traverse: ~26-32 mins sustained</text>
+    <text x="40" y="420" font-family="system-ui, sans-serif" font-size="13" fill="#e9d5ff">• Over 70% enterable commercial and residential interiors</text>
+  </g>
+</svg>

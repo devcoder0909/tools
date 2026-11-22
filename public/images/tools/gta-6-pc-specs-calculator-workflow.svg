@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none">
+  <rect width="800" height="450" rx="16" fill="#090d16" stroke="#1e293b" stroke-width="2" />
+  <circle cx="700" cy="100" r="160" fill="#d946ef" fill-opacity="0.12" filter="blur(50px)" />
+  <circle cx="100" cy="350" r="160" fill="#06b6d4" fill-opacity="0.12" filter="blur(50px)" />
+  
+  <rect x="250" y="24" width="300" height="28" rx="14" fill="#2e1065" stroke="#a855f7" stroke-width="1" />
+  <text x="400" y="43" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#f0abfc" letter-spacing="0.5">
+    HARDWARE BENCHMARK PIPELINE
+  </text>
+  <text x="400" y="84" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" font-weight="900" fill="#ffffff">
+    GTA 6 PC Specs &amp; Bottleneck Evaluation Matrix
+  </text>
+
+  <!-- 4 Metrics Columns -->
+  <g transform="translate(35, 120)">
+    <!-- Card 1: Resolution & VRAM -->
+    <rect width="165" height="270" rx="12" fill="#131c2e" stroke="#334155" />
+    <text x="82" y="35" text-anchor="middle" font-size="24">🖥️</text>
+    <text x="82" y="65" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#38bdf8">1. Target Display</text>
+    <text x="18" y="100" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">• 1080p: 8GB VRAM</text>
+    <text x="18" y="125" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">• 1440p: 12GB VRAM</text>
+    <text x="18" y="150" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">• 4K UHD: 16GB VRAM</text>
+    <rect x="15" y="185" width="135" height="65" rx="6" fill="#0f172a" />
+    <text x="82" y="210" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#e2e8f0">Ray Tracing Cache</text>
+    <text x="82" y="235" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#38bdf8">BVH Geometry</text>
+  </g>
+
+  <g transform="translate(225, 120)">
+    <!-- Card 2: CPU Frame Budget -->
+    <rect width="165" height="270" rx="12" fill="#131c2e" stroke="#334155" />
+    <text x="82" y="35" text-anchor="middle" font-size="24">⚡</text>
+    <text x="82" y="65" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#f472b6">2. CPU Frame Time</text>
+    <text x="18" y="100" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">• 30 FPS: 33.3ms</text>
+    <text x="18" y="125" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">• 60 FPS: 16.7ms</text>
+    <text x="18" y="150" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">• 120 FPS: 8.3ms</text>
+    <rect x="15" y="185" width="135" height="65" rx="6" fill="#0f172a" />
+    <text x="82" y="210" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#e2e8f0">Crowd &amp; Traffic AI</text>
+    <text x="82" y="235" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#f472b6">8+ Modern Cores</text>
+  </g>
+
+  <g transform="translate(415, 120)">
+    <!-- Card 3: Memory & RAM -->
+    <rect width="165" height="270" rx="12" fill="#131c2e" stroke="#334155" />
+    <text x="82" y="35" text-anchor="middle" font-size="24">💾</text>
+    <text x="82" y="65" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#a78bfa">3. System Memory</text>
+    <text x="18" y="100" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">• Minimum: 16GB</text>
+    <text x="18" y="125" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">• Recommended: 32GB</text>
+    <text x="18" y="150" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">• Dual-Channel DDR5</text>
+    <rect x="15" y="185" width="135" height="65" rx="6" fill="#0f172a" />
+    <text x="82" y="210" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#e2e8f0">Zero Pagefile Swap</text>
+    <text x="82" y="235" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#a78bfa">6000 MHz Target</text>
+  </g>
+
+  <g transform="translate(605, 120)">
+    <!-- Card 4: DirectStorage NVMe -->
+    <rect width="165" height="270" rx="12" fill="#131c2e" stroke="#334155" />
+    <text x="82" y="35" text-anchor="middle" font-size="24">🚀</text>
+    <text x="82" y="65" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#34d399">4. NVMe Storage</text>
+    <text x="18" y="100" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">• Install: 215 GB</text>
+    <text x="18" y="125" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">• Shaders: 15 GB</text>
+    <text x="18" y="150" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">• Buffer: 41 GB</text>
+    <rect x="15" y="185" width="135" height="65" rx="6" fill="#0f172a" />
+    <text x="82" y="210" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#e2e8f0">DirectStorage Bandwidth</text>
+    <text x="82" y="235" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="800" fill="#34d399">&gt; 3500 MB/s NVMe</text>
+  </g>
+</svg>

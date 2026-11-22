@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360" width="720" height="360" fill="none">
+  <rect width="720" height="360" rx="16" fill="#0a0e17" />
+  <circle cx="650" cy="90" r="160" fill="#ec4899" fill-opacity="0.2" filter="blur(50px)" />
+  <circle cx="80" cy="270" r="140" fill="#06b6d4" fill-opacity="0.18" filter="blur(45px)" />
+  
+  <rect x="40" y="40" width="220" height="32" rx="16" fill="#1e1b4b" stroke="#6366f1" />
+  <text x="150" y="61" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#a5b4fc">PC HARDWARE BENCHMARK</text>
+  <text x="40" y="125" font-family="system-ui, sans-serif" font-size="36" font-weight="900" fill="#ffffff">Can Your PC Run GTA 6?</text>
+  <text x="40" y="160" font-family="system-ui, sans-serif" font-size="15" fill="#94a3b8">Calculate GPU VRAM, CPU Simulation Bottlenecks, and 200GB+ NVMe Storage</text>
+
+  <g transform="translate(40, 200)">
+    <rect width="200" height="95" rx="12" fill="#131c2e" stroke="#334155" />
+    <text x="100" y="45" text-anchor="middle" font-size="28">🎮</text>
+    <text x="100" y="75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#f472b6">1080p • 1440p • 4K</text>
+  </g>
+  <g transform="translate(260, 200)">
+    <rect width="200" height="95" rx="12" fill="#131c2e" stroke="#334155" />
+    <text x="100" y="45" text-anchor="middle" font-size="28">⚡</text>
+    <text x="100" y="75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#38bdf8">30 FPS vs 60 FPS</text>
+  </g>
+  <g transform="translate(480, 200)">
+    <rect width="200" height="95" rx="12" fill="#131c2e" stroke="#059669" />
+    <text x="100" y="45" text-anchor="middle" font-size="28">📊</text>
+    <text x="100" y="75" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#34d399">Free Compatibility Test</text>
+  </g>
+</svg>

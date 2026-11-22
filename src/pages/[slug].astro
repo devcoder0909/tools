@@ -14,6 +14,7 @@ import QRScanner from '../components/QRScanner';
 import PdfExport from '../components/PdfExport';
 import VideoCompressor from '../components/VideoCompressor';
 import Gta6SpecsCalculator from '../components/Gta6SpecsCalculator';
+import Gta6Countdown from '../components/Gta6Countdown';
 import WhatsAppMediaSaver from '../components/WhatsAppMediaSaver';
 import DeveloperShell from '../components/DeveloperShell';
 import BackgroundRemoverShell from '../components/BackgroundRemoverShell';
@@ -200,6 +201,8 @@ if (tool.targetBytes) {
     <!-- 3. The working tool above the fold -->
     {tool.id === 'gta-6-pc-specs-calculator' ? (
       <Gta6SpecsCalculator client:load />
+    ) : tool.id === 'gta-6-release-countdown' ? (
+      <Gta6Countdown client:load />
     ) : ['pdf-to-text', 'pdf-to-word'].includes(tool.id) ? (
       <PdfExport client:load word={tool.id === 'pdf-to-word'} />
     ) : tool.id === 'video-compressor' ? (
@@ -214,7 +217,7 @@ if (tool.targetBytes) {
       <BackgroundRemoverShell client:load toolId={tool.id} toolName={tool.name} />
     ) : tool.kind === 'generator' || ['qr-code-generator', 'password-generator', 'barcode-generator', 'random-number-generator', 'fancy-text-generator'].includes(tool.id) ? (
       <GeneratorShell client:load toolId={tool.id} toolName={tool.name} />
-    ) : tool.kind === 'pdf' || ['merge-pdf', 'jpg-to-pdf', 'split-pdf', 'compress-pdf', 'png-to-pdf', 'pdf-to-png', 'pdf-to-jpg', 'rotate-pdf'].includes(tool.id) ? (
+    ) : tool.kind === 'pdf' || ['merge-pdf', 'jpg-to-pdf', 'png-to-pdf', 'images-to-pdf', 'split-pdf', 'compress-pdf', 'pdf-to-png', 'pdf-to-jpg', 'rotate-pdf'].includes(tool.id) ? (
       <PdfShell client:load toolId={tool.id} toolName={tool.name} />
     ) : tool.kind === 'finance' || ['emi-calculator', 'sip-calculator', 'bmi-calculator', 'currency-converter', 'loan-calculator', 'mortgage-calculator', 'gst-calculator', 'compound-interest-calculator'].includes(tool.id) ? (
       <FinanceShell client:load toolId={tool.id} toolName={tool.name} />

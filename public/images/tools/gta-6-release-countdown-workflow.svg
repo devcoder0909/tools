@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none">
+  <rect width="800" height="450" rx="16" fill="#0b0f19" stroke="#1e293b" stroke-width="2" />
+  <circle cx="700" cy="90" r="150" fill="#e11d48" fill-opacity="0.15" filter="blur(50px)" />
+  <circle cx="100" cy="360" r="150" fill="#8b5cf6" fill-opacity="0.15" filter="blur(50px)" />
+
+  <rect x="250" y="24" width="300" height="28" rx="14" fill="#311042" stroke="#d946ef" stroke-width="1" />
+  <text x="400" y="43" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#f5d0fe" letter-spacing="0.5">
+    OFFICIAL RELEASE ROADMAP
+  </text>
+  <text x="400" y="84" text-anchor="middle" font-family="system-ui, sans-serif" font-size="22" font-weight="900" fill="#ffffff">
+    Grand Theft Auto VI Release Lifecycle &amp; Milestones
+  </text>
+
+  <!-- Timeline Nodes -->
+  <g transform="translate(50, 150)">
+    <!-- Node 1: Trailer 1 -->
+    <rect width="150" height="230" rx="12" fill="#131c2e" stroke="#334155" />
+    <circle cx="75" cy="40" r="22" fill="#047857" />
+    <text x="75" y="46" text-anchor="middle" font-size="18">✓</text>
+    <text x="75" y="85" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#34d399">Trailer 1</text>
+    <text x="75" y="105" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">Dec 4, 2023</text>
+    <text x="18" y="145" font-family="system-ui, sans-serif" font-size="10" fill="#cbd5e1">• 90-sec reveal</text>
+    <text x="18" y="165" font-family="system-ui, sans-serif" font-size="10" fill="#cbd5e1">• Lucia &amp; Jason</text>
+    <text x="18" y="185" font-family="system-ui, sans-serif" font-size="10" fill="#cbd5e1">• Vice City return</text>
+    <rect x="15" y="200" width="120" height="18" rx="4" fill="#064e3b" />
+    <text x="75" y="213" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" font-weight="700" fill="#6ee7b7">COMPLETED</text>
+  </g>
+
+  <g transform="translate(230, 150)">
+    <!-- Node 2: Trailer 2 -->
+    <rect width="150" height="230" rx="12" fill="#131c2e" stroke="#d946ef" stroke-width="1.5" />
+    <circle cx="75" cy="40" r="22" fill="#86198f" />
+    <text x="75" y="47" text-anchor="middle" font-size="18">🎬</text>
+    <text x="75" y="85" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#f472b6">Trailer 2</text>
+    <text x="75" y="105" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">Promo Window</text>
+    <text x="18" y="145" font-family="system-ui, sans-serif" font-size="10" fill="#cbd5e1">• Gameplay reveal</text>
+    <text x="18" y="165" font-family="system-ui, sans-serif" font-size="10" fill="#cbd5e1">• Character audio</text>
+    <text x="18" y="185" font-family="system-ui, sans-serif" font-size="10" fill="#cbd5e1">• Pre-order announce</text>
+    <rect x="15" y="200" width="120" height="18" rx="4" fill="#701a75" />
+    <text x="75" y="213" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" font-weight="700" fill="#f5d0fe">NEXT MILESTONE</text>
+  </g>
+
+  <g transform="translate(410, 150)">
+    <!-- Node 3: Pre-orders -->
+    <rect width="150" height="230" rx="12" fill="#131c2e" stroke="#334155" />
+    <circle cx="75" cy="40" r="22" fill="#1e293b" />
+    <text x="75" y="47" text-anchor="middle" font-size="18">📦</text>
+    <text x="75" y="85" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#38bdf8">Pre-Orders</text>
+    <text x="75" y="105" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">Spring 2025</text>
+    <text x="18" y="145" font-family="system-ui, sans-serif" font-size="10" fill="#cbd5e1">• Standard $69.99</text>
+    <text x="18" y="165" font-family="system-ui, sans-serif" font-size="10" fill="#cbd5e1">• Steelbook edition</text>
+    <text x="18" y="185" font-family="system-ui, sans-serif" font-size="10" fill="#cbd5e1">• Collector box</text>
+    <rect x="15" y="200" width="120" height="18" rx="4" fill="#0f172a" />
+    <text x="75" y="213" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" font-weight="700" fill="#94a3b8">UPCOMING</text>
+  </g>
+
+  <g transform="translate(590, 150)">
+    <!-- Node 4: Street Launch -->
+    <rect width="160" height="230" rx="12" fill="#1e1b4b" stroke="#6366f1" stroke-width="2" />
+    <circle cx="80" cy="40" r="22" fill="#4338ca" />
+    <text x="80" y="47" text-anchor="middle" font-size="18">⭐</text>
+    <text x="80" y="85" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#a5b4fc">Global Launch</text>
+    <text x="80" y="105" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#c7d2fe">Fall 2025</text>
+    <text x="18" y="145" font-family="system-ui, sans-serif" font-size="10" fill="#e0e7ff">• PS5 &amp; PS5 Pro</text>
+    <text x="18" y="165" font-family="system-ui, sans-serif" font-size="10" fill="#e0e7ff">• Xbox Series X/S</text>
+    <text x="18" y="185" font-family="system-ui, sans-serif" font-size="10" fill="#e0e7ff">• Worldwide Release</text>
+    <rect x="15" y="200" width="130" height="18" rx="4" fill="#312e81" />
+    <text x="80" y="213" text-anchor="middle" font-family="system-ui, sans-serif" font-size="9" font-weight="800" fill="#a5b4fc">CONFIRMED TARGET</text>
+  </g>
+</svg>

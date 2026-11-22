@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" fill="none">
+  <rect width="1200" height="675" rx="20" fill="#090d16" stroke="#1e293b" stroke-width="3" />
+  <text x="600" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="900" fill="#ffffff">
+    GTA 6 Frame-Time &amp; Performance Bottleneck Analysis
+  </text>
+  <text x="600" y="95" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" fill="#94a3b8">
+    CPU Simulation Overhead vs GPU Ray Tracing Compute on PS5, PS5 Pro &amp; PC
+  </text>
+
+  <!-- Comparison Bars -->
+  <g transform="translate(100, 150)">
+    <text x="0" y="30" font-family="system-ui, sans-serif" font-size="18" font-weight="800" fill="#38bdf8">30 FPS Target (Standard Console Baseline)</text>
+    <rect x="0" y="45" width="1000" height="50" rx="8" fill="#1e293b" />
+    <rect x="0" y="45" width="1000" height="50" rx="8" fill="#0284c7" />
+    <text x="500" y="77" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#ffffff">33.33 milliseconds frame time budget (Ample CPU Simulation Room)</text>
+
+    <text x="0" y="160" font-family="system-ui, sans-serif" font-size="18" font-weight="800" fill="#f43f5e">60 FPS Target (Performance Mode Challenge)</text>
+    <rect x="0" y="175" width="1000" height="50" rx="8" fill="#1e293b" />
+    <rect x="0" y="175" width="500" height="50" rx="8" fill="#e11d48" />
+    <text x="250" y="207" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#ffffff">16.67 ms Budget</text>
+    <text x="650" y="207" font-family="system-ui, sans-serif" font-size="14" fill="#fda4af">Zen 2 CPU bottleneck: Crowd AI exceeds 16.7ms</text>
+  </g>
+
+  <!-- Summary Cards -->
+  <g transform="translate(100, 420)">
+    <rect width="310" height="190" rx="12" fill="#131c2e" stroke="#334155" />
+    <text x="155" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#38bdf8">Base PS5 &amp; Series X</text>
+    <text x="20" y="80" font-family="system-ui, sans-serif" font-size="13" fill="#cbd5e1">• Target: 4K 30 FPS Fidelity</text>
+    <text x="20" y="110" font-family="system-ui, sans-serif" font-size="13" fill="#cbd5e1">• Ray-traced reflections</text>
+    <text x="20" y="140" font-family="system-ui, sans-serif" font-size="13" fill="#cbd5e1">• Dynamic resolution scaling</text>
+  </g>
+  <g transform="translate(445, 420)">
+    <rect width="310" height="190" rx="12" fill="#1e1b4b" stroke="#6366f1" />
+    <text x="155" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#a5b4fc">PlayStation 5 Pro</text>
+    <text x="20" y="80" font-family="system-ui, sans-serif" font-size="13" fill="#e0e7ff">• PSSR AI Upscaling to 4K</text>
+    <text x="20" y="110" font-family="system-ui, sans-serif" font-size="13" fill="#e0e7ff">• 67% GPU Compute Boost</text>
+    <text x="20" y="140" font-family="system-ui, sans-serif" font-size="13" fill="#e0e7ff">• VRR 40 FPS Mode Expected</text>
+  </g>
+  <g transform="translate(790, 420)">
+    <rect width="310" height="190" rx="12" fill="#064e3b" stroke="#059669" />
+    <text x="155" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#34d399">High-End Gaming PC</text>
+    <text x="20" y="80" font-family="system-ui, sans-serif" font-size="13" fill="#d1fae5">• Unlocked 60 - 120 FPS</text>
+    <text x="20" y="110" font-family="system-ui, sans-serif" font-size="13" fill="#d1fae5">• DLSS 3.7 Frame Generation</text>
+    <text x="20" y="140" font-family="system-ui, sans-serif" font-size="13" fill="#d1fae5">• Ryzen 7800X3D / RTX 4080</text>
+  </g>
+</svg>

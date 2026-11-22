@@ -1,10 +1,15 @@
-﻿import { useState } from 'preact/hooks';
+import { useState, useEffect } from 'preact/hooks';
 
 export default function QRScanner() {
+  const [hydrated, setHydrated] = useState(false);
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState('');
   const [value, setValue] = useState('');
   const [link, setLink] = useState('');
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
   async function scan(file?: File) {
     setValue(''); setLink(''); setMessage('');
     if (!file) return;
@@ -35,7 +40,7 @@ export default function QRScanner() {
     } catch { setMessage('Could not read this image. Try a PNG, JPEG or WebP screenshot.'); }
     finally { URL.revokeObjectURL(src); setBusy(false); }
   }
-  return <section class="my-6 rounded-2xl border bg-white p-6 space-y-4">
+  return <section data-hydrated={hydrated ? 'true' : undefined} class="my-6 rounded-2xl border bg-white p-6 space-y-4">
     <label class="block font-semibold">QR code image<input type="file" accept="image/png,image/jpeg,image/webp" class="mt-2 block max-w-full" disabled={busy} onChange={e => { const file=e.currentTarget.files?.[0]; e.currentTarget.value=''; void scan(file); }} /></label>
     <p role="status">{busy ? 'Reading image…' : message}</p>
     {value && <div class="space-y-3"><label class="block font-semibold">Decoded content<textarea readOnly dir="auto" class="mt-2 block w-full rounded-lg border p-3 font-mono" rows={3} value={value} /></label>

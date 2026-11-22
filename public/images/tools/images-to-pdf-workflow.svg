@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none" role="img" aria-labelledby="title-i2p desc-i2p">
+  <title id="title-i2p">Images to PDF Converter Workflow & Architecture Diagram</title>
+  <desc id="desc-i2p">Technical flowchart illustrating the multi-format in-memory compilation pipeline for Images to PDF.</desc>
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#f1f5f9" />
+    </linearGradient>
+    <linearGradient id="badgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.06" />
+    </filter>
+  </defs>
+
+  <rect width="800" height="450" rx="16" fill="url(#bgGrad)" stroke="#e2e8f0" stroke-width="2" />
+  <rect x="270" y="24" width="260" height="28" rx="14" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1" />
+  <text x="400" y="43" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#047857" letter-spacing="0.5">
+    CLIENT-SIDE COMPILATION PIPELINE
+  </text>
+  <text x="400" y="82" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" font-weight="800" fill="#0f172a">
+    How Multiple Images Combine into One PDF
+  </text>
+  <text x="400" y="104" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#64748b">
+    JPG, PNG, WebP &amp; AVIF Ingestion • In-Memory pdf-lib Engine • Zero Server Uploads
+  </text>
+
+  <!-- Step 1 -->
+  <g transform="translate(40, 130)" filter="url(#shadow)">
+    <rect width="210" height="250" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="15" y="15" width="32" height="32" rx="8" fill="#ecfdf5" />
+    <text x="31" y="37" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#059669">1</text>
+    <text x="58" y="37" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Upload Images</text>
+    <rect x="25" y="65" width="160" height="75" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="4 4" />
+    <text x="105" y="105" text-anchor="middle" font-size="24">📸</text>
+    <text x="105" y="128" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#475569">JPG, PNG, WebP, AVIF</text>
+    <text x="25" y="165" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Drag and drop batch</text>
+    <text x="25" y="185" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Automatic format detect</text>
+    <text x="25" y="205" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• No file size limit</text>
+    <rect x="25" y="218" width="160" height="22" rx="4" fill="#ecfdf5" />
+    <text x="105" y="233" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#047857">Read via HTML5 File API</text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <g transform="translate(265, 245)">
+    <circle cx="15" cy="0" r="14" fill="#10b981" />
+    <path d="M11 -4 L19 0 L11 4" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- Step 2 -->
+  <g transform="translate(295, 130)" filter="url(#shadow)">
+    <rect width="210" height="250" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="15" y="15" width="32" height="32" rx="8" fill="#ecfdf5" />
+    <text x="31" y="37" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#059669">2</text>
+    <text x="58" y="37" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Canvas Transcoding</text>
+    <rect x="25" y="65" width="160" height="75" rx="8" fill="#f0fdf4" stroke="#86efac" />
+    <text x="105" y="105" text-anchor="middle" font-size="24">⚙️</text>
+    <text x="105" y="128" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#065f46">A4 / US Letter / Fit</text>
+    <text x="25" y="165" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Alpha channel blending</text>
+    <text x="25" y="185" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Portrait / Landscape</text>
+    <text x="25" y="205" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Printable page margins</text>
+    <rect x="25" y="218" width="160" height="22" rx="4" fill="#f0fdf4" />
+    <text x="105" y="233" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#047857">Memory WebAssembly Engine</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <g transform="translate(520, 245)">
+    <circle cx="15" cy="0" r="14" fill="#10b981" />
+    <path d="M11 -4 L19 0 L11 4" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- Step 3 -->
+  <g transform="translate(550, 130)" filter="url(#shadow)">
+    <rect width="210" height="250" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="15" y="15" width="32" height="32" rx="8" fill="#ecfdf5" />
+    <text x="31" y="37" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#059669">3</text>
+    <text x="58" y="37" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#0f172a">Download PDF</text>
+    <rect x="25" y="65" width="160" height="75" rx="8" fill="#ecfdf5" stroke="#a7f3d0" />
+    <text x="105" y="105" text-anchor="middle" font-size="24">📄</text>
+    <text x="105" y="128" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#047857">Multi-Page PDF Ready</text>
+    <text x="25" y="165" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Instant local save</text>
+    <text x="25" y="185" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Clean printable layout</text>
+    <text x="25" y="205" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• 100% Private, no cloud</text>
+    <rect x="25" y="218" width="160" height="22" rx="4" fill="#10b981" />
+    <text x="105" y="233" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#ffffff">Instant Browser Save</text>
+  </g>
+</svg>

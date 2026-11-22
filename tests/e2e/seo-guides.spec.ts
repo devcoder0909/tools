@@ -7,7 +7,7 @@ test.beforeEach(async ({ page }) => {
 
 test.use({ javaScriptEnabled: false });
 
-for (const slug of ['image-upload-requirements', 'pdf-file-size-limits', 'json-to-csv-data-checklist', 'restaurant-tipping-and-bill-splitting', 'gta-6-pc-system-requirements-and-hardware-guide', 'gta-6-video-and-screenshot-optimization-guide']) {
+for (const slug of ['image-upload-requirements', 'pdf-file-size-limits', 'json-to-csv-data-checklist', 'restaurant-tipping-and-bill-splitting', 'gta-6-pc-system-requirements-and-hardware-guide', 'gta-6-video-and-screenshot-optimization-guide', 'gta-6-map-size-comparison-and-scale-guide', 'gta-6-ps5-pro-and-pc-60-fps-performance-guide', 'gta-6-trailer-2-and-release-timeline-guide', 'gta-6-vehicles-and-police-ai-chase-guide', 'gta-6-official-download-and-pre-load-guide', 'gta-6-cheat-codes-and-phone-numbers-guide']) {
   test(`${slug} is complete and crawlable without JavaScript`, async ({ page }) => {
     await page.goto(`/guides/${slug}/`, { waitUntil: 'domcontentloaded' });
     await expect(page.locator('h1')).toHaveCount(1);
