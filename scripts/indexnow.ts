@@ -8,7 +8,7 @@ async function main() {
     console.log('[IndexNow] Build only. After deployment run: pnpm exec tsx scripts/indexnow.ts --submit');
     return;
   }
-  const key = process.env.INDEXNOW_KEY || 'fbfbc05b9070df2dcd6684c6d12c7a0b';
+  const key = process.env.INDEXNOW_KEY || 'c0nvert8892df91024gudmud';
   if (!/^[a-zA-Z0-9-]{8,128}$/.test(key)) throw new Error('Invalid IndexNow key.');
   const keyLocation = `${siteConfig.url}/${key}.txt`;
   const keyResponse = await fetch(keyLocation, { signal: AbortSignal.timeout(15000) });
