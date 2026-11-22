@@ -34,4 +34,36 @@ test.describe('M0 Foundations Smoke Tests', () => {
     await page.goto('/404/');
     await expect(page.locator('h1')).toContainText('Page Not Found');
   });
+
+  test('interactive search filters tools, shows live count, and clears cleanly', async ({ page }) => {
+    await page.goto('/tools/');
+    const searchInput = page.locator('#tool-search-input');
+    await expect(searchInput).toBeVisible();
+
+    // Type query
+    await searchInput.fill('pdf');
+    const feedback = page.locator('#tool-search-feedback');
+    await expect(feedback).toBeVisible();
+    await expect(feedback).toContainText(/Found \d+ matching tools?/i);
+
+    // Clear search
+    const clearBtn = page.locator('#tool-search-clear');
+    await expect(clearBtn).toBeVisible();
+    await clearBtn.click();
+    await expect(searchInput).toHaveValue('');
+    await expect(clearBtn).toBeHidden();
+
+    // Search nonexistent term for empty state
+    await searchInput.fill('xyznonexistentquery');
+    const emptyState = page.locator('#empty-search-state');
+    await expect(emptyState).toBeVisible();
+    await expect(page.locator('#empty-query-text')).toContainText('xyznonexistentquery');
+
+    // Reset button
+    const resetBtn = page.locator('#reset-search-btn');
+    await expect(resetBtn).toBeVisible();
+    await resetBtn.click();
+    await expect(searchInput).toHaveValue('');
+    await expect(emptyState).toBeHidden();
+  });
 });

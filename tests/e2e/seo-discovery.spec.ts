@@ -5,7 +5,7 @@ test.beforeEach(async ({ page }) => {
   await page.route(/^https:\/\/fonts\.(googleapis|gstatic)\.com\//, route => route.abort());
 });
 
-for (const slug of ['uuid-generator', 'merge-pdf', 'online-timer', 'loan-calculator', 'qr-code-generator', 'currency-converter', 'my-ip-address']) {
+for (const slug of ['uuid-generator', 'merge-pdf', 'online-timer', 'loan-calculator', 'qr-code-generator', 'currency-converter', 'my-ip-address', 'gta-6-pc-specs-calculator']) {
   test(`${slug} is indexable and renders a working tool interface`, async ({ page }) => {
     const errors: string[] = [];
     page.on('pageerror', error => errors.push(error.message));

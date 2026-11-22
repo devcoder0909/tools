@@ -199,6 +199,163 @@ For broader technical workflows, explore our [image upload guide](/guides/image-
       { name: 'Cornell Center for Hospitality Research: Restaurant Tipping Analysis', url: 'https://www.hotelschool.cornell.edu/research/chr/' }
     ]
   },
+  {
+    slug: 'gta-6-pc-system-requirements-and-hardware-guide',
+    title: 'GTA 6 PC Specs & Storage Guide: Hardware Calculator',
+    description: 'Check estimated GTA 6 PC requirements, storage GB needs, 4K ultrawide aspect ratios, and gameplay clip compression with our practical hardware guide.',
+    answer: 'Grand Theft Auto VI demands upwards of 200GB NVMe SSD storage space based on current-generation console installations. While official PC specifications remain unannounced by Rockstar Games, 4K resolution and ray tracing require high VRAM and modern multi-threaded processors. Use our resolution and video compression calculators to plan display setups and share gameplay clips within web upload limits.',
+    updated: '2026-11-22',
+    tools: [
+      'aspect-ratio-calculator',
+      'video-compressor',
+      'screen-recorder',
+      'image-compressor',
+      'resize-image',
+      'photo-compressor',
+      'online-calculator',
+      'diff-checker'
+    ],
+    sections: [
+      {
+        id: 'storage-requirements',
+        title: 'GTA 6 storage footprint: why 200GB+ NVMe SSD space is mandatory',
+        body: `Following official launch specifications on current-generation PlayStation 5 and Xbox Series X|S consoles, **Grand Theft Auto VI requires between 212 GB and 223 GB of initial storage installation space**. When a PC version arrives, the storage footprint is expected to match or exceed this threshold due to uncompressed 4K texture packages, extensive audio localization, and dynamic world cache files.
+
+Mechanical hard disk drives (HDDs) and legacy SATA SSDs capped at 500 MB/s transfer speeds will cause severe asset streaming bottlenecks, resulting in blurred mipmaps and visible texture pop-in across sprawling Vice City and Leonida highways. High-speed DirectStorage PCIe Gen 4 or Gen 5 NVMe SSDs with sequential read velocities exceeding 5,000 MB/s will be practically mandatory to support high-speed vehicle navigation and rapid interior-exterior transitions.
+
+When partitioning your storage drive, calculate an additional $20\%$ to $25\%$ of free headroom beyond the base game package. Operating systems require scratch space for shader compilation caches, virtual memory paging files, and cumulative Day One patch downloads. Preparing a dedicated 250 GB to 300 GB NVMe volume ensures smooth performance without mid-game disk exhaustion. You can calculate remaining drive allowances and gigabyte-to-megabyte conversions directly with our [Online Calculator](/online-calculator/) and explore related utilities in our [tools directory](/tools/).`
+      },
+      {
+        id: 'estimated-pc-specs',
+        title: 'Target hardware tiers: minimum, recommended, and 4K ultra specs',
+        body: `Because Rockstar Games has not published official PC system requirements, building or upgrading a gaming setup requires benchmarking against current-generation console hardware architectures and modern open-world graphics engines. The following target specifications represent realistic engineering targets for stable desktop performance:
+
+| Specification Tier | Target Performance | Recommended Processor (CPU) | Graphics Card (GPU) | Minimum VRAM | System RAM |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Minimum** | 1080p @ 30-45 FPS (Dynamic, Low-Med) | AMD Ryzen 5 5600 / Intel Core i5-12400 | GeForce RTX 3060 / Radeon RX 6600 XT | 8 GB GDDR6 | 16 GB DDR4 |
+| **Recommended** | 1440p @ 60 FPS (High Settings, DLSS/FSR) | AMD Ryzen 7 7800X3D / Intel Core i7-13700K | GeForce RTX 4070 Super / Radeon RX 7800 XT | 12 GB GDDR6X | 32 GB DDR5 |
+| **4K Ultra Ray Tracing** | 4K UHD (2160p) @ 60+ FPS (Max Quality) | AMD Ryzen 9 9900X / Intel Core i9-14900K | GeForce RTX 4080 / RTX 4090 / RX 7900 XTX | 16 GB - 24 GB | 32 GB - 64 GB |
+
+The most critical bottleneck for next-generation open-world titles is video memory (VRAM). Complex ambient occlusion, ray-traced reflections on coastal waterways, and high-density volumetric weather simulations fill memory pools rapidly. While 8 GB GPUs can run baseline configurations, cards equipped with 12 GB to 16 GB of VRAM prevent micro-stutters caused by texture swapping into system memory. If you are comparing PC configuration text files or command-line graphics arguments, use our [Diff Checker](/diff-checker/) to audit setting changes.`
+      },
+      {
+        id: 'aspect-ratio-resolutions',
+        title: 'Resolution and aspect ratio: 4K UHD, 1440p, and ultrawide 21:9',
+        body: `Display resolution and aspect ratio directly govern field of view (FOV), immersion, and graphics rendering workload. Standard 16:9 displays remain the industry benchmark, but panoramic ultrawide setups offer competitive peripheral vision advantages across dense urban intersections:
+
+- **Standard 16:9 Widescreen:** $1920 \\times 1080$ (1080p FHD), $2560 \\times 1440$ (1440p QHD), and $3840 \\times 2160$ (4K UHD). Native 4K pushes $8,294,400$ total pixels per frame, requiring aggressive GPU upscaling such as DLSS or FSR to maintain high refresh rates.
+- **Ultrawide 21:9 Displays:** $2560 \\times 1080$ (UW-FHD), $3440 \\times 1440$ (UW-QHD), and $5120 \\times 2160$ (5K2K). Ultrawide displays expand horizontal viewing space by $33\\%$, offering wider cockpit views and expansive horizon visibility without distortion.
+- **Super Ultrawide 32:9 Displays:** $5120 \\times 1440$ (Dual QHD) and $7680 \\times 2160$ (Dual 4K). These setups simulate a seamless two-monitor curve, demanding exceptional GPU rasterization throughput.
+
+When configuring multi-monitor simulators or custom windowed aspect ratios, calculating exact pixel scaling prevents black bar letterboxing and distorted user interface HUDs. Compute precise display dimensions and pixel densities with our [Aspect Ratio Calculator](/aspect-ratio-calculator/) and adjust promotional image assets using [Resize Image](/resize-image/).`
+      },
+      {
+        id: 'compress-gameplay-clips',
+        title: 'Sharing gameplay clips: compressing 4K 60fps video for Discord and web',
+        body: `Modern graphics cards record uncompressed 4K 60fps gameplay clips at high bitrates (ranging from 40 Mbps to 80 Mbps), producing raw files that consume between 300 MB and 600 MB per minute of footage. Online community channels enforce strict upload limits: Discord provides a 10MB free upload ceiling (or 25MB with select boosts), while messaging platforms like WhatsApp cap video sharing at 16MB.
+
+To share a high-definition mission clip or stunt highlight without paying for cloud storage or uploading sensitive footage to remote conversion servers, use client-side target size compression. The mathematical formula for video bit budgeting is:
+
+$$\\text{Target Video Bitrate (kbps)} = \\left( \\frac{\\text{Target Size in MB} \\times 8192}{\\text{Clip Duration in Seconds}} \\right) - \\text{Audio Bitrate (64 kbps)}$$
+
+For example, compressing a 30-second Vice City driving clip to meet Discord’s 10MB limit requires setting an average bitrate of approximately $2666\\text{ kbps}$ ($10 \\times 8192 / 30 - 64$). Our browser-based [Video Compressor](/video-compressor/) runs this calculation automatically, encoding your clip in your local browser memory using hardware-accelerated codecs with zero server uploads. If you need to record short walkthroughs or browser-based gameplay streams directly on your device, use our [Screen Recorder](/screen-recorder/).`
+      },
+      {
+        id: 'wallpaper-and-asset-optimization',
+        title: 'Exporting 4K Vice City wallpapers and screenshots without quality loss',
+        body: `Promotional wallpapers and in-game photo-mode captures from Vice City showcase vibrant tropical neon palettes, detailed vehicle chrome reflections, and atmospheric volumetric fog. However, uncompressed 4K PNG files frequently range between 25 MB and 45 MB per screenshot, making them unsuitable for web publishing, forum avatars, or mobile lockscreens.
+
+To preserve maximum visual fidelity while reducing file weights by $75\\%$ to $85\\%$, follow a structured asset workflow:
+
+1. **Format Conversion:** Convert lossless PNG captures to modern high-efficiency WebP or high-quality JPEG using [PNG to JPG](/png-to-jpg/) or [JPG to WebP](/jpg-to-webp/). WebP retains fine neon gradients without introducing blocky DCT quantization artifacts.
+2. **Target File Size Reduction:** Use our [Image Compressor](/image-compressor/) or dedicated [Photo Compressor](/photo-compressor/) to dial in specific size targets (such as under 2MB for ultra-fast web loading) while keeping high dynamic range color contrast intact.
+3. **Custom Cropping for Mobile:** When turning landscape desktop captures into vertical smartphone wallpapers (such as 9:16 aspect ratio $1080 \\times 1920$ or $1440 \\times 3120$), crop focal characters using our [Crop Image](/crop-image/) tool or format headshots with the [Passport Photo Resizer](/passport-photo-resizer/).
+
+All image optimizations execute entirely within your client browser RAM, ensuring your unreleased game screenshots and media remain 100% private. For additional conversion needs, explore our complete list of [image compression tools by file size](/topics/image-compression-tools/).`
+      }
+    ],
+    sources: [
+      { name: 'Rockstar Games: Official Installation and Console Specifications', url: 'https://support.rockstargames.com/' },
+      { name: 'VESA: DisplayPort and Ultrawide Display Specifications', url: 'https://vesa.org/' },
+      { name: 'MDN Web Docs: MediaStream Recording & Hardware Video Codecs', url: 'https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API' }
+    ]
+  },
+  {
+    slug: 'gta-6-video-and-screenshot-optimization-guide',
+    title: 'GTA 6 Video & Screenshot Guide: 4K Clips & Discord',
+    description: 'Learn how to compress 4K 60fps GTA 6 gameplay clips for Discord 10MB limits, calculate video bitrates, and export lossless 4K Vice City wallpapers.',
+    answer: 'High-definition 4K 60fps Grand Theft Auto VI gameplay recordings generate 400MB to 600MB per minute of footage, exceeding Discord and WhatsApp file upload caps. By calculating targeted video bitrates and downsampling uncompressed 4K PNG screenshots into high-efficiency WebP or JPEG files, creators can share sharp Vice City media instantly without cloud server uploads.',
+    updated: '2026-11-22',
+    tools: [
+      'video-compressor',
+      'aspect-ratio-calculator',
+      'screen-recorder',
+      'image-compressor',
+      'photo-compressor',
+      'png-to-jpg',
+      'jpg-to-webp',
+      'crop-image'
+    ],
+    sections: [
+      {
+        id: 'bitrate-math',
+        title: 'Video bitrate mathematics for Discord and messaging limits',
+        body: `Recording gameplay at native $3840 \\times 2160$ resolution at $60\\text{ FPS}$ with high dynamic range produces massive video streams. Popular messaging and gaming community channels enforce strict payload ceilings:
+- **Discord Free Standard:** 10 MB per file attachment.
+- **Discord Nitro Basic:** 50 MB per file attachment.
+- **WhatsApp Mobile Messaging:** 16 MB video sharing ceiling.
+- **X (formerly Twitter) & Web Forums:** 512 MB, with severe automated server recompression that crushes fine details.
+
+To hit an exact upload ceiling without arbitrary trial and error, determine your target video bitrate using mathematical duration budgeting:
+
+$$\\text{Target Video Bitrate (kbps)} = \\left( \\frac{\\text{Maximum File Size (MB)} \\times 8192}{\\text{Clip Length (Seconds)}} \\right) - \\text{Audio Bitrate (64 kbps)}$$
+
+For example, compressing a 45-second stunt sequence for a 10MB Discord channel requires targeting:
+$$\\text{Bitrate} = \\left( \\frac{10 \\times 8192}{45} \\right) - 64 = 1820 - 64 = 1756\\text{ kbps}$$
+
+Entering this threshold into our client-side [Video Compressor](/video-compressor/) forces the encoder to compress within your exact allowance while maintaining synchronized audio. If you want to capture live gameplay commentary without watermarks, record directly with our [Screen Recorder](/screen-recorder/).`
+      },
+      {
+        id: 'resolution-downsampling',
+        title: 'Downsampling 4K gameplay to 1080p and 1440p for crisp playback',
+        body: `Encoding native 4K footage down to 10MB often results in macroblocking and smeared motion during fast vehicle chases. Downsampling spatial dimensions from 4K ($3840 \\times 2160$) to 1080p ($1920 \\times 1080$) or 1440p ($2560 \\times 1440$) increases bits per pixel, yielding noticeably crisper clarity on mobile screens.
+
+1. **Calculate Output Pixel Density:** Maintaining standard 16:9 widescreen or 21:9 ultrawide geometry prevents stretched character models. Use our [Aspect Ratio Calculator](/aspect-ratio-calculator/) to verify proportionate scaling before encoding.
+2. **Preserve Color Contrast:** In Vice City night sequences, high-contrast neon illumination can cause color banding if bitrate is starved. Downscaling to 1080p allows the encoder to allocate higher bit depth to vibrant pink and cyan highlights.
+3. **Format Selection:** Modern browsers support WebM (VP8/VP9) and MP4 (H.264). WebM typically delivers superior compression efficiency at sub-2000 kbps bitrates, while MP4 offers universal playback on older mobile devices.`
+      },
+      {
+        id: 'lossless-screenshot-compression',
+        title: 'Compressing 4K Vice City screenshots from 40MB to under 2MB',
+        body: `Capturing photo-mode stills in Vice City produces uncompressed 24-bit PNG images weighing between 25 MB and 45 MB each. While PNG provides lossless fidelity, hosting services and social feeds reject files exceeding standard 5MB or 10MB image upload caps.
+
+To reduce file sizes by over $85\\%$ while retaining crisp palm tree silhouettes, vehicle paint reflections, and character facial details:
+- **Convert PNG to WebP or JPEG:** Run raw screenshots through our [PNG to JPG](/png-to-jpg/) or [JPG to WebP](/jpg-to-webp/) converters. Modern WebP encoding eliminates color banding across sky gradients while dropping file size to under 3 MB.
+- **Target Exact Kilobyte Ceilings:** When uploading to portals with rigid size gates, use our [Image Compressor](/image-compressor/) or [Photo Compressor](/photo-compressor/) to dial in specific size limits without server processing.`
+      },
+      {
+        id: 'mobile-lockscreen-wallpapers',
+        title: 'Formatting ultrawide captures into vertical 9:16 phone wallpapers',
+        body: `Horizontal gameplay captures look stunning on desktop monitors, but converting them into vertical smartphone lockscreens (such as $1080 \\times 1920$ or $1440 \\times 3120$) requires careful compositional cropping rather than anamorphic stretching.
+
+- **Focal Framing:** Center the protagonist or vehicle while cropping peripheral road geometry.
+- **Aspect Scaling:** Use our [Crop Image](/crop-image/) tool or [Passport Photo Resizer](/passport-photo-resizer/) to set exact vertical aspect bounds.
+- **Inspect on Device:** After cropping, test lockscreen clock placement to ensure UI elements do not obscure the primary subject.`
+      },
+      {
+        id: 'in-browser-privacy',
+        title: 'Why zero-upload browser processing protects unreleased media',
+        body: `Creators, reviewers, and competitive players frequently handle embargoed gameplay recordings, private server captures, and custom graphics benchmarks. Cloud-based conversion platforms upload user videos to remote server queues, creating leakage risks and bandwidth bottlenecks.
+
+ZixTool executes all video compression, image transcoding, and calculations directly inside your client browser RAM via HTML5 Canvas, WebCodecs, and WebAssembly. No media bytes ever leave your device. Review our complete [privacy architecture](/privacy-explained/) to understand how client-side isolation protects your content.`
+      }
+    ],
+    sources: [
+      { name: 'Discord Developer Documentation: Attachment Size Limits', url: 'https://discord.com/developers/docs/reference' },
+      { name: 'WhatsApp Help Center: Media File Size Standards', url: 'https://faq.whatsapp.com/' },
+      { name: 'W3C WebCodecs Specification', url: 'https://www.w3.org/TR/webcodecs/' }
+    ]
+  }
 ];
 
 export function getGuidesForTool(slug: string) {

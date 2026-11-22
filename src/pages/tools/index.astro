@@ -41,17 +41,43 @@ const breadcrumbs = [
     <div class="mb-8">
       <div class="relative max-w-xl">
         <input
-          type="text"
+          type="search"
           id="tool-search-input"
           aria-label="Search tools"
-          placeholder={`Search ${tools.length} tools, e.g. merge PDF or JSON formatter`}
-          class="w-full pl-11 pr-14 py-3 border border-slate-200/90 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 shadow-xs bg-white text-slate-900 transition"
+          inputmode="search"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
+          placeholder={`Search ${tools.length} tools (e.g. PDF to Word, video compressor, aspect ratio)`}
+          class="w-full pl-11 pr-12 py-3.5 border border-slate-200/90 rounded-2xl text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 shadow-xs bg-white text-slate-900 transition"
         />
-        <svg class="w-5 h-5 text-slate-400 absolute left-3.5 top-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg class="w-5 h-5 text-slate-400 absolute left-3.5 top-4 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
-        <span class="absolute right-3.5 top-2.5 px-2 py-1 rounded-md bg-slate-100 text-2xs font-mono font-semibold text-slate-400 border border-slate-200">/</span>
+        <button
+          type="button"
+          id="tool-search-clear"
+          class="hidden absolute right-3 top-2.5 p-2 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 focus:outline-none transition cursor-pointer"
+          aria-label="Clear search input"
+        >
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        <span id="tool-search-kbd" class="hidden sm:inline-block absolute right-3.5 top-3.5 px-2 py-0.5 rounded-md bg-slate-100 text-2xs font-mono font-semibold text-slate-400 border border-slate-200 pointer-events-none">/</span>
       </div>
+      <div id="tool-search-feedback" class="hidden mt-2 text-xs font-semibold text-slate-600" aria-live="polite"></div>
+    </div>
+
+    <!-- Empty Search State -->
+    <div id="empty-search-state" class="hidden text-center py-12 px-4 rounded-2xl border border-dashed border-slate-300 bg-slate-50/70 my-6">
+      <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+      </div>
+      <h3 class="text-base font-bold text-slate-900 mb-1" id="empty-query-text">No tools found matching your search</h3>
+      <p class="text-xs text-slate-500 max-w-md mx-auto mb-4">Try searching by file format (e.g. PDF, JPG, WebP), task (e.g. compress, split, convert), or calculate.</p>
+      <button type="button" id="reset-search-btn" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition active:scale-[0.98] cursor-pointer">Reset Search</button>
     </div>
 
     <!-- Quick Navigation Anchor Links -->
@@ -258,20 +284,117 @@ const breadcrumbs = [
   </div>
 
   <script is:inline>
-    const searchInput = document.getElementById('tool-search-input');
-    if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-        const q = e.target.value.toLowerCase().trim();
-        const cards = document.querySelectorAll('.tool-card');
+    (() => {
+      const searchInput = document.getElementById('tool-search-input');
+      const clearBtn = document.getElementById('tool-search-clear');
+      const kbdBadge = document.getElementById('tool-search-kbd');
+      const feedback = document.getElementById('tool-search-feedback');
+      const emptyState = document.getElementById('empty-search-state');
+      const emptyQueryText = document.getElementById('empty-query-text');
+      const resetBtn = document.getElementById('reset-search-btn');
+      const cards = Array.from(document.querySelectorAll('.tool-card'));
+      const sections = Array.from(document.querySelectorAll('section[id]'));
+
+      function runSearch(query) {
+        const q = (query || '').toLowerCase().trim();
+
+        if (clearBtn) {
+          if (q) {
+            clearBtn.classList.remove('hidden');
+            if (kbdBadge) kbdBadge.classList.add('hidden');
+          } else {
+            clearBtn.classList.add('hidden');
+            if (kbdBadge) kbdBadge.classList.remove('hidden');
+          }
+        }
+
+        let visibleCount = 0;
         cards.forEach((card) => {
           const text = card.textContent.toLowerCase();
           if (!q || text.includes(q)) {
             card.style.display = '';
+            visibleCount++;
           } else {
             card.style.display = 'none';
           }
         });
+
+        // Hide or show category sections based on visible cards inside them
+        sections.forEach((sec) => {
+          const visibleCards = sec.querySelectorAll('.tool-card:not([style*="display: none"])');
+          if (q && visibleCards.length === 0) {
+            sec.style.display = 'none';
+          } else {
+            sec.style.display = '';
+          }
+        });
+
+        if (feedback) {
+          if (q) {
+            feedback.textContent = visibleCount === 1 ? 'Found 1 matching tool' : `Found ${visibleCount} matching tools`;
+            feedback.classList.remove('hidden');
+          } else {
+            feedback.textContent = '';
+            feedback.classList.add('hidden');
+          }
+        }
+
+        if (emptyState) {
+          if (q && visibleCount === 0) {
+            if (emptyQueryText) emptyQueryText.textContent = `No tools found matching "${query}"`;
+            emptyState.classList.remove('hidden');
+          } else {
+            emptyState.classList.add('hidden');
+          }
+        }
+      }
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          runSearch(e.target.value);
+        });
+
+        if (clearBtn) {
+          clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            runSearch('');
+            searchInput.focus();
+          });
+        }
+
+        if (resetBtn) {
+          resetBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            runSearch('');
+            searchInput.focus();
+          });
+        }
+
+        // Check URL params on load
+        const params = new URLSearchParams(window.location.search);
+        const qParam = params.get('q');
+        const focusParam = params.get('focus');
+
+        if (qParam) {
+          searchInput.value = qParam;
+          runSearch(qParam);
+          searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else if (focusParam === 'search') {
+          searchInput.focus();
+          searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+
+      // Global keyboard shortcut
+      window.addEventListener('keydown', (e) => {
+        if ((e.key === '/' || ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k')) && document.activeElement !== searchInput) {
+          if (!['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName || '')) {
+            e.preventDefault();
+            searchInput?.focus();
+            searchInput?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }
       });
-    }
+    })();
   </script>
 </Layout>

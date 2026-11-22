@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef, useState } from 'preact/hooks';
+import { useEffect, useRef, useState } from 'preact/hooks';
 
 export default function VideoCompressor() {
   const [hydrated, setHydrated] = useState(false);

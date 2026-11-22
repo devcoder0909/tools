@@ -135,17 +135,43 @@ const organizationJsonLd = {
         <div class="max-w-xl mx-auto mb-6">
           <div class="relative">
             <input
-              type="text"
+              type="search"
               id="home-tool-search"
+              inputmode="search"
+              autocomplete="off"
+              autocorrect="off"
+              autocapitalize="off"
+              spellcheck="false"
               placeholder="Search 70+ tools by name, format, or task (e.g. 50kb, heic, emi, pdf to jpg)..."
-              class="w-full pl-11 pr-14 py-3 rounded-xl border border-slate-200 bg-white text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 shadow-2xs transition"
+              class="w-full pl-11 pr-12 py-3.5 rounded-2xl border border-slate-200 bg-white text-base sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 shadow-2xs transition"
               aria-label="Search all tools"
             />
-            <svg class="w-5 h-5 text-slate-400 absolute left-3.5 top-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg class="w-5 h-5 text-slate-400 absolute left-3.5 top-4 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
-            <span class="absolute right-3.5 top-2.5 px-2 py-1 rounded-md bg-slate-100 text-2xs font-mono font-semibold text-slate-400 border border-slate-200">/</span>
+            <button
+              type="button"
+              id="home-search-clear"
+              class="hidden absolute right-3 top-2.5 p-2 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 focus:outline-none transition cursor-pointer"
+              aria-label="Clear search input"
+            >
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <span id="home-search-kbd" class="hidden sm:inline-block absolute right-3.5 top-3.5 px-2 py-0.5 rounded-md bg-slate-100 text-2xs font-mono font-semibold text-slate-400 border border-slate-200 pointer-events-none">/</span>
           </div>
+          <div id="home-search-feedback" class="hidden mt-2 text-center text-xs font-semibold text-slate-600" aria-live="polite"></div>
+        </div>
+
+        <!-- Empty Search & Filter State -->
+        <div id="home-empty-state" class="hidden text-center py-10 px-4 rounded-2xl border border-dashed border-slate-300 bg-slate-50/70 my-6 max-w-xl mx-auto">
+          <div class="w-10 h-10 mx-auto mb-2 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </div>
+          <h3 class="text-sm font-bold text-slate-900 mb-1" id="home-empty-query-text">No tools found matching your search</h3>
+          <p class="text-xs text-slate-500 max-w-md mx-auto mb-3">Try searching for other keywords or select "All Tools" to view our complete utility directory.</p>
+          <button type="button" id="home-reset-search-btn" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition active:scale-[0.98] cursor-pointer">Reset Search</button>
         </div>
 
         <!-- Category Tabs (Bespoke SVG icons) -->
@@ -499,13 +525,30 @@ const organizationJsonLd = {
   <script is:inline>
     document.addEventListener('DOMContentLoaded', () => {
       const searchInput = document.getElementById('home-tool-search');
-      const tabs = document.querySelectorAll('.category-tab');
-      const cards = document.querySelectorAll('.home-tool-card');
+      const clearBtn = document.getElementById('home-search-clear');
+      const kbdBadge = document.getElementById('home-search-kbd');
+      const feedback = document.getElementById('home-search-feedback');
+      const emptyState = document.getElementById('home-empty-state');
+      const emptyQueryText = document.getElementById('home-empty-query-text');
+      const resetBtn = document.getElementById('home-reset-search-btn');
+      const tabs = Array.from(document.querySelectorAll('.category-tab'));
+      const cards = Array.from(document.querySelectorAll('.home-tool-card'));
       let currentCategory = 'all';
 
       function filterTools() {
         const query = searchInput ? searchInput.value.toLowerCase().trim() : '';
 
+        if (clearBtn) {
+          if (query) {
+            clearBtn.classList.remove('hidden');
+            if (kbdBadge) kbdBadge.classList.add('hidden');
+          } else {
+            clearBtn.classList.add('hidden');
+            if (kbdBadge) kbdBadge.classList.remove('hidden');
+          }
+        }
+
+        let visibleCount = 0;
         cards.forEach((card) => {
           const cat = card.getAttribute('data-category');
           const name = card.getAttribute('data-name') || '';
@@ -515,14 +558,79 @@ const organizationJsonLd = {
 
           if (matchesCategory && matchesSearch) {
             card.style.display = '';
+            visibleCount++;
           } else {
             card.style.display = 'none';
           }
         });
+
+        if (feedback) {
+          if (query || currentCategory !== 'all') {
+            const catName = currentCategory === 'all' ? '' : ` in ${currentCategory}`;
+            feedback.textContent = visibleCount === 1 ? `Showing 1 tool${catName}` : `Showing ${visibleCount} tools${catName}`;
+            feedback.classList.remove('hidden');
+          } else {
+            feedback.textContent = '';
+            feedback.classList.add('hidden');
+          }
+        }
+
+        if (emptyState) {
+          if (visibleCount === 0) {
+            if (emptyQueryText) {
+              emptyQueryText.textContent = query
+                ? `No tools found matching "${query}"`
+                : 'No tools found in this category';
+            }
+            emptyState.classList.remove('hidden');
+          } else {
+            emptyState.classList.add('hidden');
+          }
+        }
       }
 
       if (searchInput) {
         searchInput.addEventListener('input', filterTools);
+
+        if (clearBtn) {
+          clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            filterTools();
+            searchInput.focus();
+          });
+        }
+
+        if (resetBtn) {
+          resetBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            currentCategory = 'all';
+            tabs.forEach((t) => {
+              const isAll = t.getAttribute('data-category') === 'all';
+              if (isAll) {
+                t.classList.add('bg-emerald-600', 'text-white', 'shadow-xs');
+                t.classList.remove('bg-white', 'border', 'border-slate-200', 'text-slate-700');
+              } else {
+                t.classList.remove('bg-emerald-600', 'text-white', 'shadow-xs');
+                t.classList.add('bg-white', 'border', 'border-slate-200', 'text-slate-700');
+              }
+            });
+            filterTools();
+            searchInput.focus();
+          });
+        }
+
+        // Check URL params
+        const params = new URLSearchParams(window.location.search);
+        const qParam = params.get('q');
+        const focusParam = params.get('focus');
+        if (qParam) {
+          searchInput.value = qParam;
+          filterTools();
+          searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else if (focusParam === 'search') {
+          searchInput.focus();
+          searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
       }
 
       tabs.forEach((tab) => {
@@ -536,6 +644,17 @@ const organizationJsonLd = {
           currentCategory = tab.getAttribute('data-category') || 'all';
           filterTools();
         });
+      });
+
+      // Global keyboard shortcut
+      window.addEventListener('keydown', (e) => {
+        if ((e.key === '/' || ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k')) && document.activeElement !== searchInput) {
+          if (!['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName || '')) {
+            e.preventDefault();
+            searchInput?.focus();
+            searchInput?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        }
       });
     });
   </script>

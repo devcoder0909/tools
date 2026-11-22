@@ -3724,3 +3724,21 @@
   seo:
     primary_kw: pdf to word
     intent: tool
+
+- id: gta-6-pc-specs-calculator
+  slug: gta-6-pc-specs-calculator
+  kind: calculator
+  name: GTA 6 PC Specs Calculator
+  title: GTA 6 PC Specs Calculator - Can Your PC Run GTA 6?
+  description: Check if your PC can run GTA 6 with our free hardware specs calculator. Test GPU VRAM, CPU cores, RAM, and 200GB+ NVMe SSD storage space requirements.
+  engine: gta-6-pc-specs-calculator
+  content: src/content/tools/gta-6-pc-specs-calculator.mdx
+  related: [aspect-ratio-calculator, video-compressor, online-calculator]
+  indexable: true
+  reviewed: true
+  last_reviewed: "2026-11-22"
+  lang: en
+  seo:
+    primary_kw: gta 6 pc specs calculator
+    secondary_kws: [can i run gta 6, can my pc run gta 6, gta 6 pc requirements, gta 6 storage size gb]
+    intent: calculator

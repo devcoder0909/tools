@@ -13,6 +13,7 @@ import ImageToText from '../components/ImageToText';
 import QRScanner from '../components/QRScanner';
 import PdfExport from '../components/PdfExport';
 import VideoCompressor from '../components/VideoCompressor';
+import Gta6SpecsCalculator from '../components/Gta6SpecsCalculator';
 import WhatsAppMediaSaver from '../components/WhatsAppMediaSaver';
 import DeveloperShell from '../components/DeveloperShell';
 import BackgroundRemoverShell from '../components/BackgroundRemoverShell';
@@ -197,7 +198,9 @@ if (tool.targetBytes) {
     </div>
 
     <!-- 3. The working tool above the fold -->
-    {['pdf-to-text', 'pdf-to-word'].includes(tool.id) ? (
+    {tool.id === 'gta-6-pc-specs-calculator' ? (
+      <Gta6SpecsCalculator client:load />
+    ) : ['pdf-to-text', 'pdf-to-word'].includes(tool.id) ? (
       <PdfExport client:load word={tool.id === 'pdf-to-word'} />
     ) : tool.id === 'video-compressor' ? (
       <VideoCompressor client:load />

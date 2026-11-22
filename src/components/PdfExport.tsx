@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import workerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 
 export default function PdfExport({ word }: { word: boolean }) {

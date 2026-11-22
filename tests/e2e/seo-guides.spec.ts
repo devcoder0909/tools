@@ -7,7 +7,7 @@ test.beforeEach(async ({ page }) => {
 
 test.use({ javaScriptEnabled: false });
 
-for (const slug of ['image-upload-requirements', 'pdf-file-size-limits', 'json-to-csv-data-checklist', 'restaurant-tipping-and-bill-splitting']) {
+for (const slug of ['image-upload-requirements', 'pdf-file-size-limits', 'json-to-csv-data-checklist', 'restaurant-tipping-and-bill-splitting', 'gta-6-pc-system-requirements-and-hardware-guide', 'gta-6-video-and-screenshot-optimization-guide']) {
   test(`${slug} is complete and crawlable without JavaScript`, async ({ page }) => {
     await page.goto(`/guides/${slug}/`, { waitUntil: 'domcontentloaded' });
     await expect(page.locator('h1')).toHaveCount(1);
@@ -32,10 +32,13 @@ test('tool pages link to relevant guides in initial HTML', async ({ page }) => {
   await expect(page.locator('a[href="/guides/image-upload-requirements/"]').first()).toBeVisible();
   await page.goto('/tip-calculator/', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('a[href="/guides/restaurant-tipping-and-bill-splitting/"]').first()).toBeVisible();
+  await page.goto('/aspect-ratio-calculator/', { waitUntil: 'domcontentloaded' });
+  await expect(page.locator('a[href="/guides/gta-6-pc-system-requirements-and-hardware-guide/"]').first()).toBeVisible();
   await page.goto('/guides/', { waitUntil: 'domcontentloaded' });
   await expect(page.locator('h1')).toHaveCount(1);
   await expect(page.locator('a[href="/guides/pdf-file-size-limits/"]')).toBeVisible();
   await expect(page.locator('a[href="/guides/restaurant-tipping-and-bill-splitting/"]')).toBeVisible();
+  await expect(page.locator('a[href="/guides/gta-6-pc-system-requirements-and-hardware-guide/"]')).toBeVisible();
 });
 
 test('unimplemented PDF rendering is excluded and explained', async ({ page }) => {
