@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none" role="img" aria-labelledby="title-gtamap desc-gtamap">
+  <title id="title-gtamap">GTA 6 Interactive Map and Coordinates Guide Diagram</title>
+  <desc id="desc-gtamap">Cartographic infographic detailing Vice City metropolitan zones, Grassrivers wetlands, Leonida Keys, and coordinates grid.</desc>
+  <defs>
+    <linearGradient id="mapBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="neonPink" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ec4899" />
+      <stop offset="100%" stop-color="#f43f5e" />
+    </linearGradient>
+    <linearGradient id="neonCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" rx="16" fill="url(#mapBg)" stroke="#1e293b" stroke-width="2" />
+
+  <!-- Coordinates Grid Lines -->
+  <path d="M 50 100 L 750 100 M 50 180 L 750 180 M 50 260 L 750 260 M 50 340 L 750 340" stroke="#1e293b" stroke-dasharray="4,4" stroke-width="1" />
+  <path d="M 150 70 L 150 400 M 300 70 L 300 400 M 450 70 L 450 400 M 600 70 L 600 400" stroke="#1e293b" stroke-dasharray="4,4" stroke-width="1" />
+
+  <!-- Badge Header -->
+  <rect x="260" y="20" width="280" height="26" rx="13" fill="#ec4899" fill-opacity="0.15" stroke="#ec4899" stroke-width="1" />
+  <text x="400" y="37" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#f472b6" letter-spacing="1">
+    LEONIDA CARTOGRAPHY &amp; GPS TELEMETRY
+  </text>
+  <text x="400" y="68" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="800" fill="#ffffff">
+    GTA 6 Map Zones, Landmarks &amp; Coordinates
+  </text>
+
+  <!-- Zone 1: Vice City Metro -->
+  <g transform="translate(60, 95)">
+    <rect width="210" height="140" rx="10" fill="#1e293b" stroke="#ec4899" stroke-width="1.5" />
+    <rect x="12" y="12" width="24" height="24" rx="6" fill="#ec4899" />
+    <text x="24" y="28" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#ffffff">VC</text>
+    <text x="46" y="28" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff">Vice City Metro</text>
+    <text x="12" y="55" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">• Ocean Drive / South Beach</text>
+    <text x="12" y="73" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">• Downtown High-Rises</text>
+    <text x="12" y="91" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">• Little Haiti &amp; Starfish Island</text>
+    <rect x="12" y="105" width="186" height="22" rx="4" fill="#090d16" />
+    <text x="105" y="120" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#f472b6">GPS: [25.7617, -80.1918]</text>
+  </g>
+
+  <!-- Zone 2: Grassrivers Wetlands -->
+  <g transform="translate(295, 95)">
+    <rect width="210" height="140" rx="10" fill="#1e293b" stroke="#10b981" stroke-width="1.5" />
+    <rect x="12" y="12" width="24" height="24" rx="6" fill="#10b981" />
+    <text x="24" y="28" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#ffffff">GR</text>
+    <text x="46" y="28" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff">Grassrivers Swamps</text>
+    <text x="12" y="55" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">• Airboat navigation routes</text>
+    <text x="12" y="73" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">• Alligator breeding canals</text>
+    <text x="12" y="91" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">• Smuggler airstrips &amp; shacks</text>
+    <rect x="12" y="105" width="186" height="22" rx="4" fill="#090d16" />
+    <text x="105" y="120" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#34d399">GPS: [25.4831, -80.8242]</text>
+  </g>
+
+  <!-- Zone 3: Leonida Keys -->
+  <g transform="translate(530, 95)">
+    <rect width="210" height="140" rx="10" fill="#1e293b" stroke="#06b6d4" stroke-width="1.5" />
+    <rect x="12" y="12" width="24" height="24" rx="6" fill="#06b6d4" />
+    <text x="24" y="28" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#ffffff">LK</text>
+    <text x="46" y="28" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff">Leonida Keys</text>
+    <text x="12" y="55" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">• Overseas Highway Viaducts</text>
+    <text x="12" y="73" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">• Archipelago reef diving</text>
+    <text x="12" y="91" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">• Luxury marinas &amp; yachts</text>
+    <rect x="12" y="105" width="186" height="22" rx="4" fill="#090d16" />
+    <text x="105" y="120" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#38bdf8">GPS: [24.6892, -81.2541]</text>
+  </g>
+
+  <!-- Zone 4: Military & Port Gellhorn -->
+  <g transform="translate(60, 255)">
+    <rect width="325" height="145" rx="10" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5" />
+    <rect x="12" y="12" width="24" height="24" rx="6" fill="#f59e0b" />
+    <text x="24" y="28" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#ffffff">PG</text>
+    <text x="46" y="28" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff">Port Gellhorn &amp; Military Base</text>
+    <text x="12" y="55" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">• Heavy industrial ship docks &amp; cargo cranes</text>
+    <text x="12" y="73" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">• Restricted military airspace &amp; radar domes</text>
+    <text x="12" y="91" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">• Underground munitions &amp; interceptor hangars</text>
+    <rect x="12" y="110" width="301" height="22" rx="4" fill="#090d16" />
+    <text x="162" y="125" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#fbbf24">Restricted Defense Sector GPS: [26.1154, -81.7925]</text>
+  </g>
+
+  <!-- Zone 5: Fast Travel & POI Hub -->
+  <g transform="translate(415, 255)">
+    <rect width="325" height="145" rx="10" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5" />
+    <rect x="12" y="12" width="24" height="24" rx="6" fill="#8b5cf6" />
+    <text x="24" y="28" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="800" fill="#ffffff">POI</text>
+    <text x="46" y="28" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff">Fast Travel, Safehouses &amp; POIs</text>
+    <text x="12" y="55" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">• Dual-protagonist weapon stash safehouses</text>
+    <text x="12" y="73" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">• High-speed commuter rail &amp; helipads</text>
+    <text x="12" y="91" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">• 125 km² terrain scale (2.3x larger than Los Santos)</text>
+    <rect x="12" y="110" width="301" height="22" rx="4" fill="#090d16" />
+    <text x="162" y="125" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#c084fc">Safehouse Telemetry GPS: [25.7890, -80.1340]</text>
+  </g>
+
+  <!-- Bottom Watermark -->
+  <text x="400" y="425" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#64748b">
+    zixtool.online • Interactive GTA 6 Telemetry &amp; Location Analytics
+  </text>
+</svg>

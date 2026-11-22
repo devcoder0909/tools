@@ -54,6 +54,13 @@ Zero-Upload Architecture: https://zixtool.online/privacy-explained/
 - [Date Difference Calculator](https://zixtool.online/date-difference-calculator/): Compute total days, weeks, and calendar intervals between two dates.
 - [Discount Calculator](https://zixtool.online/discount-calculator/): Calculate retail sale discounts, original prices, and final savings.
 - [Tip Calculator](https://zixtool.online/tip-calculator/): Calculate restaurant gratuity and split bills evenly among dining groups.
+- [DPI Calculator](https://zixtool.online/dpi-calculator/): Calculate display pixel density (PPI), dot pitch, physical display size, and photo print dimensions in inches and centimeters.
+- [Aspect Ratio Calculator](https://zixtool.online/aspect-ratio-calculator/): Calculate missing photo, video, and monitor resolutions for 16:9, 4:3, 21:9, and custom dimensions.
+
+## Gaming & Hardware Tools
+
+- [GTA 6 PC Specs Calculator](https://zixtool.online/gta-6-pc-specs-calculator/): Hardware bottleneck calculator evaluating GPU VRAM, CPU frame times, and SSD storage requirements for Grand Theft Auto VI.
+- [GTA 6 Release Countdown](https://zixtool.online/gta-6-release-countdown/): Live countdown timer, regional midnight timezone unlock schedule, and platform release tracker.
 
 ## Generators & Creative Utilities
 
@@ -76,8 +83,20 @@ Zero-Upload Architecture: https://zixtool.online/privacy-explained/
 - [Unit Converter](https://zixtool.online/unit-converter/): Convert length, mass/weight, temperature (Celsius/Fahrenheit/Kelvin), and digital byte storage units.
 - [My IP Address & Diagnostics](https://zixtool.online/my-ip-address/): Display client diagnostics including screen resolution, color depth, timezone, language, and user-agent.
 - [Word Counter](https://zixtool.online/word-counter/): Calculate word count, character count, sentence count, and reading time in real time.
+- [Reading Time Calculator](https://zixtool.online/reading-time-calculator/): Calculate estimated reading and speaking time in minutes, words per minute, and Flesch Reading Ease scores.
 - [Case Converter](https://zixtool.online/case-converter/): Convert text between UPPERCASE, lowercase, Title Case, camelCase, PascalCase, and kebab-case.
 - [JSON Formatter & Validator](https://zixtool.online/json-formatter/): Prettify, minify, and validate JSON data structures with syntax error alerts.
+
+## Strategic SEO & Gaming Technical Guides
+
+- [GTA 6 Interactive Map & Coordinates Guide](https://zixtool.online/guides/gta-6-interactive-map-and-coordinates-guide/): Cartographic guide to Vice City coordinates, Grassrivers wetlands, Leonida Keys archipelago, and military bases.
+- [GTA 6 Global Release Times & Timezones](https://zixtool.online/guides/gta-6-global-release-times-and-timezone-guide/): Global midnight unlock matrix, New Zealand region switch mechanics, and console pre-load timing.
+- [GTA 6 Characters Lucia & Jason Guide](https://zixtool.online/guides/gta-6-characters-lucia-and-jason-guide/): Dual protagonist combat mechanics, Bonnie and Clyde criminal partnership, and Voice Actor identity analysis.
+- [GTA 6 Soundtrack & Radio Stations Guide](https://zixtool.online/guides/gta-6-soundtrack-and-radio-stations-guide/): Confirmed radio stations, synthwave tracks, hip-hop channels, and in-game music streaming integration.
+- [GTA 6 PC System Requirements & Hardware](https://zixtool.online/guides/gta-6-pc-system-requirements-and-hardware-guide/): Comprehensive hardware benchmark analysis covering CPU frame times, VRAM allocation, and NVMe DirectStorage.
+- [GTA 6 PS5 Pro vs Base PS5 60 FPS Performance](https://zixtool.online/guides/gta-6-ps5-pro-and-pc-60-fps-performance-guide/): Frame rate target analysis, PSSR machine learning upscaling, and ray-traced global illumination.
+- [GTA 6 Map Size Comparison & Scale](https://zixtool.online/guides/gta-6-map-size-comparison-and-scale-guide/): Spatial scale analysis measuring Leonida's 125 km² area against GTA 5, RDR2, and real-world South Florida.
+- [GTA 6 Download & Pre-Load Guide](https://zixtool.online/guides/gta-6-official-download-and-pre-load-guide/): Official digital pre-order verification, PlayStation Network/Xbox store safety, and anti-malware verification.
 
 ## Technical Specifications & Format Hubs
 

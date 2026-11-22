@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none" role="img" aria-labelledby="title-dpi desc-dpi">
+  <title id="title-dpi">DPI and PPI Calculator Architecture and Workflow</title>
+  <desc id="desc-dpi">Technical workflow diagram illustrating screen PPI Pythagorean density calculation and photo print size conversion.</desc>
+  <defs>
+    <linearGradient id="dpiBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#f1f5f9" />
+    </linearGradient>
+    <filter id="dpiShadow" x="-5%" y="-5%" width="110%" height="110%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.06" />
+    </filter>
+  </defs>
+
+  <rect width="800" height="450" rx="16" fill="url(#dpiBgGrad)" stroke="#e2e8f0" stroke-width="2" />
+  <rect x="250" y="24" width="300" height="28" rx="14" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1" />
+  <text x="400" y="43" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#047857" letter-spacing="0.5">
+    CLIENT-SIDE DISPLAY &amp; PRINT ENGINE
+  </text>
+  <text x="400" y="82" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" font-weight="800" fill="#0f172a">
+    How Display PPI &amp; Print Dimensions Compute
+  </text>
+  <text x="400" y="104" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#64748b">
+    Pythagorean Diagonal Resolution • Dot Pitch (µm) • 300 DPI Print Standards • 100% In-Browser
+  </text>
+
+  <!-- Step 1: Display Specs Ingestion -->
+  <g transform="translate(40, 135)" filter="url(#dpiShadow)">
+    <rect width="215" height="240" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="16" y="16" width="32" height="32" rx="8" fill="#10b981" />
+    <text x="32" y="38" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#ffffff">1</text>
+    <text x="60" y="38" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#0f172a">Resolution Ingestion</text>
+
+    <text x="16" y="75" font-family="system-ui, sans-serif" font-size="12" fill="#475569">• Width &amp; Height pixels</text>
+    <text x="16" y="98" font-family="system-ui, sans-serif" font-size="12" fill="#475569">• Diagonal screen size (")</text>
+    <text x="16" y="121" font-family="system-ui, sans-serif" font-size="12" fill="#475569">• Preset: 4K, 1440p, 1080p</text>
+    <text x="16" y="144" font-family="system-ui, sans-serif" font-size="12" fill="#475569">• Retina mobile profiles</text>
+    <rect x="16" y="170" width="183" height="48" rx="8" fill="#f8fafc" stroke="#e2e8f0" />
+    <text x="107" y="192" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#059669">Zero Server Calls</text>
+    <text x="107" y="208" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">100% Client-Side RAM</text>
+  </g>
+
+  <!-- Step 2: Trigonometric & Optical Math -->
+  <g transform="translate(292, 135)" filter="url(#dpiShadow)">
+    <rect width="215" height="240" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="16" y="16" width="32" height="32" rx="8" fill="#0284c7" />
+    <text x="32" y="38" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#ffffff">2</text>
+    <text x="60" y="38" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#0f172a">Density Algorithm</text>
+
+    <text x="16" y="75" font-family="system-ui, sans-serif" font-size="12" fill="#475569">• d_px = √(W² + H²)</text>
+    <text x="16" y="98" font-family="system-ui, sans-serif" font-size="12" fill="#475569">• PPI = d_px ÷ Diagonal</text>
+    <text x="16" y="121" font-family="system-ui, sans-serif" font-size="12" fill="#475569">• Dot pitch = 25.4 ÷ PPI</text>
+    <text x="16" y="144" font-family="system-ui, sans-serif" font-size="12" fill="#475569">• Retina acuity distance</text>
+    <rect x="16" y="170" width="183" height="48" rx="8" fill="#f0f9ff" stroke="#bae6fd" />
+    <text x="107" y="192" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#0284c7">Pythagorean Metric</text>
+    <text x="107" y="208" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">Exact Floating Precision</text>
+  </g>
+
+  <!-- Step 3: Print Dimension Matrix -->
+  <g transform="translate(545, 135)" filter="url(#dpiShadow)">
+    <rect width="215" height="240" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="16" y="16" width="32" height="32" rx="8" fill="#7c3aed" />
+    <text x="32" y="38" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#ffffff">3</text>
+    <text x="60" y="38" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#0f172a">Print &amp; Screen Output</text>
+
+    <text x="16" y="75" font-family="system-ui, sans-serif" font-size="12" fill="#475569">• Physical Width &amp; Height (")</text>
+    <text x="16" y="98" font-family="system-ui, sans-serif" font-size="12" fill="#475569">• Metric sizing (cm &amp; mm)</text>
+    <text x="16" y="121" font-family="system-ui, sans-serif" font-size="12" fill="#475569">• Print Quality Tier (300 DPI)</text>
+    <text x="16" y="144" font-family="system-ui, sans-serif" font-size="12" fill="#475569">• Aspect ratio via GCD</text>
+    <rect x="16" y="170" width="183" height="48" rx="8" fill="#faf5ff" stroke="#e9d5ff" />
+    <text x="107" y="192" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#7c3aed">Instant Live Preview</text>
+    <text x="107" y="208" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">Copy &amp; Export Results</text>
+  </g>
+</svg>

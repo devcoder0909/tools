@@ -1081,6 +1081,18 @@ export const TOOL_MEDIA_REGISTRY: ToolMediaDef[] = [
     diagramCaption: 'Real-time lexical tokenization, syllable calculation, and Flesch Reading Ease scoring in browser RAM.',
     tags: ['reading time calculator', 'words to minutes calculator', 'speech time calculator', 'readability calculator'],
   },
+  {
+    slug: 'dpi-calculator',
+    name: 'DPI Calculator',
+    title: 'How to Calculate Screen PPI and Photo Print Dimensions Online',
+    description: 'Calculate Display Density (PPI) • Dot Pitch Microns • Photo Print Size (Inches & CM) • 100% In-Browser',
+    durationSecs: 65,
+    thumbnailUrl: '/images/tools/dpi-calculator-thumb.svg',
+    diagramUrl: '/images/tools/dpi-calculator-workflow.svg',
+    diagramTitle: 'DPI & PPI Calculation Architecture and Print Density Flow',
+    diagramCaption: 'Pythagorean resolution evaluation and print dimension matrix computed in client-side memory.',
+    tags: ['dpi calculator', 'ppi calculator', 'screen resolution calculator', 'print size dpi calculator'],
+  },
 ];
 
 export function getToolMedia(slug: string): ToolMediaDef | undefined {

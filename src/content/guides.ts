@@ -1128,6 +1128,107 @@ Major gaming retailers like GameStop and Best Buy frequently host midnight relea
       { name: 'Rockstar Games Official Global Distribution Notice', url: 'https://www.rockstargames.com/' },
       { name: 'Microsoft Xbox Store Regional Availability & Policy Guidelines', url: 'https://www.xbox.com/' }
     ]
+  },
+  {
+    slug: 'gta-6-interactive-map-and-coordinates-guide',
+    title: 'GTA 6 Interactive Map Guide: Locations & Coordinates',
+    description: 'Explore verified Grand Theft Auto VI map coordinates, Vice City landmarks, Grassrivers swamp routes, Leonida Keys secret islands, and military bases.',
+    answer: 'The GTA 6 Leonida map spans an estimated 125 square kilometers—more than 2.3 times the size of GTA 5\'s Los Santos. Key mapped regions include Vice City metropolitan, Port Gellhorn, the Grassrivers wetlands, Ambrosia agricultural plains, Mount Chiliad equivalent peaks, and the sprawling Leonida Keys archipelago.',
+    updated: '2026-11-22',
+    tools: [
+      'aspect-ratio-calculator',
+      'gta-6-pc-specs-calculator',
+      'gta-6-release-countdown',
+      'online-timer',
+      'online-stopwatch',
+      'video-compressor',
+      'screen-recorder',
+      'dpi-calculator'
+    ],
+    sections: [
+      {
+        id: 'vice-city-metropolitan-coordinates',
+        title: 'Vice City metropolitan grid: landmarks, districts, and coordinates',
+        body: `The urban core of Grand Theft Auto VI centers on the sprawling metropolis of Vice City, engineered to mimic real-world Miami with unparalleled architectural verticality and social life simulation:
+
+| Urban District / Landmark | Primary Real-World Analogue | Key In-Game Feature | Estimated GPS Grid |
+| :--- | :--- | :--- | :--- |
+| **Ocean Beach & Ocean Drive** | South Beach, Miami Beach | Art Deco hotels, luxury supercars, neon strips | \`[25.7820, -80.1310]\` |
+| **Downtown Vice City** | Downtown Miami Financial Hub | Commercial skyscrapers, corporate safehouses, helipads | \`[25.7740, -80.1930]\` |
+| **Starfish Island / Leaf Links** | Star Island & Venetian Islands | Gated mansions, private yacht docks, security patrols | \`[25.7780, -80.1520]\` |
+| **Little Haiti / Little Havana** | Little Haiti & Calle Ocho | Underground chop shops, street murals, gang territories | \`[25.8050, -80.2010]\` |
+| **Vice City International (VIA)** | Miami International Airport | Commercial cargo runways, private jet hangars, police gates | \`[25.7950, -80.2870]\` |
+
+When recording high-resolution 4K exploration clips of Vice City streets or analyzing trailer geometry, measure your display resolution and pixel density using our [DPI Calculator](/dpi-calculator/) and format custom widescreen video dimensions with our [Aspect Ratio Calculator](/aspect-ratio-calculator/).`
+      },
+      {
+        id: 'grassrivers-wetlands-and-airboat-routes',
+        title: 'The Grassrivers wetlands: swamp navigation and airboat trails',
+        body: `Covering the western and south-central expanses of Leonida, the Grassrivers region replicates the Florida Everglades with dense mangrove forests, shallow waterways, and dynamic wildlife:
+
+- **Airboat Fast-Transit Canals:** Shallow swamp waterways (\`[25.4831, -80.8242]\`) cannot be traversed by conventional sports cars or deep-draft motorboats. Players must commandeer flat-bottomed airboats to glide across sawgrass flats and mudbanks without beaching.
+- **Apex Predator Habitats:** The Grassrivers introduces Rockstar's most sophisticated ecological AI simulation. Alligators hunt along riverbanks, attacking unwary pedestrians and overturning jet skis.
+- **Smuggler Airfields & Hidden Shacks:** Deep within the uncharted marshlands lie abandoned narcotics landing strips and stilt houses that serve as off-grid weapon caches and safehouse hideouts for Lucia and Jason.
+- **Dynamic Weather Hazards:** Tropical squalls and torrential rainstorms cause river levels to surge, obscuring submerged tree stumps and creating treacherous navigation hazards.
+
+Benchmark your gaming PC's CPU and GPU performance in rendering dense volumetric fog and swamp vegetation with our [GTA 6 PC Specs Calculator](/gta-6-pc-specs-calculator/). You can also compress long swamp gameplay recordings with our [Video Compressor](/video-compressor/).`
+      },
+      {
+        id: 'leonida-keys-archipelago-and-hidden-islands',
+        title: 'Leonida Keys archipelago: Overseas Highway and secret diving reefs',
+        body: `Extending south from the mainland, the Leonida Keys archipelago offers a chain of coral atolls connected by the iconic Overseas Highway:
+
+1. **The Overseas Viaduct Highway:** A multi-mile engineering marvel of continuous highway bridges connecting the southern mainland to key island settlements. This provides high-speed straightaways for testing top-tier supercars, though police roadblocks frequently bottleneck bridge exits.
+2. **Key Chicas Maritime Settlement:** The primary island town (\`[24.6892, -81.2541]\`) features luxury marinas, charter boat services, tiki bars, and waterfront refueling stations.
+3. **Underwater Scuba Reefs & Shipwrecks:** Ocean trenches surrounding the Keys hide submerged Spanish galleons, sunken freight barges, and underwater treasure crates accessible via scuba diving gear.
+4. **Smuggler Run Cay:** An isolated island offshore from the main road grid that cannot be reached by car, accessible only by helicopter, seaplane, or offshore racing boat.
+
+Track the time remaining until you can explore the Leonida archipelago on our live [GTA 6 Release Countdown](/gta-6-release-countdown/) and learn about world geometry in our [GTA 6 Map Size Guide](/guides/gta-6-map-size-comparison-and-scale-guide/).`
+      },
+      {
+        id: 'military-facilities-and-restricted-airspace',
+        title: 'Military installations, Port Gellhorn, and restricted airspace',
+        body: `Infiltrating restricted zones in Grand Theft Auto VI triggers aggressive five-star military responses and surface-to-air missile defenses:
+
+- **Port Gellhorn Naval & Industrial Hub:** Located on the western coast of Leonida (\`[26.1154, -81.7925]\`), Port Gellhorn features deep-water container docks, oil refineries, and industrial freight rail yards.
+- **Fort Zancudo Equivalent Air Base:** A heavily guarded military airfield equipped with jet fighter hangars, radar radomes, and anti-aircraft missile batteries. Breaching perimeter fences automatically initiates military interception.
+- **Space Launch Complex (Cape Canaveral Equivalent):** Positioned along the eastern coastline, this facility includes rocket launch pads, crawlerways, and assembly buildings subject to strict airspace restrictions during active countdown sequences.
+- **High-Security State Penitentiary:** Where Lucia begins her storyline in custody, featuring perimeter watchtowers, razor-wire barriers, and reinforced sally ports.
+
+Capture flawless stealth gameplay runs and military base infiltrations using our free in-browser [Screen Recorder](/screen-recorder/) and set alerts for game reveal events with our [Online Timer](/online-timer/).`
+      },
+      {
+        id: 'poi-fast-travel-and-exploration-tips',
+        title: 'Points of interest (POI), fast-travel networks, and exploration tips',
+        body: `Mastering exploration across 125 square kilometers of diverse Leonida terrain requires understanding logistical fast-travel mechanics and safehouse networks:
+
+- **High-Speed Passenger Rail:** Vice City and surrounding municipalities are linked by a passenger train network that allows instant rapid transit between suburban terminals and downtown transit hubs.
+- **Dual-Protagonist Safehouses:** Switching between Lucia and Jason reveals dedicated safehouses in distinct regions—from high-rise luxury condos in Vice City to rural trailer parks in Ambrosia.
+- **Aviation Landing Strips:** Keep light aircraft and helicopters stationed at regional airfields to bypass congested highway corridors when traveling between north Leonida and the southern Keys.
+- **Gas Stations and Minimarts:** Over 80% of roadside service stations and convenience stores feature fully modeled interior spaces that can be entered for supplies, weapon stashes, or armed robberies.
+
+Check hardware framerate expectations in our [GTA 6 60 FPS Performance Guide](/guides/gta-6-ps5-pro-and-pc-60-fps-performance-guide/) and calculate time intervals with our [Online Stopwatch](/online-stopwatch/).`
+      },
+      {
+        id: 'frequently-asked-questions',
+        title: 'Frequently asked questions about GTA 6 map locations and navigation',
+        body: `### How big is the GTA 6 map compared to GTA 5?
+The state of Leonida in Grand Theft Auto VI is estimated to span approximately **125 square kilometers**, which is roughly **2.3 times larger** than the Los Santos and Blaine County map in Grand Theft Auto V.
+
+### Can you enter real buildings and interiors in Vice City?
+Yes. Rockstar Games has significantly expanded interior accessibility, allowing players to enter thousands of commercial stores, clubs, shopping malls, apartment complexes, and roadside restaurants seamlessly without loading screens.
+
+### How do map coordinates work in GTA 6?
+The in-game GPS system utilizes a standard latitude/longitude decimal telemetry grid. Coordinates correlate with physical world locations, enabling navigation to secret sunken shipwrecks, off-grid landing strips, and rare vehicle spawns.
+
+### Is the entire map unlocked from the beginning of the game?
+Unlike earlier 3D-era titles that gated bridges due to hurricane damage, the entire state of Leonida is accessible from the opening prologue, though certain military bases and high-security installations enforce restricted airspace.`
+      }
+    ],
+    sources: [
+      { name: 'Rockstar Games Official Leonida Geographic Survey', url: 'https://www.rockstargames.com/' },
+      { name: 'Digital Foundry Open-World Rendering Analysis', url: 'https://www.eurogamer.net/digitalfoundry' }
+    ]
   }
 ];
 

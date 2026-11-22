@@ -77,4 +77,20 @@ test.describe('M0 Foundations Smoke Tests', () => {
     await expect(shell.getByText('Reading (200 WPM)', { exact: true })).toBeVisible();
     await expect(shell.getByText('Speaking (140 WPM)', { exact: true })).toBeVisible();
   });
+
+  test('dpi-calculator calculates screen PPI and print dimensions', async ({ page }) => {
+    await page.goto('/dpi-calculator/');
+    await expect(page).toHaveTitle(/DPI Calculator/);
+    await expect(page.locator('h1')).toHaveCount(1);
+    const island = page.locator('astro-island');
+    await expect(island.getByText('163.18', { exact: true })).toBeVisible();
+    await expect(island.getByText('Pixels Per Inch')).toBeVisible();
+    
+    // Switch to Print mode
+    const printTab = island.getByRole('button', { name: 'Print Dimensions & Resolution' });
+    await expect(printTab).toBeVisible();
+    await printTab.click();
+    await expect(island.getByText('Maximum Physical Print Size at 300 DPI')).toBeVisible();
+    await expect(island.getByText('10.00" × 6.67"')).toBeVisible();
+  });
 });

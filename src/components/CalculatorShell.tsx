@@ -90,6 +90,92 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
     return `${w / d}:${h / d}`;
   }, [arWidth, arHeight]);
 
+  // DPI / PPI Calculator State
+  const [dpiMode, setDpiMode] = useState<'screen' | 'print'>('screen');
+  const [dpiWidth, setDpiWidth] = useState<string>('3840');
+  const [dpiHeight, setDpiHeight] = useState<string>('2160');
+  const [dpiDiagonal, setDpiDiagonal] = useState<string>('27');
+
+  const [printImageW, setPrintImageW] = useState<string>('3000');
+  const [printImageH, setPrintImageH] = useState<string>('2000');
+  const [printTargetDpi, setPrintTargetDpi] = useState<string>('300');
+
+  const screenPresets = [
+    { label: '27" 4K UHD', w: '3840', h: '2160', d: '27' },
+    { label: '24" 1080p FHD', w: '1920', h: '1080', d: '24' },
+    { label: '27" 1440p QHD', w: '2560', h: '1440', d: '27' },
+    { label: '16" MacBook Pro', w: '3456', h: '2234', d: '16.2' },
+    { label: 'iPhone 16 Pro', w: '2622', h: '1206', d: '6.3' },
+    { label: '55" 4K TV', w: '3840', h: '2160', d: '55' },
+  ];
+
+  const printDpiPresets = ['72', '150', '300', '600'];
+
+  const dpiResult = useMemo(() => {
+    const w = parseFloat(dpiWidth) || 0;
+    const h = parseFloat(dpiHeight) || 0;
+    const d = parseFloat(dpiDiagonal) || 0;
+    if (w <= 0 || h <= 0 || d <= 0) return null;
+
+    const diagPx = Math.sqrt(w * w + h * h);
+    const ppi = diagPx / d;
+    const dotPitchMm = ppi > 0 ? 25.4 / ppi : 0;
+    const totalPixels = w * h;
+    const megapixels = totalPixels / 1000000;
+    const div = gcd(Math.max(1, Math.round(w)), Math.max(1, Math.round(h)));
+    const aspectRatio = `${Math.round(w) / div}:${Math.round(h) / div}`;
+    const widthInches = ppi > 0 ? w / ppi : 0;
+    const heightInches = ppi > 0 ? h / ppi : 0;
+    const viewingDistInches = ppi > 0 ? 3438 / ppi : 0;
+
+    return {
+      ppi: ppi.toFixed(2),
+      dotPitchMm: dotPitchMm.toFixed(4),
+      dotPitchMicrons: (dotPitchMm * 1000).toFixed(1),
+      megapixels: megapixels.toFixed(2),
+      aspectRatio,
+      dimensionsInches: `${widthInches.toFixed(2)}" × ${heightInches.toFixed(2)}"`,
+      dimensionsCm: `${(widthInches * 2.54).toFixed(1)} cm × ${(heightInches * 2.54).toFixed(1)} cm`,
+      viewingDistance: `${viewingDistInches.toFixed(1)}" (${(viewingDistInches * 2.54).toFixed(1)} cm)`,
+    };
+  }, [dpiWidth, dpiHeight, dpiDiagonal]);
+
+  const printResult = useMemo(() => {
+    const pw = parseFloat(printImageW) || 0;
+    const ph = parseFloat(printImageH) || 0;
+    const pdpi = parseFloat(printTargetDpi) || 1;
+    if (pw <= 0 || ph <= 0 || pdpi <= 0) return null;
+
+    const widthInches = pw / pdpi;
+    const heightInches = ph / pdpi;
+    const widthCm = widthInches * 2.54;
+    const heightCm = heightInches * 2.54;
+    const megapixels = (pw * ph) / 1000000;
+
+    let quality = 'Standard (Draft / Preview)';
+    let qualityColor = 'text-amber-700 bg-amber-50 border-amber-200';
+    if (pdpi >= 300) {
+      quality = 'Gallery & Fine Art Offset Quality (300+ DPI)';
+      qualityColor = 'text-emerald-700 bg-emerald-50 border-emerald-200';
+    } else if (pdpi >= 200) {
+      quality = 'High Quality Photo & Book Printing (200-299 DPI)';
+      qualityColor = 'text-blue-700 bg-blue-50 border-blue-200';
+    } else if (pdpi >= 150) {
+      quality = 'Standard Poster & Large Display Print (150-199 DPI)';
+      qualityColor = 'text-indigo-700 bg-indigo-50 border-indigo-200';
+    }
+
+    return {
+      widthInches: widthInches.toFixed(2),
+      heightInches: heightInches.toFixed(2),
+      widthCm: widthCm.toFixed(1),
+      heightCm: heightCm.toFixed(1),
+      megapixels: megapixels.toFixed(2),
+      quality,
+      qualityColor,
+    };
+  }, [printImageW, printImageH, printTargetDpi]);
+
   // Scientific Calculator State
   const [calcExpr, setCalcExpr] = useState<string>('0');
   const [calcPrev, setCalcPrev] = useState<string>('');
@@ -1226,6 +1312,285 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
               <p class="text-xs text-slate-500">Changing either value auto-calculates the other</p>
             </div>
           </div>
+        </div>
+      )}
+
+      {/* DPI / PPI Calculator */}
+      {toolId === 'dpi-calculator' && (
+        <div class="space-y-6">
+          {/* Mode Switcher Tabs */}
+          <div class="flex border-b border-slate-200">
+            <button
+              type="button"
+              onClick={() => setDpiMode('screen')}
+              class={`pb-3 px-4 text-sm font-bold border-b-2 transition ${
+                dpiMode === 'screen'
+                  ? 'border-emerald-600 text-emerald-700'
+                  : 'border-transparent text-slate-500 hover:text-slate-800'
+              }`}
+            >
+              Screen PPI & Pixel Density
+            </button>
+            <button
+              type="button"
+              onClick={() => setDpiMode('print')}
+              class={`pb-3 px-4 text-sm font-bold border-b-2 transition ${
+                dpiMode === 'print'
+                  ? 'border-emerald-600 text-emerald-700'
+                  : 'border-transparent text-slate-500 hover:text-slate-800'
+              }`}
+            >
+              Print Dimensions & Resolution
+            </button>
+          </div>
+
+          {dpiMode === 'screen' ? (
+            <div class="space-y-6">
+              {/* Presets */}
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-2 uppercase tracking-wider">
+                  Popular Device Presets
+                </label>
+                <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2">
+                  {screenPresets.map((preset) => (
+                    <button
+                      key={preset.label}
+                      type="button"
+                      onClick={() => {
+                        setDpiWidth(preset.w);
+                        setDpiHeight(preset.h);
+                        setDpiDiagonal(preset.d);
+                      }}
+                      class="px-2.5 py-2 text-xs font-medium text-slate-700 bg-slate-100 hover:bg-emerald-50 hover:text-emerald-800 hover:border-emerald-300 border border-transparent rounded-lg transition text-center truncate"
+                    >
+                      {preset.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Inputs */}
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">
+                    Horizontal Pixels (Width px)
+                  </label>
+                  <input
+                    type="number"
+                    min="1"
+                    value={dpiWidth}
+                    onInput={(e) => setDpiWidth((e.target as HTMLInputElement).value)}
+                    class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-mono text-base font-bold"
+                    placeholder="3840"
+                  />
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">
+                    Vertical Pixels (Height px)
+                  </label>
+                  <input
+                    type="number"
+                    min="1"
+                    value={dpiHeight}
+                    onInput={(e) => setDpiHeight((e.target as HTMLInputElement).value)}
+                    class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-mono text-base font-bold"
+                    placeholder="2160"
+                  />
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">
+                    Diagonal Screen Size (Inches)
+                  </label>
+                  <input
+                    type="number"
+                    min="0.1"
+                    step="0.1"
+                    value={dpiDiagonal}
+                    onInput={(e) => setDpiDiagonal((e.target as HTMLInputElement).value)}
+                    class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-mono text-base font-bold"
+                    placeholder="27"
+                  />
+                </div>
+              </div>
+
+              {/* Result Summary */}
+              {dpiResult && (
+                <div class="space-y-4">
+                  <div class="p-6 bg-emerald-50/70 border border-emerald-200 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                      <p class="text-xs font-bold text-emerald-800 uppercase tracking-wider mb-1">
+                        Pixel Density (PPI / DPI)
+                      </p>
+                      <div class="flex items-baseline gap-2">
+                        <span class="text-3xl sm:text-4xl font-extrabold text-emerald-900 font-mono">
+                          {dpiResult.ppi}
+                        </span>
+                        <span class="text-sm font-semibold text-emerald-700">Pixels Per Inch</span>
+                      </div>
+                    </div>
+                    <div class="text-right sm:border-l sm:border-emerald-200/80 sm:pl-6 text-left sm:text-right">
+                      <p class="text-xs font-semibold text-slate-600 mb-0.5">Pixel Pitch / Size</p>
+                      <p class="text-base font-mono font-bold text-slate-900">
+                        {dpiResult.dotPitchMm} mm ({dpiResult.dotPitchMicrons} µm)
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Metrics Grid */}
+                  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                      <p class="text-xs font-semibold text-slate-500 mb-1">Total Resolution</p>
+                      <p class="text-sm font-bold text-slate-900 font-mono">
+                        {dpiWidth} × {dpiHeight}
+                      </p>
+                      <p class="text-2xs text-slate-400 mt-0.5">{dpiResult.megapixels} Megapixels</p>
+                    </div>
+                    <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                      <p class="text-xs font-semibold text-slate-500 mb-1">Aspect Ratio</p>
+                      <p class="text-sm font-bold text-emerald-700 font-mono">
+                        {dpiResult.aspectRatio}
+                      </p>
+                      <p class="text-2xs text-slate-400 mt-0.5">Standard Display Ratio</p>
+                    </div>
+                    <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                      <p class="text-xs font-semibold text-slate-500 mb-1">Display Dimensions</p>
+                      <p class="text-sm font-bold text-slate-900 font-mono">
+                        {dpiResult.dimensionsInches}
+                      </p>
+                      <p class="text-2xs text-slate-400 mt-0.5">{dpiResult.dimensionsCm}</p>
+                    </div>
+                    <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                      <p class="text-xs font-semibold text-slate-500 mb-1">Retina Viewing Dist.</p>
+                      <p class="text-sm font-bold text-slate-900 font-mono">
+                        {dpiResult.viewingDistance}
+                      </p>
+                      <p class="text-2xs text-slate-400 mt-0.5">Where pixels become invisible</p>
+                    </div>
+                  </div>
+
+                  {/* Math Formula Card */}
+                  <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-600 font-mono">
+                    <p class="font-bold text-slate-800 mb-1 font-sans">Calculation Formula:</p>
+                    <p>
+                      Diagonal Px = √({dpiWidth}² + {dpiHeight}²) = {Math.round(Math.sqrt(Number(dpiWidth) ** 2 + Number(dpiHeight) ** 2))} px
+                    </p>
+                    <p>
+                      PPI = {Math.round(Math.sqrt(Number(dpiWidth) ** 2 + Number(dpiHeight) ** 2))} ÷ {dpiDiagonal}" = <strong class="text-emerald-700">{dpiResult.ppi} PPI</strong>
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div class="space-y-6">
+              {/* Presets */}
+              <div>
+                <label class="block text-xs font-bold text-slate-700 mb-2 uppercase tracking-wider">
+                  Target Print Quality Presets
+                </label>
+                <div class="flex flex-wrap gap-2">
+                  {printDpiPresets.map((rate) => (
+                    <button
+                      key={rate}
+                      type="button"
+                      onClick={() => setPrintTargetDpi(rate)}
+                      class={`px-3 py-1.5 text-xs font-bold rounded-lg border transition ${
+                        printTargetDpi === rate
+                          ? 'bg-emerald-600 text-white border-emerald-600 shadow-xs'
+                          : 'bg-slate-100 text-slate-700 border-slate-200 hover:bg-slate-200'
+                      }`}
+                    >
+                      {rate} DPI {rate === '300' ? '(Standard Print)' : rate === '72' ? '(Web Screen)' : ''}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Inputs */}
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">
+                    Image Width (Pixels)
+                  </label>
+                  <input
+                    type="number"
+                    min="1"
+                    value={printImageW}
+                    onInput={(e) => setPrintImageW((e.target as HTMLInputElement).value)}
+                    class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-mono text-base font-bold"
+                    placeholder="3000"
+                  />
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">
+                    Image Height (Pixels)
+                  </label>
+                  <input
+                    type="number"
+                    min="1"
+                    value={printImageH}
+                    onInput={(e) => setPrintImageH((e.target as HTMLInputElement).value)}
+                    class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-mono text-base font-bold"
+                    placeholder="2000"
+                  />
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-700 mb-1">
+                    Target Print Resolution (DPI)
+                  </label>
+                  <input
+                    type="number"
+                    min="1"
+                    value={printTargetDpi}
+                    onInput={(e) => setPrintTargetDpi((e.target as HTMLInputElement).value)}
+                    class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-mono text-base font-bold"
+                    placeholder="300"
+                  />
+                </div>
+              </div>
+
+              {/* Result Summary */}
+              {printResult && (
+                <div class="space-y-4">
+                  <div class="p-6 bg-slate-50 border border-slate-200 rounded-2xl space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-200/80 pb-4">
+                      <div>
+                        <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">
+                          Maximum Physical Print Size at {printTargetDpi} DPI
+                        </p>
+                        <p class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-mono">
+                          {printResult.widthInches}" × {printResult.heightInches}"
+                        </p>
+                        <p class="text-sm font-semibold text-slate-600 mt-0.5">
+                          {printResult.widthCm} cm × {printResult.heightCm} cm
+                        </p>
+                      </div>
+                      <div class="self-start sm:self-auto">
+                        <span class={`inline-block px-3 py-1.5 rounded-lg border text-xs font-bold ${printResult.qualityColor}`}>
+                          {printResult.quality}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-1">
+                      <div class="p-3 bg-white rounded-lg border border-slate-200">
+                        <p class="text-xs text-slate-500">Total Megapixels</p>
+                        <p class="text-sm font-bold font-mono text-slate-900">{printResult.megapixels} MP</p>
+                      </div>
+                      <div class="p-3 bg-white rounded-lg border border-slate-200">
+                        <p class="text-xs text-slate-500">Width Formula</p>
+                        <p class="text-sm font-bold font-mono text-slate-900">{printImageW} ÷ {printTargetDpi} = {printResult.widthInches}"</p>
+                      </div>
+                      <div class="p-3 bg-white rounded-lg border border-slate-200 col-span-2 sm:col-span-1">
+                        <p class="text-xs text-slate-500">Height Formula</p>
+                        <p class="text-sm font-bold font-mono text-slate-900">{printImageH} ÷ {printTargetDpi} = {printResult.heightInches}"</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       )}
     </div>

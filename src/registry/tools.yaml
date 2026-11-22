@@ -3850,3 +3850,48 @@
       - reading speed calculator
       - text reading time
     intent: calculator
+
+- id: dpi-calculator
+  slug: dpi-calculator
+  kind: calculator
+  name: DPI Calculator
+  title: "DPI Calculator - Calculate Screen PPI & Print Size Online"
+  subtitle: "Calculate display PPI, dot pitch, and photo print dimensions with instant formula breakdowns."
+  description: "Free online DPI calculator. Calculate screen pixel density (PPI), dot pitch, display diagonal dimensions, and photo print sizes in inches and centimeters."
+  engine: calculator
+  options: []
+  presets: []
+  content: src/content/tools/dpi-calculator.mdx
+  faq:
+    - q: What is the difference between DPI and PPI?
+      a: PPI (Pixels Per Inch) measures electronic display pixel density on monitors and smartphones, while DPI (Dots Per Inch) measures printer droplet density on physical paper. In digital imaging, both terms are frequently used interchangeably to define image resolution.
+    - q: How do I calculate the PPI of a monitor?
+      a: Calculate the diagonal resolution in pixels using the Pythagorean theorem (Diagonal Pixels = √(Width² + Height²)), then divide the result by the diagonal screen size in inches (PPI = Diagonal Pixels ÷ Diagonal Inches).
+    - q: What DPI is required for high quality photo printing?
+      a: 300 DPI is the universal benchmark for professional photo printing, books, and fine art. 150 DPI to 200 DPI produces crisp results for larger posters and canvas prints viewed from a distance of 2 to 3 feet.
+    - q: How do I calculate photo print dimensions from pixel resolution?
+      a: Divide the image pixel width and height by your target DPI (Print Width in Inches = Pixel Width ÷ Target DPI; Print Height in Inches = Pixel Height ÷ Target DPI). Multiply inches by 2.54 to convert to centimeters.
+    - q: What is considered a 'Retina' display pixel density?
+      a: A display achieves Apple Retina or 20/20 human eye visual acuity when the pixel density exceeds roughly 300 PPI at a 10-inch viewing distance (smartphones) or 220 PPI at a 20-inch viewing distance (laptops and desktop monitors).
+    - q: Does my image or monitor data get sent to a server?
+      a: No. All pixel density formulas, trigonometric aspect ratio conversions, and print dimension metrics calculate 100% locally in your client web browser memory.
+  related:
+    - aspect-ratio-calculator
+    - image-resizer
+    - resize-image
+    - online-calculator
+  indexable: true
+  reviewed: true
+  last_reviewed: "2026-11-22"
+  reviewer: ZixTool Display & Imaging Team
+  lang: en
+  seo:
+    primary_kw: dpi calculator
+    secondary_kws:
+      - ppi calculator
+      - screen resolution calculator
+      - calculate dpi online
+      - pixels per inch calculator
+      - print size dpi calculator
+      - monitor ppi calculator
+    intent: calculator
