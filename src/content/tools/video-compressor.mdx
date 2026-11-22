@@ -1,0 +1,18 @@
+---
+title: Video Compressor Online - Set a Target Size in MB
+description: Compress a video in your browser with a target size in MB. Preview the encoded clip and compare the original and output byte counts before downloading.
+last_reviewed: "2026-11-21"
+reviewed: true
+---
+
+## Compress a video for an upload limit
+
+Choose a video that plays in your browser and enter the desired maximum size in decimal megabytes. Start compression and keep the tab visible. The tool plays the source internally while encoding, so a minute of footage takes about a minute to process. The download button appears when encoding finishes.
+
+## How the target size works
+
+The encoder uses the clip duration to estimate a video bitrate and leaves room for audio and container data. The browser controls the final bitrate. Very small targets and long clips can produce an output above the requested limit. Compare the actual output bytes with the upload form before sharing.
+
+## Review the finished clip
+
+Play the beginning and end, listen to any speech and inspect rapidly moving scenes. A low bitrate can make motion look blocky or soften subtitles. The output uses WebM or MP4 depending on browser support and scales the longest edge to at most 1280 pixels. Keep the original if your recipient needs the full resolution, a specific codec or the original creation metadata.

@@ -11,6 +11,8 @@ import FinanceShell from '../components/FinanceShell';
 import MediaShell from '../components/MediaShell';
 import ImageToText from '../components/ImageToText';
 import QRScanner from '../components/QRScanner';
+import PdfExport from '../components/PdfExport';
+import VideoCompressor from '../components/VideoCompressor';
 import WhatsAppMediaSaver from '../components/WhatsAppMediaSaver';
 import DeveloperShell from '../components/DeveloperShell';
 import BackgroundRemoverShell from '../components/BackgroundRemoverShell';
@@ -195,7 +197,11 @@ if (tool.targetBytes) {
     </div>
 
     <!-- 3. The working tool above the fold -->
-    {tool.id === 'qr-code-scanner' ? (
+    {['pdf-to-text', 'pdf-to-word'].includes(tool.id) ? (
+      <PdfExport client:load word={tool.id === 'pdf-to-word'} />
+    ) : tool.id === 'video-compressor' ? (
+      <VideoCompressor client:load />
+    ) : tool.id === 'qr-code-scanner' ? (
       <QRScanner client:load />
     ) : tool.id === 'image-to-text' ? (
       <ImageToText client:load />

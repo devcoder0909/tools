@@ -1521,6 +1521,7 @@
     - q: Does ZixTool add any watermarks to merged PDFs?
       a: Never. All merged output files are clean, completely unwatermarked, and ready for official submission to government portals, clients, or employers.
   related:
+    - pdf-to-text
     - pdf-to-jpg
     - split-pdf
     - compress-pdf
@@ -1572,6 +1573,7 @@
     - q: Does ZixTool insert watermarks into extracted PDF pages?
       a: Never. All output files are clean, completely unwatermarked, and ready for official submission to employers, legal counsel, or government agencies.
   related:
+    - pdf-to-word
     - pdf-to-jpg
     - merge-pdf
     - compress-pdf
@@ -1944,6 +1946,7 @@
     - q: Are my screen recordings sent to a server?
       a: No. All video encoding uses your browser's native MediaRecorder API. The video blob is saved straight to your computer.
   related:
+    - video-compressor
     - photo-editor
     - resize-image
     - meme-generator
@@ -2602,6 +2605,7 @@
     - q: Can I specify an exact target size like 100KB or 200KB?
       a: Yes. You can select preset targets or input a custom kilobyte threshold for job forms and government uploads.
   related:
+    - video-compressor
     - photo-compressor
     - jpg-compressor
     - passport-photo-resizer
@@ -3670,4 +3674,53 @@
   seo:
     primary_kw: qr code scanner
     secondary_kws: [scan qr code from image, qr code scanner online, read qr code from screenshot]
+    intent: tool
+
+- id: pdf-to-text
+  slug: pdf-to-text
+  kind: pdf
+  name: PDF to Text Converter
+  title: PDF to Text Converter - Extract Selectable Text Online
+  description: Extract selectable text from PDF pages in your browser. Preview and copy text or download a TXT file, and flag pages needing optical character recognition.
+  engine: pdf-to-text
+  content: src/content/tools/pdf-to-text.mdx
+  related: [image-to-text, split-pdf, word-counter]
+  indexable: true
+  reviewed: true
+  last_reviewed: "2026-11-21"
+  lang: en
+  seo:
+    primary_kw: pdf to text
+    intent: tool
+- id: video-compressor
+  slug: video-compressor
+  kind: media
+  name: Video Compressor
+  title: Video Compressor Online - Set a Target Size in MB
+  description: Compress a video in your browser with a target size in MB. Preview the encoded clip and compare the original and output byte counts before downloading.
+  engine: video-compressor
+  content: src/content/tools/video-compressor.mdx
+  related: [screen-recorder, crop-image, image-compressor]
+  indexable: true
+  reviewed: true
+  last_reviewed: "2026-11-21"
+  lang: en
+  seo:
+    primary_kw: video compressor
+    intent: tool
+- id: pdf-to-word
+  slug: pdf-to-word
+  kind: pdf
+  name: PDF to Word Converter
+  title: PDF to Word Converter - Export Editable Text to DOCX
+  description: Convert selectable PDF text to an editable Word document in your browser. Download a DOCX with page breaks and review extracted paragraphs before sharing.
+  engine: pdf-to-word
+  content: src/content/tools/pdf-to-word.mdx
+  related: [pdf-to-text, split-pdf, image-to-text]
+  indexable: true
+  reviewed: true
+  last_reviewed: "2026-11-21"
+  lang: en
+  seo:
+    primary_kw: pdf to word
     intent: tool
