@@ -227,7 +227,7 @@ if (tool.targetBytes) {
       <DeveloperShell client:load toolId={tool.id} toolName={tool.name} />
     ) : tool.kind === 'calculator' || ['scientific-calculator', 'online-calculator', 'gpa-calculator', 'aspect-ratio-calculator', 'percentage-calculator', 'age-calculator', 'date-difference-calculator', 'discount-calculator', 'tip-calculator'].includes(tool.id) ? (
       <CalculatorShell client:load toolId={tool.id} toolName={tool.name} />
-    ) : tool.kind === 'text' || ['word-counter', 'case-converter', 'json-formatter', 'character-counter', 'lorem-ipsum-generator', 'diff-checker', 'markdown-to-html'].includes(tool.id) ? (
+    ) : tool.kind === 'text' || ['word-counter', 'case-converter', 'json-formatter', 'character-counter', 'lorem-ipsum-generator', 'diff-checker', 'markdown-to-html', 'reading-time-calculator'].includes(tool.id) ? (
       <TextShell client:load toolId={tool.id} toolName={tool.name} />
     ) : tool.engine === 'target-size' || tool.slug.startsWith('compress-image-to-') || tool.slug === 'image-compressor' ? (
       <TargetSizeShell client:load toolId={tool.id} toolName={tool.name} defaultTargetKb={parsedTargetKb} />

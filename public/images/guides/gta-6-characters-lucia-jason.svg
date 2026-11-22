@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" fill="none">
+  <rect width="1200" height="675" rx="20" fill="#090d16" stroke="#1e293b" stroke-width="3" />
+  <text x="600" y="55" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="900" fill="#ffffff">
+    GTA 6 Dual Protagonists &amp; Leonida Cast Hierarchy
+  </text>
+  <text x="600" y="85" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" fill="#94a3b8">
+    Lucia Caminos &amp; Jason Duval â€¢ Performance Capture &amp; Tactical Trunk Stash Mechanics
+  </text>
+
+  <!-- Left Column: Lucia Caminos -->
+  <g transform="translate(60, 115)">
+    <rect width="340" height="510" rx="16" fill="#1e132e" stroke="#db2777" stroke-width="2" />
+    <rect x="20" y="20" width="300" height="40" rx="8" fill="#831843" />
+    <text x="170" y="46" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="800" fill="#fdf2f8">LUCIA CAMINOS</text>
+    <text x="170" y="85" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#f472b6">Actor: Manni L. Perez</text>
+    <text x="170" y="105" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#fda4af">Origin: Leonida State Penitentiary / Liberty City</text>
+
+    <!-- Stat Pills -->
+    <g transform="translate(20, 125)">
+      <rect width="300" height="70" rx="10" fill="#3b0764" stroke="#a21caf" />
+      <text x="15" y="25" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#f5d0fe">CORE ARCHETYPE</text>
+      <text x="15" y="48" font-family="system-ui, sans-serif" font-size="13" fill="#ffffff">Mastermind â€¢ High-Stakes Heist Specialist</text>
+    </g>
+
+    <g transform="translate(20, 210)">
+      <rect width="300" height="135" rx="10" fill="#1a102f" stroke="#701a75" />
+      <text x="15" y="25" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#f472b6">TACTICAL ATTRIBUTES</text>
+      <text x="15" y="50" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">â€¢ Lockpicking &amp; electronic safe decryption</text>
+      <text x="15" y="75" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">â€¢ Rapid dual-wield pistol handling</text>
+      <text x="15" y="100" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">â€¢ High-speed metropolitan evasive driving</text>
+      <text x="15" y="125" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">â€¢ Hostage intimidation &amp; vault negotiation</text>
+    </g>
+
+    <g transform="translate(20, 360)">
+      <rect width="300" height="120" rx="10" fill="#280f34" stroke="#db2777" />
+      <text x="15" y="25" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#fbcfe8">PERSONAL MOTIVATION</text>
+      <text x="15" y="48" font-family="system-ui, sans-serif" font-size="12" fill="#fce7f3">Securing financial freedom promised to her</text>
+      <text x="15" y="68" font-family="system-ui, sans-serif" font-size="12" fill="#fce7f3">family in Vice City while defying systemic</text>
+      <text x="15" y="88" font-family="system-ui, sans-serif" font-size="12" fill="#fce7f3">corruption across the state of Leonida.</text>
+    </g>
+  </g>
+
+  <!-- Center Column: Shared Trunk Stash System -->
+  <g transform="translate(430, 115)">
+    <rect width="340" height="510" rx="16" fill="#0f172a" stroke="#059669" stroke-width="2" />
+    <rect x="20" y="20" width="300" height="40" rx="8" fill="#065f46" />
+    <text x="170" y="46" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="800" fill="#ecfdf5">VEHICLE TRUNK STASH</text>
+    <text x="170" y="85" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#34d399">Dynamic Police Evasion Mechanic</text>
+    <text x="170" y="105" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#6ee7b7">Capacity: 5 Outfits + Heavy Weapon Armory</text>
+
+    <!-- Visual Trunk Diagram -->
+    <g transform="translate(20, 125)">
+      <rect width="300" height="150" rx="10" fill="#022c22" stroke="#10b981" />
+      <text x="15" y="25" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#a7f3d0">HOW POLICE AI MEMORY WORKS</text>
+      <text x="15" y="50" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">1. Police scan shirt color, mask &amp; vehicle</text>
+      <text x="15" y="75" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">2. Disengage line of sight into back alley</text>
+      <text x="15" y="100" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">3. Switch outfit from trunk in &lt; 3 seconds</text>
+      <text x="15" y="125" font-family="system-ui, sans-serif" font-size="12" fill="#6ee7b7">4. Search radius drops from 4-star to 0</text>
+    </g>
+
+    <g transform="translate(20, 290)">
+      <rect width="300" height="190" rx="10" fill="#132338" stroke="#38bdf8" />
+      <text x="15" y="25" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#7dd3fc">SUPPORTING NETWORK</text>
+      <text x="15" y="50" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#ffffff">â€¢ Brian Heder (Stephen Root)</text>
+      <text x="25" y="70" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">Keys smuggler &amp; safehouse landlord</text>
+
+      <text x="15" y="95" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#ffffff">â€¢ Cal Hampton (Bobby Moynihan)</text>
+      <text x="25" y="115" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">Coast Guard scanner conspiracy monitor</text>
+
+      <text x="15" y="140" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#ffffff">â€¢ Raul Bautista</text>
+      <text x="25" y="160" font-family="system-ui, sans-serif" font-size="11" fill="#94a3b8">Downtown Vice City vault coordinator</text>
+    </g>
+  </g>
+
+  <!-- Right Column: Jason Duval -->
+  <g transform="translate(800, 115)">
+    <rect width="340" height="510" rx="16" fill="#111c2e" stroke="#0284c7" stroke-width="2" />
+    <rect x="20" y="20" width="300" height="40" rx="8" fill="#0369a1" />
+    <text x="170" y="46" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="800" fill="#f0f9ff">JASON DUVAL</text>
+    <text x="170" y="85" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#38bdf8">Actor: Dylan Rourke</text>
+    <text x="170" y="105" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#bae6fd">Origin: Leonida Keys / Ex-Military Operator</text>
+
+    <!-- Stat Pills -->
+    <g transform="translate(20, 125)">
+      <rect width="300" height="70" rx="10" fill="#0c4a6e" stroke="#0284c7" />
+      <text x="15" y="25" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#bae6fd">CORE ARCHETYPE</text>
+      <text x="15" y="48" font-family="system-ui, sans-serif" font-size="13" fill="#ffffff">Enforcer â€¢ Tactical Smuggling Specialist</text>
+    </g>
+
+    <g transform="translate(20, 210)">
+      <rect width="300" height="135" rx="10" fill="#0b192c" stroke="#1d4ed8" />
+      <text x="15" y="25" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#60a5fa">TACTICAL ATTRIBUTES</text>
+      <text x="15" y="50" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">â€¢ Heavy assault rifle &amp; DMR marksmanship</text>
+      <text x="15" y="75" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">â€¢ Offshore airboat &amp; speedboat navigation</text>
+      <text x="15" y="100" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">â€¢ Off-road wetland driving &amp; vehicle recovery</text>
+      <text x="15" y="125" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">â€¢ Tactical breacher &amp; armed escort</text>
+    </g>
+
+    <g transform="translate(20, 360)">
+      <rect width="300" height="120" rx="10" fill="#082f49" stroke="#0284c7" />
+      <text x="15" y="25" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#bae6fd">PERSONAL MOTIVATION</text>
+      <text x="15" y="48" font-family="system-ui, sans-serif" font-size="12" fill="#e0f2fe">Protecting Lucia and severing criminal ties</text>
+      <text x="15" y="68" font-family="system-ui, sans-serif" font-size="12" fill="#e0f2fe">with local Keys cartels before high-profile</text>
+      <text x="15" y="88" font-family="system-ui, sans-serif" font-size="12" fill="#e0f2fe">scores attract federal agency scrutiny.</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" fill="none">
+  <rect width="1280" height="720" rx="24" fill="#090d16" stroke="#1e293b" stroke-width="4" />
+  <rect x="80" y="80" width="1120" height="560" rx="20" fill="#0f172a" stroke="#334155" stroke-width="2" />
+
+  <!-- Badge -->
+  <rect x="490" y="120" width="300" height="40" rx="20" fill="#065f46" stroke="#10b981" />
+  <text x="640" y="146" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#a7f3d0" letter-spacing="1">
+    ONLINE TEXT UTILITIES
+  </text>
+
+  <!-- Title -->
+  <text x="640" y="225" text-anchor="middle" font-family="system-ui, sans-serif" font-size="44" font-weight="900" fill="#ffffff">
+    Reading Time Calculator
+  </text>
+  <text x="640" y="275" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" font-weight="500" fill="#94a3b8">
+    Words to Minutes â€¢ Speaking Duration â€¢ Flesch Readability Scoring
+  </text>
+
+  <!-- Feature Cards -->
+  <g transform="translate(140, 320)">
+    <!-- Card 1 -->
+    <rect x="0" y="0" width="300" height="180" rx="16" fill="#132338" stroke="#0284c7" stroke-width="2" />
+    <text x="150" y="55" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="900" fill="#38bdf8">130 - 260 WPM</text>
+    <text x="150" y="90" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#e0f2fe">Silent Reading Pacing</text>
+    <text x="150" y="125" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#94a3b8">Slow, Average &amp; Fast Presets</text>
+    <text x="150" y="145" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#94a3b8">Tailored to Any Document Type</text>
+
+    <!-- Card 2 -->
+    <rect x="350" y="0" width="300" height="180" rx="16" fill="#064e3b" stroke="#10b981" stroke-width="2" />
+    <text x="500" y="55" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="900" fill="#34d399">140 WPM</text>
+    <text x="500" y="90" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#d1fae5">Oral Speech Timing</text>
+    <text x="500" y="125" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#a7f3d0">Keynote &amp; Presentation Scripting</text>
+    <text x="500" y="145" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#a7f3d0">Exact Speaking Duration Minutes</text>
+
+    <!-- Card 3 -->
+    <rect x="700" y="0" width="300" height="180" rx="16" fill="#2e1065" stroke="#a855f7" stroke-width="2" />
+    <text x="850" y="55" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="900" fill="#c084fc">Flesch Scale</text>
+    <text x="850" y="90" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#f3e8ff">Readability &amp; Grade Level</text>
+    <text x="850" y="125" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#d8b4fe">Syllables &amp; Sentence Length</text>
+    <text x="850" y="145" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#d8b4fe">Optimize for Web Retention</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="640" y="570" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="600" fill="#64748b">
+    100% Client-Side Processing â€¢ No Server Uploads â€¢ Instant Live Word Evaluation
+  </text>
+</svg>

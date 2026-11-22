@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450" fill="none" role="img" aria-labelledby="title-rtc desc-rtc">
+  <title id="title-rtc">Reading Time Calculator Workflow &amp; Architecture Diagram</title>
+  <desc id="desc-rtc">Technical flowchart illustrating client-side word parsing, speech duration estimation, and Flesch readability evaluation.</desc>
+  <defs>
+    <linearGradient id="rtcBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#f1f5f9" />
+    </linearGradient>
+    <filter id="rtcShadow" x="-5%" y="-5%" width="110%" height="110%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.06" />
+    </filter>
+  </defs>
+
+  <rect width="800" height="450" rx="16" fill="url(#rtcBgGrad)" stroke="#e2e8f0" stroke-width="2" />
+  <rect x="250" y="24" width="300" height="28" rx="14" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1" />
+  <text x="400" y="43" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#047857" letter-spacing="0.5">
+    IN-BROWSER TEXT METRICS ENGINE
+  </text>
+  <text x="400" y="82" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" font-weight="800" fill="#0f172a">
+    How Reading &amp; Speaking Times Are Calculated
+  </text>
+  <text x="400" y="104" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#64748b">
+    Instant Lexical Tokenization â€¢ Syllable Analysis â€¢ Flesch Reading Ease â€¢ 100% Client-Side
+  </text>
+
+  <!-- Step 1: Lexical Input -->
+  <g transform="translate(40, 135)" filter="url(#rtcShadow)">
+    <rect width="215" height="240" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="16" y="16" width="32" height="32" rx="8" fill="#10b981" />
+    <text x="32" y="38" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#ffffff">1</text>
+    <text x="60" y="38" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#0f172a">Text Ingestion</text>
+
+    <text x="16" y="75" font-family="system-ui, sans-serif" font-size="12" fill="#475569">â€¢ Paste draft or type live</text>
+    <text x="16" y="98" font-family="system-ui, sans-serif" font-size="12" fill="#475569">â€¢ Whitespace tokenizer</text>
+    <text x="16" y="121" font-family="system-ui, sans-serif" font-size="12" fill="#475569">â€¢ Sentence &amp; clause regex</text>
+    <text x="16" y="144" font-family="system-ui, sans-serif" font-size="12" fill="#475569">â€¢ Character matrix with/without spaces</text>
+    <rect x="16" y="170" width="183" height="48" rx="8" fill="#f8fafc" stroke="#e2e8f0" />
+    <text x="107" y="192" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#059669">Zero Server Calls</text>
+    <text x="107" y="208" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">Direct Browser RAM</text>
+  </g>
+
+  <!-- Arrow 1 -->
+  <path d="M 265 255 L 285 255" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" marker-end="url(#arrow)" />
+
+  <!-- Step 2: Metric Computation -->
+  <g transform="translate(292, 135)" filter="url(#rtcShadow)">
+    <rect width="215" height="240" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="16" y="16" width="32" height="32" rx="8" fill="#0284c7" />
+    <text x="32" y="38" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#ffffff">2</text>
+    <text x="60" y="38" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#0f172a">Pacing Algorithms</text>
+
+    <text x="16" y="75" font-family="system-ui, sans-serif" font-size="12" fill="#475569">â€¢ Silent Read: 130â€“260 WPM</text>
+    <text x="16" y="98" font-family="system-ui, sans-serif" font-size="12" fill="#475569">â€¢ Speech: 140 WPM keynote</text>
+    <text x="16" y="121" font-family="system-ui, sans-serif" font-size="12" fill="#475569">â€¢ Vowel diphthong counter</text>
+    <text x="16" y="144" font-family="system-ui, sans-serif" font-size="12" fill="#475569">â€¢ Flesch formula evaluation</text>
+    <rect x="16" y="170" width="183" height="48" rx="8" fill="#f0f9ff" stroke="#bae6fd" />
+    <text x="107" y="192" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#0284c7">Flesch Reading Ease</text>
+    <text x="107" y="208" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">0â€“100 Comprehension Score</text>
+  </g>
+
+  <!-- Arrow 2 -->
+  <path d="M 517 255 L 537 255" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Step 3: Real-Time Output -->
+  <g transform="translate(545, 135)" filter="url(#rtcShadow)">
+    <rect width="215" height="240" rx="12" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+    <rect x="16" y="16" width="32" height="32" rx="8" fill="#7c3aed" />
+    <text x="32" y="38" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#ffffff">3</text>
+    <text x="60" y="38" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#0f172a">Actionable KPI Cards</text>
+
+    <text x="16" y="75" font-family="system-ui, sans-serif" font-size="12" fill="#475569">â€¢ Formatted minutes &amp; secs</text>
+    <text x="16" y="98" font-family="system-ui, sans-serif" font-size="12" fill="#475569">â€¢ Speech duration badge</text>
+    <text x="16" y="121" font-family="system-ui, sans-serif" font-size="12" fill="#475569">â€¢ Academic grade level</text>
+    <text x="16" y="144" font-family="system-ui, sans-serif" font-size="12" fill="#475569">â€¢ 1-Click clipboard export</text>
+    <rect x="16" y="170" width="183" height="48" rx="8" fill="#fdf4ff" stroke="#f0abfc" />
+    <text x="107" y="192" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#a21caf">Instant Results</text>
+    <text x="107" y="208" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#64748b">Publish &amp; Rehearse</text>
+  </g>
+
+  <!-- Bottom Privacy Bar -->
+  <g transform="translate(40, 395)">
+    <rect width="720" height="34" rx="8" fill="#f8fafc" stroke="#e2e8f0" />
+    <text x="360" y="22" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#64748b">
+      âœ“ Private &amp; Secure: All text processing runs 100% locally in browser memory with zero tracking
+    </text>
+  </g>
+</svg>

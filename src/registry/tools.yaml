@@ -1330,6 +1330,7 @@
     - percentage-calculator
     - diff-checker
     - markdown-to-html
+    - reading-time-calculator
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-13T00:00:00.000Z
@@ -2491,6 +2492,7 @@
     - json-formatter
     - fancy-text-generator
     - diff-checker
+    - reading-time-calculator
   indexable: true
   reviewed: true
   last_reviewed: "2026-11-15T00:00:00.000Z"
@@ -3803,4 +3805,48 @@
   seo:
     primary_kw: gta 6 countdown
     secondary_kws: [gta 6 release countdown, days until gta 6, how many days until gta 6, gta 6 release date tracker]
+    intent: calculator
+
+- id: reading-time-calculator
+  slug: reading-time-calculator
+  kind: text
+  name: Reading Time Calculator
+  title: "Reading Time Calculator - Words to Minutes Online"
+  subtitle: Calculate estimated reading time, speech duration, and readability scores.
+  description: "Calculate estimated reading and speaking time for any text online. Get exact word counts, minutes, reading speeds, and readability scores in your browser."
+  engine: text-metrics
+  options: []
+  presets: []
+  content: src/content/tools/reading-time-calculator.mdx
+  faq:
+    - q: How is reading time calculated?
+      a: Reading time is calculated by dividing total word count by average words per minute (WPM). Standard adult reading speed is 200 WPM, while technical reading averages 130 WPM and skimming averages 260 WPM.
+    - q: How is speaking time calculated?
+      a: Speaking time assumes a standard presentation pacing of 130 to 140 words per minute, allowing for natural pauses, vocal inflection, and audience comprehension.
+    - q: What is the Flesch Reading Ease score?
+      a: The Flesch Reading Ease formula grades text on a 0 to 100 scale based on sentence length and syllable count per word. Higher scores indicate content that is easier to comprehend.
+    - q: Does my text get uploaded to a server?
+      a: No. All word parsing, syllable counting, and duration calculations execute 100% locally in your browser memory using client-side JavaScript.
+    - q: Can I adjust the reading speed in WPM?
+      a: Yes. Our interactive calculator lets you toggle between Slow (130 WPM), Average (200 WPM), Fast (260 WPM), and Speech (140 WPM) presets.
+    - q: Is there a character or word limit?
+      a: No. You can paste short social media posts, essays, or full-length book manuscripts with instantaneous in-memory evaluation.
+  related:
+    - word-counter
+    - character-counter
+    - case-converter
+    - text-to-speech
+  indexable: true
+  reviewed: true
+  last_reviewed: "2026-11-22"
+  reviewer: ZixTool Content Analytics Team
+  lang: en
+  seo:
+    primary_kw: reading time calculator
+    secondary_kws:
+      - words to minutes calculator
+      - speech time calculator
+      - estimate reading time
+      - reading speed calculator
+      - text reading time
     intent: calculator

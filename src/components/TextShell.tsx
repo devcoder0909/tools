@@ -207,6 +207,63 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
     };
   }, [text]);
 
+  // Reading Time calculations
+  const [readingSpeedWpm, setReadingSpeedWpm] = useState<number>(200);
+
+  const readingMetrics = useMemo(() => {
+    const raw = text.trim();
+    if (!raw) {
+      return {
+        formattedReadingTime: '0 sec',
+        formattedSpeakingTime: '0 sec',
+        readabilityScore: 100,
+        readabilityGrade: 'Very Easy (5th Grade)',
+        syllables: 0,
+      };
+    }
+    const wordsArr = raw.split(/\s+/).filter(Boolean);
+    const words = wordsArr.length;
+    const sentences = (text.match(/[^.!?]+[.!?]+(\s|$)/g) || []).length || (words > 0 ? 1 : 0);
+
+    let totalSyllables = 0;
+    for (const w of wordsArr) {
+      const clean = w.toLowerCase().replace(/[^a-z]/g, '');
+      if (clean.length <= 3) {
+        totalSyllables += 1;
+      } else {
+        const syl = clean.replace(/(?:[^laeiouy]|ed|es|e)$/, '').replace(/^y/, '').match(/[aeiouy]{1,2}/g);
+        totalSyllables += syl ? Math.max(1, syl.length) : 1;
+      }
+    }
+
+    const totalSecs = Math.round((words / readingSpeedWpm) * 60);
+    const mins = Math.floor(totalSecs / 60);
+    const secs = totalSecs % 60;
+    const formattedReadingTime = mins > 0 ? `${mins}m ${secs}s` : `${secs}s`;
+
+    const speechSecs = Math.round((words / 140) * 60);
+    const sMins = Math.floor(speechSecs / 60);
+    const sSecs = speechSecs % 60;
+    const formattedSpeakingTime = sMins > 0 ? `${sMins}m ${sSecs}s` : `${sSecs}s`;
+
+    const ease = Math.max(0, Math.min(100, Math.round(206.835 - 1.015 * (words / sentences) - 84.6 * (totalSyllables / words))));
+    let grade = 'College Graduate';
+    if (ease >= 90) grade = 'Very Easy (5th Grade)';
+    else if (ease >= 80) grade = 'Easy (6th Grade)';
+    else if (ease >= 70) grade = 'Fairly Easy (7th Grade)';
+    else if (ease >= 60) grade = 'Standard (8th-9th Grade)';
+    else if (ease >= 50) grade = 'Fairly Difficult (10th-12th Grade)';
+    else if (ease >= 30) grade = 'Difficult (College)';
+
+    return {
+      formattedReadingTime,
+      formattedSpeakingTime,
+      readabilityScore: ease,
+      readabilityGrade: grade,
+      syllables: totalSyllables,
+    };
+  }, [text, readingSpeedWpm]);
+
   const copyToClipboard = () => {
     navigator.clipboard.writeText(text);
     setCopied(true);
@@ -339,6 +396,107 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
               <span>Reading: <strong class="text-slate-800">{stats.readingTime}</strong></span>
               <span class="text-slate-300">•</span>
               <span>Speaking: <strong class="text-slate-800">{stats.speakingTime}</strong></span>
+            </div>
+            <div class="text-slate-400 text-2xs font-mono">100% In-Browser Execution</div>
+          </div>
+        </div>
+      )}
+
+      {/* Reading Time Calculator */}
+      {toolId === 'reading-time-calculator' && (
+        <div class="space-y-6">
+          {/* Main KPI Cards */}
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div class="p-4 rounded-xl bg-emerald-50/70 border border-emerald-200/80 text-center">
+              <span class="block text-2xl sm:text-3xl font-extrabold text-emerald-900 tracking-tight">{readingMetrics.formattedReadingTime}</span>
+              <span class="text-2xs font-bold text-emerald-700 uppercase tracking-wider mt-0.5">Reading ({readingSpeedWpm} WPM)</span>
+            </div>
+            <div class="p-4 rounded-xl bg-blue-50/70 border border-blue-200/80 text-center">
+              <span class="block text-2xl sm:text-3xl font-extrabold text-blue-900 tracking-tight">{readingMetrics.formattedSpeakingTime}</span>
+              <span class="text-2xs font-bold text-blue-700 uppercase tracking-wider mt-0.5">Speaking (140 WPM)</span>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 text-center">
+              <span class="block text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">{stats.words}</span>
+              <span class="text-2xs font-bold text-slate-500 uppercase tracking-wider mt-0.5">Words ({stats.chars} Chars)</span>
+            </div>
+            <div class="p-4 rounded-xl bg-purple-50/70 border border-purple-200/80 text-center">
+              <span class="block text-2xl sm:text-3xl font-extrabold text-purple-900 tracking-tight">{readingMetrics.readabilityScore}/100</span>
+              <span class="text-2xs font-bold text-purple-700 uppercase tracking-wider mt-0.5">{readingMetrics.readabilityGrade}</span>
+            </div>
+          </div>
+
+          {/* Reading Speed Preset Buttons */}
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Reading Speed Preset</label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              {[
+                { label: 'Slow (130 WPM)', wpm: 130, desc: 'Technical & Academic' },
+                { label: 'Average (200 WPM)', wpm: 200, desc: 'Standard Web Article' },
+                { label: 'Fast (260 WPM)', wpm: 260, desc: 'Speed / Skim Reading' },
+                { label: 'Speech (140 WPM)', wpm: 140, desc: 'Oral Presentation' },
+              ].map((preset) => (
+                <button
+                  type="button"
+                  key={preset.wpm}
+                  onClick={() => setReadingSpeedWpm(preset.wpm)}
+                  class={`p-2.5 rounded-xl border text-left transition cursor-pointer ${
+                    readingSpeedWpm === preset.wpm
+                      ? 'bg-emerald-50 border-emerald-500 text-emerald-950 font-bold shadow-sm'
+                      : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
+                  }`}
+                >
+                  <div class="text-xs font-bold">{preset.label}</div>
+                  <div class="text-2xs text-slate-400 mt-0.5">{preset.desc}</div>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between items-center mb-2">
+              <label class="text-xs font-semibold text-slate-700 uppercase tracking-wider">Source Content</label>
+              <div class="flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setText('Grand Theft Auto VI centers on dual protagonists Lucia Caminos and Jason Duval as they navigate high-stakes robberies and law enforcement across the state of Leonida. Featuring performance capture by Manni L. Perez and Dylan Rourke, the campaign introduces dynamic partner mechanics including strategic vehicle trunk outfit stashing to evade evolving police descriptions. Plan your gameplay recordings and monitor launch countdowns using our browser-based utility tools.')}
+                  class="text-xs font-medium text-slate-500 hover:text-emerald-700 bg-slate-100 hover:bg-slate-200 transition cursor-pointer px-2.5 py-1 rounded-md"
+                >
+                  Load Sample
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setText('')}
+                  class="text-xs font-medium text-slate-400 hover:text-rose-600 transition cursor-pointer px-2 py-1 rounded-md"
+                >
+                  Clear
+                </button>
+                <button
+                  type="button"
+                  onClick={copyToClipboard}
+                  class="text-xs font-semibold text-emerald-600 hover:text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200/60 px-3 py-1 rounded-lg transition cursor-pointer"
+                >
+                  {copied ? '✓ Copied' : 'Copy Text'}
+                </button>
+              </div>
+            </div>
+            <textarea
+              rows={8}
+              value={text}
+              onInput={(e) => setText((e.target as HTMLTextAreaElement).value)}
+              placeholder="Paste or type your text here to instantly calculate reading time, speaking duration, and Flesch readability..."
+              class="w-full p-4 rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-sans text-sm leading-relaxed text-slate-900 transition"
+            />
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between text-xs text-slate-500 gap-4 pt-3 border-t border-slate-100">
+            <div class="flex items-center gap-4 flex-wrap">
+              <span>Sentences: <strong class="text-slate-800">{stats.sentences}</strong></span>
+              <span class="text-slate-300">•</span>
+              <span>Paragraphs: <strong class="text-slate-800">{stats.paragraphs}</strong></span>
+              <span class="text-slate-300">•</span>
+              <span>Syllables: <strong class="text-slate-800">{readingMetrics.syllables}</strong></span>
+              <span class="text-slate-300">•</span>
+              <span>Chars (no spaces): <strong class="text-slate-800">{stats.charsNoSpaces}</strong></span>
             </div>
             <div class="text-slate-400 text-2xs font-mono">100% In-Browser Execution</div>
           </div>

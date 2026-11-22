@@ -66,4 +66,15 @@ test.describe('M0 Foundations Smoke Tests', () => {
     await expect(searchInput).toHaveValue('');
     await expect(emptyState).toBeHidden();
   });
+
+  test('reading-time-calculator renders KPI cards and computes metrics', async ({ page }) => {
+    await page.goto('/reading-time-calculator/');
+    await expect(page).toHaveTitle(/Reading Time Calculator/);
+    const h1 = page.locator('h1');
+    await expect(h1).toHaveCount(1);
+    const shell = page.locator('.text-shell');
+    await expect(shell).toBeVisible();
+    await expect(shell.getByText('Reading (200 WPM)', { exact: true })).toBeVisible();
+    await expect(shell.getByText('Speaking (140 WPM)', { exact: true })).toBeVisible();
+  });
 });

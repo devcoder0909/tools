@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" fill="none">
+  <rect width="1200" height="675" rx="20" fill="#090d16" stroke="#1e293b" stroke-width="3" />
+  <text x="600" y="55" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="900" fill="#ffffff">
+    GTA 6 Radio Stations, Companion Album &amp; Original Score
+  </text>
+  <text x="600" y="85" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" fill="#94a3b8">
+    20+ Leonida Stations â€¢ Atlantic Records 34-Track Album â€¢ Dynamic Interactive Score by Justice
+  </text>
+
+  <!-- Left: Station Frequency Grid -->
+  <g transform="translate(60, 115)">
+    <rect width="520" height="510" rx="16" fill="#131c2e" stroke="#0284c7" stroke-width="2" />
+    <rect x="20" y="20" width="480" height="40" rx="8" fill="#0369a1" />
+    <text x="260" y="46" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="800" fill="#f0f9ff">CONFIRMED LEONIDA RADIO STATIONS</text>
+
+    <!-- Cocoteo FM -->
+    <g transform="translate(20, 80)">
+      <rect width="480" height="75" rx="10" fill="#1e132e" stroke="#db2777" />
+      <text x="15" y="25" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#f472b6">COCOTEO FM (Vice City Latin Urban)</text>
+      <text x="15" y="45" font-family="system-ui, sans-serif" font-size="12" fill="#cbd5e1">Hosts: El Martillo &amp; La Gata â€¢ Reggaeton, Bachata, Dembow</text>
+      <text x="15" y="63" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#fbcfe8">Featured: Bad Bunny, Don Omar, Romeo Santos, Young Miko</text>
+    </g>
+
+    <!-- Back Country Radio -->
+    <g transform="translate(20, 165)">
+      <rect width="480" height="75" rx="10" fill="#1c1917" stroke="#d97706" />
+      <text x="15" y="25" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#fbbf24">BACK COUNTRY RADIO (Grassrivers &amp; Port Gellhorn)</text>
+      <text x="15" y="45" font-family="system-ui, sans-serif" font-size="12" fill="#cbd5e1">Hosts: Delta Dawne &amp; Mud Dog Mike â€¢ Renegade Country &amp; Swamp Rock</text>
+      <text x="15" y="63" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#fde68a">Featured: The Highwaymen, Lynyrd Skynyrd, Tyler Childers</text>
+    </g>
+
+    <!-- AfroBank FM -->
+    <g transform="translate(20, 250)">
+      <rect width="480" height="75" rx="10" fill="#064e3b" stroke="#10b981" />
+      <text x="15" y="25" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#34d399">AFROBANK FM (Global Afrobeats &amp; Amapiano)</text>
+      <text x="15" y="45" font-family="system-ui, sans-serif" font-size="12" fill="#cbd5e1">Curated by Burna Boy &amp; Palmsy â€¢ 3-Step, Contemporary Highlife</text>
+      <text x="15" y="63" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#a7f3d0">Featured: Burna Boy, Asake, Tyla, Wizkid, Uncle Waffles</text>
+    </g>
+
+    <!-- The Chamber 106.6 -->
+    <g transform="translate(20, 335)">
+      <rect width="480" height="75" rx="10" fill="#18181b" stroke="#71717a" />
+      <text x="15" y="25" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#e4e4e7">THE CHAMBER 106.6 (Heavy Metal &amp; Thrash)</text>
+      <text x="15" y="45" font-family="system-ui, sans-serif" font-size="12" fill="#cbd5e1">Hosts: DJ Kerry &amp; DJ Tom â€¢ Hardcore Riffs &amp; Classic Metal</text>
+      <text x="15" y="63" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#d4d4d8">Featured: Metallica, Slayer, Gojira, Pantera, Mastodon</text>
+    </g>
+
+    <!-- Secret / Pirate Frequencies -->
+    <g transform="translate(20, 420)">
+      <rect width="480" height="70" rx="10" fill="#2e1065" stroke="#a855f7" />
+      <text x="15" y="23" font-family="system-ui, sans-serif" font-size="13" font-weight="800" fill="#c084fc">UNLOCKABLE PIRATE FREQUENCIES</text>
+      <text x="15" y="43" font-family="system-ui, sans-serif" font-size="11" fill="#e2e8f0">â€¢ The Sniper of La Perle (Hosted by Kodak Black â€¢ Port Gellhorn)</text>
+      <text x="15" y="59" font-family="system-ui, sans-serif" font-size="11" fill="#e2e8f0">â€¢ The Vault (Underground warehouse techno &amp; house unlocked after 12 AM)</text>
+    </g>
+  </g>
+
+  <!-- Right: Companion Album & Original Score -->
+  <g transform="translate(620, 115)">
+    <rect width="520" height="510" rx="16" fill="#1e1b4b" stroke="#8b5cf6" stroke-width="2" />
+    <rect x="20" y="20" width="480" height="40" rx="8" fill="#5b21b6" />
+    <text x="260" y="46" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="800" fill="#ede9fe">ALBUM CUTS &amp; PROCEDURAL SCORE</text>
+
+    <!-- Atlantic Records Companion Album -->
+    <g transform="translate(20, 80)">
+      <rect width="480" height="190" rx="12" fill="#2e1065" stroke="#a78bfa" />
+      <text x="15" y="25" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#ddd6fe">GRAND THEFT AUTO VI: THE ALBUM (Atlantic Records)</text>
+      <text x="15" y="48" font-family="system-ui, sans-serif" font-size="12" fill="#cbd5e1">â€¢ Travis Scott â€” RHYNO (Prod. Guy-Manuel / Daft Punk)</text>
+      <text x="15" y="73" font-family="system-ui, sans-serif" font-size="12" fill="#cbd5e1">â€¢ Cardi B â€” Don't Chart (Vice City heist theme)</text>
+      <text x="15" y="98" font-family="system-ui, sans-serif" font-size="12" fill="#cbd5e1">â€¢ Fred again.. &amp; PinkPantheress â€” Sexy Magic (UK Garage)</text>
+      <text x="15" y="123" font-family="system-ui, sans-serif" font-size="12" fill="#cbd5e1">â€¢ Justice ft. Tame Impala &amp; SZA â€” Flower in a Hurricane</text>
+      <text x="15" y="148" font-family="system-ui, sans-serif" font-size="12" fill="#cbd5e1">â€¢ Yung Lean ft. Future &amp; Metro Boomin â€” That's It</text>
+      <text x="15" y="173" font-family="system-ui, sans-serif" font-size="12" fill="#cbd5e1">â€¢ Fuerza Regida â€” Suzuki (Regional Mexican &amp; Corridos)</text>
+    </g>
+
+    <!-- Original Procedural Score -->
+    <g transform="translate(20, 290)">
+      <rect width="480" height="200" rx="12" fill="#0f172a" stroke="#38bdf8" />
+      <text x="15" y="25" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#38bdf8">ORIGINAL SCORE BY JUSTICE</text>
+      <text x="15" y="50" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">â€¢ 50 Dynamic Procedural Stems adapting to wanted heat levels</text>
+      <text x="15" y="75" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">â€¢ Collaborative track Pusher featuring Gesaffelstein</text>
+      <text x="15" y="100" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">â€¢ Analog synthesizers mixed with organic Everglades audio</text>
+      <text x="15" y="125" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">â€¢ Full PlayStation 5 Tempest 3D spatial acoustic pinpointing</text>
+      <text x="15" y="150" font-family="system-ui, sans-serif" font-size="12" fill="#e2e8f0">â€¢ Streamer DMCA Safe Mode muting commercial tracks</text>
+      <text x="15" y="178" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#7dd3fc">Verified Audio Telemetry &amp; Master Tracklist Architecture</text>
+    </g>
+  </g>
+</svg>

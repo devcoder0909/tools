@@ -1069,6 +1069,18 @@ export const TOOL_MEDIA_REGISTRY: ToolMediaDef[] = [
     diagramCaption: 'Tracking Grand Theft Auto VI milestones from reveal trailers to worldwide street launch across platforms.',
     tags: ['gta 6 countdown', 'gta 6 release countdown', 'days until gta 6', 'gta 6 launch timer'],
   },
+  {
+    slug: 'reading-time-calculator',
+    name: 'Reading Time Calculator',
+    title: 'How Reading and Speaking Times Compute Online',
+    description: 'Words to Minutes Conversion • 130 to 260 WPM Presets • Flesch Readability Scoring • 100% In-Browser',
+    durationSecs: 65,
+    thumbnailUrl: '/images/tools/reading-time-calculator-thumb.svg',
+    diagramUrl: '/images/tools/reading-time-calculator-workflow.svg',
+    diagramTitle: 'Reading Time Calculator Client-Side Processing Architecture',
+    diagramCaption: 'Real-time lexical tokenization, syllable calculation, and Flesch Reading Ease scoring in browser RAM.',
+    tags: ['reading time calculator', 'words to minutes calculator', 'speech time calculator', 'readability calculator'],
+  },
 ];
 
 export function getToolMedia(slug: string): ToolMediaDef | undefined {
