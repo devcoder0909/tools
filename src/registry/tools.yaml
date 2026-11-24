@@ -1147,7 +1147,7 @@
   name: Age Calculator
   title: "Age Calculator by Date of Birth | Age on Any Date"
   subtitle: "Enter your birthday and choose today or a past or future date to find your age in years, months and days."
-  description: "Calculate your age today or on a specific date from your date of birth. See completed years, months and days, total days lived and time until your next birthday."
+  description: "Calculate your age on any date in years, months and days. If you only know the birth year, find the age before and after the birthday in any year."
   engine: calc-age
   options: []
   presets: []
