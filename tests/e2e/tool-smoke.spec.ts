@@ -44,7 +44,9 @@ test.describe('M0 Foundations Smoke Tests', () => {
     await searchInput.fill('pdf');
     const feedback = page.locator('#tool-search-feedback');
     await expect(feedback).toBeVisible();
-    await expect(feedback).toContainText(/Found \d+ matching tools?/i);
+    const matches = await page.locator('.tool-card:visible, .guide-search-card:visible').count();
+    expect(matches).toBeGreaterThan(1);
+    await expect(feedback).toHaveText(`Found ${matches} matching results`);
 
     // Clear search
     const clearBtn = page.locator('#tool-search-clear');
