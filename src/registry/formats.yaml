@@ -13,6 +13,10 @@
   title: "HEIC File: What It Is & How to Convert | ZixTool"
   description: "Learn what the HEIC file format is, why Apple uses it, how to view it on Windows, and convert HEIC to JPG securely in your browser without uploads."
   content: |
+    ## How do I open a .heic photo or upload it as JPG?
+
+    If the photo opens on your phone but an upload form rejects it, check the accepted file types first. For a form that asks for JPEG, use the [HEIC to JPG converter](/heic-to-jpg/) and submit the downloaded copy. Keep the original HEIC if you want to retain the source photo.
+
     ## What is a HEIC File?
 
     HEIC stands for High Efficiency Image Container. It is Apple's implementation of the HEIF (High Efficiency Image File Format) standard, adopted as the default capture format for photos across iPhone and iPad devices starting with iOS 11 in 2017.
@@ -141,6 +145,10 @@
   title: "WebP File: What It Is & How to Convert | ZixTool"
   description: "Complete guide to the WebP file format: 25-34% smaller sizes than JPG, full alpha transparency, animated frames, and browser performance."
   content: |
+    ## Should I convert WebP to JPG or PNG?
+
+    For a photo upload that accepts JPEG, use [WebP to JPG](/webp-to-jpg/). For a logo with a transparent background, choose [WebP to PNG](/webp-to-png/) to retain transparency. For an animated WebP, keep the original when motion matters. Exporting a still image gives you a single frame.
+
     ## What is a WebP File?
 
     WebP is an open modern image format created by Google in 2010 to accelerate web page loading speeds. Based on the VP8 video codec predictive keyframe algorithms, WebP provides both lossy and lossless compression, alpha transparency, and animated frame sequencing within a unified format.

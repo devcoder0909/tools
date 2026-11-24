@@ -511,8 +511,8 @@
   kind: converter
   slug: jfif-to-jpg
   name: JFIF to JPG
-  title: "JFIF to JPG Converter for Downloaded Photos"
-  description: Convert JFIF to JPG online free with zero server uploads. Fix Chrome and Windows photos downloaded as .jfif and make them universally compatible.
+  title: "JFIF to JPG Converter | Convert .jfif Photos to JPEG"
+  description: "Convert a .jfif image to a JPG for an upload form or photo app. Open the file in your browser, download the JPEG copy and keep your original image."
   from: jfif
   to: jpg
   engine: canvas
@@ -522,11 +522,11 @@
   content: src/content/tools/jfif-to-jpg.mdx
   faq:
     - q: Why did Google Chrome or Edge save my image as a .jfif file?
-      a: A known Windows 10/11 Registry glitch assigns .jfif as the default file extension for image/jpeg MIME types instead of .jpg.
+      a: The suggested filename can come from the download or a local file association. A .jfif extension can identify an image that already contains JPEG data.
     - q: Can I upload converted JPG files to websites that reject JFIF?
-      a: Yes. Converting to standard JPG completely resolves 'unsupported format' errors on government forms, university portals, and Discord.
+      a: A JPG copy can help if the form checks the extension. Also check the maximum file size and pixel dimensions listed by the destination.
     - q: Is there any loss in visual quality when converting JFIF to JPG?
-      a: No. JFIF and JPG use the identical internal JPEG compression algorithm. ZixTool normalizes the container headers with 100% optical fidelity.
+      a: Renaming a copy preserves the image bytes. This converter exports a new JPEG from the decoded pixels, so compression can affect detail and file size.
   related:
     - jpg-to-png
     - webp-to-jpg
@@ -1094,9 +1094,9 @@
   kind: calculator
   slug: percentage-calculator
   name: Percentage Calculator
-  title: "Percentage Calculator for Marks, Ratios and Change"
-  subtitle: Calculate percentages, percentage increases, and differences instantly.
-  description: Calculate percentage of a number, percentage increase or decrease, and fractions instantly in your browser with step-by-step formulas and zero tracking.
+  title: "Percentage Calculator | Percent of a Number and Change"
+  subtitle: "Find a percentage of a number, calculate what percent one number is of another, or compare an old and new value."
+  description: "Find 15% of a number, convert a score into a percentage, or calculate a percentage increase or decrease. Choose the calculation that matches your question."
   engine: calc-percentage
   options: []
   presets: []
@@ -1145,9 +1145,9 @@
   kind: calculator
   slug: age-calculator
   name: Age Calculator
-  title: "Age Calculator by Date of Birth"
-  subtitle: Calculate exact age in years, months, days, weeks, and hours.
-  description: Free online age calculator. Calculate exact chronological age from date of birth in years, months, and days with 100% in-browser privacy.
+  title: "Age Calculator by Date of Birth | Age on Any Date"
+  subtitle: "Enter your birthday and choose today or a past or future date to find your age in years, months and days."
+  description: "Calculate your age today or on a specific date from your date of birth. See completed years, months and days, total days lived and time until your next birthday."
   engine: calc-age
   options: []
   presets: []
@@ -1223,9 +1223,9 @@
   kind: calculator
   slug: discount-calculator
   name: Discount Calculator
-  title: "Discount Calculator for Sale Price and Savings"
-  subtitle: Calculate final sale prices, total money saved, and sales tax.
-  description: Free online discount calculator to find sale prices, percent off savings, stacked discounts, and sales tax. Fast, accurate, and 100% private in browser.
+  title: "Discount Calculator | Sale Price, Percent Off and Savings"
+  subtitle: "Enter the original price and discount to see the sale price, savings and total with optional sales tax."
+  description: "Find the sale price after a percentage discount. Enter a price and percent off to see how much you save, then add optional sales tax for the checkout total."
   engine: calc-discount
   options: []
   presets: []
@@ -1262,9 +1262,9 @@
   kind: calculator
   slug: tip-calculator
   name: Tip Calculator
-  title: "Tip Calculator: Split Bills and Calculate Gratuity Online"
-  subtitle: Calculate restaurant tips and split bills per person easily.
-  description: Free online tip calculator to split restaurant bills, compute gratuity percentages, and calculate per-person costs accurately in your browser.
+  title: "Tip Calculator | Tip Amount, Bill Total and Split per Person"
+  subtitle: "Enter the bill, tip percentage and number of guests to see the tip and total for each person."
+  description: "Calculate a restaurant tip and split the bill equally. Compare tip percentages, choose a pre-tax or after-tax tip, and see the total each person owes."
   engine: calc-tip
   options: []
   presets: []
@@ -3775,8 +3775,8 @@
   slug: gta-6-pc-specs-calculator
   kind: calculator
   name: GTA 6 PC Specs Calculator
-  title: GTA 6 PC Specs Calculator - Can Your PC Run GTA 6?
-  description: Check if your PC can run GTA 6 with our free hardware specs calculator. Test GPU VRAM, CPU cores, RAM, and 200GB+ NVMe SSD storage space requirements.
+  title: "GTA 6 PC Specs Calculator | Hardware and FPS Estimates"
+  description: "Compare your CPU, GPU memory and RAM with estimated GTA 6 hardware targets for 30, 60 or 120 FPS. Results are projections, not measured PC benchmarks."
   engine: gta-6-pc-specs-calculator
   content: src/content/tools/gta-6-pc-specs-calculator.mdx
   related: [aspect-ratio-calculator, video-compressor, online-calculator]

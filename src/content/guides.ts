@@ -4,12 +4,63 @@ export interface SearchGuide {
   description: string;
   answer: string;
   updated: string;
+  published?: string;
   tools: string[];
   sections: { id: string; title: string; body: string }[];
   sources: { name: string; url: string }[];
 }
 
 export const searchGuides: SearchGuide[] = [
+  {
+    slug: 'gta-6-price-standard-vs-ultimate-edition',
+    title: 'GTA 6 Price in India and the US: Standard vs Ultimate Edition',
+    description: 'Compare GTA 6 prices for PS5 in India and US launch prices, see which cars come with Ultimate Edition, and check what the physical box includes.',
+    answer: 'On November 24, 2026, PlayStation Store India listed GTA 6 at ₹5,999 for Standard and ₹7,499 for Ultimate on PS5. The US launch prices were $79.99 and $99.99. Both editions include the game. Ultimate adds vehicles, customization options and other story bonuses.',
+    updated: '2026-11-24',
+    tools: ['currency-converter'],
+    sections: [
+      {
+        id: 'price-comparison',
+        title: 'GTA 6 price in India and the USA',
+        body: `| Edition | India, PS5 digital | US launch price |
+| --- | --- | --- |
+| Standard | ₹5,999 | $79.99 |
+| Ultimate | ₹7,499 | $99.99 |
+| Difference | ₹1,500 | $20.00 |
+
+The India column uses the rupee prices listed by PlayStation on November 24, 2026. The US column uses the console launch prices announced by Take-Two. The bottom row shows the difference when buying the full game in either edition. If you already own Standard, look up the separate upgrade on your account to see its current price.
+
+Buying elsewhere? Open the store for the country attached to your console account. A dollar-to-rupee conversion can help you understand a quote, but the publisher sets each regional price. Use the local listing for the amount you will actually pay. Check the edition name above the checkout button, particularly if you followed a link from a sale or an old pre-order page.`
+      },
+      {
+        id: 'edition-differences',
+        title: 'GTA 6 Ultimate Edition vs Standard Edition: what do you get?',
+        body: `Standard includes Grand Theft Auto VI. If you want to play Jason and Lucia’s story and decide about extras later, that edition leaves the upgrade available. Ultimate bundles the game with the Ultimate Edition Upgrade. When comparing two store tiles with similar artwork, read the contents line. One should list the full game alongside the upgrade. A tile labeled only as an add-on assumes you already own the game.
+
+For players comparing **Ultimate Edition cars**, the named extras include the ’95 Grotti Cheetah and the ’67 Vapid Dominator Buggy. Rockstar also lists the Shitzu Squalo boat, clothing and customization benefits. PlayStation describes items becoming available as the story progresses. If a particular vehicle is the reason for your purchase, read its entry on the edition listing before expecting it in your first garage.`
+      },
+      {
+        id: 'physical-copy',
+        title: 'Does the GTA 6 physical copy include a disc?',
+        body: `Rockstar describes the boxed Standard Edition as a download code in a case. You still need to download the game. This matters if you are buying a gift for someone with a slow connection or looking for a disc you can lend to a friend. A photo of a sealed console game case tells you little about the contents. Look for the code-in-box wording on the retailer’s listing.
+
+Rockstar lists Ultimate as digital. A player who receives a boxed Standard copy can redeem the base game and then get the digital upgrade from the matching console store. Before ordering a box from abroad, check the platform and region with the seller. Rockstar ties code redemption to the region associated with the player’s platform account. For a gift, check the recipient’s account region even if you both live in the same country.`
+      },
+      {
+        id: 'vintage-pack',
+        title: 'Is the Vintage Vice City Pack part of Ultimate?',
+        body: `The Vintage Vice City Pack had its own launch promotion. Rockstar included it with qualifying digital purchases before November 20, 2026. It contains the ’55 Vapid Stanier Sedan, a garage and themed customization items. The sedan belongs to this pack, while the ’95 Grotti Cheetah is an Ultimate bonus. That distinction helps if you remember a car from a trailer and are trying to find the right listing.
+
+For purchases after the promotional window, open the add-ons section under the base game. PlayStation Store India lists the Vintage Vice City Pack separately. If that sedan is the only extra you want, compare the pack description with the Ultimate upgrade before buying. If you purchased during the offer, check the order date and the edition on your receipt when looking up what was included.`
+      }
+    ],
+    sources: [
+      { name: 'PlayStation Store India: GTA VI editions and local prices', url: 'https://store.playstation.com/en-in/product/EP1004-PPSA01547_00-GTAVISTANDARD001' },
+      { name: 'Take-Two: US launch prices for both editions', url: 'https://ir.take2games.com/node/32311/pdf' },
+      { name: 'Rockstar Support: editions, physical copies and region restrictions', url: 'https://support.rockstargames.com/articles/4QfG4FmZCf5W1gS8jy4UVT/grand-theft-auto-vi-platform-editions-and-versions' },
+      { name: 'Rockstar Store: compare editions and vehicle bonuses', url: 'https://store.rockstargames.com/game/buy-gta-vi' }
+    ]
+  },
   {
     slug: 'image-upload-requirements',
     title: 'Image Upload Requirements: Photo & KB Guide',
@@ -608,81 +659,40 @@ Set precision alerts for upcoming publisher announcements with our [Online Timer
   },
   {
     slug: 'gta-6-vehicles-and-police-ai-chase-guide',
-    title: 'GTA 6 Vehicles & Police AI: Car Physics & Chase Guide',
-    description: 'Explore leaked GTA 6 vehicles, sports cars, boats, and advanced police AI chase mechanics. Learn vehicle physics, fuel systems, and pursuit tactics.',
-    answer: 'Grand Theft Auto VI overhauls vehicle dynamics and law enforcement response with upgraded RAGE soft-body physics, realistic tire traction modeling, dynamic interior dashboard customization, and cooperative police tactical AI that coordinates rolling roadblocks, PIT maneuvers, and perimeter containment rather than instant teleportation.',
-    updated: '2026-11-22',
-    tools: [
-      'gta-6-pc-specs-calculator',
-      'gta-6-release-countdown',
-      'aspect-ratio-calculator',
-      'video-compressor',
-      'screen-recorder',
-      'image-compressor',
-      'photo-compressor',
-      'crop-image'
-    ],
+    title: 'GTA 6 Car Physics: Handling, Damage and Police Chase Clips',
+    description: 'Compare GTA 6 car handling, braking distance, collision damage and police chases in gameplay clips. Learn which details two recordings can demonstrate.',
+    answer: 'Compare two cars on the same road with the same camera, approach and braking landmark. Watch where each car stops, how it moves through a turn and whether it repeats the run after a collision.',
+    published: '2026-11-22',
+    updated: '2026-11-24',
+    tools: ['video-compressor'],
     sections: [
       {
         id: 'vehicle-physics-and-handling',
-        title: 'RAGE engine vehicle physics, tire traction, and suspension',
-        body: `Vehicle handling and road dynamics in Grand Theft Auto VI represent a major evolutionary leap in Rockstar Games' proprietary RAGE physics engine, combining the weighted inertia of realistic driving with responsive arcade accessibility:
-
-- **Independent Suspension Geometry:** Each vehicle corner models independent suspension travel, spring damping, and body roll. Taking high-speed corners in a classic American muscle car transfers weight realistically to the outer tires, inducing controllable power oversteer.
-- **Dynamic Tire Surface Grip:** Tire grip coefficients dynamically react to terrain conditions across the state of Leonida. Driving on rain-slicked Vice City asphalt, unpaved Kelly County dirt roads, coastal beach sand, and muddy marshlands produces distinct friction profiles and stopping distances.
-- **Progressive Soft-Body Deformation:** In place of older static pre-baked collision meshes, vehicles feature multi-stage deformation physics. Crumple zones buckle progressively, bumpers detach, radiator steam vents after heavy front impacts, and steering alignments bend upon hitting curbs.
-
-Calculate system hardware requirements for processing high-fidelity physics calculations using our [GTA 6 PC Specs Calculator](/gta-6-pc-specs-calculator/) and calibrate display geometry with our [Aspect Ratio Calculator](/aspect-ratio-calculator/).`
+        title: 'How to compare GTA 6 car handling',
+        body: `Pick one corner in the game and record a clean approach in each vehicle. Use the same direction and camera view. Choose a painted line or lamppost as the turn-in point. If another car hits you during a run, record it again before comparing the clips. Watch the front wheels as you steer. Does the car turn immediately, run wide or need a second correction? Then watch the rear wheels as you accelerate out of the corner. Write down what happened in each run. Body roll can look quite different even when two cars take almost the same line through a bend.`
+      },
+      {
+        id: 'braking-distance',
+        title: 'How to compare braking distance',
+        body: `Choose a straight stretch with evenly spaced lane markings. Start braking beside a fixed object and count how many markings the car passes before it stops. Repeat several times. If the stop points vary widely, check your approach speed and brake input before drawing conclusions about the car. Change one condition at a time. For example, compare the same car on two road surfaces with a similar approach. A clip shot close to the bumper can make a short stop look dramatic. A wider view shows where the car stopped relative to the road. Without a reliable distance scale, report lane markings or car lengths.`
+      },
+      {
+        id: 'collision-damage',
+        title: 'Visible damage and changes in steering',
+        body: `Pause immediately before contact and note which part of the vehicle hits the obstacle. Compare a front corner impact with another front corner impact. A head-on hit makes a poor baseline. Pause again after the vehicle settles to inspect the lights, panels and wheels. To investigate whether damage affects driving, take the car back along the same straight road and observe its path with the steering centred. A dented panel is evidence of a visual change. A repeated pull to one side is an observation about handling. A short clip rarely gives you enough information to identify the collision model used by the game engine.`
       },
       {
         id: 'police-ai-tactics-and-dispatch',
-        title: 'Advanced police pursuit tactics and tactical coordination',
-        body: `Law enforcement artificial intelligence in Grand Theft Auto VI has been thoroughly overhauled to replace the artificial, instant-spawning mechanics of previous generations with realistic procedural dispatch and tactical behavior:
-
-1. **Realistic Emergency Dispatch Delays:** When a shooting, carjacking, or robbery occurs, nearby civilian witnesses must physically place a 911 emergency call or record the crime with their smartphone. This grants players a brief, precious window of opportunity to exit the immediate vicinity before police cruisers arrive.
-2. **Vision-Cone and Line-of-Sight Tracking:** Patrol officers no longer possess omnipresent radar knowledge of the player's position. Law enforcement units search based on last-known vehicle descriptions, color, and heading. Changing vehicles or respraying cars in secluded alleys breaks visual contact.
-3. **Cooperative Pursuit Tactics:** Police AI units cooperate via squad-level radio networks. Rather than mindlessly ramming the player, cruisers execute synchronized PIT maneuvers, establish diagonal highway spike-strip blockades, and position sniper helicopters to disable engine blocks.
-
-Monitor upcoming release windows using our [GTA 6 Release Countdown](/gta-6-release-countdown/) and study geographic escape routes in our [GTA 6 Map Size Guide](/guides/gta-6-map-size-comparison-and-scale-guide/).`
-      },
-      {
-        id: 'vehicle-types-and-customization',
-        title: 'Confirmed vehicle classes: Muscle, supercars, airboats, and planes',
-        body: `The varied landscape of the state of Leonida—ranging from neon-lit metropolitan avenues to treacherous swamp waterways—requires specialized transportation classes:
-
-- **Sports and Supercars:** Contemporary mid-engine exotics and retro European classics modeled after Ferrari, Lamborghini, and Porsche designs, engineered for maximum top speed on open turnpikes.
-- **American Muscle & Tuners:** Heavy classic 1970s V8 coupes, modern supercharged muscle cars, and customized street racers with customizable exhaust notes, blowers, and suspension drops.
-- **Everglades Airboats & Watercraft:** Specialized flat-bottomed airboats driven by giant aircraft propellers designed to skim over shallow marsh grass and evade patrol boats, alongside offshore luxury yachts.
-- **Interior Dashboard Interactivity:** Fully operational vehicle cockpits featuring functional digital odometers, GPS navigation screens, working rearview mirrors, and adjustable steering columns.
-
-Crop widescreen vehicle showcase stills into vertical lockscreens with our [Crop Image](/crop-image/) tool.`
-      },
-      {
-        id: 'fuel-and-trunk-mechanics',
-        title: 'Fuel consumption, trunk inventories, and weapon storage',
-        body: `Development leaks and gameplay mechanics indicate deeper vehicular interaction and tactical inventory management:
-
-- **Trunk Storage Architecture:** Inspired by the horse saddlebag inventory system in *Red Dead Redemption 2*, players carry concealable handguns and compact submachine guns on their person, while storing heavier firepower—such as rocket launchers, assault rifles, and body armor vests—inside the vehicle trunk.
-- **Refueling Systems and Service Stations:** Gas stations positioned along major Leonida thoroughfares provide operational fueling pumps, car wash facilities, and interactive convenience stores vulnerable to armed robberies.
-- **Damage Retention:** Vehicles remember panel damage, flat tires, and cracked windshields across missions until repaired at specialized garages or local chop shops.
-
-Read full minimum hardware specifications in our [GTA 6 PC System Requirements Guide](/guides/gta-6-pc-system-requirements-and-hardware-guide/).`
+        title: 'What a GTA 6 police chase clip can show',
+        body: `Keep the beginning of the gameplay recording. A highlight that starts halfway through a pursuit leaves out the wanted level, earlier collisions and where the surrounding traffic came from. Note the visible wanted indicator, the road layout and the timestamp when another vehicle first enters the frame. A car appearing around a corner tells you when it became visible to the player. Its starting position may have been outside the picture. Similarly, a change in direction might follow an obstruction or another car moving through traffic. Compare several unedited recordings before describing a recurring behaviour.`
       },
       {
         id: 'recording-and-stunt-clips',
-        title: 'Recording chases, stunt jumps, and high-speed gameplay',
-        body: `High-speed police pursuits, dangerous stunt jumps, and chaotic highway pileups across the Leonida Keys provide endless entertainment for creators and viewers:
-
-- **Capture High-FPS Action:** Record fluid 60 FPS vehicle chase footage and stunt showcases directly inside your browser with our client-side [Screen Recorder](/screen-recorder/).
-- **Compress Video Without Quality Loss:** Shrink massive 4K gameplay recordings into lightweight MP4 files suitable for sharing on Discord and social networks with our [Video Compressor](/video-compressor/).
-- **Optimize High-Resolution Screenshots:** Downsample raw 4K photo-mode captures quickly with our [Image Compressor](/image-compressor/) and [Photo Compressor](/photo-compressor/).
-- **Evaluate Hardware Performance:** Explore console frame pacing and settings in our [GTA 6 60 FPS Performance Guide](/guides/gta-6-ps5-pro-and-pc-60-fps-performance-guide/).`
+        title: 'Sharing a side-by-side gameplay comparison',
+        body: `Keep the original recordings to inspect small details later. Trim each copy to the same start and end landmarks. If you slow one clip down, label the playback speed and apply the same setting to the other clip. A frame count only converts to elapsed time when you know the frame rate of the recording. For an upload limit, use the [video compressor](/video-compressor/) on a copy and check that road markings remain legible. Include the vehicle names, camera view and route with the clip. Rockstar’s media gallery provides official footage and screenshots. Use your own recordings for a comparison that depends on steering or braking inputs.`
       }
     ],
-    sources: [
-      { name: 'Rockstar Games RAGE Technology Architecture Papers', url: 'https://www.rockstargames.com/' },
-      { name: 'Society of Automotive Engineers: Vehicle Dynamics & Traction Research', url: 'https://www.sae.org/' }
-    ]
+    sources: [{ name: 'Rockstar Games: Grand Theft Auto VI media gallery', url: 'https://www.rockstargames.com/VI/media' }]
   }
 
 ,
@@ -1131,103 +1141,59 @@ Major gaming retailers like GameStop and Best Buy frequently host midnight relea
   },
   {
     slug: 'gta-6-interactive-map-and-coordinates-guide',
-    title: 'GTA 6 Interactive Map Guide: Locations & Coordinates',
-    description: 'Explore verified Grand Theft Auto VI map coordinates, Vice City landmarks, Grassrivers swamp routes, Leonida Keys secret islands, and military bases.',
-    answer: 'The GTA 6 Leonida map spans an estimated 125 square kilometers—more than 2.3 times the size of GTA 5\'s Los Santos. Key mapped regions include Vice City metropolitan, Port Gellhorn, the Grassrivers wetlands, Ambrosia agricultural plains, Mount Chiliad equivalent peaks, and the sprawling Leonida Keys archipelago.',
-    updated: '2026-11-22',
-    tools: [
-      'aspect-ratio-calculator',
-      'gta-6-pc-specs-calculator',
-      'gta-6-release-countdown',
-      'online-timer',
-      'online-stopwatch',
-      'video-compressor',
-      'screen-recorder',
-      'dpi-calculator'
-    ],
+    title: 'GTA 6 Map Guide: Leonida Locations and Printable Map',
+    description: 'Find the official printable GTA 6 map, locate Vice City and the Leonida Keys, and choose a map for exploring, sharing directions or planning a route.',
+    answer: 'Leonida is the state in Grand Theft Auto VI. Vice City is one destination within it. To download a map you can save or print, open Rockstar Games’ Media page and choose Leonida Map & Cover Art Poster.',
+    published: '2026-11-22',
+    updated: '2026-11-24',
+    tools: ['aspect-ratio-calculator'],
     sections: [
       {
-        id: 'vice-city-metropolitan-coordinates',
-        title: 'Vice City metropolitan grid: landmarks, districts, and coordinates',
-        body: `The urban core of Grand Theft Auto VI centers on the sprawling metropolis of Vice City, engineered to mimic real-world Miami with unparalleled architectural verticality and social life simulation:
+        id: 'printable-map',
+        title: 'Where to download the official printable GTA 6 map',
+        body: `Open [Rockstar Games’ Media page](https://www.rockstargames.com/VI/media). Choose **Leonida Map & Cover Art Poster**, then **View Options**. Select the map artwork if you want to read roads and place names. The cover poster is a separate choice in the same panel.
 
-| Urban District / Landmark | Primary Real-World Analogue | Key In-Game Feature | Estimated GPS Grid |
-| :--- | :--- | :--- | :--- |
-| **Ocean Beach & Ocean Drive** | South Beach, Miami Beach | Art Deco hotels, luxury supercars, neon strips | \`[25.7820, -80.1310]\` |
-| **Downtown Vice City** | Downtown Miami Financial Hub | Commercial skyscrapers, corporate safehouses, helipads | \`[25.7740, -80.1930]\` |
-| **Starfish Island / Leaf Links** | Star Island & Venetian Islands | Gated mansions, private yacht docks, security patrols | \`[25.7780, -80.1520]\` |
-| **Little Haiti / Little Havana** | Little Haiti & Calle Ocho | Underground chop shops, street murals, gang territories | \`[25.8050, -80.2010]\` |
-| **Vice City International (VIA)** | Miami International Airport | Commercial cargo runways, private jet hangars, police gates | \`[25.7950, -80.2870]\` |
-
-When recording high-resolution 4K exploration clips of Vice City streets or analyzing trailer geometry, measure your display resolution and pixel density using our [DPI Calculator](/dpi-calculator/) and format custom widescreen video dimensions with our [Aspect Ratio Calculator](/aspect-ratio-calculator/).`
+On a phone, open the downloaded file and zoom in on a road label before sending it to a printer. A screenshot of the preview can look sharp on the phone while losing the small lettering on paper. In print preview, check that the outer coastline and the map legend both fit inside the margins. If the labels look too small on one sheet, print an enlarged region for your current route and keep the full map on your phone.`
       },
       {
-        id: 'grassrivers-wetlands-and-airboat-routes',
-        title: 'The Grassrivers wetlands: swamp navigation and airboat trails',
-        body: `Covering the western and south-central expanses of Leonida, the Grassrivers region replicates the Florida Everglades with dense mangrove forests, shallow waterways, and dynamic wildlife:
+        id: 'map-name',
+        title: 'What is the GTA 6 map called, and where is Vice City?',
+        body: `The state is called **Leonida**. Use that name when looking for the whole GTA 6 map. **Vice City** is the city to look for when a guide mentions an urban neighborhood, beach or city street. A search for Vice City alone can also surface maps from earlier Grand Theft Auto games. Include GTA VI and the neighborhood or landmark when looking for a specific intersection.
 
-- **Airboat Fast-Transit Canals:** Shallow swamp waterways (\`[25.4831, -80.8242]\`) cannot be traversed by conventional sports cars or deep-draft motorboats. Players must commandeer flat-bottomed airboats to glide across sawgrass flats and mudbanks without beaching.
-- **Apex Predator Habitats:** The Grassrivers introduces Rockstar's most sophisticated ecological AI simulation. Alligators hunt along riverbanks, attacking unwary pedestrians and overturning jet skis.
-- **Smuggler Airfields & Hidden Shacks:** Deep within the uncharted marshlands lie abandoned narcotics landing strips and stilt houses that serve as off-grid weapon caches and safehouse hideouts for Lucia and Jason.
-- **Dynamic Weather Hazards:** Tropical squalls and torrential rainstorms cause river levels to surge, obscuring submerged tree stumps and creating treacherous navigation hazards.
-
-Benchmark your gaming PC's CPU and GPU performance in rendering dense volumetric fog and swamp vegetation with our [GTA 6 PC Specs Calculator](/gta-6-pc-specs-calculator/). You can also compress long swamp gameplay recordings with our [Video Compressor](/video-compressor/).`
+Rockstar’s Only in Leonida page groups images and descriptions by destination. If you remember a place by appearance but have forgotten its name, start with those galleries, then look for the name on the printable map. This works particularly well when a screenshot has been cropped and no street names are visible.`
       },
       {
-        id: 'leonida-keys-archipelago-and-hidden-islands',
-        title: 'Leonida Keys archipelago: Overseas Highway and secret diving reefs',
-        body: `Extending south from the mainland, the Leonida Keys archipelago offers a chain of coral atolls connected by the iconic Overseas Highway:
+        id: 'leonida-regions',
+        title: 'Leonida Keys, Grassrivers and other map locations',
+        body: `Rockstar highlights six destinations. Use their names to narrow a search or describe where you are to another player.
 
-1. **The Overseas Viaduct Highway:** A multi-mile engineering marvel of continuous highway bridges connecting the southern mainland to key island settlements. This provides high-speed straightaways for testing top-tier supercars, though police roadblocks frequently bottleneck bridge exits.
-2. **Key Chicas Maritime Settlement:** The primary island town (\`[24.6892, -81.2541]\`) features luxury marinas, charter boat services, tiki bars, and waterfront refueling stations.
-3. **Underwater Scuba Reefs & Shipwrecks:** Ocean trenches surrounding the Keys hide submerged Spanish galleons, sunken freight barges, and underwater treasure crates accessible via scuba diving gear.
-4. **Smuggler Run Cay:** An isolated island offshore from the main road grid that cannot be reached by car, accessible only by helicopter, seaplane, or offshore racing boat.
+- **Vice City** is the starting point for city neighborhoods and the beachfront.
+- **Leonida Keys** is the island chain. Include the island or nearby bridge when sharing a location so someone can identify the approach.
+- **Grassrivers** is the wetland area. A waterway junction can be easier to recognize here than a stretch of shoreline.
+- **Port Gellhorn** is the place name to use when looking for the port town.
+- **Ambrosia** is the industrial destination. Include the facility or road junction you want when asking for directions.
+- **Mount Kalaga National Park** is the name to look for when exploring the mountainous park.
 
-Track the time remaining until you can explore the Leonida archipelago on our live [GTA 6 Release Countdown](/gta-6-release-countdown/) and learn about world geometry in our [GTA 6 Map Size Guide](/guides/gta-6-map-size-comparison-and-scale-guide/).`
+Pair a region with a landmark and a direction of travel. A note such as “Leonida Keys, approaching the bridge from the island side” helps another player orient themselves even if their map is zoomed differently.`
       },
       {
-        id: 'military-facilities-and-restricted-airspace',
-        title: 'Military installations, Port Gellhorn, and restricted airspace',
-        body: `Infiltrating restricted zones in Grand Theft Auto VI triggers aggressive five-star military responses and surface-to-air missile defenses:
+        id: 'interactive-map',
+        title: 'Using an interactive map to share a location',
+        body: `Use the printable map to see how regions connect. An interactive map helps with a narrower question, such as which markers lie along a route you already plan to drive. Check the legend and the publisher before sharing coordinates. Community projects may use their own marker categories, coordinate grids and definitions of completion.
 
-- **Port Gellhorn Naval & Industrial Hub:** Located on the western coast of Leonida (\`[26.1154, -81.7925]\`), Port Gellhorn features deep-water container docks, oil refineries, and industrial freight rail yards.
-- **Fort Zancudo Equivalent Air Base:** A heavily guarded military airfield equipped with jet fighter hangars, radar radomes, and anti-aircraft missile batteries. Breaching perimeter fences automatically initiates military interception.
-- **Space Launch Complex (Cape Canaveral Equivalent):** Positioned along the eastern coastline, this facility includes rocket launch pads, crawlerways, and assembly buildings subject to strict airspace restrictions during active countdown sequences.
-- **High-Security State Penitentiary:** Where Lucia begins her storyline in custody, featuring perimeter watchtowers, razor-wire barriers, and reinforced sally ports.
-
-Capture flawless stealth gameplay runs and military base infiltrations using our free in-browser [Screen Recorder](/screen-recorder/) and set alerts for game reveal events with our [Online Timer](/online-timer/).`
+On a small screen, turn on one marker category at a time. Find the marker, then zoom out one level to see the nearest approach road. When sharing a pin, include the map link and the location name. Two maps can put the same place at different numerical coordinates because their grids use different origins.`
       },
       {
-        id: 'poi-fast-travel-and-exploration-tips',
-        title: 'Points of interest (POI), fast-travel networks, and exploration tips',
-        body: `Mastering exploration across 125 square kilometers of diverse Leonida terrain requires understanding logistical fast-travel mechanics and safehouse networks:
+        id: 'map-size',
+        title: 'How big is the GTA 6 map compared with GTA 5?',
+        body: `The Rockstar pages cited here identify regions and provide map artwork without giving a square-kilometre total. When you see a size comparison, check what the author measured. An outline around the whole map includes offshore water. A land-only measurement follows the coastline and excludes open sea. Those methods can produce different numbers from the same image.
 
-- **High-Speed Passenger Rail:** Vice City and surrounding municipalities are linked by a passenger train network that allows instant rapid transit between suburban terminals and downtown transit hubs.
-- **Dual-Protagonist Safehouses:** Switching between Lucia and Jason reveals dedicated safehouses in distinct regions—from high-rise luxury condos in Vice City to rural trailer parks in Ambrosia.
-- **Aviation Landing Strips:** Keep light aircraft and helicopters stationed at regional airfields to bypass congested highway corridors when traveling between north Leonida and the southern Keys.
-- **Gas Stations and Minimarts:** Over 80% of roadside service stations and convenience stores feature fully modeled interior spaces that can be entered for supplies, weapon stashes, or armed robberies.
-
-Check hardware framerate expectations in our [GTA 6 60 FPS Performance Guide](/guides/gta-6-ps5-pro-and-pc-60-fps-performance-guide/) and calculate time intervals with our [Online Stopwatch](/online-stopwatch/).`
-      },
-      {
-        id: 'frequently-asked-questions',
-        title: 'Frequently asked questions about GTA 6 map locations and navigation',
-        body: `### How big is the GTA 6 map compared to GTA 5?
-The state of Leonida in Grand Theft Auto VI is estimated to span approximately **125 square kilometers**, which is roughly **2.3 times larger** than the Los Santos and Blaine County map in Grand Theft Auto V.
-
-### Can you enter real buildings and interiors in Vice City?
-Yes. Rockstar Games has significantly expanded interior accessibility, allowing players to enter thousands of commercial stores, clubs, shopping malls, apartment complexes, and roadside restaurants seamlessly without loading screens.
-
-### How do map coordinates work in GTA 6?
-The in-game GPS system utilizes a standard latitude/longitude decimal telemetry grid. Coordinates correlate with physical world locations, enabling navigation to secret sunken shipwrecks, off-grid landing strips, and rare vehicle spawns.
-
-### Is the entire map unlocked from the beginning of the game?
-Unlike earlier 3D-era titles that gated bridges due to hurricane damage, the entire state of Leonida is accessible from the opening prologue, though certain military bases and high-security installations enforce restricted airspace.`
+Matching two screenshots to the same width on a phone also tells you little about distance. Look for a documented scale, matching units and the same treatment of water on both maps. To estimate how long a trip will take, follow the road between two named points. A bridge crossing or a winding mountain road can make two trips of similar straight-line distance feel quite different.`
       }
     ],
     sources: [
-      { name: 'Rockstar Games Official Leonida Geographic Survey', url: 'https://www.rockstargames.com/' },
-      { name: 'Digital Foundry Open-World Rendering Analysis', url: 'https://www.eurogamer.net/digitalfoundry' }
+      { name: 'Rockstar Games: printable Leonida map and cover art', url: 'https://www.rockstargames.com/VI/media' },
+      { name: 'Rockstar Games: people and places of Leonida', url: 'https://www.rockstargames.com/VI/only-in-leonida' }
     ]
   }
 ];

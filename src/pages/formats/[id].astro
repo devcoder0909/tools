@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { renderToolMarkdown } from '../../utils/markdown';
 import FAQ from '../../components/FAQ.astro';
 import { getAllFormats, getToolsForFormat, formatDisplayDate, formatIsoDate, type FormatDefinition } from '../../registry';
 import { siteConfig } from '../../config/site';
@@ -134,12 +135,7 @@ if (format.faq && format.faq.length > 0) {
       <!-- Deep Guide Content -->
       {format.content && (
         <div class="prose prose-gray max-w-none my-8 leading-relaxed space-y-6 text-slate-700 [&>h2]:text-2xl [&>h2]:font-bold [&>h2]:text-slate-900 [&>h2]:mt-8 [&>h2]:mb-4 [&>h3]:text-lg [&>h3]:font-semibold [&>h3]:text-slate-900 [&>h3]:mt-6 [&>h3]:mb-2 [&>ul]:list-disc [&>ul]:pl-5 [&>ol]:list-decimal [&>ol]:pl-5 [&>p]:mb-4"
-          set:html={format.content
-            .replace(/### (.*)/g, '<h3>$1</h3>')
-            .replace(/## (.*)/g, '<h2>$1</h2>')
-            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-            .replace(/`([^`]+)`/g, '<code>$1</code>')
-            .replace(/\n\n/g, '<p></p>')}
+          set:html={renderToolMarkdown(format.content)}
         />
       )}
 

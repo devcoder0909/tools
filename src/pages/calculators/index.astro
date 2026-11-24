@@ -1,10 +1,10 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import { getAllTools } from '../../registry';
+import { getIndexableTools } from '../../registry';
 import { siteConfig } from '../../config/site';
 
-const tools = getAllTools();
+const tools = getIndexableTools();
 const financeTools = tools.filter((t) => t.kind === 'finance');
 const mathCalculators = tools.filter((t) => t.kind === 'calculator');
 const textAndDevTools = tools.filter((t) => t.kind === 'text' || t.kind === 'developer');
@@ -16,8 +16,8 @@ const breadcrumbs = [
 ---
 
 <Layout
-  title={`Free Online Calculators & Financial Tools | ${siteConfig.brand}`}
-  description="Use our free online calculators for percentages, loan EMI, discounts, date differences, and financial planning. Fast, accurate, and completely private."
+  title={`Online Calculators for Age, Tips, Percentages and Loans | ${siteConfig.brand}`}
+  description="Find a calculator by task. Check age on a specific date, split a restaurant bill, work out a sale price or percentage change, and estimate monthly loan payments."
   canonical={`${siteConfig.url}/calculators/`}
 >
   <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
@@ -25,25 +25,25 @@ const breadcrumbs = [
 
     <div class="mb-10 text-center sm:text-left">
       <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-3 tracking-tight">
-        Free Online Calculators &amp; Financial Utilities
+        Free Online Calculators
       </h1>
       <p class="text-base text-slate-600 max-w-3xl leading-relaxed">
-        Perform instant mathematical and financial calculations with our free online calculators. Get verified formulas, step-by-step math breakdowns, zero intrusive ads, and complete privacy directly inside your browser.
+        Choose a calculator for the question you want to answer.
       </p>
 
-      <figure class="my-6 p-5 rounded-2xl bg-white border border-slate-200/90 shadow-card text-center max-w-3xl">
-        <img
-          src="/images/tools/emi-calculator-infographic.svg"
-          alt="Free Online Calculators Mathematical Formula Matrix and Financial Amortization Diagram"
-          width="720"
-          height="360"
-          class="max-w-full h-auto mx-auto rounded-xl"
-          loading="lazy"
-        />
-        <figcaption class="mt-2.5 text-xs text-slate-500 font-medium">
-          <strong>Figure:</strong> Amortization formulas and compound growth curves for ZixTool free online calculators.
-        </figcaption>
-      </figure>
+      <nav aria-label="Everyday calculator tasks" class="mt-5 grid max-w-4xl gap-3 text-left sm:grid-cols-2">
+        {[
+          { slug: 'age-calculator', task: 'Calculate age on a specific date', detail: 'Enter a birthday and the date you want to check.' },
+          { slug: 'tip-calculator', task: 'Calculate a tip and split the bill', detail: 'See the tip, total and amount each guest owes.' },
+          { slug: 'percentage-calculator', task: 'Calculate a percentage or percent change', detail: 'Find a share of a total or compare two values.' },
+          { slug: 'discount-calculator', task: 'Find the sale price after a discount', detail: 'Check the savings and total after optional sales tax.' },
+        ].map(({ slug, task, detail }) => (
+          <a href={`/${slug}/`} class="rounded-xl border border-slate-200 p-4 hover:border-emerald-600 focus-visible:outline-emerald-600">
+            <strong class="block text-emerald-800">{task}</strong>
+            <span class="text-sm text-slate-600">{detail}</span>
+          </a>
+        ))}
+      </nav>
     </div>
 
     <!-- Financial & Investment Calculators -->
@@ -139,35 +139,11 @@ const breadcrumbs = [
       </div>
     </section>
 
-    <!-- In-depth Mathematical Architecture Article for SEO -->
-    <article class="prose prose-slate max-w-none text-slate-700 space-y-4 my-8 text-sm sm:text-base leading-relaxed bg-slate-50 border border-slate-200/90 rounded-2xl p-6 sm:p-8 shadow-card">
-      <h2 class="text-xl font-bold text-slate-900">Why Use Our Free Online Calculators?</h2>
-      <p>
-        Everyday math and finance should be simple and fast. Whether you need an EMI calculator, age tool, or discount finder, you want instant answers. You do not want slow pages or intrusive ads.
-      </p>
-      <p>
-        Every calculator on {siteConfig.brand} runs directly inside your web browser. This means results update on every keystroke. There is zero delay and zero network lag. Because your data stays in your device RAM, your numbers remain private.
-      </p>
-      <p>
-        Our free online calculators use verified formulas. Loan tools use standard reducing balance math. Percentage and date tools handle leap years and decimal rounding cleanly. You always get accurate results you can trust.
-      </p>
-      <h3 class="text-lg font-bold text-slate-900 mt-6 mb-2">Key Categories Covered</h3>
-      <ul class="list-disc pl-5 space-y-2">
-        <li><strong>Financial Tools:</strong> Compute loan payments, compound interest growth, and discount savings for personal budget planning.</li>
-        <li><strong>Everyday Math:</strong> Calculate percentages, date differences, chronological age, and aspect ratios with step-by-step clarity.</li>
-        <li><strong>Developer Utilities:</strong> Format JSON, validate data payloads, encode URLs, and generate hashes safely on your machine.</li>
-      </ul>
-      <h3 class="text-lg font-bold text-slate-900 mt-6 mb-2">Privacy &amp; Precision First</h3>
-      <p>
-        Traditional websites send your figures to remote cloud servers to compute results. Our free online calculators do all the heavy lifting locally on your phone or laptop. No numbers are logged, no tracking cookies are set, and your calculations remain 100% confidential.
-      </p>
-      <h3 class="text-lg font-bold text-slate-900 mt-6 mb-2">Completely Free &amp; Offline Ready</h3>
-      <p>
-        Every utility here is completely free with no limits, paywalls, or accounts needed. Because our free online calculators run locally using modern web standards, you can even use them offline when travelling without an active internet connection.
-      </p>
-      <p>
-        Use our free online calculators on your phone, tablet, or desktop. Plan a loan, balance your budget, or count dates with confidence.
-      </p>
-    </article>
+    <section class="my-8 max-w-3xl space-y-3 text-slate-700" aria-labelledby="choosing-calculator">
+      <h2 id="choosing-calculator" class="text-xl font-bold text-slate-900">Which calculator fits my question?</h2>
+      <p>For a birthday or application cutoff, choose the age calculator to see completed years, months and days. For a project deadline, use the <a class="underline" href="/date-difference-calculator/">date difference calculator</a> to count the interval between two dates.</p>
+      <p>If a price drops from $80 to $60, use percentage change to find the 25% reduction. If the label already says 25% off, the discount calculator starts with the original $80 and gives you the $60 sale price.</p>
+      <p>For a shared restaurant check, use the tip calculator to divide the total after gratuity. If your receipt lists both a subtotal and tax, the <a class="underline" href="/guides/restaurant-tipping-and-bill-splitting/">restaurant tipping and bill splitting guide</a> explains how to choose the amount to tip on.</p>
+    </section>
   </div>
 </Layout>

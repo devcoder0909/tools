@@ -1,6 +1,6 @@
 export const ads = {
   enabled: false, // flip after AdSense approval
-  publisherId: 'ca-pub-XXXXXXXXXXXXXXXX',
+  publisherId: 'ca-pub-1382627891298123',
   slots: {
     belowResult: '',
     midContent: '',

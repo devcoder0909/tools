@@ -1,4 +1,6 @@
 ---
+import { existsSync } from 'node:fs';
+import { resolve } from 'node:path';
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { searchGuides, type SearchGuide } from '../../content/guides';
@@ -22,14 +24,15 @@ const guideDiagrams: Record<string, string> = {
   'gta-6-characters-lucia-and-jason-guide': '/images/guides/gta-6-characters-lucia-jason.svg',
   'gta-6-soundtrack-and-radio-stations-guide': '/images/guides/gta-6-soundtrack-radio-stations.svg',
   'gta-6-global-release-times-and-timezone-guide': '/images/guides/gta-6-global-release-times.svg',
-  'gta-6-interactive-map-and-coordinates-guide': '/images/guides/gta-6-map-coordinates.svg',
 };
-const guideDiagram = guideDiagrams[guide.slug];
+const mapGuide = guide.slug === 'gta-6-interactive-map-and-coordinates-guide';
+const mapImage = '/images/guides/gta-6-leonida-map-guide.webp';
+const guideDiagram = mapGuide && existsSync(resolve('public', mapImage.slice(1))) ? mapImage : guideDiagrams[guide.slug];
 
 const schema: Record<string, any> = {
   '@context': 'https://schema.org', '@type': 'Article', '@id': `${canonical}#article`,
   headline: guide.title, description: guide.description, mainEntityOfPage: canonical,
-  datePublished: `${guide.updated}T00:00:00+05:30`, dateModified: `${guide.updated}T00:00:00+05:30`,
+  datePublished: `${guide.published ?? guide.updated}T00:00:00+05:30`, dateModified: `${guide.updated}T00:00:00+05:30`,
   inLanguage: 'en', author: { '@type': 'Organization', name: siteConfig.brand, url: `${siteConfig.url}/about/` },
   publisher: { '@type': 'Organization', name: siteConfig.brand, url: siteConfig.url },
   citation: guide.sources.map(source => source.url),
@@ -48,14 +51,14 @@ if (guideDiagram) {
       <figure class="my-6 p-4 rounded-2xl bg-white border border-slate-200/90 shadow-card text-center">
         <img
           src={guideDiagram}
-          alt={`${guide.title} Architecture & Telemetry Infographic`}
+          alt={mapGuide ? 'Leonida map showing Vice City and the Leonida Keys' : guide.title}
           width="1200"
           height="675"
           class="max-w-full h-auto mx-auto rounded-xl border border-slate-100"
           loading="lazy"
         />
         <figcaption class="mt-2 text-xs text-slate-500 font-medium">
-          {guide.title} — Verified Reference Telemetry &amp; Analysis
+          {guide.title}
         </figcaption>
       </figure>
     )}
@@ -78,14 +81,13 @@ if (guideDiagram) {
       </ul>
     </section>
     <section class="mb-8" aria-labelledby="guide-sources">
-      <h2 id="guide-sources" class="text-xl font-bold text-slate-900 mb-3">References and scope</h2>
-      <p class="mb-3">Format references are listed below. ZixTool-specific limitations describe the current implementation; destination websites set their own acceptance rules.</p>
+      <h2 id="guide-sources" class="text-xl font-bold text-slate-900 mb-3">Sources</h2>
       <ul class="list-disc pl-5 space-y-2">
         {guide.sources.map(source => <li><a class="text-emerald-800 underline" href={source.url}>{source.name}</a></li>)}
       </ul>
     </section>
     <nav aria-label="More guides" class="border-t border-slate-200 pt-6">
-      <h2 class="text-xl font-bold text-slate-900 mb-3">Related troubleshooting guides</h2>
+      <h2 class="text-xl font-bold text-slate-900 mb-3">More guides</h2>
       <ul class="space-y-3">
         {searchGuides.filter(item => item.slug !== guide.slug).map(item => <li><a class="text-emerald-800 underline" href={`/guides/${item.slug}/`}>{item.title}</a></li>)}
         <li><a class="text-emerald-800 underline" href="/guides/">Browse all practical guides</a></li>

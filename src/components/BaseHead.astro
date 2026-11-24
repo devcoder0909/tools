@@ -1,5 +1,6 @@
 ---
 import { siteConfig } from '../config/site';
+import { ads } from '../config/ads';
 import { resolvePageSeo, type PageSeoInput } from '../utils/seo';
 
 export interface Props extends PageSeoInput {}
@@ -21,6 +22,10 @@ const seo = resolvePageSeo(Astro.props, Astro.url);
 <link rel="apple-touch-icon" href="/icons/icon-192.png" />
 <link rel="manifest" href="/manifest.webmanifest" />
 <meta name="generator" content={Astro.generator} />
+<meta name="google-adsense-account" content={ads.publisherId} />
+{ads.enabled && !seo.robotsContent.includes('noindex') && (
+  <script is:inline async crossorigin="anonymous" src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ads.publisherId}`}></script>
+)}
 
 <!-- Google Fonts (Plus Jakarta Sans) -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />

@@ -37,30 +37,30 @@ export default function Gta6SpecsCalculator() {
   if (resolution === '4k') {
     if (numVram < 12) {
       score -= 30;
-      warnings.push('Severe VRAM bottleneck: 4K UHD with high-res textures and ray tracing demands at least 16GB VRAM. Expect texture popping and micro-stutters.');
+      warnings.push("4K scenario: VRAM falls below the model's lower threshold.");
     } else if (numVram < 16) {
       score -= 12;
-      warnings.push('Borderline VRAM for native 4K: 12GB VRAM requires dynamic DLSS/FSR upscaling or medium shadow caches.');
+      warnings.push("4K scenario: the selected VRAM falls between the model's two thresholds.");
     } else {
-      strengths.push('Excellent 4K VRAM buffer: 16GB+ VRAM handles high-resolution mipmaps and complex reflections smoothly.');
+      strengths.push("VRAM meets the upper threshold for the 4K scenario.");
     }
   } else if (resolution === '1440p' || resolution === '21:9') {
     if (numVram < 8) {
       score -= 25;
-      warnings.push('VRAM bottleneck: 1440p and 21:9 ultrawide require at least 10GB-12GB VRAM for high settings.');
+      warnings.push("The selected resolution exceeds the model's budget for this VRAM tier.");
     } else if (numVram === 8) {
       score -= 10;
-      warnings.push('8GB VRAM is tight for 1440p: Recommend reducing volumetric fog and ray-traced reflections.');
+      warnings.push("At 8 GB, the model applies a memory penalty for the selected resolution.");
     } else {
-      strengths.push('Optimal VRAM headroom: 12GB+ VRAM provides smooth frame delivery at 1440p and ultrawide resolutions.');
+      strengths.push("VRAM meets the upper threshold for this resolution.");
     }
   } else {
     // 1080p
     if (numVram < 6) {
       score -= 20;
-      warnings.push('Low VRAM: Less than 6GB will limit texture quality to Low/Medium presets.');
+      warnings.push("At 1080p, this model applies a penalty below 6 GB of VRAM.");
     } else {
-      strengths.push('Sufficient VRAM for standard 1080p Full HD fidelity.');
+      strengths.push("VRAM meets the threshold for the 1080p scenario.");
     }
   }
 
@@ -68,43 +68,43 @@ export default function Gta6SpecsCalculator() {
   if (targetFps === '120') {
     if (numCores < 8) {
       score -= 25;
-      warnings.push('CPU bottleneck for high refresh rates: High-density Vice City crowds and physics simulations require at least 8 modern multi-threaded cores for 120 FPS.');
+      warnings.push("The 120 FPS scenario assigns a penalty below eight CPU cores.");
     } else {
-      strengths.push('High-core CPU enables smooth simulation and 120 FPS high-refresh gaming.');
+      strengths.push("CPU core count meets the threshold for the 120 FPS scenario.");
     }
   } else if (targetFps === '60') {
     if (numCores < 6) {
       score -= 20;
-      warnings.push('Quad-core CPU will struggle to maintain 60 FPS in dense urban areas with high vehicle density.');
+      warnings.push("The 60 FPS scenario assigns a penalty below six CPU cores.");
     } else {
-      strengths.push('Multi-core processor meets standard 60 FPS baseline requirements.');
+      strengths.push("CPU core count meets the threshold for the 60 FPS scenario.");
     }
   }
 
   // 3. System RAM Check
   if (numRam < 16) {
     score -= 30;
-    warnings.push('Critical RAM deficit: 8GB system RAM is insufficient for modern AAA open-world titles; severe OS paging will occur.');
+    warnings.push("The model applies a memory penalty below 16 GB of system RAM.");
   } else if (numRam === 16) {
     if (resolution === '4k' || resolution === '21:9') {
       score -= 8;
-      warnings.push('16GB RAM is adequate, but 32GB RAM is recommended to prevent background application paging during 4K gameplay.');
+      warnings.push("At this resolution, the model assigns a smaller memory margin to 16 GB of RAM.");
     } else {
-      strengths.push('16GB RAM satisfies standard memory requirements.');
+      strengths.push("System memory meets this scenario threshold.");
     }
   } else {
-    strengths.push('32GB+ RAM provides ample memory headroom for background applications and Discord recording.');
+    strengths.push("System memory meets the upper model tier.");
   }
 
   // 4. Storage Type & Speed Check
   if (driveType === 'hdd') {
     score -= 35;
-    warnings.push('Severe Storage Bottleneck: Mechanical HDDs (150 MB/s) cannot stream high-speed Vice City highway assets, causing visible missing geometry and blurred textures.');
+    warnings.push("The model assigns its largest storage penalty to mechanical drives.");
   } else if (driveType === 'sata-ssd') {
     score -= 12;
-    warnings.push('SATA SSD (500 MB/s) meets basic playable requirements, but high-speed DirectStorage fast-travel will be capped compared to NVMe drives.');
+    warnings.push("The model rates SATA SSD storage between an HDD and an NVMe SSD.");
   } else {
-    strengths.push('DirectStorage-ready NVMe SSD ensures rapid asset streaming and instantaneous fast-travel transitions.');
+    strengths.push("The model assigns no drive-type penalty to NVMe storage.");
   }
 
   // 5. Storage Space Check
@@ -118,21 +118,21 @@ export default function Gta6SpecsCalculator() {
   // Clamp score
   const finalScore = Math.max(10, Math.min(100, score));
 
-  let tierRating = 'Ready for 1080p Baseline';
+  let tierRating = 'Moderate match to model';
   let badgeColor = 'bg-amber-100 text-amber-800 border-amber-300';
   if (finalScore >= 88) {
-    tierRating = '4K Ultra & High Refresh Ready';
+    tierRating = 'High match to model';
     badgeColor = 'bg-emerald-100 text-emerald-800 border-emerald-300';
   } else if (finalScore >= 72) {
-    tierRating = '1440p 60 FPS High Ready';
+    tierRating = 'Good match to model';
     badgeColor = 'bg-blue-100 text-blue-800 border-blue-300';
   } else if (finalScore < 50) {
-    tierRating = 'Hardware Upgrade Highly Recommended';
+    tierRating = 'Low match to model';
     badgeColor = 'bg-rose-100 text-rose-800 border-rose-300';
   }
 
   const copySummary = async () => {
-    const text = `GTA 6 PC Compatibility & Hardware Report:
+    const text = `GTA 6 hardware planning estimate:
 Target: ${resolution.toUpperCase()} @ ${targetFps} FPS
 Score: ${finalScore}/100 (${tierRating})
 Hardware: VRAM: ${vram}GB | CPU Cores: ${cpuCores} | RAM: ${ram}GB | Drive: ${driveType.toUpperCase()}
@@ -151,8 +151,8 @@ Calculated via ZixTool (https://zixtool.online/gta-6-pc-specs-calculator/)`;
     <section data-hydrated={hydrated ? 'true' : undefined} class="my-6 space-y-6 rounded-3xl border border-slate-200/90 bg-white p-5 sm:p-7 shadow-xs">
       <div class="border-b border-slate-100 pb-4">
         <span class="text-2xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-md bg-emerald-50 text-emerald-700">Client-Side Hardware Evaluation</span>
-        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mt-2">Test Your System for Grand Theft Auto VI</h2>
-        <p class="text-xs sm:text-sm text-slate-500 mt-1">Select your display goals, hardware components, and free disk space to evaluate performance tiers and storage bottlenecks in real time.</p>
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mt-2">Compare your hardware with a GTA 6 FPS target</h2>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1">This planning model scores the hardware you enter against a chosen target. It does not run the game or measure FPS.</p>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -272,7 +272,7 @@ Calculated via ZixTool (https://zixtool.online/gta-6-pc-specs-calculator/)`;
               <span class={`inline-block px-3 py-1 rounded-full text-xs font-bold border ${badgeColor}`}>
                 {tierRating}
               </span>
-              <span class="text-xs text-slate-500 font-mono">Compatibility Score: {finalScore}/100</span>
+              <span class="text-xs text-slate-500 font-mono">Model score: {finalScore}/100</span>
             </div>
             <p class="text-xs text-slate-600 mt-1.5">
               Targeting: <strong class="text-slate-900">{resolution.toUpperCase()}</strong> at <strong class="text-slate-900">{targetFps} FPS</strong> with <strong class="text-slate-900">{vram}GB VRAM</strong> and <strong class="text-slate-900">{ram}GB RAM</strong>.

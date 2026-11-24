@@ -131,40 +131,8 @@ const workflowDiagrams: Record<string, string> = {
 
 const diagramUrl = toolMedia?.diagramUrl || workflowDiagrams[tool.slug];
 
-const howToJsonLd = isIndexable ? {
-  '@context': 'https://schema.org',
-  '@type': 'HowTo',
-  name: `How to Use ${tool.name} Online`,
-  description: `Step-by-step instructions to use ${tool.name} directly in your web browser with client-side processing and instant results.`,
-  totalTime: 'PT1M',
-  step: [
-    {
-      '@type': 'HowToStep',
-      position: 1,
-      name: 'Enter Parameters or Load File',
-      text: `Open the ${tool.name} on zixtool.online and enter your input values, measurements, or upload your document or image locally.`,
-      url: `${siteConfig.url}/${tool.slug}/#tool`,
-    },
-    {
-      '@type': 'HowToStep',
-      position: 2,
-      name: 'Configure Options & Calculate',
-      text: 'Select your preferred mode, presets, or quality levels to trigger instant in-browser calculation or file processing.',
-      url: `${siteConfig.url}/${tool.slug}/#tool`,
-    },
-    {
-      '@type': 'HowToStep',
-      position: 3,
-      name: 'Review Results and Save',
-      text: 'Examine the detailed metric breakdowns, copy calculations to clipboard, or download the optimized output file.',
-      url: `${siteConfig.url}/${tool.slug}/#tool`,
-    },
-  ],
-} : null;
-
 const schemas: any[] = isIndexable ? [webAppJsonLd] : [];
 if (faqJsonLd && isIndexable) schemas.push(faqJsonLd);
-if (howToJsonLd && isIndexable) schemas.push(howToJsonLd);
 
 if (diagramUrl && isIndexable) {
   schemas.push({
@@ -231,21 +199,6 @@ if (tool.targetBytes) {
       </p>
     </div>
 
-    <!-- AI Overview / Direct Answer Passage (GEO & Answer Engine Optimized) -->
-    <aside class="mb-5 p-4 rounded-xl bg-gradient-to-r from-emerald-50/80 to-teal-50/60 border border-emerald-200/70 shadow-xs">
-      <div class="flex items-start gap-3">
-        <div class="mt-0.5 p-1.5 rounded-lg bg-emerald-600 text-white shrink-0">
-          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-          </svg>
-        </div>
-        <div class="text-xs sm:text-sm text-slate-800 leading-relaxed">
-          <strong class="font-semibold text-slate-900">Quick Answer & Summary:</strong>{' '}
-          <span>{tool.description} Fast, secure, and private—runs 100% locally in your web browser with zero server uploads.</span>
-        </div>
-      </div>
-    </aside>
-
     <!-- 3. The working tool above the fold -->
     {tool.id === 'gta-6-pc-specs-calculator' ? (
       <Gta6SpecsCalculator client:load />
@@ -296,18 +249,12 @@ if (tool.targetBytes) {
     <!-- Content Hub Navigation Tabs -->
     <div class="mt-10 mb-6 border-b border-slate-200">
       <div class="flex items-center space-x-2 sm:space-x-3 overflow-x-auto pb-3 text-xs sm:text-sm font-semibold text-slate-600">
-        <a href="#how-to" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200/80 whitespace-nowrap hover:bg-emerald-100 transition">
-          <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-          </svg>
-          <span>How to Use</span>
-        </a>
         <a href="#guide" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-white text-slate-700 border border-slate-200 whitespace-nowrap hover:bg-slate-50 transition">
           <svg class="w-3.5 h-3.5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
             <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
-          <span>Technical Guide</span>
+          <span>How to use this tool</span>
         </a>
         {tool.faq && tool.faq.length > 0 && (
           <a href="#faq" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-white text-slate-700 border border-slate-200 whitespace-nowrap hover:bg-slate-50 transition">
@@ -322,26 +269,10 @@ if (tool.targetBytes) {
 
     <!-- Editorial Content Section (Semantic Article for Full Intent Fulfillment) -->
     <article class="editorial-content my-8 space-y-8">
-      <!-- Direct Answer & Search Intent Definition -->
-      <div id="how-to" class="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200/90 text-xs sm:text-sm text-slate-700 shadow-card">
-        <div class="flex items-center gap-2 font-bold text-emerald-700 uppercase tracking-wider text-2xs mb-2">
-          <svg class="w-4 h-4 text-emerald-600 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          Overview &amp; How It Works
-        </div>
-        <p class="leading-relaxed">
-          {tool.from && tool.to ? (
-            <>Use <strong>{tool.name}</strong> to convert {tool.from.toUpperCase()} to {tool.to.toUpperCase()} online for free directly in your browser. All decoding and re-encoding runs in device RAM with zero server uploads.</>
-          ) : tool.slug.startsWith('compress-image-to-') || tool.engine === 'target-size' ? (
-            <>Use <strong>{tool.name}</strong> to {tool.seo?.primary_kw || tool.name.toLowerCase()} online for free. All photo compression executes locally inside client memory without transmitting your images to external servers.</>
-          ) : tool.kind === 'calculator' || tool.kind === 'finance' ? (
-            <>Use <strong>{tool.name}</strong> to calculate {tool.seo?.primary_kw || tool.name.toLowerCase()} accurately and instantly. All mathematical formulas compute in real time in device memory with zero data tracking.</>
-          ) : (
-            <>Use <strong>{tool.name}</strong> for {tool.seo?.primary_kw || tool.name.toLowerCase()} directly in your browser with zero server uploads, complete privacy, and instant results.</>
-          )}
-        </p>
-      </div>
+      {example && <section id="how-to" class="my-8 max-w-3xl">
+        <h2 class="text-xl font-bold text-slate-900 mb-2">{example.heading}</h2>
+        <p class="leading-relaxed text-slate-700">{example.text}</p>
+      </section>}
 
       {toolMedia && (
         <figure class="my-6 p-5 sm:p-6 rounded-2xl bg-white border border-slate-200/90 shadow-card text-center">
@@ -411,10 +342,6 @@ if (tool.targetBytes) {
     <AdSlot slotPosition="midContent" />
 
     <!-- Related tools & format hub links -->
-    {example && <section class="my-8 max-w-3xl">
-      <h2 class="text-xl font-bold text-slate-900 mb-2">{example.heading}</h2>
-      <p class="leading-relaxed text-slate-700">{example.text}</p>
-    </section>}
     <RelatedTools currentTool={tool} relatedTools={related} />
 
     <!-- 9. Last-reviewed date -->
