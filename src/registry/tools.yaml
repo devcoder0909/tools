@@ -3663,10 +3663,10 @@
 - id: whatsapp-dp-status-downloader
   slug: whatsapp-dp-status-downloader
   kind: media
-  name: WhatsApp DP and Status Downloader
-  title: WhatsApp DP and Status Downloader for Photos and Videos
-  subtitle: Save a profile picture or status from a direct media link or a file you already have. No phone number or WhatsApp login is needed.
-  description: Save a WhatsApp DP, status photo or status video from a direct media link or local file. Preview the media and download a copy in its original format.
+  name: WhatsApp DP Downloader
+  title: WhatsApp DP Downloader | View and Save a Profile Picture
+  subtitle: Paste a shared image or direct photo link, or choose a file. Check its dimensions and download the original picture.
+  description: Use the WhatsApp DP Downloader to view a shared profile picture at its original size and save it from a photo link or file. Also supports status photos and videos.
   engine: media-saver
   content: src/content/tools/whatsapp-dp-status-downloader.mdx
   related: [crop-image, resize-image, photo-editor, image-compressor]
@@ -3677,11 +3677,11 @@
       a: The download contains the same bytes as the supplied video. It preserves the available quality and cannot recover detail lost before sharing.
   indexable: true
   reviewed: true
-  last_reviewed: "2026-11-21"
+  last_reviewed: "2026-11-24"
   lang: en
   seo:
-    primary_kw: whatsapp status downloader
-    secondary_kws: [whatsapp dp download, whatsapp profile picture downloader, whatsapp status video saver, save status photo]
+    primary_kw: whatsapp dp downloader
+    secondary_kws: [whatsapp profile picture downloader, whatsapp dp viewer, full size whatsapp dp, whatsapp status downloader, whatsapp status video saver]
     intent: tool
 
 - id: image-to-text
