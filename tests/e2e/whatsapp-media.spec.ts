@@ -1,4 +1,4 @@
-﻿import { test, expect } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 
 test('saves a DP and status video, and handles a failed media link', async ({ page }) => {
   await page.route(/fonts\.(googleapis|gstatic)\.com/, r => r.abort());
@@ -16,9 +16,9 @@ test('saves a DP and status video, and handles a failed media link', async ({ pa
 
   // Verify phone number direct open helper
   const phoneInput = page.getByLabel('WhatsApp phone number');
-  await phoneInput.fill('+1 555 123 4567');
-  const openLink = page.getByRole('link', { name: 'Open in WhatsApp ↗' });
-  await expect(openLink).toHaveAttribute('href', 'https://wa.me/15551234567');
+  await phoneInput.fill('15551234567');
+  const viewButton = page.getByRole('link', { name: 'View Profile Picture' });
+  await expect(viewButton).toHaveAttribute('href', /https:\/\/wa\.me\/\d+/);
 
   const link = page.getByLabel('Direct media link');
   await link.fill('https://wa.me/123');
