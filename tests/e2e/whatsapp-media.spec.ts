@@ -13,6 +13,13 @@ test('saves a DP and status video, and handles a failed media link', async ({ pa
   const download = page.waitForEvent('download');
   await page.getByRole('link', { name: 'Download profile photo' }).click();
   expect((await download).suggestedFilename()).toBe('whatsapp-dp.png');
+
+  // Verify phone number direct open helper
+  const phoneInput = page.getByLabel('WhatsApp phone number');
+  await phoneInput.fill('+1 555 123 4567');
+  const openLink = page.getByRole('link', { name: 'Open in WhatsApp ↗' });
+  await expect(openLink).toHaveAttribute('href', 'https://wa.me/15551234567');
+
   const link = page.getByLabel('Direct media link');
   await link.fill('https://wa.me/123');
   await page.getByRole('button', { name: 'Load media' }).click();
