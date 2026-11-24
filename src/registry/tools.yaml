@@ -1096,7 +1096,7 @@
   name: Percentage Calculator
   title: "Percentage Calculator | Percent of a Number and Change"
   subtitle: "Find a percentage of a number, calculate what percent one number is of another, or compare an old and new value."
-  description: "Find 15% of a number, convert a score into a percentage, or calculate a percentage increase or decrease. Choose the calculation that matches your question."
+  description: "Find a percent of a number, turn a score into a percentage, calculate an increase or decrease, or compare two measurements by percentage difference."
   engine: calc-percentage
   options: []
   presets: []

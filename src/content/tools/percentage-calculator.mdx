@@ -14,6 +14,7 @@ reviewed: true
 - **What is 15% of 80?** Choose the percent-of mode. Multiply 80 by 0.15 to get 12.
 - **What percentage is 12 out of 80?** Choose the part-of-total mode. Divide 12 by 80 and multiply by 100 to get 15%.
 - **What is the percentage increase from 80 to 92?** Choose percent change. The gain is 12, measured against the starting value of 80, so the increase is 15%.
+- **What is the percentage difference between 80 and 92?** Choose percentage difference when comparing two measurements without a starting value. Their average is 86. Divide the gap of 12 by 86 and multiply by 100 to get 13.95%. Swapping the numbers gives the same answer.
 
 ## How Percentage Calculations Work: Understanding "Per Cent"
 
@@ -53,13 +54,13 @@ $$\text{Percentage Change} = \left(\frac{V_{\text{final}} - V_{\text{initial}}}{
 - **Real-World Example:** A company's monthly recurring revenue (MRR) rises from **$12,500** in March to **$15,000** in April:
 - **Calculation:** $\left(\frac{15,000 - 12,500}{12,500}\right) \times 100 = \left(\frac{2,500}{12,500}\right) \times 100 = 0.20 \times 100 = \mathbf{+20.0\% \text{ Increase}}$.
 
-### Mode 4: Percentage Difference (Comparing Two Values Without Direction)
-When comparing two distinct measurements where neither value serves as an "initial" baseline (for example, comparing the fuel efficiency of two car models), calculate the difference relative to the average:
+### How to calculate percentage difference
 
-$$\text{Percentage Difference} = \left(\frac{|A - B|}{\frac{A + B}{2}}\right) \cdot 100$$
+Use two nonnegative measurements in the same units. Divide the absolute gap by their average, then multiply by 100.
 
-- **Real-World Example:** Company A produces **120 units** and Company B produces **150 units**:
-- **Calculation:** $\frac{|120 - 150|}{(120 + 150) / 2} \times 100 = \frac{30}{135} \times 100 = \mathbf{22.22\% \text{ Difference}}$.
+For two factories producing 120 and 150 units, the gap is 30 units and the average is 135. Their output differs by **22.22%**. If the numbers instead describe one factory increasing production from 120 to 150, use percentage change: the increase is **25%** relative to its original output.
+
+Equal positive measurements give 0% difference. If one measurement is zero and the other is positive, the difference is 200%. Two zeros have a zero average, so the percentage difference is undefined.
 
 ---
 

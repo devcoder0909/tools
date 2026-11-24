@@ -8,7 +8,7 @@ interface CalculatorShellProps {
 
 export default function CalculatorShell({ toolId, toolName: _toolName }: CalculatorShellProps) {
   // Percentage Calculator State
-  const [percMode, setPercMode] = useState<'calc' | 'isWhat' | 'change'>('calc');
+  const [percMode, setPercMode] = useState<'calc' | 'isWhat' | 'change' | 'difference'>('calc');
   const [pVal1, setPVal1] = useState<string>('15');
   const [pVal2, setPVal2] = useState<string>('250');
 
@@ -240,6 +240,13 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
         main: `${res.toLocaleString(undefined, { maximumFractionDigits: 4 })}%`,
         formula: `(${v1} ÷ ${v2}) × 100 = ${res.toLocaleString(undefined, { maximumFractionDigits: 4 })}%`,
       };
+    } else if (percMode === 'difference') {
+      if (v1 < 0 || v2 < 0) return { main: 'Enter two nonnegative measurements', formula: '' };
+      const scale = Math.max(v1, v2);
+      if (scale === 0) return { main: 'Undefined because both values are zero', formula: '' };
+      const difference = 200 * (Math.abs(v1 - v2) / scale) / (v1 / scale + v2 / scale);
+      const main = difference.toLocaleString(undefined, { maximumFractionDigits: 2 }) + '%';
+      return { main, formula: `|${v1} − ${v2}| ÷ ((${v1} + ${v2}) ÷ 2) × 100 ≈ ${main}` };
     } else {
       if (v1 === 0) return { main: 'Cannot compute change from zero', formula: '' };
       const diff = v2 - v1;
@@ -457,6 +464,10 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
             >
               % Change from X to Y
             </button>
+            <button type="button" aria-pressed={percMode === 'difference'} onClick={() => setPercMode('difference')}
+              class={`px-4 py-2 text-xs font-semibold rounded-xl ${percMode === 'difference' ? 'bg-emerald-600 text-white' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'}`}>
+              Percentage difference
+            </button>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-start">
@@ -574,11 +585,12 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
               </>
             )}
 
-            {percMode === 'change' && (
+            {(percMode === 'change' || percMode === 'difference') && (
               <>
                 <div class="space-y-1.5">
-                  <label class="block text-xs font-bold text-slate-700">Initial Value (From)</label>
+                  <label for="percentage-first" class="block text-xs font-bold text-slate-700">{percMode === 'difference' ? 'First measurement' : 'Initial Value (From)'}</label>
                   <input
+                    id="percentage-first"
                     type="number"
                     value={pVal1}
                     onInput={(e) => setPVal1((e.target as HTMLInputElement).value)}
@@ -603,8 +615,9 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
                   </div>
                 </div>
                 <div class="space-y-1.5">
-                  <label class="block text-xs font-bold text-slate-700">Final Value (To)</label>
+                  <label for="percentage-second" class="block text-xs font-bold text-slate-700">{percMode === 'difference' ? 'Second measurement' : 'Final Value (To)'}</label>
                   <input
+                    id="percentage-second"
                     type="number"
                     value={pVal2}
                     onInput={(e) => setPVal2((e.target as HTMLInputElement).value)}
