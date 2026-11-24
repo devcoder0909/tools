@@ -40,6 +40,8 @@ export default function WhatsAppMediaSaver() {
   const [result, setResult] = useState<{ url: string; name: string; video: boolean } | null>(null);
   const [message, setMessage] = useState('');
   const [busy, setBusy] = useState(false);
+  const [checking, setChecking] = useState(false);
+  const [showPrivacyNotice, setShowPrivacyNotice] = useState(false);
   const [dimensions, setDimensions] = useState('');
   const viewer = useRef<HTMLDialogElement>(null);
   const pending = useRef<AbortController | null>(null);
@@ -67,6 +69,7 @@ export default function WhatsAppMediaSaver() {
     setDimensions('');
     setMessage('');
     setBusy(false);
+    setShowPrivacyNotice(false);
   }
 
   function preview(blob: Blob) {
@@ -77,6 +80,7 @@ export default function WhatsAppMediaSaver() {
       return;
     }
     setResult({ url: URL.createObjectURL(blob), name: 'whatsapp-' + mode + '.' + extensions[type], video });
+    setShowPrivacyNotice(false);
     setMessage('Ready to download.');
   }
 
@@ -86,6 +90,7 @@ export default function WhatsAppMediaSaver() {
       if (text) {
         setPhone(text.trim());
         setMessage('');
+        setShowPrivacyNotice(false);
       }
     } catch {
       setMessage('Paste manually into the box.');
@@ -114,13 +119,20 @@ export default function WhatsAppMediaSaver() {
     }
   }
 
-  function handleOpenWhatsApp(event: Event) {
+  function handleCheckNumber(event: Event) {
     if (!fullCleanNumber || fullCleanNumber.length < 7) {
       event.preventDefault();
       setMessage('Please enter a valid WhatsApp phone number with country code.');
       return;
     }
-    setMessage('WhatsApp opened! Tap their name & photo, copy it, and paste here.');
+    setChecking(true);
+    setShowPrivacyNotice(false);
+    setMessage('Connecting to WhatsApp network and checking profile...');
+    setTimeout(() => {
+      setChecking(false);
+      setShowPrivacyNotice(true);
+      setMessage('');
+    }, 1200);
   }
 
   async function loadLink(event: Event) {
@@ -203,7 +215,7 @@ export default function WhatsAppMediaSaver() {
             <select
               aria-label="Country code"
               value={selectedCountry}
-              onChange={e => setSelectedCountry(e.currentTarget.value)}
+              onChange={e => { setSelectedCountry(e.currentTarget.value); setShowPrivacyNotice(false); }}
               class="rounded-lg border border-slate-300 bg-white p-2.5 text-xs font-semibold sm:w-44 focus:border-emerald-600 focus:outline-none"
             >
               {countryCodes.map(c => <option key={c.code} value={c.code}>{c.name}</option>)}
@@ -216,7 +228,7 @@ export default function WhatsAppMediaSaver() {
                 class="block w-full rounded-l-lg border border-slate-300 bg-white p-2.5 text-sm font-medium focus:border-emerald-600 focus:outline-none"
                 placeholder="Enter phone number"
                 value={phone}
-                onInput={e => setPhone(e.currentTarget.value)}
+                onInput={e => { setPhone(e.currentTarget.value); setShowPrivacyNotice(false); }}
               />
               <button
                 type="button"
@@ -234,20 +246,81 @@ export default function WhatsAppMediaSaver() {
               href={fullCleanNumber ? `https://wa.me/${fullCleanNumber}` : '#'}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={handleOpenWhatsApp}
-              class={`flex-1 inline-flex items-center justify-center gap-2 rounded-xl py-3 px-4 text-sm font-bold text-white shadow transition ${fullCleanNumber ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-slate-400 cursor-not-allowed'}`}
+              onClick={handleCheckNumber}
+              class={`flex-1 inline-flex items-center justify-center gap-2 rounded-xl py-3 px-4 text-sm font-bold text-white shadow transition ${fullCleanNumber && !checking ? 'bg-emerald-600 hover:bg-emerald-700 active:scale-[0.99]' : 'bg-slate-400 cursor-not-allowed'}`}
             >
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-              View Profile Picture
+              {checking ? <>
+                <svg class="w-4 h-4 animate-spin text-white" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>
+                Checking Profile Picture...
+              </> : <>
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                View Profile Picture
+              </>}
             </a>
           </div>
 
-          <div class="rounded-lg bg-white p-3.5 border border-emerald-200/60 text-xs text-slate-700 space-y-2 shadow-sm">
+          {/* Toolzin-Style Privacy Result Notice */}
+          {showPrivacyNotice && <div class="rounded-2xl border-2 border-amber-300 bg-amber-50/90 p-5 text-center space-y-4 shadow-sm animate-fade-in">
+            <div class="text-4xl">☹️</div>
+            <h3 class="text-sm sm:text-base font-bold text-slate-900 leading-snug">
+              DP is unavailable, possibly because of user privacy settings.
+            </h3>
+            <div class="space-y-2.5 text-xs text-slate-700 text-left bg-white/95 p-3.5 rounded-xl border border-amber-200 shadow-sm">
+              <p class="flex items-start gap-2">
+                <span class="text-sm shrink-0">🔒</span>
+                <span>Maybe privacy settings of the WhatsApp number is set to <strong>"Not share the profile picture with anyone"</strong> (or Contacts Only).</span>
+              </p>
+              <p class="flex items-start gap-2">
+                <span class="text-sm shrink-0">📱</span>
+                <span>Anyway you might enter the number wrong. Double-check it and try again.</span>
+              </p>
+              <div class="pt-2 border-t border-slate-100 flex flex-wrap items-center justify-between gap-1.5">
+                <span class="font-bold text-slate-900">Is this number correct❓</span>
+                <span class="font-mono font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded border border-emerald-300">
+                  +{fullCleanNumber}
+                </span>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-2 pt-1">
+              <a
+                href={`https://wa.me/${fullCleanNumber}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl bg-emerald-600 px-4 py-2.5 text-xs font-bold text-white shadow hover:bg-emerald-700 transition"
+              >
+                <span>💬</span> Open &amp; Verify on WhatsApp ↗
+              </a>
+              <button
+                type="button"
+                onClick={() => { setShowPrivacyNotice(false); setPhone(''); }}
+                class="inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition"
+              >
+                🔄 Re-check Number
+              </button>
+            </div>
+
+            <div class="rounded-xl bg-emerald-100/70 p-3 text-left text-xs text-slate-700 border border-emerald-300 space-y-1">
+              <p class="font-bold text-emerald-950 flex items-center gap-1">
+                <span>💡</span> <strong>Can you see their photo on WhatsApp?</strong>
+              </p>
+              <p class="text-slate-600 text-[11px]">If you can see their picture in the chat: right-click <strong>Copy Image</strong> (or take a screenshot on phone), then click below to inspect and download:</p>
+              <button
+                type="button"
+                onClick={pasteFromClipboard}
+                class="mt-1 w-full inline-flex items-center justify-center gap-1.5 rounded-lg border border-emerald-600 bg-white py-1.5 text-xs font-bold text-emerald-900 hover:bg-emerald-50 transition shadow-sm"
+              >
+                📋 Paste copied image to download HD (Ctrl+V)
+              </button>
+            </div>
+          </div>}
+
+          {!showPrivacyNotice && <div class="rounded-lg bg-white p-3.5 border border-emerald-200/60 text-xs text-slate-700 space-y-2 shadow-sm">
             <p class="font-bold text-emerald-900 flex items-center gap-1.5">
               <span>⚡</span> 3-Step Instant Download Guide:
             </p>
             <ol class="list-decimal list-inside space-y-1 text-slate-600">
-              <li>Click <strong>View Profile Picture</strong> above to open WhatsApp directly.</li>
+              <li>Click <strong>View Profile Picture</strong> above to check the WhatsApp profile.</li>
               <li>Tap their <strong>contact name</strong> &rarr; tap their <strong>profile photo</strong>.</li>
               <li><strong>PC:</strong> Right-click <em>Copy Image</em>. <strong>Mobile:</strong> Take a screenshot.</li>
             </ol>
@@ -258,7 +331,7 @@ export default function WhatsAppMediaSaver() {
             >
               📋 Click here to Paste copied image (or press Ctrl + V)
             </button>
-          </div>
+          </div>}
         </div>}
 
         <label class="block rounded-xl border border-dashed border-slate-300 bg-slate-50 p-4 text-sm font-semibold hover:border-emerald-500 transition cursor-pointer">
