@@ -41,7 +41,6 @@ export default function WhatsAppMediaSaver() {
   const [message, setMessage] = useState('');
   const [busy, setBusy] = useState(false);
   const [dimensions, setDimensions] = useState('');
-  const [isOpenedWhatsApp, setIsOpenedWhatsApp] = useState(false);
   const viewer = useRef<HTMLDialogElement>(null);
   const pending = useRef<AbortController | null>(null);
   const picker = useRef<HTMLInputElement>(null);
@@ -55,7 +54,6 @@ export default function WhatsAppMediaSaver() {
   if (selectedCountry === 'custom') {
     fullCleanNumber = rawDigits;
   } else {
-    // If the user already typed their country code in the input, avoid duplicating
     if (rawDigits.startsWith(selectedCountry)) {
       fullCleanNumber = rawDigits;
     } else {
@@ -122,7 +120,6 @@ export default function WhatsAppMediaSaver() {
       setMessage('Please enter a valid WhatsApp phone number with country code.');
       return;
     }
-    setIsOpenedWhatsApp(true);
     setMessage('WhatsApp opened! Tap their name & photo, copy it, and paste here.');
   }
 
@@ -154,8 +151,25 @@ export default function WhatsAppMediaSaver() {
     } finally { if (!controller.signal.aborted) setBusy(false); }
   }
 
-  return <div>
-    <section class="my-6 grid overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm md:grid-cols-2">
+  return <div class="my-6">
+    {/* Feature Trust Badges */}
+    <div class="mb-4 flex flex-wrap items-center justify-center gap-2 text-xs font-semibold text-slate-700">
+      <span class="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-3 py-1 text-emerald-800 border border-emerald-200">
+        🛡️ 100% Free &amp; Private
+      </span>
+      <span class="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-slate-700">
+        ⚡ Original Full HD Quality
+      </span>
+      <span class="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-slate-700">
+        📱 No Contact Save Needed
+      </span>
+      <span class="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-slate-700">
+        🌐 Works on All Devices
+      </span>
+    </div>
+
+    {/* Main Tool Grid Container */}
+    <section class="grid overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm md:grid-cols-2">
       <div class="min-w-0 space-y-5 p-5 sm:p-7" onPaste={event => {
         const file = Array.from(event.clipboardData?.files || []).find(item => item.type.startsWith('image/'));
         if (!file) return;
@@ -167,7 +181,7 @@ export default function WhatsAppMediaSaver() {
       }}>
         <div class="flex items-center justify-between border-b border-slate-100 pb-3">
           <label class="block text-sm font-bold text-slate-800">Media to save:
-            <select class="ml-2 rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium" value={mode} onChange={e => {
+            <select aria-label="Media to save" class="ml-2 rounded-lg border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium focus:border-emerald-600 focus:outline-none focus:ring-1 focus:ring-emerald-600" value={mode} onChange={e => {
               reset(); setAddress(''); setMode(e.currentTarget.value); if (picker.current) picker.current.value = '';
             }}>
               <option value="dp">WhatsApp Profile Picture (DP)</option>
@@ -176,13 +190,13 @@ export default function WhatsAppMediaSaver() {
           </label>
         </div>
 
-        {mode === 'dp' && <div class="rounded-xl border-2 border-emerald-500/30 bg-emerald-50/40 p-4 sm:p-5 space-y-4">
+        {mode === 'dp' && <div class="rounded-xl border-2 border-emerald-500/30 bg-emerald-50/40 p-4 sm:p-5 space-y-4 shadow-sm">
           <div class="flex items-center justify-between">
             <label for="phone" class="text-sm font-bold text-emerald-950 flex items-center gap-2">
               <svg class="w-5 h-5 text-emerald-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.043.073.043.42-.101.825z"/></svg>
               WhatsApp Phone Number
             </label>
-            <span class="text-xs bg-emerald-100 text-emerald-800 font-semibold px-2.5 py-0.5 rounded-full">No Contact Save Needed</span>
+            <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-2.5 py-0.5 rounded-full">No Save Needed</span>
           </div>
 
           <div class="flex flex-col sm:flex-row gap-2">
@@ -190,7 +204,7 @@ export default function WhatsAppMediaSaver() {
               aria-label="Country code"
               value={selectedCountry}
               onChange={e => setSelectedCountry(e.currentTarget.value)}
-              class="rounded-lg border border-slate-300 bg-white p-2.5 text-xs font-medium sm:w-44"
+              class="rounded-lg border border-slate-300 bg-white p-2.5 text-xs font-semibold sm:w-44 focus:border-emerald-600 focus:outline-none"
             >
               {countryCodes.map(c => <option key={c.code} value={c.code}>{c.name}</option>)}
             </select>
@@ -199,7 +213,7 @@ export default function WhatsAppMediaSaver() {
                 id="phone"
                 type="tel"
                 aria-label="WhatsApp phone number"
-                class="block w-full rounded-l-lg border border-slate-300 bg-white p-2.5 text-sm font-medium"
+                class="block w-full rounded-l-lg border border-slate-300 bg-white p-2.5 text-sm font-medium focus:border-emerald-600 focus:outline-none"
                 placeholder="Enter phone number"
                 value={phone}
                 onInput={e => setPhone(e.currentTarget.value)}
@@ -208,7 +222,7 @@ export default function WhatsAppMediaSaver() {
                 type="button"
                 onClick={pastePhoneNumber}
                 title="Paste phone number"
-                class="rounded-r-lg border border-l-0 border-slate-300 bg-slate-100 px-3 text-xs font-semibold text-slate-700 hover:bg-slate-200 transition"
+                class="rounded-r-lg border border-l-0 border-slate-300 bg-slate-100 px-3 text-xs font-bold text-slate-700 hover:bg-slate-200 transition"
               >
                 📋 Paste
               </button>
@@ -225,15 +239,6 @@ export default function WhatsAppMediaSaver() {
             >
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
               View Profile Picture
-            </a>
-            <a
-              href={fullCleanNumber ? `https://wa.me/${fullCleanNumber}` : '#'}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={handleOpenWhatsApp}
-              class="hidden"
-            >
-              Open in WhatsApp ↗
             </a>
           </div>
 
@@ -256,19 +261,24 @@ export default function WhatsAppMediaSaver() {
           </div>
         </div>}
 
-        <label class="block rounded-xl border border-dashed border-slate-300 bg-slate-50 p-4 text-sm font-semibold">Or choose a photo or screenshot from your device<input ref={picker} type="file" class="block mt-2 w-full text-sm" accept={'image/jpeg,image/png,image/webp,image/gif' + (mode === 'status' ? ',video/mp4,video/webm' : '')} onChange={e => {
-          reset(); const file = e.currentTarget.files?.[0]; if (file) preview(file);
-        }} /></label>
+        <label class="block rounded-xl border border-dashed border-slate-300 bg-slate-50 p-4 text-sm font-semibold hover:border-emerald-500 transition cursor-pointer">
+          Or choose a photo or screenshot from your device
+          <input ref={picker} type="file" class="block mt-2 w-full text-sm" accept={'image/jpeg,image/png,image/webp,image/gif' + (mode === 'status' ? ',video/mp4,video/webm' : '')} onChange={e => {
+            reset(); const file = e.currentTarget.files?.[0]; if (file) preview(file);
+          }} />
+        </label>
 
         <form onSubmit={loadLink} class="space-y-2">
-          <label class="block text-xs font-semibold text-slate-700">Direct media link<input class="mt-1.5 block w-full rounded-lg border border-slate-300 p-2.5 text-xs" type="url" required value={address} placeholder="https://…" onInput={e => { reset(); setAddress(e.currentTarget.value); }} /></label>
+          <label class="block text-xs font-semibold text-slate-700">Direct media link
+            <input class="mt-1.5 block w-full rounded-lg border border-slate-300 p-2.5 text-xs focus:border-emerald-600 focus:outline-none" type="url" required value={address} placeholder="https://…" onInput={e => { reset(); setAddress(e.currentTarget.value); }} />
+          </label>
           <button type="submit" disabled={busy} class="rounded-lg bg-slate-800 px-3.5 py-1.5 text-xs text-white font-medium hover:bg-slate-900 transition">{busy ? 'Loading…' : 'Load media'}</button>
         </form>
 
         <p role="status" class="text-xs font-semibold text-emerald-800">{message}</p>
       </div>
 
-      <div class="min-w-0 bg-emerald-50 p-5 sm:p-7 flex flex-col justify-center border-t md:border-t-0 md:border-l border-slate-100">
+      <div class="min-w-0 bg-emerald-50/60 p-5 sm:p-7 flex flex-col justify-center border-t md:border-t-0 md:border-l border-slate-100">
         <h2 class="mb-3 text-lg font-bold text-slate-900">Media Preview &amp; Download</h2>
         {!result && <figure class="text-center">
           <img src="/images/whatsapp-media-preview.webp" width="780" height="520" alt="Example square profile photo and vertical status video" class="w-full rounded-xl shadow-sm border border-emerald-100" />
@@ -276,7 +286,7 @@ export default function WhatsAppMediaSaver() {
         </figure>}
         {result && <div key={result.url} class="space-y-4 text-center">
           {result.video ? <video controls src={result.url} class="mx-auto max-h-72 max-w-full rounded-lg shadow-sm" /> : <>
-            <img src={result.url} alt="Selected WhatsApp media" class="mx-auto max-h-72 max-w-full rounded-xl shadow-sm border border-emerald-200"
+            <img src={result.url} alt="Selected WhatsApp media" class="mx-auto max-h-72 max-w-full rounded-xl shadow-sm border border-emerald-200 bg-white"
               onLoad={event => setDimensions(`${event.currentTarget.naturalWidth} × ${event.currentTarget.naturalHeight} pixels`)}
               onError={() => { setDimensions(''); setMessage('The browser could not display this image. Try the original file.'); }} />
             {dimensions && <div class="flex flex-wrap items-center justify-center gap-3">
