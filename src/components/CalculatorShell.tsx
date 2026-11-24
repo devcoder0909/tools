@@ -359,40 +359,42 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
   const tipResult = useMemo(() => {
     const bill = parseFloat(billAmount);
     const rate = parseFloat(tipRate);
-    const count = parseInt(splitCount, 10) || 1;
-    const taxRate = parseFloat(tipTaxPercent) || 0;
-    if (isNaN(bill) || isNaN(rate) || bill < 0 || rate < 0 || count < 1) return null;
+    const count = Number(splitCount);
+    const taxRate = Number(tipTaxPercent);
+    if (!Number.isFinite(bill) || !Number.isFinite(rate) || !Number.isFinite(taxRate) ||
+        bill < 0 || rate < 0 || taxRate < 0 || !Number.isSafeInteger(count) || count < 1) return null;
 
-    const taxAmount = (bill * Math.max(0, taxRate)) / 100;
-    const baseForTip = tipPreTax ? bill : bill + taxAmount;
-    let rawTip = (baseForTip * rate) / 100;
-    let grandTotal = bill + taxAmount + rawTip;
-    let perPersonTotal = grandTotal / count;
+    const cents = (amount: number) => Math.round((amount + Number.EPSILON) * 100);
+    const money = (amountInCents: number) => (amountInCents / 100).toFixed(2);
+    const billCents = cents(bill);
+    const taxCents = cents(billCents / 100 * taxRate / 100);
+    const baseForTip = tipPreTax ? billCents : billCents + taxCents;
+    let tipCents = cents(baseForTip / 100 * rate / 100);
+    let totalCents = billCents + taxCents + tipCents;
+    if (tipRounding === 'round-total') totalCents = Math.ceil(totalCents / 100) * 100;
+    if (tipRounding === 'round-person') totalCents = Math.ceil(totalCents / count / 100) * 100 * count;
+    if (!Number.isSafeInteger(totalCents)) return null;
+    tipCents = totalCents - billCents - taxCents;
 
-    if (tipRounding === 'round-total') {
-      const roundedTotal = Math.ceil(grandTotal);
-      rawTip = Math.max(0, roundedTotal - bill - taxAmount);
-      grandTotal = roundedTotal;
-      perPersonTotal = grandTotal / count;
-    } else if (tipRounding === 'round-person') {
-      const roundedPerPerson = Math.ceil(perPersonTotal);
-      perPersonTotal = roundedPerPerson;
-      grandTotal = perPersonTotal * count;
-      rawTip = Math.max(0, grandTotal - bill - taxAmount);
-    }
-
-    const perPersonTip = rawTip / count;
-    const perPersonFoodAndTax = (bill + taxAmount) / count;
+    const lowerShare = Math.floor(totalCents / count);
+    const higherCount = totalCents % count;
+    const lowerCount = count - higherCount;
+    const group = (size: number, share: number) =>
+      size + (size === 1 ? ' guest pays $' : ' guests pay $') + money(share);
+    const allocation = higherCount ? group(lowerCount, lowerShare) + ' and ' + group(higherCount, lowerShare + 1) + '.' : '';
+    const perPersonTip = tipCents / count / 100;
+    const perPersonFoodAndTax = (billCents + taxCents) / count / 100;
 
     return {
-      bill: bill.toFixed(2),
-      taxAmount: taxAmount.toFixed(2),
-      tip: rawTip.toFixed(2),
-      total: grandTotal.toFixed(2),
-      perPersonTotal: perPersonTotal.toFixed(2),
+      bill: money(billCents),
+      taxAmount: money(taxCents),
+      tip: money(tipCents),
+      total: money(totalCents),
+      allocation,
+      perPersonTotal: money(lowerShare),
       perPersonTip: perPersonTip.toFixed(2),
       perPersonFoodAndTax: perPersonFoodAndTax.toFixed(2),
-      effectiveTipPercent: baseForTip > 0 ? ((rawTip / baseForTip) * 100).toFixed(1) : rate.toFixed(1),
+      effectiveTipPercent: baseForTip > 0 ? ((tipCents / baseForTip) * 100).toFixed(1) : rate.toFixed(1),
     };
   }, [billAmount, tipRate, splitCount, tipTaxPercent, tipPreTax, tipRounding]);
 
@@ -405,7 +407,7 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
       parseFloat(tipResult.taxAmount) > 0 ? `• Tax: $${tipResult.taxAmount}` : null,
       `• Gratuity (${tipRate}%): $${tipResult.tip}`,
       `• Grand Total: $${tipResult.total}`,
-      `• Split between ${count} guests: $${tipResult.perPersonTotal} each ($${tipResult.perPersonTip} tip/person)`,
+      tipResult.allocation || `• Split between ${count} guests: $${tipResult.perPersonTotal} each ($${tipResult.perPersonTip} tip/person)`,
       `Calculated via ZixTool (https://zixtool.online/tip-calculator/)`
     ].filter(Boolean).join('\n');
 
@@ -1004,9 +1006,11 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
                   <span class="text-xs uppercase font-bold tracking-wider text-emerald-700">
                     Per Person Share ({splitCount} {parseInt(splitCount, 10) === 1 ? 'Guest' : 'Guests'})
                   </span>
-                  <div class="text-3xl sm:text-4xl font-extrabold text-emerald-950 mt-1">
-                    ${tipResult.perPersonTotal}
-                  </div>
+                  {tipResult.allocation ? (
+                    <div class="mt-1 text-xl font-bold text-emerald-950">{tipResult.allocation}</div>
+                  ) : (
+                    <div class="text-3xl sm:text-4xl font-extrabold text-emerald-950 mt-1">${tipResult.perPersonTotal}</div>
+                  )}
                 </div>
                 <div class="sm:text-right text-xs text-slate-600 space-y-0.5">
                   <div>Food &amp; Tax: <strong>${tipResult.perPersonFoodAndTax}</strong> / person</div>

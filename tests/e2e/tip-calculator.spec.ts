@@ -1,6 +1,17 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Tip Calculator E2E Tests', () => {
+  test('allocates leftover cents without changing the restaurant total', async ({ page }) => {
+    await page.goto('/tip-calculator/');
+    const shell = page.locator('.calculator-shell');
+    await shell.getByPlaceholder('65.00').fill('25');
+    await shell.getByRole('button', { name: '20%', exact: true }).click();
+    await shell.getByRole('spinbutton').nth(2).fill('7');
+    await expect(shell.getByText('3 guests pay $4.28 and 4 guests pay $4.29.')).toBeVisible();
+    await shell.getByRole('button', { name: 'Round Up Per Person ($)' }).click();
+    await expect(shell.getByText('$35.00', { exact: true })).toBeVisible();
+  });
+
   test('tip calculator computes accurate gratuities, split amounts, and renders guide', async ({ page }) => {
     await page.goto('/tip-calculator/', { waitUntil: 'domcontentloaded' });
 

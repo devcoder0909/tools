@@ -1272,8 +1272,8 @@
   faq:
     - q: What is the customary tip percentage at restaurants?
       a: In the United States and Canada, 15% is standard for acceptable service, 18% for good service, and 20% or more for exceptional dining service.
-    - q: Does the tip split evenly among dining guests?
-      a: Yes. Enter the number of people in your party to calculate each person's exact share of both the subtotal and the tip.
+    - q: How can I split a restaurant bill to the cent?
+      a: Choose Exact Cents and enter the number of guests. When the total cannot divide evenly, the calculator shows who pays one cent more. For a $10 total split three ways, two guests pay $3.33 and one pays $3.34.
     - q: Should you tip on the pre-tax or post-tax amount?
       a: Etiquette guides traditionally recommend tipping on the food and beverage subtotal prior to sales tax.
     - q: How do you calculate an 18% tip quickly in your head?
