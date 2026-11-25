@@ -3,19 +3,23 @@
   extension: ".heic"
   mime: "image/heic"
   category: "raster"
-  lossy: true
+  compression: "Usually lossy"
   transparency: true
   animation: false
   hub: true
   indexable: true
-  last_reviewed: "2026-11-13"
+  last_reviewed: "2026-11-25"
   reviewer: "ZixTool Team"
-  title: "HEIC File: What It Is & How to Convert | ZixTool"
-  description: "Learn what the HEIC file format is, why Apple uses it, how to view it on Windows, and convert HEIC to JPG securely in your browser without uploads."
+  title: "What Is a HEIC File? Open iPhone Photos or Convert to JPG"
+  description: "A .heic file is a photo commonly saved by an iPhone. Learn how to open it, make a JPG copy for an upload, or have your iPhone take JPEG photos in future."
   content: |
     ## How do I open a .heic photo or upload it as JPG?
 
     If the photo opens on your phone but an upload form rejects it, check the accepted file types first. For a form that asks for JPEG, use the [HEIC to JPG converter](/heic-to-jpg/) and submit the downloaded copy. Keep the original HEIC if you want to retain the source photo.
+
+    ## How do I save an existing iPhone photo as JPEG?
+
+    On a Mac, open the HEIC file in Preview, choose File > Export, then select JPEG as the format. Changing the filename alone leaves the photo encoded as HEIC. To take future photos as JPEG, open Settings on the iPhone, choose Camera > Formats, then select Most Compatible. See [Apple's HEIF compatibility guide](https://support.apple.com/en-us/116944).
 
     ## What is a HEIC File?
 
@@ -49,7 +53,7 @@
   extension: ".jpg"
   mime: "image/jpeg"
   category: "raster"
-  lossy: true
+  compression: "Lossy"
   transparency: false
   animation: false
   hub: true
@@ -57,7 +61,7 @@
   last_reviewed: "2026-11-13"
   reviewer: "ZixTool Team"
   title: "JPG File: What It Is & How to Convert | ZixTool"
-  description: "Complete technical guide to the JPG file format: 8-bit discrete cosine transform compression, universal browser support, and lossless conversion tools."
+  description: "Learn how JPG and JPEG files store photos, why repeated saves can reduce quality, and which image format to choose when you need transparency."
   content: |
     ## What is a JPG / JPEG File?
 
@@ -93,7 +97,7 @@
   extension: ".png"
   mime: "image/png"
   category: "raster"
-  lossy: false
+  compression: "Lossless"
   transparency: true
   animation: false
   hub: true
@@ -135,19 +139,23 @@
   extension: ".webp"
   mime: "image/webp"
   category: "raster"
-  lossy: true
+  compression: "Lossy or lossless"
   transparency: true
   animation: true
   hub: true
   indexable: true
-  last_reviewed: "2026-11-13"
+  last_reviewed: "2026-11-25"
   reviewer: "ZixTool Team"
-  title: "WebP File: What It Is & How to Convert | ZixTool"
-  description: "Complete guide to the WebP file format: 25-34% smaller sizes than JPG, full alpha transparency, animated frames, and browser performance."
+  title: "What Is a WebP File? Open It or Convert to JPG or PNG"
+  description: "Open a .webp image in your browser, save a JPG for a photo upload, or choose PNG to keep a transparent background. Learn what happens to animated images."
   content: |
     ## Should I convert WebP to JPG or PNG?
 
     For a photo upload that accepts JPEG, use [WebP to JPG](/webp-to-jpg/). For a logo with a transparent background, choose [WebP to PNG](/webp-to-png/) to retain transparency. For an animated WebP, keep the original when motion matters. Exporting a still image gives you a single frame.
+
+    ## How do I open a .webp file?
+
+    Drag the downloaded image into a Chrome, Firefox, Edge, or Safari window to view it. If it opens there but your upload form rejects it, check which formats the form accepts. Renaming the file leaves its encoding unchanged. See [Google's WebP format documentation](https://developers.google.com/speed/webp).
 
     ## What is a WebP File?
 
@@ -181,7 +189,7 @@
   extension: ".avif"
   mime: "image/avif"
   category: "raster"
-  lossy: true
+  compression: "Lossy or lossless"
   transparency: true
   animation: true
   hub: true
@@ -223,7 +231,7 @@
   extension: ".gif"
   mime: "image/gif"
   category: "raster"
-  lossy: false
+  compression: "Lossless palette encoding"
   transparency: true
   animation: true
   hub: false
@@ -236,7 +244,7 @@
   extension: ".bmp"
   mime: "image/bmp"
   category: "raster"
-  lossy: false
+  compression: "Usually uncompressed"
   transparency: false
   animation: false
   hub: false
@@ -249,7 +257,7 @@
   extension: ".tiff"
   mime: "image/tiff"
   category: "raster"
-  lossy: false
+  compression: "Varies by encoding"
   transparency: true
   animation: false
   hub: false
@@ -262,7 +270,7 @@
   extension: ".svg"
   mime: "image/svg+xml"
   category: "vector"
-  lossy: false
+  compression: "XML, optionally gzip-compressed"
   transparency: true
   animation: true
   hub: false
@@ -275,7 +283,7 @@
   extension: ".jfif"
   mime: "image/jpeg"
   category: "raster"
-  lossy: true
+  compression: "Lossy JPEG"
   transparency: false
   animation: false
   hub: false
@@ -288,7 +296,7 @@
   extension: ".pdf"
   mime: "application/pdf"
   category: "document"
-  lossy: false
+  compression: "Varies by embedded content"
   transparency: false
   animation: false
   hub: false

@@ -31,14 +31,14 @@ const breadcrumbs = [
       <figure class="my-6 p-5 rounded-2xl bg-white border border-slate-200 shadow-2xs text-center max-w-3xl">
         <img
           src="/images/tools/png-vs-jpg-comparison.svg"
-          alt="Image and Document File Formats Architecture and Compression Comparison Diagram"
-          width="720"
-          height="360"
+          alt="PNG and JPEG compared by compression and transparency support"
+          width="800"
+          height="450"
           class="max-w-full h-auto mx-auto rounded-xl"
           loading="lazy"
         />
         <figcaption class="mt-2 text-xs text-slate-500 font-medium">
-          <strong>Figure:</strong> Comparative compression ratios and alpha channel transparency matrix across modern file formats.
+          PNG preserves transparency. JPEG uses lossy compression for photos.
         </figcaption>
       </figure>
     </div>
@@ -66,7 +66,7 @@ const breadcrumbs = [
             </p>
           </div>
           <div class="text-xs text-slate-400 space-x-2 pt-3 border-t border-slate-100">
-            <span>{fmt.lossy ? 'Lossy' : 'Lossless'}</span>
+            <span>{fmt.compression}</span>
             <span>•</span>
             <span>{fmt.transparency ? 'Alpha Transparency' : 'No Transparency'}</span>
           </div>

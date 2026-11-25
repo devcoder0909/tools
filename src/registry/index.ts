@@ -47,7 +47,7 @@ export interface FormatDefinition {
   extension: string;
   mime: string;
   category: 'raster' | 'vector' | 'document';
-  lossy: boolean;
+  compression: string;
   transparency: boolean;
   animation: boolean;
   hub: boolean;
