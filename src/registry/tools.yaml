@@ -1094,9 +1094,9 @@
   kind: calculator
   slug: percentage-calculator
   name: Percentage Calculator
-  title: "Percentage Calculator | Percent of a Number and Change"
+  title: "Percentage Calculator | Percent Change and Difference"
   subtitle: "Find a percentage of a number, calculate what percent one number is of another, or compare an old and new value."
-  description: "Find a percent of a number, turn a score into a percentage, calculate an increase or decrease, or compare two measurements by percentage difference."
+  description: "Calculate a percentage of a number, find what percent one number is of another, or compare two values. See worked examples for percent change and difference."
   engine: calc-percentage
   options: []
   presets: []
@@ -1147,7 +1147,7 @@
   name: Age Calculator
   title: "Age Calculator by Date of Birth | Age on Any Date"
   subtitle: "Enter your birthday and choose today or a past or future date to find your age in years, months and days."
-  description: "Calculate your age on any date in years, months and days. If you only know the birth year, find the age before and after the birthday in any year."
+  description: "Calculate your exact age today or on a specific date in years, months and days. Know only the birth year? See both possible ages in your chosen year."
   engine: calc-age
   options: []
   presets: []
@@ -1262,9 +1262,9 @@
   kind: calculator
   slug: tip-calculator
   name: Tip Calculator
-  title: "Tip Calculator | Tip Amount, Bill Total and Split per Person"
+  title: "Tip Calculator | Restaurant Tip and Bill Split"
   subtitle: "Enter the bill, tip percentage and number of guests to see the tip and total for each person."
-  description: "Calculate a restaurant tip and split the bill equally. Compare tip percentages, choose a pre-tax or after-tax tip, and see the total each person owes."
+  description: "Enter a restaurant bill to calculate a 15%, 18%, 20% or custom tip. Include tax if needed and see exactly how much each person pays, down to the cent."
   engine: calc-tip
   options: []
   presets: []
