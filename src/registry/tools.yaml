@@ -2,9 +2,9 @@
   kind: converter
   slug: heic-to-jpg
   name: HEIC to JPG Converter
-  title: "HEIC to JPG Converter for iPhone Photos"
+  title: "HEIC to JPG Converter for iPhone, Mac and Windows"
   subtitle: Open iPhone photos anywhere. Drop HEIC files, get JPGs, nothing uploaded.
-  description: Convert HEIC to JPG free in your browser. Photos never leave your device, no sign-up, no file limits, and you can batch convert and download as ZIP.
+  description: "Convert iPhone HEIC photos to JPG on a phone or computer. Choose one or more HEIC files, preview the JPEG copies, and save them from your browser."
   from: heic
   to: jpg
   engine: heic-decode+canvas
@@ -153,8 +153,8 @@
   kind: converter
   slug: webp-to-jpg
   name: WebP to JPG Converter
-  title: "WebP to JPG Converter for JPEG Uploads"
-  description: Convert WebP images to JPG in your browser with zero server uploads. Batch convert files, control compression quality, and download instantly.
+  title: "WebP to JPG Converter | Save WebP Images as JPEG"
+  description: "Convert downloaded WebP images to JPG for photo uploads and apps that require JPEG. Adjust output quality and save one image or convert several at once."
   from: webp
   to: jpg
   engine: canvas
@@ -838,9 +838,9 @@
   kind: converter
   slug: compress-image-to-50kb
   name: Compress Image to 50KB
-  title: "Compress Image to 50KB for Photo Uploads"
+  title: "Compress Image to 50KB | Reduce JPG Photo Size"
   subtitle: Reduce photo size to under 50KB for government forms and official portals.
-  description: Compress image to 50KB online for free. Shrink photos to 50KB or less for passport portals, visa forms, and job applications with full privacy in RAM.
+  description: "Compress a JPG photo for a 50KB upload limit. Check the downloaded file size and dimensions before submitting a photo or signature to an online form."
   from: image
   to: jpg
   engine: target-size
@@ -1223,9 +1223,9 @@
   kind: calculator
   slug: discount-calculator
   name: Discount Calculator
-  title: "Discount Calculator | Sale Price, Percent Off and Savings"
+  title: "Discount Calculator | Sale Price with Tax and Savings"
   subtitle: "Enter the original price and discount to see the sale price, savings and total with optional sales tax."
-  description: "Find the sale price after a percentage discount. Enter a price and percent off to see how much you save, then add optional sales tax for the checkout total."
+  description: "Calculate a sale price from the original price and percent off. See how much you save, then add sales tax to estimate the amount due at checkout."
   engine: calc-discount
   options: []
   presets: []
@@ -1545,9 +1545,9 @@
   kind: pdf
   slug: merge-pdf
   name: Merge PDF
-  title: "Merge PDF Files Online into One Document"
+  title: "Merge PDF Online | Combine PDFs into One File"
   subtitle: Combine multiple PDF documents into one file directly in browser memory.
-  description: Merge PDF files free online in your browser. Combine multiple documents into one single PDF without file size limits and zero server uploads.
+  description: "Combine two or more PDF files into one document. Arrange the files in reading order and download the merged PDF from your browser without a server upload."
   engine: pdf
   options: []
   presets: []
@@ -1648,9 +1648,9 @@
   kind: pdf
   slug: compress-pdf
   name: Compress PDF
-  title: "Compress PDF Online and Compare File Sizes"
+  title: "Compress PDF Online | Reduce PDF File Size"
   subtitle: Optimize and compress PDF document size locally in browser memory.
-  description: Compress PDF files free online in your browser. Reduce PDF document file size for email and portal uploads without uploading to third-party servers.
+  description: "Try reducing PDF file size in your browser and compare the result with the original before sending it by email or uploading it to a form."
   engine: pdf
   options: []
   presets: []
