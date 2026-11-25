@@ -16,9 +16,9 @@ test('saves a DP and status video, and handles a failed media link', async ({ pa
 
   // Verify phone number direct open helper
   const phoneInput = page.getByLabel('WhatsApp phone number');
-  await phoneInput.fill('15551234567');
-  const viewButton = page.getByRole('link', { name: 'View Profile Picture' });
-  await expect(viewButton).toHaveAttribute('href', /https:\/\/wa\.me\/\d+/);
+  await phoneInput.fill('+1 555 123 4567');
+  const viewButton = page.getByRole('link', { name: 'Open chat in WhatsApp' });
+  await expect(viewButton).toHaveAttribute('href', 'https://wa.me/15551234567');
 
   const link = page.getByLabel('Direct media link');
   await link.fill('https://wa.me/123');

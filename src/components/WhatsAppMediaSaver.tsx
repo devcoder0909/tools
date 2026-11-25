@@ -40,8 +40,6 @@ export default function WhatsAppMediaSaver() {
   const [result, setResult] = useState<{ url: string; name: string; video: boolean } | null>(null);
   const [message, setMessage] = useState('');
   const [busy, setBusy] = useState(false);
-  const [checking, setChecking] = useState(false);
-  const [showPrivacyNotice, setShowPrivacyNotice] = useState(false);
   const [dimensions, setDimensions] = useState('');
   const viewer = useRef<HTMLDialogElement>(null);
   const pending = useRef<AbortController | null>(null);
@@ -50,18 +48,11 @@ export default function WhatsAppMediaSaver() {
   useEffect(() => () => { if (result) URL.revokeObjectURL(result.url); }, [result]);
   useEffect(() => () => pending.current?.abort(), []);
 
-  // Compute clean phone with country code
-  const rawDigits = phone.replace(/[^0-9]/g, '');
-  let fullCleanNumber = '';
-  if (selectedCountry === 'custom') {
-    fullCleanNumber = rawDigits;
-  } else {
-    if (rawDigits.startsWith(selectedCountry)) {
-      fullCleanNumber = rawDigits;
-    } else {
-      fullCleanNumber = selectedCountry + rawDigits;
-    }
-  }
+  const compactPhone = phone.trim().replace(/[\s().-]/g, '');
+  const digits = compactPhone.startsWith('+') ? compactPhone.slice(1)
+    : compactPhone.startsWith('00') ? compactPhone.slice(2)
+    : (selectedCountry === 'custom' ? '' : selectedCountry) + compactPhone;
+  const chatUrl = compactPhone && /^[1-9][0-9]{6,14}$/.test(digits) ? 'https://wa.me/' + digits : undefined;
 
   function reset() {
     pending.current?.abort();
@@ -69,7 +60,7 @@ export default function WhatsAppMediaSaver() {
     setDimensions('');
     setMessage('');
     setBusy(false);
-    setShowPrivacyNotice(false);
+
   }
 
   function preview(blob: Blob) {
@@ -80,7 +71,7 @@ export default function WhatsAppMediaSaver() {
       return;
     }
     setResult({ url: URL.createObjectURL(blob), name: 'whatsapp-' + mode + '.' + extensions[type], video });
-    setShowPrivacyNotice(false);
+
     setMessage('Ready to download.');
   }
 
@@ -90,7 +81,7 @@ export default function WhatsAppMediaSaver() {
       if (text) {
         setPhone(text.trim());
         setMessage('');
-        setShowPrivacyNotice(false);
+
       }
     } catch {
       setMessage('Paste manually into the box.');
@@ -119,22 +110,6 @@ export default function WhatsAppMediaSaver() {
     }
   }
 
-  function handleCheckNumber(event: Event) {
-    if (!fullCleanNumber || fullCleanNumber.length < 7) {
-      event.preventDefault();
-      setMessage('Please enter a valid WhatsApp phone number with country code.');
-      return;
-    }
-    setChecking(true);
-    setShowPrivacyNotice(false);
-    setMessage('Connecting to WhatsApp network and checking profile...');
-    setTimeout(() => {
-      setChecking(false);
-      setShowPrivacyNotice(true);
-      setMessage('');
-    }, 1200);
-  }
-
   async function loadLink(event: Event) {
     event.preventDefault();
     reset();
@@ -144,7 +119,7 @@ export default function WhatsAppMediaSaver() {
     try { url = new URL(address.trim()); if (url.protocol !== 'https:' || url.username || url.password) throw Error(); }
     catch { setMessage('Enter a direct HTTPS link to the image or video.'); return; }
     if (['wa.me', 'chat.whatsapp.com', 'api.whatsapp.com'].includes(url.hostname)) {
-      const match = url.pathname.replace(/[^0-9]/g, '');
+      const match = url.hostname === 'wa.me' && /^\/[1-9][0-9]{6,14}\/?$/.test(url.pathname) ? url.pathname.replace(/\//g, '') : '';
       if (match) {
         setPhone(match);
         setSelectedCountry('custom');
@@ -164,23 +139,6 @@ export default function WhatsAppMediaSaver() {
   }
 
   return <div class="my-6">
-    {/* Feature Trust Badges */}
-    <div class="mb-4 flex flex-wrap items-center justify-center gap-2 text-xs font-semibold text-slate-700">
-      <span class="inline-flex items-center gap-1 rounded-full bg-emerald-50 px-3 py-1 text-emerald-800 border border-emerald-200">
-        🛡️ 100% Free &amp; Private
-      </span>
-      <span class="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-slate-700">
-        ⚡ Original Full HD Quality
-      </span>
-      <span class="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-slate-700">
-        📱 No Contact Save Needed
-      </span>
-      <span class="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-slate-700">
-        🌐 Works on All Devices
-      </span>
-    </div>
-
-    {/* Main Tool Grid Container */}
     <section class="grid overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm md:grid-cols-2">
       <div class="min-w-0 space-y-5 p-5 sm:p-7" onPaste={event => {
         const file = Array.from(event.clipboardData?.files || []).find(item => item.type.startsWith('image/'));
@@ -202,6 +160,22 @@ export default function WhatsAppMediaSaver() {
           </label>
         </div>
 
+        <label class="block rounded-xl border border-dashed border-slate-300 bg-slate-50 p-4 text-sm font-semibold hover:border-emerald-500 transition cursor-pointer">
+          Choose a photo or status file from your device
+          <input ref={picker} type="file" class="block mt-2 w-full text-sm" accept={'image/jpeg,image/png,image/webp,image/gif' + (mode === 'status' ? ',video/mp4,video/webm' : '')} onChange={e => {
+            reset(); const file = e.currentTarget.files?.[0]; if (file) preview(file);
+          }} />
+        </label>
+
+        <form onSubmit={loadLink} class="space-y-2">
+          <label class="block text-xs font-semibold text-slate-700">Direct media link
+            <input class="mt-1.5 block w-full rounded-lg border border-slate-300 p-2.5 text-xs focus:border-emerald-600 focus:outline-none" type="url" required value={address} placeholder="https://…" onInput={e => { reset(); setAddress(e.currentTarget.value); }} />
+          </label>
+          <button type="submit" disabled={busy} class="rounded-lg bg-slate-800 px-3.5 py-1.5 text-xs text-white font-medium hover:bg-slate-900 transition">{busy ? 'Loading…' : 'Load media'}</button>
+        </form>
+
+        <button type="button" onClick={pasteFromClipboard} class="block rounded-lg border border-emerald-700 px-4 py-2 text-sm font-semibold text-emerald-800">Paste copied image</button>
+        <p role="status" class="text-xs font-semibold text-emerald-800">{message}</p>
         {mode === 'dp' && <div class="rounded-xl border-2 border-emerald-500/30 bg-emerald-50/40 p-4 sm:p-5 space-y-4 shadow-sm">
           <div class="flex items-center justify-between">
             <label for="phone" class="text-sm font-bold text-emerald-950 flex items-center gap-2">
@@ -215,7 +189,7 @@ export default function WhatsAppMediaSaver() {
             <select
               aria-label="Country code"
               value={selectedCountry}
-              onChange={e => { setSelectedCountry(e.currentTarget.value); setShowPrivacyNotice(false); }}
+              onChange={e => { setSelectedCountry(e.currentTarget.value); }}
               class="rounded-lg border border-slate-300 bg-white p-2.5 text-xs font-semibold sm:w-44 focus:border-emerald-600 focus:outline-none"
             >
               {countryCodes.map(c => <option key={c.code} value={c.code}>{c.name}</option>)}
@@ -228,7 +202,7 @@ export default function WhatsAppMediaSaver() {
                 class="block w-full rounded-l-lg border border-slate-300 bg-white p-2.5 text-sm font-medium focus:border-emerald-600 focus:outline-none"
                 placeholder="Enter phone number"
                 value={phone}
-                onInput={e => { setPhone(e.currentTarget.value); setShowPrivacyNotice(false); }}
+                onInput={e => { setPhone(e.currentTarget.value); }}
               />
               <button
                 type="button"
@@ -241,121 +215,17 @@ export default function WhatsAppMediaSaver() {
             </div>
           </div>
 
-          <div class="flex flex-col sm:flex-row gap-2">
-            <a
-              href={fullCleanNumber ? `https://wa.me/${fullCleanNumber}` : '#'}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={handleCheckNumber}
-              class={`flex-1 inline-flex items-center justify-center gap-2 rounded-xl py-3 px-4 text-sm font-bold text-white shadow transition ${fullCleanNumber && !checking ? 'bg-emerald-600 hover:bg-emerald-700 active:scale-[0.99]' : 'bg-slate-400 cursor-not-allowed'}`}
-            >
-              {checking ? <>
-                <svg class="w-4 h-4 animate-spin text-white" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>
-                Checking Profile Picture...
-              </> : <>
-                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-                View Profile Picture
-              </>}
-            </a>
-          </div>
-
-          {/* Toolzin-Style Privacy Result Notice */}
-          {showPrivacyNotice && <div class="rounded-2xl border-2 border-amber-300 bg-amber-50/90 p-5 text-center space-y-4 shadow-sm animate-fade-in">
-            <div class="text-4xl">☹️</div>
-            <h3 class="text-sm sm:text-base font-bold text-slate-900 leading-snug">
-              DP is unavailable, possibly because of user privacy settings.
-            </h3>
-            <div class="space-y-2.5 text-xs text-slate-700 text-left bg-white/95 p-3.5 rounded-xl border border-amber-200 shadow-sm">
-              <p class="flex items-start gap-2">
-                <span class="text-sm shrink-0">🔒</span>
-                <span>Maybe privacy settings of the WhatsApp number is set to <strong>"Not share the profile picture with anyone"</strong> (or Contacts Only).</span>
-              </p>
-              <p class="flex items-start gap-2">
-                <span class="text-sm shrink-0">📱</span>
-                <span>Anyway you might enter the number wrong. Double-check it and try again.</span>
-              </p>
-              <div class="pt-2 border-t border-slate-100 flex flex-wrap items-center justify-between gap-1.5">
-                <span class="font-bold text-slate-900">Is this number correct❓</span>
-                <span class="font-mono font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded border border-emerald-300">
-                  +{fullCleanNumber}
-                </span>
-              </div>
-            </div>
-
-            <div class="flex flex-col sm:flex-row gap-2 pt-1">
-              <a
-                href={`https://wa.me/${fullCleanNumber}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="flex-1 inline-flex items-center justify-center gap-1.5 rounded-xl bg-emerald-600 px-4 py-2.5 text-xs font-bold text-white shadow hover:bg-emerald-700 transition"
-              >
-                <span>💬</span> Open &amp; Verify on WhatsApp ↗
-              </a>
-              <button
-                type="button"
-                onClick={() => { setShowPrivacyNotice(false); setPhone(''); }}
-                class="inline-flex items-center justify-center gap-1.5 rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-xs font-semibold text-slate-700 hover:bg-slate-50 transition"
-              >
-                🔄 Re-check Number
-              </button>
-            </div>
-
-            <div class="rounded-xl bg-emerald-100/70 p-3 text-left text-xs text-slate-700 border border-emerald-300 space-y-1">
-              <p class="font-bold text-emerald-950 flex items-center gap-1">
-                <span>💡</span> <strong>Can you see their photo on WhatsApp?</strong>
-              </p>
-              <p class="text-slate-600 text-[11px]">If you can see their picture in the chat: right-click <strong>Copy Image</strong> (or take a screenshot on phone), then click below to inspect and download:</p>
-              <button
-                type="button"
-                onClick={pasteFromClipboard}
-                class="mt-1 w-full inline-flex items-center justify-center gap-1.5 rounded-lg border border-emerald-600 bg-white py-1.5 text-xs font-bold text-emerald-900 hover:bg-emerald-50 transition shadow-sm"
-              >
-                📋 Paste copied image to download HD (Ctrl+V)
-              </button>
-            </div>
-          </div>}
-
-          {!showPrivacyNotice && <div class="rounded-lg bg-white p-3.5 border border-emerald-200/60 text-xs text-slate-700 space-y-2 shadow-sm">
-            <p class="font-bold text-emerald-900 flex items-center gap-1.5">
-              <span>⚡</span> 3-Step Instant Download Guide:
-            </p>
-            <ol class="list-decimal list-inside space-y-1 text-slate-600">
-              <li>Click <strong>View Profile Picture</strong> above to check the WhatsApp profile.</li>
-              <li>Tap their <strong>contact name</strong> &rarr; tap their <strong>profile photo</strong>.</li>
-              <li><strong>PC:</strong> Right-click <em>Copy Image</em>. <strong>Mobile:</strong> Take a screenshot.</li>
-            </ol>
-            <button
-              type="button"
-              onClick={pasteFromClipboard}
-              class="mt-1 w-full inline-flex items-center justify-center gap-1.5 rounded-lg border border-emerald-600 bg-emerald-50/70 py-2 text-xs font-bold text-emerald-800 hover:bg-emerald-100 transition"
-            >
-              📋 Click here to Paste copied image (or press Ctrl + V)
-            </button>
-          </div>}
+          <p class="text-sm text-slate-700">Only have the number? Open the chat to ask for the original photo. Paste a full international number with +, or choose a country and enter the national number without its trunk prefix.</p>
+          {chatUrl && <a href={chatUrl} target="_blank" rel="noopener noreferrer" class="inline-block rounded-lg bg-emerald-700 px-4 py-3 font-semibold text-white">Open chat in WhatsApp</a>}
+          {phone && !chatUrl && <p class="text-sm text-slate-700">Check the country code and phone number.</p>}
         </div>}
-
-        <label class="block rounded-xl border border-dashed border-slate-300 bg-slate-50 p-4 text-sm font-semibold hover:border-emerald-500 transition cursor-pointer">
-          Or choose a photo or screenshot from your device
-          <input ref={picker} type="file" class="block mt-2 w-full text-sm" accept={'image/jpeg,image/png,image/webp,image/gif' + (mode === 'status' ? ',video/mp4,video/webm' : '')} onChange={e => {
-            reset(); const file = e.currentTarget.files?.[0]; if (file) preview(file);
-          }} />
-        </label>
-
-        <form onSubmit={loadLink} class="space-y-2">
-          <label class="block text-xs font-semibold text-slate-700">Direct media link
-            <input class="mt-1.5 block w-full rounded-lg border border-slate-300 p-2.5 text-xs focus:border-emerald-600 focus:outline-none" type="url" required value={address} placeholder="https://…" onInput={e => { reset(); setAddress(e.currentTarget.value); }} />
-          </label>
-          <button type="submit" disabled={busy} class="rounded-lg bg-slate-800 px-3.5 py-1.5 text-xs text-white font-medium hover:bg-slate-900 transition">{busy ? 'Loading…' : 'Load media'}</button>
-        </form>
-
-        <p role="status" class="text-xs font-semibold text-emerald-800">{message}</p>
       </div>
 
       <div class="min-w-0 bg-emerald-50/60 p-5 sm:p-7 flex flex-col justify-center border-t md:border-t-0 md:border-l border-slate-100">
         <h2 class="mb-3 text-lg font-bold text-slate-900">Media Preview &amp; Download</h2>
         {!result && <figure class="text-center">
           <img src="/images/whatsapp-media-preview.webp" width="780" height="520" alt="Example square profile photo and vertical status video" class="w-full rounded-xl shadow-sm border border-emerald-100" />
-          <figcaption class="mt-3 text-xs text-slate-600">Enter a phone number above, paste an image (<kbd class="px-1 py-0.5 rounded bg-white border border-slate-200">Ctrl+V</kbd>), or select a file to preview and download in original HD quality.</figcaption>
+          <figcaption class="mt-3 text-xs text-slate-600">Choose a file, paste an image or load a direct media link to see the preview.</figcaption>
         </figure>}
         {result && <div key={result.url} class="space-y-4 text-center">
           {result.video ? <video controls src={result.url} class="mx-auto max-h-72 max-w-full rounded-lg shadow-sm" /> : <>
@@ -381,27 +251,5 @@ export default function WhatsAppMediaSaver() {
       </div>
     </section>
 
-    {/* 3 Steps Feature Cards matching Toolzin structure */}
-    <div class="my-10">
-      <h2 class="text-center text-xl font-bold text-slate-900 sm:text-2xl">How WhatsApp DP Downloader Works</h2>
-      <p class="mx-auto mt-2 max-w-xl text-center text-sm text-slate-600">Quickly view and download any WhatsApp profile picture without saving contacts or installing APKs.</p>
-      <div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <div class="rounded-xl border border-slate-200 bg-slate-50/50 p-5 text-center">
-          <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100 text-emerald-800 font-bold text-lg">1</div>
-          <h3 class="mt-3 font-bold text-slate-900">Enter WhatsApp Number</h3>
-          <p class="mt-1 text-xs text-slate-600">Choose country code and enter the phone number to open the chat without saving.</p>
-        </div>
-        <div class="rounded-xl border border-slate-200 bg-slate-50/50 p-5 text-center">
-          <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100 text-emerald-800 font-bold text-lg">2</div>
-          <h3 class="mt-3 font-bold text-slate-900">View Profile Picture</h3>
-          <p class="mt-1 text-xs text-slate-600">Click View Profile Picture to open their full-size photo in WhatsApp Web or app.</p>
-        </div>
-        <div class="rounded-xl border border-slate-200 bg-slate-50/50 p-5 text-center">
-          <div class="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-emerald-100 text-emerald-800 font-bold text-lg">3</div>
-          <h3 class="mt-3 font-bold text-slate-900">Copy &amp; Download HD</h3>
-          <p class="mt-1 text-xs text-slate-600">Right-click Copy Image (or screenshot), paste here, and download in original resolution.</p>
-        </div>
-      </div>
-    </div>
   </div>;
 }
