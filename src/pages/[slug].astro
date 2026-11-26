@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ToolShell from '../components/ToolShell';
 import CalculatorShell from '../components/CalculatorShell';
+import TimeCardCalculator from '../components/TimeCardCalculator';
 import TextShell from '../components/TextShell';
 import TargetSizeShell from '../components/TargetSizeShell';
 import GeneratorShell from '../components/GeneratorShell';
@@ -202,7 +203,9 @@ if (tool.targetBytes) {
     </div>
 
     <!-- 3. The working tool above the fold -->
-    {tool.id === 'gta-6-pc-specs-calculator' ? (
+    {tool.id === 'time-card-calculator' ? (
+      <TimeCardCalculator client:load />
+    ) : tool.id === 'gta-6-pc-specs-calculator' ? (
       <Gta6SpecsCalculator client:load />
     ) : tool.id === 'gta-6-release-countdown' ? (
       <Gta6Countdown client:load />

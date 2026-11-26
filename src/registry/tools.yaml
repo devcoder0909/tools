@@ -1303,9 +1303,9 @@
   kind: text
   slug: word-counter
   name: Word Counter
-  title: "Word Counter Online with Character Count and Reading Time"
+  title: "Word Counter | Essay Word Limits and Character Count"
   subtitle: Count words, characters, sentences, and estimated reading time.
-  description: Count words and characters as you type. Compare totals with and without whitespace, and estimate how long a draft takes to read or speak aloud.
+  description: Count the words and characters in your draft. Set an essay word limit to see how many words you can add or need to cut as you edit.
   engine: text-word-count
   options: []
   presets: []
@@ -1331,7 +1331,7 @@
     - reading-time-calculator
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13T00:00:00.000Z
+  last_reviewed: "2026-11-27"
   reviewer: ZixTool Editorial Team
   lang: en
   seo:
@@ -3892,4 +3892,28 @@
       - pixels per inch calculator
       - print size dpi calculator
       - monitor ppi calculator
+    intent: calculator
+
+- id: time-card-calculator
+  slug: time-card-calculator
+  kind: calculator
+  name: Time Card Calculator
+  title: "Time Card Calculator with Lunch Breaks | Weekly Work Hours"
+  subtitle: "Enter your clock-in, clock-out and unpaid break for each shift. See daily and weekly work hours in hours and minutes or decimal hours."
+  description: "Add a week of clock-in and clock-out times, subtract unpaid lunch breaks, and count overnight shifts. Get hours worked in hours and minutes and decimal hours."
+  engine: time-card-calculator
+  content: src/content/tools/time-card-calculator.mdx
+  indexable: true
+  reviewed: true
+  last_reviewed: "2026-11-27"
+  lang: en
+  related: [date-difference-calculator, online-stopwatch, online-calculator]
+  faq:
+    - q: How many hours is 9 to 5 with a 30-minute lunch?
+      a: Eight hours pass between 9 AM and 5 PM. Subtract a 30-minute unpaid lunch for 7 hours and 30 minutes, or 7.50 decimal hours.
+    - q: How do I enter a shift that ends after midnight?
+      a: Enter the shift on the day it starts, enter the clock-out time, and mark that it ends the next day. The row includes the time on both sides of midnight.
+  seo:
+    primary_kw: time card calculator
+    secondary_kws: [work hours calculator with lunch, weekly timesheet calculator, time card calculator hours and minutes]
     intent: calculator

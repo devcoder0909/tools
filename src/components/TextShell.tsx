@@ -86,6 +86,7 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
       : 'ZixTool processes all your documents, images, and calculations entirely inside your browser. No files are uploaded to any external server.'
   );
   const [copied, setCopied] = useState<boolean>(false);
+  const [wordLimit, setWordLimit] = useState('');
   const [jsonError, setJsonError] = useState<string | null>(null);
   const [jsonIndent, setJsonIndent] = useState<number>(2);
 
@@ -335,6 +336,9 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
     }
   };
 
+  const remaining = /^\d+$/.test(wordLimit) && Number.isSafeInteger(Number(wordLimit)) && Number(wordLimit) > 0
+    ? Number(wordLimit) - stats.words : null;
+
   return (
     <div class="text-shell bg-white border border-slate-200/90 rounded-2xl shadow-card p-5 sm:p-7 my-6 transition-all">
       {/* Word & Character Counter */}
@@ -362,7 +366,7 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
 
           <div>
             <div class="flex justify-between items-center mb-2">
-              <label class="text-xs font-semibold text-slate-700 uppercase tracking-wider">Source Content</label>
+              <label for="counter-source" class="text-xs font-semibold text-slate-700 uppercase tracking-wider">Source Content</label>
               <div class="flex items-center gap-2">
                 <button
                   type="button"
@@ -381,6 +385,7 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
               </div>
             </div>
             <textarea
+              id="counter-source"
               rows={8}
               value={text}
               onInput={(e) => setText((e.target as HTMLTextAreaElement).value)}
@@ -388,6 +393,18 @@ export default function TextShell({ toolId, toolName: _toolName }: TextShellProp
               class="w-full p-4 rounded-xl border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-sans text-sm leading-relaxed text-slate-900 transition"
             />
           </div>
+
+          {toolId === 'word-counter' && <div class="flex flex-wrap items-center gap-3">
+            <label for="word-limit" class="text-sm font-semibold">Word limit (optional)</label>
+            <input id="word-limit" type="text" inputMode="numeric" value={wordLimit}
+              class="w-28 rounded-lg border border-slate-300 px-3 py-2"
+              onInput={event => setWordLimit(event.currentTarget.value)} />
+            <output for="counter-source word-limit" class="text-sm">
+              {remaining === null ? (wordLimit ? 'Enter a positive whole number.' : '') :
+                remaining === 0 ? 'Exactly at the limit' :
+                `${Math.abs(remaining)} ${Math.abs(remaining) === 1 ? 'word' : 'words'} ${remaining < 0 ? 'over the limit' : 'remaining'}`}
+            </output>
+          </div>}
 
           <div class="flex flex-wrap items-center justify-between text-xs text-slate-500 gap-4 pt-3 border-t border-slate-100">
             <div class="flex items-center gap-4 flex-wrap">
