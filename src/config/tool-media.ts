@@ -1058,18 +1058,6 @@ export const TOOL_MEDIA_REGISTRY: ToolMediaDef[] = [
     tags: ['gta 6 pc specs calculator', 'gta 6 system requirements', 'can i run gta 6', 'gta 6 hardware benchmark'],
   },
   {
-    slug: 'gta-6-release-countdown',
-    name: 'GTA 6 Release Countdown',
-    title: 'Live GTA 6 Release Countdown Timer & Platform Tracker',
-    description: 'Real-Time Days/Hours/Seconds Counter • Multi-Timezone Sync • Calendar (.ics) Export',
-    durationSecs: 60,
-    thumbnailUrl: '/images/tools/gta-6-release-countdown-thumb.svg',
-    diagramUrl: '/images/tools/gta-6-release-countdown-workflow.svg',
-    diagramTitle: 'GTA 6 Release Roadmap & Platform Timeline Matrix',
-    diagramCaption: 'Tracking Grand Theft Auto VI milestones from reveal trailers to worldwide street launch across platforms.',
-    tags: ['gta 6 countdown', 'gta 6 release countdown', 'days until gta 6', 'gta 6 launch timer'],
-  },
-  {
     slug: 'reading-time-calculator',
     name: 'Reading Time Calculator',
     title: 'How Reading and Speaking Times Compute Online',

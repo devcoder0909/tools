@@ -98,6 +98,8 @@ export function runSeoLint() {
   const descriptions = new Map<string, string>();
   const h1Map = new Map<string, string>();
   const inboundLinkCount = new Map<string, number>();
+  const articleIds = new Map<string, Set<string>>();
+  const articleLinks: { source: string; destination: URL }[] = [];
 
   for (const filePath of htmlFiles) {
     const relativePath = path.relative(DIST_DIR, filePath).replace(/\\/g, '/');
@@ -105,6 +107,13 @@ export function runSeoLint() {
     const html = fs.readFileSync(filePath, 'utf-8');
     const $ = cheerio.load(html);
     const errors: string[] = [];
+    const headingIds = new Set<string>();
+    $('[id^="article-"]').each((_, el) => {
+      const id = $(el).attr('id')!;
+      if (headingIds.has(id)) errors.push(`Duplicate article fragment: #${id}`);
+      headingIds.add(id);
+    });
+    articleIds.set(urlPath, headingIds);
 
     // Robots meta check
     const robotsMeta = $('meta[name="robots"]').attr('content') || '';
@@ -136,6 +145,10 @@ export function runSeoLint() {
     const outboundLinks: string[] = [];
     $('a[href]').each((_, el) => {
       const href = $(el).attr('href') || '';
+      if (href.includes('#article-')) {
+        const destination = new URL(href, siteConfig.url + urlPath);
+        if (destination.origin === siteConfig.url) articleLinks.push({ source: urlPath, destination });
+      }
       if (href.startsWith('/') || href.startsWith(siteConfig.url)) {
         const cleanHref = href.replace(siteConfig.url, '').split('#')[0].split('?')[0];
         if (cleanHref && !cleanHref.startsWith('/embed/') && !cleanHref.startsWith('/_')) {
@@ -254,6 +267,13 @@ export function runSeoLint() {
   }
 
   // 3. Inbound internal links check & Broken Link Detection
+  for (const { source, destination } of articleLinks) {
+    const id = decodeURIComponent(destination.hash.slice(1));
+    if (!articleIds.get(destination.pathname)?.has(id)) {
+      console.error(`[FAIL] ${source} links to a missing article section: ${destination.pathname}#${id}`);
+      hasFailed = true;
+    }
+  }
   const validBuiltPaths = new Set<string>(audits.map((a) => a.urlPath));
   // Add valid redirects from _redirects
   const redirectsPath = path.resolve(process.cwd(), 'public/_redirects');

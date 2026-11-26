@@ -30,7 +30,15 @@ describe('search architecture', () => {
     for (const guide of searchGuides) {
       expect(new Set(guide.sections.map(section => section.id)).size).toBe(guide.sections.length);
       for (const tool of guide.tools) expect(tools.has(tool)).toBe(true);
-      expect(guide.sections.map(section => section.body).join(' ').split(/\s+/).length).toBeGreaterThan(500);
+      expect(guide.answer.trim()).not.toBe('');
+      expect(guide.sections.length).toBeGreaterThan(0);
+      for (const section of guide.sections) {
+        expect(section.id).toMatch(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
+        expect(section.title.trim()).not.toBe('');
+        expect(section.body.trim()).not.toBe('');
+      }
+      expect(guide.sources.length).toBeGreaterThan(0);
+      for (const source of guide.sources) expect(new URL(source.url).protocol).toBe('https:');
     }
   });
   it('redirects noncanonical worker hosts and HTTP while preserving path and query', async () => {

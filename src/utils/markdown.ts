@@ -3,7 +3,9 @@
  * Renders tables, lists, images, headings, blockquotes, code, and links cleanly.
  */
 
-export function renderToolMarkdown(rawMarkdown: string, toolName?: string): string {
+export interface ArticleHeading { id: string; text: string }
+
+export function renderToolMarkdown(rawMarkdown: string, toolName?: string, onQuestion?: (heading: ArticleHeading) => void): string {
   // Strip YAML frontmatter
   let text = rawMarkdown.replace(/^---[\s\S]*?---\s*/, '');
   // Strip duplicate FAQ section if present in markdown (handled canonically by FAQ.astro)
@@ -11,11 +13,26 @@ export function renderToolMarkdown(rawMarkdown: string, toolName?: string): stri
 
   const lines = text.split(/\r?\n/);
   const output: string[] = [];
+  const headingIds = new Set<string>();
   let inUl = false;
   let inOl = false;
   let inTable = false;
   let inSection = false;
   let tableRows: string[][] = [];
+
+  function headingId(heading: string, level: 2 | 3): string {
+    // A tool renders one article. Guide pages render multiple independent excerpts.
+    if (!toolName) return '';
+    const text = heading.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/[*`]/g, '').trim();
+    const slug = text.normalize('NFKC').toLowerCase().replace(/['’]/g, '')
+      .replace(/[^\p{L}\p{N}]+/gu, '-').replace(/^-+|-+$/g, '');
+    const base = `article-${slug || 'section'}`;
+    let id = base;
+    for (let suffix = 2; headingIds.has(id); suffix++) id = `${base}-${suffix}`;
+    headingIds.add(id);
+    if (level === 2 && text.endsWith('?')) onQuestion?.({ id, text });
+    return ` id="${id}"`;
+  }
 
   function closeLists(): string {
     let res = '';
@@ -153,7 +170,8 @@ export function renderToolMarkdown(rawMarkdown: string, toolName?: string): stri
       output.push(closeLists());
       output.push(closeTable());
       output.push(startSection());
-      output.push(`<h3 class="text-lg sm:text-xl font-bold text-slate-900 mt-8 mb-3 tracking-tight">${formatInline(stripped.slice(4))}</h3>`);
+      const heading = stripped.slice(4);
+      output.push(`<h3${headingId(heading, 3)} class="text-lg sm:text-xl font-bold text-slate-900 mt-8 mb-3 tracking-tight scroll-mt-20">${formatInline(heading)}</h3>`);
       continue;
     }
     if (stripped.startsWith('## ') || stripped.startsWith('# ')) {
@@ -161,7 +179,7 @@ export function renderToolMarkdown(rawMarkdown: string, toolName?: string): stri
       output.push(closeTable());
       output.push(startSection());
       const heading = stripped.startsWith('## ') ? stripped.slice(3) : stripped.slice(2);
-      output.push(`<h2 class="text-xl sm:text-2xl font-bold text-slate-900 mt-10 mb-4 tracking-tight">${formatInline(heading)}</h2>`);
+      output.push(`<h2${headingId(heading, 2)} class="text-xl sm:text-2xl font-bold text-slate-900 mt-10 mb-4 tracking-tight scroll-mt-20">${formatInline(heading)}</h2>`);
       continue;
     }
 

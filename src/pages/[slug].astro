@@ -23,7 +23,7 @@ import PromoSlot from '../components/PromoSlot.astro';
 import FAQ from '../components/FAQ.astro';
 import RelatedTools from '../components/RelatedTools.astro';
 import { toolExamples } from '../content/tool-examples';
-import { renderToolMarkdown } from '../utils/markdown';
+import { renderToolMarkdown, type ArticleHeading } from '../utils/markdown';
 import { getAllTools, getRelatedTools, formatDisplayDate, formatIsoDate, type ToolDefinition } from '../registry';
 import { siteConfig } from '../config/site';
 import { getToolMedia } from '../config/tool-media';
@@ -49,12 +49,13 @@ const toolMedia = getToolMedia(tool.slug);
 
 // Check if content file exists
 let contentHtml = '';
+const questions: ArticleHeading[] = [];
 let hasCustomContent = false;
 const contentPath = path.resolve(process.cwd(), tool.content);
 
 if (fs.existsSync(contentPath)) {
   const raw = fs.readFileSync(contentPath, 'utf-8');
-  contentHtml = renderToolMarkdown(raw, tool.name);
+  contentHtml = renderToolMarkdown(raw, tool.name, question => questions.push(question));
   hasCustomContent = true;
 }
 
@@ -292,6 +293,14 @@ if (tool.targetBytes) {
 
       <!-- 6. How-to steps & custom notes -->
       <div id="guide" class="prose prose-slate max-w-none leading-relaxed">
+        {questions.length >= 2 && (
+          <nav class="mb-6" aria-label="Questions in this guide">
+            <p class="font-semibold">Questions in this guide</p>
+            <ul class="mt-2 list-disc space-y-1 pl-5">
+              {questions.slice(0, 4).map(question => <li><a class="text-emerald-800 underline" href={`#${question.id}`}>{question.text}</a></li>)}
+            </ul>
+          </nav>
+        )}
         {hasCustomContent ? (
           <div
             class="space-y-6 text-slate-700 leading-relaxed"

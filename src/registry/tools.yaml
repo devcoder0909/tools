@@ -3792,19 +3792,19 @@
 - id: gta-6-release-countdown
   slug: gta-6-release-countdown
   kind: calculator
-  name: GTA 6 Release Countdown
-  title: "GTA 6 Release Countdown – Live Timer & Platform Tracker"
-  description: "Track the exact days, hours, and minutes until Grand Theft Auto VI releases. Live interactive countdown timer, platform launch dates, and trailer tracker."
+  name: GTA 6 Release Date Tracker
+  title: "GTA 6 Release Date | Days Since Launch on PS5 and Xbox"
+  description: "GTA 6 launched on November 19, 2026 for PS5 and Xbox Series X|S. Check how many days have passed since release and see which platforms Rockstar lists."
   engine: gta-6-release-countdown
   content: src/content/tools/gta-6-release-countdown.mdx
   related: [gta-6-pc-specs-calculator, online-timer, online-stopwatch, date-difference-calculator]
   indexable: true
   reviewed: true
-  last_reviewed: "2026-11-22"
+  last_reviewed: "2026-11-26"
   lang: en
   seo:
-    primary_kw: gta 6 countdown
-    secondary_kws: [gta 6 release countdown, days until gta 6, how many days until gta 6, gta 6 release date tracker]
+    primary_kw: gta 6 release date
+    secondary_kws: [when did GTA 6 come out, days since GTA 6 release, GTA 6 release date PS5, GTA 6 Xbox release date]
     intent: calculator
 
 - id: reading-time-calculator
