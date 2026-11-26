@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Word counter Online – Free In-Browser Tool</title>
+  <meta name="description" content="Count words and characters as you type. Compare totals with and without whitespace, and estimate how long a draft takes to read or speak aloud.">
+  <link rel="canonical" href="https://devcoder0909.github.io/tools/word-counter/">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Word counter Online – Free In-Browser Tool">
+  <meta property="og:description" content="Count words and characters as you type. Compare totals with and without whitespace, and estimate how long a draft takes to read or speak aloud.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://devcoder0909.github.io/tools/word-counter/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Word counter Online – Free In-Browser Tool">
+  <meta name="twitter:description" content="Count words and characters as you type. Compare totals with and without whitespace, and estimate how long a draft takes to read or speak aloud.">
+  <style>
+  :root {
+    --bg-page: #0f172a;
+    --card-bg: #1e293b;
+    --card-border: #334155;
+    --text-primary: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent: #10b981;
+    --accent-hover: #059669;
+    --accent-glow: rgba(16, 185, 129, 0.2);
+    --btn-primary-bg: #10b981;
+    --btn-primary-text: #ffffff;
+    --badge-bg: #064e3b;
+    --badge-text: #a7f3d0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 0;
+  }
+  header {
+    background: rgba(15, 23, 42, 0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--card-border);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding: 1rem 1.5rem;
+  }
+  .header-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #10b981, #3b82f6);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+  }
+  nav { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
+  nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: color 0.15s ease;
+  }
+  nav a:hover, nav a.active { color: var(--accent); }
+  .nav-btn {
+    background: var(--accent);
+    color: white !important;
+    padding: 0.45rem 1rem;
+    border-radius: 8px;
+    font-weight: 700;
+    box-shadow: 0 2px 8px var(--accent-glow);
+  }
+  .nav-btn:hover { background: var(--accent-hover); }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+  }
+  .hero {
+    text-align: center;
+    padding: 2rem 0 3rem;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.85rem;
+    background: var(--badge-bg);
+    color: var(--badge-text);
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+  }
+  h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+  }
+  .lead {
+    font-size: 1.12rem;
+    color: var(--text-muted);
+    max-width: 800px;
+    margin: 0 auto 2rem;
+  }
+  .cta-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  .cta-primary {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    text-decoration: none;
+    padding: 0.85rem 1.8rem;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: 0 4px 14px var(--accent-glow);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .cta-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+  }
+  .cta-secondary {
+    background: var(--card-bg);
+    color: var(--text-primary);
+    text-decoration: none;
+    padding: 0.85rem 1.8rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    border: 1px solid var(--card-border);
+    transition: background 0.15s ease;
+  }
+  .cta-secondary:hover { background: #334155; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: #10b981;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+  .card-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+  .card h2, .card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+  .card p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    margin-bottom: 1.2rem;
+    flex-grow: 1;
+  }
+  .card-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+  .card-action:hover { text-decoration: underline; }
+  .section-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 3rem 0 1.2rem;
+    border-bottom: 1px solid var(--card-border);
+    padding-bottom: 0.6rem;
+  }
+  .content-block {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+  .content-block h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+  }
+  .content-block p {
+    color: #cbd5e1;
+    margin-bottom: 1rem;
+    font-size: 0.98rem;
+  }
+  .content-block ul, .content-block ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #cbd5e1;
+  }
+  .content-block li { margin-bottom: 0.5rem; }
+  .content-block a {
+    color: #34d399;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .content-block a:hover { color: #6ee7b7; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.92rem;
+  }
+  th, td {
+    border: 1px solid var(--card-border);
+    padding: 0.75rem 1rem;
+    text-align: left;
+  }
+  th {
+    background: #0f172a;
+    color: #ffffff;
+    font-weight: 700;
+  }
+  tr:nth-child(even) { background: rgba(15, 23, 42, 0.4); }
+  .faq-item {
+    border-bottom: 1px solid var(--card-border);
+    padding: 1.2rem 0;
+  }
+  .faq-question {
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.4rem;
+    font-size: 1.05rem;
+  }
+  .faq-answer {
+    color: #94a3b8;
+    font-size: 0.95rem;
+  }
+  footer {
+    border-top: 1px solid var(--card-border);
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    background: #0b1120;
+    margin-top: 4rem;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  @media (max-width: 768px) {
+    h1 { font-size: 1.85rem; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Word Counter","operatingSystem":"All Modern Web Browsers","applicationCategory":"UtilitiesApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"url":"https://zixtool.online/word-counter/"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does this tool count words?","acceptedAnswer":{"@type":"Answer","text":"Whitespace separates words. Hyphenated terms count as one item when there are no spaces around the hyphen."}},{"@type":"Question","name":"Does character count include spaces?","acceptedAnswer":{"@type":"Answer","text":"Both metrics are displayed: total characters including spaces, and characters excluding whitespace."}},{"@type":"Question","name":"How is reading time calculated?","acceptedAnswer":{"@type":"Answer","text":"Reading time assumes a standard adult comprehension rate of 200 words per minute (WPM)."}},{"@type":"Question","name":"Is my pasted text stored or sent to a server?","acceptedAnswer":{"@type":"Answer","text":"No. All analysis executes locally in browser JavaScript memory. Your text never leaves your device."}}]}</script>
+</head>
+<body>
+  
+  <header>
+    <div class="header-content">
+      <a href="/tools/" class="logo">
+        <span class="logo-icon">Z</span>
+        <span>ZixTool Open Hub</span>
+      </a>
+      <nav>
+        <a href="/tools/" class="">Overview</a>
+        <a href="/tools/whatsapp-dp-downloader/" class="">WhatsApp DP</a>
+        <a href="/tools/image-converters/" class="">Image Converters</a>
+        <a href="/tools/pdf-utilities/" class="">PDF Tools</a>
+        <a href="/tools/calculators-and-code/" class="">Calculators</a>
+        <a href="https://zixtool.online" target="_blank" rel="noopener" class="nav-btn">Launch ZixTool ↗</a>
+      </nav>
+    </div>
+  </header>
+  
+  <main class="container">
+    
+  <section class="hero">
+    <div class="badge">⚡ 100% In-Browser Privacy Tool</div>
+    <h1>Word Counter Online – Free In-Browser Utility</h1>
+    <p class="lead">
+      Fast, private, and secure client-side word counter. Runs entirely in your browser sandbox with zero server uploads, no registration, and instant results.
+    </p>
+    <div class="cta-group">
+      <a href="https://zixtool.online/word-counter/" target="_blank" rel="noopener" class="cta-primary">Launch Word Counter on ZixTool ↗</a>
+      <a href="https://zixtool.online" target="_blank" rel="noopener" class="cta-secondary">Explore All 96+ Free Tools ↗</a>
+    </div>
+  </section>
+
+  <article class="content-block">
+    <h2>How to Use the Free Word Counter</h2>
+    <p>
+      Using our in-browser <a href="https://zixtool.online/word-counter/" target="_blank" rel="noopener"><strong>Word Counter</strong></a> is simple and takes only seconds:
+    </p>
+    <ol>
+      <li><strong>Open the Official Tool:</strong> Click <a href="https://zixtool.online/word-counter/" target="_blank" rel="noopener"><strong>Launch Word Counter on ZixTool</strong></a> to open the live client-side workspace.</li>
+      <li><strong>Load Your Input:</strong> Drag and drop your file or paste your data directly into the tool interface.</li>
+      <li><strong>Instant Client-Side Processing:</strong> Your device CPU processes the data locally in RAM using high-performance WebAssembly.</li>
+      <li><strong>Download Clean Output:</strong> Save your completed result with zero watermarks and zero server wait times.</li>
+    </ol>
+  </article>
+
+  <article class="content-block">
+    <h2>Key Features & Engineering Advantages</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Capability</th>
+          <th>ZixTool In-Browser Engine</th>
+          <th>Standard Cloud Alternatives</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Data Privacy</strong></td>
+          <td>100% Confidential. Never leaves local device memory.</td>
+          <td>Uploaded to third-party cloud disks.</td>
+        </tr>
+        <tr>
+          <td><strong>Processing Speed</strong></td>
+          <td>Instant local CPU execution. Zero network delay.</td>
+          <td>Slow upload/download queues.</td>
+        </tr>
+        <tr>
+          <td><strong>Usage Quotas</strong></td>
+          <td>Unlimited free conversions.</td>
+          <td>Daily limits and paywalls for larger files.</td>
+        </tr>
+        <tr>
+          <td><strong>Sign-Up Barrier</strong></td>
+          <td>Zero sign-up or email requirements.</td>
+          <td>Forced registration or newsletter popups.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      Try the official <a href="https://zixtool.online/word-counter/" target="_blank" rel="noopener">word counter on ZixTool</a> today or explore our <a href="https://zixtool.online/privacy-explained/" target="_blank" rel="noopener">privacy architecture explanation</a>.
+    </p>
+  </article>
+
+  
+  <h2 class="section-title">Related Free Utilities on ZixTool</h2>
+  <div class="grid">
+    
+      <div class="card">
+        <div class="card-icon">🛠️</div>
+        <h3>Image to Text Converter</h3>
+        <p>Convert an image to editable text with browser OCR. Extract and copy English, Spanish, Portuguese, Hindi or Ar...</p>
+        <a href="https://zixtool.online/image-to-text/" target="_blank" rel="noopener" class="card-action">Open Image to Text Converter ↗</a>
+      </div>
+    
+      <div class="card">
+        <div class="card-icon">🛠️</div>
+        <h3>Character Counter</h3>
+        <p>Free online character counter to measure characters with spaces, letters, words, and SMS segments. Accurate, r...</p>
+        <a href="https://zixtool.online/character-counter/" target="_blank" rel="noopener" class="card-action">Open Character Counter ↗</a>
+      </div>
+    
+      <div class="card">
+        <div class="card-icon">🛠️</div>
+        <h3>Case Converter</h3>
+        <p>Free online case converter to transform text between uppercase, lowercase, Title Case, camelCase, snake_case, ...</p>
+        <a href="https://zixtool.online/case-converter/" target="_blank" rel="noopener" class="card-action">Open Case Converter ↗</a>
+      </div>
+    
+      <div class="card">
+        <div class="card-icon">🛠️</div>
+        <h3>Lorem Ipsum Generator</h3>
+        <p>Free online Lorem Ipsum generator. Create placeholder Latin dummy text, paragraphs, sentences, and words for U...</p>
+        <a href="https://zixtool.online/lorem-ipsum-generator/" target="_blank" rel="noopener" class="card-action">Open Lorem Ipsum Generator ↗</a>
+      </div>
+    
+      <div class="card">
+        <div class="card-icon">🛠️</div>
+        <h3>JSON Formatter & Validator</h3>
+        <p>Format, beautify, minify, and validate JSON data with clear syntax error alerts. Runs 100% locally in your bro...</p>
+        <a href="https://zixtool.online/json-formatter/" target="_blank" rel="noopener" class="card-action">Open JSON Formatter & Validator ↗</a>
+      </div>
+    
+      <div class="card">
+        <div class="card-icon">🛠️</div>
+        <h3>Percentage Calculator</h3>
+        <p>Calculate a percentage of a number, find what percent one number is of another, or compare two values. See wor...</p>
+        <a href="https://zixtool.online/percentage-calculator/" target="_blank" rel="noopener" class="card-action">Open Percentage Calculator ↗</a>
+      </div>
+    
+  </div>
+  
+
+  <section class="content-block">
+    <h2>Frequently Asked Questions</h2>
+    
+      <div class="faq-item">
+        <div class="faq-question">How does this tool count words?</div>
+        <div class="faq-answer">Whitespace separates words. Hyphenated terms count as one item when there are no spaces around the hyphen.</div>
+      </div>
+    
+      <div class="faq-item">
+        <div class="faq-question">Does character count include spaces?</div>
+        <div class="faq-answer">Both metrics are displayed: total characters including spaces, and characters excluding whitespace.</div>
+      </div>
+    
+      <div class="faq-item">
+        <div class="faq-question">How is reading time calculated?</div>
+        <div class="faq-answer">Reading time assumes a standard adult comprehension rate of 200 words per minute (WPM).</div>
+      </div>
+    
+      <div class="faq-item">
+        <div class="faq-question">Is my pasted text stored or sent to a server?</div>
+        <div class="faq-answer">No. All analysis executes locally in browser JavaScript memory. Your text never leaves your device.</div>
+      </div>
+    
+  </section>
+  
+  </main>
+  
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://zixtool.online" target="_blank" rel="noopener">Official ZixTool App</a>
+        <a href="https://zixtool.online/whatsapp-dp-status-downloader/" target="_blank" rel="noopener">WhatsApp DP Downloader</a>
+        <a href="https://zixtool.online/heic-to-jpg/" target="_blank" rel="noopener">HEIC to JPG</a>
+        <a href="https://zixtool.online/image-compressor/" target="_blank" rel="noopener">Image Compressor</a>
+        <a href="https://zixtool.online/pdf-to-word/" target="_blank" rel="noopener">PDF to Word</a>
+        <a href="https://zixtool.online/calculators/" target="_blank" rel="noopener">Online Calculators</a>
+        <a href="https://github.com/devcoder0909/tools" target="_blank" rel="noopener">GitHub Repository</a>
+      </div>
+      <p>© 2026 ZixTool Open Source Hub. Hosted on GitHub Pages. Fast, Private & 100% In-Browser Processing.</p>
+    </div>
+  </footer>
+  
+</body>
+</html>
