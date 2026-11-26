@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF Utilities & Converters – PDF to Word, Text & OCR Online</title>
+  <meta name="description" content="Free in-browser PDF utilities. Convert PDF to editable Word DOCX, extract plain text, split pages, and scan OCR text with complete privacy and zero uploads.">
+  <link rel="canonical" href="https://devcoder0909.github.io/tools/pdf-utilities/">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="PDF Utilities & Converters – PDF to Word, Text & OCR Online">
+  <meta property="og:description" content="Free in-browser PDF utilities. Convert PDF to editable Word DOCX, extract plain text, split pages, and scan OCR text with complete privacy and zero uploads.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://devcoder0909.github.io/tools/pdf-utilities/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PDF Utilities & Converters – PDF to Word, Text & OCR Online">
+  <meta name="twitter:description" content="Free in-browser PDF utilities. Convert PDF to editable Word DOCX, extract plain text, split pages, and scan OCR text with complete privacy and zero uploads.">
+  <style>
+  :root {
+    --bg-page: #0f172a;
+    --card-bg: #1e293b;
+    --card-border: #334155;
+    --text-primary: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent: #10b981;
+    --accent-hover: #059669;
+    --accent-glow: rgba(16, 185, 129, 0.2);
+    --btn-primary-bg: #10b981;
+    --btn-primary-text: #ffffff;
+    --badge-bg: #064e3b;
+    --badge-text: #a7f3d0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 0;
+  }
+  header {
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--card-border);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding: 1rem 1.5rem;
+  }
+  .header-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #10b981, #3b82f6);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+  }
+  nav { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
+  nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: color 0.15s ease;
+  }
+  nav a:hover, nav a.active { color: var(--accent); }
+  .nav-btn {
+    background: var(--accent);
+    color: white !important;
+    padding: 0.45rem 1rem;
+    border-radius: 8px;
+    font-weight: 700;
+    box-shadow: 0 2px 8px var(--accent-glow);
+  }
+  .nav-btn:hover { background: var(--accent-hover); }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+  }
+  .hero {
+    text-align: center;
+    padding: 2rem 0 3.5rem;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.85rem;
+    background: var(--badge-bg);
+    color: var(--badge-text);
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+  }
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+  }
+  .lead {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    max-width: 800px;
+    margin: 0 auto 2rem;
+  }
+  .cta-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  .cta-primary {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    text-decoration: none;
+    padding: 0.85rem 1.8rem;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: 0 4px 14px var(--accent-glow);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .cta-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+  }
+  .cta-secondary {
+    background: var(--card-bg);
+    color: var(--text-primary);
+    text-decoration: none;
+    padding: 0.85rem 1.8rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    border: 1px solid var(--card-border);
+    transition: background 0.15s ease;
+  }
+  .cta-secondary:hover { background: #334155; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: #10b981;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+  .card-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+  .card h2, .card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+  .card p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    margin-bottom: 1.2rem;
+    flex-grow: 1;
+  }
+  .card-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+  .card-action:hover { text-decoration: underline; }
+  .section-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 3rem 0 1.2rem;
+    border-bottom: 1px solid var(--card-border);
+    padding-bottom: 0.6rem;
+  }
+  .content-block {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+  .content-block h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+  }
+  .content-block p {
+    color: #cbd5e1;
+    margin-bottom: 1rem;
+    font-size: 0.98rem;
+  }
+  .content-block ul, .content-block ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #cbd5e1;
+  }
+  .content-block li { margin-bottom: 0.5rem; }
+  .content-block a {
+    color: #34d399;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .content-block a:hover { color: #6ee7b7; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.92rem;
+  }
+  th, td {
+    border: 1px solid var(--card-border);
+    padding: 0.75rem 1rem;
+    text-align: left;
+  }
+  th {
+    background: #0f172a;
+    color: #ffffff;
+    font-weight: 700;
+  }
+  tr:nth-child(even) { background: rgba(15, 23, 42, 0.4); }
+  .faq-item {
+    border-bottom: 1px solid var(--card-border);
+    padding: 1.2rem 0;
+  }
+  .faq-question {
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.4rem;
+    font-size: 1.05rem;
+  }
+  .faq-answer {
+    color: #94a3b8;
+    font-size: 0.95rem;
+  }
+  footer {
+    border-top: 1px solid var(--card-border);
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    background: #0b1120;
+    margin-top: 4rem;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  @media (max-width: 768px) {
+    h1 { font-size: 1.85rem; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Private PDF Utilities","url":"https://devcoder0909.github.io/tools/pdf-utilities/"}</script>
+</head>
+<body>
+  
+  <header>
+    <div class="header-content">
+      <a href="/tools/" class="logo">
+        <span class="logo-icon">Z</span>
+        <span>ZixTool Open Hub</span>
+      </a>
+      <nav>
+        <a href="/tools/" class="">Overview</a>
+        <a href="/tools/whatsapp-dp-downloader/" class="">WhatsApp DP</a>
+        <a href="/tools/image-converters/" class="">Image Converters</a>
+        <a href="/tools/pdf-utilities/" class="active">PDF Tools</a>
+        <a href="/tools/calculators-and-code/" class="">Calculators</a>
+        <a href="https://zixtool.online" target="_blank" rel="noopener" class="nav-btn">Launch ZixTool ↗</a>
+      </nav>
+    </div>
+  </header>
+  
+  <main class="container">
+    
+  <section class="hero">
+    <div class="badge">📄 Secure In-Browser PDF Suite</div>
+    <h1>PDF Utilities: PDF to Word, Text Extraction & OCR Online</h1>
+    <p class="lead">
+      Convert selectable PDF documents into editable Word DOCX files, extract clean plain text, and scan screenshots with OCR. 100% confidential processing with zero server uploads.
+    </p>
+    <div class="cta-group">
+      <a href="https://zixtool.online/pdf-to-word/" target="_blank" rel="noopener" class="cta-primary">Convert PDF to Word DOCX ↗</a>
+      <a href="https://zixtool.online/pdf-to-text/" target="_blank" rel="noopener" class="cta-secondary">Extract PDF to Plain Text ↗</a>
+    </div>
+  </section>
+
+  <h2 class="section-title">Secure PDF Utilities on ZixTool</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="card-icon">📝</div>
+      <h2>PDF to Word Converter</h2>
+      <p>Transform selectable PDF agreements, resumes, and reports into editable Microsoft Word DOCX files. Preserves paragraph structure and page breaks.</p>
+      <a href="https://zixtool.online/pdf-to-word/" target="_blank" rel="noopener" class="card-action">Convert PDF to DOCX Free ↗</a>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">📄</div>
+      <h2>PDF to Text Extractor</h2>
+      <p>Extract all selectable text streams from multi-page PDFs into plain UTF-8 text for easy copying, editing, and code processing.</p>
+      <a href="https://zixtool.online/pdf-to-text/" target="_blank" rel="noopener" class="card-action">Extract Selectable Text ↗</a>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🔍</div>
+      <h2>Image to Text (OCR)</h2>
+      <p>Extract text from scanned PDFs, photos, and screenshots using neural client-side Tesseract Optical Character Recognition in multiple languages.</p>
+      <a href="https://zixtool.online/image-to-text/" target="_blank" rel="noopener" class="card-action">Run In-Browser OCR ↗</a>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">✂️</div>
+      <h2>Split PDF Pages</h2>
+      <p>Extract individual pages or custom page ranges from large PDF documents and download clean independent files instantly.</p>
+      <a href="https://zixtool.online/split-pdf/" target="_blank" rel="noopener" class="card-action">Split PDF Pages ↗</a>
+    </div>
+  </div>
+
+  <article class="content-block">
+    <h2>Why Client-Side PDF Conversion Protects Corporate & Legal Documents</h2>
+    <p>
+      Legal agreements, bank statements, tax forms, and medical records contain sensitive personally identifiable information (PII). Uploading them to random online PDF converters poses serious compliance and GDPR risks.
+    </p>
+    <p>
+      On <a href="https://zixtool.online/pdf-to-word/" target="_blank" rel="noopener"><strong>ZixTool PDF to Word</strong></a> and <a href="https://zixtool.online/pdf-to-text/" target="_blank" rel="noopener"><strong>ZixTool PDF to Text</strong></a>, all parsing is performed inside the client memory via WebAssembly. Neither our servers nor any third party ever see your documents.
+    </p>
+  </article>
+
+  </main>
+  
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://zixtool.online" target="_blank" rel="noopener">Official ZixTool App</a>
+        <a href="https://zixtool.online/whatsapp-dp-status-downloader/" target="_blank" rel="noopener">WhatsApp DP Downloader</a>
+        <a href="https://zixtool.online/heic-to-jpg/" target="_blank" rel="noopener">HEIC to JPG</a>
+        <a href="https://zixtool.online/image-compressor/" target="_blank" rel="noopener">Image Compressor</a>
+        <a href="https://zixtool.online/pdf-to-word/" target="_blank" rel="noopener">PDF to Word</a>
+        <a href="https://zixtool.online/calculators/" target="_blank" rel="noopener">Online Calculators</a>
+        <a href="https://github.com/devcoder0909/tools" target="_blank" rel="noopener">GitHub Repository</a>
+      </div>
+      <p>© 2026 ZixTool Open Source Hub. Powered by GitHub Pages. Fast, Private & 100% In-Browser Processing.</p>
+    </div>
+  </footer>
+  
+</body>
+</html>

@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZixTool Web Utilities – Free In-Browser Privacy Tools</title>
+  <meta name="description" content="Comprehensive directory of free open-source in-browser tools. Convert images, edit PDFs, format code, and download WhatsApp DP with 100% client-side privacy.">
+  <link rel="canonical" href="https://devcoder0909.github.io/tools/">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="ZixTool Web Utilities – Free In-Browser Privacy Tools">
+  <meta property="og:description" content="Comprehensive directory of free open-source in-browser tools. Convert images, edit PDFs, format code, and download WhatsApp DP with 100% client-side privacy.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://devcoder0909.github.io/tools/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ZixTool Web Utilities – Free In-Browser Privacy Tools">
+  <meta name="twitter:description" content="Comprehensive directory of free open-source in-browser tools. Convert images, edit PDFs, format code, and download WhatsApp DP with 100% client-side privacy.">
+  <style>
+  :root {
+    --bg-page: #0f172a;
+    --card-bg: #1e293b;
+    --card-border: #334155;
+    --text-primary: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent: #10b981;
+    --accent-hover: #059669;
+    --accent-glow: rgba(16, 185, 129, 0.2);
+    --btn-primary-bg: #10b981;
+    --btn-primary-text: #ffffff;
+    --badge-bg: #064e3b;
+    --badge-text: #a7f3d0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 0;
+  }
+  header {
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--card-border);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding: 1rem 1.5rem;
+  }
+  .header-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #10b981, #3b82f6);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+  }
+  nav { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
+  nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: color 0.15s ease;
+  }
+  nav a:hover, nav a.active { color: var(--accent); }
+  .nav-btn {
+    background: var(--accent);
+    color: white !important;
+    padding: 0.45rem 1rem;
+    border-radius: 8px;
+    font-weight: 700;
+    box-shadow: 0 2px 8px var(--accent-glow);
+  }
+  .nav-btn:hover { background: var(--accent-hover); }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+  }
+  .hero {
+    text-align: center;
+    padding: 2rem 0 3.5rem;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.85rem;
+    background: var(--badge-bg);
+    color: var(--badge-text);
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+  }
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+  }
+  .lead {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    max-width: 800px;
+    margin: 0 auto 2rem;
+  }
+  .cta-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  .cta-primary {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    text-decoration: none;
+    padding: 0.85rem 1.8rem;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: 0 4px 14px var(--accent-glow);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .cta-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+  }
+  .cta-secondary {
+    background: var(--card-bg);
+    color: var(--text-primary);
+    text-decoration: none;
+    padding: 0.85rem 1.8rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    border: 1px solid var(--card-border);
+    transition: background 0.15s ease;
+  }
+  .cta-secondary:hover { background: #334155; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: #10b981;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+  .card-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+  .card h2, .card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+  .card p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    margin-bottom: 1.2rem;
+    flex-grow: 1;
+  }
+  .card-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+  .card-action:hover { text-decoration: underline; }
+  .section-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 3rem 0 1.2rem;
+    border-bottom: 1px solid var(--card-border);
+    padding-bottom: 0.6rem;
+  }
+  .content-block {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+  .content-block h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+  }
+  .content-block p {
+    color: #cbd5e1;
+    margin-bottom: 1rem;
+    font-size: 0.98rem;
+  }
+  .content-block ul, .content-block ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #cbd5e1;
+  }
+  .content-block li { margin-bottom: 0.5rem; }
+  .content-block a {
+    color: #34d399;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .content-block a:hover { color: #6ee7b7; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.92rem;
+  }
+  th, td {
+    border: 1px solid var(--card-border);
+    padding: 0.75rem 1rem;
+    text-align: left;
+  }
+  th {
+    background: #0f172a;
+    color: #ffffff;
+    font-weight: 700;
+  }
+  tr:nth-child(even) { background: rgba(15, 23, 42, 0.4); }
+  .faq-item {
+    border-bottom: 1px solid var(--card-border);
+    padding: 1.2rem 0;
+  }
+  .faq-question {
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.4rem;
+    font-size: 1.05rem;
+  }
+  .faq-answer {
+    color: #94a3b8;
+    font-size: 0.95rem;
+  }
+  footer {
+    border-top: 1px solid var(--card-border);
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    background: #0b1120;
+    margin-top: 4rem;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  @media (max-width: 768px) {
+    h1 { font-size: 1.85rem; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"ZixTool Open Hub on GitHub Pages","url":"https://devcoder0909.github.io/tools/","description":"Comprehensive directory of free open-source in-browser tools and converters."}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How does ZixTool convert files without uploading them?","acceptedAnswer":{"@type":"Answer","text":"ZixTool executes client-side WebAssembly and HTML5 Canvas scripts inside your browser sandbox, keeping your files 100% private."}},{"@type":"Question","name":"Are these tools completely free to use?","acceptedAnswer":{"@type":"Answer","text":"Yes, 100% free with no subscriptions, limits, or watermarks."}}]}</script>
+</head>
+<body>
+  
+  <header>
+    <div class="header-content">
+      <a href="/tools/" class="logo">
+        <span class="logo-icon">Z</span>
+        <span>ZixTool Open Hub</span>
+      </a>
+      <nav>
+        <a href="/tools/" class="active">Overview</a>
+        <a href="/tools/whatsapp-dp-downloader/" class="">WhatsApp DP</a>
+        <a href="/tools/image-converters/" class="">Image Converters</a>
+        <a href="/tools/pdf-utilities/" class="">PDF Tools</a>
+        <a href="/tools/calculators-and-code/" class="">Calculators</a>
+        <a href="https://zixtool.online" target="_blank" rel="noopener" class="nav-btn">Launch ZixTool ↗</a>
+      </nav>
+    </div>
+  </header>
+  
+  <main class="container">
+    
+  <section class="hero">
+    <div class="badge">🚀 Official GitHub Pages Knowledge & Resource Hub</div>
+    <h1>Free Online Tools & In-Browser Converters</h1>
+    <p class="lead">
+      Discover high-speed, 100% private file utilities engineered with WebAssembly and client-side JavaScript. Zero server uploads, zero file limits, and instant results directly on your device.
+    </p>
+    <div class="cta-group">
+      <a href="https://zixtool.online" target="_blank" rel="noopener" class="cta-primary">Launch ZixTool Web App (All 96+ Tools) ↗</a>
+      <a href="https://zixtool.online/whatsapp-dp-status-downloader/" target="_blank" rel="noopener" class="cta-secondary">WhatsApp DP Downloader (HD) ↗</a>
+    </div>
+  </section>
+
+  <h2 class="section-title">🔥 Featured High-Traffic Online Tools</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="card-icon">📱</div>
+      <h2>WhatsApp DP Downloader</h2>
+      <p>View and download any WhatsApp profile picture in full HD resolution (1080×1080) from a phone number without saving contacts to your address book.</p>
+      <a href="https://zixtool.online/whatsapp-dp-status-downloader/" target="_blank" rel="noopener" class="card-action">Download WhatsApp DP in Full HD ↗</a>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🖼️</div>
+      <h2>HEIC to JPG Converter</h2>
+      <p>Batch convert Apple iPhone HEIC/HEIF photos to standard JPG format in your browser. Preserves EXIF metadata, colors, and original clarity.</p>
+      <a href="https://zixtool.online/heic-to-jpg/" target="_blank" rel="noopener" class="card-action">Convert HEIC to JPG Free ↗</a>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🗜️</div>
+      <h2>Target Image Compressor</h2>
+      <p>Compress photos to strict KB thresholds (20KB, 50KB, 100KB, 200KB, 500KB, 1MB) for government job forms, passport portals, and college admissions.</p>
+      <a href="https://zixtool.online/image-compressor/" target="_blank" rel="noopener" class="card-action">Compress Image to Target Size ↗</a>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">📄</div>
+      <h2>PDF to Word Converter</h2>
+      <p>Extract selectable text from PDF documents and export to editable Microsoft Word DOCX files with paragraph breaks and zero server latency.</p>
+      <a href="https://zixtool.online/pdf-to-word/" target="_blank" rel="noopener" class="card-action">Convert PDF to Word DOCX ↗</a>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🔤</div>
+      <h2>PDF to Plain Text</h2>
+      <p>Rapidly extract plain TXT content from multi-page PDF documents for clean copy-pasting, coding, text analysis, and data extraction.</p>
+      <a href="https://zixtool.online/pdf-to-text/" target="_blank" rel="noopener" class="card-action">Extract Text from PDF ↗</a>
+    </div>
+
+    <div class="card">
+      <div class="card-icon">🧮</div>
+      <h2>Free Online Calculators</h2>
+      <p>Accurate in-browser calculators for discounts, restaurant tips, percentage changes, loan amortization, and GTA 6 PC hardware benchmarking.</p>
+      <a href="https://zixtool.online/calculators/" target="_blank" rel="noopener" class="card-action">Explore Online Calculators ↗</a>
+    </div>
+  </div>
+
+  <article class="content-block">
+    <h2>Why Choose Client-Side In-Browser Utilities Over Traditional Cloud Converters?</h2>
+    <p>
+      Most conventional online conversion sites force users to upload their sensitive personal documents, family photos, or contracts to remote cloud servers. Once uploaded, files may linger in temporary cache directories, exposing users to data leaks, surveillance, and bandwidth delays.
+    </p>
+    <p>
+      <a href="https://zixtool.online" target="_blank" rel="noopener"><strong>ZixTool</strong></a> solves this fundamentally through <strong>client-side sandboxing</strong>:
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Engineering Parameter</th>
+          <th>ZixTool In-Browser Processing</th>
+          <th>Traditional Cloud Converters</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Data Privacy & Security</strong></td>
+          <td>100% Confidential. Files never leave your browser memory.</td>
+          <td>Uploaded to remote third-party servers.</td>
+        </tr>
+        <tr>
+          <td><strong>Upload / Download Speeds</strong></td>
+          <td>Instant local RAM processing. No network bottleneck.</td>
+          <td>Limited by home internet upstream bandwidth.</td>
+        </tr>
+        <tr>
+          <td><strong>File Size & Count Restrictions</strong></td>
+          <td>Unlimited batch processing powered by your device CPU.</td>
+          <td>Restricted quotas; paywalls for files &gt; 15MB.</td>
+        </tr>
+        <tr>
+          <td><strong>Account Sign-Up</strong></td>
+          <td>Zero registration, zero email harvesting, no cookies.</td>
+          <td>Frequently requires forced registration.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>
+      Whether you need to <a href="https://zixtool.online/whatsapp-dp-status-downloader/" target="_blank" rel="noopener">view and save a WhatsApp DP</a>, <a href="https://zixtool.online/heic-to-jpg/" target="_blank" rel="noopener">convert Apple HEIC photos</a>, or <a href="https://zixtool.online/discount-calculator/" target="_blank" rel="noopener">calculate retail sale discounts</a>, ZixTool provides professional-grade speed without compromising security.
+    </p>
+  </article>
+
+  <section class="content-block">
+    <h2>Frequently Asked Questions (FAQ)</h2>
+    <div class="faq-item">
+      <div class="faq-question">How does ZixTool convert files without uploading them?</div>
+      <div class="faq-answer">ZixTool leverages modern WebAssembly (Wasm), HTML5 Canvas, and Web Workers API. Your browser executes the conversion algorithm natively using your computer or smartphone's processor.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Can I use ZixTool on iPhone and Android mobile devices?</div>
+      <div class="faq-answer">Yes. ZixTool is fully responsive and optimized for mobile Safari, Chrome, and Firefox across iOS and Android without downloading any APK or app.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Are these tools completely free to use?</div>
+      <div class="faq-answer">Yes, 100% free with no hidden subscriptions, trial limits, or file watermarks.</div>
+    </div>
+  </section>
+
+  </main>
+  
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://zixtool.online" target="_blank" rel="noopener">Official ZixTool App</a>
+        <a href="https://zixtool.online/whatsapp-dp-status-downloader/" target="_blank" rel="noopener">WhatsApp DP Downloader</a>
+        <a href="https://zixtool.online/heic-to-jpg/" target="_blank" rel="noopener">HEIC to JPG</a>
+        <a href="https://zixtool.online/image-compressor/" target="_blank" rel="noopener">Image Compressor</a>
+        <a href="https://zixtool.online/pdf-to-word/" target="_blank" rel="noopener">PDF to Word</a>
+        <a href="https://zixtool.online/calculators/" target="_blank" rel="noopener">Online Calculators</a>
+        <a href="https://github.com/devcoder0909/tools" target="_blank" rel="noopener">GitHub Repository</a>
+      </div>
+      <p>© 2026 ZixTool Open Source Hub. Powered by GitHub Pages. Fast, Private & 100% In-Browser Processing.</p>
+    </div>
+  </footer>
+  
+</body>
+</html>

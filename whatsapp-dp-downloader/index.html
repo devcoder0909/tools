@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhatsApp DP Downloader Online – View & Save in Full HD</title>
+  <meta name="description" content="Download any public WhatsApp DP in full HD size from a phone number or file without saving contacts. Free online profile picture viewer with 100% privacy.">
+  <link rel="canonical" href="https://devcoder0909.github.io/tools/whatsapp-dp-downloader/">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="WhatsApp DP Downloader Online – View & Save in Full HD">
+  <meta property="og:description" content="Download any public WhatsApp DP in full HD size from a phone number or file without saving contacts. Free online profile picture viewer with 100% privacy.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://devcoder0909.github.io/tools/whatsapp-dp-downloader/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WhatsApp DP Downloader Online – View & Save in Full HD">
+  <meta name="twitter:description" content="Download any public WhatsApp DP in full HD size from a phone number or file without saving contacts. Free online profile picture viewer with 100% privacy.">
+  <style>
+  :root {
+    --bg-page: #0f172a;
+    --card-bg: #1e293b;
+    --card-border: #334155;
+    --text-primary: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent: #10b981;
+    --accent-hover: #059669;
+    --accent-glow: rgba(16, 185, 129, 0.2);
+    --btn-primary-bg: #10b981;
+    --btn-primary-text: #ffffff;
+    --badge-bg: #064e3b;
+    --badge-text: #a7f3d0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 0;
+  }
+  header {
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--card-border);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding: 1rem 1.5rem;
+  }
+  .header-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #10b981, #3b82f6);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+  }
+  nav { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
+  nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: color 0.15s ease;
+  }
+  nav a:hover, nav a.active { color: var(--accent); }
+  .nav-btn {
+    background: var(--accent);
+    color: white !important;
+    padding: 0.45rem 1rem;
+    border-radius: 8px;
+    font-weight: 700;
+    box-shadow: 0 2px 8px var(--accent-glow);
+  }
+  .nav-btn:hover { background: var(--accent-hover); }
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+  }
+  .hero {
+    text-align: center;
+    padding: 2rem 0 3.5rem;
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.85rem;
+    background: var(--badge-bg);
+    color: var(--badge-text);
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+  }
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+  }
+  .lead {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    max-width: 800px;
+    margin: 0 auto 2rem;
+  }
+  .cta-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  .cta-primary {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    text-decoration: none;
+    padding: 0.85rem 1.8rem;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: 0 4px 14px var(--accent-glow);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .cta-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+  }
+  .cta-secondary {
+    background: var(--card-bg);
+    color: var(--text-primary);
+    text-decoration: none;
+    padding: 0.85rem 1.8rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    border: 1px solid var(--card-border);
+    transition: background 0.15s ease;
+  }
+  .cta-secondary:hover { background: #334155; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: #10b981;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+  .card-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+  .card h2, .card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+  .card p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    margin-bottom: 1.2rem;
+    flex-grow: 1;
+  }
+  .card-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+  .card-action:hover { text-decoration: underline; }
+  .section-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 3rem 0 1.2rem;
+    border-bottom: 1px solid var(--card-border);
+    padding-bottom: 0.6rem;
+  }
+  .content-block {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+  .content-block h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+  }
+  .content-block p {
+    color: #cbd5e1;
+    margin-bottom: 1rem;
+    font-size: 0.98rem;
+  }
+  .content-block ul, .content-block ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #cbd5e1;
+  }
+  .content-block li { margin-bottom: 0.5rem; }
+  .content-block a {
+    color: #34d399;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .content-block a:hover { color: #6ee7b7; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.92rem;
+  }
+  th, td {
+    border: 1px solid var(--card-border);
+    padding: 0.75rem 1rem;
+    text-align: left;
+  }
+  th {
+    background: #0f172a;
+    color: #ffffff;
+    font-weight: 700;
+  }
+  tr:nth-child(even) { background: rgba(15, 23, 42, 0.4); }
+  .faq-item {
+    border-bottom: 1px solid var(--card-border);
+    padding: 1.2rem 0;
+  }
+  .faq-question {
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.4rem;
+    font-size: 1.05rem;
+  }
+  .faq-answer {
+    color: #94a3b8;
+    font-size: 0.95rem;
+  }
+  footer {
+    border-top: 1px solid var(--card-border);
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    background: #0b1120;
+    margin-top: 4rem;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  @media (max-width: 768px) {
+    h1 { font-size: 1.85rem; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"WhatsApp DP Downloader Online","operatingSystem":"All Web Browsers (Windows, Mac, iOS, Android)","applicationCategory":"MultimediaApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can I download a WhatsApp DP by phone number?","acceptedAnswer":{"@type":"Answer","text":"Yes. Use ZixTool WhatsApp DP Downloader to enter any phone number with country code and view the original full-size photo."}}]}</script>
+</head>
+<body>
+  
+  <header>
+    <div class="header-content">
+      <a href="/tools/" class="logo">
+        <span class="logo-icon">Z</span>
+        <span>ZixTool Open Hub</span>
+      </a>
+      <nav>
+        <a href="/tools/" class="">Overview</a>
+        <a href="/tools/whatsapp-dp-downloader/" class="active">WhatsApp DP</a>
+        <a href="/tools/image-converters/" class="">Image Converters</a>
+        <a href="/tools/pdf-utilities/" class="">PDF Tools</a>
+        <a href="/tools/calculators-and-code/" class="">Calculators</a>
+        <a href="https://zixtool.online" target="_blank" rel="noopener" class="nav-btn">Launch ZixTool ↗</a>
+      </nav>
+    </div>
+  </header>
+  
+  <main class="container">
+    
+  <section class="hero">
+    <div class="badge">📱 WhatsApp Profile Picture Downloader Guide & Portal</div>
+    <h1>WhatsApp DP Downloader Online: View & Save in Full HD</h1>
+    <p class="lead">
+      Step-by-step documentation and instant direct access to view and download any public WhatsApp profile picture in full 1080×1080 HD resolution by phone number without saving contacts.
+    </p>
+    <div class="cta-group">
+      <a href="https://zixtool.online/whatsapp-dp-status-downloader/" target="_blank" rel="noopener" class="cta-primary">Open Live WhatsApp DP Downloader Tool ↗</a>
+      <a href="https://zixtool.online/crop-image/" target="_blank" rel="noopener" class="cta-secondary">Crop Downloaded Profile Photo ↗</a>
+    </div>
+  </section>
+
+  <article class="content-block">
+    <h2>How to Download Full Resolution WhatsApp Profile Pictures by Phone Number</h2>
+    <p>
+      The official WhatsApp application intentionally restricts users from directly saving another contact's display photo through a native "Save Image" button. However, WhatsApp's content delivery network (CDN) still transmits the original uncompressed avatar image (commonly <strong>1080 × 1080 pixels</strong>) to the client whenever a profile is inspected.
+    </p>
+    <p>
+      With the <a href="https://zixtool.online/whatsapp-dp-status-downloader/" target="_blank" rel="noopener"><strong>ZixTool WhatsApp DP Downloader</strong></a>, you can bypass contact address book clutter and inspect any public DP safely:
+    </p>
+    <ol>
+      <li><strong>Enter Country Code & Mobile Number:</strong> Select the country dial code (e.g., <code>+1</code> for US/Canada, <code>+91</code> for India, <code>+44</code> for UK) and enter the phone number on <a href="https://zixtool.online/whatsapp-dp-status-downloader/" target="_blank" rel="noopener">ZixTool WhatsApp DP Downloader</a>.</li>
+      <li><strong>Trigger Direct WhatsApp Connect:</strong> Click <strong>View Profile Picture</strong> to open the chat window directly in WhatsApp Web or the WhatsApp mobile app without saving the number to your address book.</li>
+      <li><strong>Open Full-Size Avatar:</strong> In WhatsApp, tap the contact header at the top of the chat, then click on their circular profile picture to expand it to the full-screen HD view.</li>
+      <li><strong>Copy or Capture Media:</strong>
+        <ul>
+          <li><strong>Desktop (Chrome, Edge, Safari):</strong> Right-click on the full-screen photo and select <strong>Copy Image</strong>.</li>
+          <li><strong>Mobile (iOS or Android):</strong> Take a quick screenshot of the displayed avatar.</li>
+        </ul>
+      </li>
+      <li><strong>Instant HD Inspection & Download:</strong> Return to the <a href="https://zixtool.online/whatsapp-dp-status-downloader/" target="_blank" rel="noopener">ZixTool downloader tab</a> and click <strong>Paste copied image</strong> or press <kbd>Ctrl + V</kbd>. The tool reads the raw image bytes, validates dimensions (e.g., 1080×1080), and lets you download a clean JPEG/PNG file with one click.</li>
+    </ol>
+  </article>
+
+  <article class="content-block">
+    <h2>Why Avoid Unofficial Modded WhatsApp APKs (GBWhatsApp, FMWhatsApp)?</h2>
+    <p>
+      Many search results suggest downloading modified WhatsApp APKs (such as GBWhatsApp or WhatsApp Plus) to download profile pictures. Security researchers strongly advise against this:
+    </p>
+    <ul>
+      <li><strong>Account Bans:</strong> WhatsApp automated security systems actively detect modified clients, resulting in permanent phone number bans.</li>
+      <li><strong>Malware & Credential Theft:</strong> Modded APKs frequently inject spyware, adware, and unauthorized background remote access tools (RATs).</li>
+      <li><strong>Zero Privacy Risk with ZixTool:</strong> By using the official <a href="https://zixtool.online/whatsapp-dp-status-downloader/" target="_blank" rel="noopener">ZixTool WhatsApp DP Downloader</a>, all operations run cleanly inside your sandbox browser with zero downloads, zero APKs, and zero credential inputs.</li>
+    </ul>
+    <p>
+      After downloading your profile picture, you can optimize it for social avatars using our free <a href="https://zixtool.online/crop-image/" target="_blank" rel="noopener">online image cropper</a> or reduce the byte size with our <a href="https://zixtool.online/image-compressor/" target="_blank" rel="noopener">photo compressor</a>.
+    </p>
+  </article>
+
+  <section class="content-block">
+    <h2>WhatsApp DP Downloader FAQ</h2>
+    <div class="faq-item">
+      <div class="faq-question">Can I download a WhatsApp DP if the user's privacy is set to "Nobody" or "My Contacts"?</div>
+      <div class="faq-answer">No. WhatsApp enforces strict privacy settings on their servers. If a user sets their profile picture visibility to "Nobody" or "Contacts Only" (and you are not in their contacts), WhatsApp CDN will not serve the photo. The tool will display an unavailable privacy notification.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Will the other person know that I viewed or downloaded their WhatsApp DP?</div>
+      <div class="faq-answer">No. Viewing a public profile photo in WhatsApp does not trigger read receipts or notify the user.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Does the tool support downloading WhatsApp status videos and stories?</div>
+      <div class="faq-answer">Yes! You can also save MP4 status videos and full-resolution status images using the <a href="https://zixtool.online/whatsapp-dp-status-downloader/" target="_blank" rel="noopener">ZixTool Status Downloader</a>.</div>
+    </div>
+  </section>
+
+  </main>
+  
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://zixtool.online" target="_blank" rel="noopener">Official ZixTool App</a>
+        <a href="https://zixtool.online/whatsapp-dp-status-downloader/" target="_blank" rel="noopener">WhatsApp DP Downloader</a>
+        <a href="https://zixtool.online/heic-to-jpg/" target="_blank" rel="noopener">HEIC to JPG</a>
+        <a href="https://zixtool.online/image-compressor/" target="_blank" rel="noopener">Image Compressor</a>
+        <a href="https://zixtool.online/pdf-to-word/" target="_blank" rel="noopener">PDF to Word</a>
+        <a href="https://zixtool.online/calculators/" target="_blank" rel="noopener">Online Calculators</a>
+        <a href="https://github.com/devcoder0909/tools" target="_blank" rel="noopener">GitHub Repository</a>
+      </div>
+      <p>© 2026 ZixTool Open Source Hub. Powered by GitHub Pages. Fast, Private & 100% In-Browser Processing.</p>
+    </div>
+  </footer>
+  
+</body>
+</html>

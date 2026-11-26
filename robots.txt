@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://devcoder0909.github.io/tools/sitemap.xml
