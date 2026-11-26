@@ -3775,14 +3775,14 @@
   slug: gta-6-pc-specs-calculator
   kind: calculator
   name: GTA 6 PC Specs Calculator
-  title: "GTA 6 PC Specs Calculator | Hardware and FPS Estimates"
-  description: "Compare your CPU, GPU memory and RAM with estimated GTA 6 hardware targets for 30, 60 or 120 FPS. Results are projections, not measured PC benchmarks."
+  title: "GTA 6 PC Specs Calculator | Can My PC Run GTA 6?"
+  description: "Compare your CPU, VRAM and RAM with estimated GTA 6 PC targets. Check what Rockstar has confirmed about platforms and storage before using the FPS calculator."
   engine: gta-6-pc-specs-calculator
   content: src/content/tools/gta-6-pc-specs-calculator.mdx
   related: [aspect-ratio-calculator, video-compressor, online-calculator]
   indexable: true
   reviewed: true
-  last_reviewed: "2026-11-22"
+  last_reviewed: "2026-11-26"
   lang: en
   seo:
     primary_kw: gta 6 pc specs calculator
