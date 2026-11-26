@@ -1184,41 +1184,39 @@
   kind: calculator
   slug: date-difference-calculator
   name: Date Difference Calculator
-  title: "Date Difference Calculator for Days Between Two Dates"
-  subtitle: Calculate total days, workdays, and weeks between two calendar dates.
-  description: Free online date difference calculator to count days between dates, business workdays, weeks, and weekends. Fast, accurate, and 100% private in browser.
+  title: "Days Between Dates Calculator | US Working Days by Month"
+  subtitle: "Count calendar days and weekdays for your own dates, or look up a full month on the US federal work schedule."
+  description: "Count days between two dates, including weekdays and weekends. Look up working days by month for 2026 and 2027 after observed US federal holidays."
   engine: calc-date
   options: []
   presets: []
   content: src/content/tools/date-difference-calculator.mdx
   faq:
     - q: Does the date difference include the end date?
-      a: You can toggle the "Include end day" checkbox depending on whether your agreement or billing cycle counts inclusive days.
-    - q: How are business workdays calculated?
-      a: The engine counts every Monday through Friday between your selected dates, excluding Saturdays and Sundays.
-    - q: Can this calculator handle leap years?
-      a: Yes. It strictly follows standard Gregorian calendar rules, including February 29th during leap years.
-    - q: Does it work offline?
-      a: Yes. Once loaded, the date calculator functions in Airplane Mode without an internet connection.
+      a: The end day is included by default. Clear the checkbox to measure the elapsed interval from the earlier date up to the later date.
+    - q: Does the weekday count exclude federal holidays?
+      a: The weekday count includes every Monday through Friday. For dates within 2026 and 2027, the separate federal workday count subtracts observed US federal holidays.
+    - q: How does the calculator handle February 29?
+      a: February 29 counts as one calendar day when it falls inside the selected interval. Its weekday determines whether it counts toward weekdays or weekends.
   related:
     - age-calculator
     - percentage-calculator
     - discount-calculator
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13T00:00:00.000Z
+  last_reviewed: "2026-11-26"
   reviewer: ZixTool Team
   lang: en
   seo:
     primary_kw: date difference calculator
     secondary_kws:
       - days between dates
-      - how many days until
-      - workday calculator
+      - working days by month
+      - weekdays between two dates
     intent: calculator
     tier: 1
-    sources: Competitor teardown & SERP keyword map
-    last_reviewed: 2026-11-13T00:00:00.000Z
+    sources: US Office of Personnel Management federal holiday schedules
+    last_reviewed: "2026-11-26"
 - id: discount-calculator
   kind: calculator
   slug: discount-calculator

@@ -16,13 +16,13 @@
   <!-- Badge Header -->
   <rect x="200" y="24" width="400" height="28" rx="14" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1" />
   <text x="400" y="43" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#047857" letter-spacing="0.5">
-    BUSINESS DAY & CALENDAR DURATION CALCULATOR
+    BUSINESS DAY &amp; CALENDAR DURATION CALCULATOR
   </text>
   <text x="400" y="82" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="800" fill="#0f172a">
     How Days Between Dates Compute Online
   </text>
   <text x="400" y="104" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#64748b">
-    Actual/Actual Day Count • Business Days vs Weekends • Project Timelines
+    Calendar Day Count • Business Days vs Weekends • Project Timelines
   </text>
 
   <!-- Step 1 -->
@@ -34,7 +34,7 @@
     
     <rect x="25" y="65" width="160" height="80" rx="8" fill="#f8fafc" stroke="#94a3b8" stroke-dasharray="4 4" />
     <text x="105" y="105" text-anchor="middle" font-size="28">📆</text>
-    <text x="105" y="132" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#475569">Start & End Dates</text>
+    <text x="105" y="132" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#475569">Start &amp; End Dates</text>
 
     <text x="25" y="170" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Choose project start date</text>
     <text x="25" y="190" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Choose target deadline date</text>
@@ -61,7 +61,7 @@
     <text x="105" y="132" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#475569">Day Count Convention</text>
 
     <text x="25" y="170" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Calculate total calendar days</text>
-    <text x="25" y="190" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Count workdays (Mon-Fri)</text>
+    <text x="25" y="190" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Count weekdays (Mon-Fri)</text>
     <text x="25" y="210" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Filter weekend days</text>
     <rect x="25" y="222" width="160" height="20" rx="4" fill="#eff6ff" />
     <text x="105" y="236" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#1d4ed8">Accurate scheduling</text>
@@ -84,9 +84,9 @@
     <text x="105" y="105" text-anchor="middle" font-size="28">📊</text>
     <text x="105" y="132" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" font-weight="600" fill="#475569">Timeline Summary</text>
 
-    <text x="25" y="170" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Days, weeks, and months</text>
+    <text x="25" y="170" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Days and complete weeks</text>
     <text x="25" y="190" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Working business days</text>
-    <text x="25" y="210" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Percentage of year elapsed</text>
+    <text x="25" y="210" font-family="system-ui, sans-serif" font-size="11" fill="#64748b">• Federal workdays in 2026-27</text>
     <rect x="25" y="222" width="160" height="20" rx="4" fill="#fdf2f8" />
     <text x="105" y="236" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" font-weight="700" fill="#be185d">Project manager ready</text>
   </g>

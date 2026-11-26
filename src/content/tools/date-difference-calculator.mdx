@@ -1,106 +1,26 @@
 ---
-title: "Date Difference Calculator - Days Between Dates"
-subtitle: "Calculate total days, workdays, and weeks between two calendar dates."
-description: "Free online date difference calculator to count days between dates, business workdays, weeks, and weekends. Fast, accurate, and 100% private in browser."
-last_reviewed: "2026-11-19"
+title: "Days Between Dates Calculator | US Working Days by Month"
+subtitle: "Count calendar days and weekdays for your own dates, or look up a full month on the US federal work schedule."
+description: "Count days between two dates, including weekdays and weekends. Look up working days by month for 2026 and 2027 after observed US federal holidays."
+last_reviewed: "2026-11-26"
 reviewer: "ZixTool Team"
 reviewed: true
 ---
 
-Use our free **date difference calculator** to calculate the exact number of days between dates, total business workdays, weekends, weeks, and calendar months. Whether you are scheduling corporate project sprints, tracking civil litigation filing deadlines, computing accrued employee leave, or auditing European Schengen visa travel limits, ZixTool delivers instant, mathematically exact calendar calculations directly in your browser.
+## How many days are between two dates?
 
-## How to Calculate Days Between Dates in 3 Steps
+Enter the start and end dates. The calculator starts with **Include end day** checked, so both dates count. Friday, December 4 through Monday, December 7, 2026 covers four dates: Friday and Monday are weekdays, and Saturday and Sunday are weekend days.
 
-Determining the exact duration between any two calendar dates takes only moments:
+Clear **Include end day** to measure the elapsed interval. That same Friday-to-Monday trip spans three nights. The calculator counts Friday, Saturday and Sunday in the breakdown, giving one weekday and two weekend days. Entering the dates in reverse gives the same duration.
 
-1. **Select Start Date:** Choose your origin date using the calendar picker above or type the date directly.
-2. **Select End Date:** Choose the completion, deadline, or milestone date.
-3. **Toggle Inclusive Counting & Inspect Results:** Instantly review total calendar days, business workdays (Monday through Friday), weekend days, full weeks, and total elapsed hours. Toggle the "Include End Day" switch if your contract or rental period requires inclusive day counting.
+## How many working days are in a US month?
 
----
+Use the [US working days by month for 2026 and 2027](#us-working-days) for a Monday-through-Friday federal work schedule. The monthly reference starts with all weekdays and subtracts the holidays observed during that calendar month. It counts both the first and the last day when they fall on a working day.
 
-## Technical Mechanics of Date Arithmetic: UTC Normalization vs DST Traps
+For example, November 2026 contains 21 weekdays. Veterans Day falls on Wednesday, November 11, and Thanksgiving falls on Thursday, November 26. Subtracting those two observed holidays leaves **19 federal working days**. A business that also closes the Friday after Thanksgiving would have 18 working days on that schedule.
 
-While calculating the difference between two calendar days appears straightforward, naive date mathematics is notorious for subtle bugs caused by time zones and Daylight Saving Time (DST) transitions:
+For a date range entirely within 2026 and 2027, the calculator also displays federal working days after observed holidays. Outside those years, use its weekday count and subtract the closures that apply to your workplace. For November 23 through November 27, 2026, the inclusive count is five weekdays, or four working days on the federal schedule.
 
-### The Daylight Saving Time Offset Trap
-A standard astronomical day contains $24$ hours ($86,400,000$ milliseconds). However, in regions observing Daylight Saving Time (such as North America and Europe), days are not uniform:
-- In the spring, "Spring Forward" produces a **23-hour day**.
-- In the autumn, "Fall Back" produces a **25-hour day**.
+## What happens when both dates are the same?
 
-If a software calculator calculates date differences using local clock time:
-
-$$\text{Naive Days} = \frac{\text{Local Timestamp}_2 - \text{Local Timestamp}_1}{86,400,000}$$
-
-The result during a DST shift yields fractional values like $29.96$ or $30.04$ days. If truncated with integer floor functions (`Math.floor`), this introduces a severe **off-by-one day calculation error**.
-
-### ZixTool's UTC Midnight Normalization Engine
-To ensure absolute mathematical precision, ZixTool parses all dates into Coordinated Universal Time (UTC) set to midnight (`00:00:00.000Z`). Because UTC does not observe Daylight Saving Time, every elapsed day evaluates to exactly $86,400,000$ milliseconds, guaranteeing bit-exact day counts across centuries and international time zones.
-
----
-
-## Inclusive vs Exclusive Date Calculation Standards
-
-Understanding whether to use inclusive or exclusive counting is critical when calculating statutory deadlines, rental charges, and vacation allowances:
-
-- **Exclusive Counting ($B - A$):** The start date is counted, but the end date is excluded (or vice versa). This is the standard in hospitality and hotel billing: checking into a hotel on Friday and checking out on Sunday counts as **2 nights**, even though three distinct calendar dates are involved.
-- **Inclusive Counting ($B - A + 1$):** Both the start date and the end date are counted as full 24-hour periods. This standard is legally mandated for statutory notice periods, court filing deadlines, equipment rental billing, construction site permitting, and temporary disability benefits.
-
----
-
-## Day Count Conventions in Finance and Commercial Contracts
-
-Global financial markets and legal jurisdictions apply standardized day-count conventions to calculate accrued interest, bond yields, and commercial lease amortizations:
-
-| Day-Count Convention | Formula / Basis | Primary Financial Application | Characteristic |
-| :--- | :--- | :--- | :--- |
-| **Actual / Actual (ICMA)** | $\frac{\text{Actual Days in Period}}{\text{Actual Days in Year}}$ | US Treasury Bonds, Sovereign Debt | Perfectly reflects leap years and calendar variations |
-| **Actual / 360 (Money Market)** | $\frac{\text{Actual Days in Period}}{360}$ | Commercial Paper, Eurodollar Deposits | Yields slightly higher annualized interest revenue |
-| **Actual / 365 Fixed** | $\frac{\text{Actual Days in Period}}{365}$ | UK Gilts, British Money Market | Ignores leap years; standard 365-day denominator |
-| **30 / 360 (Bond Basis)** | $\frac{360(Y_2-Y_1) + 30(M_2-M_1) + (D_2-D_1)}{360}$ | Corporate Bonds, US Municipal Debt | Treats every calendar month as exactly 30 days |
-
----
-
-## Practical Applications for a Workday Calculator
-
-Calculating business days (excluding Saturdays and Sundays) is indispensable across corporate planning, agile engineering, and international travel:
-
-### 1. Agile Sprint & Software Project Milestones
-Software engineering teams planning two-week or three-week development sprints use workday calculations to determine exact developer capacity. A calendar window of 14 days contains exactly 10 working days, providing realistic velocity planning for issue backlogs.
-
-### 2. Legal Deadlines and Statutory Filings
-Courts and regulatory agencies frequently mandate responses within "10 business days" or "30 calendar days." Missing a statutory response window by miscalculating weekend days can result in default civil judgments or discarded appellate petitions.
-
-### 3. Schengen 90/180-Day Rolling Travel Window
-Non-EU citizens traveling within the 29 European countries of the Schengen Area are permitted to stay for a maximum of **90 days within any 180-day rolling period**. Because this window constantly rolls backward from each day of the proposed stay, travelers must calculate cumulative elapsed days with absolute precision to avoid hefty immigration fines or entry bans.
-
----
-
-## Month-by-Month Calendar Reference Table
-
-The table below outlines the structural composition of the standard Gregorian calendar year:
-
-| Calendar Month | Days in Standard Year | Days in Leap Year | Fiscal Quarter | Cumulative Days (Non-Leap) |
-| :--- | :--- | :--- | :--- | :--- |
-| **January** | 31 Days | 31 Days | Q1 | 31 Days |
-| **February** | 28 Days | 29 Days | Q1 | 59 Days (60 Leap) |
-| **March** | 31 Days | 31 Days | Q1 | 90 Days (91 Leap) |
-| **April** | 30 Days | 30 Days | Q2 | 120 Days (121 Leap) |
-| **May** | 31 Days | 31 Days | Q2 | 151 Days (152 Leap) |
-| **June** | 30 Days | 30 Days | Q2 | 181 Days (182 Leap) |
-| **July** | 31 Days | 31 Days | Q3 | 212 Days (213 Leap) |
-| **August** | 31 Days | 31 Days | Q3 | 243 Days (244 Leap) |
-| **September** | 30 Days | 30 Days | Q3 | 273 Days (274 Leap) |
-| **October** | 31 Days | 31 Days | Q4 | 304 Days (305 Leap) |
-| **November** | 30 Days | 30 Days | Q4 | 334 Days (335 Leap) |
-| **December** | 31 Days | 31 Days | Q4 | 365 Days (366 Leap) |
-
----
-
-## Complete Confidentiality: 100% In-Browser Execution
-
-Corporate schedules, sensitive contractual negotiations, medical leave timelines, and international travel itineraries should never be tracked or harvested by third-party web analytics.
-
-ZixTool computes all date intervals, workday iterations, and holiday offsets directly on your device using client-side JavaScript. No dates, queries, or user identifiers are ever transmitted across the network or logged in remote server databases.
-
-![Date Difference Calculator Workflow and Architecture Diagram](/images/tools/date-difference-calculator-workflow.svg)
+With the end day included, the result is one date. A Wednesday counts as one weekday and a Saturday counts as one weekend day. With the end day excluded, the elapsed interval is zero. For a birthday calculation in years, months and days, use the [age calculator](/age-calculator/).

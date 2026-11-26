@@ -15,6 +15,7 @@ import PdfExport from '../components/PdfExport';
 import VideoCompressor from '../components/VideoCompressor';
 import Gta6SpecsCalculator from '../components/Gta6SpecsCalculator';
 import Gta6Countdown from '../components/Gta6Countdown';
+import UsWorkingDays from '../components/UsWorkingDays.astro';
 import WhatsAppMediaSaver from '../components/WhatsAppMediaSaver';
 import DeveloperShell from '../components/DeveloperShell';
 import BackgroundRemoverShell from '../components/BackgroundRemoverShell';
@@ -270,6 +271,7 @@ if (tool.targetBytes) {
 
     <!-- Editorial Content Section (Semantic Article for Full Intent Fulfillment) -->
     <article class="editorial-content my-8 space-y-8">
+      {tool.slug === 'date-difference-calculator' && <UsWorkingDays />}
       {example && <section id="how-to" class="my-8 max-w-3xl">
         <h2 class="text-xl font-bold text-slate-900 mb-2">{example.heading}</h2>
         <p class="leading-relaxed text-slate-700">{example.text}</p>

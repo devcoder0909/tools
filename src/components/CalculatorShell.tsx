@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'preact/hooks';
+import { countDateRange } from '../utils/date-range';
 import BirthYearCalculator from './BirthYearCalculator';
 
 interface CalculatorShellProps {
@@ -305,42 +306,9 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
   }, [birthDate, targetDate]);
 
   // 3. Date Difference Calculations
-  const dateDiffResult = useMemo(() => {
-    if (!startDate || !endDate) return null;
-    const s = new Date(startDate + 'T00:00:00');
-    const e = new Date(endDate + 'T00:00:00');
-    if (isNaN(s.getTime()) || isNaN(e.getTime())) return null;
-
-    const earlier = s <= e ? s : e;
-    const later = s <= e ? e : s;
-
-    let diffDays = Math.round((later.getTime() - earlier.getTime()) / 86400000);
-    if (includeEndDay) diffDays += 1;
-
-    const weeks = Math.floor(diffDays / 7);
-    const remDays = diffDays % 7;
-
-    // Count weekdays vs weekend days
-    let weekdays = 0;
-    let weekends = 0;
-    const curr = new Date(earlier);
-    const countLimit = includeEndDay ? diffDays : diffDays;
-    for (let i = 0; i < countLimit; i++) {
-      const dayOfWeek = curr.getDay();
-      if (dayOfWeek === 0 || dayOfWeek === 6) weekends++;
-      else weekdays++;
-      curr.setDate(curr.getDate() + 1);
-    }
-
-    return {
-      totalDays: diffDays,
-      weeks,
-      remDays,
-      weekdays,
-      weekends,
-      isNegative: s > e,
-    };
-  }, [startDate, endDate, includeEndDay]);
+  const dateDiffResult = useMemo(() =>
+    toolId === 'date-difference-calculator' ? countDateRange(startDate, endDate, includeEndDay) : null,
+    [toolId, startDate, endDate, includeEndDay]);
 
   // 4. Discount Calculations
   const discountResult = useMemo(() => {
@@ -725,18 +693,20 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
         <div class="space-y-6">
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label class="block text-xs font-semibold text-slate-700 mb-1">Start Date</label>
+              <label class="block text-xs font-semibold text-slate-700 mb-1" for="range-start">Start Date</label>
               <input
                 type="date"
+                id="range-start"
                 value={startDate}
                 onChange={(e) => setStartDate((e.target as HTMLInputElement).value)}
                 class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-medium"
               />
             </div>
             <div>
-              <label class="block text-xs font-semibold text-slate-700 mb-1">End Date</label>
+              <label class="block text-xs font-semibold text-slate-700 mb-1" for="range-end">End Date</label>
               <input
                 type="date"
+                id="range-end"
                 value={endDate}
                 onChange={(e) => setEndDate((e.target as HTMLInputElement).value)}
                 class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-medium"
@@ -774,6 +744,12 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
                   <div class="text-xs text-slate-500">Weekend Days (Sat–Sun)</div>
                   <div class="font-bold text-slate-900">{dateDiffResult.weekends} days</div>
                 </div>
+                {dateDiffResult.federalWorkdays !== null && (
+                  <div class="col-span-2 bg-white/80 p-3 rounded-lg">
+                    <div class="text-xs text-slate-500">US federal workdays (observed holidays excluded)</div>
+                    <div class="font-bold text-slate-900">{dateDiffResult.federalWorkdays} days</div>
+                  </div>
+                )}
               </div>
             </div>
           )}

@@ -1,0 +1,49 @@
+---
+import { getUsWorkdayMonths, US_WORKDAY_YEARS } from '../utils/us-workdays';
+
+const schedules = US_WORKDAY_YEARS.map(year => {
+  const months = getUsWorkdayMonths(year);
+  return {
+    year, months,
+    weekdays: months.reduce((sum, month) => sum + month.weekdays, 0),
+    workdays: months.reduce((sum, month) => sum + month.workdays, 0),
+  };
+});
+---
+
+<section id="us-working-days" aria-labelledby="working-days-heading" class="space-y-4 scroll-mt-20">
+  <h2 id="working-days-heading" class="text-2xl font-bold">US working days by month in 2026 and 2027</h2>
+  <p>For a Monday–Friday schedule that observes federal holidays, {schedules.map(s => `${s.year} has ${s.workdays} working days`).join(' and ')}.
+    Use the weekday column if your employer stays open on those holidays. Each row counts the whole calendar month.</p>
+  {schedules.map(({ year, months, weekdays, workdays }) => (
+    <div class="overflow-x-auto">
+    <table id={`us-working-days-${year}`} class="w-full max-w-3xl text-left text-sm scroll-mt-20">
+      <caption class="pb-2 pt-3 text-left text-lg font-bold">{year} federal working days</caption>
+      <thead>
+        <tr class="border-b text-slate-700">
+          <th scope="col" class="p-2">Month</th><th scope="col" class="p-2">Weekdays</th>
+          <th scope="col" class="p-2">Working days</th><th scope="col" class="p-2">Observed holidays</th>
+        </tr>
+      </thead>
+      <tbody>
+        {months.map(month => (
+          <tr class="border-b align-top">
+            <th scope="row" class="p-2">{month.monthName}</th>
+            <td class="p-2">{month.weekdays}</td><td class="p-2">{month.workdays}</td>
+            <td class="p-2">{month.holidays.length ? month.holidays.map(h =>
+              <div><time datetime={h.date}>{month.monthName.slice(0, 3)} {Number(h.date.slice(-2))}</time> · {h.name}</div>
+            ) : 'None'}</td>
+          </tr>
+        ))}
+      </tbody>
+      <tfoot><tr class="font-bold">
+        <th scope="row" class="p-2">Year total</th><td class="p-2">{weekdays}</td>
+        <td class="p-2">{workdays}</td><td class="p-2">{weekdays - workdays} holidays</td>
+      </tr></tfoot>
+    </table>
+    </div>
+  ))}
+  <p>December 2027 includes two Friday closures. Christmas falls on Saturday that year, and New Year's Day 2028 also falls on Saturday.
+    For most Monday–Friday federal employees, the observed dates are December 24 and December 31.
+    <a class="text-emerald-800 underline" href="https://www.opm.gov/policy-data-oversight/pay-leave/federal-holidays/">US Office of Personnel Management holiday schedules</a></p>
+</section>

@@ -749,7 +749,7 @@ export const TOOL_MEDIA_REGISTRY: ToolMediaDef[] = [
     slug: 'date-difference-calculator',
     name: 'Date Difference Calculator',
     title: 'How Days Between Dates Compute Online',
-    description: 'Actual/Actual Day Count • Business Days vs Weekends • Project Timelines',
+    description: 'Calendar Day Count • Business Days vs Weekends • Project Timelines',
     durationSecs: 60,
     thumbnailUrl: '/images/tools/date-difference-calculator-workflow.svg',
     diagramUrl: '/images/tools/date-difference-calculator-workflow.svg',
