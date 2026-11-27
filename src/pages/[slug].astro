@@ -4,6 +4,7 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 import ToolShell from '../components/ToolShell';
 import CalculatorShell from '../components/CalculatorShell';
 import TimeCardCalculator from '../components/TimeCardCalculator';
+import FinalGradeCalculator from '../components/FinalGradeCalculator';
 import TextShell from '../components/TextShell';
 import TargetSizeShell from '../components/TargetSizeShell';
 import GeneratorShell from '../components/GeneratorShell';
@@ -203,7 +204,9 @@ if (tool.targetBytes) {
     </div>
 
     <!-- 3. The working tool above the fold -->
-    {tool.id === 'time-card-calculator' ? (
+    {tool.id === 'final-grade-calculator' ? (
+      <FinalGradeCalculator client:load />
+    ) : tool.id === 'time-card-calculator' ? (
       <TimeCardCalculator client:load />
     ) : tool.id === 'gta-6-pc-specs-calculator' ? (
       <Gta6SpecsCalculator client:load />

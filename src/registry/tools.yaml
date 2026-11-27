@@ -3917,3 +3917,21 @@
     primary_kw: time card calculator
     secondary_kws: [work hours calculator with lunch, weekly timesheet calculator, time card calculator hours and minutes]
     intent: calculator
+
+- id: final-grade-calculator
+  slug: final-grade-calculator
+  kind: calculator
+  name: Final Grade Calculator
+  title: "Final Grade Calculator | What Do I Need on My Final?"
+  description: "Find the minimum final exam score needed for your target course grade. Check weighted exam examples and see when your target is already within reach."
+  engine: final-grade-calculator
+  content: src/content/tools/final-grade-calculator.mdx
+  related: [gpa-calculator, percentage-calculator]
+  indexable: true
+  reviewed: true
+  last_reviewed: "2026-11-27"
+  lang: en
+  seo:
+    primary_kw: final grade calculator
+    secondary_kws: [what grade do I need on my final, weighted final exam calculator]
+    intent: calculator
