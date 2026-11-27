@@ -1260,9 +1260,9 @@
   kind: calculator
   slug: tip-calculator
   name: Tip Calculator
-  title: "Tip Calculator | Restaurant Tip and Bill Split"
-  subtitle: "Enter the bill, tip percentage and number of guests to see the tip and total for each person."
-  description: "Enter a restaurant bill to calculate a 15%, 18%, 20% or custom tip. Include tax if needed and see exactly how much each person pays, down to the cent."
+  title: "Tip Calculator with Tax & Bill Split"
+  subtitle: "Calculate a restaurant tip before or after tax, then split the total to the cent."
+  description: "Calculate a 15%, 18%, 20% or custom restaurant tip before or after tax. Add sales tax and split the total among guests, with exact-cent shares."
   engine: calc-tip
   options: []
   presets: []
@@ -1286,7 +1286,7 @@
     - gst-calculator
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-13T00:00:00.000Z
+  last_reviewed: 2026-11-27T00:00:00.000Z
   reviewer: ZixTool Team
   lang: en
   seo:
