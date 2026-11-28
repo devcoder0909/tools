@@ -33,8 +33,12 @@ const breadcrumbs = [
 
       <nav aria-label="Everyday calculator tasks" class="mt-5 grid max-w-4xl gap-3 text-left sm:grid-cols-2">
         {[
-          { slug: 'age-calculator', task: 'Calculate age on a specific date', detail: 'Enter a birthday and the date you want to check.' },
+          { slug: 'percentage-increase-calculator', task: 'Calculate percentage increase or growth', detail: 'Find percent change, price raises, or inflation between two values.' },
+          { slug: 'percentage-difference-calculator', task: 'Compare two numbers by percentage', detail: 'Find relative percentage difference between two positive values.' },
           { slug: 'tip-calculator', task: 'Calculate a tip and split the bill', detail: 'See the tip, total and amount each guest owes.' },
+          { slug: 'haircut-tip-calculator', task: 'Calculate haircut and salon tip', detail: 'Standard 15% to 25% tips for barbers, stylists, and assistants.' },
+          { slug: 'body-fat-percentage-calculator', task: 'Calculate body fat percentage', detail: 'Measure body composition using the US Army and Navy method.' },
+          { slug: 'age-calculator', task: 'Calculate age on a specific date', detail: 'Enter a birthday and the date you want to check.' },
           { slug: 'percentage-calculator', task: 'Calculate a percentage or percent change', detail: 'Find a share of a total or compare two values.' },
           { slug: 'discount-calculator', task: 'Find the sale price after a discount', detail: 'Check the savings and total after optional sales tax.' },
         ].map(({ slug, task, detail }) => (
@@ -195,8 +199,9 @@ const breadcrumbs = [
       <h2 id="choosing-calculator" class="text-xl font-bold text-slate-900">Which calculator fits my question?</h2>
       <p>For US staffing or project planning, look up <a class="underline" href="/date-difference-calculator/#us-working-days">working days by month in 2026 and 2027</a> to see how weekends and observed federal holidays affect the total.</p>
       <p>For an application, check your <a class="underline" href="/age-calculator/#article-how-old-will-i-be-on-a-cutoff-date">age on the cutoff date</a>. If you only know the year, <a class="underline" href="/age-calculator/#age-by-year">calculate age from a birth year</a>. For a project deadline, use the <a class="underline" href="/date-difference-calculator/">date difference calculator</a> to count the interval between two dates.</p>
-      <p>If a price drops from $80 to $60, the reduction is 25%. If the values you’re comparing are already percentages, see how to calculate <a class="underline" href="/percentage-calculator/#article-what-is-the-difference-between-percent-change-and-percentage-points">percent change and percentage points</a>.</p>
-      <p>For a shared restaurant check, see how to tell <a class="underline" href="/tip-calculator/#article-is-the-suggested-tip-on-my-receipt-before-or-after-sales-tax">whether the suggested tip includes sales tax</a>. To divide the total among diners, use the <a class="underline" href="/guides/restaurant-tipping-and-bill-splitting/">restaurant tipping and bill splitting guide</a>.</p>
+      <p>If a price drops from $80 to $60, the reduction is 25%. If the values you’re comparing are already percentages, see how to calculate <a class="underline" href="/percentage-calculator/#article-what-is-the-difference-between-percent-change-and-percentage-points">percent change and percentage points</a>. If values grow over time, use the <a class="underline" href="/percentage-increase-calculator/">percentage increase calculator</a>. To compare two separate values against their midpoint, use the <a class="underline" href="/percentage-difference-calculator/">percentage difference calculator</a>.</p>
+      <p>For a shared restaurant check, see how to tell <a class="underline" href="/tip-calculator/#article-is-the-suggested-tip-on-my-receipt-before-or-after-sales-tax">whether the suggested tip includes sales tax</a>. For grooming and salon services, consult the <a class="underline" href="/haircut-tip-calculator/">haircut tip calculator</a>.</p>
+      <p>To assess personal fitness and body composition beyond scale weight, measure circumference with our <a class="underline" href="/body-fat-percentage-calculator/">body fat percentage calculator</a>.</p>
     </section>
   </div>
 </Layout>

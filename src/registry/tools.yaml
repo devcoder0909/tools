@@ -1117,12 +1117,12 @@
     - q: Does this calculator send my numbers to a server?
       a: No. All percentage calculations execute in real time using local client-side JavaScript. Your inputs remain 100% private.
   related:
-    - discount-calculator
+    - percentage-increase-calculator
+    - percentage-difference-calculator
+    - body-fat-percentage-calculator
     - reverse-percentage-calculator
+    - discount-calculator
     - tip-calculator
-    - gst-calculator
-    - gpa-calculator
-    - date-difference-calculator
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-16T00:00:00.000Z
@@ -1289,11 +1289,12 @@
     - q: What should you check on the receipt to avoid double-tipping?
       a: For parties of 5 to 6 or more, look for an auto-gratuity or service charge line. If an 18% or 20% tip is already included in the total, do not add another full tip.
   related:
+    - restaurant-tip-calculator
+    - haircut-tip-calculator
+    - canadian-tip-calculator
     - discount-calculator
     - percentage-calculator
     - gst-calculator
-    - restaurant-tip-calculator
-    - canadian-tip-calculator
   indexable: true
   reviewed: true
   last_reviewed: 2026-11-28T00:00:00.000Z
@@ -1816,6 +1817,7 @@
     - q: What is considered a healthy BMI range?
       a: For adult men and women, a BMI between 18.5 and 24.9 is considered the healthy baseline range.
   related:
+    - body-fat-percentage-calculator
     - age-calculator
     - percentage-calculator
     - unit-converter
@@ -4186,4 +4188,157 @@
       - ircc photo compressor
       - canada passport photo online
     intent: converter
+
+- id: percentage-increase-calculator
+  kind: calculator
+  slug: percentage-increase-calculator
+  name: Percentage Increase Calculator
+  title: "Percentage Increase Calculator | Percent Change Formula"
+  subtitle: "Calculate percentage increase or growth between two numbers easily."
+  description: "Free percentage increase calculator to calculate percent growth, markup, or price change from old to new values. Includes step-by-step math formulas."
+  engine: calc-percent
+  options: []
+  presets: []
+  content: src/content/tools/percentage-increase-calculator.mdx
+  faq:
+    - q: What is the percentage increase formula?
+      a: "Subtract the starting value from the final value, divide the difference by the starting value, and multiply by 100. Formula: ((New - Old) / Old) × 100."
+    - q: How do I calculate a 20% increase on a number?
+      a: Multiply the number by 1.20, or calculate 20% of the number and add it to the original amount. For example, a 20% increase on 50 is 50 × 1.20 = 60.
+    - q: What is the difference between percentage increase and percentage change?
+      a: Percentage increase specifically measures positive growth when the new value is larger than the old value. Percentage change is the broader term covering both increases and decreases.
+  related:
+    - percentage-calculator
+    - percentage-difference-calculator
+    - reverse-percentage-calculator
+    - discount-calculator
+  indexable: true
+  reviewed: true
+  last_reviewed: "2026-11-28T00:00:00.000Z"
+  reviewer: ZixTool Editorial Team
+  lang: en
+  seo:
+    primary_kw: percentage increase calculator
+    secondary_kws:
+      - how to calculate percentage increase
+      - percentage change calculator
+      - percent increase formula
+      - calculate percentage increase between two numbers
+    intent: calculator
+    tier: 1
+
+- id: percentage-difference-calculator
+  kind: calculator
+  slug: percentage-difference-calculator
+  name: Percentage Difference Calculator
+  title: "Percentage Difference Calculator | Compare Two Numbers"
+  subtitle: "Calculate the percentage difference between two positive numbers."
+  description: "Free percentage difference calculator to compare two values relative to their average. Discover the exact percentage difference with step-by-step working."
+  engine: calc-percent
+  options: []
+  presets: []
+  content: src/content/tools/percentage-difference-calculator.mdx
+  faq:
+    - q: What is the percentage difference formula?
+      a: "Divide the absolute difference between two numbers by their average, then multiply by 100. Formula: (|A - B| / ((A + B) / 2)) × 100."
+    - q: How does percentage difference differ from percentage change?
+      a: Percentage change requires an initial and final value (direction matters). Percentage difference compares two numbers without a specific starting point using their average.
+    - q: Can percentage difference be negative?
+      a: No. Percentage difference uses the absolute value of the difference (|A - B|), so the resulting percentage is always positive or zero.
+  related:
+    - percentage-calculator
+    - percentage-increase-calculator
+    - reverse-percentage-calculator
+    - discount-calculator
+  indexable: true
+  reviewed: true
+  last_reviewed: "2026-11-28T00:00:00.000Z"
+  reviewer: ZixTool Editorial Team
+  lang: en
+  seo:
+    primary_kw: percentage difference calculator
+    secondary_kws:
+      - how to calculate percentage difference
+      - percent difference formula
+      - percentage change calculator
+      - compare two numbers percentage
+    intent: calculator
+    tier: 1
+
+- id: haircut-tip-calculator
+  kind: calculator
+  slug: haircut-tip-calculator
+  name: Haircut Tip Calculator
+  title: "Haircut Tip Calculator | Barber & Salon Tip Guide"
+  subtitle: "Calculate how much to tip your barber, hairdresser, or salon stylist."
+  description: "Free haircut tip calculator to compute 15%, 20%, 25% tips for barbers and hair salons. Learn standard tipping etiquette for stylists and shampoo assistants."
+  engine: calc-tip
+  options: []
+  presets: []
+  content: src/content/tools/haircut-tip-calculator.mdx
+  faq:
+    - q: How much should you tip for a haircut?
+      a: The standard tipping benchmark for a haircut is 15% to 20% of the service cost. For exceptional styling, color work, or beard trims, 20% to 25% is customary.
+    - q: Should you tip the salon shampoo assistant separately?
+      a: Yes. It is customary to hand a $3 to $5 cash tip directly to the shampoo assistant or junior stylist who washes your hair.
+    - q: Do you tip if the stylist is the salon owner?
+      a: Modern salon etiquette recommends tipping salon owners the standard 15% to 20% if they personally cut or style your hair, as they provide the direct craft service.
+  related:
+    - tip-calculator
+    - restaurant-tip-calculator
+    - canadian-tip-calculator
+    - percentage-calculator
+  indexable: true
+  reviewed: true
+  last_reviewed: "2026-11-28T00:00:00.000Z"
+  reviewer: ZixTool Editorial Team
+  lang: en
+  seo:
+    primary_kw: haircut tip calculator
+    secondary_kws:
+      - tip calculator for haircut
+      - hair salon tip calculator
+      - how much to tip for a haircut
+      - barber tip calculator
+      - tipping hairdresser
+    intent: calculator
+    tier: 1
+
+- id: body-fat-percentage-calculator
+  kind: calculator
+  slug: body-fat-percentage-calculator
+  name: Body Fat Percentage Calculator
+  title: "Body Fat Percentage Calculator | US Army & Navy Method"
+  subtitle: "Calculate body fat percentage using circumference measurements."
+  description: "Free body fat percentage calculator using the official US Army and Navy circumference formula. Measure body fat category, lean mass, and ideal fat range."
+  engine: body-fat-calculator
+  options: []
+  presets: []
+  content: src/content/tools/body-fat-percentage-calculator.mdx
+  faq:
+    - q: How does the US Navy body fat formula work?
+      a: The US Navy method calculates body fat percentage from circumference measurements (neck, waist, and hips for women) combined with height, using standardized logarithmic equations.
+    - q: What is an ideal body fat percentage for men and women?
+      a: Fitness standards define normal body fat as 14% to 17% for athletic men (18% to 24% fitness/acceptable) and 21% to 24% for athletic women (25% to 31% fitness/acceptable).
+    - q: Is circumference measuring more accurate than BMI?
+      a: Yes. Circumference methods differentiate between muscle and fat tissue, whereas standard BMI only assesses total scale weight relative to height.
+  related:
+    - bmi-calculator
+    - percentage-calculator
+    - percentage-increase-calculator
+    - online-calculator
+  indexable: true
+  reviewed: true
+  last_reviewed: "2026-11-28T00:00:00.000Z"
+  reviewer: ZixTool Editorial Team
+  lang: en
+  seo:
+    primary_kw: body fat percentage calculator
+    secondary_kws:
+      - army calculate body fat percentage
+      - fat percentage calculator
+      - calculate fat percentage body
+      - how to calculate body fat percentage
+      - us navy body fat calculator
+    intent: calculator
     tier: 1

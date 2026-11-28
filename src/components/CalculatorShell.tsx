@@ -9,7 +9,9 @@ interface CalculatorShellProps {
 
 export default function CalculatorShell({ toolId, toolName: _toolName }: CalculatorShellProps) {
   // Percentage Calculator State
-  const [percMode, setPercMode] = useState<'calc' | 'isWhat' | 'change' | 'difference'>('calc');
+  const [percMode, setPercMode] = useState<'calc' | 'isWhat' | 'change' | 'difference'>(
+    toolId === 'percentage-difference-calculator' ? 'difference' : toolId === 'percentage-increase-calculator' ? 'change' : 'calc'
+  );
   const [pVal1, setPVal1] = useState<string>('15');
   const [pVal2, setPVal2] = useState<string>('250');
 
@@ -30,13 +32,67 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
   const [salesTaxPercent, setSalesTaxPercent] = useState<string>('0');
 
   // Tip Calculator State
-  const [billAmount, setBillAmount] = useState<string>('65');
-  const [tipRate, setTipRate] = useState<string>('18');
+  const [billAmount, setBillAmount] = useState<string>(toolId === 'haircut-tip-calculator' ? '45' : '65');
+  const [tipRate, setTipRate] = useState<string>(toolId === 'haircut-tip-calculator' ? '20' : '18');
   const [splitCount, setSplitCount] = useState<string>('2');
   const [tipTaxPercent, setTipTaxPercent] = useState<string>('0');
   const [tipPreTax, setTipPreTax] = useState<boolean>(true);
   const [tipRounding, setTipRounding] = useState<'none' | 'round-total' | 'round-person'>('none');
   const [tipCopied, setTipCopied] = useState<boolean>(false);
+
+  // Body Fat Calculator State
+  const [bfGender, setBfGender] = useState<'male' | 'female'>('male');
+  const [bfHeight, setBfHeight] = useState<string>('178');
+  const [bfWeight, setBfWeight] = useState<string>('75');
+  const [bfNeck, setBfNeck] = useState<string>('38');
+  const [bfWaist, setBfWaist] = useState<string>('86');
+  const [bfHip, setBfHip] = useState<string>('96');
+
+  const bfResult = useMemo(() => {
+    const h = parseFloat(bfHeight) || 178;
+    const w = parseFloat(bfWeight) || 75;
+    const neck = parseFloat(bfNeck) || 38;
+    const waist = parseFloat(bfWaist) || 86;
+    const hip = parseFloat(bfHip) || 96;
+
+    let bf = 0;
+    if (bfGender === 'male') {
+      if (waist > neck && h > 0) {
+        bf = 86.010 * Math.log10(waist - neck) - 70.041 * Math.log10(h) + 36.76;
+      }
+    } else {
+      if (waist + hip > neck && h > 0) {
+        bf = 163.205 * Math.log10(waist + hip - neck) - 97.684 * Math.log10(h) - 78.387;
+      }
+    }
+    bf = Math.max(2, Math.min(65, bf));
+    const fatMass = (w * bf) / 100;
+    const leanMass = Math.max(0, w - fatMass);
+
+    let category = 'Fitness';
+    let badgeColor = 'bg-emerald-100 text-emerald-800 border-emerald-300';
+    if (bfGender === 'male') {
+      if (bf < 6) { category = 'Essential Fat'; badgeColor = 'bg-amber-100 text-amber-800 border-amber-300'; }
+      else if (bf < 14) { category = 'Athletes'; badgeColor = 'bg-blue-100 text-blue-800 border-blue-300'; }
+      else if (bf < 18) { category = 'Fitness'; badgeColor = 'bg-emerald-100 text-emerald-800 border-emerald-300'; }
+      else if (bf < 25) { category = 'Acceptable / Average'; badgeColor = 'bg-slate-100 text-slate-800 border-slate-300'; }
+      else { category = 'Above Average / Obesity Risk'; badgeColor = 'bg-rose-100 text-rose-800 border-rose-300'; }
+    } else {
+      if (bf < 14) { category = 'Essential Fat'; badgeColor = 'bg-amber-100 text-amber-800 border-amber-300'; }
+      else if (bf < 21) { category = 'Athletes'; badgeColor = 'bg-blue-100 text-blue-800 border-blue-300'; }
+      else if (bf < 25) { category = 'Fitness'; badgeColor = 'bg-emerald-100 text-emerald-800 border-emerald-300'; }
+      else if (bf < 32) { category = 'Acceptable / Average'; badgeColor = 'bg-slate-100 text-slate-800 border-slate-300'; }
+      else { category = 'Above Average / Obesity Risk'; badgeColor = 'bg-rose-100 text-rose-800 border-rose-300'; }
+    }
+
+    return {
+      bodyFatPercent: bf.toFixed(1),
+      fatMass: fatMass.toFixed(1),
+      leanMass: leanMass.toFixed(1),
+      category,
+      badgeColor,
+    };
+  }, [bfGender, bfHeight, bfWeight, bfNeck, bfWaist, bfHip]);
 
   // GPA Calculator State
   const [courses, setCourses] = useState([
@@ -396,7 +452,7 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
   return (
     <div class="calculator-shell bg-white border border-slate-200/90 rounded-2xl shadow-card p-5 sm:p-7 my-6 transition-all">
       {/* Percentage Calculator */}
-      {(toolId === 'percentage-calculator' || toolId === 'reverse-percentage-calculator') && (
+      {(toolId === 'percentage-calculator' || toolId === 'reverse-percentage-calculator' || toolId === 'percentage-increase-calculator' || toolId === 'percentage-difference-calculator') && (
         <div class="space-y-6">
           <div class="flex flex-wrap gap-2 border-b border-slate-200/80 pb-4">
             <button
@@ -836,7 +892,7 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
       )}
 
       {/* Tip Calculator */}
-      {(toolId === 'tip-calculator' || toolId === 'restaurant-tip-calculator' || toolId === 'canadian-tip-calculator') && (
+      {(toolId === 'tip-calculator' || toolId === 'restaurant-tip-calculator' || toolId === 'canadian-tip-calculator' || toolId === 'haircut-tip-calculator') && (
         <div class="space-y-6">
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
@@ -1047,6 +1103,126 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
               </div>
             </div>
           )}
+        </div>
+      )}
+
+      {/* Body Fat Percentage Calculator */}
+      {toolId === 'body-fat-percentage-calculator' && (
+        <div class="space-y-6">
+          <div class="flex items-center gap-4 border-b border-slate-200/80 pb-4">
+            <span class="text-xs font-bold text-slate-700">Gender:</span>
+            <div class="flex gap-2">
+              <button
+                type="button"
+                onClick={() => setBfGender('male')}
+                class={`px-4 py-2 text-xs font-semibold rounded-xl transition ${
+                  bfGender === 'male' ? 'bg-emerald-600 text-white shadow-xs' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                }`}
+              >
+                Male
+              </button>
+              <button
+                type="button"
+                onClick={() => setBfGender('female')}
+                class={`px-4 py-2 text-xs font-semibold rounded-xl transition ${
+                  bfGender === 'female' ? 'bg-emerald-600 text-white shadow-xs' : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                }`}
+              >
+                Female
+              </button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Height (cm)</label>
+              <input
+                type="number"
+                min="100"
+                max="250"
+                value={bfHeight}
+                onInput={(e) => setBfHeight((e.target as HTMLInputElement).value)}
+                class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-mono text-base"
+              />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Weight (kg)</label>
+              <input
+                type="number"
+                min="30"
+                max="300"
+                value={bfWeight}
+                onInput={(e) => setBfWeight((e.target as HTMLInputElement).value)}
+                class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-mono text-base"
+              />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Neck Circumference (cm)</label>
+              <input
+                type="number"
+                min="20"
+                max="80"
+                value={bfNeck}
+                onInput={(e) => setBfNeck((e.target as HTMLInputElement).value)}
+                class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-mono text-base"
+              />
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-700 mb-1">Waist Circumference (cm)</label>
+              <input
+                type="number"
+                min="40"
+                max="180"
+                value={bfWaist}
+                onInput={(e) => setBfWaist((e.target as HTMLInputElement).value)}
+                class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-mono text-base"
+              />
+              <span class="text-2xs text-slate-500 mt-1 block">Navel level (men) / narrowest waist (women)</span>
+            </div>
+            {bfGender === 'female' && (
+              <div>
+                <label class="block text-xs font-semibold text-slate-700 mb-1">Hip Circumference (cm)</label>
+                <input
+                  type="number"
+                  min="40"
+                  max="180"
+                  value={bfHip}
+                  onInput={(e) => setBfHip((e.target as HTMLInputElement).value)}
+                  class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 font-mono text-base"
+                />
+                <span class="text-2xs text-slate-500 mt-1 block">Widest part of hips / buttocks</span>
+              </div>
+            )}
+          </div>
+
+          <div class="p-6 bg-emerald-50/70 border border-emerald-200/80 rounded-xl space-y-4">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+              <div>
+                <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Estimated Body Fat Percentage</span>
+                <div class="text-3xl sm:text-4xl font-extrabold text-emerald-800 font-mono mt-1">
+                  {bfResult.bodyFatPercent}%
+                </div>
+              </div>
+              <span class={`inline-flex px-3 py-1 rounded-full text-xs font-bold border ${bfResult.badgeColor}`}>
+                {bfResult.category}
+              </span>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+              <div class="p-3 bg-white rounded-lg border border-emerald-100">
+                <span class="text-2xs text-slate-500 uppercase font-bold">Fat Mass</span>
+                <div class="font-bold text-slate-900 mt-0.5">{bfResult.fatMass} kg</div>
+              </div>
+              <div class="p-3 bg-white rounded-lg border border-emerald-100">
+                <span class="text-2xs text-slate-500 uppercase font-bold">Lean Body Mass</span>
+                <div class="font-bold text-slate-900 mt-0.5">{bfResult.leanMass} kg</div>
+              </div>
+              <div class="p-3 bg-white rounded-lg border border-emerald-100 col-span-2 sm:col-span-1">
+                <span class="text-2xs text-slate-500 uppercase font-bold">Method</span>
+                <div class="font-bold text-slate-900 mt-0.5">U.S. Navy / Army</div>
+              </div>
+            </div>
+          </div>
         </div>
       )}
 
