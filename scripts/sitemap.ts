@@ -6,6 +6,7 @@ import { siteConfig } from '../src/config/site';
 import { TOOL_MEDIA_REGISTRY } from '../src/config/tool-media';
 import { searchGuides } from '../src/content/guides';
 import { topicHubs } from '../src/content/topic-hubs';
+import { localizedPages } from '../src/config/localized-pages';
 
 const DIST_DIR = path.resolve(process.cwd(), 'dist');
 
@@ -70,6 +71,7 @@ export function buildSitemaps() {
     { url: `${siteConfig.url}/guides/`, priority: '0.7' },
     ...searchGuides.map(guide => ({ url: `${siteConfig.url}/guides/${guide.slug}/`, priority: '0.7', lastmod: guide.updated })),
     ...topicHubs.map(hub => ({ url: `${siteConfig.url}/topics/${hub.slug}/`, priority: '0.7' })),
+    ...localizedPages.map(page => ({ url: `${siteConfig.url}/${page.lang}/${page.slug}/`, priority: '0.8', lastmod: '2026-11-28' })),
   ];
 
   const pagesXml = `<?xml version="1.0" encoding="UTF-8"?>

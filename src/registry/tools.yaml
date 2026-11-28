@@ -947,6 +947,8 @@
     - q: Can I compress iPhone HEIC photos to 200KB?
       a: Yes. Our engine accepts raw Apple HEIC photos, converts them, and optimizes them to under 200KB in standard JPG format.
   related:
+    - us-passport-photo-resizer
+    - canada-visa-photo-resizer
     - compress-image-to-100kb
     - compress-image-to-500kb
     - resize-image
@@ -1116,6 +1118,7 @@
       a: No. All percentage calculations execute in real time using local client-side JavaScript. Your inputs remain 100% private.
   related:
     - discount-calculator
+    - reverse-percentage-calculator
     - tip-calculator
     - gst-calculator
     - gpa-calculator
@@ -1145,9 +1148,9 @@
   kind: calculator
   slug: age-calculator
   name: Age Calculator
-  title: "Age Calculator by Date of Birth | Age on Any Date"
+  title: "Age Calculator by Date of Birth & Year | Free Tool"
   subtitle: "Enter your birthday and choose today or a past or future date to find your age in years, months and days."
-  description: "Calculate your exact age today or on a specific date in years, months and days. Know only the birth year? See both possible ages in your chosen year."
+  description: "Free online age calculator by date of birth and year. Calculate your exact age in years, months, and days or find your age on any past or future date."
   engine: calc-age
   options: []
   presets: []
@@ -1163,16 +1166,19 @@
       a: No. Calculations are performed locally in browser memory without server tracking or cookies.
   related:
     - date-difference-calculator
+    - chronological-age-calculator
     - percentage-calculator
     - discount-calculator
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-21T00:00:00.000Z
+  last_reviewed: 2026-11-28T00:00:00.000Z
   reviewer: ZixTool Editorial Team
   lang: en
   seo:
     primary_kw: age calculator
     secondary_kws:
+      - age calculator on year
+      - age calculator by date of birth free
       - calculate age from date of birth
       - age on a date
       - chronological age calculator
@@ -1239,7 +1245,9 @@
       a: Divide the sale price by (1 − discount rate). For example, a $40 item that was 20% off originally cost $40 ÷ 0.80 = $50.
   related:
     - percentage-calculator
+    - reverse-percentage-calculator
     - tip-calculator
+    - restaurant-tip-calculator
     - age-calculator
   indexable: true
   reviewed: true
@@ -1260,9 +1268,9 @@
   kind: calculator
   slug: tip-calculator
   name: Tip Calculator
-  title: "Tip Calculator with Tax & Bill Split"
+  title: "Tip Calculator – Split Bill & Calculate Tips Online"
   subtitle: "Calculate a restaurant tip before or after tax, then split the total to the cent."
-  description: "Calculate a 15%, 18%, 20% or custom restaurant tip before or after tax. Add sales tax and split the total among guests, with exact-cent shares."
+  description: "Free online tip calculator to calculate 15%, 18%, 20% restaurant tips and split the bill per person before or after tax with exact-cent accuracy."
   engine: calc-tip
   options: []
   presets: []
@@ -1284,21 +1292,23 @@
     - discount-calculator
     - percentage-calculator
     - gst-calculator
+    - restaurant-tip-calculator
+    - canadian-tip-calculator
   indexable: true
   reviewed: true
-  last_reviewed: 2026-11-27T00:00:00.000Z
+  last_reviewed: 2026-11-28T00:00:00.000Z
   reviewer: ZixTool Team
   lang: en
   seo:
     primary_kw: tip calculator
     secondary_kws:
-      - split bill calculator
+      - how to calculate tip
       - restaurant tip calculator
-      - gratuity calculator
+      - bill split calculator
+      - tip calculator online
+      - tip on tax or subtotal
     intent: calculator
-    tier: 2
-    sources: Competitor teardown & SERP keyword map
-    last_reviewed: 2026-11-13T00:00:00.000Z
+    tier: 1
 - id: word-counter
   kind: text
   slug: word-counter
@@ -3588,6 +3598,8 @@
     - q: Can I compress photos for Aadhar card or PAN card?
       a: Yes. Both identity card submission portals enforce ceilings under 50KB or 100KB, which our presets satisfy automatically.
   related:
+    - us-passport-photo-resizer
+    - canada-visa-photo-resizer
     - compress-image-to-20kb
     - compress-image-to-50kb
     - photo-compressor
@@ -3935,3 +3947,243 @@
     primary_kw: final grade calculator
     secondary_kws: [what grade do I need on my final, weighted final exam calculator]
     intent: calculator
+
+- id: restaurant-tip-calculator
+  kind: calculator
+  slug: restaurant-tip-calculator
+  name: Restaurant Tip Calculator
+  title: "Restaurant Tip Calculator | Split Bill Online"
+  subtitle: "Calculate restaurant tips, sales tax, and split dinner bills evenly."
+  description: "Free restaurant tip calculator to compute 15%, 18%, 20% gratuity before or after tax. Split the dinner bill per person with exact-cent precision."
+  engine: calc-tip
+  options: []
+  presets: []
+  content: src/content/tools/restaurant-tip-calculator.mdx
+  faq:
+    - q: What is the customary tip at US restaurants?
+      a: The standard restaurant tip in the United States ranges between 15% and 20% of the pre-tax food and beverage subtotal. Exceptional service is typically rewarded with 20% to 25%.
+    - q: Should you tip on the pre-tax subtotal or post-tax total?
+      a: Etiquette standards recommend calculating tips on the pre-tax subtotal because sales tax is a government assessment rather than part of the hospitality service.
+    - q: What is an auto-gratuity on a restaurant bill?
+      a: Many restaurants apply an automatic gratuity (commonly 18% or 20%) for large parties of 6 or more diners. Always check your itemized receipt before adding an additional tip.
+  related:
+    - tip-calculator
+    - canadian-tip-calculator
+    - discount-calculator
+    - percentage-calculator
+  indexable: true
+  reviewed: true
+  last_reviewed: "2026-11-28T00:00:00.000Z"
+  reviewer: ZixTool Editorial Team
+  lang: en
+  seo:
+    primary_kw: restaurant tip calculator
+    secondary_kws:
+      - tip calculator for restaurants
+      - split restaurant bill
+      - tipping in us restaurants
+      - calculate restaurant tip
+    intent: calculator
+    tier: 1
+
+- id: canadian-tip-calculator
+  kind: calculator
+  slug: canadian-tip-calculator
+  name: Canadian Tip Calculator
+  title: "Canadian Tip Calculator | Tip on Pre-Tax Subtotal"
+  subtitle: "Calculate tips in Canada across provinces before GST, PST, and HST."
+  description: "Free Canadian tip calculator. Calculate 15% to 20% gratuity on the pre-tax subtotal across Ontario, BC, and Alberta, and split the bill fairly."
+  engine: calc-tip
+  options: []
+  presets: []
+  content: src/content/tools/canadian-tip-calculator.mdx
+  faq:
+    - q: What is the standard tipping percentage in Canada?
+      a: Standard restaurant tipping in Canada typically ranges from 15% to 18% for satisfactory service, and 20% for outstanding hospitality across provinces.
+    - q: Why do payment terminals in Canada prompt for tips on tax?
+      a: Many card terminals calculate default tip percentages on the post-tax total including GST, PST, or HST. Calculating on the pre-tax subtotal avoids paying tip on provincial taxes.
+    - q: Do Canadian restaurants include automatic gratuity?
+      a: Yes, many Canadian dining establishments add an automatic 15% to 18% gratuity for groups of 6 to 8 people or more. Always check your receipt before completing payment.
+  related:
+    - tip-calculator
+    - restaurant-tip-calculator
+    - gst-calculator
+    - percentage-calculator
+  indexable: true
+  reviewed: true
+  last_reviewed: "2026-11-28T00:00:00.000Z"
+  reviewer: ZixTool Editorial Team
+  lang: en
+  seo:
+    primary_kw: canadian tip calculator
+    secondary_kws:
+      - tipping in canada calculator
+      - canada restaurant tip
+      - calculate tip before gst hst
+      - canadian gratuity calculator
+    intent: calculator
+    tier: 1
+
+- id: chronological-age-calculator
+  kind: calculator
+  slug: chronological-age-calculator
+  name: Chronological Age Calculator
+  title: "Chronological Age Calculator | Years Months Days"
+  subtitle: "Calculate exact chronological age in years, months, and days."
+  description: "Free chronological age calculator to calculate exact age in years, months, and days from date of birth. Perfect for school, clinical, and psych tests."
+  engine: calc-age
+  options: []
+  presets: []
+  content: src/content/tools/chronological-age-calculator.mdx
+  faq:
+    - q: What is chronological age?
+      a: Chronological age is the exact measure of time elapsed since an individual's birth, expressed accurately in completed years, months, and days.
+    - q: Why is chronological age needed for educational assessments?
+      a: Standardized developmental and psychological tests (like WISC, Stanford-Binet, and Woodcock-Johnson) require exact chronological age to determine normative percentile ranks.
+    - q: How do leap years affect chronological age calculation?
+      a: A calendar-accurate calculator accounts for leap years and the varying lengths of individual calendar months rather than assuming a generic 30-day or 365-day average.
+  related:
+    - age-calculator
+    - date-difference-calculator
+    - online-calculator
+    - discount-calculator
+  indexable: true
+  reviewed: true
+  last_reviewed: "2026-11-28T00:00:00.000Z"
+  reviewer: ZixTool Editorial Team
+  lang: en
+  seo:
+    primary_kw: chronological age calculator
+    secondary_kws:
+      - calculate chronological age
+      - exact age in years months days
+      - age on date calculator
+      - chronological age for testing
+    intent: calculator
+    tier: 1
+
+- id: reverse-percentage-calculator
+  kind: calculator
+  slug: reverse-percentage-calculator
+  name: Reverse Percentage Calculator
+  title: "Reverse Percentage Calculator | Find Original Value"
+  subtitle: "Calculate original amount before percentage increase or discount."
+  description: "Free reverse percentage calculator to find the original value before a percentage increase, discount, or sales tax. Simple formulas and instant results."
+  engine: calc-percent
+  options: []
+  presets: []
+  content: src/content/tools/reverse-percentage-calculator.mdx
+  faq:
+    - q: What is a reverse percentage?
+      a: A reverse percentage calculation finds the original starting value before a known percentage increase, price markup, sales tax, or discount was applied.
+    - q: What is the formula to find the original price before a discount?
+      a: Divide the sale price by (1 - discount rate in decimal form). For example, if a $80 item is 20% off, original price is $80 / 0.80 = $100.
+    - q: How do you find the pre-tax price from a total with sales tax?
+      a: Divide the total price by (1 + tax rate in decimal form). For a $110 total with 10% tax, the original pre-tax price was $110 / 1.10 = $100.
+  related:
+    - percentage-calculator
+    - discount-calculator
+    - tip-calculator
+    - gst-calculator
+  indexable: true
+  reviewed: true
+  last_reviewed: "2026-11-28T00:00:00.000Z"
+  reviewer: ZixTool Editorial Team
+  lang: en
+  seo:
+    primary_kw: reverse percentage calculator
+    secondary_kws:
+      - calculate original price before percentage
+      - reverse percent formula
+      - find original value after discount
+      - backwards percentage
+    intent: calculator
+    tier: 1
+
+- id: us-passport-photo-resizer
+  kind: converter
+  slug: us-passport-photo-resizer
+  name: US Passport Photo Resizer
+  title: "US Passport Photo Resizer | 2x2 Inches & 240KB"
+  subtitle: "Resize and compress passport photos to official US Department of State standards."
+  description: "Free US passport photo resizer online. Crop and compress photos to exact 2x2 inch (600x600 px) dimensions and under 240KB for official US visa and passport."
+  from: image
+  to: jpg
+  engine: target-size
+  targetBytes: 245760
+  options:
+    - quality
+    - strip-metadata
+    - batch
+  presets: []
+  content: src/content/tools/us-passport-photo-resizer.mdx
+  faq:
+    - q: What are the exact photo dimensions for a US passport?
+      a: Official US passport and visa photos must measure exactly 2 x 2 inches (51 x 51 mm), or 600 x 600 pixels at 300 DPI, with the head occupying 50% to 69% of image height.
+    - q: What is the file size limit for US online visa and passport applications?
+      a: Digital photos submitted through the US Department of State DS-160 and passport renewal portals must be 240KB or less and formatted as sRGB JPEG.
+    - q: Can I wear glasses or a hat in a US passport photo?
+      a: Eyeglasses are prohibited in US passport photos unless accompanied by a signed medical statement. Head coverings are only permitted for religious or medical purposes.
+  related:
+    - passport-photo-resizer
+    - canada-visa-photo-resizer
+    - compress-image-to-200kb
+    - image-compressor
+  indexable: true
+  reviewed: true
+  last_reviewed: "2026-11-28T00:00:00.000Z"
+  reviewer: ZixTool Editorial Team
+  lang: en
+  seo:
+    primary_kw: us passport photo resizer
+    secondary_kws:
+      - resize photo to 2x2 inches
+      - us passport photo size in kb
+      - us visa photo resizer
+      - 600x600 passport photo converter
+    intent: converter
+    tier: 1
+
+- id: canada-visa-photo-resizer
+  kind: converter
+  slug: canada-visa-photo-resizer
+  name: Canada Visa Photo Resizer
+  title: "Canada Visa Photo Resizer | 35x45mm & Under 240KB"
+  subtitle: "Resize photos to Canadian visa and IRCC passport specifications."
+  description: "Free Canada visa photo resizer. Resize and compress photos to 35x45 mm (420x540 px) and under 240KB for IRCC visa, permanent residency, and passport portals."
+  from: image
+  to: jpg
+  engine: target-size
+  targetBytes: 245760
+  options:
+    - quality
+    - strip-metadata
+    - batch
+  presets: []
+  content: src/content/tools/canada-visa-photo-resizer.mdx
+  faq:
+    - q: What are the dimensions for a Canada visa photo?
+      a: Photos for Canadian visas, study permits, and work permits must measure 35 mm x 45 mm (minimum 420 x 540 pixels), with head length between 31 mm and 36 mm.
+    - q: What is the maximum file size for IRCC online photo uploads?
+      a: The Immigration, Refugees and Citizenship Canada (IRCC) portal requires digital images to be in JPEG format and under 240KB (minimum 60KB).
+    - q: Can the photo background be colored?
+      a: No. IRCC strictly requires a plain white or light-coloured background with no shadows, glare, or facial reflections.
+  related:
+    - passport-photo-resizer
+    - us-passport-photo-resizer
+    - compress-image-to-200kb
+    - image-compressor
+  indexable: true
+  reviewed: true
+  last_reviewed: "2026-11-28T00:00:00.000Z"
+  reviewer: ZixTool Editorial Team
+  lang: en
+  seo:
+    primary_kw: canada visa photo resizer
+    secondary_kws:
+      - canada visa photo size in kb
+      - 35x45 mm photo resizer
+      - ircc photo compressor
+      - canada passport photo online
+    intent: converter
+    tier: 1

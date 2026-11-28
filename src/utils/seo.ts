@@ -1,5 +1,10 @@
 import { siteConfig } from '../config/site';
 
+export interface AlternateLink {
+  lang: string;
+  href: string;
+}
+
 export interface PageSeoInput {
   title: string;
   description: string;
@@ -15,6 +20,8 @@ export interface PageSeoInput {
   schemaType?: string;
   breadcrumbs?: { name: string; href: string }[];
   jsonLd?: Record<string, any> | Record<string, any>[];
+  lang?: string;
+  alternates?: AlternateLink[];
 }
 
 export interface ResolvedSeoMetadata {
@@ -34,6 +41,8 @@ export interface ResolvedSeoMetadata {
   twitterDescription: string;
   twitterImage: string;
   jsonLdScripts: Record<string, any>[];
+  lang: string;
+  alternates: AlternateLink[];
 }
 
 /**
@@ -174,6 +183,8 @@ export function resolvePageSeo(input: PageSeoInput, currentUrl?: URL | string): 
     twitterDescription: ogDescription,
     twitterImage: ogImage,
     jsonLdScripts,
+    lang: input.lang || 'en',
+    alternates: input.alternates || [],
   };
 }
 

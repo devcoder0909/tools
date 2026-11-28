@@ -10,7 +10,7 @@ const props = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="h-full antialiased scroll-smooth">
+<html lang={props.lang || 'en'} class="h-full antialiased scroll-smooth">
   <head>
     <BaseHead {...props} />
   </head>

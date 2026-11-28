@@ -396,7 +396,7 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
   return (
     <div class="calculator-shell bg-white border border-slate-200/90 rounded-2xl shadow-card p-5 sm:p-7 my-6 transition-all">
       {/* Percentage Calculator */}
-      {toolId === 'percentage-calculator' && (
+      {(toolId === 'percentage-calculator' || toolId === 'reverse-percentage-calculator') && (
         <div class="space-y-6">
           <div class="flex flex-wrap gap-2 border-b border-slate-200/80 pb-4">
             <button
@@ -630,7 +630,7 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
       )}
 
       {/* Age Calculator */}
-      {toolId === 'age-calculator' && (
+      {(toolId === 'age-calculator' || toolId === 'chronological-age-calculator') && (
         <div class="space-y-6">
           <a href="#age-by-year" class="text-sm font-semibold text-emerald-800 underline">Only know the birth year?</a>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -686,7 +686,7 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
         </div>
       )}
 
-      {toolId === 'age-calculator' && <BirthYearCalculator />}
+      {(toolId === 'age-calculator' || toolId === 'chronological-age-calculator') && <BirthYearCalculator />}
 
       {/* Date Difference Calculator */}
       {toolId === 'date-difference-calculator' && (
@@ -836,7 +836,7 @@ export default function CalculatorShell({ toolId, toolName: _toolName }: Calcula
       )}
 
       {/* Tip Calculator */}
-      {toolId === 'tip-calculator' && (
+      {(toolId === 'tip-calculator' || toolId === 'restaurant-tip-calculator' || toolId === 'canadian-tip-calculator') && (
         <div class="space-y-6">
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>

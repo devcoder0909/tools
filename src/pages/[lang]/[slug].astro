@@ -1,0 +1,128 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CalculatorShell from '../../components/CalculatorShell';
+import ToolShell from '../../components/ToolShell';
+import { localizedPages, type LocalizedPageConfig } from '../../config/localized-pages';
+import { getAllTools } from '../../registry';
+import { siteConfig } from '../../config/site';
+
+export async function getStaticPaths() {
+  return localizedPages.map((page) => ({
+    params: { lang: page.lang, slug: page.slug },
+    props: { page },
+  }));
+}
+
+export interface Props {
+  page: LocalizedPageConfig;
+}
+
+const { page } = Astro.props;
+const tools = getAllTools();
+const baseTool = tools.find((t) => t.slug === page.baseToolSlug);
+
+const breadcrumbs = [
+  { name: 'Home', href: '/' },
+  {
+    name: page.baseToolSlug === 'tip-calculator' ? 'Calculators' : 'Tools',
+    href: page.baseToolSlug === 'tip-calculator' ? '/calculators/' : '/tools/',
+  },
+  { name: page.h1, href: `/${page.lang}/${page.slug}/` },
+];
+
+const webAppJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  '@id': `${siteConfig.url}/${page.lang}/${page.slug}/#application`,
+  name: page.h1,
+  url: `${siteConfig.url}/${page.lang}/${page.slug}/`,
+  applicationCategory: page.baseToolSlug === 'tip-calculator' ? 'UtilitiesApplication' : 'MultimediaApplication',
+  operatingSystem: 'All',
+  browserRequirements: 'Requires a modern browser with JavaScript enabled',
+  isAccessibleForFree: true,
+  inLanguage: page.lang,
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'EUR',
+  },
+  description: page.description,
+};
+---
+
+<Layout
+  title={page.title}
+  description={page.description}
+  canonical={`${siteConfig.url}/${page.lang}/${page.slug}/`}
+  lang={page.lang}
+  alternates={page.alternates}
+  jsonLd={webAppJsonLd}
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
+    <!-- Breadcrumbs -->
+    <Breadcrumbs items={breadcrumbs} />
+
+    <!-- H1 & Badge -->
+    <div class="mb-6">
+      <div class="flex items-center gap-2 mb-2.5 flex-wrap">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md text-2xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200/60 uppercase tracking-wide">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+          {page.badge}
+        </span>
+        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-2xs font-medium bg-slate-100 text-slate-600 uppercase">
+          {page.lang}
+        </span>
+      </div>
+      <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight mb-2">
+        {page.h1}
+      </h1>
+      <p class="text-base text-slate-600 leading-relaxed max-w-2xl">
+        {page.description}
+      </p>
+    </div>
+
+    <!-- Interactive Tool Engine -->
+    <div class="my-6">
+      {page.baseToolSlug === 'tip-calculator' && (
+        <CalculatorShell client:load toolId="tip-calculator" toolName={page.h1} />
+      )}
+      {page.baseToolSlug === 'heic-to-jpg' && baseTool && (
+        <ToolShell
+          client:load
+          toolId={baseTool.id}
+          toolName={page.h1}
+          fromFormat={baseTool.from}
+          toFormat={baseTool.to}
+          kind={baseTool.kind}
+        />
+      )}
+    </div>
+
+    <!-- Language Selector Nav -->
+    <aside class="my-8 p-4 bg-slate-50 border border-slate-200 rounded-xl" aria-label="International versions">
+      <h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
+        Language / Region
+      </h3>
+      <div class="flex flex-wrap gap-2 text-xs">
+        {page.alternates.map((alt) => (
+          <a
+            href={alt.href}
+            class={`px-2.5 py-1 rounded-md border transition-colors ${
+              alt.href.includes(`/${page.lang}/`)
+                ? 'bg-emerald-600 text-white border-emerald-600 font-semibold'
+                : 'bg-white text-slate-700 border-slate-200 hover:border-emerald-500'
+            }`}
+          >
+            {alt.lang === 'x-default' ? 'Global (EN)' : alt.lang.toUpperCase()}
+          </a>
+        ))}
+      </div>
+    </aside>
+
+    <!-- Localized SEO Content Article -->
+    <article class="mt-10 pt-8 border-t border-slate-200/80">
+      <div set:html={page.contentHtml} />
+    </article>
+  </div>
+</Layout>

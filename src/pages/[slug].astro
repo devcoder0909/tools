@@ -30,6 +30,7 @@ import { renderToolMarkdown, type ArticleHeading } from '../utils/markdown';
 import { getAllTools, getRelatedTools, formatDisplayDate, formatIsoDate, type ToolDefinition } from '../registry';
 import { siteConfig } from '../config/site';
 import { getToolMedia } from '../config/tool-media';
+import { getAlternatesForTool } from '../config/i18n-alternates';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -167,6 +168,7 @@ if (tool.targetBytes) {
     parsedTargetKb = m[2].toLowerCase() === 'mb' ? v * 1024 : v;
   }
 }
+const alternates = getAlternatesForTool(tool.slug);
 ---
 
 <Layout
@@ -176,6 +178,7 @@ if (tool.targetBytes) {
   jsonLd={schemas}
   noindex={!isIndexable}
   ogImage={ogImageProp}
+  alternates={alternates}
 >
   <div class="max-w-4xl mx-auto px-4 sm:px-6 py-8">
     {tool.slug === 'pdf-to-jpg' && <p class="mb-6 p-4 border border-amber-300 rounded-xl bg-amber-50 text-amber-950">
@@ -238,7 +241,7 @@ if (tool.targetBytes) {
       <CalculatorShell client:load toolId={tool.id} toolName={tool.name} />
     ) : tool.kind === 'text' || ['word-counter', 'case-converter', 'json-formatter', 'character-counter', 'lorem-ipsum-generator', 'diff-checker', 'markdown-to-html', 'reading-time-calculator'].includes(tool.id) ? (
       <TextShell client:load toolId={tool.id} toolName={tool.name} />
-    ) : tool.engine === 'target-size' || tool.slug.startsWith('compress-image-to-') || tool.slug === 'image-compressor' ? (
+    ) : tool.engine === 'target-size' || tool.slug.startsWith('compress-image-to-') || tool.slug === 'image-compressor' || tool.slug.endsWith('-photo-resizer') ? (
       <TargetSizeShell client:load toolId={tool.id} toolName={tool.name} defaultTargetKb={parsedTargetKb} />
     ) : (
       <ToolShell
@@ -253,6 +256,28 @@ if (tool.targetBytes) {
 
     <!-- Ad slot A (below the result area) -->
     <AdSlot slotPosition="belowResult" />
+
+    {alternates && alternates.length > 0 && (
+      <aside class="my-6 p-4 bg-slate-50 border border-slate-200 rounded-xl" aria-label="International versions">
+        <h3 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
+          Language / Region
+        </h3>
+        <div class="flex flex-wrap gap-2 text-xs">
+          {alternates.map((alt) => (
+            <a
+              href={alt.href}
+              class={`px-2.5 py-1 rounded-md border transition-colors ${
+                alt.lang === 'en' || alt.lang === 'x-default'
+                  ? 'bg-emerald-600 text-white border-emerald-600 font-semibold'
+                  : 'bg-white text-slate-700 border-slate-200 hover:border-emerald-500'
+              }`}
+            >
+              {alt.lang === 'x-default' ? 'Global (EN)' : alt.lang.toUpperCase()}
+            </a>
+          ))}
+        </div>
+      </aside>
+    )}
 
     <!-- Content Hub Navigation Tabs -->
     <div class="mt-10 mb-6 border-b border-slate-200">

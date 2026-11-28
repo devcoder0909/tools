@@ -34,6 +34,9 @@ const seo = resolvePageSeo(Astro.props, Astro.url);
 
 <!-- Canonical & Discovery -->
 <link rel="canonical" href={seo.canonical} />
+{seo.alternates && seo.alternates.length > 0 && seo.alternates.map((alt) => (
+  <link rel="alternate" hreflang={alt.lang} href={alt.href} />
+))}
 <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap-index.xml" />
 
 <!-- Primary Meta Tags -->
@@ -48,7 +51,7 @@ const seo = resolvePageSeo(Astro.props, Astro.url);
 <meta property="og:title" content={seo.ogTitle} />
 <meta property="og:description" content={seo.ogDescription} />
 <meta property="og:site_name" content={siteConfig.brand} />
-<meta property="og:locale" content="en_US" />
+<meta property="og:locale" content={seo.lang === 'de' ? 'de_DE' : seo.lang === 'es' ? 'es_ES' : seo.lang === 'fr' ? 'fr_FR' : seo.lang === 'pl' ? 'pl_PL' : seo.lang === 'it' ? 'it_IT' : 'en_US'} />
 <meta property="og:image" content={seo.ogImage} />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
